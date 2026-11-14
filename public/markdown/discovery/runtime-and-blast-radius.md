@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/runtime-and-blast-radius/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.
-
-Guide in progress
-
-The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Follow application-reported model/tool activity for one deployment and compare it with collected potential access. Success means the intended binding receives real instrumented calls and you can trace each visible relationship to its evidence and time boundary.
 
@@ -24,16 +18,12 @@ Deployment, environment and version labels attribute reports; they do not attest
 
 1.  Open **Discovery → Sources → Runtime reporting**, then **Connect runtime reporter**.
 2.  Use **Find workload**, choose **Discovered workload**, then enter **Deployment label**, **Environment** and **Deployed version**. The first 50 search matches are listed; narrow the search if necessary.
+
+![The runtime binding form selects the actual support-agent workload and documentation QA version.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-binding-form.png)
+
+Choose the collected workload and explicit deployment, environment and version before creating its private runtime credential.
+
 3.  Click **Create runtime binding**.
-
-If no workload is listed
-
-**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
-
-![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
-
-Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
-
 4.  Privately save the Binding ID and once-shown **Runtime credential**. Mount the credential as a read-only secret file in that workload and configure its SDK reporter with the trusted Backend HTTPS origin and binding. Click **Credential saved** to clear the credential panel.
 5.  Start one reporter per customer application process, create a trace for each invocation and instrument the actual model/tool calls. A successful report is metadata about that call, not an assertion that a downstream business action happened.
 6.  Run a bounded legitimate synthetic task through the real application. Check its reporter delivery counters/logs and retained binding after refresh. Missing dashboard events do not establish that no calls occurred: delivery can fail or be dropped.
@@ -75,9 +65,20 @@ This minimal integration emits call metadata. Resource links require explicit re
 2.  Select **Deployment / environment / version** and **Time window**: **Last hour**, **Last 24 hours** or **Last 7 days**.
 3.  Read **Where calls went**. Select a model/tool to inspect its configured name, counts, outcomes and recent reports. Use **Previous connections** / **Next connections** when additional targets are available.
 
+![The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-eight-tool-calls.png)
+
+The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.
+
+The captured example is a real read-only `get_shipping_policy` tool in the selected Kubernetes workload. It reads one named synthetic ConfigMap using that workload’s service account. **0 Model calls** and **8 Tool calls** describe eight distinct successful reads from the runtime, gate and network checks. Two blocked attempts did not enter the callable or appear as executed tool reports. A tool-only report can populate this view while the workload remains a candidate; **Runtime-observed** needs model and tool calls in the same trace.
+
 4.  For a resource link, inspect its service/type, opaque reference, reported action, outcome and time. These links require explicit response-ID mappings in the customer integration. Use **Previous resources** / **Next resources** to page the displayed links.
+
+![The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-resource-detail.png)
+
+The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.
+
 5.  Check the bounds: aggregate counts cover a displayed latest-500-event window and individual details the latest 50 events. A selected aggregate can have no corresponding row in that smaller recent-event window. Resource/action links page by 12 for displayed tools.
-6.  Refresh with the same binding/window and confirm that the actual synthetic call remains in retained evidence.
+6.  Refresh, reselect the same binding and time window if needed, and confirm that the actual synthetic call remains in retained evidence.
 
 ## Compare configured reach
 
@@ -85,10 +86,28 @@ This minimal integration emits call metadata. Resource links require explicit re
 2.  Inspect runtime-reported domains, collected identity/permission paths and shared configured peers separately. Open the relevant resource or evidence row to see its source and matching limitations.
 3.  Use record details such as **Configured access**, **Network evidence**, and **Hosting & identity** to answer their specific evidence questions. A network window or an RBAC policy is not a substitute for an independently verified business effect.
 
+![The actual workload exposure diagram separates configured domains and a matching Kubernetes request.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-blast-radius-configured-reach.png)
+
+The diagram summarizes the latest collected configuration and reported request evidence. Twenty resource patterns and twenty-five potential paths do not establish effective access or measured business impact.
+
+For the example lookup, **Kubernetes request evidence** links the caller-declared named GET and service account to a matching collected ConfigMap rule. Select the request to inspect its supporting path and collection time. The RBAC snapshot is the latest collected configuration; it is not pinned to the call time or the binding’s declared version. A match establishes evidence alignment, not effective authorization.
+
+![The selected named ConfigMap GET has matching RBAC evidence and eight successful application reports.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-request-rbac-match.png)
+
+The named GET and caller-declared service account align with the latest collected RBAC fields. The independent snapshot does not attest identity or permission at call time.
+
 4.  If a card links an assessment to this deployment, inspect the operator approval, artifact-equivalence declaration and drift status. An operator-attested mapping does not independently prove the deployed binary equals the assessed artifact.
 5.  Treat any quantified sandbox loss sample or time-window projection as its labeled conditional scenario. Diagram distance, group size and ring placement are not a risk score or effective-access proof.
 
 ## Failure, freshness and limits
+
+If no workload is listed
+
+**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
+
+![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
+
+Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
 
 -   **No runtime reporters connected** needs enrollment and actual instrumentation, not another inventory refresh.
 -   **Revoke reporting** rejects future uploads while retaining history. It does not stop the application, block a call or revoke an independently enrolled call gate.

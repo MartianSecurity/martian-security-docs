@@ -53,7 +53,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "get-started/access: Join your workspace, steps 3–4 (completion and sign-in address)"
+        "get-started/access: Join your workspace, steps 3\u20134 (completion and sign-in address)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Invited owner (signed out)",
@@ -191,7 +191,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "agents/connections: Register the target, steps 2–3 (before entering the private credential)"
+        "agents/connections: Register the target, steps 2\u20133 (before entering the private credential)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -214,7 +214,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "agents/http-adapter: 3. Register the real HTTPS address, steps 2–3 (before entering the private credential)"
+        "agents/http-adapter: 3. Register the real HTTPS address, steps 2\u20133 (before entering the private credential)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -329,7 +329,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/first-run: 2. Configure the run, steps 2–4 (before Start evaluation)"
+        "evals/first-run: 2. Configure the run, steps 2\u20134 (before Start evaluation)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -628,7 +628,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/human-reviews: 1. Create the review queue, steps 3–6 (before Create queue)"
+        "evals/human-reviews: 1. Create the review queue, steps 3\u20136 (before Create queue)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -720,7 +720,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/compare: 1. Choose the pair, steps 2–4 (before Compare runs)"
+        "evals/compare: 1. Choose the pair, steps 2\u20134 (before Compare runs)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -761,12 +761,12 @@
     {
       "id": "evals-compare-trace",
       "file": "evals-compare-trace.png",
-      "alt": "Candidate native trace opened from the punctuation regression and retaining output “4.”.",
-      "caption": "The candidate native trace retains “4.” for the same arithmetic input; the baseline trace retained “4”. Both contexts were inspected. Reported tokens remain Unavailable for this deterministic callback.",
+      "alt": "Candidate native trace opened from the punctuation regression and retaining output \u201c4.\u201d.",
+      "caption": "The candidate native trace retains \u201c4.\u201d for the same arithmetic input; the baseline trace retained \u201c4\u201d. Both contexts were inspected. Reported tokens remain Unavailable for this deterministic callback.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/compare: 4. Follow evidence and retain the comparison, steps 1–2 (candidate native context)"
+        "evals/compare: 4. Follow evidence and retain the comparison, steps 1\u20132 (candidate native context)"
       ],
       "environment": "Isolated local QA: real Backend, Agents and MLflow; synthetic Martian Docs Lab organization",
       "role": "Organization owner; platform_admin false",
@@ -785,7 +785,7 @@
       "id": "sdk-api-keys",
       "file": "sdk-api-keys.png",
       "alt": "Actual SDK key metadata with four Evals and CI permissions and an agent restriction.",
-      "caption": "The owner can manage SDK keys on Evals → Runs. This list shows permissions, restriction, expiry and a prefix; the once-shown credential was closed and is absent from the image.",
+      "caption": "The owner can manage SDK keys on Evals \u2192 Runs. This list shows permissions, restriction, expiry and a prefix; the once-shown credential was closed and is absent from the image.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1045,7 +1045,7 @@
       "id": "evals-suites-scorecard",
       "file": "evals-suites-scorecard.png",
       "alt": "Version1 code-suite scorecard passes both gates with three of three records evaluated.",
-      "caption": "The completed v1 job has full coverage and no missing or error scores. Its response-length gate compares a mean of 3.67 with the ceiling of 80; the recorded range is 1–5.",
+      "caption": "The completed v1 job has full coverage and no missing or error scores. Its response-length gate compares a mean of 3.67 with the ceiling of 80; the recorded range is 1\u20135.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1620,7 +1620,7 @@
       "id": "first-assessment-environment",
       "file": "first-assessment-environment.png",
       "alt": "Environment step with endpoint-only testing selected",
-      "caption": "Select No environment — test the endpoint only to use the approved connection without sandbox systems.",
+      "caption": "Select No environment \u2014 test the endpoint only to use the approved connection without sandbox systems.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2333,7 +2333,7 @@
       "validationStatus": "Actual real-backend UI state after native operations; individually viewed for readable framing and secrets. Whole guide qualification tracked separately.",
       "reviewedForSecrets": true,
       "sha256": "c6ede37f26c579179e5b3e092f78dc297c43c0348d564f7178a711077697a80d",
-      "privacy": "Native Playwright screenshot masks hide only eight other environment-name buttons behind the drawer (including offscreen names). Own name, error, status, controls and full 1440×1000 framing are unchanged; no DOM edits or mocked responses."
+      "privacy": "Native Playwright screenshot masks hide only eight other environment-name buttons behind the drawer (including offscreen names). Own name, error, status, controls and full 1440\u00d71000 framing are unchanged; no DOM edits or mocked responses."
     },
     {
       "id": "environments-ready",
@@ -2615,14 +2615,14 @@
       "sha256": "f1a751cac71a2b09bfef86340eb80943dd75c6956e0aeb8b951253930b414396"
     },
     {
-      "id": "discovery-source-form",
+      "id": "discovery-source-prerequisite",
       "file": "discovery-source-form-blocked.png",
       "alt": "Beta QA source dialog showing No authorized clusters and disabled Create source.",
       "caption": "This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "discovery/inventory: Enroll a read-only source, after step 2"
+        "discovery/inventory: Recover from setup or collection failures, No authorized clusters"
       ],
       "environment": "AWS beta; own synthetic Martian Documentation QA; real Backend; blocked scope prerequisite",
       "role": "Organization Owner; platform_admin false",
@@ -2846,7 +2846,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "agents/connections: Manage an existing connection, steps 3–4"
+        "agents/connections: Manage an existing connection, steps 3\u20134"
       ],
       "environment": "Isolated local QA; synthetic Documentation Native Sessions QA; real pinned Frontend/Backend; customer-operated deterministic public HTTPS target",
       "role": "Organization Owner; platform_admin false; AI-operated synthetic account",
@@ -2981,7 +2981,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/datasets: 4. Publish and verify the version, steps 1–3"
+        "evals/datasets: 4. Publish and verify the version, steps 1\u20133"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend and MLflow; synthetic Documentation Browser Execution QA organization; no target or model execution",
       "role": "Owner; platform_admin false",
@@ -3003,7 +3003,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/datasets: 4. Publish and verify the version, steps 4–5"
+        "evals/datasets: 4. Publish and verify the version, steps 4\u20135"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend and MLflow; synthetic Documentation Browser Execution QA organization; no target or model execution",
       "role": "Owner; platform_admin false",
@@ -3025,7 +3025,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/datasets: 5. Publish a revised version, steps 1–3"
+        "evals/datasets: 5. Publish a revised version, steps 1\u20133"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend and MLflow; synthetic Documentation Browser Execution QA organization; no target or model execution",
       "role": "Owner; platform_admin false",
@@ -3047,7 +3047,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/datasets: 5. Publish a revised version, steps 4–5"
+        "evals/datasets: 5. Publish a revised version, steps 4\u20135"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend and MLflow; synthetic Documentation Browser Execution QA organization; no target or model execution",
       "role": "Owner; platform_admin false",
@@ -3113,7 +3113,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "evals/datasets: 6. Copy a Martian dataset, steps 3–4"
+        "evals/datasets: 6. Copy a Martian dataset, steps 3\u20134"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend and MLflow; synthetic Documentation Browser Execution QA organization; no target or model execution",
       "role": "Owner; platform_admin false",
@@ -3157,7 +3157,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "assessments/configure: Configure a browser chat run, steps 1–2"
+        "assessments/configure: Configure a browser chat run, steps 1\u20132"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend, Agents, browser executor and synthetic public HTTPS support website; Documentation Browser Execution QA organization",
       "role": "Owner; platform_admin false",
@@ -3222,7 +3222,7 @@
       "id": "assessment-browser-coverage",
       "file": "assessment-browser-coverage.png",
       "alt": "Browser probe coverage showing Scheduled, No outcome recorded, zero of thirty probe target calls and zero of one hundred probe model calls.",
-      "caption": "The disclosure goal was scheduled, with no probe outcome recorded. These probe counters exclude the campaign’s earlier neutral setup messages.",
+      "caption": "The disclosure goal was scheduled, with no probe outcome recorded. These probe counters exclude the campaign\u2019s earlier neutral setup messages.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3341,7 +3341,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "assessments/progress-and-cancellation: Example: stop an active HTTP run, inspect a reply after steps 1–3"
+        "assessments/progress-and-cancellation: Example: stop an active HTTP run, inspect a reply after steps 1\u20133"
       ],
       "environment": "Separate isolated local QA; real Frontend, Backend, Agents and approved synthetic public HTTPS HTTP target; Documentation Browser Execution QA organization",
       "role": "Owner; platform_admin false",
@@ -3364,7 +3364,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "environments/create-and-launch: Create the environment, steps 1–3"
+        "environments/create-and-launch: Create the environment, steps 1\u20133"
       ],
       "environment": "Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3376,7 +3376,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "3832fbfdc0568f92c91ba0425a73b3484b99fa56f8030d868e23b8fe1cd0d8ed"
     },
@@ -3384,11 +3384,11 @@
       "id": "environment-optional-inputs",
       "file": "environment-optional-inputs.png",
       "alt": "Environment editor with a whole-environment JSON Schema and Gmail-only CSV parsed as two sample records.",
-      "caption": "Inspect each input’s type, scope and parsing result before saving. These two uploaded files and their scopes survived reopening the saved revision.",
+      "caption": "Inspect each input\u2019s type, scope and parsing result before saving. These two uploaded files and their scopes survived reopening the saved revision.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "environments/create-and-launch: Create the environment, steps 4–6"
+        "environments/create-and-launch: Create the environment, steps 4\u20136"
       ],
       "environment": "Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3400,7 +3400,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "354172ae367ad73549dc004a5a9f146618991423a5426a5af4b573d1a564bb0f"
     },
@@ -3424,7 +3424,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "7e651a7712b0dda8d9a201ce9414d73584d241af69890ac226c46ebfc9185b61"
     },
@@ -3436,7 +3436,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "environments/create-and-launch: Generate or reuse synthetic data, steps 3–5"
+        "environments/create-and-launch: Generate or reuse synthetic data, steps 3\u20135"
       ],
       "environment": "Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3448,7 +3448,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "cb456eb28fcc58213600300bcc577c8a32ce0fa9c646f696e66f4d6cb26fdecc"
     },
@@ -3460,7 +3460,7 @@
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "environments/create-and-launch: Launch and verify readiness, steps 1–3"
+        "environments/create-and-launch: Launch and verify readiness, steps 1\u20133"
       ],
       "environment": "Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3472,7 +3472,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "47f36d6c4f060aa57153a3987028a86232dd855355e3c004e072589e1ee6ae7c"
     },
@@ -3480,7 +3480,7 @@
       "id": "environment-generated-lifetime",
       "file": "environment-generated-lifetime.png",
       "alt": "Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.",
-      "caption": "Extend 30 min moved this instance’s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.",
+      "caption": "Extend 30 min moved this instance\u2019s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3496,7 +3496,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "2cd2a95f70dd07d0294e7d1cf4f6dffba16575b9030ee0edc35796ba7932070e"
     },
@@ -3504,11 +3504,11 @@
       "id": "environment-generated-assessment-ready",
       "file": "environment-generated-assessment-ready.png",
       "alt": "Assessment Environment step showing Documentation support inputs lab and Sandboxes ready for Gmail, with endpoint-only testing unchecked.",
-      "caption": "Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent’s bindings and independent business checks.",
+      "caption": "Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent\u2019s bindings and independent business checks.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "environments/create-and-launch: Launch and verify readiness, steps 5–6"
+        "environments/create-and-launch: Launch and verify readiness, steps 5\u20136"
       ],
       "environment": "Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3520,7 +3520,7 @@
         "sandbox": "da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565"
       },
       "sourceMatchesDeployment": "Clean served Frontend archive and unchanged pinned Backend/Agents/simulation images. Eighteen relevant served/runtime source files match. Actual pinned orchestrator executable/catalog. Local QA configuration only; no product-source patch or hosted-beta parity claim.",
-      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
+      "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked.",
       "reviewedForSecrets": true,
       "sha256": "3badba5c97b7e53827eb29cfc31e34b3fbae339a33669c3abb9dc3b3576796a3"
     },
@@ -3552,11 +3552,11 @@
       "id": "agents-payment-seed-ready",
       "file": "agents-payment-seed-ready.png",
       "alt": "Payment-only environment with Stripe mapped to paypal, one Ready sandbox, two accounts and your data after an explicit stored-example seed launch.",
-      "caption": "The launch explicitly used the manually stored released example. Generated / your data are the console’s seed-document labels; this setup did not call a model. The Ready instance then passed the seeded account’s real sign-in and refresh.",
+      "caption": "The launch explicitly used the manually stored released example. Generated / your data are the console\u2019s seed-document labels; this setup did not call a model. The Ready instance then passed the seeded account\u2019s real sign-in and refresh.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "agents/sandbox-bindings: Load the payment example’s accounts and ledger, step 5"
+        "agents/sandbox-bindings: Load the payment example\u2019s accounts and ledger, step 5"
       ],
       "environment": "Isolated Documentation Browser Execution QA; synthetic organization and payment target; real pinned Frontend, Backend, Agents, released SDK and local Kubernetes payment simulation; Owner with platform_admin false",
       "role": "Owner; platform_admin false",
@@ -3625,7 +3625,7 @@
       "id": "assessment-modern-redacted-turn",
       "file": "assessment-modern-redacted-turn.png",
       "alt": "First retained turn with redacted target response, credential_scrubbed status, exported byte counts and twelve loaded turn records.",
-      "caption": "The actual target response contains [REDACTED] instead of the fixture’s token-shaped test string. The critic rationale is model interpretation. This on-screen read does not establish a successful ZIP download.",
+      "caption": "The actual target response contains [REDACTED] instead of the fixture\u2019s token-shaped test string. The critic rationale is model interpretation. This on-screen read does not establish a successful ZIP download.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3732,6 +3732,576 @@
       "validationStatus": "Direct real application capture individually viewed for readability and secrets; PNG integrity and metadata checked. Empty prerequisites and read-only responses passed. Enrollment, collection, runtime uploads, gate activation and network observation remain unqualified.",
       "reviewedForSecrets": true,
       "sha256": "7def273edf7c2ac13fc189783f8b2fcc6b110fdf0779b5d4290ae86c35dfd102"
+    },
+    {
+      "id": "discovery-source-form",
+      "file": "discovery-source-authorized-form.png",
+      "alt": "Authorized Kubernetes source form with Documentation cluster, the approved cluster alias and docs-discovery namespace.",
+      "caption": "Select the operator-approved cluster and namespace before Create source. Enrollment alone does not collect inventory.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Enroll a read-only source, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T15:55:01.258167+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "acbd464145b92ad244c06b902928f7007dde3d4bfc3db43fbdab3d5f7a87c11f"
+    },
+    {
+      "id": "discovery-sources",
+      "file": "discovery-source-complete.png",
+      "alt": "Completed Kubernetes source with a real Last success and two retained inventory records.",
+      "caption": "Scope and collection coverage records one Deployment and two listed Pods. The resulting two inventory records include a candidate and supporting infrastructure.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Enroll a read-only source, after step 7"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:08:49.913522+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "f79530da208b672501b23077633f9e6156c0a3092f543cac52c2039bf77aedc8"
+    },
+    {
+      "id": "discovery-inventory",
+      "file": "discovery-inventory-candidate.png",
+      "alt": "Candidates inventory showing support-agent as a metadata candidate with no runtime reports.",
+      "caption": "The labeled Deployment is a candidate, not an established AI agent. Inspect candidate opens its retained infrastructure evidence.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Review inventory and evidence, after step 4"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:27:06.389409+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "e878c9bff0150579c48d535d7583cc622355db8d77325d95bc381ea1b5bb8358"
+    },
+    {
+      "id": "discovery-inventory-supporting",
+      "file": "discovery-inventory-supporting.png",
+      "alt": "Supporting workloads section with the unclassified metadata-worker Pod.",
+      "caption": "The standalone Pod remains supporting infrastructure outside the agent and candidate counts. A successful collection does not imply that every workload is an agent.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Review inventory and evidence, after step 5"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:27:05.723226+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "1b99850737c419b0de33b7b7eedba88ef1ab6cf108c5fb0f73d68586e394e4d0"
+    },
+    {
+      "id": "discovery-source-paused",
+      "file": "discovery-source-paused.png",
+      "alt": "Disabled source after Pause collection with Collect now disabled and the earlier Last success retained.",
+      "caption": "Pausing rejects a new collector lease and preserves earlier inventory. It does not stop the workload.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Pause, resume and verify freshness, after step 1"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:12:31.593784+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "164f70768b9f4c78f9457485b1f7935fe30c52ddf0cbfba5b54714606b4e0e94"
+    },
+    {
+      "id": "discovery-source-resumed",
+      "file": "discovery-source-resumed.png",
+      "alt": "Resumed source with a newer completed collection and retained two-record coverage after full page reload.",
+      "caption": "Resume collection and Collect now were followed by an actual collector run. A newer Last success and retained inventory confirm that distinct completion.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/inventory: Pause, resume and verify freshness, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic organization, real Backend and authorized local Kubernetes source; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:24:18.948536+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "sourceMatchesDeployment": "Twelve relevant Frontend files matched the served archive; eleven relevant Backend files matched the running candidate image and PR112. This is isolated QA; PR112 is not merged and beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend and provider; individual visual/privacy review passed. Direct unedited 1440x1000 PNG, CRC, metadata, known-secret byte and SHA checks passed. Bootstrap errors outside Discovery remain recorded separately.",
+      "reviewedForSecrets": true,
+      "sha256": "0371de77e7c277232f0f70710dca69c887767343ae0389d0f4c576eed0af819d"
+    },
+    {
+      "id": "discovery-runtime-setup",
+      "file": "discovery-runtime-binding-form.png",
+      "alt": "The runtime binding form selects the actual support-agent workload and documentation QA version.",
+      "caption": "Choose the collected workload and explicit deployment, environment and version before creating its private runtime credential.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/runtime-and-blast-radius: Connect runtime reporting, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T16:56:36.521017+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "31623225f7d1975f0236d98df0e562bd37bc5c2939008c2afb9840636558a0fb"
+    },
+    {
+      "id": "discovery-runtime",
+      "file": "discovery-runtime-eight-tool-calls.png",
+      "alt": "The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.",
+      "caption": "The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/runtime-and-blast-radius: Inspect the runtime map, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T18:01:31.065975+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "7a818d9e924fc1ff0c5d3b52dcc7d1628a2dd207f3782f15da64c01ddefea999"
+    },
+    {
+      "id": "discovery-runtime-resource",
+      "file": "discovery-runtime-resource-detail.png",
+      "alt": "The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.",
+      "caption": "The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/runtime-and-blast-radius: Inspect the runtime map, after step 4"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:03:19.998165+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "8fec604ae4826460e4a07a090ecd471d288eec77d6c7b6642899fe1e8badf807"
+    },
+    {
+      "id": "discovery-blast-radius",
+      "file": "discovery-blast-radius-configured-reach.png",
+      "alt": "The actual workload exposure diagram separates configured domains and a matching Kubernetes request.",
+      "caption": "The diagram summarizes the latest collected configuration and reported request evidence. Twenty resource patterns and twenty-five potential paths do not establish effective access or measured business impact.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/runtime-and-blast-radius: Compare configured reach, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T18:02:03.696761+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "ce32f2250382fa38a7dc49cb359a9ac5939da022a4691f1192a89ad80bd63cab"
+    },
+    {
+      "id": "discovery-runtime-rbac-match",
+      "file": "discovery-runtime-request-rbac-match.png",
+      "alt": "The selected named ConfigMap GET has matching RBAC evidence and eight successful application reports.",
+      "caption": "The named GET and caller-declared service account align with the latest collected RBAC fields. The independent snapshot does not attest identity or permission at call time.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/runtime-and-blast-radius: Compare configured reach, request evidence"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T18:02:34.660642+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "8cc04f146fed9e3f2681fcef0e26d3c3a38b551393b577d66c149ca674b0554a"
+    },
+    {
+      "id": "discovery-gate-enrollment",
+      "file": "discovery-gate-exact-target-enrollment.png",
+      "alt": "The gate enrollment selects the actual kubernetes get_shipping_policy tool before assignment creation.",
+      "caption": "Enroll the exact trusted target for this binding. Assignment creation and private installation are separate from a live SDK process or an active block.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Enroll exact call targets, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:03:20.588742+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "80dd1b61160816fb04fbef3345e324e01eae0974611dc5432ecbdb6d0b5a5431"
+    },
+    {
+      "id": "discovery-gate-review",
+      "file": "discovery-gate-control-review.png",
+      "alt": "The real five-minute control review identifies the exact tool, reason and activation confirmation.",
+      "caption": "Review scope, duration, impact and expiry before activation. A generated review alone does not block a call.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Review and activate a timed block, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:10:54.847325+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "47333f84ed58a584886a0c021746efea184dbb4a9b50701ac6c00e82bc6a9e05"
+    },
+    {
+      "id": "discovery-gate-active",
+      "file": "discovery-gate-active-after-refresh.png",
+      "alt": "The active call control remains visible after full refresh with one recently reporting SDK process.",
+      "caption": "The actual active block and server expiry were retained after reselecting the same binding. Complete replica coverage remains unverified.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Review and activate a timed block, after step 5"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:14:14.610976+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "14b586ffc2c9d5dee2c696e8d40d89e2de6c2006773d92acc89971fc47de86e1"
+    },
+    {
+      "id": "discovery-gate-sdk-ack",
+      "file": "discovery-gate-sdk-stopped-acknowledgment.png",
+      "alt": "The real deny decision has an SDK reported stopped acknowledgment.",
+      "caption": "The SDK refused entry and acknowledged the deny decision. The application journal independently confirmed that this specific callable was not entered.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Review and activate a timed block, SDK acknowledgment"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:14:14.727435+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "33cb54c805cc60df13de3a1657ec29f217b78f89ce34e06aef10d443f942cdb2"
+    },
+    {
+      "id": "discovery-gate-resumed",
+      "file": "discovery-gate-resumed-expired-history.png",
+      "alt": "The retained gate audit and control history distinguish explicitly resumed and naturally expired controls.",
+      "caption": "A five-minute control was resumed; a separate one-minute control expired without Resume. New real reads succeeded after each ended, and both histories survived refresh.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Resume and verify recovery, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T18:04:21.112283+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "40294044e88e182dd7662ef164bf4e22b5a938d59a2ac3caad085f28d7dbeef2"
+    },
+    {
+      "id": "discovery-containment-preview",
+      "file": "discovery-network-containment-preview.png",
+      "alt": "The actual network-containment intent is labeled NOT EXECUTABLE with activation unavailable.",
+      "caption": "The downloaded intent describes proposed scope and evidence. The disabled activation does not install network isolation or activate an SDK call block.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/call-gates: Keep containment previews separate, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:22:46.509300+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "780b3eb1ac6bc3ab06ce440d705e5800d76a3df85c0e09a69b8dc7ee7100b1f2"
+    },
+    {
+      "id": "discovery-network-capture-grant",
+      "file": "discovery-network-capture-grant-form.png",
+      "alt": "The capture form pins one authorized source, exact node and a sixty-second requested duration.",
+      "caption": "Prepare the scoped upload grant before the authorized operator starts a separate sensor-backed capture. The form does not install sensors.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Prepare a one-time capture, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:25:08.096642+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "1a85186a8b3360de8265ec745cdfb40f112d800a172ddda9018c3e0cf99ef457"
+    },
+    {
+      "id": "discovery-network-capture-evidence",
+      "file": "discovery-network-saved-capture.png",
+      "alt": "The real ended capture shows two destination groups, seven attributed events and sixteen omitted inputs.",
+      "caption": "The saved partial receipt remains readable after upload-grant revocation. TCP connect metadata does not identify application requests or prove a completed handshake.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Prepare a one-time capture, after step 8"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:38:55.639612+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "79952e14c6d132e173bf522f50c232c86a6da9153ec148e9b259f8f1ed6a25a8"
+    },
+    {
+      "id": "discovery-network-capture-coverage",
+      "file": "discovery-network-capture-coverage.png",
+      "alt": "The actual receipt coverage reports twenty-three inputs, sixteen unattributed events and unknown kernel loss.",
+      "caption": "Read the delivered receipt and omission counters before interpreting the map. A completed node command does not imply complete capture.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Prepare a one-time capture, after step 9"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:41:27.390912+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "3fd49b9bbd6f3fa4e6b5b86bc2efd8329e7aa030a1654aed497a4a086d6243fc"
+    },
+    {
+      "id": "discovery-continuous-observer",
+      "file": "discovery-network-continuous-observer-form.png",
+      "alt": "The continuous observer form fixes one node, explicit service metadata namespaces, a thirty-second interval and retention.",
+      "caption": "The source workload namespace and service-metadata namespaces are distinct scopes. Registering this grant neither starts the observer nor changes application permissions.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Connect a continuous observer, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:41:28.131429+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "5a2e12480c9716f6b0280076077fa9b319ee3f6c2cdce7087564108c173bf637"
+    },
+    {
+      "id": "discovery-network-reporting-health",
+      "file": "discovery-network-degraded-health.png",
+      "alt": "A real second observer window is fresh and delivered but degraded, with all twelve latest-window inputs omitted.",
+      "caption": "Sequence two and its receipt time confirm delivery; omitted inputs leave no attributed connections. Ready sensors and running streams do not establish usable or complete capture.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Connect a continuous observer, after step 6"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:57:29.598271+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "2268df06021f7bcab2780429818410bed843636c5c21eeb73508d64f5412c618"
+    },
+    {
+      "id": "discovery-network-observer-revoked",
+      "file": "discovery-network-observer-revoked.png",
+      "alt": "The observer registration remains revoked after a full page refresh.",
+      "caption": "Revocation rejects new windows. The actual stock observer then exited and acknowledged its stop; sensor removal was a separate operator action.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Stop reporting and retain the right evidence, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:58:35.621206+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "b901b83f0bc9938a071a1a193ac88a3e594c611ac5015fc491e63aba00da5fa3"
+    },
+    {
+      "id": "discovery-network-retained-after-revoke",
+      "file": "discovery-network-retained-after-revoke.png",
+      "alt": "The revoked observer retains all four received windows and the original degraded coverage counters.",
+      "caption": "Saved windows remain evidence after revocation. Sensor and stream values describe the last report, not current health; continuous attribution and service matching remain unqualified.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Stop reporting and retain the right evidence, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; synthetic customer Owner, real Backend candidate PR112, authorized Kubernetes source, unchanged collector and released SDK; no mocked provider data",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T17:58:56.981558+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "26d89d987377dbe8cd98326a5875b06e5a885fe0c9b258c4facbb894c15e7a8e"
     }
   ]
 }

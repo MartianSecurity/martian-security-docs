@@ -2193,13 +2193,7 @@ Related risks include [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.or
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/call-gates/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.
-
-Guide in progress
-
-The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Block entry to one explicitly enrolled model or tool call in an instrumented customer application. Success requires an activated control, a real denied decision and the SDK’s acknowledgment that it stopped before calling the target. This is separate from the CI release gate and from network-containment previews.
 
@@ -2211,21 +2205,19 @@ Selected calls require a live allow decision even when no block is active. A dec
 
 ## Enroll exact call targets
 
-If no deployment is listed
-
-An empty **Deployment / environment / version** selector needs a [runtime reporting binding](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
-
-![Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-no-bindings.png)
-
-With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.
-
 1.  Open **Discovery → Kill switch** and select **Deployment / environment / version**.
 2.  Under **Block model or tool calls**, choose **Add a reported target**, or enter **Kind**, **System**, **Name** and click **Add target**. Enroll 1–32 distinct exact targets. Names must come from trusted application configuration, not a model-generated argument.
-3.  Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
 
+![The gate enrollment selects the actual kubernetes get\_shipping\_policy tool before assignment creation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-exact-target-enrollment.png)
+
+Enroll the exact trusted target for this binding. Assignment creation and private installation are separate from a live SDK process or an active block.
+
+3.  Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
 4.  Install the assignment and gate credential in the intended customer application. Its SDK must consult the gate before each selected call. Wait for **SDK reporting** and a recent process under **Processes seen within 90s**. **Awaiting SDK** means enrollment alone has not established a live caller.
 
 ## Run a bounded synthetic gate client
+
+The screenshots follow the instrumented `kubernetes/get_shipping_policy` lookup. The standalone Python example below uses the local `docs_demo/lookup` target. Select the assignment and exact target names for the application you are integrating.
 
 After installing the verified SDK release described in the SDK guide, save the downloaded assignment and both private credentials outside source control. This example calls a local synthetic tool and uses the real Backend for decisions; it makes no model-provider request. Enroll **Tool**, system `docs_demo`, name `lookup` for this test, and configure:
 
@@ -2299,14 +2291,32 @@ Run `python call_gate_demo.py` while completing the review below. It performs at
 2.  Click **Review control**. Read the deployment, exact target, availability impact, expiry and five-minute review deadline. No call is blocked yet.
 3.  Select **I reviewed this deployment, target, availability impact and expiry.**, then click **Activate call block**. Activation needs a recently reporting SDK process with this exact assignment.
 
+![The real five-minute control review identifies the exact tool, reason and activation confirmation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-control-review.png)
+
+Review scope, duration, impact and expiry before activation. A generated review alone does not block a call.
+
 4.  Confirm the active control and server-timed expiry. Trigger the same synthetic tool and inspect **Decisions and operator actions**. **SDK reported stopped** acknowledges refusal before call entry; **SDK acknowledgement not received** needs investigation and is not the same evidence.
-5.  Refresh the console and confirm the same persisted active control and audit record. Check the customer’s local output/state to establish that its callable did not run during a block.
+5.  Refresh the console, reselect the same deployment binding if needed, and confirm the persisted active control and audit record. Check the customer’s local output/state to establish that its callable did not run during a block. An acknowledgment is not a count of affected replicas.
+
+![The active call control remains visible after full refresh with one recently reporting SDK process.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-active-after-refresh.png)
+
+The actual active block and server expiry were retained after reselecting the same binding. Complete replica coverage remains unverified.
+
+![The real deny decision has an SDK reported stopped acknowledgment.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-sdk-stopped-acknowledgment.png)
+
+The SDK refused entry and acknowledged the deny decision. The application journal independently confirmed that this specific callable was not entered.
 
 ## Resume and verify recovery
 
 1.  Click **Resume calls** on the active control, or let its server-timed expiry pass.
 2.  Trigger another selected synthetic call. It can proceed only when the Backend is reachable, the process is registered and the gate credential is valid.
-3.  Refresh the console. Inspect **Control history and customer assignment**, then verify the customer’s real callable resumed and its expected result was retained.
+3.  Refresh the console and reselect the same binding if needed. Inspect **Control history and customer assignment**, then verify the customer’s real callable resumed and its expected result was retained.
+
+![The retained gate audit and control history distinguish explicitly resumed and naturally expired controls.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-resumed-expired-history.png)
+
+A five-minute control was resumed; a separate one-minute control expired without Resume. New real reads succeeded after each ended, and both histories survived refresh.
+
+The recorded check exercised both paths separately: one five-minute control was explicitly resumed, and a second one-minute control expired without a resume action. Both refused call entry while active; a new real lookup succeeded after each ended. The history retains **resumed** and **expired** as different outcomes.
 
 Revoking the gate credential is not Resume: configured SDK calls fail closed. **Rotate credential** invalidates the old credential immediately and requires the replacement to be installed; the process must register again. Rotating/revoking the runtime reporting credential affects uploads, not this separate gate’s authority.
 
@@ -2316,7 +2326,19 @@ Revoking the gate credential is not Resume: configured SDK calls fail closed. **
 2.  Select a deployment, reported target or egress intent and requested duration, then **Generate preview**.
 3.  Read **NOT EXECUTABLE** and **Activation unavailable**. **Download intent JSON** saves proposed scope and evidence; it does not activate this SDK gate or install a network policy/controller.
 
+![The actual network-containment intent is labeled NOT EXECUTABLE with activation unavailable.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-containment-preview.png)
+
+The downloaded intent describes proposed scope and evidence. The disabled activation does not install network isolation or activate an SDK call block.
+
 ## Failure and boundary checklist
+
+If no deployment is listed
+
+An empty **Deployment / environment / version** selector needs a [runtime reporting binding](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
+
+![Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-no-bindings.png)
+
+With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.
 
 -   Expired review: create a new review; its fingerprint/deadline cannot be reused.
 -   No live matching process: fix assignment, credentials and instrumentation before activation.
@@ -2334,13 +2356,7 @@ Continue with [runtime evidence](https://raw.githubusercontent.com/MorningHQ/mar
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/inventory/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Own beta QA Owner inspected Connect source/Add a read-only source: no authorized Kubernetes aliases and Create source disabled. Deployment-matched Discovery schema/API/config bytes also expose an incompatibility with the available collector snapshot. Enrollment, real collection, inventory and source lifecycle remain unverified; operator-approved scope and a compatible collector/Backend pair are prerequisites.
-
-Partly verified guide
-
-Collection needs an authorized source and a compatible collector. Enrollment, retained inventory and source lifecycle are still being verified.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Build an inventory from authorized infrastructure evidence and inspect what qualifies each record as an agent, candidate or supporting workload. Enrollment succeeds when the source is saved, its intended collector reports and retained inventory appears with a clear freshness boundary.
 
@@ -2350,20 +2366,20 @@ Any signed-in tenant user can inspect accessible inventory. **Owner** or **Admin
 
 Source collection, runtime reporting and assessment connections have separate credentials and purposes. Creating a source does not start a process or stop an agent.
 
-Check collection readiness first
+Start with an approved scope
 
-The beta QA organization shown below has **No authorized clusters**. Its source form was inspected, but enrollment and collection could not be exercised. Ask your operator for an authorized scope and a collector compatible with your deployment before continuing. For this beta QA check, the available collector snapshot and the attested Backend revision have an incompatible Kubernetes observation contract; entering a cluster name cannot resolve that prerequisite.
+This walkthrough uses a customer-run Kubernetes collector in an authorized test namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your Backend deployment. The inventory reader needs workload and RBAC metadata access; it does not need permission to read Secrets, execute in containers or change workloads.
 
 ## Enroll a read-only source
 
 1.  Open **Discovery → Sources** and choose **Connect source** to open **Add a read-only source**.
 2.  Select the supported provider and enter its authorized scope. For Kubernetes, choose an authorized cluster and namespaces. For AWS Bedrock, enter the approved account, regions and **Read-only role ARN**. An empty authorized-cluster list needs operator setup first.
 
-![Beta QA source dialog showing No authorized clusters and disabled Create source.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-form-blocked.png)
+![Authorized Kubernetes source form with Documentation cluster, the approved cluster alias and docs-discovery namespace.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-authorized-form.png)
 
-This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.
+Select the operator-approved cluster and namespace before Create source. Enrollment alone does not collect inventory.
 
-3.  Once an authorized scope is available, review it and click **Create source**. If the form says **No authorized clusters**, stop here and request the operator setup; the captured form has **Create source** disabled.
+3.  Review the selected cluster and namespaces, then click **Create source**. A saved source is an enrollment; it has not collected anything yet.
 
 4.  For a customer-side collector, save its once-shown credential privately and **Download scope assignment** or **Download assignment**. The assignment describes scope; the separate credential authenticates the collector. Close the credential panel before making screenshots or sharing the screen.
 
@@ -2374,18 +2390,58 @@ This beta QA Owner can inspect the source form, but no cluster alias is authoriz
 7.  Wait for a distinct collection run and a newer completion / **Last success** time. Inspect its complete, partial or failed coverage and the retained workload identities, then refresh. A queued response or an unchanged old inventory snapshot is not evidence of a new successful collection. If the collector cannot run, fix that prerequisite instead of repeatedly selecting Collect now.
 
 
+![Completed Kubernetes source with a real Last success and two retained inventory records.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-complete.png)
+
+Scope and collection coverage records one Deployment and two listed Pods. The resulting two inventory records include a candidate and supporting infrastructure.
+
+Expand **Scope and collection coverage** to read the namespace and per-kind API results. In this example, the reader listed one Deployment and two Pods, then retained two inventory records: one candidate Deployment and one standalone supporting Pod. The Deployment’s controller-owned Pod is not counted as another deployment. These counts do not establish complete agent detection.
+
 ## Review inventory and evidence
 
 1.  Open **Discovery → Overview** and choose **Dashboard source** or all sources.
 2.  Inspect the inventory’s agent/candidate view and its evidence labels. **Runtime-observed** requires qualifying trace-correlated model/tool reports; **Provider-listed** identifies a managed agent listed by its provider. Metadata or registration alone remains a candidate.
 3.  Use **Search displayed agents** for the loaded page. Check loaded/total counts and pagination; a page search is not a proof that the entire organization has no matching record.
-4.  Select a record and inspect its evidence, source freshness and deployment context. **Supporting workloads** are accessed under Sources rather than counted as independently established AI agents.
+4.  Choose **Candidates** when inspecting metadata-only records. Select **Inspect candidate ↗** to open **Hosting & identity** or **Configured access**. Check the source, namespace, collected identity and collection time. The console’s hosting view does not show a live running-state check; confirm current workload health in your infrastructure.
 
-5.  Continue to **Runtime activity** or **Blast radius** to inspect a selected deployment’s evidence. Infrastructure inventory by itself does not report actual model/tool calls or independently establish effective permission.
+![Candidates inventory showing support-agent as a metadata candidate with no runtime reports.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-inventory-candidate.png)
 
-## Manage collection and recover
+The labeled Deployment is a candidate, not an established AI agent. Inspect candidate opens its retained infrastructure evidence.
 
--   **Pause collection** / **Resume collection** changes the reader’s activity. It does not contain the customer’s workload or cancel an assessment.
+5.  Choose **Supporting workloads** to open **Sources**, then **Review supporting workloads** if the section is collapsed. In this example, `metadata-worker` is retained as supporting infrastructure because its metadata has no recognized agent signal.
+
+![Supporting workloads section with the unclassified metadata-worker Pod.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-inventory-supporting.png)
+
+The standalone Pod remains supporting infrastructure outside the agent and candidate counts. A successful collection does not imply that every workload is an agent.
+
+6.  Continue to **Runtime activity** or **Blast radius** to inspect a selected deployment’s evidence. Infrastructure inventory by itself does not report actual model/tool calls or independently establish effective permission.
+
+## Pause, resume and verify freshness
+
+1.  Under **Sources → Your sources**, select **Pause collection**. Expect a **disabled** source, disabled **Collect now**, and a retained **Last success** time. A customer collector that requests a new lease while paused is rejected; its old collection remains available.
+
+![Disabled source after Pause collection with Collect now disabled and the earlier Last success retained.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-paused.png)
+
+Pausing rejects a new collector lease and preserves earlier inventory. It does not stop the workload.
+
+2.  Select **Resume collection**, then **Collect now** to queue the next poll. Run or wait for the actual authorized collector. Resuming or queueing alone does not establish a new collection.
+3.  Confirm a distinct completed collection and a newer **Last success**, then refresh the page. Check that the expected candidate and supporting record remain visible.
+
+![Resumed source with a newer completed collection and retained two-record coverage after full page reload.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-resumed.png)
+
+Resume collection and Collect now were followed by an actual collector run. A newer Last success and retained inventory confirm that distinct completion.
+
+Collection controls affect the reader. They do not stop the customer’s application, contain network traffic or cancel an assessment.
+
+## Recover from setup or collection failures
+
+No authorized clusters
+
+Ask your operator to authorize the cluster alias and namespace scope. The disabled **Create source** button cannot be fixed by entering an arbitrary cluster name. Confirm the collector and Backend contracts are compatible before running collection.
+
+![Beta QA source dialog showing No authorized clusters and disabled Create source.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-form-blocked.png)
+
+This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.
+
 -   **Replace credential** rotates a customer collector credential. Install the replacement in the intended collector; saving it does not restart that process automatically.
 -   A stale or failed source needs its actual reader, authorization and connectivity checked. Do not treat a retained old snapshot as fresh inventory.
 -   Revoking a runtime reporter is a different operation from pausing inventory collection. Separate historical identity evidence from recent activity.
@@ -2401,13 +2457,13 @@ Network capture and continuous observers have a separate [setup and lifecycle](h
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/network-observation/)
 
-> **Page qualification:** Current beta console · owner/admin manages; authorized roles read · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · owner/admin manages; authorized roles read · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.
+> **Walkthrough limits:** All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.
 
-Guide in progress
+Partly verified guide
 
-Empty-source forms are checked. A compatible authorized source and approved customer-operated sensors are still required for live capture and reporting.
+Enrollment, delivery, shutdown and a partial one-time capture were checked in isolated QA. Continuous connection attribution and service matching remain unverified; confirm a compatible collector/Backend before setup.
 
 Observe scoped TCP activity from customer-operated Kubernetes sensors. A one-time capture and a continuous observer have separate grants and lifecycles. Neither grants model/tool reporting, blocks calls or activates network isolation.
 
@@ -2415,26 +2471,37 @@ Observe scoped TCP activity from customer-operated Kubernetes sensors. A one-tim
 
 An **owner/admin** manages grants and observers; authorized customer users inspect retained evidence. First obtain an enabled **customer Kubernetes source**, compatible collected workload identities, exact authorized nodes and a customer cluster operator who can install the approved privileged sensors and observer process.
 
-Inventory read permission does not grant privileged node access. The console does not install or start sensors. Obtain the compatible observer package and installation procedure from your operator; this customer guide covers its console enrollment and evidence checks. The recorded QA source had no authorized cluster, so capture, installation and live reporting remain unqualified.
+Inventory read permission does not grant privileged node access. The console does not install or start sensors. Obtain the compatible observer package and installation procedure from your operator; this customer guide covers its console enrollment and evidence checks. Sensors have a separate host-access trust boundary. Namespace event filtering is not tenant isolation.
 
 ## 1\. Prepare a one-time capture
 
 1.  Open **Discovery → Sources → Network capture**, then **Prepare capture grant**.
 2.  Choose **Customer Kubernetes source** and enter exact comma-separated **Observer nodes**.
 3.  Select **Capture duration**: 30 seconds, 60 seconds, 2 minutes or 5 minutes.
+
+![The capture form pins one authorized source, exact node and a sixty-second requested duration.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-capture-grant-form.png)
+
+Prepare the scoped upload grant before the authorized operator starts a separate sensor-backed capture. The form does not install sensors.
+
 4.  Choose **Create capture grant**. This pins scope/current workload identities and prepares an upload grant; it does not start capture.
-5.  Save the once-shown **Capture upload credential** privately and use **Download capture assignment**. The assignment excludes the secret. Select **Credential saved** to clear it from the screen.
-
-If no source is listed
-
-**No eligible sources** means you need to [connect and enable a customer Kubernetes source](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) first. Reopen the form after that setup. **Create capture grant** remains disabled while the selector only offers **Choose a source**.
-
-![Prepare capture grant with No eligible sources and disabled Create capture grant.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-no-sources.png)
-
-The capture form requires an enabled customer Kubernetes source. This empty workspace cannot create a grant; no credential, sensor or capture was produced.
-
+5.  Save the once-shown **Capture upload credential** privately and use **Download capture assignment**. The assignment excludes the secret. Keep this panel private. To revoke through this panel after the bounded check, leave it open until the operator confirms the upload; **Credential saved** clears both the panel and its revoke button.
 6.  Have the authorized operator run the scoped observer with that assignment, credential and trusted Backend origin. The upload grant expires after 15 minutes; do not widen scope or change the endpoint to bypass an error.
-7.  Ask the operator to return the capture ID and retained result receipt after the observer finishes. An authorized workspace user can retrieve the receipt through `GET /v1/discovery/network-captures/{capture_id}`; the setup form does not open it automatically. Inspect scope, observed time and omission/attribution diagnostics. An issued grant or an empty result is not proof of a successful capture or an idle workload.
+7.  Ask the operator to confirm the retained upload receipt after the observer finishes. For this one-time check, choose **Revoke this upload grant** while the panel is open. This clears the panel and ends upload authority; the recorded receipt remains readable.
+8.  Open **Discovery → Overview** and select the relevant agent or candidate. For a candidate, choose **Inspect candidate ↗**, then **Network evidence → Saved TCP capture**. The setup form does not open the receipt automatically. An authorized workspace user can also read it through `GET /v1/discovery/network-captures/{capture_id}`.
+
+![The real ended capture shows two destination groups, seven attributed events and sixteen omitted inputs.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-saved-capture.png)
+
+The saved partial receipt remains readable after upload-grant revocation. TCP connect metadata does not identify application requests or prove a completed handshake.
+
+9.  Expand **Capture coverage and delivery**. Read the actual ended window, node command status, input events and omission/attribution diagnostics. An issued grant, a completed node command or an empty result does not establish complete capture or an idle workload.
+
+![The actual receipt coverage reports twenty-three inputs, sixteen unattributed events and unknown kernel loss.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-capture-coverage.png)
+
+Read the delivered receipt and omission counters before interpreting the map. A completed node command does not imply complete capture.
+
+Read coverage before interpreting the map
+
+The recorded example returned two destination groups and a **partial** receipt: 16 input events could not be attributed. Kernel loss remains unknown. **Events without kernel error** does not mean successful handshakes or verified application actions.
 
 **Revoke this upload grant** is available while the once-shown grant panel is open. **Credential saved** clears that panel and its revoke button; retain the capture ID privately. For later revocation, an owner/admin uses the authorized `DELETE /v1/discovery/network-captures/{capture_id}` API or asks the workspace operator to do so. Revocation prevents further uploads. Stop the customer-side capture process through its operator procedure as well; it does not stop customer applications or remove sensors.
 
@@ -2442,31 +2509,63 @@ The capture form requires an enabled customer Kubernetes source. This empty work
 
 1.  Under **Continuous network reporting**, choose **Connect continuous observer**.
 2.  Select **Observer source**, enter the exact **Node scope** and **Service metadata namespaces**, then choose **Upload interval**, **Credential lifetime** and **Window retention**.
-3.  Choose **Register observer**. Privately save **Observer upload credential**, use **Download observer assignment**, then select **Observer credential saved**.
 
-The continuous observer has the same enabled-source prerequisite. In this empty workspace, **No eligible sources** also leaves **Register observer** disabled; no observer or upload credential has been created.
+![The continuous observer form fixes one node, explicit service metadata namespaces, a thirty-second interval and retention.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-continuous-observer-form.png)
+
+The source workload namespace and service-metadata namespaces are distinct scopes. Registering this grant neither starts the observer nor changes application permissions.
+
+3.  Choose **Register observer**. Privately save **Observer upload credential**, use **Download observer assignment**, then select **Observer credential saved**. Only one unexpired, unrevoked observer grant is allowed per source; revoke an existing grant before replacing it.
+4.  Have the operator install/configure the separately approved sensors and customer-run process using that exact assignment. Registration alone does not start them or change workload permissions.
+5.  Open the relevant inventory record under **Discovery → Overview**, then **Network evidence**. Its continuous view follows the latest observer for that workload’s source. Return to **Sources → Continuous network reporting** to manage the registration.
+6.  Read last contact, reporting/stale state, credential expiry and the expected reporting interval. Expand **Latest observer health** for each node’s sensor readiness, stream status, input events, omitted events and diagnostics.
+
+![A real second observer window is fresh and delivered but degraded, with all twelve latest-window inputs omitted.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-degraded-health.png)
+
+Sequence two and its receipt time confirm delivery; omitted inputs leave no attributed connections. Ready sensors and running streams do not establish usable or complete capture.
+
+7.  Confirm a newly completed window and its sequence/time after the process reports. Refresh and verify retained evidence. A Ready Pod or running process does not establish complete kernel capture.
+
+Delivered windows can still lack usable connections
+
+The recorded continuous run delivered four windows, but all 32 input events were omitted: 22 were unattributed and 10 invalid. The console correctly showed **Degraded** and **No attributed connections in this window**. Continuous connection attribution and service matching were not qualified by that run. Do not interpret its empty map as inactivity or infer a cause from counters alone.
+
+## 3\. Stop reporting and retain the right evidence
+
+1.  Return to **Discovery → Sources → Continuous network reporting** and choose **Revoke observer reporting** for the intended registration.
+2.  Refresh and confirm **revoked**. New windows are rejected. Ask the operator to confirm that the connected observer exited at its next request and acknowledged its stop.
+
+![The observer registration remains revoked after a full page refresh.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-observer-revoked.png)
+
+Revocation rejects new windows. The actual stock observer then exited and acknowledged its stop; sensor removal was a separate operator action.
+
+3.  Reopen the workload’s **Network evidence**. Previously received windows remain readable within their retention boundary. **At last report** sensor and stream values are historical after revocation; they are not current process health.
+
+![The revoked observer retains all four received windows and the original degraded coverage counters.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-retained-after-revoke.png)
+
+Saved windows remain evidence after revocation. Sensor and stream values describe the last report, not current health; continuous attribution and service matching remain unqualified.
+
+4.  Stop/remove customer-side processes and node sensors separately through the cluster operator. Revoking the upload grant does not uninstall them. In the recorded QA check, the observer exited after revocation, then the operator removed only its separately installed sensor resources. The customer workload remained Ready with the same Pod identity.
+
+## Failures and limits
+
+If no source is listed
+
+**No eligible sources** means you need to [connect and enable a customer Kubernetes source](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) first. Reopen the form after that setup. **Create capture grant** and **Register observer** remain disabled while their selector only offers **Choose a source**.
+
+![Prepare capture grant with No eligible sources and disabled Create capture grant.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-no-sources.png)
+
+The capture form requires an enabled customer Kubernetes source. This empty workspace cannot create a grant; no credential, sensor or capture was produced.
 
 ![Connect continuous observer with No eligible sources and disabled Register observer.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-observer-no-sources.png)
 
 Continuous reporting also requires an enabled customer Kubernetes source. The visible interval, lifetime and retention choices do not create an observer or install sensors.
-
-4.  Have the operator install/configure the separately approved sensors and customer-run process using that exact assignment. Registration alone does not start them or change workload permissions.
-5.  On **Discovery → Overview**, inspect **Where workloads connect** and choose the intended **Observer**. **Manage observer** returns to its registration.
-6.  Read last contact, reporting/stale state, credential expiry and the expected reporting interval. Expand **Latest observer health** for each node’s sensor readiness, stream status, input events, omitted events and diagnostics.
-
-7.  Confirm a newly completed window and its sequence/time after the process reports. Refresh and verify retained evidence. A Ready Pod or running process does not establish complete kernel capture.
-
-## 3\. Stop reporting and retain the right evidence
-
-Choose **Revoke observer reporting** for the intended registration when retiring it. New windows are rejected and a connected observer exits at its next request. Stop/remove customer-side processes and node sensors separately through the cluster operator. Existing customer workloads keep running; retained windows follow their retention policy.
-
-## Failures and limits
 
 -   **No eligible sources:** authorize and enable the customer Kubernetes source first. Setup lists the first 50 eligible candidates; do not substitute an unrelated source.
 -   **No continuous observer report available / No recent activity window:** check real installation, credential validity, scope and reporting before concluding no activity occurred.
 -   Service matching uses collected ClusterIP/port evidence. TCP observation does not identify application requests, infer tools or prove a successful business action.
 -   The live view is bounded to 60 windows and 500 connection groups. Read truncation/omission notices and observed time; process restarts can leave gaps. Kernel loss can remain unknown.
 -   Credential expiry, retention and last contact are different boundaries. An old retained capture does not establish current reporting health.
+-   Expired continuous windows are removed during subsequent accepted uploads. An inactive observer has no periodic retention sweep; retention is not a guaranteed deletion deadline.
 
 Continue with [runtime call metadata](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md), [inventory collection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) or [SDK call controls](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/call-gates.md).
 
@@ -2478,13 +2577,7 @@ Continue with [runtime call metadata](https://raw.githubusercontent.com/MorningH
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/runtime-and-blast-radius/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.
-
-Guide in progress
-
-The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Follow application-reported model/tool activity for one deployment and compare it with collected potential access. Success means the intended binding receives real instrumented calls and you can trace each visible relationship to its evidence and time boundary.
 
@@ -2498,16 +2591,12 @@ Deployment, environment and version labels attribute reports; they do not attest
 
 1.  Open **Discovery → Sources → Runtime reporting**, then **Connect runtime reporter**.
 2.  Use **Find workload**, choose **Discovered workload**, then enter **Deployment label**, **Environment** and **Deployed version**. The first 50 search matches are listed; narrow the search if necessary.
+
+![The runtime binding form selects the actual support-agent workload and documentation QA version.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-binding-form.png)
+
+Choose the collected workload and explicit deployment, environment and version before creating its private runtime credential.
+
 3.  Click **Create runtime binding**.
-
-If no workload is listed
-
-**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
-
-![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
-
-Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
-
 4.  Privately save the Binding ID and once-shown **Runtime credential**. Mount the credential as a read-only secret file in that workload and configure its SDK reporter with the trusted Backend HTTPS origin and binding. Click **Credential saved** to clear the credential panel.
 5.  Start one reporter per customer application process, create a trace for each invocation and instrument the actual model/tool calls. A successful report is metadata about that call, not an assertion that a downstream business action happened.
 6.  Run a bounded legitimate synthetic task through the real application. Check its reporter delivery counters/logs and retained binding after refresh. Missing dashboard events do not establish that no calls occurred: delivery can fail or be dropped.
@@ -2549,9 +2638,20 @@ This minimal integration emits call metadata. Resource links require explicit re
 2.  Select **Deployment / environment / version** and **Time window**: **Last hour**, **Last 24 hours** or **Last 7 days**.
 3.  Read **Where calls went**. Select a model/tool to inspect its configured name, counts, outcomes and recent reports. Use **Previous connections** / **Next connections** when additional targets are available.
 
+![The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-eight-tool-calls.png)
+
+The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.
+
+The captured example is a real read-only `get_shipping_policy` tool in the selected Kubernetes workload. It reads one named synthetic ConfigMap using that workload’s service account. **0 Model calls** and **8 Tool calls** describe eight distinct successful reads from the runtime, gate and network checks. Two blocked attempts did not enter the callable or appear as executed tool reports. A tool-only report can populate this view while the workload remains a candidate; **Runtime-observed** needs model and tool calls in the same trace.
+
 4.  For a resource link, inspect its service/type, opaque reference, reported action, outcome and time. These links require explicit response-ID mappings in the customer integration. Use **Previous resources** / **Next resources** to page the displayed links.
+
+![The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-resource-detail.png)
+
+The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.
+
 5.  Check the bounds: aggregate counts cover a displayed latest-500-event window and individual details the latest 50 events. A selected aggregate can have no corresponding row in that smaller recent-event window. Resource/action links page by 12 for displayed tools.
-6.  Refresh with the same binding/window and confirm that the actual synthetic call remains in retained evidence.
+6.  Refresh, reselect the same binding and time window if needed, and confirm that the actual synthetic call remains in retained evidence.
 
 ## Compare configured reach
 
@@ -2559,10 +2659,28 @@ This minimal integration emits call metadata. Resource links require explicit re
 2.  Inspect runtime-reported domains, collected identity/permission paths and shared configured peers separately. Open the relevant resource or evidence row to see its source and matching limitations.
 3.  Use record details such as **Configured access**, **Network evidence**, and **Hosting & identity** to answer their specific evidence questions. A network window or an RBAC policy is not a substitute for an independently verified business effect.
 
+![The actual workload exposure diagram separates configured domains and a matching Kubernetes request.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-blast-radius-configured-reach.png)
+
+The diagram summarizes the latest collected configuration and reported request evidence. Twenty resource patterns and twenty-five potential paths do not establish effective access or measured business impact.
+
+For the example lookup, **Kubernetes request evidence** links the caller-declared named GET and service account to a matching collected ConfigMap rule. Select the request to inspect its supporting path and collection time. The RBAC snapshot is the latest collected configuration; it is not pinned to the call time or the binding’s declared version. A match establishes evidence alignment, not effective authorization.
+
+![The selected named ConfigMap GET has matching RBAC evidence and eight successful application reports.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-request-rbac-match.png)
+
+The named GET and caller-declared service account align with the latest collected RBAC fields. The independent snapshot does not attest identity or permission at call time.
+
 4.  If a card links an assessment to this deployment, inspect the operator approval, artifact-equivalence declaration and drift status. An operator-attested mapping does not independently prove the deployed binary equals the assessed artifact.
 5.  Treat any quantified sandbox loss sample or time-window projection as its labeled conditional scenario. Diagram distance, group size and ring placement are not a risk score or effective-access proof.
 
 ## Failure, freshness and limits
+
+If no workload is listed
+
+**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
+
+![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
+
+Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
 
 -   **No runtime reporters connected** needs enrollment and actual instrumentation, not another inventory refresh.
 -   **Revoke reporting** rejects future uploads while retaining history. It does not stop the application, block a call or revoke an independently enrolled call gate.
@@ -5018,13 +5136,13 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **37 task guides**, **28 are verified**, **6 are partly verified** and **3 await walkthrough verification**. The screenshot record contains **161 captured references** across **149 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **37 task guides**, **31 are verified**, **6 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **185 captured references** across **173 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
 The public site now passes trusted HTTPS checks, including nested guides, Markdown, screenshots, diagrams and example downloads. HTTP and the earlier GitHub Pages address redirect to HTTPS. The GitHub Markdown mirror remains an independent access path for assistants. These publication checks are separate from the application walkthroughs below.
 
-The latest completeness audit added the missing project dashboard, native annotation and network-observer instructions and a [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md). The dashboard and annotation guides now have real console captures and successful walkthroughs in isolated QA. Network observation still awaits an authorized compatible source and privileged sensors. Earlier failed reads remain recorded; the successful checks below do not establish hosted-beta parity or general service reliability.
+The latest completeness audit added the missing project dashboard, native annotation and network-observer instructions and a [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md). The dashboard and annotation guides now have real console captures and successful walkthroughs in isolated QA. Discovery now has a genuine authorized Kubernetes source, runtime and call-gate walkthroughs in separate compatibility QA. One-time network evidence is partial; continuous enrollment, delivery and shutdown passed, while connection attribution and service matching remain unqualified. Earlier failed reads remain recorded; the successful checks below do not establish hosted-beta parity or general service reliability.
 
 ## Observed walkthroughs — 13–14 November 2026
 
@@ -5090,7 +5208,7 @@ That personal mailbox passed real **200** sign-in and full-page refresh, retaini
 
 The new beta QA Owner also inspected **Connect source → Add a read-only source**. The Kubernetes list had no authorized alias and **Create source** stayed disabled. Read-only checks of the deployed Discovery schema, API and configuration files matched the Backend baseline below. That schema rejects a Kubernetes observation field emitted by the available collector snapshot. Compatible collection and operator-approved scope remain prerequisites; no source, collector credential or inventory was created for this check.
 
-In separate local QA, the real Owner inspected the runtime reporter, capture grant, continuous observer and SDK call-gate prerequisite screens. Thirty-seven observed Discovery reads returned HTTP 200 with no new page errors. The reporter had no matching workload, both network forms had no eligible source, and the gate had no deployment binding before and after a full refresh. Twelve relevant Frontend/Backend files matched the pinned sources. Four direct screenshots document these setup boundaries; they do not qualify enrollment, collection, reporting, blocking or sensor installation. The current Backend `main` schema was also checked and still matches the pinned schema for this compatibility boundary.
+In separate local QA, the real Owner inspected the runtime reporter, capture grant, continuous observer and SDK call-gate prerequisite screens. Thirty-seven observed Discovery reads returned HTTP 200 with no new page errors. The reporter had no matching workload, both network forms had no eligible source, and the gate had no deployment binding before and after a full refresh. Twelve relevant Frontend/Backend files matched the pinned sources. Four direct screenshots document these setup boundaries; they do not qualify enrollment, collection, reporting, blocking or sensor installation. That earlier source snapshot retained the same compatibility boundary. The separate candidate check below adds the required typed state compatibility; it does not attest a beta deployment.
 
 A separate HTTP run qualified [stopping while queued](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#example-stop-while-queued). One admission and one **Stop run** request referred to the same original campaign. The console retained **Stopped / INCONCLUSIVE**; native inspection confirmed cancellation finalized with no target actions, model work, held budget or active native run leases. **Refresh evidence**, full-page refresh and the actual JSON export agreed. The interrupted native worker’s **Runtime error** label remained visible. This does not qualify stopping after target execution begins, and it does not resolve either earlier uncertain action. Seven owning UI, Backend and native cancellation source files matched the recorded baseline.
 
@@ -5124,12 +5242,25 @@ The [attack reference](https://raw.githubusercontent.com/MorningHQ/martian-secur
 
 The examples are synthetic explanations, not newly executed attacks. Official framework names and native console groupings are distinguished, including differences in OWASP Agentic labels. These articles do not change the task-guide qualifications above.
 
+## Discovery compatibility walkthrough
+
+A separate isolated QA organization used a real customer Owner (**platform\_admin false**), an explicitly authorized Kubernetes namespace, the unchanged customer collector and the compatible Backend candidate in [PR112](https://github.com/MorningHQ/MartianBackend/pull/112). Twelve served Frontend files and eleven running Backend files matched the recorded sources. This is a candidate-environment result; the Backend PR is waiting for GitHub Actions billing to allow checks to run. It has not been merged or deployed to beta.
+
+-   **Inventory:** actual enrollment and private assignment download passed. Four distinct real collection cycles retained the same Deployment and supporting Pod identities, including later application updates. Pause rejected collection before a new run; resume and a new completion survived full refresh. Reader permission denials and provider TLS were checked. AWS collection and credential replacement were not exercised.
+-   **Runtime:** the released SDK reported eight distinct successful reads of one named synthetic ConfigMap from the actual enrolled Pod. Full refresh and explicit binding/time selection retained **8 tool calls / 0 model calls**, eight response-resource mappings and all eight original trace IDs. The latest collected RBAC snapshot aligned with the caller-declared named GET and service account. Identity, call-time permission and business impact remain independent claims; no assessed baseline was invented.
+-   **Call controls:** the actual downloaded assignment enrolled that exact tool and one fresh SDK process. A five-minute block refused call entry and retained its SDK acknowledgment, then explicit Resume allowed a new lookup. A separate one-minute block refused entry and expired naturally; a subsequent new lookup succeeded. Both histories survived refresh. The distinct downloaded network intent remained **NOT EXECUTABLE**, with activation disabled.
+-   **One-time TCP capture:** approved sensors and the unchanged observer returned a retained **partial** receipt: 23 input events, seven attributed events in two destination groups, and 16 unattributed events. The upload grant was revoked through the UI; its receipt remained readable.
+-   **Continuous observer:** one original process delivered four contiguous windows, then UI revocation rejected its next assignment request and the process acknowledged its stop. All four windows remained readable. Coverage was **degraded**: all 32 events were omitted (22 unattributed, ten invalid), so continuous connection attribution and Kubernetes service matching remain unqualified. Raw stream contents were not retained and no cause was inferred from counters. The operator separately removed only the owned sensor resources; existing workload and system Pod identities were unchanged.
+-   **Boundaries:** fifteen final real API checks passed: own retained evidence **200**, anonymous and wrong credential type **401**, revoked upload authority **403**, and foreign-organization reads **404**. The two denied call trace IDs were absent from executed runtime events. No events were fabricated, uploads replayed or model-provider requests made for this walkthrough.
+
+The dedicated QA stack intentionally has no Evals/orchestrator provisioning. Its unrelated bootstrap **503** responses and stale sidebar warning remain recorded; the named Discovery requests passed. The current hosting drawer also omits the collected workload-state extension. Neither those UI labels nor an inventory receipt establish current workload health.
+
 ## SDK compatibility
 
 The task guides install the latest SDK and keep release announcements in [PyPI release history](https://pypi.org/project/martian-sdk/#history). Verification remains tied to the releases actually exercised:
 
 -   **SDK 0.1.2:** API-key management, persisted Evals, red teaming and combined CI were qualified against the recorded isolated services. The [combined CI receipt](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/validation/sdk-ci-0.1.2-2026-11-13.json) identifies the original tutorial snapshot and package hashes. Its original ZIP is historical; the current download uses an unpinned install.
--   **SDK 0.1.3:** installation, the account-free local preview, YAML validation, suite-file evaluations, deterministic checks, rubric/guidelines/conditions judges through one provider route, rejected-token handling and local evaluation storage were exercised. API-key management, persisted CI and hosted red teaming were not requalified on this release.
+-   **SDK 0.1.3:** installation, the account-free local preview, YAML validation, suite-file evaluations, deterministic checks, rubric/guidelines/conditions judges through one provider route, rejected-token handling and local evaluation storage were exercised. Discovery runtime reporting, response-resource mapping, native Kubernetes request evidence and SDK call blocking/resume/expiry were also exercised in the separate candidate environment above. API-key management, persisted CI and hosted red teaming were not requalified on this release.
 
 Installing a newer release does not extend those recorded results automatically. Validate your workflow before upgrading production CI, and record its selected dependency version in your lockfile.
 
@@ -5140,6 +5271,8 @@ Installing a newer release does not extend those recorded results automatically.
 | Frontend | 06d0d0c96a9627c383b85670929dfe8bdc33aa30 |
 | Frontend for browser, cancellation, generated environments, recorded reviews and Pipeline follow-up | 5361d1f241278e19c79e68d1d8f9325920a04d12 |
 | Backend | 01343fa93feb518f6c7cd1928b63a01d2ec5ee0b |
+| Backend Discovery compatibility candidate (PR112; unmerged) | 79618e45df0bc1fbbd2ca23892cd87c056f293fb |
+| Customer Discovery collector | 7f022e59f2db4bc6401c9706663400cdc6a91e20 |
 | Agents | f7de3e068d66fe478f642d43a658ed9b3ed321f5 |
 | Evals service | 60c25994958105db4baa91f377ba46c24fdf253d |
 | Sandbox orchestrator executable and catalog | da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565 |

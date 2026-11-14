@@ -135,7 +135,7 @@
         "Restarted only the task-owned teaching callback with comparison_agent:answer, preserving bearer, port and HTTPS origin",
         "Owner declared actual callback file SHA as customer_declared, then launched one new three-record target evaluation",
         "EV-1003 completed with2 passed /1 failed /0 errors /0 skipped; actual outputs were space-padded ready, hello and4.",
-        "Same immutable dataset content hash was admitted; target request counter increased14→17 for the three real requests",
+        "Same immutable dataset content hash was admitted; target request counter increased14\u219217 for the three real requests",
         "Canonical comparison returned compatible true, three paired records,0 improved /1 regressed /2 unchanged /0 not comparable",
         "Opened and downloaded both real native traces for the arithmetic record; target-chat outputs were4 and4.",
         "Export comparison downloaded3 rows; regressed filter downloaded exactly1 row containing expected4, baseline4 and candidate4.",
@@ -367,9 +367,9 @@
       "task": "First endpoint-only assessment and admission failure boundary",
       "result": "passed for anonymous HTTP, disclosure outcome, Light and serial execution in isolated QA",
       "observed": [
-        "Owner used actual Environment → Agent → Goals → Tests controls with endpoint-only scope, only Customer records leave, five requested techniques and Light ceilings5 rounds/30 target/100 model/360 seconds; parallel scheduling off",
+        "Owner used actual Environment \u2192 Agent \u2192 Goals \u2192 Tests controls with endpoint-only scope, only Customer records leave, five requested techniques and Light ceilings5 rounds/30 target/100 model/360 seconds; parallel scheduling off",
         "MR-1001 was retained failed after a downstream422. Exact manifest validation passed; native policy rejected5 rounds/5 drafts against own worker defaults3/3. Native campaign lookup404 established no campaign creation. Supported own-QA ceilings were aligned; shipped release/model manifest remained unchanged",
-        "Distinct MR-1002 was admitted202 with pinned native campaign/run/snapshot and completed in1 minute 56 seconds, using3 target and15 model calls; tunnel request counter27→30 matched the three actual HTTPS requests",
+        "Distinct MR-1002 was admitted202 with pinned native campaign/run/snapshot and completed in1 minute 56 seconds, using3 target and15 model calls; tunnel request counter27\u219230 matched the three actual HTTPS requests",
         "MR-1002 retained one unverified attempt, three refused turns, zero findings and INCONCLUSIVE security outcome. One outcome-data probe was attempted/unverifiable; no deterministic target oracle or sandbox actions existed",
         "Actual turn input/reply/journal, model-critic distinction, requested-versus-used budgets, missing-knowledge/activated-skill records, final state and after-refresh readback were inspected",
         "Reports JSON and legacy current-page JSON downloads agreed on MR-1002/completed/INCONCLUSIVE and zero findings. Reports retained runtime coverage1 attempt, 0 blocked and customer-declared source SHA; legacy export retained page1/morefalse",
@@ -489,7 +489,7 @@
         "A distinct one-time lifecycle launch reachedReady with built-in fixtures. Extend30min returned200 and expiry moved later. Owner privately used the real seeded Gmail credentials from Details; native loginPOST200 and actual Inbox/Compose plus refresh proved retained authentication. No message was sent and no credential-bearing Details/Accounts view was captured.",
         "Stop sandbox returned202/Terminating. Subsequent ordinary instancesGET200 omitted that exact lifecycle instance, while the older own Expired instance remained. Own environment row returned Launch/noDetails. This is not an independent Kubernetes/provider-deletion attestation.",
         "Separate isolated local Viewer environment creation returned403 with environment IDs unchanged before/after; no launch or model request.",
-        "All four public beta captures are actual1440×1000 states. One data-drawer capture uses native privacy masks for other background environment names only; own failure/status is untouched. Relevant deployed Backend source hashes match the pinned baseline; whole hosted deployment parity is not claimed."
+        "All four public beta captures are actual1440\u00d71000 states. One data-drawer capture uses native privacy masks for other background environment names only; own failure/status is untouched. Relevant deployed Backend source hashes match the pinned baseline; whole hosted deployment parity is not claimed."
       ],
       "remaining": [
         "Successful generated/shared/personal/new-world data, optional schema/sample file uploads, other simulation types, agent bindings and independent business-outcome assessment checks remain unverified.",
@@ -717,7 +717,7 @@
         "Native campaign/recovery/dispatch reads returned200: canonical cancelled, cancel_requested true, finalization complete and no target recovery actions. Read-only SQL counted three completed targets, zero prepared/submitted/uncertain targets, twelve settled model attempts, one unknown-usage model reservation and zero active native run leases.",
         "The actual trace reached Stopped / INCONCLUSIVE / Runtime interrupted and removed Request stop. Request/model counters remained unavailable, rather than showing zero.",
         "One actual Refresh evidence POST /sync returned200 with the same original identities and native cancellation fields. Full-page refresh and Download legacy JSON evidence retained the stopped state, one unverified attempt, zero findings and all three original HTTP200 replies with identical action IDs, response references and content hashes.",
-        "Actual Expand all → Turn1 inspection displayed the original Customer agent reply and prepared/submitted/completed journal. The attacker critic remained labelled model opinion, with no deterministic oracle.",
+        "Actual Expand all \u2192 Turn1 inspection displayed the original Customer agent reply and prepared/submitted/completed journal. The attacker critic remained labelled model opinion, with no deterministic oracle.",
         "The three real fixture request action IDs matched the three exported original turns. No new target/model execution repaired the result. An earlier twenty-second SQL observation timeout was retained; later authoritative original-campaign reads passed.",
         "Three direct1440x1000captures were individually viewed and checked for PNG CRC, exact hashes and absence of embedded text/EXIF. Owning cancellation/budget code matched the unchanged pinned runtime source."
       ],
@@ -845,6 +845,86 @@
         "Actual reporting, target/resource retention, Blast radius evidence, call decisions/acknowledgment, callable non-entry and resume/expiry remain unverified.",
         "Capture grants, observer enrollment, approved sensors, fresh network windows/health and revocation remain unverified. No network-policy enforcement is claimed."
       ]
+    },
+    {
+      "task": "Authorized Kubernetes discovery collection and source lifecycle",
+      "date": "2026-11-14",
+      "environment": "Isolated Discovery compatibility QA; synthetic customer organization; real Backend, unchanged customer collector and local Kubernetes provider; customer Owner with platform_admin false",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20"
+      },
+      "result": "All six unchanged required inventory stages passed for the named customer-managed Kubernetes path. Compatible Backend PR112 remains unmerged; hosted parity is not attested.",
+      "observed": [
+        "A manually delivered invitation was accepted through the actual UI; the customer signed in as Owner with platform_admin false. The operator separately approved only the task cluster alias and namespace. No invitation email was sent.",
+        "Connect source created the Kubernetes source with 201/no-store. The actual assignment download matched its provider and scope and contained no collector credential. The once-shown credential was saved privately and its panel dismissed before captures.",
+        "The reader used a real short-lived ServiceAccount credential, verified Kubernetes TLS and the unchanged collector. Two original cycles completed with two genuine workload identities: one labeled Deployment candidate and one standalone unclassified Pod. Both typed state snapshots matched actual provider UIDs; the controller-owned Pod was not duplicated as a deployment. A later distinct cycle refreshed the same identities after the owned test application changed.",
+        "The inventory reader could list its namespace workloads and required RBAC metadata. Actual Secrets and other-namespace workload reads, mutation dry-run and exec authorization were rejected. ClusterRole/ClusterRoleBinding metadata reads are a separate explicitly approved cluster-wide requirement; namespace scope does not mean every metadata read is namespace-local.",
+        "Actual complete collection coverage, Candidates 1 / Agents 0, supporting workload, Hosting & identity and Configured access were inspected. Full page reload retained the source, newer completion time and both classifications. Metadata-only workloads were not presented as confirmed AI agents.",
+        "Pause collection returned 200/disabled. The unchanged collector was rejected with 403 before a new run; its original receipt and history were unchanged. Resume collection and one Collect now returned 200, followed by a distinct complete collector run. Reload retained the newer Last success. Pausing did not stop either workload.",
+        "An observer initially waited for the wrong queue route after Collect now. Read-only inspection confirmed the original POST /sync returned 200; the user action was not repeated. No collector body fields were stripped, provider responses mocked or source interval/lease/deadline limits relaxed.",
+        "Twelve relevant Frontend files matched the served archive and eleven Backend files matched the running candidate and reviewed commit. Six direct 1440x1000 PNGs passed individual visual/privacy review, byte-preserving copy, CRC/metadata and hash checks. The historical beta blocked-form capture remains explicitly identified."
+      ],
+      "remaining": [
+        "This walkthrough uses the compatible Backend candidate from PR112. Merge is waiting for GitHub Actions billing to allow CI jobs to start; no required check was bypassed and no beta Backend deployment occurred.",
+        "AWS Bedrock collection and credential replacement are not exercised by this Kubernetes path. The current hosting drawer omits the collected state extension and has outdated wording about state collection; current workload health still needs provider inspection.",
+        "The dedicated Discovery environment intentionally has no Evals/orchestrator provisioning; unrelated bootstrap requests return 503 and the sidebar can show data may be stale. Discovery requests used for the named successful steps returned their expected responses."
+      ]
+    },
+    {
+      "task": "Discovery runtime, native request evidence and SDK call-control lifecycle",
+      "date": "2026-11-14",
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "result": "All six unchanged required stages passed: real exact workload/version enrollment, private credential, eight original successful tool calls from that Pod, response-resource mappings, latest collected RBAC comparison and full-refresh binding/window retention. Two denied calls were not entered or emitted as executed tool events. No model calls or assessed baseline were invented. All seven unchanged required stages passed with the released SDK: exact real tool enrollment and downloaded assignment, fresh SDK process, five-minute review/activation, actual deny and SDK acknowledgment, local no-entry journal, explicit resume plus separate natural one-minute expiry, retained history and independently downloaded non-executable network preview.",
+      "observed": [
+        "Actual UI runtime binding201/no-store selected the collected Deployment and explicit documentation-qa/docs-runtime-v2. Assignment/credentials were saved privately, mounted read-only in the exact non-root application Pod and cleared before screenshots. A pinned image installed the unchanged public martian-sdk0.1.3 wheel; no SDK or Frontend changes were made.",
+        "The actual application performed eight distinct named ConfigMap reads with verified Kubernetes TLS through its ServiceAccount. Each original request had a unique durable journal entry and trace. All8 successful tool events and response-UID mappings were retained;0model events were fabricated. Binding/Last-hour selection and full refresh showed8reports. The later independent24-hour read matched all8 original trace IDs exactly.",
+        "Latest collected configuration17:25:05Z retained20resource patterns/25potential paths and one explicit namedGET/service-account RBAC alignment. Eight successful reports share that one request scope. The source snapshot is independent from call time; assessed baseline/business impact remain unavailable. The workload remains a registered candidate because no trace contains both model and tool activity.",
+        "Actual UI gate201/no-store enrolled only kubernetes/get_shipping_policy; its downloaded assignment matched the API and contained no secret. One fresh real SDK process registered. The five-minute review201, confirmation and activation200 retained the exact reason,target and expiry. A legitimate original request returned423 and the application entry counter did not change; the audit retained deny_issued with an acknowledgment and SDK reported stopped after full refresh.",
+        "Actual UI Resume200 ended the first control, after which one new request succeeded. A distinct one-minute review/activation was denied while active and then became expired without Resume or clock changes. A new post-expiry request succeeded. The history retained both resumed/expired and live SDK reporting after refresh. Neither denied trace appeared among executed tool events.",
+        "The separately generated isolate-egress intent remained preview_only,not_executable,execution_availablefalse,persistedfalse. Actual JSON download matched the observed response and hash; Activation unavailable was disabled. No network policy was installed.",
+        "Fifteen final real API checks passed: own retained runtime/reach/gate/capture/observer200, anonymous and wrong credential types401, revoked capture/observer upload authority403, foreign-organization runtime/reach/observer404. Empty-body negative probes created no event or provider action.",
+        "One earlier private QA adapter rejected tuple-shaped gate targets before registration or any gated call. Its historical process/ledger were preserved and the test adapter corrected in a new deployment version; the public SDK and membership-check example were unchanged. Earlier automation response-observer/duplicate-region locator errors were inspected and corrected without repeating business requests."
+      ],
+      "remaining": [
+        "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
+        "Source/import checks of the standalone example helpers do not claim those exact files were executed in the cluster. Credential rotation/revocation, model gates, missing-decision availability, assessed-baseline mapping and complete replica coverage remain separate scopes.",
+        "Dedicated QA intentionally lacks Evals/orchestrator provisioning; unrelated bootstrap503s/stale sidebar remain recorded. No whole-application zero-error or hosted-parity claim is made."
+      ]
+    },
+    {
+      "task": "Discovery one-time TCP capture, continuous reporting and separate retirement",
+      "date": "2026-11-14",
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "result": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.",
+      "observed": [
+        "The operator installed the actual pinned approved sensor manifest in one unique QA namespace/node, retaining OCI signature verification and the exact trace_tcp allowlist. Unique object ownership, genuine Ready sensor and matching Kubernetes1.37.0/kubectl plus Gadget0.56.1 were verified. This privileged host boundary was separate from the inventory reader; event namespace filtering was not treated as tenant isolation.",
+        "Actual UI capture201/no-store pinned the real source/node/current workload identities and requested60seconds. The downloaded assignment matched the API and excluded the credential; only the explicit loopbackQA allow_http transport flag differed locally. One unchanged stock collector process ran once, with two separately journaled legitimate tool reads. The acknowledged receipt matched independent server readback exactly:23input events,7attributed no-kernel-error events across2destination groups,16unattributed,0invalid/overflow/excluded/diagnostics; kernel loss unknown. The measured ended window included startup/stop overhead and was not represented as exactly60elapsed seconds.",
+        "Actual UI Revoke this upload grant204 cleared the private panel. Workload Network evidence/SavedTCPcapture200 retained partial state, two real destinations and all original coverage counters after revocation. Actual navigation is through an inventory record; the unused global network component was not documented as a reachable console page.",
+        "Actual continuous observer201/no-store pinned the same workload namespace/node, explicit default/docs-discovery service-metadata namespaces,30second interval,1hour credential and24hour retention. Assignment download matched exact scope and excluded credentials; the once-shown panel was cleared before screenshots. One unchanged stock network_live process started; two new uniquely journaled legitimate reads were performed once each.",
+        "Four contiguous accepted windows were independently read back and retained through UI reload. All4had fresh sensorReady/streaming reports but degraded coverage:32total inputs,22unattributed/10invalid,0attributed groups. Service matching was not observed. Raw streams were not retained, clocks differed by less than a second at read time, and no root cause was inferred from omission counts.",
+        "Actual UI Revoke observer reporting204 persisted across full refresh. The original process received403 on its next assignment request, closed its streams and sent its one matching stop acknowledgment. It exited1without restart/replay; all4previous windows and last-report counters remained readable. A revoked state does not make last sensor/stream values current.",
+        "After that process stopped, the operator independently removed only the owned sensor DaemonSet, unique RBAC and QA sensor namespace. Default/kube-system/workload Pod name-to-UID maps were unchanged and the application remained Ready with its original Pod UID. No CNI, existing namespace, provider scopes, collector limits or business workload configuration was changed."
+      ],
+      "remaining": [
+        "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
+        "Continuous connection attribution and Kubernetes service matching were not qualified: four received windows had22 unattributed and10 invalid inputs, zero attributed connections",
+        "Kernel loss is unknown; raw input was not retained and omission root cause is not established",
+        "Retention expiry/deletion was source reviewed, not waited through; inactive observers have no periodic sweep"
+      ]
     }
   ],
   "knownEnvironmentLimits": [
@@ -862,6 +942,8 @@
     "A distinct browser campaign admitted202 and completed real website sign-in/two neutral setup messages, then stopped with fresh_conversation_unavailable:fresh_timeout before recording a probe outcome. One uncertain action remains awaiting recovery; completed browser execution and cancellation on that browser path are unqualified.",
     "Later isolated QA provisioned the actual pinned sandbox orchestrator/catalog and qualified Gmail optional inputs, shared/personal/new-world generation, automatic personal selection, login/refresh, reuse, extension/stop and assessment readiness. Earlier local connectors503 and beta generation failures remain historical; other simulations, agent business outcomes and network-policy enforcement are not inherited from this result.",
     "Payment binding save/reapproval, exact manual example seed and independent starting-ledger prerequisites passed in separate local QA. Original supplied-tool setup failed with one retained uncertain target action; no business after-state, clean reproduction or no-implant control was qualified. Catalogue profile credentials on a built-in launch are not proof those accounts were seeded; fresh copies remain subject to normal tenant quotas.",
-    "The separate opt-in modern review QA run has verified domain/report JSON and redacted on-screen turn reads, with operator-assisted original metadata/publication recovery. Its four ZIP reads timed out before producing an archive. Local memory pressure and unchanged provider deadlines remain material limits; this does not establish hosted parity or end-to-end ZIP qualification."
+    "The separate opt-in modern review QA run has verified domain/report JSON and redacted on-screen turn reads, with operator-assisted original metadata/publication recovery. Its four ZIP reads timed out before producing an archive. Local memory pressure and unchanged provider deadlines remain material limits; this does not establish hosted parity or end-to-end ZIP qualification.",
+    "Dedicated Discovery compatibility QA uses Backend PR112 and an approved real local Kubernetes source. Its successful inventory path does not attest hosted-beta parity. Unconfigured Evals/orchestrator bootstrap 503s are retained; the hosting drawer still does not render the new collected-state field.",
+    "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health."
   ]
 }

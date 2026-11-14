@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/call-gates/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.
-
-Guide in progress
-
-The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Block entry to one explicitly enrolled model or tool call in an instrumented customer application. Success requires an activated control, a real denied decision and the SDK’s acknowledgment that it stopped before calling the target. This is separate from the CI release gate and from network-containment previews.
 
@@ -22,21 +16,19 @@ Selected calls require a live allow decision even when no block is active. A dec
 
 ## Enroll exact call targets
 
-If no deployment is listed
-
-An empty **Deployment / environment / version** selector needs a [runtime reporting binding](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
-
-![Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-no-bindings.png)
-
-With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.
-
 1.  Open **Discovery → Kill switch** and select **Deployment / environment / version**.
 2.  Under **Block model or tool calls**, choose **Add a reported target**, or enter **Kind**, **System**, **Name** and click **Add target**. Enroll 1–32 distinct exact targets. Names must come from trusted application configuration, not a model-generated argument.
-3.  Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
 
+![The gate enrollment selects the actual kubernetes get\_shipping\_policy tool before assignment creation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-exact-target-enrollment.png)
+
+Enroll the exact trusted target for this binding. Assignment creation and private installation are separate from a live SDK process or an active block.
+
+3.  Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
 4.  Install the assignment and gate credential in the intended customer application. Its SDK must consult the gate before each selected call. Wait for **SDK reporting** and a recent process under **Processes seen within 90s**. **Awaiting SDK** means enrollment alone has not established a live caller.
 
 ## Run a bounded synthetic gate client
+
+The screenshots follow the instrumented `kubernetes/get_shipping_policy` lookup. The standalone Python example below uses the local `docs_demo/lookup` target. Select the assignment and exact target names for the application you are integrating.
 
 After installing the verified SDK release described in the SDK guide, save the downloaded assignment and both private credentials outside source control. This example calls a local synthetic tool and uses the real Backend for decisions; it makes no model-provider request. Enroll **Tool**, system `docs_demo`, name `lookup` for this test, and configure:
 
@@ -110,14 +102,32 @@ Run `python call_gate_demo.py` while completing the review below. It performs at
 2.  Click **Review control**. Read the deployment, exact target, availability impact, expiry and five-minute review deadline. No call is blocked yet.
 3.  Select **I reviewed this deployment, target, availability impact and expiry.**, then click **Activate call block**. Activation needs a recently reporting SDK process with this exact assignment.
 
+![The real five-minute control review identifies the exact tool, reason and activation confirmation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-control-review.png)
+
+Review scope, duration, impact and expiry before activation. A generated review alone does not block a call.
+
 4.  Confirm the active control and server-timed expiry. Trigger the same synthetic tool and inspect **Decisions and operator actions**. **SDK reported stopped** acknowledges refusal before call entry; **SDK acknowledgement not received** needs investigation and is not the same evidence.
-5.  Refresh the console and confirm the same persisted active control and audit record. Check the customer’s local output/state to establish that its callable did not run during a block.
+5.  Refresh the console, reselect the same deployment binding if needed, and confirm the persisted active control and audit record. Check the customer’s local output/state to establish that its callable did not run during a block. An acknowledgment is not a count of affected replicas.
+
+![The active call control remains visible after full refresh with one recently reporting SDK process.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-active-after-refresh.png)
+
+The actual active block and server expiry were retained after reselecting the same binding. Complete replica coverage remains unverified.
+
+![The real deny decision has an SDK reported stopped acknowledgment.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-sdk-stopped-acknowledgment.png)
+
+The SDK refused entry and acknowledged the deny decision. The application journal independently confirmed that this specific callable was not entered.
 
 ## Resume and verify recovery
 
 1.  Click **Resume calls** on the active control, or let its server-timed expiry pass.
 2.  Trigger another selected synthetic call. It can proceed only when the Backend is reachable, the process is registered and the gate credential is valid.
-3.  Refresh the console. Inspect **Control history and customer assignment**, then verify the customer’s real callable resumed and its expected result was retained.
+3.  Refresh the console and reselect the same binding if needed. Inspect **Control history and customer assignment**, then verify the customer’s real callable resumed and its expected result was retained.
+
+![The retained gate audit and control history distinguish explicitly resumed and naturally expired controls.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-resumed-expired-history.png)
+
+A five-minute control was resumed; a separate one-minute control expired without Resume. New real reads succeeded after each ended, and both histories survived refresh.
+
+The recorded check exercised both paths separately: one five-minute control was explicitly resumed, and a second one-minute control expired without a resume action. Both refused call entry while active; a new real lookup succeeded after each ended. The history retains **resumed** and **expired** as different outcomes.
 
 Revoking the gate credential is not Resume: configured SDK calls fail closed. **Rotate credential** invalidates the old credential immediately and requires the replacement to be installed; the process must register again. Rotating/revoking the runtime reporting credential affects uploads, not this separate gate’s authority.
 
@@ -127,7 +137,19 @@ Revoking the gate credential is not Resume: configured SDK calls fail closed. **
 2.  Select a deployment, reported target or egress intent and requested duration, then **Generate preview**.
 3.  Read **NOT EXECUTABLE** and **Activation unavailable**. **Download intent JSON** saves proposed scope and evidence; it does not activate this SDK gate or install a network policy/controller.
 
+![The actual network-containment intent is labeled NOT EXECUTABLE with activation unavailable.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-containment-preview.png)
+
+The downloaded intent describes proposed scope and evidence. The disabled activation does not install network isolation or activate an SDK call block.
+
 ## Failure and boundary checklist
+
+If no deployment is listed
+
+An empty **Deployment / environment / version** selector needs a [runtime reporting binding](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
+
+![Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-gate-no-bindings.png)
+
+With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.
 
 -   Expired review: create a new review; its fingerprint/deadline cannot be reused.
 -   No live matching process: fix assignment, credentials and instrumentation before activation.

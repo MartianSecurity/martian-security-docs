@@ -20,21 +20,16 @@ Selected calls require a live allow decision even when no block is active. A dec
 
 ## Enroll exact call targets
 
-:::note[If no deployment is listed]
-An empty **Deployment / environment / version** selector needs a [runtime reporting binding](/discovery/runtime-and-blast-radius/) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
-:::
-
-<Screenshot id="discovery-gate-prerequisite" />
-
 1. Open **Discovery → Kill switch** and select **Deployment / environment / version**.
 2. Under **Block model or tool calls**, choose **Add a reported target**, or enter **Kind**, **System**, **Name** and click **Add target**. Enroll 1–32 distinct exact targets. Names must come from trusted application configuration, not a model-generated argument.
-3. Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
-
 <Screenshot id="discovery-gate-enrollment" />
 
+3. Click **Create customer assignment**. Privately save **Download assignment** and **Download gate credential**, then **Clear credential from screen**. The credential is shown once and is separate from the runtime reporting credential.
 4. Install the assignment and gate credential in the intended customer application. Its SDK must consult the gate before each selected call. Wait for **SDK reporting** and a recent process under **Processes seen within 90s**. **Awaiting SDK** means enrollment alone has not established a live caller.
 
 ## Run a bounded synthetic gate client
+
+The screenshots follow the instrumented `kubernetes/get_shipping_policy` lookup. The standalone Python example below uses the local `docs_demo/lookup` target. Select the assignment and exact target names for the application you are integrating.
 
 After installing the verified SDK release described in the SDK guide, save the downloaded assignment and both private credentials outside source control. This example calls a local synthetic tool and uses the real Backend for decisions; it makes no model-provider request. Enroll **Tool**, system `docs_demo`, name `lookup` for this test, and configure:
 
@@ -111,17 +106,21 @@ Run `python call_gate_demo.py` while completing the review below. It performs at
 <Screenshot id="discovery-gate-review" />
 
 4. Confirm the active control and server-timed expiry. Trigger the same synthetic tool and inspect **Decisions and operator actions**. **SDK reported stopped** acknowledges refusal before call entry; **SDK acknowledgement not received** needs investigation and is not the same evidence.
-5. Refresh the console and confirm the same persisted active control and audit record. Check the customer's local output/state to establish that its callable did not run during a block.
+5. Refresh the console, reselect the same deployment binding if needed, and confirm the persisted active control and audit record. Check the customer's local output/state to establish that its callable did not run during a block. An acknowledgment is not a count of affected replicas.
 
 <Screenshot id="discovery-gate-active" />
+
+<Screenshot id="discovery-gate-sdk-ack" />
 
 ## Resume and verify recovery
 
 1. Click **Resume calls** on the active control, or let its server-timed expiry pass.
 2. Trigger another selected synthetic call. It can proceed only when the Backend is reachable, the process is registered and the gate credential is valid.
-3. Refresh the console. Inspect **Control history and customer assignment**, then verify the customer's real callable resumed and its expected result was retained.
+3. Refresh the console and reselect the same binding if needed. Inspect **Control history and customer assignment**, then verify the customer's real callable resumed and its expected result was retained.
 
 <Screenshot id="discovery-gate-resumed" />
+
+The recorded check exercised both paths separately: one five-minute control was explicitly resumed, and a second one-minute control expired without a resume action. Both refused call entry while active; a new real lookup succeeded after each ended. The history retains **resumed** and **expired** as different outcomes.
 
 Revoking the gate credential is not Resume: configured SDK calls fail closed. **Rotate credential** invalidates the old credential immediately and requires the replacement to be installed; the process must register again. Rotating/revoking the runtime reporting credential affects uploads, not this separate gate's authority.
 
@@ -134,6 +133,12 @@ Revoking the gate credential is not Resume: configured SDK calls fail closed. **
 <Screenshot id="discovery-containment-preview" />
 
 ## Failure and boundary checklist
+
+:::note[If no deployment is listed]
+An empty **Deployment / environment / version** selector needs a [runtime reporting binding](/discovery/runtime-and-blast-radius/) first. The console shows **Connect a runtime reporter under Sources to establish a deployment binding.** Assignment and block controls appear after you select that binding.
+:::
+
+<Screenshot id="discovery-gate-prerequisite" />
 
 - Expired review: create a new review; its fingerprint/deadline cannot be reused.
 - No live matching process: fix assignment, credentials and instrumentation before activation.
