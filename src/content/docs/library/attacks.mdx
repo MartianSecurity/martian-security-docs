@@ -1,0 +1,74 @@
+---
+title: Attack library
+description: Understand major AI attack families, find related Martian techniques and use MITRE ATLAS, OWASP and NIST references accurately.
+sidebar:
+  order: 0
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import AttackLibraryCoverage from '../../../components/AttackLibraryCoverage.astro';
+
+Choose an attack by the boundary you want to test: who supplies instructions, what the agent can read, which actions it can take, and what must remain protected. Each page explains the attack, a synthetic example, useful evidence and ways to reduce the risk.
+
+The reference covers all **12 major families** in Martian's published catalogue, with focused pages for common injection and workflow attacks. The catalogue and the selectable technique list are different views: a family can be documented without a dedicated runnable technique.
+
+## Find the right attack
+
+| Attack family | What to investigate |
+| --- | --- |
+| [Prompt injection](/attacks/prompt-injection/) | Untrusted instructions redirect the intended task |
+| [Jailbreaks](/attacks/jailbreaks/) | A model is pushed past its safety policy |
+| [Tool and action abuse](/attacks/tool-action-abuse/) | Tools perform an unauthorized or unsafe operation |
+| [Memory and context poisoning](/attacks/memory-context-poisoning/) | Stored material changes later behavior |
+| [Data exfiltration](/attacks/data-exfiltration/) | Protected information crosses an unauthorized boundary |
+| [Privilege escalation](/attacks/privilege-escalation/) | The agent exercises authority the requester does not have |
+| [Multi-agent attacks](/attacks/multi-agent-attacks/) | A malicious instruction or permission crosses an agent handoff |
+| [Supply chain and backdoors](/attacks/supply-chain-backdoors/) | A compromised dependency, tool or artifact changes behavior |
+| [Reasoning and alignment subversion](/attacks/reasoning-alignment-subversion/) | Manipulated objectives, feedback or reasoning steer decisions |
+| [Guardrail and judge evasion](/attacks/guardrail-judge-evasion/) | A safety check or evaluator accepts an unsafe result |
+| [Denial of service](/attacks/denial-of-service/) | Work consumes excessive time, tokens, money or capacity |
+| [Human manipulation](/attacks/human-manipulation/) | The agent persuades a person to approve an unsafe action |
+
+## Common starting points
+
+<CardGrid>
+  <LinkCard title="Direct prompt injection" description="Instructions arrive in the attacker's own message." href="/attacks/direct-prompt-injection/" />
+  <LinkCard title="Indirect prompt injection" description="Instructions arrive inside a document, email or tool result." href="/attacks/indirect-prompt-injection/" />
+  <LinkCard title="MCP and tool poisoning" description="Tool descriptions and responses become an instruction channel." href="/attacks/mcp-tool-poisoning/" />
+  <LinkCard title="Business workflow abuse" description="Refunds, credits and claims break application rules." href="/attacks/business-workflow-abuse/" />
+</CardGrid>
+
+## Use security frameworks
+
+These frameworks answer different questions. Their mappings help organize an assessment; selecting a framework does not run every associated attack or certify a system.
+
+- [MITRE ATLAS](/frameworks/mitre-atlas/) — adversary behavior against AI systems, including prompt injection, tools, memory and the AI supply chain.
+- [MITRE ATT&CK](/frameworks/mitre-attack/) — adversary behavior across enterprise, mobile and industrial environments; useful when AI abuse reaches conventional infrastructure.
+- [OWASP LLM Top 10](/frameworks/owasp-llm/) — application risk categories, including disclosure, output handling and excessive agency.
+- [OWASP Agentic Top 10](/frameworks/owasp-agentic/) — risks in planning, delegated identity, tools, memory and agent coordination.
+- [NIST AI RMF](/frameworks/nist-ai-rmf/) — a way to govern, understand, measure and manage risk across the lifecycle.
+
+## Take a reference into an assessment
+
+1. State the protected rule and the observable failure. For example: a support agent must not credit more than the authorized amount for one order.
+2. Read the relevant attack page and confirm the required surface exists. A chat-only endpoint does not automatically provide document planting, memory editing or MCP descriptor control.
+3. [Find available techniques in Attack Library](/library/coverage/), then [configure the assessment](/assessments/configure/). Use an approved target, synthetic records and a bounded budget.
+4. Inspect [actual attempts and evidence](/assessments/evidence-and-results/). Separate a proposed action, a dispatched action and a verified effect. A timeout or unknown action remains unresolved.
+5. Retain the evidence and [add a regression case](/evals/regression-cases/) where the relevant behavior can be reproduced safely.
+
+All examples in this reference are explanatory synthetic examples. They are not newly executed walkthroughs or ready-made Martian configuration files. Target support and execution limits are described in [supported targets](/reference/supported-targets/) and [reproduction and limits](/assessments/reproduction-and-limits/).
+
+## Read catalogue states
+
+The observed selectable list contains **36 techniques: 32 marked In the library and four Declared gaps**. The gaps are **MT-20 Session hijack**, **MT-24 Standing backdoor**, **MT-32 Price arbitrage** and **MT-36 Worker collusion**. Availability can differ by environment; confirm the live list before selecting scope.
+
+<details>
+<summary>Browse all 36 Martian techniques</summary>
+
+<AttackLibraryCoverage slug="all" />
+
+</details>
+
+The published matrix also contains research counts across attack families and surfaces. Those counts are reference material, not a count of runnable tests, completed probes or unique verified findings. A technique can relate to more than one attack family.
+
+Use **Copy page** to share a page's Markdown, or choose **Copy agent link** for a public text link an agent can fetch. The [agent access guide](/reference/using-with-agents/) explains the page index and full documentation export.

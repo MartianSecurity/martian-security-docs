@@ -53,6 +53,7 @@ flowchart LR
 Use the [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md) to find each customer area, including the Evals dashboard, account menu and features that remain templates or previews.
 
 -   [Agents and connections](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md) — registration, validation and approval.
+-   [Attack library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/attacks.md) — individual attack guides, examples and security framework references.
 -   [Environments](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md) — synthetic seed data and sandbox readiness.
 -   [Discovery](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) — inventory and runtime evidence.
 -   [Permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md) — understand what your role and environment support.

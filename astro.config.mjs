@@ -128,19 +128,28 @@ export default defineConfig({
     ]
   },
   {
-    "label": "Workspace and library",
+    "label": "Attack library",
     "collapsed": true,
     "items": [
+      { "label": "Attack reference", "slug": "library/attacks" },
+      { "label": "Use the library and coverage views", "slug": "library/coverage" },
       {
-        "autogenerate": {
-          "directory": "workspace"
-        }
+        "label": "Attack families",
+        "collapsed": true,
+        "items": [{ "autogenerate": { "directory": "attacks" } }]
       },
       {
-        "autogenerate": {
-          "directory": "library"
-        }
+        "label": "Security frameworks",
+        "collapsed": true,
+        "items": [{ "autogenerate": { "directory": "frameworks" } }]
       }
+    ]
+  },
+  {
+    "label": "Workspace",
+    "collapsed": true,
+    "items": [
+      { "autogenerate": { "directory": "workspace" } }
     ]
   },
   {

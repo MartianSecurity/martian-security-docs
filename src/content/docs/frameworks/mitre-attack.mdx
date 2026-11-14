@@ -1,0 +1,41 @@
+---
+title: MITRE ATT&CK
+description: Relate AI attack evidence to conventional infrastructure behavior without confusing ATT&CK, ATLAS and Martian identifiers.
+sidebar:
+  order: 2
+---
+
+[MITRE ATT&CK](https://attack.mitre.org/) organizes adversary tactics and techniques based on observed behavior across enterprise, mobile and industrial environments. It is useful when an AI attack interacts with accounts, endpoints, cloud services, code execution or other conventional infrastructure.
+
+[MITRE ATLAS](/frameworks/mitre-atlas/) focuses on AI-related adversary behavior. The knowledge bases can overlap; an AI system is also software running in an environment with identities, data and tools.
+
+## ATT&CK includes prompt injection
+
+The current Enterprise knowledge base includes [T1699 Direct Prompt Injection](https://attack.mitre.org/techniques/T1699/) and [T1698 Indirect Prompt Injection](https://attack.mitre.org/techniques/T1698/). Avoid assuming that prompt attacks appear only in ATLAS.
+
+| Reference system | Direct injection example | Indirect injection example |
+| --- | --- | --- |
+| ATT&CK | `T1699` | `T1698` |
+| ATLAS | `AML.T0051.000` | `AML.T0051.001` |
+| Martian | Related entries include `MT-01` | Related entries include `MT-07`, `MT-08`, `MT-09` |
+
+The table relates delivery mechanisms. It does not make the identifiers interchangeable or claim that each Martian entry implements the full official technique.
+
+## Follow the behavior across systems
+
+Suppose a synthetic document redirects an agent into sending a protected demo record through a tool. Investigate the chain as separate observations:
+
+1. The agent consumed the attacker-controlled document.
+2. The document changed the agent's behavior.
+3. A tool request targeted an unauthorized destination.
+4. The receiving system confirms a transfer, if that evidence is available.
+
+The first two observations concern [indirect injection](/attacks/indirect-prompt-injection/); the latter observations concern [tool abuse](/attacks/tool-action-abuse/) and [exfiltration](/attacks/data-exfiltration/). Choose additional infrastructure references only when the evidence supports the specific technique's definition. A printed shell command does not prove command execution.
+
+## What Martian's lens establishes
+
+The current library offers a **MITRE ATLAS** view. This reference page does not add an ATT&CK selector, an ATT&CK test pack or general infrastructure penetration-testing support. An approved agent endpoint also does not authorize probing its surrounding hosts or accounts.
+
+Use the [available catalogue](/library/coverage/), [supported targets](/reference/supported-targets/) and the actual approved scenario to define scope. Treat an ATT&CK mapping as an annotation on observed behavior, with the framework ID and source kept separate from Martian's technique ID and execution status.
+
+Continue with [ATLAS](/frameworks/mitre-atlas/), the [attack reference](/library/attacks/) and [evidence interpretation](/assessments/evidence-and-results/).

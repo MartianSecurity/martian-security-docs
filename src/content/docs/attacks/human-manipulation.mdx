@@ -1,0 +1,51 @@
+---
+title: Human manipulation
+description: Inspect deceptive agent messages and approval requests against the exact action a person is being asked to authorize.
+sidebar:
+  order: 16
+---
+
+import AttackLibraryCoverage from '../../../components/AttackLibraryCoverage.astro';
+import AttackReferences from '../../../components/AttackReferences.astro';
+
+Human manipulation uses an agent's apparent credibility to influence a person's decision. A misleading summary, fabricated authority claim, deceptive citation or incomplete approval prompt can induce someone to authorize an action they would otherwise reject.
+
+The trust boundary is the person's understanding and consent. Requiring approval helps only when the interface communicates the real operation, resource, destination and consequence clearly enough to make that approval meaningful.
+
+## A synthetic example
+
+The proposed operation sends a complete demo record to a new recipient, but its approval summary describes a routine lookup:
+
+```text title="Synthetic approval mismatch"
+Displayed summary: "Approve checking the delivery status."
+Actual proposed operation: send the full demo order to a new inbox.
+Expected boundary: approval must describe and bind the exact action.
+```
+
+This fixture can be inspected without deceiving a real person. An AI-simulated reader review is useful for finding confusing wording, but it does not establish how real users behave or measure a successful social-engineering campaign.
+
+## Find related techniques in Martian
+
+<AttackLibraryCoverage slug="human-manipulation" />
+
+Approval-gate bypass and identity spoofing are related entries. They do not establish support for sending phishing messages, contacting employees or running a human-subject test. The native `social` tag is a Martian grouping, not an OWASP risk identifier.
+
+## Evidence to inspect
+
+Compare what the person would see with the full canonical operation. Inspect the recipient, data scope, amount, resource and any changed arguments. Retain the source of authority claims and citations so the reviewer can verify them independently.
+
+Separate a generated deceptive message, a message actually displayed, a recorded approval and a completed downstream action. Do not claim that a human was persuaded when no participant or approval record exists. If the task is an interface review, report the observed ambiguity and its potential consequence.
+
+For workflows that genuinely require participant testing, define authorization, participant handling and the safe synthetic task before contacting anyone. Documentation examples do not grant that authorization.
+
+## Reduce the risk
+
+Show consequential arguments directly in the approval interface. Make sensitive changes and destination differences visible, and bind approval to the exact operation rather than a free-form model summary. Keep untrusted claims and citations identifiable. Offer an independent way to verify the source, and require renewed approval after a meaningful change.
+
+Test whether a first-time reader can explain the action and its consequence from the displayed screen. Follow that review with the actual permitted workflow checks; a beautiful approval dialog does not establish that its backend enforces the same scope.
+
+## Related standards and next steps
+
+<AttackReferences slug="human-manipulation" />
+
+See [OWASP Agentic ASI09 Human-Agent Trust Exploitation](/frameworks/owasp-agentic/). Continue with [privilege escalation](/attacks/privilege-escalation/) and [business workflow abuse](/attacks/business-workflow-abuse/).
