@@ -12,11 +12,11 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Install and configure the SDK](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=587f1ec3d05b): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
 
-- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=05014856dc9f): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=95f3e4e3181a): Review source revisions, real captures, completed checks and remaining gaps.
 
 ## Documentation
 
-- [Martian Security](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/index.md?v=6f2b598b0544): Practical customer guides for red teaming, evaluations, and the Martian SDK.
+- [Martian Security](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/index.md?v=efa5b660195b): Practical customer guides for red teaming, evaluations, and the Martian SDK.
 
 - [Connect an agent](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md?v=de776812d84f): Register, validate and approve an HTTP, MCP or browser target, then manage its connection safely.
 
@@ -118,7 +118,11 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Red teaming and Evals](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/concepts.md?v=ac3b95f5bb44): Understand the evidence, records, and workflows before your first run.
 
+- [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md?v=9ad1da281c45): What Community, Enterprise and On-Premises include, and which parts are available, in beta or planned.
+
 - [Run your first assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=f6160f4e6eb2): Complete a small endpoint-only assessment and inspect the recorded result.
+
+- [Community quickstart](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md?v=6ee3bc0949e3): Install the free SDK, run a first eval suite on your own machine and read its result, with no Martian account.
 
 - [Attack library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/attacks.md?v=e092829f58cf): Understand major AI attack families, find related Martian techniques and use MITRE ATLAS, OWASP and NIST references accurately.
 
@@ -138,7 +142,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Use these docs with an AI assistant](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/using-with-agents.md?v=3b2004ac5113): Copy a complete page or share a public Markdown link that an assistant can read without signing in.
 
-- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=05014856dc9f): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=95f3e4e3181a): Review source revisions, real captures, completed checks and remaining gaps.
 
 - [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md?v=c7f51b51e806): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
@@ -154,6 +158,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=c001776983f9): all 68 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=6b39305aede9): all 70 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

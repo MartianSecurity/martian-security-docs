@@ -14,7 +14,7 @@ Find security failures with **red teaming**. Measure response quality with **Eva
 
 ## Start with your workspace
 
-Want a local preview first? [Try a free two-record SDK evaluation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md) without a Martian account or model key.
+Want to start free, on your own machine? Follow the [Community quickstart](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md) or [try a two-record SDK evaluation in pytest](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md); neither needs a Martian account or model key. [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md) shows what Community, Enterprise and On-Premises include.
 
 New to Martian? [Accept your invitation and sign in](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md), then read [the concepts](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/concepts.md). You need an agent connection that you are authorized to test. Each tutorial explains the role, setup and limits before you start.
 
