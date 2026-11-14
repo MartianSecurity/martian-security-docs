@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -645,11 +645,17 @@
       "environment": "Production local output; actual Chromium; two affected routes at1440light/dark and390light/dark,plus320px; AI author review, no human participant",
       "result": "passed",
       "details": "251responses,13checks,zeroHTTP/request/console/page errors. Exact Copy page Markdown,all4new full-size images,allinline image decoding,SDK code clipboard,search,deep refresh,agent-link clipboard,home navigation,continued numbering through continuous step8,callout contrast,logo-only header and hidden verification metadata passed. Two representative raw desktop/narrow renders were visually inspected. The guide distinguishes a usable Degraded map,Service metadata,earlier all-omitted failure,and historical last-health values after retirement."
+    },
+    {
+      "scope": "Released SDK 0.1.3 Community quickstart and example download",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.3 and mlflow-skinny 3.16.1 installed from public PyPI into a fresh virtual environment; example ZIP taken from the built site; no Martian platform services and no model provider",
+      "result": "passed",
+      "details": "The built site's sdk-local-evals-0.1.3.zip matched public/examples by SHA-256 and was extracted with python3 -m zipfile. martian --version printed 0.1.3. evals.yaml: 3 cases, no_secret_leak 2 passed / 1 failed, no_email_address 3 passed, exit 1; results.jsonl, summary.json, junit.xml and mlflow.db written; summary passed 2, failed 1, errors 0; the prompt-injection record matched the guide. A plain rerun reported 3 already done. evals-fixed.yaml --fresh: 3 passed, exit 0, written to results-fixed. martian ui on 0.1.3: No such command 'ui', exit 2."
     }
   ],
   "remainingGaps": [
-    "Five guides remain incomplete: sandbox bindings; assessment configuration, evidence, history and reproduction. All four Discovery workflows now passed in named compatible candidate QA scopes with explicit partial/degraded capture limits.",
-    "Thirty-two guides are verified in named local/CI scopes; five are partial and none pending. All37required task-stage lists are unchanged. One required assessment-verification screenshot remains missing; the strict release audit remains enforced.",
+    "Six guides remain incomplete: sandbox bindings; assessment configuration, evidence, history and reproduction; and the Community quickstart, whose local Evals UI step waits for an SDK release that includes it. All four Discovery workflows now passed in named compatible candidate QA scopes with explicit partial/degraded capture limits.",
+    "Thirty-two guides are verified in named local/CI scopes; six are partial and none pending. The 37 earlier required task-stage lists are unchanged and the Community quickstart adds one. One required assessment-verification screenshot remains missing; the strict release audit remains enforced.",
     "Sandbox-backed verified effects, fresh-world repetitions/negative controls and complete redacted-review ZIP download/inspection remain unverified. Modern domain/report JSON and published redacted on-screen records were checked separately.",
     "The earlier MR-1003 teaching-tunnel action remains uncertain. Separate queued and active HTTP cancellation are qualified; evidence-based resolution of the older action and other target-interface cancellation remain unverified.",
     "Non-Boolean model execution, completed browser assessment execution and untested connection-management variants still need qualification. MCP endpoint execution was observed with explicitly operator-assisted recovery; the public lost-admission sync path remains a product gap. Native session views are verified through separately provisioned instrumentation; SDK0.1.2 native-ingestion/credential issuance is not provided.",
