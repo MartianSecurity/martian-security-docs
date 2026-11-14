@@ -12,7 +12,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Install and configure the SDK](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=587f1ec3d05b): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
 
-- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=fa906da24dec): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=14d243d7f871): Review source revisions, real captures, completed checks and remaining gaps.
 
 ## Documentation
 
@@ -66,13 +66,13 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Tool and action abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md?v=c1419fc47752): Examine unsafe tool selection, arguments and call chains, and verify whether the resulting operation actually occurred.
 
-- [Review and activate an SDK call block](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/call-gates.md?v=8b0e80d6b131): Enroll a customer-operated gate, review one exact target, activate a timed block and resume calls without confusing it with network isolation.
+- [Review and activate an SDK call block](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/call-gates.md?v=60eefd1aaa5e): Enroll a customer-operated gate, review one exact target, activate a timed block and resume calls without confusing it with network isolation.
 
-- [Connect sources and inspect inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md?v=f18c71b7e162): Enroll an authorized read-only source, follow collection status and distinguish observed agents from candidates and supporting workloads.
+- [Connect sources and inspect inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md?v=2e434c96b25e): Enroll an authorized read-only source, follow collection status and distinguish observed agents from candidates and supporting workloads.
 
-- [Set up network observation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/network-observation.md?v=e60fb16463b2): Prepare a short-lived capture grant or enroll a continuous customer observer, then inspect reporting health and evidence limits.
+- [Set up network observation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/network-observation.md?v=c9f2abbacfb8): Prepare a short-lived capture grant or enroll a continuous customer observer, then inspect reporting health and evidence limits.
 
-- [Inspect runtime activity and blast radius](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md?v=b6d4ef16de6f): Connect a reporter to one workload version, inspect observed calls and compare them with collected access evidence.
+- [Inspect runtime activity and blast radius](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md?v=6c2f7fdd8496): Connect a reporter to one workload version, inspect observed calls and compare them with collected access evidence.
 
 - [Create and launch an environment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md?v=6582eb706c62): Save a supported business environment, prepare synthetic data, launch sandboxes and verify assessment readiness.
 
@@ -138,7 +138,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Use these docs with an AI assistant](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/using-with-agents.md?v=3b2004ac5113): Copy a complete page or share a public Markdown link that an assistant can read without signing in.
 
-- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=fa906da24dec): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md?v=14d243d7f871): Review source revisions, real captures, completed checks and remaining gaps.
 
 - [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md?v=c7f51b51e806): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
@@ -154,6 +154,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=a0780b8b5c7f): all 68 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=2aeb9e2acdc3): all 68 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

@@ -18,8 +18,8 @@ Any signed-in tenant user can inspect accessible inventory. **Owner** or **Admin
 
 Source collection, runtime reporting and assessment connections have separate credentials and purposes. Creating a source does not start a process or stop an agent.
 
-:::caution[Check collection readiness first]
-The beta QA organization shown below has **No authorized clusters**. Its source form was inspected, but enrollment and collection could not be exercised. Ask your operator for an authorized scope and a collector compatible with your deployment before continuing. For this beta QA check, the available collector snapshot and the attested Backend revision have an incompatible Kubernetes observation contract; entering a cluster name cannot resolve that prerequisite.
+:::note[Start with an approved scope]
+This walkthrough uses a customer-run Kubernetes collector in an authorized test namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your Backend deployment. The inventory reader needs workload and RBAC metadata access; it does not need permission to read Secrets, execute in containers or change workloads.
 :::
 
 ## Enroll a read-only source
@@ -28,7 +28,7 @@ The beta QA organization shown below has **No authorized clusters**. Its source 
 2. Select the supported provider and enter its authorized scope. For Kubernetes, choose an authorized cluster and namespaces. For AWS Bedrock, enter the approved account, regions and **Read-only role ARN**. An empty authorized-cluster list needs operator setup first.
 <Screenshot id="discovery-source-form" />
 
-3. Once an authorized scope is available, review it and click **Create source**. If the form says **No authorized clusters**, stop here and request the operator setup; the captured form has **Create source** disabled.
+3. Review the selected cluster and namespaces, then click **Create source**. A saved source is an enrollment; it has not collected anything yet.
 
 4. For a customer-side collector, save its once-shown credential privately and **Download scope assignment** or **Download assignment**. The assignment describes scope; the separate credential authenticates the collector. Close the credential panel before making screenshots or sharing the screen.
 5. Install/run the approved collector with that assignment and private credential in its authorized environment. Use the installation package and instructions supplied for your deployment; an enrollment alone is not collection. For hosted collection, the configured hosted reader performs the work.
@@ -37,20 +37,44 @@ The beta QA organization shown below has **No authorized clusters**. Its source 
 
 <Screenshot id="discovery-sources" />
 
+Expand **Scope and collection coverage** to read the namespace and per-kind API results. In this example, the reader listed one Deployment and two Pods, then retained two inventory records: one candidate Deployment and one standalone supporting Pod. The Deployment's controller-owned Pod is not counted as another deployment. These counts do not establish complete agent detection.
+
 ## Review inventory and evidence
 
 1. Open **Discovery → Overview** and choose **Dashboard source** or all sources.
 2. Inspect the inventory's agent/candidate view and its evidence labels. **Runtime-observed** requires qualifying trace-correlated model/tool reports; **Provider-listed** identifies a managed agent listed by its provider. Metadata or registration alone remains a candidate.
 3. Use **Search displayed agents** for the loaded page. Check loaded/total counts and pagination; a page search is not a proof that the entire organization has no matching record.
-4. Select a record and inspect its evidence, source freshness and deployment context. **Supporting workloads** are accessed under Sources rather than counted as independently established AI agents.
+4. Choose **Candidates** when inspecting metadata-only records. Select **Inspect candidate ↗** to open **Hosting & identity** or **Configured access**. Check the source, namespace, collected identity and collection time. The console's hosting view does not show a live running-state check; confirm current workload health in your infrastructure.
 
 <Screenshot id="discovery-inventory" />
 
-5. Continue to **Runtime activity** or **Blast radius** to inspect a selected deployment's evidence. Infrastructure inventory by itself does not report actual model/tool calls or independently establish effective permission.
+5. Choose **Supporting workloads** to open **Sources**, then **Review supporting workloads** if the section is collapsed. In this example, `metadata-worker` is retained as supporting infrastructure because its metadata has no recognized agent signal.
 
-## Manage collection and recover
+<Screenshot id="discovery-inventory-supporting" />
 
-- **Pause collection** / **Resume collection** changes the reader's activity. It does not contain the customer's workload or cancel an assessment.
+6. Continue to **Runtime activity** or **Blast radius** to inspect a selected deployment's evidence. Infrastructure inventory by itself does not report actual model/tool calls or independently establish effective permission.
+
+## Pause, resume and verify freshness
+
+1. Under **Sources → Your sources**, select **Pause collection**. Expect a **disabled** source, disabled **Collect now**, and a retained **Last success** time. A customer collector that requests a new lease while paused is rejected; its old collection remains available.
+
+<Screenshot id="discovery-source-paused" />
+
+2. Select **Resume collection**, then **Collect now** to queue the next poll. Run or wait for the actual authorized collector. Resuming or queueing alone does not establish a new collection.
+3. Confirm a distinct completed collection and a newer **Last success**, then refresh the page. Check that the expected candidate and supporting record remain visible.
+
+<Screenshot id="discovery-source-resumed" />
+
+Collection controls affect the reader. They do not stop the customer's application, contain network traffic or cancel an assessment.
+
+## Recover from setup or collection failures
+
+:::caution[No authorized clusters]
+Ask your operator to authorize the cluster alias and namespace scope. The disabled **Create source** button cannot be fixed by entering an arbitrary cluster name. Confirm the collector and Backend contracts are compatible before running collection.
+:::
+
+<Screenshot id="discovery-source-prerequisite" />
+
 - **Replace credential** rotates a customer collector credential. Install the replacement in the intended collector; saving it does not restart that process automatically.
 - A stale or failed source needs its actual reader, authorization and connectivity checked. Do not treat a retained old snapshot as fresh inventory.
 - Revoking a runtime reporter is a different operation from pausing inventory collection. Separate historical identity evidence from recent activity.

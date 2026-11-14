@@ -291,7 +291,7 @@
         {
           "id": "agents-payment-seed-ready",
           "alt": "Payment-only environment with Stripe mapped to paypal, one Ready sandbox, two accounts and your data after an explicit stored-example seed launch.",
-          "caption": "The launch explicitly used the manually stored released example. Generated / your data are the console’s seed-document labels; this setup did not call a model. The Ready instance then passed the seeded account’s real sign-in and refresh.",
+          "caption": "The launch explicitly used the manually stored released example. Generated / your data are the console\u2019s seed-document labels; this setup did not call a model. The Ready instance then passed the seeded account\u2019s real sign-in and refresh.",
           "validationStatus": "Direct real application capture individually viewed for readability and secrets, with PNG integrity/metadata checks. Saved setup and before-only checks are qualified separately from the unfinished business-outcome walkthrough."
         },
         {
@@ -1052,25 +1052,25 @@
       "sources": [
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryCallGate.jsx",
           "line": 118
         },
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryControls.jsx",
           "line": 131
         },
         {
           "repository": "MorningHQ/MartianBackend",
-          "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+          "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 196
         },
         {
           "repository": "MorningHQ/martian-redteam",
-          "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
+          "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "path": "docs/customer-integration.md",
           "line": 158
         }
@@ -1088,12 +1088,13 @@
         "discovery-gate-enrollment",
         "discovery-gate-review",
         "discovery-gate-active",
+        "discovery-gate-sdk-ack",
         "discovery-gate-resumed",
         "discovery-containment-preview",
         "discovery-gate-prerequisite"
       ],
-      "qualification": "pending",
-      "validationStatus": "Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.",
+      "qualification": "verified",
+      "validationStatus": "All seven unchanged required stages passed with the released SDK: exact real tool enrollment and downloaded assignment, fresh SDK process, five-minute review/activation, actual deny and SDK acknowledgment, local no-entry journal, explicit resume plus separate natural one-minute expiry, retained history and independently downloaded non-executable network preview.",
       "documentationRoute": "/discovery/call-gates/",
       "role": "owner, admin",
       "route": "/#/discovery?tab=kill-switch",
@@ -1112,14 +1113,12 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "pending",
-        "screenshots": "pending",
+        "realBackendWalkthrough": "All seven unchanged required stages passed with the released SDK: exact real tool enrollment and downloaded assignment, fresh SDK process, five-minute review/activation, actual deny and SDK acknowledgment, local no-entry journal, explicit resume plus separate natural one-minute expiry, retained history and independently downloaded non-executable network preview.",
+        "screenshots": "Required configuration, execution and retained-result captures individually reviewed; historical empty-prerequisite captures preserved",
         "remainingGaps": [
-          "Fresh released-package example execution and real gate demo against Backend",
-          "Real gate demo against Backend",
-          "Actual review/active/resumed/preview screenshots",
-          "Check persisted controls/audit and local callable behavior",
-          "Never expose setup credential panel"
+          "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
+          "The standalone docs_demo/lookup script is a separate source/import-checked example; real integration used kubernetes/get_shipping_policy",
+          "Credential rotation/revocation, missing-decision availability, model targets, SDK-bypassing calls and full replica coverage remain separate scopes"
         ],
         "releasedPackageImports": {
           "distribution": "martian-sdk",
@@ -1128,7 +1127,12 @@
           "scope": "RuntimeCallGate, GateAssignment, RuntimeReporter and exception imports; constructor signatures; no network operations"
         },
         "pythonSnippetAst": "passed",
-        "prerequisiteReadback": "Passed actual empty-workspace prerequisite view only; full walkthrough remains pending."
+        "prerequisiteReadback": "Earlier empty-workspace check remains historical. The later named compatible environment supplied an authorized real workload.",
+        "releasedPackageExecution": {
+          "distribution": "martian-sdk",
+          "version": "0.1.3",
+          "result": "Real RuntimeReporter/RuntimeCallGate in the enrolled workload passed actual allow/block/ack/resume/natural-expiry; original denied attempts did not enter the callable"
+        }
       },
       "validation": [
         {
@@ -1137,17 +1141,27 @@
           "observedPath": "Discovery empty-workspace prerequisite screens and retained gate binding boundary",
           "environment": "Isolated Documentation Browser Execution QA; synthetic organization; real pinned Frontend and Backend; customer Owner with platform_admin false; no connected Discovery source",
           "result": "Passed read-only runtime/capture/observer/gate prerequisite views and gate full-refresh retention; no enrollment or live instrumentation qualified."
+        },
+        {
+          "date": "2026-11-14",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Review and activate an SDK call block in authorized Discovery compatibility QA",
+          "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+          "result": "All seven unchanged required stages passed with the released SDK: exact real tool enrollment and downloaded assignment, fresh SDK process, five-minute review/activation, actual deny and SDK acknowledgment, local no-entry journal, explicit resume plus separate natural one-minute expiry, retained history and independently downloaded non-executable network preview."
         }
       ],
       "screenshots": [
         "discovery-gate-enrollment",
         "discovery-gate-review",
         "discovery-gate-active",
+        "discovery-gate-sdk-ack",
         "discovery-gate-resumed",
         "discovery-containment-preview",
         "discovery-gate-prerequisite"
       ],
-      "customerNotice": "The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough."
+      "customerNotice": "This walkthrough passed in isolated QA with the compatible Backend candidate from PR112. Confirm your workspace has a compatible collector and Backend; hosted beta parity is not attested.",
+      "verifiedAt": "2026-11-14",
+      "verifiedEnvironment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta"
     },
     {
       "id": "discovery/inventory",
@@ -1170,19 +1184,19 @@
       "sources": [
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoverySources.jsx",
           "line": 72
         },
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryOverview.jsx",
           "line": 53
         },
         {
           "repository": "MorningHQ/MartianBackend",
-          "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+          "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 71
         }
@@ -1198,10 +1212,14 @@
       "screenshotIds": [
         "discovery-source-form",
         "discovery-sources",
-        "discovery-inventory"
+        "discovery-inventory",
+        "discovery-inventory-supporting",
+        "discovery-source-paused",
+        "discovery-source-resumed",
+        "discovery-source-prerequisite"
       ],
-      "qualification": "partial",
-      "validationStatus": "Own beta QA Owner inspected Connect source/Add a read-only source: no authorized Kubernetes aliases and Create source disabled. Deployment-matched Discovery schema/API/config bytes also expose an incompatibility with the available collector snapshot. Enrollment, real collection, inventory and source lifecycle remain unverified; operator-approved scope and a compatible collector/Backend pair are prerequisites.",
+      "qualification": "verified",
+      "validationStatus": "All six required stages passed for the named customer-managed Kubernetes path: enrollment, private credential/assignment handling, genuine collection, candidate/supporting inventory, full-refresh retention and pause/resume with a distinct completed collection. Compatible Backend candidate PR112 is required; this does not attest beta deployment, AWS Bedrock collection or credential rotation.",
       "documentationRoute": "/discovery/inventory/",
       "role": "owner, admin",
       "route": "/#/discovery?tab=sources",
@@ -1218,13 +1236,11 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "blocked form/prerequisite check only; no enrollment or collection",
-        "screenshots": "source form captured; collection/inventory pending",
+        "realBackendWalkthrough": "Passed all six required stages in the named isolated Kubernetes environment",
+        "screenshots": "Six new individually reviewed raw captures plus the retained historical beta prerequisite capture",
         "remainingGaps": [
-          "Operator-approved provider scope",
-          "Deployment-compatible collector and Backend contract",
-          "Real collection receipt and retained inventory",
-          "Pause/resume/credential lifecycle and remaining screenshots"
+          "Backend PR112 merge and hosted beta deployment/parity are not attested",
+          "AWS Bedrock collection and source credential rotation are source reviewed, not exercised by this Kubernetes walkthrough"
         ]
       },
       "validation": [
@@ -1233,14 +1249,27 @@
           "record": "quality/walkthroughs.json",
           "observedPath": "Beta Discovery authorization and contract prerequisites",
           "result": "Actual blocked form observed; three owning deployed files matched source; no source, credential or inventory fabricated."
+        },
+        {
+          "date": "2026-11-14",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Authorized Kubernetes source enrollment, real collection and pause/resume lifecycle",
+          "environment": "Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta",
+          "result": "Passed six unchanged required stages, two original genuine collections plus a later genuine post-deployment refresh, typed state persistence, candidate/supporting separation, retained UI and named reader/tenant/auth boundaries. No mocked provider payloads or target/model calls."
         }
       ],
       "screenshots": [
         "discovery-source-form",
         "discovery-sources",
-        "discovery-inventory"
+        "discovery-inventory",
+        "discovery-inventory-supporting",
+        "discovery-source-paused",
+        "discovery-source-resumed",
+        "discovery-source-prerequisite"
       ],
-      "customerNotice": "Collection needs an authorized source and a compatible collector. Enrollment, retained inventory and source lifecycle are still being verified."
+      "customerNotice": "The customer-managed Kubernetes walkthrough passed in isolated QA with the compatible Backend candidate from PR112. Confirm your workspace has a compatible collector and Backend; hosted beta parity is not attested.",
+      "verifiedAt": "2026-11-14",
+      "verifiedEnvironment": "Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta"
     },
     {
       "id": "discovery/runtime-and-blast-radius",
@@ -1265,31 +1294,31 @@
       "sources": [
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryRuntimeSetup.jsx",
           "line": 56
         },
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryRuntime.jsx",
           "line": 53
         },
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryOverview.jsx",
           "line": 62
         },
         {
           "repository": "MorningHQ/MartianBackend",
-          "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+          "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 134
         },
         {
           "repository": "MorningHQ/martian-redteam",
-          "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
+          "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "path": "docs/customer-integration.md",
           "line": 60
         }
@@ -1305,11 +1334,13 @@
       "screenshotIds": [
         "discovery-runtime-setup",
         "discovery-runtime",
+        "discovery-runtime-resource",
         "discovery-blast-radius",
+        "discovery-runtime-rbac-match",
         "discovery-runtime-prerequisite"
       ],
-      "qualification": "pending",
-      "validationStatus": "Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.",
+      "qualification": "verified",
+      "validationStatus": "All six unchanged required stages passed: real exact workload/version enrollment, private credential, eight original successful tool calls from that Pod, response-resource mappings, latest collected RBAC comparison and full-refresh binding/window retention. Two denied calls were not entered or emitted as executed tool events. No model calls or assessed baseline were invented.",
       "documentationRoute": "/discovery/runtime-and-blast-radius/",
       "role": "owner, admin",
       "route": "/#/discovery",
@@ -1327,15 +1358,14 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "pending",
-        "screenshots": "pending",
+        "realBackendWalkthrough": "All six unchanged required stages passed: real exact workload/version enrollment, private credential, eight original successful tool calls from that Pod, response-resource mappings, latest collected RBAC comparison and full-refresh binding/window retention. Two denied calls were not entered or emitted as executed tool events. No model calls or assessed baseline were invented.",
+        "screenshots": "Required configuration, execution and retained-result captures individually reviewed; historical empty-prerequisite captures preserved",
         "remainingGaps": [
-          "Actual reporter enrollment/runtime/Blast-radius screenshots",
-          "Real customer-side emitted calls retained",
-          "Delivery counters and bounded coverage checked",
-          "Effective-access/business-effect claims remain excluded"
+          "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
+          "The minimal report_once.py helper is source/import/setup checked; this walkthrough used the actual instrumented QA application, not that exact helper",
+          "Model-call reporting, assessed-baseline mapping, effective access, complete replica coverage and business effects are not qualified by this tool-only path"
         ],
-        "prerequisiteReadback": "Passed actual empty-workspace prerequisite view only; full walkthrough remains pending."
+        "prerequisiteReadback": "Earlier empty-workspace check remains historical. The later named compatible environment supplied an authorized real workload."
       },
       "validation": [
         {
@@ -1344,15 +1374,26 @@
           "observedPath": "Discovery empty-workspace prerequisite screens and retained gate binding boundary",
           "environment": "Isolated Documentation Browser Execution QA; synthetic organization; real pinned Frontend and Backend; customer Owner with platform_admin false; no connected Discovery source",
           "result": "Passed read-only runtime/capture/observer/gate prerequisite views and gate full-refresh retention; no enrollment or live instrumentation qualified."
+        },
+        {
+          "date": "2026-11-14",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Inspect runtime activity and blast radius in authorized Discovery compatibility QA",
+          "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+          "result": "All six unchanged required stages passed: real exact workload/version enrollment, private credential, eight original successful tool calls from that Pod, response-resource mappings, latest collected RBAC comparison and full-refresh binding/window retention. Two denied calls were not entered or emitted as executed tool events. No model calls or assessed baseline were invented."
         }
       ],
       "screenshots": [
         "discovery-runtime-setup",
         "discovery-runtime",
+        "discovery-runtime-resource",
         "discovery-blast-radius",
+        "discovery-runtime-rbac-match",
         "discovery-runtime-prerequisite"
       ],
-      "customerNotice": "The empty-workspace setup boundary is checked. A compatible authorized source and collected workload are still needed for the complete live walkthrough."
+      "customerNotice": "This walkthrough passed in isolated QA with the compatible Backend candidate from PR112. Confirm your workspace has a compatible collector and Backend; hosted beta parity is not attested.",
+      "verifiedAt": "2026-11-14",
+      "verifiedEnvironment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta"
     },
     {
       "id": "environments/create-and-launch",
@@ -1530,43 +1571,43 @@
           "id": "environment-generated-editor",
           "caption": "The single save returned 201. Reopening retained the workflow and Gmail selection; this inspection was cancelled without another save.",
           "alt": "Saved Documentation support inputs lab environment reopened with its synthetic workflow and Gmail selected.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-optional-inputs",
-          "caption": "Inspect each input’s type, scope and parsing result before saving. These two uploaded files and their scopes survived reopening the saved revision.",
+          "caption": "Inspect each input\u2019s type, scope and parsing result before saving. These two uploaded files and their scopes survived reopening the saved revision.",
           "alt": "Environment editor with a whole-environment JSON Schema and Gmail-only CSV parsed as two sample records.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-input-parse-error",
           "caption": "The invalid input prevented the save before a request was submitted. The corrected CSV then parsed successfully and the environment was saved once.",
           "alt": "Invalid JSON sample with its parsing error and Fix or remove the input marked above before saving message.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-generated-variants",
           "caption": "New world regenerated shared data and retained the separate personal variant. Both system documents are Generated. Fit still recommends Zendesk for the support-case input structure.",
           "alt": "Environment data after New world showing ready shared Gmail with three users and four emails, ready personal Gmail with four users and four emails, and the unchanged Fit advice.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-generated-sandbox-ready",
           "caption": "Automatic launch selected the exact ready personal document. A real instance read after full refresh retained the generated source, document and Ready state.",
           "alt": "Gmail sandbox Ready with four accounts, generated user data, remaining lifetime and Open and Details controls.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-generated-lifetime",
-          "caption": "Extend 30 min moved this instance’s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.",
+          "caption": "Extend 30 min moved this instance\u2019s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.",
           "alt": "Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         },
         {
           "id": "environment-generated-assessment-ready",
-          "caption": "Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent’s bindings and independent business checks.",
+          "caption": "Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent\u2019s bindings and independent business checks.",
           "alt": "Assessment Environment step showing Documentation support inputs lab and Sandboxes ready for Gmail, with endpoint-only testing unchecked.",
-          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440×1000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
+          "validationStatus": "Actual saved inputs, generated shared/personal/new-world data, automatic personal seed selection, Ready state, mailbox login/refresh, extension, stop and assessment readiness are recorded. Direct 1440\u00d71000 capture individually viewed for readability and secrets; PNG chunks/CRC/metadata checked."
         }
       ],
       "verifiedAt": "2026-11-14",
@@ -3517,8 +3558,8 @@
     {
       "id": "discovery/network-observation",
       "title": "Set up network observation",
-      "description": "Set up network observation",
-      "customerTask": "Set up network observation",
+      "description": "Prepare scoped TCP grants, inspect retained capture and reporting health, and revoke a separately operated observer.",
+      "customerTask": "Prepare scoped TCP grants, inspect retained capture and reporting health, and revoke a separately operated observer.",
       "role": "owner/admin manages; authorized roles read",
       "requiredRoles": [
         "owner",
@@ -3527,7 +3568,8 @@
       "route": "/#/discovery?tab=sources",
       "uiRoute": "/#/discovery?tab=sources",
       "supportedInterfaces": [
-        "current_beta_console"
+        "customer_operated_kubernetes_tcp_capture",
+        "customer_operated_continuous_observer"
       ],
       "prerequisites": [
         "Enabled authorized customer Kubernetes source",
@@ -3538,25 +3580,25 @@
       "sources": [
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryNetworkSetup.jsx",
           "line": 1
         },
         {
           "repository": "MorningHQ/MartianFrontend",
-          "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+          "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryObserverSetup.jsx",
           "line": 1
         },
         {
           "repository": "MorningHQ/MartianBackend",
-          "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+          "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "app/api/network.py",
           "line": 1
         },
         {
           "repository": "MorningHQ/MartianBackend",
-          "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+          "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "app/api/network_live.py",
           "line": 1
         }
@@ -3570,15 +3612,23 @@
       ],
       "screenshots": [
         "discovery-network-capture-grant",
+        "discovery-network-capture-evidence",
+        "discovery-network-capture-coverage",
         "discovery-continuous-observer",
         "discovery-network-reporting-health",
+        "discovery-network-observer-revoked",
+        "discovery-network-retained-after-revoke",
         "discovery-network-prerequisite",
         "discovery-observer-prerequisite"
       ],
       "screenshotIds": [
         "discovery-network-capture-grant",
+        "discovery-network-capture-evidence",
+        "discovery-network-capture-coverage",
         "discovery-continuous-observer",
         "discovery-network-reporting-health",
+        "discovery-network-observer-revoked",
+        "discovery-network-retained-after-revoke",
         "discovery-network-prerequisite",
         "discovery-observer-prerequisite"
       ],
@@ -3589,8 +3639,8 @@
         "Read fresh windows and reporting health",
         "Revoke reporting and stop/remove processes separately"
       ],
-      "qualification": "pending",
-      "validationStatus": "Real local Owner inspected the empty-workspace prerequisite screen against the real Backend; observed Discovery GET200 and blocked creation. Full enrollment, instrumentation, execution and required journey captures remain pending.",
+      "qualification": "partial",
+      "validationStatus": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.",
       "validation": [
         {
           "date": "2026-11-14",
@@ -3598,9 +3648,33 @@
           "observedPath": "Discovery empty-workspace prerequisite screens and retained gate binding boundary",
           "environment": "Isolated Documentation Browser Execution QA; synthetic organization; real pinned Frontend and Backend; customer Owner with platform_admin false; no connected Discovery source",
           "result": "Passed read-only runtime/capture/observer/gate prerequisite views and gate full-refresh retention; no enrollment or live instrumentation qualified."
+        },
+        {
+          "date": "2026-11-14",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Set up network observation in authorized Discovery compatibility QA",
+          "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+          "result": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified."
         }
       ],
-      "customerNotice": "Empty-source forms are checked. A compatible authorized source and approved customer-operated sensors are still required for live capture and reporting."
+      "customerNotice": "Enrollment, delivery, shutdown and a partial one-time capture were checked in isolated QA. Continuous connection attribution and service matching remain unverified; confirm a compatible collector/Backend before setup.",
+      "interfaces": [
+        "customer_operated_kubernetes_tcp_capture",
+        "customer_operated_continuous_observer"
+      ],
+      "verifiedAt": "2026-11-14",
+      "verifiedEnvironment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+      "sourceReview": {
+        "sourceReviewed": true,
+        "realBackendWalkthrough": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.",
+        "screenshots": "Required configuration, execution and retained-result captures individually reviewed; historical empty-prerequisite captures preserved",
+        "remainingGaps": [
+          "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
+          "Continuous connection attribution and Kubernetes service matching were not qualified: four received windows had22 unattributed and10 invalid inputs, zero attributed connections",
+          "Kernel loss is unknown; raw input was not retained and omission root cause is not established",
+          "Retention expiry/deletion was source reviewed, not waited through; inactive observers have no periodic sweep"
+        ]
+      }
     }
   ]
 }
