@@ -19,6 +19,7 @@
       "wheelSHA256": "2dc4e0407ef1193e8ca6de998fa9a1b84e5cf7715eec2c23ddfbb42003b56062",
       "usedBy": [
         "sdk/local-evals",
+        "get-started/quickstart",
         "SDK judge/check sections of sdk/evaluations and sdk/ci",
         "Account-free current-install smoke checks"
       ],
@@ -106,6 +107,19 @@
         "earlierFailureRootCauseProven": false,
         "completeKernelCaptureClaimed": false
       }
+    },
+    {
+      "reviewedAt": "2026-11-15",
+      "scope": "get-started/editions",
+      "repositories": {
+        "MorningHQ/martian-redteam": "fbc44ca17434c9b8f8a8fbbbc7937b4232eeea7e",
+        "MorningHQ/MartianBackend": "15e3270090ebacec4ebca404bed30c4d111cd750"
+      },
+      "paths": [
+        "MorningHQ/martian-redteam:src/martian/evals/server/entitlements.py",
+        "MorningHQ/MartianBackend:app/entitlements.py"
+      ],
+      "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
     }
   ]
 }

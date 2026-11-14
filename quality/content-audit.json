@@ -534,6 +534,20 @@
       "walkthroughQualification": "reference and navigation",
       "aiReview": true,
       "humanParticipant": false
+    },
+    {
+      "page": "get-started/editions",
+      "title": "Editions",
+      "contentReview": "reviewed against the Evals editions plan and the entitlement maps in martian-redteam and MartianBackend main; Planned items are labelled",
+      "renderCheck": "passed desktop 1440 light, built site in Chrome; no console errors, failed requests or overflow; 11 local links resolve",
+      "walkthroughQualification": "not a task guide"
+    },
+    {
+      "page": "get-started/quickstart",
+      "title": "Community quickstart",
+      "contentReview": "reviewed",
+      "renderCheck": "passed desktop 1440 light, built site in Chrome; no console errors, failed requests or overflow; 9 local links resolve",
+      "walkthroughQualification": "partial"
     }
   ],
   "findings": [
