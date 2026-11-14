@@ -1,0 +1,10 @@
+---
+import reference from '../../quality/attack-library.json';
+interface Props { slug: string }
+const attack = reference.attacks.find((entry) => entry.slug === Astro.props.slug);
+if (!attack) throw new Error(`Unknown attack reference: ${Astro.props.slug}`);
+---
+
+<p>Related MITRE ATLAS entries in the <a href="https://github.com/mitre-atlas/atlas-data">official data repository</a>:</p>
+<ul>{attack.atlasReferences.map((entry) => <li><a href={entry.url}>{entry.id} — {entry.name}</a></li>)}</ul>
+<p>These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See <a href="/frameworks/mitre-atlas/">how the ATLAS mapping works</a>.</p>

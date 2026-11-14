@@ -1,0 +1,53 @@
+---
+title: Business workflow abuse
+description: Test refunds, credits and claims against persisted application rules rather than relying on the agent's reported success.
+sidebar:
+  order: 11
+---
+
+import AttackLibraryCoverage from '../../../components/AttackLibraryCoverage.astro';
+import AttackReferences from '../../../components/AttackReferences.astro';
+
+Business workflow abuse breaks an application's rules through operations that may look individually legitimate. Examples include repeated credits, stacked compensation, duplicate claims and attempts to move an exception past its approval boundary.
+
+The important test is the business invariant: a rule about state that must hold across calls and sessions. An agent's polite response, a valid API schema or an accepted tool request does not establish that the invariant held.
+
+## A synthetic example
+
+A demo order permits a total credit of 25 units, even if a customer asks several times:
+
+```text title="Synthetic business invariant"
+Order: DEMO-104
+Maximum cumulative credit: 25 demo units
+Initial credited total: 0
+Forbidden result: two accepted credits of 25 make the total 50
+Expected invariant: credited_total <= 25
+```
+
+This is an explanatory fixture, not a claim that a particular Martian sandbox uses this rule. Use the approved scenario's actual invariant, starting state and supported outcome checks. Never substitute live money or customer records.
+
+## Find it in Martian
+
+<AttackLibraryCoverage slug="business-workflow-abuse" />
+
+The list includes refund loops, compensation stacking and duplicate claims. **MT-32 Price arbitrage is a declared gap.** The native `business` tag is a Martian grouping, not an OWASP identifier.
+
+A meaningful test requires access to the relevant synthetic business system and a way to inspect its state. Endpoint-only output can establish a claimed or attempted operation; it cannot automatically establish that a refund, claim or balance changed.
+
+## Verify the effect
+
+Capture the relevant initial state, record identity and allowed operation. Retain request and transaction identifiers, arguments, responses and the final state read from the authoritative system. Compare cumulative effects across the relevant sequence, not just each call in isolation.
+
+Check whether retries represent the same operation or a new operation. If dispatch succeeded but confirmation timed out, preserve the unknown result and inspect the receipt or ledger before resubmitting. A retry that creates another credit can itself change the state being measured.
+
+When a supported scenario provides an independent outcome check or no-implant control, inspect that evidence and its scope. Do not label an effect verified solely because the attacker, target or another model says it happened. See [reproduction and limits](/assessments/reproduction-and-limits/).
+
+## Reduce the risk
+
+Enforce cumulative limits, uniqueness, resource ownership and approval requirements in the business service. Use transaction boundaries and idempotency appropriate to the operation. Bind approvals to the exact consequential arguments and verify them again at execution. Include regression cases for a repeated request and a changed request, while preserving unknown outcomes safely.
+
+## Related standards and next steps
+
+<AttackReferences slug="business-workflow-abuse" />
+
+The ATLAS relationship concerns tool invocation, not a dedicated official refund-loop technique. See [OWASP excessive agency](/frameworks/owasp-llm/), [tool and action abuse](/attacks/tool-action-abuse/) and [assessment results](/assessments/evidence-and-results/).

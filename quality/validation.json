@@ -593,6 +593,22 @@
       "environment": "Production local preview; actual Chromium; desktop 1440 by 1000, narrow 390 by 844 and 320-pixel layouts; light and dark; AI-simulated novice/author review with no human participant",
       "result": "Passed focused documentation source, privacy, readability and actual UI checks; full Discovery qualification remains pending",
       "details": "372 actual browser responses with zero HTTP, failed-request, console or page errors across 23 checks. Four routes in sixteen desktop/narrow theme combinations and four 320-pixel checks passed. Exact page/code/agent-link clipboard, search, nested refresh, full-size viewing of all four new images, decoding, callout contrast, consecutive step numbering, logo-only branding and hidden header metadata passed. Six actual renders were viewed. The simulated novice review checked how to proceed from an empty workload, source or deployment selector; each now has a concrete linked prerequisite. Counts remain 28 verified, six partial and three pending; the strict release audit remains exit 1 with 24 findings."
+    },
+    {
+      "scope": "Attack-reference catalogue and primary-source audit",
+      "result": "passed",
+      "details": "22new reference articles:12native major families plus4focused attack pages,5framework guides and1hub. Actual stock Backend GET /v1/library/techniques and /v1/library/catalogue returned200;36techniques32available/4declared gaps match the source snapshot. All36IDs are accounted for in editorial relationships. All cited ATLAS IDs/names match official2026.10 data; metadata and source SHA256 retained in quality/attack-library.json. No new attack executions claimed; original37guide qualifications,stage lists,capture registry and dependencies unchanged."
+    },
+    {
+      "scope": "Attack-reference production build and existing checks",
+      "result": "passed",
+      "details": "69built pages;7924local references;68agent exports;85exact code payloads;158rendered screenshot captions;3existing export regressions. Strict release audit intentionally remains exit1 with the same24findings:9unfinished walkthroughs and14missing capture references. No qualification gates weakened."
+    },
+    {
+      "scope": "Attack-reference local real-browser and AI simulated novice review",
+      "environment": "local production output at127.0.0.1; actual Chrome, no network interception or mocked responses",
+      "result": "passed",
+      "details": "1188observed responses,78checks,0document/console/network/HTTP errors. All22new pages passed1440light/390dark;6representative routes also1440dark,390light and320light/dark. Exact page copy on22articles, exact example copy on16attack pages,6versioned agent-link copies,2search journeys, nested-sidebar/card/home navigation, full refresh, logo-only header,hidden verification metadata and no page overflow passed.44raw renders retained privately; representative renders visually inspected. AI simulated author review only; no human participant."
     }
   ],
   "remainingGaps": [

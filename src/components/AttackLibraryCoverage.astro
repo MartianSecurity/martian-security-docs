@@ -1,0 +1,28 @@
+---
+import reference from '../../quality/attack-library.json';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const attack = reference.attacks.find((entry) => entry.slug === slug);
+if (slug !== 'all' && !attack) throw new Error(`Unknown attack reference: ${slug}`);
+const techniques = slug === 'all'
+  ? reference.techniques
+  : reference.techniques.filter((entry) => attack!.techniqueIds.includes(entry.id));
+---
+
+{techniques.length > 0 ? (
+  <div class="sl-markdown-content">
+    <table>
+      <thead><tr><th>Related technique</th><th>Catalogue state</th></tr></thead>
+      <tbody>{techniques.map((technique) => (
+        <tr>
+          <td><code>{technique.id}</code> {technique.name}</td>
+          <td>{technique.covered ? 'In the library' : <strong>Declared gap</strong>}</td>
+        </tr>
+      ))}</tbody>
+    </table>
+  </div>
+) : (
+  <p>This family appears in the published attack catalogue, but the current technique list has no dedicated selectable entry for it.</p>
+)}
+<p>These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in <a href="/library/coverage/">Attack Library</a> before configuring an assessment. A declared gap stays unavailable.</p>

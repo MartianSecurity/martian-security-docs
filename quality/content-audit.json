@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-13T15:36:52.318376+00:00",
-  "scope": "Every public source page and rendered article; content/source audit, not full product or hosted parity signoff",
+  "reviewedAt": "2026-11-14T14:36:28.357947+00:00",
+  "scope": "Public source-page inventory. Attack-reference additions passed current source/content and local render review; earlier entries retain their recorded review scope. Not complete product or hosted-parity signoff.",
   "aiReview": true,
   "humanParticipant": false,
   "sourceRecord": "quality/sources.json",
@@ -336,6 +336,204 @@
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
       "walkthroughQualification": "verified"
+    },
+    {
+      "page": "attacks/business-workflow-abuse",
+      "title": "Business workflow abuse",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/data-exfiltration",
+      "title": "Data exfiltration",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/denial-of-service",
+      "title": "Denial of service and resource exhaustion",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/direct-prompt-injection",
+      "title": "Direct prompt injection",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/guardrail-judge-evasion",
+      "title": "Guardrail and judge evasion",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/human-manipulation",
+      "title": "Human manipulation",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/indirect-prompt-injection",
+      "title": "Indirect prompt injection",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/jailbreaks",
+      "title": "Jailbreaks",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/mcp-tool-poisoning",
+      "title": "MCP and tool poisoning",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/memory-context-poisoning",
+      "title": "Memory and context poisoning",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/multi-agent-attacks",
+      "title": "Multi-agent attacks",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/privilege-escalation",
+      "title": "Privilege escalation",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/prompt-injection",
+      "title": "Prompt injection",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/reasoning-alignment-subversion",
+      "title": "Reasoning and alignment subversion",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/supply-chain-backdoors",
+      "title": "Supply chain and backdoors",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "attacks/tool-action-abuse",
+      "title": "Tool and action abuse",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "frameworks/mitre-atlas",
+      "title": "MITRE ATLAS",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "frameworks/mitre-attack",
+      "title": "MITRE ATT&CK",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "frameworks/nist-ai-rmf",
+      "title": "NIST AI RMF",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "frameworks/owasp-agentic",
+      "title": "OWASP Agentic Top 10",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "frameworks/owasp-llm",
+      "title": "OWASP LLM Top 10",
+      "contentReview": "reviewed against native library source/API and primary framework references",
+      "renderCheck": "passed local production desktop1440light and narrow390dark; six representative routes also1440dark,390light and320light/dark",
+      "walkthroughQualification": "reference article; no new attack execution or product walkthrough qualification",
+      "aiReview": true,
+      "humanParticipant": false
+    },
+    {
+      "page": "library/attacks",
+      "title": "Attack library",
+      "contentReview": "reviewed; all12major families,36native techniques and4declared gaps accounted for",
+      "renderCheck": "passed local responsive/theme, exact copy, catalogue disclosure, card/sidebar navigation and search checks",
+      "walkthroughQualification": "reference and navigation",
+      "aiReview": true,
+      "humanParticipant": false
     }
   ],
   "findings": [

@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-14",
+  "scope": "Reference documentation. Catalogue membership and editorial relationships do not establish executed attacks, findings or framework certification.",
+  "sources": {
+    "backend": {
+      "repository": "https://github.com/MorningHQ/MartianBackend",
+      "revision": "d18960e4937a1632a3f1773facecd8377cc0caab",
+      "files": [
+        "app/api/library.py",
+        "app/seed.py",
+        "seed/mock/fixtures.json"
+      ],
+      "observedEndpoints": [
+        "GET /v1/library/techniques",
+        "GET /v1/library/catalogue"
+      ]
+    },
+    "frontend": {
+      "repository": "https://github.com/MorningHQ/MartianFrontend",
+      "revision": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+      "files": [
+        "src/pages/AttackLibrary.jsx",
+        "src/lib/taxonomy.js"
+      ]
+    },
+    "mitreAtlas": {
+      "url": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.10.yaml",
+      "collectionVersion": "2026.10",
+      "sha256": "ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d"
+    },
+    "owaspLlm": "https://genai.owasp.org/llm-top-10/",
+    "owaspAgentic": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+    "mitreAttack": "https://attack.mitre.org/",
+    "nistAiRmf": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+  },
+  "majorClasses": [
+    {
+      "code": "PI",
+      "name": "Prompt Injection"
+    },
+    {
+      "code": "JB",
+      "name": "Jailbreak"
+    },
+    {
+      "code": "TA",
+      "name": "Tool & Action Abuse"
+    },
+    {
+      "code": "MP",
+      "name": "Memory & Context Poisoning"
+    },
+    {
+      "code": "EX",
+      "name": "Data Exfiltration"
+    },
+    {
+      "code": "PE",
+      "name": "Privilege Escalation"
+    },
+    {
+      "code": "MA",
+      "name": "Multi-Agent Attack"
+    },
+    {
+      "code": "SC",
+      "name": "Supply Chain & Backdoor"
+    },
+    {
+      "code": "RS",
+      "name": "Reasoning/Alignment Subversion"
+    },
+    {
+      "code": "GE",
+      "name": "Guardrail/Judge Evasion"
+    },
+    {
+      "code": "DS",
+      "name": "Denial of Service"
+    },
+    {
+      "code": "HM",
+      "name": "Human Manipulation"
+    }
+  ],
+  "techniques": [
+    {
+      "id": "MT-01",
+      "name": "Direct instruction override",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-02",
+      "name": "Roleplay framing",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-03",
+      "name": "Crescendo escalation",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-04",
+      "name": "Encoding obfuscation",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-05",
+      "name": "Many-shot priming",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-06",
+      "name": "Refusal suppression",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "interface",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-07",
+      "name": "Document injection",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "retrieval",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-08",
+      "name": "Email thread injection",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "retrieval",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-09",
+      "name": "Tool-output poisoning",
+      "tactic": "Injection",
+      "owasp": "LLM01",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-10",
+      "name": "Retrieval store poisoning",
+      "tactic": "Injection",
+      "owasp": "LLM08",
+      "nist": "Measure",
+      "surface": "retrieval",
+      "outcome": "persist",
+      "covered": true
+    },
+    {
+      "id": "MT-11",
+      "name": "MCP descriptor poisoning",
+      "tactic": "Injection",
+      "owasp": "ASI04",
+      "nist": "Map",
+      "surface": "mcp",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-12",
+      "name": "Argument injection",
+      "tactic": "Execution",
+      "owasp": "ASI02",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-13",
+      "name": "Unsafe parameter binding",
+      "tactic": "Execution",
+      "owasp": "ASI02",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-14",
+      "name": "Tool-chain composition",
+      "tactic": "Execution",
+      "owasp": "ASI02",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-15",
+      "name": "Approval-gate bypass",
+      "tactic": "Escalation",
+      "owasp": "ASI03",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-16",
+      "name": "Confused deputy",
+      "tactic": "Escalation",
+      "owasp": "ASI03",
+      "nist": "Manage",
+      "surface": "identity",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-17",
+      "name": "Role inheritance",
+      "tactic": "Escalation",
+      "owasp": "ASI03",
+      "nist": "Manage",
+      "surface": "identity",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-18",
+      "name": "Delegation widening",
+      "tactic": "Escalation",
+      "owasp": "ASI07",
+      "nist": "Manage",
+      "surface": "orchestration",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-19",
+      "name": "Identity spoofing",
+      "tactic": "Escalation",
+      "owasp": "social",
+      "nist": "Manage",
+      "surface": "identity",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-20",
+      "name": "Session hijack",
+      "tactic": "Escalation",
+      "owasp": "ASI03",
+      "nist": "Manage",
+      "surface": "identity",
+      "outcome": "data",
+      "covered": false
+    },
+    {
+      "id": "MT-21",
+      "name": "Memory poisoning",
+      "tactic": "Persistence",
+      "owasp": "ASI06",
+      "nist": "Measure",
+      "surface": "memory",
+      "outcome": "persist",
+      "covered": true
+    },
+    {
+      "id": "MT-22",
+      "name": "Cross-session persistence",
+      "tactic": "Persistence",
+      "owasp": "ASI06",
+      "nist": "Measure",
+      "surface": "memory",
+      "outcome": "persist",
+      "covered": true
+    },
+    {
+      "id": "MT-23",
+      "name": "Summary laundering",
+      "tactic": "Persistence",
+      "owasp": "ASI06",
+      "nist": "Measure",
+      "surface": "memory",
+      "outcome": "persist",
+      "covered": true
+    },
+    {
+      "id": "MT-24",
+      "name": "Standing backdoor",
+      "tactic": "Persistence",
+      "owasp": "ASI06",
+      "nist": "Manage",
+      "surface": "memory",
+      "outcome": "persist",
+      "covered": false
+    },
+    {
+      "id": "MT-25",
+      "name": "Cross-tenant probe",
+      "tactic": "Collection",
+      "owasp": "LLM02",
+      "nist": "Measure",
+      "surface": "retrieval",
+      "outcome": "data",
+      "covered": true
+    },
+    {
+      "id": "MT-26",
+      "name": "PII surfacing",
+      "tactic": "Collection",
+      "owasp": "LLM02",
+      "nist": "Measure",
+      "surface": "retrieval",
+      "outcome": "data",
+      "covered": true
+    },
+    {
+      "id": "MT-27",
+      "name": "Bulk record extraction",
+      "tactic": "Collection",
+      "owasp": "LLM02",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "data",
+      "covered": true
+    },
+    {
+      "id": "MT-28",
+      "name": "Outbound mail egress",
+      "tactic": "Exfiltration",
+      "owasp": "LLM02",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "data",
+      "covered": true
+    },
+    {
+      "id": "MT-29",
+      "name": "Canary confirmation",
+      "tactic": "Exfiltration",
+      "owasp": "LLM02",
+      "nist": "Measure",
+      "surface": "tools",
+      "outcome": "data",
+      "covered": true
+    },
+    {
+      "id": "MT-30",
+      "name": "Refund loop",
+      "tactic": "Impact",
+      "owasp": "business",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-31",
+      "name": "Comp stacking",
+      "tactic": "Impact",
+      "owasp": "business",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-32",
+      "name": "Price arbitrage",
+      "tactic": "Impact",
+      "owasp": "business",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": false
+    },
+    {
+      "id": "MT-33",
+      "name": "Duplicate claim",
+      "tactic": "Impact",
+      "owasp": "business",
+      "nist": "Manage",
+      "surface": "tools",
+      "outcome": "money",
+      "covered": true
+    },
+    {
+      "id": "MT-34",
+      "name": "Supervisor capture",
+      "tactic": "Evasion",
+      "owasp": "ASI08",
+      "nist": "Manage",
+      "surface": "orchestration",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-35",
+      "name": "Trust-edge injection",
+      "tactic": "Evasion",
+      "owasp": "ASI07",
+      "nist": "Map",
+      "surface": "orchestration",
+      "outcome": "control",
+      "covered": true
+    },
+    {
+      "id": "MT-36",
+      "name": "Worker collusion",
+      "tactic": "Evasion",
+      "owasp": "ASI08",
+      "nist": "Map",
+      "surface": "orchestration",
+      "outcome": "control",
+      "covered": false
+    }
+  ],
+  "mappingType": "Editorial related-technique guidance; not a native exhaustive one-to-one framework mapping.",
+  "attacks": [
+    {
+      "slug": "prompt-injection",
+      "catalogueClass": "PI",
+      "techniqueIds": [
+        "MT-01",
+        "MT-02",
+        "MT-03",
+        "MT-04",
+        "MT-05",
+        "MT-06",
+        "MT-07",
+        "MT-08",
+        "MT-09",
+        "MT-10",
+        "MT-11"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0051",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902",
+          "name": "LLM Prompt Injection"
+        }
+      ]
+    },
+    {
+      "slug": "jailbreaks",
+      "catalogueClass": "JB",
+      "techniqueIds": [
+        "MT-02",
+        "MT-03",
+        "MT-04",
+        "MT-05",
+        "MT-06"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0054",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3225",
+          "name": "LLM Jailbreak"
+        },
+        {
+          "id": "AML.T0068",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3640",
+          "name": "LLM Prompt Obfuscation"
+        }
+      ]
+    },
+    {
+      "slug": "tool-action-abuse",
+      "catalogueClass": "TA",
+      "techniqueIds": [
+        "MT-09",
+        "MT-11",
+        "MT-12",
+        "MT-13",
+        "MT-14"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0053",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3187",
+          "name": "AI Agent Tool Invocation"
+        },
+        {
+          "id": "AML.T0110",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5113",
+          "name": "AI Agent Tool Poisoning"
+        }
+      ]
+    },
+    {
+      "slug": "memory-context-poisoning",
+      "catalogueClass": "MP",
+      "techniqueIds": [
+        "MT-10",
+        "MT-21",
+        "MT-22",
+        "MT-23",
+        "MT-24"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0070",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3736",
+          "name": "RAG Poisoning"
+        },
+        {
+          "id": "AML.T0080",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L4028",
+          "name": "AI Agent Context Poisoning"
+        }
+      ]
+    },
+    {
+      "slug": "data-exfiltration",
+      "catalogueClass": "EX",
+      "techniqueIds": [
+        "MT-25",
+        "MT-26",
+        "MT-27",
+        "MT-28",
+        "MT-29"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0086",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L4425",
+          "name": "Exfiltration via AI Agent Tool Invocation"
+        },
+        {
+          "id": "AML.T0136",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L6249",
+          "name": "Exfiltration via AI User Interface"
+        }
+      ]
+    },
+    {
+      "slug": "privilege-escalation",
+      "catalogueClass": "PE",
+      "techniqueIds": [
+        "MT-15",
+        "MT-16",
+        "MT-17",
+        "MT-18",
+        "MT-19",
+        "MT-20"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0053",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3187",
+          "name": "AI Agent Tool Invocation"
+        },
+        {
+          "id": "AML.T0083",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L4148",
+          "name": "Credentials from AI Agent Configuration"
+        }
+      ]
+    },
+    {
+      "slug": "multi-agent-attacks",
+      "catalogueClass": "MA",
+      "techniqueIds": [
+        "MT-18",
+        "MT-34",
+        "MT-35",
+        "MT-36"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0051",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902",
+          "name": "LLM Prompt Injection"
+        },
+        {
+          "id": "AML.T0118",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5656",
+          "name": "Autonomous AI Agent Communication"
+        }
+      ]
+    },
+    {
+      "slug": "supply-chain-backdoors",
+      "catalogueClass": "SC",
+      "techniqueIds": [
+        "MT-11",
+        "MT-24"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0010",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L1211",
+          "name": "Supply Chain Compromise"
+        },
+        {
+          "id": "AML.T0110",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5113",
+          "name": "AI Agent Tool Poisoning"
+        },
+        {
+          "id": "AML.T0115",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5446",
+          "name": "Publish Poisoned AI Artifacts"
+        }
+      ]
+    },
+    {
+      "slug": "reasoning-alignment-subversion",
+      "catalogueClass": "RS",
+      "techniqueIds": [],
+      "atlasReferences": [
+        {
+          "id": "AML.T0145",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L6728",
+          "name": "Poison AI Agent Learning Environment"
+        },
+        {
+          "id": "AML.T0054",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3225",
+          "name": "LLM Jailbreak"
+        }
+      ]
+    },
+    {
+      "slug": "guardrail-judge-evasion",
+      "catalogueClass": "GE",
+      "techniqueIds": [
+        "MT-04",
+        "MT-06",
+        "MT-34"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0068",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3640",
+          "name": "LLM Prompt Obfuscation"
+        },
+        {
+          "id": "AML.T0051",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902",
+          "name": "LLM Prompt Injection"
+        }
+      ]
+    },
+    {
+      "slug": "denial-of-service",
+      "catalogueClass": "DS",
+      "techniqueIds": [],
+      "atlasReferences": [
+        {
+          "id": "AML.T0029",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2208",
+          "name": "Denial of AI Service"
+        },
+        {
+          "id": "AML.T0034",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2247",
+          "name": "Cost Harvesting"
+        }
+      ]
+    },
+    {
+      "slug": "human-manipulation",
+      "catalogueClass": "HM",
+      "techniqueIds": [
+        "MT-15",
+        "MT-19"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0067",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3602",
+          "name": "LLM Trusted Output Components Manipulation"
+        },
+        {
+          "id": "AML.T0052",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3012",
+          "name": "Phishing"
+        }
+      ]
+    },
+    {
+      "slug": "direct-prompt-injection",
+      "catalogueClass": null,
+      "techniqueIds": [
+        "MT-01",
+        "MT-02",
+        "MT-03",
+        "MT-04",
+        "MT-05",
+        "MT-06"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0051.000",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2942",
+          "name": "Direct"
+        }
+      ]
+    },
+    {
+      "slug": "indirect-prompt-injection",
+      "catalogueClass": null,
+      "techniqueIds": [
+        "MT-07",
+        "MT-08",
+        "MT-09",
+        "MT-10"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0051.001",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2957",
+          "name": "Indirect"
+        }
+      ]
+    },
+    {
+      "slug": "mcp-tool-poisoning",
+      "catalogueClass": null,
+      "techniqueIds": [
+        "MT-09",
+        "MT-11",
+        "MT-12",
+        "MT-13",
+        "MT-14"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0110.000",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5166",
+          "name": "Definition and Instructions"
+        },
+        {
+          "id": "AML.T0110.002",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5242",
+          "name": "Runtime Response"
+        }
+      ]
+    },
+    {
+      "slug": "business-workflow-abuse",
+      "catalogueClass": null,
+      "techniqueIds": [
+        "MT-12",
+        "MT-13",
+        "MT-14",
+        "MT-15",
+        "MT-16",
+        "MT-30",
+        "MT-31",
+        "MT-32",
+        "MT-33"
+      ],
+      "atlasReferences": [
+        {
+          "id": "AML.T0053",
+          "url": "https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3187",
+          "name": "AI Agent Tool Invocation"
+        }
+      ]
+    }
+  ]
+}
