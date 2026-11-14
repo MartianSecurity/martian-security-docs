@@ -2457,13 +2457,7 @@ Network capture and continuous observers have a separate [setup and lifecycle](h
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/network-observation/)
 
-> **Page qualification:** Current beta console · owner/admin manages; authorized roles read · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.
-
-Partly verified guide
-
-Enrollment, delivery, shutdown and a partial one-time capture were checked in isolated QA. Continuous connection attribution and service matching remain unverified; confirm a compatible collector/Backend before setup.
+> **Page qualification:** Current beta console · owner/admin manages; authorized roles read · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Observe scoped TCP activity from customer-operated Kubernetes sensors. A one-time capture and a continuous observer have separate grants and lifecycles. Neither grants model/tool reporting, blocks calls or activates network isolation.
 
@@ -2519,34 +2513,47 @@ The source workload namespace and service-metadata namespaces are distinct scope
 5.  Open the relevant inventory record under **Discovery → Overview**, then **Network evidence**. Its continuous view follows the latest observer for that workload’s source. Return to **Sources → Continuous network reporting** to manage the registration.
 6.  Read last contact, reporting/stale state, credential expiry and the expected reporting interval. Expand **Latest observer health** for each node’s sensor readiness, stream status, input events, omitted events and diagnostics.
 
-![A real second observer window is fresh and delivered but degraded, with all twelve latest-window inputs omitted.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-degraded-health.png)
+![Fresh observer health and real workload destinations coexist with explicit omitted-event counts.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-continuous-health-and-map.png)
 
-Sequence two and its receipt time confirm delivery; omitted inputs leave no attributed connections. Ready sensors and running streams do not establish usable or complete capture.
+Sequence four was fresh at capture time. The map contains the workload and two destinations while Degraded and the omission counters remain visible.
 
 7.  Confirm a newly completed window and its sequence/time after the process reports. Refresh and verify retained evidence. A Ready Pod or running process does not establish complete kernel capture.
+8.  Select a destination card, then expand its connection row. A matched Kubernetes Service shows its namespace/name, UID, ClusterIP and TCP port. An IP-and-port destination can remain **unresolved** even when other destinations have Service matches.
 
-Delivered windows can still lack usable connections
+![An actual Kubernetes Service destination is selected with its UID, ClusterIP, port and original Pod identity.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-kubernetes-service-match.png)
 
-The recorded continuous run delivered four windows, but all 32 input events were omitted: 22 were unattributed and 10 invalid. The console correctly showed **Degraded** and **No attributed connections in this window**. Continuous connection attribution and service matching were not qualified by that run. Do not interpret its empty map as inactivity or infer a cause from counters alone.
+The two real policy reads produced a stable default/kubernetes:443 match. Its UID was independently checked against Kubernetes; this is destination metadata, not proof of a backend Pod or business effect.
+
+Read the map and health together
+
+The completed example delivered nine windows with two real destinations, including **default/kubernetes:443**. Its Service UID matched an independent Kubernetes read. Coverage still showed **Degraded**: 38 of 53 inputs were unattributed, leaving 15 attributed connect events. Service matching does not establish which backend Pod handled a request, a completed handshake or complete capture.
 
 ## 3\. Stop reporting and retain the right evidence
 
 1.  Return to **Discovery → Sources → Continuous network reporting** and choose **Revoke observer reporting** for the intended registration.
 2.  Refresh and confirm **revoked**. New windows are rejected. Ask the operator to confirm that the connected observer exited at its next request and acknowledged its stop.
 
-![The observer registration remains revoked after a full page refresh.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-observer-revoked.png)
+![The newest observer and the earlier retired registration both remain revoked after full refresh.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-continuous-registrations-revoked.png)
 
-Revocation rejects new windows. The actual stock observer then exited and acknowledged its stop; sensor removal was a separate operator action.
+Revoke the intended registration. The latest process acknowledged its stop; its earlier retired predecessor remains listed as separate history. Neither grant removal uninstalls sensors.
 
 3.  Reopen the workload’s **Network evidence**. Previously received windows remain readable within their retention boundary. **At last report** sensor and stream values are historical after revocation; they are not current process health.
 
-![The revoked observer retains all four received windows and the original degraded coverage counters.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-retained-after-revoke.png)
+![Nine windows, two destinations and the original coverage counters remain readable after revocation and sensor removal.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-service-evidence-after-retirement.png)
 
-Saved windows remain evidence after revocation. Sensor and stream values describe the last report, not current health; continuous attribution and service matching remain unqualified.
+The completed run retained 15 attributed events and 38 omitted inputs. Sensor and stream values describe the last report; the separately removed sensors are not currently running.
 
 4.  Stop/remove customer-side processes and node sensors separately through the cluster operator. Revoking the upload grant does not uninstall them. In the recorded QA check, the observer exited after revocation, then the operator removed only its separately installed sensor resources. The customer workload remained Ready with the same Pod identity.
 
 ## Failures and limits
+
+Delivered windows can still lack usable connections
+
+An earlier separate run delivered four windows but omitted all 32 inputs: 22 were unattributed and 10 invalid. It correctly showed **Degraded** and **No attributed connections in this window**. The later successful example used a new grant and separately installed sensors with unchanged software; it does not establish the earlier failure’s cause. Ask the operator to check scope, Pod/container identities, timestamps and omission counters. Do not interpret an empty map as inactivity.
+
+![A real second observer window is fresh and delivered but degraded, with all twelve latest-window inputs omitted.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-network-degraded-health.png)
+
+Sequence two and its receipt time confirm delivery; omitted inputs leave no attributed connections. Ready sensors and running streams do not establish usable or complete capture.
 
 If no source is listed
 
@@ -5136,13 +5143,13 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **37 task guides**, **31 are verified**, **6 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **185 captured references** across **173 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **37 task guides**, **32 are verified**, **5 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **189 captured references** across **177 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
 The public site now passes trusted HTTPS checks, including nested guides, Markdown, screenshots, diagrams and example downloads. HTTP and the earlier GitHub Pages address redirect to HTTPS. The GitHub Markdown mirror remains an independent access path for assistants. These publication checks are separate from the application walkthroughs below.
 
-The latest completeness audit added the missing project dashboard, native annotation and network-observer instructions and a [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md). The dashboard and annotation guides now have real console captures and successful walkthroughs in isolated QA. Discovery now has a genuine authorized Kubernetes source, runtime and call-gate walkthroughs in separate compatibility QA. One-time network evidence is partial; continuous enrollment, delivery and shutdown passed, while connection attribution and service matching remain unqualified. Earlier failed reads remain recorded; the successful checks below do not establish hosted-beta parity or general service reliability.
+The latest completeness audit added the missing project dashboard, native annotation and network-observer instructions and a [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md). The dashboard and annotation guides now have real console captures and successful walkthroughs in isolated QA. Discovery now has a genuine authorized Kubernetes source, runtime and call-gate walkthroughs in separate compatibility QA. One-time network evidence is partial. A later distinct continuous run qualified workload attribution, Kubernetes Service matching, delivery and shutdown with explicit omission limits; the earlier all-omitted run remains recorded. Earlier failed reads remain recorded; the successful checks below do not establish hosted-beta parity or general service reliability.
 
 ## Observed walkthroughs — 13–14 November 2026
 
@@ -5250,7 +5257,7 @@ A separate isolated QA organization used a real customer Owner (**platform\_admi
 -   **Runtime:** the released SDK reported eight distinct successful reads of one named synthetic ConfigMap from the actual enrolled Pod. Full refresh and explicit binding/time selection retained **8 tool calls / 0 model calls**, eight response-resource mappings and all eight original trace IDs. The latest collected RBAC snapshot aligned with the caller-declared named GET and service account. Identity, call-time permission and business impact remain independent claims; no assessed baseline was invented.
 -   **Call controls:** the actual downloaded assignment enrolled that exact tool and one fresh SDK process. A five-minute block refused call entry and retained its SDK acknowledgment, then explicit Resume allowed a new lookup. A separate one-minute block refused entry and expired naturally; a subsequent new lookup succeeded. Both histories survived refresh. The distinct downloaded network intent remained **NOT EXECUTABLE**, with activation disabled.
 -   **One-time TCP capture:** approved sensors and the unchanged observer returned a retained **partial** receipt: 23 input events, seven attributed events in two destination groups, and 16 unattributed events. The upload grant was revoked through the UI; its receipt remained readable.
--   **Continuous observer:** one original process delivered four contiguous windows, then UI revocation rejected its next assignment request and the process acknowledged its stop. All four windows remained readable. Coverage was **degraded**: all 32 events were omitted (22 unattributed, ten invalid), so continuous connection attribution and Kubernetes service matching remain unqualified. Raw stream contents were not retained and no cause was inferred from counters. The operator separately removed only the owned sensor resources; existing workload and system Pod identities were unchanged.
+-   **Continuous observer:** the earlier run delivered four windows with all 32 events omitted; that failure is preserved. A later distinct grant and separately installed sensors, using unchanged software, delivered **nine** contiguous windows with **15 attributed events in two destination groups** and **38 unattributed inputs**. Two new original policy reads succeeded. The `default/kubernetes:443` Service UID matched an independent Kubernetes read; the other destination remained unresolved. Full refresh retained the map, and UI revocation stopped the stock process with its matching stop acknowledgment. All nine windows remained readable after the sensors were removed separately; application and system Pod identities were unchanged. Coverage remained **degraded**, kernel loss unknown, and the earlier failure’s cause unproven. Six final owner/auth/tenant/revocation checks passed; ten original tool trace IDs are now retained across both walkthroughs.
 -   **Boundaries:** fifteen final real API checks passed: own retained evidence **200**, anonymous and wrong credential type **401**, revoked upload authority **403**, and foreign-organization reads **404**. The two denied call trace IDs were absent from executed runtime events. No events were fabricated, uploads replayed or model-provider requests made for this walkthrough.
 
 The dedicated QA stack intentionally has no Evals/orchestrator provisioning. Its unrelated bootstrap **503** responses and stale sidebar warning remain recorded; the named Discovery requests passed. The current hosting drawer also omits the collected workload-state extension. Neither those UI labels nor an inventory receipt establish current workload health.

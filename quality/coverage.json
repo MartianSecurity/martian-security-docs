@@ -3615,9 +3615,11 @@
         "discovery-network-capture-evidence",
         "discovery-network-capture-coverage",
         "discovery-continuous-observer",
+        "discovery-network-qualified-health",
+        "discovery-network-qualified-service",
+        "discovery-network-qualified-retired-source",
+        "discovery-network-qualified-retained",
         "discovery-network-reporting-health",
-        "discovery-network-observer-revoked",
-        "discovery-network-retained-after-revoke",
         "discovery-network-prerequisite",
         "discovery-observer-prerequisite"
       ],
@@ -3626,9 +3628,11 @@
         "discovery-network-capture-evidence",
         "discovery-network-capture-coverage",
         "discovery-continuous-observer",
+        "discovery-network-qualified-health",
+        "discovery-network-qualified-service",
+        "discovery-network-qualified-retired-source",
+        "discovery-network-qualified-retained",
         "discovery-network-reporting-health",
-        "discovery-network-observer-revoked",
-        "discovery-network-retained-after-revoke",
         "discovery-network-prerequisite",
         "discovery-observer-prerequisite"
       ],
@@ -3639,8 +3643,8 @@
         "Read fresh windows and reporting health",
         "Revoke reporting and stop/remove processes separately"
       ],
-      "qualification": "partial",
-      "validationStatus": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.",
+      "qualification": "verified",
+      "validationStatus": "All five unchanged lifecycle stages passed in named candidate QA, including usable continuous workload attribution and stable Kubernetes Service matching. The distinct stock process delivered9windows/53inputs with15attributed events in2groups and38unattributed inputs, then UI revocation stopped it and separately owned sensors were removed. Full refresh retained the map, Service UID and retirement state. Earlier all-omitted run remains recorded; no complete kernel-capture, hosted parity or business-effect claim.",
       "validation": [
         {
           "date": "2026-11-14",
@@ -3655,24 +3659,31 @@
           "observedPath": "Set up network observation in authorized Discovery compatibility QA",
           "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
           "result": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified."
+        },
+        {
+          "date": "2026-11-14",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Fresh stock continuous observer with real workload and Service matches, retained refresh and separate retirement",
+          "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+          "result": "All five unchanged lifecycle stages passed in named candidate QA, including usable continuous workload attribution and stable Kubernetes Service matching. The distinct stock process delivered9windows/53inputs with15attributed events in2groups and38unattributed inputs, then UI revocation stopped it and separately owned sensors were removed. Full refresh retained the map, Service UID and retirement state. Earlier all-omitted run remains recorded; no complete kernel-capture, hosted parity or business-effect claim."
         }
       ],
-      "customerNotice": "Enrollment, delivery, shutdown and a partial one-time capture were checked in isolated QA. Continuous connection attribution and service matching remain unverified; confirm a compatible collector/Backend before setup.",
+      "customerNotice": "This walkthrough passed in isolated QA with the compatible Backend candidate from PR112. The example retains partial/degraded coverage and unknown kernel loss; confirm your workspace uses a compatible collector and Backend.",
       "interfaces": [
         "customer_operated_kubernetes_tcp_capture",
         "customer_operated_continuous_observer"
       ],
       "verifiedAt": "2026-11-14",
-      "verifiedEnvironment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta",
+      "verifiedEnvironment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "All five listed lifecycle stages were exercised: real scoped grants/private assignments, separately installed approved sensors and stock process, fresh windows/health, actual revocation/stop acknowledgment and independent sensor removal. One-time capture retained two real destination groups with partial coverage. Continuous delivery passed but all32 inputs were omitted, so usable continuous attribution and service matching remain unqualified.",
-        "screenshots": "Required configuration, execution and retained-result captures individually reviewed; historical empty-prerequisite captures preserved",
+        "realBackendWalkthrough": "All five unchanged lifecycle stages passed in named candidate QA, including usable continuous workload attribution and stable Kubernetes Service matching. The distinct stock process delivered9windows/53inputs with15attributed events in2groups and38unattributed inputs, then UI revocation stopped it and separately owned sensors were removed. Full refresh retained the map, Service UID and retirement state. Earlier all-omitted run remains recorded; no complete kernel-capture, hosted parity or business-effect claim.",
+        "screenshots": "All required configuration, map/health, exact Service identity and retirement stages captured; four new direct images individually reviewed; historical failed captures retained",
         "remainingGaps": [
-          "Backend PR112 is unmerged because GitHub Actions jobs could not start due to billing; hosted beta deployment/parity is not attested",
-          "Continuous connection attribution and Kubernetes service matching were not qualified: four received windows had22 unattributed and10 invalid inputs, zero attributed connections",
-          "Kernel loss is unknown; raw input was not retained and omission root cause is not established",
-          "Retention expiry/deletion was source reviewed, not waited through; inactive observers have no periodic sweep"
+          "Backend PR112 merge and hosted beta parity remain unqualified; CI is waiting for Actions billing",
+          "Kernel event loss and complete capture remain unknown; both observed runs reported coverage gaps",
+          "The earlier all-omitted run's root cause is unproven; no raw stream from that run was retained",
+          "Long retention/deletion timing and production least-privilege observer packaging were not qualified"
         ]
       }
     }

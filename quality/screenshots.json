@@ -4302,6 +4302,102 @@
       "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
       "reviewedForSecrets": true,
       "sha256": "26d89d987377dbe8cd98326a5875b06e5a885fe0c9b258c4facbb894c15e7a8e"
+    },
+    {
+      "id": "discovery-network-qualified-health",
+      "file": "discovery-network-continuous-health-and-map.png",
+      "alt": "Fresh observer health and real workload destinations coexist with explicit omitted-event counts.",
+      "caption": "Sequence four was fresh at capture time. The map contains the workload and two destinations while Degraded and the omission counters remain visible.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Connect a continuous observer, after step 6"
+      ],
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T19:01:27.702921+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "260c781d324617ac10d7397468ba6565e50bd8870b3e9273e27d6f0f6fed15aa"
+    },
+    {
+      "id": "discovery-network-qualified-service",
+      "file": "discovery-network-kubernetes-service-match.png",
+      "alt": "An actual Kubernetes Service destination is selected with its UID, ClusterIP, port and original Pod identity.",
+      "caption": "The two real policy reads produced a stable default/kubernetes:443 match. Its UID was independently checked against Kubernetes; this is destination metadata, not proof of a backend Pod or business effect.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Connect a continuous observer, after step 8"
+      ],
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T19:02:05.741792+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "09e1611be3ec3f79b120c62c066346e6738bfc916201e946d43bfca7407523ac"
+    },
+    {
+      "id": "discovery-network-qualified-retired-source",
+      "file": "discovery-network-continuous-registrations-revoked.png",
+      "alt": "The newest observer and the earlier retired registration both remain revoked after full refresh.",
+      "caption": "Revoke the intended registration. The latest process acknowledged its stop; its earlier retired predecessor remains listed as separate history. Neither grant removal uninstalls sensors.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Stop reporting and retain the right evidence, after step 2"
+      ],
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T19:07:05.168920+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "eebce30ac21b3291140eae039a570c8051e240cd17eaf84f40af790a73349150"
+    },
+    {
+      "id": "discovery-network-qualified-retained",
+      "file": "discovery-network-service-evidence-after-retirement.png",
+      "alt": "Nine windows, two destinations and the original coverage counters remain readable after revocation and sensor removal.",
+      "caption": "The completed run retained 15 attributed events and 38 omitted inputs. Sensor and stream values describe the last report; the separately removed sensors are not currently running.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "discovery/network-observation: Stop reporting and retain the right evidence, after step 3"
+      ],
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-14T19:07:55.082503+00:00",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "sourceMatchesDeployment": "Twelve relevant served Frontend files and eleven running Backend files matched the source pins. SDK martian-sdk 0.1.3 was installed from the verified released wheel. PR112 remains unmerged; hosted beta parity is not attested.",
+      "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
+      "reviewedForSecrets": true,
+      "sha256": "93a394861ef9697a7f8c7df9908dce2ed3f9b4524abe15bf44b81c08ae5b61d7"
     }
   ]
 }
