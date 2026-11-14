@@ -925,6 +925,31 @@
         "Kernel loss is unknown; raw input was not retained and omission root cause is not established",
         "Retention expiry/deletion was source reviewed, not waited through; inactive observers have no periodic sweep"
       ]
+    },
+    {
+      "task": "Fresh continuous network workload attribution, stable Service match and verified retirement",
+      "date": "2026-11-14",
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "sourceRevisions": {
+        "frontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "backend": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
+        "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
+        "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      },
+      "result": "All five unchanged lifecycle stages passed in named candidate QA, including usable continuous workload attribution and stable Kubernetes Service matching. The distinct stock process delivered9windows/53inputs with15attributed events in2groups and38unattributed inputs, then UI revocation stopped it and separately owned sensors were removed. Full refresh retained the map, Service UID and retirement state. Earlier all-omitted run remains recorded; no complete kernel-capture, hosted parity or business-effect claim.",
+      "observed": [
+        "The earlier observer stayed revoked and its receipts were not replayed. The operator reinstalled the same pinned sensor manifest in the same approved namespace/node with new recorded object UIDs, retaining image/gadget pins, OCI signature checks, existing application and reader authority.",
+        "One bounded diagnostic projected only the existing allowlisted metadata, with no Backend grant/upload or business call. It retained one valid workload connection; four loopback-address events failed the Pod source-IP check. This does not establish the earlier run's invalid/unattributed causes.",
+        "Actual UI created one new observer201/no-store with the same explicit workload/node/service-metadata scopes,30second interval,1hour lifetime and24hour retention. The assignment download matched the response and excluded the private token; the credential panel was cleared before captures. An initial automation selector wait failed before submission; an independent GET confirmed no enrollment before the corrected single original submit.",
+        "One unchanged stock network_live process delivered sequences1through9 once each. Two new individually journaled policy reads succeeded200 with acknowledged SDK delivery and exact retained trace IDs. The aggregate had53inputs,15attributed connect events in2destination groups,38unattributed,0invalid/overflow/excluded/diagnostic counts; kernel loss unknown. Counts at each screenshot describe that earlier capture time, not a later total.",
+        "default/kubernetes:443 matched stable Service UID5c4e4fcb-2397-471e-9097-ce28888ec646 and ClusterIP10.96.0.1. An independent actual Kubernetes Service read confirmed UID/IP/port. The private Backend destination remained unresolved. Full UI refresh returned200 with the same observer, workload/Pod identity and Service match.",
+        "Actual UI revocation204 persisted after reload. At its next assignment request the stock process received403, closed streams, sent its one matching stop acknowledgment and exited1. All9windows remained readable, with the same two destinations. The operator separately removed only the10newly installed sensor-object UIDs; application Ready and default/kube-system/workload Pod UID maps were unchanged.",
+        "Six final real API checks passed: owner observer/runtime200, anonymous/wrong credential401, foreign organisation404 and revoked observer assignment403. Runtime retained the two new original traces and ten total successful tool calls/zero model calls. No provider events were invented, bounds relaxed, old upload replayed or product source patched."
+      ],
+      "remaining": [
+        "Kernel event loss and complete capture remain unknown; current Degraded state and original all-omitted failure remain explicit",
+        "Candidate Backend PR112 is unmerged, hosted parity unverified; production bridge packaging/retention timing remain separate scopes"
+      ]
     }
   ],
   "knownEnvironmentLimits": [
@@ -944,6 +969,7 @@
     "Payment binding save/reapproval, exact manual example seed and independent starting-ledger prerequisites passed in separate local QA. Original supplied-tool setup failed with one retained uncertain target action; no business after-state, clean reproduction or no-implant control was qualified. Catalogue profile credentials on a built-in launch are not proof those accounts were seeded; fresh copies remain subject to normal tenant quotas.",
     "The separate opt-in modern review QA run has verified domain/report JSON and redacted on-screen turn reads, with operator-assisted original metadata/publication recovery. Its four ZIP reads timed out before producing an archive. Local memory pressure and unchanged provider deadlines remain material limits; this does not establish hosted parity or end-to-end ZIP qualification.",
     "Dedicated Discovery compatibility QA uses Backend PR112 and an approved real local Kubernetes source. Its successful inventory path does not attest hosted-beta parity. Unconfigured Evals/orchestrator bootstrap 503s are retained; the hosting drawer still does not render the new collected-state field.",
-    "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health."
+    "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health.",
+    "A later distinct stock continuous observer qualified workload/Service attribution and retirement with15attributed/38unattributed inputs across9windows. The earlier4window/all32omitted run remains a separate failed observation, with no proven retrospective cause. Neither qualifies complete kernel capture or hosted parity."
   ]
 }

@@ -627,11 +627,29 @@
       "environment": "Local production output; actual Chromium at1440x1000/390x844light and dark plus320px; AI simulated author/novice review, no human participant",
       "result": "passed",
       "details": "561observed responses,28checks,zero HTTP/request/console/page errors. Five affected routes in20desktop/narrow theme combinations and5additional320pxchecks. Exact Copy page Markdown,24new full-size image journeys, all visible image decoding, SDK exact code copy, search,nested refresh,agent-link clipboard,home paths,continued list numbering,logo-only header and hidden verification metadata passed. All callout contrast ratios exceeded7.7. Eight raw renders retained privately; four representative renders visually reviewed. The simulated novice pass corrected receipt navigation to the real workload drawer, placed setup screenshots before credential creation, retained explicit binding reselection and distinguished resumed/expired from revoked."
+    },
+    {
+      "scope": "Continuous observer workload/Service evidence and retirement follow-up",
+      "environment": "Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta",
+      "result": "passed named workflow with explicit partial/degraded capture limits",
+      "record": "quality/walkthroughs.json",
+      "details": "Nine contiguous accepted windows;53input events/15attributed/38unattributed/0invalid/overflow/excluded/diagnostics; two genuine new policy reads and stable Service UID independently verified. Actual UI refresh,revocation,stock process stop acknowledgment,retained9windows and separately scoped sensor removal passed. Six real API owner/auth/tenant/revocation checks passed. Four new1440x1000direct PNGs individually viewed; byte/hash/CRC/metadata/privacy checks passed. Other36guide records/all37stage lists/all185prior capture hashes unchanged. Earlier all-omitted observation preserved; no source patch, automatic restart or upload replay."
+    },
+    {
+      "scope": "Network observer follow-up production and qualification checks",
+      "result": "normal build/check passed; strict release remains incomplete",
+      "details": "69pages,8008local references,68agent exports,85exact code payloads,184captions and3existing regression tests passed.189capture references/177unique images;32verified5partial0pending. Strict qualification retains7findings for5unfinished guides and1missing assessment-verification image. All37required-stage lists and the other36guide objects remain unchanged; no check script or gate modified."
+    },
+    {
+      "scope": "Network observer follow-up local browser and simulated novice/aesthetic review",
+      "environment": "Production local output; actual Chromium; two affected routes at1440light/dark and390light/dark,plus320px; AI author review, no human participant",
+      "result": "passed",
+      "details": "251responses,13checks,zeroHTTP/request/console/page errors. Exact Copy page Markdown,all4new full-size images,allinline image decoding,SDK code clipboard,search,deep refresh,agent-link clipboard,home navigation,continued numbering through continuous step8,callout contrast,logo-only header and hidden verification metadata passed. Two representative raw desktop/narrow renders were visually inspected. The guide distinguishes a usable Degraded map,Service metadata,earlier all-omitted failure,and historical last-health values after retirement."
     }
   ],
   "remainingGaps": [
-    "Six guides remain incomplete: sandbox bindings; assessment configuration, evidence, history and reproduction; and network observation continuous attribution/service matching. Discovery inventory, runtime and SDK call controls now passed in the named compatible candidate environment; generated Gmail environments remain verified in their separate local scope.",
-    "Thirty-one guides are verified in named local/CI scopes; six are partial and none pending. Required task-stage lists for all37guides are unchanged. Network delivery/retirement checks do not qualify continuous connection attribution; strict release remains enforced.",
+    "Five guides remain incomplete: sandbox bindings; assessment configuration, evidence, history and reproduction. All four Discovery workflows now passed in named compatible candidate QA scopes with explicit partial/degraded capture limits.",
+    "Thirty-two guides are verified in named local/CI scopes; five are partial and none pending. All37required task-stage lists are unchanged. One required assessment-verification screenshot remains missing; the strict release audit remains enforced.",
     "Sandbox-backed verified effects, fresh-world repetitions/negative controls and complete redacted-review ZIP download/inspection remain unverified. Modern domain/report JSON and published redacted on-screen records were checked separately.",
     "The earlier MR-1003 teaching-tunnel action remains uncertain. Separate queued and active HTTP cancellation are qualified; evidence-based resolution of the older action and other target-interface cancellation remain unverified.",
     "Non-Boolean model execution, completed browser assessment execution and untested connection-management variants still need qualification. MCP endpoint execution was observed with explicitly operator-assisted recovery; the public lost-admission sync path remains a product gap. Native session views are verified through separately provisioned instrumentation; SDK0.1.2 native-ingestion/credential issuance is not provided.",

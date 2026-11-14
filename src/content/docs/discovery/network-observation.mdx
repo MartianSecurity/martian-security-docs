@@ -56,12 +56,15 @@ The recorded example returned two destination groups and a **partial** receipt: 
 5. Open the relevant inventory record under **Discovery → Overview**, then **Network evidence**. Its continuous view follows the latest observer for that workload's source. Return to **Sources → Continuous network reporting** to manage the registration.
 6. Read last contact, reporting/stale state, credential expiry and the expected reporting interval. Expand **Latest observer health** for each node's sensor readiness, stream status, input events, omitted events and diagnostics.
 
-<Screenshot id="discovery-network-reporting-health" />
+<Screenshot id="discovery-network-qualified-health" />
 
 7. Confirm a newly completed window and its sequence/time after the process reports. Refresh and verify retained evidence. A Ready Pod or running process does not establish complete kernel capture.
+8. Select a destination card, then expand its connection row. A matched Kubernetes Service shows its namespace/name, UID, ClusterIP and TCP port. An IP-and-port destination can remain **unresolved** even when other destinations have Service matches.
 
-:::caution[Delivered windows can still lack usable connections]
-The recorded continuous run delivered four windows, but all 32 input events were omitted: 22 were unattributed and 10 invalid. The console correctly showed **Degraded** and **No attributed connections in this window**. Continuous connection attribution and service matching were not qualified by that run. Do not interpret its empty map as inactivity or infer a cause from counters alone.
+<Screenshot id="discovery-network-qualified-service" />
+
+:::note[Read the map and health together]
+The completed example delivered nine windows with two real destinations, including **default/kubernetes:443**. Its Service UID matched an independent Kubernetes read. Coverage still showed **Degraded**: 38 of 53 inputs were unattributed, leaving 15 attributed connect events. Service matching does not establish which backend Pod handled a request, a completed handshake or complete capture.
 :::
 
 ## 3. Stop reporting and retain the right evidence
@@ -69,15 +72,21 @@ The recorded continuous run delivered four windows, but all 32 input events were
 1. Return to **Discovery → Sources → Continuous network reporting** and choose **Revoke observer reporting** for the intended registration.
 2. Refresh and confirm **revoked**. New windows are rejected. Ask the operator to confirm that the connected observer exited at its next request and acknowledged its stop.
 
-<Screenshot id="discovery-network-observer-revoked" />
+<Screenshot id="discovery-network-qualified-retired-source" />
 
 3. Reopen the workload's **Network evidence**. Previously received windows remain readable within their retention boundary. **At last report** sensor and stream values are historical after revocation; they are not current process health.
 
-<Screenshot id="discovery-network-retained-after-revoke" />
+<Screenshot id="discovery-network-qualified-retained" />
 
 4. Stop/remove customer-side processes and node sensors separately through the cluster operator. Revoking the upload grant does not uninstall them. In the recorded QA check, the observer exited after revocation, then the operator removed only its separately installed sensor resources. The customer workload remained Ready with the same Pod identity.
 
 ## Failures and limits
+
+:::caution[Delivered windows can still lack usable connections]
+An earlier separate run delivered four windows but omitted all 32 inputs: 22 were unattributed and 10 invalid. It correctly showed **Degraded** and **No attributed connections in this window**. The later successful example used a new grant and separately installed sensors with unchanged software; it does not establish the earlier failure's cause. Ask the operator to check scope, Pod/container identities, timestamps and omission counters. Do not interpret an empty map as inactivity.
+:::
+
+<Screenshot id="discovery-network-reporting-health" />
 
 :::note[If no source is listed]
 **No eligible sources** means you need to [connect and enable a customer Kubernetes source](/discovery/inventory/) first. Reopen the form after that setup. **Create capture grant** and **Register observer** remain disabled while their selector only offers **Choose a source**.
