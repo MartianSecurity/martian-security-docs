@@ -118,7 +118,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Red teaming and Evals](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/concepts.md?v=ac3b95f5bb44): Understand the evidence, records, and workflows before your first run.
 
-- [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md?v=715016ff33c3): What Community, Enterprise and On-Premises include, and which parts are available, in beta or planned.
+- [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md?v=9ad1da281c45): What Community, Enterprise and On-Premises include, and which parts are available, in beta or planned.
 
 - [Run your first assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=f6160f4e6eb2): Complete a small endpoint-only assessment and inspect the recorded result.
 
@@ -158,6 +158,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=a5e4708eca24): all 70 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt?v=6b39305aede9): all 70 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

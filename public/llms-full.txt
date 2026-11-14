@@ -4673,7 +4673,7 @@ The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public sour
 
 ## Where the paid line is
 
-Features that one engineer needs are free. Features that a team, a manager or a risk function needs are paid. A free feature is never moved to paid.
+Features that one engineer needs are free. Features that a team, a manager or a risk function needs are paid.
 
 Two Evals features are paid: **review queues with assignment** and **Monitoring**. Enterprise and On-Premises include them; Community does not. No other Evals feature is paid, so the local Evals UI, when released, includes every other Evals page.
 
