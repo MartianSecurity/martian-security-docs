@@ -29,11 +29,11 @@ A local run is not recorded on the Martian platform. When a result must be saved
 
 ## 1. Install the release and get the example
 
-Download the [complete local Evals example](/examples/sdk-local-evals-0.1.3.zip). From the folder containing the download, extract it and enter the new folder:
+Download the [complete local Evals example](/examples/sdk-local-evals.zip). From the folder containing the download, extract it and enter the new folder:
 
 ```sh
 python3 --version
-python3 -m zipfile -e sdk-local-evals-0.1.3.zip sdk-local-evals
+python3 -m zipfile -e sdk-local-evals.zip sdk-local-evals
 cd sdk-local-evals
 ```
 
@@ -212,7 +212,7 @@ output: results-judge
 | Any OpenAI-compatible endpoint | `openai:/<model>` | `OPENAI_API_KEY`, and `OPENAI_API_BASE` set to the endpoint's `/v1` address |
 | Amazon Bedrock through its OpenAI-compatible endpoint | `openai:/<Bedrock model ID>` | `OPENAI_API_KEY` set to a Bedrock API key, and `OPENAI_API_BASE` set to the regional endpoint |
 
-For Bedrock, use its **OpenAI-compatible route** in SDK 0.1.3. A native `bedrock:/...` model URI failed with `judge_provider_error` in our check; it is not a verified alternative for these judges. [AWS explains how to generate a short-term Bedrock key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-generate.html). Configure `OPENAI_API_KEY` for this route; setting `AWS_BEARER_TOKEN_BEDROCK` alone does not configure the OpenAI provider.
+For Bedrock, use its **OpenAI-compatible route** for these judges. A native `bedrock:/...` model URI failed with `judge_provider_error` in our check; it is not a verified alternative for these judges. [AWS explains how to generate a short-term Bedrock key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-generate.html). Configure `OPENAI_API_KEY` for this route; setting `AWS_BEARER_TOKEN_BEDROCK` alone does not configure the OpenAI provider.
 
 For example, the verified Bedrock configuration used **GLM 5** in **us-east-1**, with this model setting:
 
@@ -318,7 +318,7 @@ This local run does not create a Martian CI session and does not appear in the c
 
 When you need results in the console, follow the [persisted CI tutorial](/sdk/ci/). Open **Evals → Runs** and select a saved evaluation. Check the pass/fail totals and compare expected answers with actual replies. CI test groups are available through **Show tests** in the saved **CI session**.
 
-The Martian Security screenshot below shows a separately verified **SDK 0.1.2 persisted dataset run**. It illustrates the recorded workflow; the local 0.1.3 suite above does not create this screen or session.
+The Martian Security screenshot below shows a separately verified **persisted dataset run**. It illustrates the recorded workflow; the local suite above does not create this screen or session.
 
 <Screenshot id="sdk-evaluation-strict-result" />
 

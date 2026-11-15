@@ -1,6 +1,6 @@
-# Local Evals tutorial — SDK 0.1.3
+# Local Evals tutorial
 
-Guide: http://docs.martiansecurity.ai/sdk/local-evals/
+Guide: https://docs.martiansecurity.ai/sdk/local-evals/
 
 This example uses synthetic data and deterministic teaching agents. It needs Python 3.12+
 and no Martian account. Run the commands from this extracted folder on macOS or Linux.
@@ -33,4 +33,4 @@ Read `summary.json` for totals and `results.jsonl` for each check's verdict and 
 The result files and internal evaluation store can contain prompts and replies in clear
 text; keep them private when using sensitive data. This local example creates no Martian
 console run or persisted release gate. To view recorded results in Martian Security,
-follow http://docs.martiansecurity.ai/sdk/ci/.
+follow https://docs.martiansecurity.ai/sdk/ci/.
