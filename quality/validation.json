@@ -702,6 +702,6 @@
     "Original MR-1004 retains a conservative unknown-usage reservation for a failed first provider transport, alongside its settled successful retry. Its origin and terminal native owner were inspected; provider usage remains unknown and is not manually settled.",
     "The separate Browser Execution QA native journal retains three unknown-usage model reservations, including the modern review run, and two unresolved target actions. None was manually settled, released or treated as zero usage. Artifact ZIP/provider waits and new foreign-tenant artifact readback remain incomplete; earlier teaching-lab uncertainty is a separate scope.",
     "Later Harbor QA qualifies payment business effects but not successful clean reproduction, formal controls, completed native browser setup, signed-in fixtures or prepared scenarios. Published review HTTP200 ZIP failed archive integrity. Original unknown actions/usage remain unresolved; Community local UI remains unreleased.",
-    "The On-Premises install, sizing and operations pages are reviewed against the unreleased martian-evals chart and its services; no install on a cluster has been walked through, and their sizing has no load test of an installation behind it."
+    "The On-Premises install, sizing and operations pages are reviewed against the unreleased martian-evals chart and its services; no install on a cluster has been walked through, the private registry route has not been run on an air-gapped cluster, and their sizing has no load test of an installation behind it."
   ]
 }

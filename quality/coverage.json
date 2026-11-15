@@ -3823,17 +3823,17 @@
       "sources": [
         {
           "repository": "MartianSecurity/martian-helm-charts",
-          "commit": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
           "path": "charts/martian-evals/values.yaml"
         },
         {
           "repository": "MartianSecurity/martian-helm-charts",
-          "commit": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
           "path": "charts/martian-evals/templates/_backend-env.tpl"
         },
         {
           "repository": "MartianSecurity/martian-helm-charts",
-          "commit": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
           "path": "charts/martian-evals/templates/postgres.yaml"
         },
         {
@@ -3855,6 +3855,11 @@
           "repository": "MartianSecurity/martian-evals",
           "commit": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
           "path": "mlflow/server.py"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
+          "path": "docs/private-registry.md"
         }
       ],
       "numberedTaskStages": [
@@ -3882,7 +3887,8 @@
         "Sign in as the operator and invite an organization to Evals: ready",
         "Sign in as the invited owner and open the Evals pages without a setup error",
         "Upload a CI run with the SDK against the console host",
-        "Repeat with an external PostgreSQL and with S3 artifacts"
+        "Repeat with an external PostgreSQL and with S3 artifacts",
+        "Install from a bundle through global.privateRegistry on a cluster with no outbound network"
       ],
       "sourceReview": {
         "sourceReviewed": true,
@@ -3891,7 +3897,8 @@
         "remainingGaps": [
           "No install on a Kubernetes cluster has been walked through.",
           "The bundled database's init script and backend migrations 0001 to 0050 were run as the non-superuser owner against a disposable PostgreSQL 17; migrations 0051 to 0056 and PostgreSQL 18 were not.",
-          "External PostgreSQL with TLS for the backend, and S3-compatible artifact storage, are not qualified."
+          "External PostgreSQL with TLS for the backend, and S3-compatible artifact storage, are not qualified.",
+          "The private registry route (a bundle loaded into the site's registry and global.privateRegistry) is checked only by rendering; it has not been run on an air-gapped cluster."
         ]
       },
       "screenshots": [],
@@ -3919,12 +3926,12 @@
       "sources": [
         {
           "repository": "MartianSecurity/martian-helm-charts",
-          "commit": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
           "path": "charts/martian-evals/templates/jobs.yaml"
         },
         {
           "repository": "MartianSecurity/martian-helm-charts",
-          "commit": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+          "commit": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
           "path": "charts/martian-evals/templates/mlflow.yaml"
         },
         {

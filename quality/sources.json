@@ -130,7 +130,7 @@
         "on-premises/operations"
       ],
       "repositories": {
-        "MartianSecurity/martian-helm-charts": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+        "MartianSecurity/martian-helm-charts": "bf6f4cc8a721fb6536771888eaa090302e97cb5c",
         "MartianSecurity/MartianBackend": "ce7ca4d88606f35439363bb9718f36a92c56c6f1",
         "MartianSecurity/MartianFrontend": "adfc9882db8a16feca7e837ddec46a5882cbdc64",
         "MartianSecurity/martian-evals": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
@@ -138,6 +138,7 @@
       },
       "paths": [
         "MartianSecurity/martian-helm-charts:charts/martian-evals/",
+        "MartianSecurity/martian-helm-charts:docs/private-registry.md",
         "MartianSecurity/MartianBackend:app/config.py",
         "MartianSecurity/MartianBackend:app/organisation_evals.py",
         "MartianSecurity/MartianBackend:app/evals_worker.py",

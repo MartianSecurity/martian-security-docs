@@ -29,7 +29,7 @@ Everything runs in one namespace. The chart points the backend and MLflow only a
 
 - **Runs launched from the console, and model judges.** Both run through the Red Team engine, which this chart does not install. Record runs from your own environment with the SDK and CI instead: [evaluate with Python](/sdk/evaluations/) and [gate CI](/sdk/ci/). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
 - **An offline licence.** Each organization gets the edition of its plan, **Enterprise** unless you change it ([plans](/on-premises/operations/#organization-plans)). Enterprise includes review queues and Monitoring.
-- **An install without network access.** The air-gapped bundle is planned. Your cluster must pull the images from a registry it can reach.
+- **A verified air-gapped install.** A cluster without outbound network can install from your own registry ([below](#a-cluster-without-outbound-network)), but that route has not yet been run on an air-gapped cluster.
 - **A supported upgrade path** between releases. See [upgrades](/on-premises/operations/#upgrades).
 - The console's Red Team, environment and Discovery pages, which need services this chart does not install.
 
@@ -38,7 +38,7 @@ Everything runs in one namespace. The chart points the backend and MLflow only a
 - **Role:** a platform engineer who can create a namespace, Secrets and Ingress objects, and run Helm in that namespace.
 - **Cluster:** Kubernetes 1.30 or later, `kubectl` and Helm 3, an ingress controller whose IngressClass passes WebSocket upgrades, and a default StorageClass with `ReadWriteOnce` volumes.
 - **Host and TLS:** a DNS name for the console, for example `evals.example.com`, and its certificate in a `kubernetes.io/tls` Secret in the namespace, unless TLS ends at a load balancer in front of the ingress controller.
-- **From Martian Security:** the chart package `martian-evals-<version>.tgz` and the image references for the backend, the console and MLflow, all from one release. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry.
+- **From Martian Security:** the chart package `martian-evals-<version>.tgz` and the image references for the backend, the console and MLflow, all from one release. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry. Without outbound network, use a release bundle instead ([below](#a-cluster-without-outbound-network)).
 - **Capacity:** about 2 CPUs and 4 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](/on-premises/sizing/)).
 - `openssl` on the machine you run the commands from.
 
@@ -121,7 +121,20 @@ mlflow:
 - Leave `tlsSecretName` empty when TLS ends before the ingress controller. Set `ingress.https: false` only for plain HTTP, which also turns off the Secure flag on the session cookie.
 - An image `tag` works in place of `digest`. `latest` is refused.
 
-Resources and volume sizes are on the [sizing page](/on-premises/sizing/). Two optional changes follow.
+Resources and volume sizes are on the [sizing page](/on-premises/sizing/). Three optional changes follow.
+
+### A cluster without outbound network
+
+A site that cannot reach the source registries installs from a bundle: one packaged chart, its release values, every image the chart renders and SHA-256 checksums. The bundle's tool verifies the checksums and loads the images into your own registry, and the chart is then installed with one more value:
+
+```yaml
+global:
+  privateRegistry: registry.corp.example/martian
+```
+
+With `global.privateRegistry` set, every image the chart renders, PostgreSQL's included, is pulled from that registry at the path the bundle loaded it to; the source registry's host is dropped from each reference. It takes precedence over `global.imageRegistry`. Pull credentials go in `global.imagePullSecrets`, or on the nodes. A bundle is built where the source registries are reachable. Building, checking and loading it are described in [Private registry install](https://github.com/MartianSecurity/martian-helm-charts/blob/main/docs/private-registry.md) (`docs/private-registry.md` in the Helm charts repository).
+
+The chart's checks render every image under the private registry, at the path the bundle loads it to. An install from a bundle on an air-gapped cluster has not been run yet.
 
 ### Use your own PostgreSQL
 
