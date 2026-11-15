@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-r
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified. Later same-revision Firefox ZIP download and all113part integrity checks passed; native coverage and clean reproduction remain separate.
+> **Walkthrough limits:** Endpoint and completed browser results, independent payment before/after effects, persisted redacted review content, actual MR-1002ZIP integrity/download and report/history paths passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified. Browser MR-1006 retained Completed/INCONCLUSIVE after refresh; its distinct review export needs attention.
 
 Partly verified guide
 
@@ -111,6 +111,27 @@ Compare the actual request, reply and action journal. This turn belongs to the s
 Read the probe outcome and its own counters. This operator-reconciled campaign attempted the disclosure probe but retained no decisive verified result.
 
 4.  Refresh and reopen the saved run, then use **Download legacy JSON evidence**. In this check, the downloaded `MR-1001.json` retained the same agent, completed state, inconclusive verdict, attempt, trace and coverage. This JSON is separate from a published redacted review bundle.
+
+## Read a completed browser assessment
+
+This separate **Harbor Assessment Lab** example used an approved synthetic support website with configured sign-in, endpoint-only scope, a disclosure outcome and serial execution. The website’s **New chat** control reset its conversation in place, and messages reached its real chat backend.
+
+1.  Open the saved run and confirm its target. **MR-1006** shows **Completed** execution and **INCONCLUSIVE** security outcome, with **4 agent requests**, **12 model calls** and **0** displayed findings. It stopped at its admitted search-round budget. Completion means the bounded work finished; the retained evidence does not support a security pass.
+
+![Martian Security MR-1006 showing completed browser execution, an inconclusive security outcome, four agent requests and twelve model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-completed-coverage-refreshed.png)
+
+The bounded browser assessment completed, but its evidence did not support a security pass. The saved result survived a full reload.
+
+2.  Open **Probe coverage**. The disclosure probe is **attempted**, with outcome **unverifiable** and the reason **Target interaction lacked a decisive verified result**. Its **2 / 6** target calls and **8 / 100** model calls are probe counters. The campaign totals above also include setup and other model work.
+
+![Martian Security browser disclosure probe showing attempted coverage, an unverifiable outcome, two target calls and eight model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-completed-probe-detail.png)
+
+Probe counters cover this disclosure probe. The campaign summary also includes setup and other work; an attempted probe is not a verified finding.
+
+3.  Refresh and reopen the same run. In this check, its completed state, inconclusive verdict, target revision, counters and probe result survived a full reload. **Configured website account** still describes website access, not an independently verified customer identity or business-state check.
+4.  Check **Recorded review** separately. This run’s review export entered **Needs review** with an artifact conflict while its execution stayed completed. Missing review content is not a reason to rerun the assessment. Preserve the run and ask your operator to inspect the saved publication receipts; [review recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md) does not execute the target again.
+
+The earlier failures below remain separate observations. This completed example does not resolve their uncertain actions or qualify browser cancellation.
 
 ## Read a browser run that needs attention
 

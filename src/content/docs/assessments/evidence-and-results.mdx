@@ -88,6 +88,23 @@ This separate synthetic QA example used an approved MCP `chat(message)` tool wit
 
 4. Refresh and reopen the saved run, then use **Download legacy JSON evidence**. In this check, the downloaded `MR-1001.json` retained the same agent, completed state, inconclusive verdict, attempt, trace and coverage. This JSON is separate from a published redacted review bundle.
 
+## Read a completed browser assessment
+
+This separate **Harbor Assessment Lab** example used an approved synthetic support website with configured sign-in, endpoint-only scope, a disclosure outcome and serial execution. The website's **New chat** control reset its conversation in place, and messages reached its real chat backend.
+
+1. Open the saved run and confirm its target. **MR-1006** shows **Completed** execution and **INCONCLUSIVE** security outcome, with **4 agent requests**, **12 model calls** and **0** displayed findings. It stopped at its admitted search-round budget. Completion means the bounded work finished; the retained evidence does not support a security pass.
+
+<Screenshot id="assessment-browser-completed" />
+
+2. Open **Probe coverage**. The disclosure probe is **attempted**, with outcome **unverifiable** and the reason **Target interaction lacked a decisive verified result**. Its **2 / 6** target calls and **8 / 100** model calls are probe counters. The campaign totals above also include setup and other model work.
+
+<Screenshot id="assessment-browser-completed-probe" />
+
+3. Refresh and reopen the same run. In this check, its completed state, inconclusive verdict, target revision, counters and probe result survived a full reload. **Configured website account** still describes website access, not an independently verified customer identity or business-state check.
+4. Check **Recorded review** separately. This run's review export entered **Needs review** with an artifact conflict while its execution stayed completed. Missing review content is not a reason to rerun the assessment. Preserve the run and ask your operator to inspect the saved publication receipts; [review recovery](/assessments/history-and-exports/) does not execute the target again.
+
+The earlier failures below remain separate observations. This completed example does not resolve their uncertain actions or qualify browser cancellation.
+
 ## Read a browser run that needs attention
 
 This example belongs to the separate **Documentation Browser Execution QA** workspace. Its **MR-1001** targeted an approved website with configured sign-in, endpoint-only scope, one disclosure outcome, Light depth and serial execution. Website sign-in and two neutral setup messages succeeded. Starting a fresh conversation for the first probe then timed out; this is an incomplete walkthrough, not a successful browser assessment.
