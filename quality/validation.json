@@ -699,6 +699,11 @@
       "result": "passed; no beta deployment",
       "record": "https://github.com/MartianSecurity/MartianBackend/pull/112",
       "details": "PR112 merged asaf36ece97e042108cdbef1ffee3cb0fce8dbb6ef after all9CI checks passed oncurrentmain: Python, six PostgreSQL integration suites, image build and the required gate. Local compile and335existing unit tests passed, with74opt-in cases skipped locally; the six specified PostgreSQL integration suites passed separately in CI. The three implementation files are byte-identical to the real API/UI-qualified candidate; only the collector documentation URL follows the new owner. All4merged file hashes and tree matched. No product deployment was performed."
+    },
+    {
+      "scope": "Canonical Pages addresses after repository transfer",
+      "result": "canonical paths passed; former Pages address unavailable",
+      "details": "Trusted readback confirmed HTTP custom domain and the current MartianSecurity GitHub Pages address redirect to https://docs.martiansecurity.ai/ with final200. The former MorningHQ project Pages address returned404. New and old GitHub raw Markdown aliases returned200 with the expected content; copied agent links use the canonical repository. The verification page now distinguishes these routes. No legacy repository was recreated."
     }
   ],
   "remainingGaps": [
