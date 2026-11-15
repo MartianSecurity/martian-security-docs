@@ -117,6 +117,17 @@ export default defineConfig({
     ]
   },
   {
+    "label": "Move from another tool",
+    "collapsed": true,
+    "items": [
+      {
+        "autogenerate": {
+          "directory": "migrate"
+        }
+      }
+    ]
+  },
+  {
     "label": "Discovery",
     "collapsed": true,
     "items": [
