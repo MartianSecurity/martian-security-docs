@@ -5528,7 +5528,7 @@ The On-Premises edition, which a licence file will turn on, is not available yet
 A release is identified by the backend’s schema revision. To see yours:
 
 ```sh
-kubectl -n martian-evals exec deploy/martian-evals-backend -- alembic current
+kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic current
 ```
 
 These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, and it is rolled back.
@@ -5554,7 +5554,7 @@ An installation of this chart starts at `0056`; `0048` and `0050` are the backen
 
 ### Roll back
 
-`helm rollback` does not change the database, and the previous backend does not know the newer schema. Take the schema back first, with the backend that is running, then roll back at once. Between the two steps the backend answers errors.
+`helm rollback` does not change the database, and the previous backend does not know the newer schema. Take the schema back first, with the backend that is running, then roll back at once. Between the two steps the API answers errors and the evals worker may fail.
 
 If the release changed the MLflow image, do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
 
@@ -5573,7 +5573,7 @@ kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d ma
 Use the schema revision you noted before the upgrade:
 
 ```sh
-kubectl -n martian-evals exec deploy/martian-evals-backend -- alembic downgrade <previous schema revision>
+kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic downgrade <previous schema revision>
 ```
 
 #### 3\. Roll back the release
