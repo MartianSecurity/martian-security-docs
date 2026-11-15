@@ -1,16 +1,16 @@
 # Operate an Evals installation
 
-> Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and follow today's upgrade rule.
+> Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and upgrade it or roll it back.
 
 Source: [Web version](https://docs.martiansecurity.ai/on-premises/operations/)
 
 > **Page qualification:** On-Premises Helm chart · platform engineer · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it.
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's CI job, which upgrades a database seeded by the releases at schema 0048 and 0050 to 0056 with containers, checks that every row survives and that both backends serve it, then downgrades it and runs the earlier backend again; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.
 
 Guide in progress
 
-This guide is reviewed against the chart and the services it installs. Its procedures have not yet been walked through on a cluster, and a supported upgrade path is not built.
+This guide is reviewed against the chart and the services it installs. Its procedures have not yet been walked through on a cluster; the upgrade and rollback are tested with containers, not with Helm.
 
 Keep an installation of the `martian-evals` chart ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md)) recoverable and healthy. The commands use the namespace and release name `martian-evals` and the bundled PostgreSQL; adjust them if yours differ.
 
@@ -49,7 +49,7 @@ ls -l "$BACKUP"
 
 ## Restore
 
-Restore into an installation of the **same chart version and images** as the backup. The backend expects the database schema of its own release, and its migrations do not go backwards. In the shell you restore from, set `BACKUP` to the backup’s directory.
+Restore into an installation of the **same chart version and images** as the backup: the backend expects the database schema of its own release, and a restored database keeps the schema it was backed up at. In the shell you restore from, set `BACKUP` to the backup’s directory.
 
 ### 1\. Install with the same Secrets
 
@@ -147,13 +147,77 @@ The On-Premises edition, which a licence file will turn on, is not available yet
 
 ## Upgrades
 
-A supported upgrade path between releases is planned and not built: no pair of releases has been tested as an upgrade, and there is no rollback other than restoring a backup. Until then, upgrade only to a chart and images that Martian Security gives you for that purpose, and follow this rule:
+A release is identified by the backend’s schema revision. To see yours:
+
+```sh
+kubectl -n martian-evals exec deploy/martian-evals-backend -- alembic current
+```
+
+These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, and it is rolled back.
+
+| Installed schema | Upgrades to | Upgrade | Rollback |
+| --- | --- | --- | --- |
+| `0056`, the release this chart installs | No later release yet |  |  |
+| `0050` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| `0048` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| Earlier than `0048` |  | Not supported | Not possible |
+
+An installation of this chart starts at `0056`; `0048` and `0050` are the backend releases before it. Upgrade only along a row of this table, to a chart and images that Martian Security gives you.
+
+### Upgrade
 
 1.  Wait until no run or scoring job is in progress. The upgrade restarts the backend, which ends them.
 2.  [Back up](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#back-up) all three databases, the artifacts and the Secrets.
-3.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts. Its migrations go one way; there is no downgrade.
-4.  Change the MLflow image only with Martian Security’s instructions for that release. A new MLflow release can need its database migrated while MLflow is stopped, and the chart does not do that step: MLflow refuses to start until it is done.
-5.  To go back, [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images. Do not run the previous release on the upgraded database.
+3.  Note the current Helm revision (`helm -n martian-evals history martian-evals`) and schema revision (`alembic current`, above). A rollback needs both.
+4.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts, while the current backend keeps serving. It takes seconds: about 23 s from `0048` on a 1.2 GB database.
+5.  Change the MLflow image only with Martian Security’s instructions for that release. A new MLflow release can need its database migrated while MLflow is stopped, and the chart does not do that step: MLflow refuses to start until it is done.
+
+**Expected result.** `alembic current` prints the new revision with `(head)`, the Evals schema check under [Health and monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#health-and-monitoring) prints the same revision twice, and members sign in and see their runs.
+
+### Roll back
+
+`helm rollback` does not change the database, and the previous backend does not know the newer schema. Take the schema back first, with the backend that is running, then roll back at once. Between the two steps the backend answers errors.
+
+If the release changed the MLflow image, do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
+
+#### 1\. Check that the downgrade can run
+
+Both counts must be `0`. Otherwise do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
+
+```sh
+kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d martian_backend -c \
+  "SELECT (SELECT count(*) FROM target_leases WHERE core_owner IS NOT NULL) AS core_leases,
+          (SELECT count(*) FROM eval_review_queues WHERE project_key IS NOT NULL) AS core_queues"
+```
+
+#### 2\. Downgrade the schema
+
+Use the schema revision you noted before the upgrade:
+
+```sh
+kubectl -n martian-evals exec deploy/martian-evals-backend -- alembic downgrade <previous schema revision>
+```
+
+#### 3\. Roll back the release
+
+Use the Helm revision you noted before the upgrade:
+
+```sh
+helm -n martian-evals rollback martian-evals <previous Helm revision> --wait --timeout 15m
+```
+
+**Expected result.** `alembic current` prints the previous revision, and members sign in and see what they had before the upgrade.
+
+### What a rollback cannot keep
+
+A downgrade gives back the previous schema. What was written after the upgrade into the tables and columns it removes is gone:
+
+-   **Evals work done after the upgrade:** runs launched or recorded through the console and the SDK, their results, scores, scoring jobs, reviews, suites, dataset drafts and saved views. Datasets published since stay in MLflow but are no longer listed. Runs uploaded by the CI gate stay.
+-   **Settings introduced by the release:** each organization’s default judge model and, going back to `0048`, organization plans.
+-   **Refusals:** once a run or scoring job has run through the backend’s worker, or a review queue has been created since the upgrade, the downgrade refuses. Its first step has then already removed part of the Evals schema, so always run the [check](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#1-check-that-the-downgrade-can-run) first, and restore the backup when it finds anything.
+-   **MLflow** keeps whatever schema its image migrated to; the chart does not take it back.
+
+Restoring the backup taken before the upgrade gives back everything as it was then, and loses everything since.
 
 ## Next
 
