@@ -1,0 +1,222 @@
+# Install Evals in your cluster
+
+> Install Martian Evals in your own Kubernetes cluster with the martian-evals Helm chart, then sign in and invite the organization that will use it.
+
+Source: [Web version](https://docs.martiansecurity.ai/on-premises/install/)
+
+> **Page qualification:** On-Premises Helm chart · platform engineer; master admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live.
+
+Guide in progress
+
+This guide is reviewed against the chart and the services it installs, and the chart passes its rendering checks. An install on a cluster has not yet been walked through.
+
+Install Evals in a Kubernetes cluster that you run, from the `martian-evals` Helm chart. At the end, the console answers on your own host, your operator account can sign in, and the organization that will use Evals has its evaluation store.
+
+On-Premises is a **Planned** edition ([Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md)). Martian Security supplies the chart and its images under an On-Premises agreement. This guide describes the chart as it is today, including what it does not do yet.
+
+## What the chart installs
+
+| Part | What it does |
+| --- | --- |
+| Backend | The Martian API, including Evals. It runs each eval run and scoring job in a process of its own ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#one-process-per-run)) |
+| Console | The Martian console. It calls the API at `/v1` on its own host |
+| MLflow | Stores traces, datasets, judges and artifacts. Only the backend reaches it; people never open it |
+| PostgreSQL | Optional. Holds the backend’s records and MLflow’s two databases. You can use your own server instead |
+| Migrate and seed jobs | Prepare the database schema, and on the first install create your operator account |
+
+Everything runs in one namespace. The chart points the backend and MLflow only at each other and at PostgreSQL (and at your bucket, if you choose one), and MLflow’s usage telemetry is off in both.
+
+## What it does not include yet
+
+-   **Runs launched from the console, and model judges.** Both run through the Red Team engine, which this chart does not install. Record runs from your own environment with the SDK and CI instead: [evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) and [gate CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
+-   **An offline licence.** Each organization gets the edition of its plan, **Enterprise** unless you change it ([plans](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#organization-plans)). Enterprise includes review queues and Monitoring.
+-   **An install without network access.** The air-gapped bundle is planned. Your cluster must pull the images from a registry it can reach.
+-   **A supported upgrade path** between releases. See [upgrades](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#upgrades).
+-   The console’s Red Team, environment and Discovery pages, which need services this chart does not install.
+
+## Before you start
+
+-   **Role:** a platform engineer who can create a namespace, Secrets and Ingress objects, and run Helm in that namespace.
+-   **Cluster:** Kubernetes 1.30 or later, `kubectl` and Helm 3, an ingress controller whose IngressClass passes WebSocket upgrades, and a default StorageClass with `ReadWriteOnce` volumes.
+-   **Host and TLS:** a DNS name for the console, for example `evals.example.com`, and its certificate in a `kubernetes.io/tls` Secret in the namespace, unless TLS ends at a load balancer in front of the ingress controller.
+-   **From Martian Security:** the chart package `martian-evals-<version>.tgz` and the image references for the backend, the console and MLflow, all from one release. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry.
+-   **Capacity:** about 2 CPUs and 4 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md)).
+-   `openssl` on the machine you run the commands from.
+
+## 1\. Create the namespace
+
+```sh
+kubectl create namespace martian-evals
+```
+
+The commands in this guide use the namespace `martian-evals` and the release name `martian-evals`. If you choose other names, change them everywhere.
+
+## 2\. Create the Secrets
+
+The chart reads three Secrets and never creates one. Generate their values in the shell, so that no key is typed or kept in your shell history. Choose the operator account’s email and password: this account signs in first and invites the organizations that use Evals.
+
+```sh
+read -r -p 'Operator email: ' OPERATOR_EMAIL
+read -r -s -p 'Operator password (12 to 72 characters): ' OPERATOR_PASSWORD; echo
+key() { openssl rand -base64 32 | tr '+/' '-_'; }
+
+kubectl -n martian-evals create secret generic martian-evals-backend \
+  --from-literal=JWT_SECRET="$(openssl rand -hex 32)" \
+  --from-literal=BOOTSTRAP_OWNER_EMAIL="$OPERATOR_EMAIL" \
+  --from-literal=BOOTSTRAP_OWNER_PASSWORD="$OPERATOR_PASSWORD" \
+  --from-literal=EVALS_SECRET_ENCRYPTION_KEY="$(key)" \
+  --from-literal=AGENT_SECRET_ENCRYPTION_KEY="$(key)"
+
+kubectl -n martian-evals create secret generic martian-evals-mlflow \
+  --from-literal=tracking_password="$(openssl rand -hex 32)" \
+  --from-literal=auth_password="$(openssl rand -hex 32)" \
+  --from-literal=admin_password="$(openssl rand -hex 32)" \
+  --from-literal=flask_secret="$(openssl rand -hex 32)"
+
+kubectl -n martian-evals create secret generic martian-evals-postgres \
+  --from-literal=postgres_password="$(openssl rand -hex 32)" \
+  --from-literal=backend_password="$(openssl rand -hex 32)"
+
+unset OPERATOR_PASSWORD
+```
+
+| Secret | Holds |
+| --- | --- |
+| `martian-evals-backend` | The session signing key, the operator account, and the two keys that encrypt stored MLflow and agent credentials |
+| `martian-evals-mlflow` | MLflow’s database passwords, its administrator password, which only the backend uses, and its session key |
+| `martian-evals-postgres` | The bundled PostgreSQL’s superuser password and the backend’s database password |
+
+Copy the three Secrets into your secret store now; `kubectl -n martian-evals get secret martian-evals-backend martian-evals-mlflow martian-evals-postgres -o yaml` prints them. The bundled database takes its passwords from them when it first starts, and the encryption keys are needed to read what the backend stores. Changing a value later does not change the database or the stored data; [operations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-to-keep) says what to keep.
+
+## 3\. Write your values file
+
+Create `values.yaml` with your registry, host and image digests:
+
+```yaml
+global:
+  imageRegistry: registry.example.com/martian
+
+ingress:
+  host: evals.example.com
+  className: nginx
+  tlsSecretName: evals-example-com-tls
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+
+secrets:
+  backend: martian-evals-backend
+  mlflow: martian-evals-mlflow
+  postgres: martian-evals-postgres
+
+backend:
+  image: {repository: martian-backend, digest: "sha256:<backend digest>"}
+frontend:
+  image: {repository: martian-frontend, digest: "sha256:<console digest>"}
+mlflow:
+  image: {repository: martian-mlflow, digest: "sha256:<mlflow digest>"}
+```
+
+-   `global.imageRegistry` is put in front of every image, the PostgreSQL image included.
+-   The console and the API share `ingress.host`: `/v1` goes to the backend and everything else to the console. `ingress.host` is also the address the SDK uses.
+-   A CI upload can be up to 4 MiB. The annotation raises ingress-nginx’s 1 MiB default; use your controller’s equivalent.
+-   Leave `tlsSecretName` empty when TLS ends before the ingress controller. Set `ingress.https: false` only for plain HTTP, which also turns off the Secure flag on the session cookie.
+-   An image `tag` works in place of `digest`. `latest` is refused.
+
+Resources and volume sizes are on the [sizing page](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md). Two optional changes follow.
+
+### Use your own PostgreSQL
+
+Set `postgres.enabled: false`. Then create, as a PostgreSQL administrator, the logins and databases the chart expects. MLflow’s server reads these fixed names, with the passwords in `martian-evals-mlflow`:
+
+```sql
+CREATE ROLE martian_backend LOGIN NOSUPERUSER NOCREATEDB CREATEROLE PASSWORD '<backend password>';
+CREATE DATABASE martian_backend OWNER martian_backend;
+CREATE ROLE mlflow_tracking LOGIN PASSWORD '<tracking_password>';
+CREATE ROLE mlflow_auth LOGIN PASSWORD '<auth_password>';
+CREATE DATABASE mlflow_tracking OWNER mlflow_tracking;
+CREATE DATABASE mlflow_auth OWNER mlflow_auth;
+```
+
+The backend’s login needs `CREATEROLE`, because its migrations create its own tenant and control roles. Do not make it a superuser: row-level security would then not apply to it. Add the backend’s connection URL to `martian-evals-backend` as `DATABASE_URL`, in the form `postgresql+asyncpg://martian_backend:<password>@<host>:5432/martian_backend` with the password URL-encoded, and leave out the `martian-evals-postgres` Secret and `secrets.postgres`. Give MLflow the server:
+
+```yaml
+postgres:
+  enabled: false
+mlflow:
+  database:
+    host: postgres.example.internal
+    port: 5432
+    sslMode: verify-full        # or require, or disable
+    caConfigMap: postgres-ca    # a ConfigMap with the server's CA as ca.crt; needed for verify-full
+```
+
+The chart passes `DATABASE_URL` to the backend unchanged. The backend has been run against PostgreSQL without TLS only; TLS on its connection is not qualified yet.
+
+### Keep artifacts in object storage
+
+By default MLflow keeps artifacts on a 20 GiB volume of the release. To use an S3 bucket or S3-compatible storage instead:
+
+```yaml
+mlflow:
+  artifacts:
+    destination: s3://evals-artifacts/artifacts
+    s3:
+      endpointUrl: https://s3.example.internal   # leave empty for AWS S3
+      existingSecret: martian-evals-s3           # AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+```
+
+On AWS you can instead leave `existingSecret` empty and set `mlflow.serviceAccountName` to a ServiceAccount with access to the bucket. Martian Security runs MLflow on AWS S3 with workload identity; S3-compatible storage and access keys are not qualified yet.
+
+## 4\. Install
+
+```sh
+helm install martian-evals ./martian-evals-<version>.tgz \
+  --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m
+kubectl -n martian-evals get pods,jobs
+```
+
+Keep `--wait --wait-for-jobs`. The migrate job creates the database schema, and the seed job, which creates your operator account, runs only after the migrate job has completed.
+
+**Expected result.** Helm prints `STATUS: deployed` and the console address. The pods `martian-evals-backend`, `martian-evals-frontend`, `martian-evals-mlflow` and `martian-evals-postgres-0` are `Running`, and the job `martian-evals-migrate` is `Complete`. The migrate job retries while PostgreSQL starts, so it can show failed attempts before it completes.
+
+If the install times out, read the migrate job’s log first: `kubectl -n martian-evals logs job/martian-evals-migrate`. [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#troubleshooting) lists the common causes.
+
+## 5\. Sign in and invite your Evals organization
+
+The operator account is the installation’s master admin. Its own organization, **Platform operators**, is for administration and has no evaluation store. Each team that uses Evals gets an organization of its own, created by invitation. Each email address belongs to one organization, so the team’s owner needs an address other than the operator’s.
+
+1.  Open `https://evals.example.com` and sign in with the operator email and password.
+2.  Open **Master admin**, then **Invitations**.
+3.  Under **Invite an organization owner**, fill **Recipient name** and **Email**, then select **Generate invitation link**.
+4.  Select **Copy link** and send the link privately. It works once and is a credential.
+5.  The recipient opens the link, enters the organization’s details and a password, and selects **Create organization**. [Accept an invitation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/workspace/team-and-roles.md#accept-an-invitation-and-sign-in) has each field.
+6.  Back in **Invitations**, select **Refresh**. The accepted row shows the new organization with **Evals: ready**.
+
+If the row shows another Evals status, select **Complete eval setup**, keep **Inspect and complete known steps**, and select **Complete setup**. If it still does not reach ready, check MLflow ([troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#troubleshooting)).
+
+**Expected result.** The new owner signs in, opens **Evals**, and sees the Evals pages without a setup error. From **Team** they invite their teammates ([team and roles](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/workspace/team-and-roles.md)).
+
+## 6\. Connect the SDK
+
+The SDK and CI use your console host as the API address:
+
+```sh
+export MARTIAN_API_URL='https://evals.example.com'
+```
+
+Create an API key in the organization and continue with [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). Agents that the backend checks at an address inside your network, or over plain HTTP, need that host in the backend’s `MANAGED_TARGET_HOSTS` setting:
+
+```yaml
+backend:
+  env:
+    MANAGED_TARGET_HOSTS: agent.internal.example.com
+```
+
+Apply a values change with `helm upgrade martian-evals ./martian-evals-<version>.tgz -n martian-evals -f values.yaml --wait --wait-for-jobs`, with no run in progress.
+
+## Next
+
+-   [Size an installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md): resources, one process per run, storage growth.
+-   [Operate an installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md): backups and restore, logs, health, troubleshooting and upgrades.

@@ -120,6 +120,34 @@
         "MartianSecurity/MartianBackend:app/entitlements.py"
       ],
       "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
+    },
+    {
+      "reviewedAt": "2026-11-15",
+      "scope": "On-Premises install, sizing and operations guides",
+      "usedBy": [
+        "on-premises/install",
+        "on-premises/sizing",
+        "on-premises/operations"
+      ],
+      "repositories": {
+        "MartianSecurity/martian-helm-charts": "088d8bf1f785c019cd9342c53c4d0b63ef0f7add",
+        "MartianSecurity/MartianBackend": "ce7ca4d88606f35439363bb9718f36a92c56c6f1",
+        "MartianSecurity/MartianFrontend": "adfc9882db8a16feca7e837ddec46a5882cbdc64",
+        "MartianSecurity/martian-evals": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
+        "MartianSecurity/martian-redteam": "630c4a6f934b1482f87d2172d4615dba013b386f"
+      },
+      "paths": [
+        "MartianSecurity/martian-helm-charts:charts/martian-evals/",
+        "MartianSecurity/MartianBackend:app/config.py",
+        "MartianSecurity/MartianBackend:app/organisation_evals.py",
+        "MartianSecurity/MartianBackend:app/evals_worker.py",
+        "MartianSecurity/MartianBackend:docs/evals-workbench.md",
+        "MartianSecurity/MartianFrontend:Dockerfile",
+        "MartianSecurity/MartianFrontend:src/pages/Invitations.jsx",
+        "MartianSecurity/martian-evals:mlflow/server.py",
+        "MartianSecurity/martian-redteam:docs/trace-store-limits.md"
+      ],
+      "comparison": "The chart is on its pull-request branch, not released, and the backend that mounts the evals core is on its epic branch. The guides describe that chart's values, Secrets, commands and limits. Sizing's storage and database CPU figures come from the trace store load test of MLflow's SQL store on PostgreSQL 17; no load test of an installation of this chart exists."
     }
   ]
 }
