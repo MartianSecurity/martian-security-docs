@@ -4472,6 +4472,54 @@
       "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Actual Firefox download success, original ZIP integrity, exact selected revision, Reports JSON and retained refresh were verified. PNG dimensions/CRC/metadata/hash passed; no archive content is published.",
       "reviewedForSecrets": true,
       "sha256": "3db46dcf8683c7c6c623822966c0917f30a008de92d28aeb4c35e7b83dcbecfb"
+    },
+    {
+      "id": "assessment-browser-completed",
+      "file": "browser-completed-coverage-refreshed.png",
+      "alt": "Martian Security MR-1006 showing completed browser execution, an inconclusive security outcome, four agent requests and twelve model calls.",
+      "caption": "The bounded browser assessment completed, but its evidence did not support a security pass. The saved result survived a full reload.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "assessments/evidence-and-results: Read a completed browser assessment, step1"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-15T19:02:40.883051+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Frontend served from immutable90351b7; Backend image built from7cb888aa. Cached Nativef7de3e0 has unchanged runtime code/dependencies compared with d021180e. This isolated QA does not attest hosted-beta parity.",
+      "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Completed state, original campaign identity, actual counters and probe outcome were checked against the real API and after a full browser reload; no failed API response or pageerror during that focused check. All PNG CRCs, dimensions and SHA256 passed.",
+      "reviewedForSecrets": true,
+      "sha256": "99aa85a6131da356d5804f4af599cd2244dc007047f15b6a7cdb64b94483c202"
+    },
+    {
+      "id": "assessment-browser-completed-probe",
+      "file": "browser-completed-probe-detail.png",
+      "alt": "Martian Security browser disclosure probe showing attempted coverage, an unverifiable outcome, two target calls and eight model calls.",
+      "caption": "Probe counters cover this disclosure probe. The campaign summary also includes setup and other work; an attempted probe is not a verified finding.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "assessments/evidence-and-results: Read a completed browser assessment, step2"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-15T19:54:06.839795+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Frontend served from immutable90351b7; Backend image built from7cb888aa. Cached Nativef7de3e0 has unchanged runtime code/dependencies compared with d021180e. This isolated QA does not attest hosted-beta parity.",
+      "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Completed state, original campaign identity, actual counters and probe outcome were checked against the real API and after a full browser reload; no failed API response or pageerror during that focused check. All PNG CRCs, dimensions and SHA256 passed.",
+      "reviewedForSecrets": true,
+      "sha256": "6558d5735ab881d3c9e9c2280d78de9f8c4af7e714f995da78095c930af47516"
     }
   ]
 }

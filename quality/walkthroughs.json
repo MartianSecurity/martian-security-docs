@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "environment": "Isolated local QA; real pinned Frontend, Backend, Agents and MLflow3.16.1; synthetic Martian Docs Lab organization. No API interception or fabricated UI.",
   "sourceRevisions": {
     "frontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
@@ -998,6 +998,30 @@
       "remaining": [
         "Native span coverage remains pending; this does not qualify clean reproduction, negative control, signed-in profiles or prepared scenarios."
       ]
+    },
+    {
+      "task": "Completed native browser execution and retained inconclusive coverage",
+      "date": "2026-11-16",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "result": "MR-1006 completed native browser execution with4target requests/12model calls, one attempted/unverifiable disclosure probe and nofindings. Its completed state, INCONCLUSIVE verdict, pinned website revision and probe counts survived a real full UI reload. Review export separately reported needs_review/review_artifact_conflict; no review content or archive success is claimed. Earlier failed campaigns remain unchanged.",
+      "observed": [
+        "One new bounded anonymous endpoint-only assessment admitted202 against the separately approved browser target; prior failed campaigns were not replayed. The unchanged website uses real sign-in, in-place conversation reset and asynchronous backend chat requests.",
+        "Runtime terminal success retained4total target calls/12total model calls. One disclosure probe was attempted/unverifiable with2probe target calls/8probe model calls. These counters have distinct scopes.",
+        "Actual Firefox UI opened MR-1006, selected Probe coverage, reloaded and reselected it. Completed/INCONCLUSIVE, pinned revision, actual counters and reason persisted; no failed APIresponse or pageerror during the focused refresh. Two unedited1440x1000captures were individually viewed.",
+        "Saved review header separately reported needs_review/review_artifact_conflict. A verified provider-root read matched the next conversation part hash; this does not resolve the conflict or qualify its complete review.",
+        "A different older export was inspected through the supported recovery API. Its exact next evidence-index artifact returned an unambiguous404, then one explicit review-only recovery was authorized. No assessment, target, model, quota, unknown action or usage reservation was altered."
+      ],
+      "remaining": [
+        "Synthetic signed-in fixture and prepared-scenario walkthroughs",
+        "Successful clean reproduction with its executed passing negative control",
+        "Browser cancellation and completed review publication for this browser run"
+      ]
     }
   ],
   "knownEnvironmentLimits": [
@@ -1019,6 +1043,7 @@
     "Dedicated Discovery compatibility QA uses Backend PR112 and an approved real local Kubernetes source. Its successful inventory path does not attest hosted-beta parity. Unconfigured Evals/orchestrator bootstrap 503s are retained; the hosting drawer still does not render the new collected-state field.",
     "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health.",
     "A later distinct stock continuous observer qualified workload/Service attribution and retirement with15attributed/38unattributed inputs across9windows. The earlier4window/all32omitted run remains a separate failed observation, with no proven retrospective cause. Neither qualifies complete kernel capture or hosted parity.",
-    "New Harbor QA qualified actual payment effects and restored-world negative repetitions. It did not resolve older unknown actions/usage, complete native browser setup, execute a formal negative control or produce a valid review ZIP. A one-turn admission was refused by review capacity without automatic replay. A later read of the same published revision passed original ZIP integrity and the actual Firefox download; this recovery did not start another assessment or alter native telemetry coverage."
+    "New Harbor QA qualified actual payment effects and restored-world negative repetitions. It did not resolve older unknown actions/usage, complete native browser setup, execute a formal negative control or produce a valid review ZIP. A one-turn admission was refused by review capacity without automatic replay. A later read of the same published revision passed original ZIP integrity and the actual Firefox download; this recovery did not start another assessment or alter native telemetry coverage.",
+    "2026-11-16update: a distinct Harbor MR-1006 completed native browser execution and retained its inconclusive probe result after reload. Earlier failures, browser cancellation and unknown actions remain separate. MR-1006review publication needs attention; successful clean reproduction/control, synthetic signed-in fixtures and prepared scenarios remain unqualified. Backend PR112was merged after passing PR/mainCI; no beta deployment occurred. The Community local UI remains unreleased."
   ]
 }

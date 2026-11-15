@@ -12,7 +12,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=66667155e701): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=48146c192f79): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=4943a0b3adf8): Review source revisions, real captures, completed checks and remaining gaps.
 
 ## Documentation
 
@@ -24,9 +24,9 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Connect an agent to sandbox systems](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md?v=a49e5daa1072): Configure a session-capable HTTP agent using a complete payment-system binding and independent duplicate-refund checks.
 
-- [Configure a red-team assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md?v=6b8b31738e88): Choose the current wizard's environment, agent, goals, coverage and execution settings without overstating readiness.
+- [Configure a red-team assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md?v=dfaaea4f8777): Choose the current wizard's environment, agent, goals, coverage and execution settings without overstating readiness.
 
-- [Inspect assessment evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md?v=a8ca6da2f6b7): Read reports, trace turns, findings, probe coverage and independent outcome checks at the correct evidence level.
+- [Inspect assessment evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md?v=6993579cc127): Read reports, trace turns, findings, probe coverage and independent outcome checks at the correct evidence level.
 
 - [Find recorded runs and export reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md?v=fa5385e1e138): Use Assessments, Findings, Reports and Replay to inspect persisted history and choose the appropriate export.
 
@@ -136,13 +136,13 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Roles and permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md?v=38b6f20a8b7a): Check the minimum role for each customer task.
 
-- [Supported agent targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md?v=3f5d183dc25f): Choose an interface supported by the workflow you intend to run.
+- [Supported agent targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md?v=82f45ec9814e): Choose an interface supported by the workflow you intend to run.
 
 - [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md?v=1c9965f3eceb): Resolve common access, connection, run, dataset and scoring failures safely.
 
 - [Use these docs with an AI assistant](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/using-with-agents.md?v=f3319b1e4a1f): Copy a complete page or share a public Markdown link that an assistant can read without signing in.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=48146c192f79): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=4943a0b3adf8): Review source revisions, real captures, completed checks and remaining gaps.
 
 - [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=256a40bfcbc9): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
@@ -158,6 +158,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=9ad3a8e20c65): all 70 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=c8779ac6df16): all 70 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
