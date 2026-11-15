@@ -681,6 +681,13 @@
       "environment": "Local production build; Chrome; six changed pages at 1440x1000 Light and 390x844 Dark",
       "result": "passed",
       "details": "Twelve page/viewport/theme combinations had no document errors, HTTP failures or page overflow. Actual Copy page matched the exported Markdown exactly. The full-size screenshot link opened the original 1440x1000 image. Search found the updated sandbox-binding guide and its completed-comparison section. Both new images decoded in desktop and narrow layouts; settled captures were individually viewed. First captures taken before lazy image decode were retained as observation artifacts, then the actual loaded renders were checked. AI-simulated novice review only; no human participant."
+    },
+    {
+      "scope": "Same-revision archive recovery, actual browser downloads and retained history",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads",
+      "result": "passed for the unchanged history/export stages; native span coverage remains pending",
+      "record": "quality/walkthroughs.json",
+      "details": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used."
     }
   ],
   "remainingGaps": [

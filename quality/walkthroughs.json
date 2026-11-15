@@ -977,6 +977,27 @@
         "Completed native browser, synthetic signed-in and prepared-scenario walkthroughs",
         "Unreleased Community local UI and separate Backend PR112 billing-blocked checks"
       ]
+    },
+    {
+      "task": "Same-revision archive recovery, actual browser downloads and retained history",
+      "date": "2026-11-15",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "result": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used.",
+      "observed": [
+        "Read-only direct API retry of the original revision completed; original failed file retained.",
+        "Actual Firefox button displayed Redacted review downloaded, 674489 bytes. Original browser-saved ZIP contains114entries; manifestSHA matches selectedrevision and all113parts passCRC, byte counts, SHA256 and JSON parsing.",
+        "Current Reports downloaded MR-1002.json with the correct agent, completed/FINDINGS and one finding; review turns were absent. Replay filtering/opening and refresh retained exact run and revision.",
+        "Chrome observer initially waited only for a download event, overlooking its native Save picker path; that did not qualify Chrome. A Reports observer used visible text instead of the accessible Download report MR-1002 label; corrected locator completed the real download. No API interception or DOM changes were made."
+      ],
+      "remaining": [
+        "Native span coverage remains pending; this does not qualify clean reproduction, negative control, signed-in profiles or prepared scenarios."
+      ]
     }
   ],
   "knownEnvironmentLimits": [
@@ -998,6 +1019,6 @@
     "Dedicated Discovery compatibility QA uses Backend PR112 and an approved real local Kubernetes source. Its successful inventory path does not attest hosted-beta parity. Unconfigured Evals/orchestrator bootstrap 503s are retained; the hosting drawer still does not render the new collected-state field.",
     "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health.",
     "A later distinct stock continuous observer qualified workload/Service attribution and retirement with15attributed/38unattributed inputs across9windows. The earlier4window/all32omitted run remains a separate failed observation, with no proven retrospective cause. Neither qualifies complete kernel capture or hosted parity.",
-    "New Harbor QA qualified actual payment effects and restored-world negative repetitions. It did not resolve older unknown actions/usage, complete native browser setup, execute a formal negative control or produce a valid review ZIP. A one-turn admission was refused by review capacity without automatic replay."
+    "New Harbor QA qualified actual payment effects and restored-world negative repetitions. It did not resolve older unknown actions/usage, complete native browser setup, execute a formal negative control or produce a valid review ZIP. A one-turn admission was refused by review capacity without automatic replay. A later read of the same published revision passed original ZIP integrity and the actual Firefox download; this recovery did not start another assessment or alter native telemetry coverage."
   ]
 }

@@ -10,7 +10,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
 Partly verified guide
 
-Basic HTTP, operator-assisted MCP and sandbox admission are checked. Complete sandbox outcomes, browser execution and advanced profiles remain unverified.
+Basic HTTP, operator-assisted MCP, sandbox admission and an independent payment outcome are checked. Native browser execution and advanced profiles remain unverified.
 
 Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 

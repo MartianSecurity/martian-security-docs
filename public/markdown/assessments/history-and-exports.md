@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/history-and-exports/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified. Later MR1002 published complete retained review content:3conversations/17turns/103customer events/51gatewayrecords. ActualHTTP200 download hadmatchingrevision and ZIP media type, but lacked a complete archive directory and failed validation.
-
-Partly verified guide
-
-Run/domain JSON and retained review records are checked. A later ZIP response failed archive validation; complete archive delivery remains unverified.
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-15 · Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Find a recorded assessment after leaving its wizard, inspect retained evidence and download the right report. These history and replay actions read existing work; **Replay** does not execute the assessment again.
 
@@ -71,13 +65,27 @@ The actual target response contains \[REDACTED\] instead of the fixture’s toke
 
 4.  Keep the counts and coverage separate. This revision has **2 conversation records** and **12 turn records**; those are different retained record types. It also shows **Review delivery: persisted**, **Native delivery: complete** and **Native span coverage: pending**. Current delivery and the coverage frozen into a review revision answer different questions.
 
-The JSON downloads and redacted turn reads passed in this example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP, so archive download and inspection remain unverified. A published revision and a readable turn do not establish that its ZIP downloaded successfully.
+The JSON downloads and redacted turn reads passed in this earlier example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP. The later example below qualifies archive delivery separately; a published revision and a readable turn alone do not establish a successful download.
 
 ### Later publication and archive-integrity check
 
 A separate **MR-1002** in **Harbor Assessment Lab** published a durable review containing **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Its retained review-content coverage was **complete**, while native span delivery remained **pending**. These are separate delivery states.
 
-Its revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. Archive download and inspection therefore remain unqualified. A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download.
+Its first revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. That partial file is retained as a failed observation.
+
+A later read of the **same run and published revision** completed through the actual **Download redacted review** button in Firefox. No replacement assessment or model call was started. To check your own published review:
+
+1.  Open **Recorded review** and confirm the selected **Review revision**. Click **Download redacted review**. If your browser asks for a save location, choose a private folder and finish that dialog.
+2.  Wait for **Redacted review downloaded**. In this example, the UI reports **674,489 bytes** and the filename is `MR-1002-redacted-review-b18ed8bbb815.zip`.
+
+![Martian Security recorded review showing a successful 674,489-byte archive download and the selected persisted revision.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/payment-redacted-review-downloaded.png)
+
+The real Firefox download completed for the retained MR-1002 revision. The original ZIP passed manifest and all 113 part checks; native span coverage remains pending.
+
+3.  Open the original downloaded ZIP locally. This example contains **114 entries**: `manifest.json` and **113 content parts**. The manifest matches the selected run and revision; every part passed CRC, byte-count and SHA-256 checks and parsed as JSON. Its counts remain **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Native span coverage is still **pending** and is not supplied by this ZIP.
+4.  Refresh the application, find the same run in **Replay**, reopen **Recorded review** and confirm the retained revision. The separate **Reports** JSON download for this run was also checked; it contains the run summary and finding metadata rather than the review’s turn content.
+
+A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download. The successful later read does not establish general artifact-service reliability or complete native telemetry.
 
 ## Failure and recovery
 
