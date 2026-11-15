@@ -1,0 +1,147 @@
+---
+title: Map evidence to the EU AI Act and model-risk guidance
+description: Which sections of a Martian evidence pack are relevant to which requirements of the EU AI Act and SR 26-2, what each mapping does not show, and what the product does not cover.
+sidebar:
+  order: 1
+---
+
+import GuideMeta from '../../../components/GuideMeta.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<GuideMeta id="evidence/requirement-mapping" />
+
+A risk function reads evidence against its own framework, not ours. Each section of a Martian evidence pack carries a `supports` list that names the requirements it is relevant to, and the pack's document prints the same labels under each heading. This page lists the requirements, says which sections support each, and says what a label does not mean.
+
+<Aside type="caution" title="Relevant is not compliant">
+The mapping says which evidence is relevant to a requirement. It does not say that a system meets the requirement, and it is not a conformity assessment, a certification or legal advice. Martian Security does not assess whether any system complies with any regulation or guidance.
+</Aside>
+
+**Status.** Evidence packs and sign-off records are **Planned** in the [editions](/get-started/editions/) table. They are built in the Martian backend and console for Enterprise and On-Premises, and they are not released. Nothing here is observed in a released product, so this page is marked as partly verified. It is reviewed against the pack's source code and against the primary texts named under [sources](#sources).
+
+## What the pack carries
+
+- **In the JSON.** `evidence-pack.json` has a `mapping` object with three lists: `frameworks`, `requirements` and `sections`. Each requirement has an identifier such as `eu-ai-act:art-9`. Each section has an `id`, the `paths` where it sits in the file, and a `supports` list of identifiers.
+- **In the document.** `evidence-pack.html` prints a **Supports** line under the heading of each section that has a mapping, and a **Requirement mapping** section that lists every requirement with the sections that support it, and the sections that have no mapping.
+- **Stable.** An identifier never changes meaning. Adding or removing one raises the pack's `schema_version`. The mapping is part of the pack's content digest, so a sign-off names the labels it was given under.
+
+```json
+{
+  "id": "run-results",
+  "title": "Results",
+  "paths": ["runs[].results"],
+  "supports": ["eu-ai-act:art-9", "eu-ai-act:art-11", "eu-ai-act:art-15", "eu-ai-act:art-72", "sr-26-2:outcomes-analysis", "sr-26-2:ongoing-monitoring"]
+}
+```
+
+## Requirements and the sections that support them
+
+Two frameworks are mapped, in a small way. Each row is a requirement whose text names something that testing, monitoring or human review can produce evidence for. The tables below are the whole mapping.
+
+### EU AI Act
+
+Regulation (EU) 2024/1689, for a high-risk AI system. These requirements bind its provider. Whether a system is high-risk, who its provider is and when the requirements apply to it are for you and your counsel to decide.
+
+| Identifier | Requirement | Sections that support it |
+| --- | --- | --- |
+| `eu-ai-act:art-9` | Article 9, Risk management system | `run-results`, `scoring-jobs`, `scorers`, `release-gates` |
+| `eu-ai-act:art-11` | Article 11 and Annex IV, Technical documentation | `run-provenance`, `run-results`, `scoring-jobs`, `judge-calibration`, `scorers`, `sign-offs` |
+| `eu-ai-act:art-14` | Article 14, Human oversight | `reviews` |
+| `eu-ai-act:art-15` | Article 15, Accuracy, robustness and cybersecurity | `run-results`, `scoring-jobs` |
+| `eu-ai-act:art-17` | Article 17, Quality management system | `release-gates` |
+| `eu-ai-act:art-72` | Article 72, Post-market monitoring | `run-results` |
+
+### SR 26-2
+
+The supervisory guidance on model risk management of the Federal Reserve, the OCC and the FDIC, dated April 17, 2026. It supersedes SR 11-7, and its letter says so. The names below are SR 26-2's.
+
+| Identifier | Requirement | Sections that support it |
+| --- | --- | --- |
+| `sr-26-2:conceptual-soundness` | Conceptual Soundness | `run-provenance` |
+| `sr-26-2:outcomes-analysis` | Outcomes Analysis | `run-results`, `scoring-jobs` |
+| `sr-26-2:ongoing-monitoring` | Ongoing Model Monitoring | `run-results`, `release-gates` |
+| `sr-26-2:effective-challenge` | Effective challenge | `judge-calibration`, `reviews`, `sign-offs` |
+| `sr-26-2:roles-and-responsibilities` | Roles and Responsibilities | `run-provenance`, `scoring-jobs`, `reviews`, `sign-offs`, `release-gates` |
+| `sr-26-2:model-inventory` | Model Inventory | `release-gates` |
+| `sr-26-2:documentation` | Documentation | `sign-offs` |
+
+SR 26-2 states that generative AI and agentic AI models are not within its scope, and that an institution's own risk management and governance should decide the controls for such tools. The mapping to it is therefore a way to read the pack against the guidance's validation and governance components, as practice an institution may choose to apply. Whether an application is a model in the guidance's sense is the institution's decision.
+
+## Sections of the pack
+
+| Section | What it holds | Supports |
+| --- | --- | --- |
+| `release` | The run ids of the release and their dates | — |
+| `run-provenance` | Each run's identity and provenance: suite, dataset, target, model and prompt versions, who launched it, its state and dates | `eu-ai-act:art-11`, `sr-26-2:conceptual-soundness`, `sr-26-2:roles-and-responsibilities` |
+| `run-results` | Each run's pass rate with its 95% interval | `eu-ai-act:art-9`, `eu-ai-act:art-11`, `eu-ai-act:art-15`, `eu-ai-act:art-72`, `sr-26-2:outcomes-analysis`, `sr-26-2:ongoing-monitoring` |
+| `scoring-jobs` | Each scoring job's scorers, scorecard, criteria, thresholds and gate | `eu-ai-act:art-9`, `eu-ai-act:art-11`, `eu-ai-act:art-15`, `sr-26-2:outcomes-analysis`, `sr-26-2:roles-and-responsibilities` |
+| `judge-calibration` | How far each model judge agrees with the latest human review of the same case | `eu-ai-act:art-11`, `sr-26-2:effective-challenge` |
+| `scorers` | Each judge and scorer version, its model and endpoint, and where it ran | `eu-ai-act:art-9`, `eu-ai-act:art-11` |
+| `reviews` | Human reviews of each run and the reviewers who answered them | `eu-ai-act:art-14`, `sr-26-2:effective-challenge`, `sr-26-2:roles-and-responsibilities` |
+| `sign-offs` | Approvals and rejections of this release's evidence | `eu-ai-act:art-11`, `sr-26-2:effective-challenge`, `sr-26-2:roles-and-responsibilities`, `sr-26-2:documentation` |
+| `release-gates` | The gate status of each application evaluated through a run of the release | `eu-ai-act:art-9`, `eu-ai-act:art-17`, `sr-26-2:ongoing-monitoring`, `sr-26-2:roles-and-responsibilities`, `sr-26-2:model-inventory` |
+| `people` | The people the pack names, by account | — |
+| `limitations` | What the pack does not hold or verify | — |
+| `pack-record` | Format, export, integrity digest, evals core version and this mapping | — |
+
+Four sections have no mapping, and say so with an empty `supports` list:
+
+- **`release`** names the runs of the release and their dates. It is the scope of the evidence, not evidence.
+- **`people`** looks up the account ids the pack names, with their names and emails while they are members. The evidence is in the sections that cite them.
+- **`limitations`** is the pack's own statement of what it does not hold or verify.
+- **`pack-record`** is the pack's format, export time, digest, the evals core that computed its figures, and this mapping.
+
+## What each mapping does not show
+
+Read a label as "this evidence is relevant to that requirement", and use the right-hand column to see how far.
+
+### EU AI Act
+
+| Requirement | What in the pack is relevant | What it does not show |
+| --- | --- | --- |
+| Article 9, Risk management system | Article 9(6) and (8) ask for testing, before a system is placed on the market, against "prior defined metrics and probabilistic thresholds". The pack holds results with 95% intervals, the pinned scorers and thresholds each scoring job used, and the gate each risk tier set. | It is not a risk management system. It does not identify or analyze risks, judge residual risk or record the measures adopted. It does not show that a threshold was defined before the test it was applied to. |
+| Article 11 and Annex IV, Technical documentation | Annex IV point 2(g) lists the validation and testing procedures, the test data and its main characteristics, the metrics, and test reports that are dated and signed by the responsible persons. The pack holds suite and dataset versions and digests, the target and model versions, scorer versions, dated runs and results, and sign-offs. Point 4 asks for a description of the appropriateness of the performance metrics, and the judge calibration is evidence on that for model judges. | It is test evidence, not the documentation. It does not describe the system, its design, its data requirements, its oversight measures, its changes, the standards applied or the declaration of conformity. Whether a sign-off recorded in Martian counts as signed by the responsible persons is for you to decide. |
+| Article 14, Human oversight | Article 14(4)(a) asks that the people who oversee a system can detect unexpected performance. The pack records the human reviews of the system's outputs in the runs, and who made them. | Article 14 concerns oversight while the system is in use: understanding its limits, interpreting and overriding its output, stopping it. Reviews during testing do not show that those measures exist or work. The pack does not say which cases test oversight behaviors such as handing a decision to a person. |
+| Article 15, Accuracy, robustness and cybersecurity | The pack's results and scorecards are measured accuracy against the cases and criteria of your suites, with intervals. Article 15(3) asks for accuracy levels and metrics in the instructions for use, and these are the figures and metric definitions a provider could cite there. | It declares nothing in instructions for use. Robustness shows only as far as the suite's cases test it, and the pack does not say which do. It holds no red team results, so it is not evidence of resilience to attacks. |
+| Article 17, Quality management system | Article 17(1)(d) asks for documented examination, test and validation procedures and how often they run. A release gate is such a procedure applied: the suites a risk tier requires, the thresholds, and how recent the latest run must be. The pack lists each application's gate status with the gate revision it was judged against. | It is not a quality management system. It does not show a compliance strategy, design and development controls, data management, incident reporting, resource management or an accountability framework. A gate is advisory: a failing gate stops no run or release, and the status is as of the export. |
+| Article 72, Post-market monitoring | Article 72(2) asks for data on a system's performance throughout its lifetime to be collected, documented and analyzed. Dated results of runs that you repeat against a deployed system are such data, and the pack shows them for the runs you select. | The pack is built from the runs you pick. It holds no monitoring plan or operational data, and does not show that monitoring is active, systematic or covers the deployed system. |
+
+### SR 26-2
+
+| Requirement | What in the pack is relevant | What it does not show |
+| --- | --- | --- |
+| Conceptual Soundness | The guidance asks that design, key choices and developmental testing be assessed and documented. The pack's run details are developmental testing evidence: what was tested (suite and dataset versions and digests, target, model, prompt and agent revisions), by whom and when. | It holds no design documentation: no assumptions, modeling choices, data selection rationale or analysis of how the application is built. |
+| Outcomes Analysis | The guidance asks that model outputs be compared with real-world outcomes, in forms that include testing during development, and notes that persistent deviations from performance thresholds may warrant adjustment. The pack's results and scorecards compare the application's outputs with the expected outputs and criteria of your suites, with intervals and gate outcomes. | The comparison is with expected answers written into the evaluation, not real-world outcomes such as what happened to customers or transactions. It is not back-testing. |
+| Ongoing Model Monitoring | The guidance asks whether a model is performing as expected as conditions change. The pack shows dated results for the runs of the release, and the gate status of each application, which includes how recently its latest run finished when the gate sets an age limit. | One pack is one point in time. It does not show whether runs repeat, on what schedule, or what happens when performance deviates. It holds no monitoring plan. |
+| Effective challenge | The guidance describes critical analysis by objective experts with sufficient independence, who can effect change. The pack records the human reviews with named reviewers, how far a model judge agrees with them, and each sign-off with its decision, comment, signer and role. In Martian, only an owner or admin who did not launch or score a run of the release can sign it. | The product checks that the signer did not launch or score a run of the release. It does not check their expertise, their independence from the people who built or use the application, or their standing to effect change. Those are your judgments. A sign-off is not evidence that anything changed because of it. |
+| Roles and Responsibilities | The guidance asks for clear roles and accountability through the lifecycle, including conflicts of interest between development and validation. The pack names who launched, scored, reviewed and signed, and the owner of each application whose gate it lists. | It names people by their Martian account. It does not show your policies, reporting lines or whether incentives are aligned. |
+| Model Inventory | The guidance asks for a comprehensive set of information about models in use or in development. Each entry in the pack's `release_gates` is an application from Martian's inventory: its name, risk tier, owner, and the agent or evals project it is evaluated through. | The pack lists only the applications whose runs are in the release. It is not an inventory. Martian's inventory holds only the applications you register there. |
+| Documentation | The guidance says documentation supports tracking recommendations, responses and exceptions. The pack's sign-offs record approvals and rejections with comments, each naming the evidence it covers. | It is not documentation of the application's development or use. |
+
+## What the product does not cover
+
+The pack is test evidence from Evals runs, scorers, reviews and sign-offs. It does not cover:
+
+- **Conformity assessment.** Martian does not perform or record the conformity assessment of Article 43, draw up an EU declaration of conformity, affix a CE marking or register a system.
+- **The provider's documentation duties beyond test evidence.** The technical documentation of Article 11 and Annex IV has more in it than test evidence. The instructions for use of Article 13 and the keeping of documentation and logs under Articles 18 and 19 are the provider's too.
+- **Data governance.** Article 10 concerns how training, validation and testing data are collected, prepared, labeled and examined for bias. The pack records the version and digest of the test dataset, not how it was made.
+- **Post-market monitoring beyond what is recorded.** The pack records the runs you select. Monitoring plans, operational data, serious incident reporting (Article 73) and corrective action (Article 20) are outside it.
+- **A system's own logging and oversight measures.** Article 12 asks a high-risk system to record events over its lifetime, and Article 14 asks for oversight measures built into the system or assigned to its deployer. The pack records the testing of a system, not its operation, so no section is mapped to Article 12, and Article 14 is mapped only through the human reviews described above.
+- **Institution-wide model risk management.** SR 26-2 also covers model development and use (Section IV), policies, procedures and internal audit (Section VI), and vendor products (Section VII). The pack supplies some evidence for validation and for the roles around it, and nothing else.
+- **Legal advice.** Martian Security does not tell you whether a system is high-risk, who is its provider or deployer, when a requirement applies, or whether an application is a model under SR 26-2. The EU AI Act was amended in 2026, and the dates from which its high-risk requirements apply moved. This page does not state them.
+- **Anything outside evals.** Red team assessments, Discovery, call gates and everything an application does outside the cases you evaluated are not in the pack.
+
+## Sources
+
+The mapping was made from these primary texts. Each requirement and each statement of what it asks was read there.
+
+- **EU AI Act.** [Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), Official Journal text of July 12, 2024. It was checked against [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1744) of July 8, 2026, which amends it. That regulation changes the dates of application, Article 10(1), (5) and (6), the simplified form for small enterprises in Article 11(1) (the Annex IV minimum stays), Article 17(2) and Article 72(3). It does not change the other paragraphs this page relies on.
+- **SR 26-2.** [Letter](https://www.federalreserve.gov/supervisionreg/srletters/sr2602.htm) and [attachment, Supervisory Guidance on Model Risk Management](https://www.federalreserve.gov/supervisionreg/srletters/SR2602a1.pdf), April 17, 2026. Its sections are III (overview, effective challenge), V (model validation and monitoring) and VI (governance and controls).
+
+If your policy still cites SR 11-7, ask your model risk function how it maps to SR 26-2 before you rely on the names here.
+
+## Next
+
+- [Editions](/get-started/editions/): where evidence packs and sign-off records sit.
+- [Collect human reviews](/evals/human-reviews/): the reviews the pack records.
+- [Suites and monitoring](/evals/suites-and-monitoring/): the scorecards and thresholds the pack reads.
+- [Team and roles](/workspace/team-and-roles/): who can sign off.
