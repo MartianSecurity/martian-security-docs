@@ -692,7 +692,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
 Partly verified guide
 
-Basic HTTP, operator-assisted MCP and sandbox admission are checked. Complete sandbox outcomes, browser execution and advanced profiles remain unverified.
+Basic HTTP, operator-assisted MCP, sandbox admission and an independent payment outcome are checked. Native browser execution and advanced profiles remain unverified.
 
 Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 
@@ -795,11 +795,11 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-r
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified.
+> **Walkthrough limits:** In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified. Later same-revision Firefox ZIP download and all113part integrity checks passed; native coverage and clean reproduction remain separate.
 
 Partly verified guide
 
-Endpoint evidence, sandbox baselines and redacted turn reads are checked. Verified business effects and review ZIP downloads remain incomplete.
+Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified.
 
 Inspect what an assessment tested, what it observed and how strongly a finding is supported. A useful result includes the actual scope and coverage, not just a verdict badge.
 
@@ -936,13 +936,7 @@ Continue with [reproduction and evidence limits](https://raw.githubusercontent.c
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/history-and-exports/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified. Later MR1002 published complete retained review content:3conversations/17turns/103customer events/51gatewayrecords. ActualHTTP200 download hadmatchingrevision and ZIP media type, but lacked a complete archive directory and failed validation.
-
-Partly verified guide
-
-Run/domain JSON and retained review records are checked. A later ZIP response failed archive validation; complete archive delivery remains unverified.
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-15 · Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Find a recorded assessment after leaving its wizard, inspect retained evidence and download the right report. These history and replay actions read existing work; **Replay** does not execute the assessment again.
 
@@ -1003,13 +997,27 @@ The actual target response contains \[REDACTED\] instead of the fixture’s toke
 
 4.  Keep the counts and coverage separate. This revision has **2 conversation records** and **12 turn records**; those are different retained record types. It also shows **Review delivery: persisted**, **Native delivery: complete** and **Native span coverage: pending**. Current delivery and the coverage frozen into a review revision answer different questions.
 
-The JSON downloads and redacted turn reads passed in this example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP, so archive download and inspection remain unverified. A published revision and a readable turn do not establish that its ZIP downloaded successfully.
+The JSON downloads and redacted turn reads passed in this earlier example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP. The later example below qualifies archive delivery separately; a published revision and a readable turn alone do not establish a successful download.
 
 ### Later publication and archive-integrity check
 
 A separate **MR-1002** in **Harbor Assessment Lab** published a durable review containing **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Its retained review-content coverage was **complete**, while native span delivery remained **pending**. These are separate delivery states.
 
-Its revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. Archive download and inspection therefore remain unqualified. A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download.
+Its first revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. That partial file is retained as a failed observation.
+
+A later read of the **same run and published revision** completed through the actual **Download redacted review** button in Firefox. No replacement assessment or model call was started. To check your own published review:
+
+1.  Open **Recorded review** and confirm the selected **Review revision**. Click **Download redacted review**. If your browser asks for a save location, choose a private folder and finish that dialog.
+2.  Wait for **Redacted review downloaded**. In this example, the UI reports **674,489 bytes** and the filename is `MR-1002-redacted-review-b18ed8bbb815.zip`.
+
+![Martian Security recorded review showing a successful 674,489-byte archive download and the selected persisted revision.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/payment-redacted-review-downloaded.png)
+
+The real Firefox download completed for the retained MR-1002 revision. The original ZIP passed manifest and all 113 part checks; native span coverage remains pending.
+
+3.  Open the original downloaded ZIP locally. This example contains **114 entries**: `manifest.json` and **113 content parts**. The manifest matches the selected run and revision; every part passed CRC, byte-count and SHA-256 checks and parsed as JSON. Its counts remain **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Native span coverage is still **pending** and is not supplied by this ZIP.
+4.  Refresh the application, find the same run in **Replay**, reopen **Recorded review** and confirm the retained revision. The separate **Reports** JSON download for this run was also checked; it contains the run summary and finding metadata rather than the review’s turn content.
+
+A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download. The successful later read does not establish general artifact-service reliability or complete native telemetry.
 
 ## Failure and recovery
 
@@ -5417,7 +5425,7 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **38 task guides**, **33 are verified**, **5 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **191 captured references** across **179 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **38 task guides**, **34 are verified**, **4 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **192 captured references** across **180 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
@@ -5524,7 +5532,7 @@ A separate **Harbor Assessment Lab** used a genuine customer Owner with `platfor
 
 -   The published manual payment-seed helper, complete bindings, validation/approval and retained configured summaries passed. **MR-1002** then completed **17 agent requests**, **59 model calls** and **one independently observed business-state finding**. A separate Backend ledger read measured **1 → 18 refunds**, with a delta of **17**. The target journal retained 17 completed actions and 34 real MCP calls, with no uncertain target action in this run. Full refresh retained the run, verdict and before/after digests. This completes the sandbox-binding guide’s five original stages.
 -   **MR-1004** used the supported API world-isolation option. Actual restored epochs **3, 4 and 5** had the same seed and equivalent baseline. Two verification requests differed from the initial refund request and did not reproduce its effect. The run recorded **not reproduced**, with 3 target calls and 6 model calls; no formal negative control executed. Successful clean reproduction and a passed control remain unqualified.
--   MR-1002’s durable review published 113 parts containing 3 conversations, 17 turns, 103 customer events and 51 gateway records. Review content was complete while native span delivery remained pending. Its actual revision-pinned HTTP 200 ZIP download failed archive validation; a valid complete archive remains unqualified.
+-   MR-1002’s durable review published 113 parts containing 3 conversations, 17 turns, 103 customer events and 51 gateway records. Review content was complete while native span delivery remained pending. An initial revision-pinned HTTP 200 ZIP failed archive validation. A later read of the same revision, through the real Firefox download button, saved a valid 674,489-byte ZIP with 114 entries. The manifest matched the revision and all 113 parts passed CRC, byte-count, SHA-256 and JSON checks. Reports JSON, Replay filtering and retained revision after refresh also passed. No replacement assessment or model call was used; the earlier failed download and pending native coverage remain separate observations.
 -   Two native browser checks stopped at blocked form navigation and a later sign-in timeout. The revised synthetic website passed separate manual sign-in, asynchronous chat, retained replies and fresh-conversation refresh checks. Manual website success does not qualify native execution. Synthetic signed-in identity and prepared-scenario walkthroughs also remain unqualified.
 -   A separate one-turn admission returned `review_capacity_unavailable`; it was not automatically resubmitted. Earlier unknown actions, model reservations and telemetry delivery uncertainty were preserved. The strict release audit remains active.
 

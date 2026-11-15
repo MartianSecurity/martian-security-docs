@@ -441,7 +441,7 @@
         "assessment-browser-tests"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "Basic HTTP, operator-assisted MCP and sandbox admission are checked. Complete sandbox outcomes, browser execution and advanced profiles remain unverified."
+      "customerNotice": "Basic HTTP, operator-assisted MCP, sandbox admission and an independent payment outcome are checked. Native browser execution and advanced profiles remain unverified."
     },
     {
       "id": "assessments/evidence-and-results",
@@ -543,7 +543,7 @@
         "assessment-modern-redacted-turn"
       ],
       "qualification": "partial",
-      "validationStatus": "In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified.",
+      "validationStatus": "In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified. Later same-revision Firefox ZIP download and all113part integrity checks passed; native coverage and clean reproduction remain separate.",
       "documentationRoute": "/assessments/evidence-and-results/",
       "role": "viewer, member, admin, owner",
       "route": "/#/runs/<run-id>",
@@ -566,8 +566,7 @@
         "realBackendWalkthrough": "partial: endpoint/baseline and redacted published record reads passed; business effects and ZIP incomplete",
         "screenshots": "partial",
         "remainingGaps": [
-          "A cleanly reproduced positive finding with required control remains unverified.",
-          "A complete valid redacted ZIP remains unverified: a later HTTP200 stream failed archive integrity."
+          "A cleanly reproduced positive finding with required control remains unverified."
         ]
       },
       "validation": [
@@ -628,7 +627,7 @@
         "assessment-payment-completed"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "Endpoint evidence, sandbox baselines and redacted turn reads are checked. Verified business effects and review ZIP downloads remain incomplete."
+      "customerNotice": "Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified."
     },
     {
       "id": "assessments/history-and-exports",
@@ -709,6 +708,24 @@
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_review_policy.py",
           "line": 135
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+          "path": "src/pages/History.jsx",
+          "line": 98
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+          "path": "src/components/tracing/AssessmentReview.jsx",
+          "line": 483
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+          "path": "app/api/assessment_reviews.py",
+          "line": 305
         }
       ],
       "numberedTaskStages": [
@@ -724,8 +741,8 @@
         "assessment-modern-result",
         "assessment-modern-redacted-turn"
       ],
-      "qualification": "partial",
-      "validationStatus": "Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified. Later MR1002 published complete retained review content:3conversations/17turns/103customer events/51gatewayrecords. ActualHTTP200 download hadmatchingrevision and ZIP media type, but lacked a complete archive directory and failed validation.",
+      "qualification": "verified",
+      "validationStatus": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used.",
       "documentationRoute": "/assessments/history-and-exports/",
       "role": "viewer, member, admin, owner",
       "route": "/#/replay",
@@ -741,11 +758,9 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "partial: JSON history/export and published redacted on-screen reads passed; ZIP unavailable",
+        "realBackendWalkthrough": "verified for all five unchanged required history/export stages in the named QA environments",
         "screenshots": "captured",
-        "remainingGaps": [
-          "A complete valid published redacted ZIP and full archive inspection remain unverified after provider timeouts and a later partial HTTP200 ZIP stream."
-        ]
+        "remainingGaps": []
       },
       "validation": [
         {
@@ -767,16 +782,26 @@
           "observedPath": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
           "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
           "result": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed."
+        },
+        {
+          "date": "2026-11-15",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Same-revision archive recovery, actual browser downloads and retained history",
+          "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads",
+          "result": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used."
         }
       ],
       "screenshots": [
         "assessment-replay",
         "assessment-reports",
         "assessment-modern-result",
-        "assessment-modern-redacted-turn"
+        "assessment-modern-redacted-turn",
+        "assessment-review-archive-downloaded"
       ],
-      "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "Run/domain JSON and retained review records are checked. A later ZIP response failed archive validation; complete archive delivery remains unverified."
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads",
+      "customerNotice": "Retained history, Reports JSON, published review ZIP integrity and refresh passed in isolated QA. Native span coverage remains separate and pending.",
+      "verifiedAt": "2026-11-15",
+      "verifiedEnvironment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads"
     },
     {
       "id": "assessments/progress-and-cancellation",
