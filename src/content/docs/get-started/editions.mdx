@@ -1,13 +1,13 @@
 ---
 title: "Editions"
-description: "What Community, Enterprise and On-Premises include, and which parts are available, in beta or planned."
+description: "What Community, Enterprise and On-Premises include and leave out, and which parts are available, in beta, built or planned."
 sidebar:
   order: 2
 ---
 
 {/* The website's /editions/ page says the same (MartianSecurity/martian-security-website, src/lib/editions.ts). Change both together. */}
 
-Martian Security comes in three editions. **Community** is free and runs on your own machine. **Enterprise** is the hosted Martian Security console for teams. **On-Premises** is the same console run inside your own infrastructure, and it is planned.
+Martian Security comes in three editions. **Community** is open source and runs on your own machine. **Enterprise** is the hosted Martian Security console for teams. **On-Premises** is the same console run inside your own infrastructure, and it is planned.
 
 Every item on this page carries one of these labels:
 
@@ -15,20 +15,21 @@ Every item on this page carries one of these labels:
 | --- | --- |
 | **Available** | Released. You can use it today. |
 | **Beta** | In the hosted beta console. Workspaces are by invitation. |
-| **Planned** | Designed but not released. No date is promised. |
+| **Built** | The code exists but is not released: it is not on PyPI and not in the hosted beta. It does not mean that your workspace or installation has it, and no date is promised. |
+| **Planned** | Designed but not built. No date is promised. |
 | — | Not part of that edition. |
 
 ## At a glance
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Status | **Available**: the SDK on PyPI | **Beta** | **Planned** |
-| Price | Free | Contact us | Contact us |
-| Runs on | Your laptop or your own server | Martian cloud | Your infrastructure |
+| Status | **Available**: the SDK on PyPI. **Built**: the local Evals UI, in the next SDK release | **Beta** | **Planned** |
+| Source and licence | Open source under Apache-2.0, in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) | The hosted service. It uses the same open-source SDK | Under an agreement with Martian Security, with an offline licence file |
+| Runs on | Your laptop, or a small server you run, for one user | Martian cloud | Your infrastructure |
 | For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
 | How to start | [Community quickstart](/get-started/quickstart/) | [Request a workspace](/get-started/access/) | Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) |
 
-The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public source repository for Community is **Planned**.
+The SDK is the `martian-sdk` package on PyPI. Its source repository holds the whole Evals core, including the code for review queues and Monitoring: every edition runs that code, and an edition's entitlements decide which paid features it serves ([below](#what-separates-the-editions)). What Martian builds only for Enterprise and On-Premises is not in the repository.
 
 ## What each edition includes
 
@@ -38,49 +39,92 @@ The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public sour
 | --- | --- | --- | --- |
 | [Eval suites from one YAML file](/sdk/local-evals/): deterministic checks, LLM judges with your own model key, result files and CI exit codes | **Available** | **Available**: the same SDK | **Planned** |
 | [Evaluations in Python and pytest](/sdk/evaluations/) | **Available** | **Available**: the same SDK | **Planned** |
-| Evals UI | **Planned**: the console's Evals pages on your machine, one user, no login | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
-| Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Planned**, with the local Evals UI | **Beta** | **Planned** |
-| Judges run from the UI on your own model and key | **Planned** | **Planned** | **Planned** |
+| Evals UI | **Built**: `martian ui`, the console's Evals pages on your machine for one user, with no login and the data in a local folder. Needs SDK 0.1.4 ([quickstart](/get-started/quickstart/#5-see-the-result-in-the-local-evals-ui)) | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
+| Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Built**, with the local Evals UI | **Beta** | **Planned** |
+| Judges run from the UI on your own model and key | **Built**, with the local Evals UI. The targets you define and their keys stay in its data folder | **Planned** | **Planned** |
+| [Results from MLflow, promptfoo and Inspect AI](/migrate/mlflow/) imported into the Evals UI | **Built**: SDK 0.1.4 | — | — |
 | SDK results recorded against a tested revision: API keys and [CI sessions](/sdk/ci/) | — | **Beta** | **Planned** |
 
 ### Work as a team
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| [Review queues with assignment](/evals/human-reviews/) | — | **Beta** | **Planned** |
-| [Monitoring](/evals/suites-and-monitoring/): scoring jobs and their scorecards across runs | — | **Beta** | **Planned** |
-| Scoring of sampled production traces, scheduled regression runs and alerts | — | **Planned** | **Planned** |
+| [Review queues with assignment](/evals/human-reviews/) (`review_queues`) | — | **Beta** | **Planned** |
+| [Monitoring](/evals/suites-and-monitoring/) (`monitoring`): scoring jobs and their scorecards across runs | — | **Beta** | **Planned** |
+| Scoring of sampled production traces, scheduled regression runs and alerts (also under `monitoring`) | — | **Planned** | **Planned** |
 | Organizations, projects and the four [roles](/reference/permissions/): owner, admin, member and viewer | — | **Beta** | **Planned** |
-| Single sign-on, custom roles that separate developers from validators, audit log, retention and service accounts | — | **Planned** | **Planned** |
+| Single sign-on (`single_sign_on`): OIDC or SAML for each organization, verified email domains and password sign-in that an administrator can turn off. There is no identity-provider-initiated sign-in and no single logout | — | **Built** | **Built** |
+| Audit log (`audit_log`): entries that nobody can change or delete, for sign-ins, permission changes and changes to eval objects, with search and export | — | **Built** | **Built** |
+| Service accounts (`service_accounts`): identities for CI jobs and runners, each with a role, a scope of the organization or one project, an expiry and a key that can be rotated or revoked at once | — | **Built** | **Built** |
+| Custom roles that separate developers from validators, and retention | — | **Planned** | **Planned** |
 
 ### Evidence
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Export results | **Available**: JSONL, JSON summary and JUnit files | **Beta**: CSV and JSON exports | **Planned** |
+| Export results | **Available**: JSONL, JSON summary and JUnit files. **Built**: CSV and JSON exports in the Evals UI, and `martian evals export` for everything in its data folder | **Beta**: CSV and JSON exports | **Planned** |
 | Evidence packs and sign-off records | — | **Planned** | **Planned** |
 
 ### Red Team
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Red Team | **Planned**: local probes, with a monthly limit on hosted attack generation | **Beta**: [assessments](/get-started/first-assessment/) in the hosted console | **Planned**: attack generation on your own models |
+| Red Team | **Planned**: local probes, with a monthly limit on hosted attack generation. Today the SDK's red-team probes call a Martian workspace and need an API key | **Beta**: [assessments](/get-started/first-assessment/) in the hosted console | **Planned**: attack generation on your own models |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
 ### Delivery and support
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Delivery | **Available**: `pip install` from PyPI. **Planned**: a Docker image for single-user self-hosting | **Beta**: managed by Martian | **Planned**: Helm chart, air-gapped image bundle, a runner inside your network, an offline licence file and a named deployment engineer |
+| Delivery | **Available**: `pip install` from PyPI. **Built**: a Docker image of the local Evals UI for one user on a small server, that you build from the repository's `Dockerfile`; no image is published yet. It has no login and must not be exposed publicly | **Beta**: managed by Martian | **Built**: the offline licence file. **Planned**: Helm chart, air-gapped image bundle, a runner inside your network and a named deployment engineer |
 | Support | **Planned**: community support in the public repository | **Planned**: priority support with an SLA | **Planned**: priority support with an SLA |
 
-## Where the paid line is
+## What separates the editions
 
-Features that one engineer needs are free. Features that a team, a manager or a risk function needs are paid.
+The Evals core serves every edition. What differs is what each edition supplies: who signs in, where the data lives, which paid features are on and how much may run at once.
 
-Two Evals features are paid: **review queues with assignment** and **Monitoring**. Enterprise and On-Premises include them; Community does not. No other Evals feature is paid, so the local Evals UI, when released, includes every other Evals page.
+### Where each edition runs
 
-Community also leaves out what needs a shared server or belongs to another product area: API keys and CI sessions, organizations and team pages, and the console's Red Team assessments and simulation environments.
+| | Community | Enterprise | On-Premises |
+| --- | --- | --- | --- |
+| Who signs in | One user, with no login | The members of each organization | The members of each organization |
+| Where the data lives | A folder on your machine, on SQLite. Nothing is sent to Martian | Martian's hosted storage | Your infrastructure |
+| What decides the edition | Nothing: it is always Community | The organization's plan | A licence file signed by Martian and checked offline, with no licence server. Without a valid licence, or after its grace period, the installation is Community |
+
+### Feature keys
+
+The Evals UI shows a page only when the edition includes its feature key, and the API refuses a route of a missing feature with `403`.
+
+| Feature key | Covers | Community | Enterprise | On-Premises |
+| --- | --- | --- | --- | --- |
+| `review_queues` | Review queues with an assignee, answering their items, and the library of review questions | No | Yes | Yes |
+| `monitoring` | The Monitoring page, monitors on live traces, thresholds with alerts, and scheduled runs | No | Yes | Yes |
+| `single_sign_on` | Single sign-on | No | Yes | Yes |
+| `audit_log` | The audit log | No | Yes | Yes |
+| `service_accounts` | Service accounts | No | Yes | Yes |
+
+Annotating one item or trace, and scoring one run, stay in every edition. `review_queues` and `monitoring` are in the open-source repository; the other three keys are for features that exist only in Martian's own product.
+
+### Limits
+
+Each edition sets how many runs and scoring jobs may be in progress at once. A launch over the limit is refused.
+
+| Limit | Community | Enterprise | On-Premises |
+| --- | --- | --- | --- |
+| Evaluation runs queued or running at once | 1 | 5 | No limit |
+| Scoring jobs queued or running at once | 1 | 5 | No limit |
+
+On your own machine you set the Community limit: `martian ui --concurrency 2` allows two of each. On-Premises has no limit of its own because its workers bound what runs at once.
+
+## What Community leaves out
+
+Community includes the whole Evals core except what a shared server needs or what Enterprise and On-Premises add:
+
+- Review queues and Monitoring.
+- Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
+- API keys and CI sessions, which record SDK results on a server.
+- The console's Red Team assessments and simulation environments.
+- Hosted storage, managed upgrades and priority support.
 
 ## Choose an edition
 
