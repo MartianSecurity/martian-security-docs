@@ -10,7 +10,7 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **38 task guides**, **34 are verified**, **4 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **192 captured references** across **180 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **41 task guides**, **34 are verified**, **7 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **192 captured references** across **180 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
@@ -123,6 +123,8 @@ A separate **Harbor Assessment Lab** used a genuine customer Owner with `platfor
 
 The Community quickstart’s CLI path was checked against the released SDK; its local Evals UI remains unreleased. Evergreen installs, the stable tutorial ZIP, Copy page/code controls, public Markdown and agent mirrors passed the separately recorded documentation checks. The novice review was AI-simulated, with no human participant.
 
+Every command in the three migration guides, [from MLflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/mlflow.md), [from promptfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md) and [from Inspect AI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/inspect.md), was run against the **unreleased SDK 0.1.4 source**, built from the open-source repository, with sample projects that each tool wrote itself and no model call. MLflow 3.18.0 stores on SQLite and PostgreSQL were copied, and a 3.16.1 store through the documented upgrade of its copy; promptfoo 0.125.1 results were imported and its config converted and run; Inspect AI 0.3.290 `.eval` and `.json` logs were imported. The imported data was checked in the local Evals UI, including Compare. Two providers from one promptfoo results file do not pair in Compare; the guide says so and gives the working alternative. The guides are partly verified until they are run on the published 0.1.4 package.
+
 ## Attack reference
 
 The [attack reference](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md) documents all 12 major families in the stored catalogue, four focused attack surfaces and five security frameworks. Its related-technique tables match an observed stock Backend list of 36 entries: 32 in the library and four declared gaps. The [reference source record](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/attack-library.json) identifies the inspected implementation, official ATLAS data and editorial relationships.
@@ -148,6 +150,7 @@ The task guides install the latest SDK and keep release announcements in [PyPI r
 
 -   **SDK 0.1.2:** API-key management, persisted Evals, red teaming and combined CI were qualified against the recorded isolated services. The [combined CI receipt](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/validation/sdk-ci-0.1.2-2026-11-13.json) identifies the original tutorial snapshot and package hashes. Its original ZIP is historical; the current download uses an unpinned install.
 -   **SDK 0.1.3:** installation, the account-free local preview, the Community quickstart’s command-line steps, YAML validation, suite-file evaluations, deterministic checks, rubric/guidelines/conditions judges through one provider route, rejected-token handling and local evaluation storage were exercised. Discovery runtime reporting, response-resource mapping, native Kubernetes request evidence and SDK call blocking/resume/expiry were also exercised in the separate candidate environment above. API-key management, persisted CI and hosted red teaming were not requalified on this release.
+-   **SDK 0.1.4 (not yet published):** the MLflow, promptfoo and Inspect AI importers, the promptfoo converter and the local Evals UI used by the migration guides were exercised on the release’s source only. They have not been run on a published package.
 
 Installing a newer release does not extend those recorded results automatically. Validate your workflow before upgrading production CI, and record its selected dependency version in your lockfile.
 
@@ -165,6 +168,7 @@ Installing a newer release does not extend those recorded results automatically.
 | Sandbox orchestrator executable and catalog | da6cfe0d25fee5cea4ae4d3d52f2f79797dfe565 |
 | SDK release | martian-sdk 0.1.2 |
 | SDK release for the local suite-file guide | martian-sdk 0.1.3 |
+| SDK source for the migration guides (unreleased 0.1.4) | martian-redteam 08d26734b8d3848f425bcea5c8d2ed4a4380017a |
 | Hermes styling foundation | 3593a4bae03e96cf6c7597ececf99fbfc32997ae |
 
 The follow-up frontend was served from a clean source archive against the same Backend/Agents runtime baseline. Seventeen relevant served/runtime files matched their recorded source bytes. The newer Backend and Agents heads contained documentation-only changes. The current Pipeline preview and its actual template download were also inspected; these checks do not requalify every earlier screenshot against the newer frontend.
