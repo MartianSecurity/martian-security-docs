@@ -3907,8 +3907,8 @@
     {
       "id": "on-premises/operations",
       "title": "Operate an Evals installation",
-      "description": "Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and follow today's upgrade rule.",
-      "customerTask": "Back up and restore the three databases and the artifacts, check health and logs, troubleshoot, and upgrade by today's rule.",
+      "description": "Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and upgrade it or roll it back.",
+      "customerTask": "Back up and restore the three databases and the artifacts, check health and logs, troubleshoot, and upgrade or roll back along a tested path.",
       "requiredRoles": [
         "platform engineer with namespace administration"
       ],
@@ -3916,7 +3916,9 @@
       "supportedInterfaces": [
         "kubectl exec pg_dump and pg_restore",
         "kubectl logs",
-        "helm upgrade"
+        "helm upgrade",
+        "helm rollback",
+        "kubectl exec alembic current and downgrade"
       ],
       "prerequisites": [
         "An installation of the martian-evals chart",
@@ -3940,14 +3942,29 @@
           "path": "app/evals_records.py"
         },
         {
-          "repository": "MartianSecurity/MartianBackend",
-          "commit": "ce7ca4d88606f35439363bb9718f36a92c56c6f1",
-          "path": "docs/usage.md"
-        },
-        {
           "repository": "MartianSecurity/martian-evals",
           "commit": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
           "path": "docs/how-it-works.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "64c6609987b46b1b199ebde450e61a3b4bdba843",
+          "path": "docs/usage.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "64c6609987b46b1b199ebde450e61a3b4bdba843",
+          "path": "tests/upgrade_across_releases.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "64c6609987b46b1b199ebde450e61a3b4bdba843",
+          "path": "migrations/versions/"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "99a9c4ad1cf65ff67d9773fdb65a9dd282f7e4de",
+          "path": "charts/martian-evals/README.md"
         }
       ],
       "numberedTaskStages": [
@@ -3955,25 +3972,28 @@
         "Restore into the same release",
         "Check health and logs",
         "Troubleshoot",
-        "Upgrade by today's rule"
+        "Upgrade along a tested path",
+        "Roll back"
       ],
       "screenshotIds": [],
       "qualification": "pending",
-      "validationStatus": "Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it.",
-      "customerNotice": "This guide is reviewed against the chart and the services it installs. Its procedures have not yet been walked through on a cluster, and a supported upgrade path is not built.",
+      "validationStatus": "Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's CI job, which upgrades a database seeded by the releases at schema 0048 and 0050 to 0056 with containers, checks that every row survives and that both backends serve it, then downgrades it and runs the earlier backend again; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.",
+      "customerNotice": "This guide is reviewed against the chart and the services it installs. Its procedures have not yet been walked through on a cluster; the upgrade and rollback are tested with containers, not with Helm.",
       "documentationRoute": "/on-premises/operations/",
       "role": "platform engineer",
       "route": "kubectl and helm against the release namespace",
       "interfaces": [
         "kubectl exec pg_dump and pg_restore",
         "kubectl logs",
-        "helm upgrade"
+        "helm upgrade",
+        "helm rollback",
+        "kubectl exec alembic current and downgrade"
       ],
       "requiredValidation": [
         "Back up and restore an installation with runs, datasets and traces, and read them back in the console",
         "Restore the artifact volume and open a run's artifacts",
         "Reproduce each troubleshooting symptom and its documented action",
-        "Upgrade between two releases once a supported path exists"
+        "Upgrade and roll back an installation with helm upgrade and helm rollback on a cluster"
       ],
       "sourceReview": {
         "sourceReviewed": true,
@@ -3981,7 +4001,7 @@
         "screenshots": "none",
         "remainingGaps": [
           "Backup and restore were not run through kubectl on a cluster, and the artifact tar restore was not run.",
-          "No upgrade between releases has been tested; the upgrade path is planned."
+          "The upgrade and rollback were tested with containers in the backend's CI, not with helm upgrade and helm rollback on a cluster, and no two releases of the chart exist yet."
         ]
       },
       "screenshots": [],
