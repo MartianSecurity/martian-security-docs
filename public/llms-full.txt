@@ -5546,7 +5546,7 @@ The examples are synthetic explanations, not newly executed attacks. Official fr
 
 ## Discovery compatibility walkthrough
 
-A separate isolated QA organization used a real customer Owner (**platform\_admin false**), an explicitly authorized Kubernetes namespace, the unchanged customer collector and the compatible Backend candidate in [PR112](https://github.com/MartianSecurity/MartianBackend/pull/112). Twelve served Frontend files and eleven running Backend files matched the recorded sources. This is a candidate-environment result; the Backend PR is waiting for GitHub Actions billing to allow checks to run. It has not been merged or deployed to beta.
+A separate isolated QA organization used a real customer Owner (**platform\_admin false**), an explicitly authorized Kubernetes namespace, the unchanged customer collector and the compatible Backend candidate in [PR112](https://github.com/MartianSecurity/MartianBackend/pull/112). Twelve served Frontend files and eleven running Backend files matched the recorded sources. After CI availability recovered, the PR was updated against current main and merged with all nine checks passing, including the six PostgreSQL integration suites. Its three implementation files are byte-identical to the real API/UI-qualified candidate. The captures remain isolated-QA evidence; the merged change has not been deployed to beta by this documentation work.
 
 -   **Inventory:** actual enrollment and private assignment download passed. Four distinct real collection cycles retained the same Deployment and supporting Pod identities, including later application updates. Pause rejected collection before a new run; resume and a new completion survived full refresh. Reader permission denials and provider TLS were checked. AWS collection and credential replacement were not exercised.
 -   **Runtime:** the released SDK reported eight distinct successful reads of one named synthetic ConfigMap from the actual enrolled Pod. Full refresh and explicit binding/time selection retained **8 tool calls / 0 model calls**, eight response-resource mappings and all eight original trace IDs. The latest collected RBAC snapshot aligned with the caller-declared named GET and service account. Identity, call-time permission and business impact remain independent claims; no assessed baseline was invented.
@@ -5573,7 +5573,8 @@ Installing a newer release does not extend those recorded results automatically.
 | Frontend | 06d0d0c96a9627c383b85670929dfe8bdc33aa30 |
 | Frontend for browser, cancellation, generated environments, recorded reviews and Pipeline follow-up | 5361d1f241278e19c79e68d1d8f9325920a04d12 |
 | Backend | 01343fa93feb518f6c7cd1928b63a01d2ec5ee0b |
-| Backend Discovery compatibility candidate (PR112; unmerged) | 79618e45df0bc1fbbd2ca23892cd87c056f293fb |
+| Backend Discovery compatibility used in captured QA (PR112) | 79618e45df0bc1fbbd2ca23892cd87c056f293fb |
+| Backend merged compatibility (PR112; beta deployment not performed) | af36ece97e042108cdbef1ffee3cb0fce8dbb6ef |
 | Customer Discovery collector | 7f022e59f2db4bc6401c9706663400cdc6a91e20 |
 | Agents | f7de3e068d66fe478f642d43a658ed9b3ed321f5 |
 | Evals service | 60c25994958105db4baa91f377ba46c24fdf253d |

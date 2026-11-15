@@ -688,6 +688,17 @@
       "result": "passed for the unchanged history/export stages; native span coverage remains pending",
       "record": "quality/walkthroughs.json",
       "details": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used."
+    },
+    {
+      "scope": "Published review-archive recovery and retained history",
+      "result": "passed",
+      "details": "PR41/main00f39df2 Pages passed. All154 trustedHTTPS/hash checks passed, including every publicHTML and70agentMarkdown mirrors. Eight deployed desktop/narrow theme combinations had zero page errors, failed responses or overflow. Exact page copy, full-size image and actual search navigation passed. Both deployed renders were individually viewed. The actual application Firefox ZIP and Reports downloads plus Replay refresh passed; no new model call was used."
+    },
+    {
+      "scope": "Approved Discovery compatibility merge after recovered CI",
+      "result": "passed; no beta deployment",
+      "record": "https://github.com/MartianSecurity/MartianBackend/pull/112",
+      "details": "PR112 merged asaf36ece97e042108cdbef1ffee3cb0fce8dbb6ef after all9CI checks passed oncurrentmain: Python, six PostgreSQL integration suites, image build and the required gate. Local compile and335existing unit tests passed, with74opt-in cases skipped locally; the six specified PostgreSQL integration suites passed separately in CI. The three implementation files are byte-identical to the real API/UI-qualified candidate; only the collector documentation URL follows the new owner. All4merged file hashes and tree matched. No product deployment was performed."
     }
   ],
   "remainingGaps": [
