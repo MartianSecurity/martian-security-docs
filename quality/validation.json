@@ -651,6 +651,18 @@
       "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.3 and mlflow-skinny 3.16.1 installed from public PyPI into a fresh virtual environment; example ZIP taken from the built site; no Martian platform services and no model provider",
       "result": "passed",
       "details": "The built site's sdk-local-evals-0.1.3.zip matched public/examples by SHA-256 and was extracted with python3 -m zipfile. martian --version printed 0.1.3. evals.yaml: 3 cases, no_secret_leak 2 passed / 1 failed, no_email_address 3 passed, exit 1; results.jsonl, summary.json, junit.xml and mlflow.db written; summary passed 2, failed 1, errors 0; the prompt-injection record matched the guide. A plain rerun reported 3 already done. evals-fixed.yaml --fresh: 3 passed, exit 0, written to results-fixed. martian ui on 0.1.3: No such command 'ui', exit 2."
+    },
+    {
+      "scope": "Evergreen Community and local Evals download",
+      "environment": "macOS; Python 3.12; previously verified public PyPI martian-sdk[evals] 0.1.3 environment; new empty local result stores",
+      "result": "passed for CLI; local UI remains unreleased",
+      "details": "The version-free sdk-local-evals.zip extracts successfully. All runnable files match the preserved versioned archive. Real first run: 2 passed / 1 failed / 0 errors, exit 1; plain rerun resumes; corrected suite with --fresh: 3 passed / 0 failed / 0 errors, exit 0. martian ui still exits 2 because the released package has no local UI. No platform services or model credentials were used. Public instructions and the download README avoid fixed SDK release numbers and link PyPI release history."
+    },
+    {
+      "scope": "Evergreen SDK docs browser and readability checks",
+      "environment": "Local production preview; Chrome; desktop 1440x1000 Light, 390x844 Dark and 320x844 Light",
+      "result": "passed",
+      "details": "Seven page/viewport/theme combinations passed for Community quickstart, Editions and local Evals, including the narrow-menu theme control. Exact page Markdown and install-code clipboard copies passed. The browser downloaded sdk-local-evals.zip with the stable name and verified SHA-256 bfa5319b15050f26e8840dd8dfe58256e11ab94157c899564facd716d068f37a. Header caption absent; no page overflow, document errors, HTTP failures or failed requests in the final settled checks. Desktop and narrow captures were individually viewed for readable code, callouts and navigation. This was an AI-simulated novice review, not a human participant. Earlier preview startup/base-path and hidden mobile-control observation failures are retained privately."
     }
   ],
   "remainingGaps": [

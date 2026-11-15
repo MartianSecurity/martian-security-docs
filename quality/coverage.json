@@ -2778,7 +2778,7 @@
         }
       ],
       "validationStatus": "Every command in steps 1 to 4 ran against released SDK 0.1.3 from public PyPI, using the example ZIP from the built site: install and version 0.1.3, first run 2 passed / 1 failed / 0 errors with exit 1, summary and failing record as shown, plain rerun resumed with 3 already done, corrected suite with --fresh 3 passed with exit 0. On 0.1.3, martian ui exits 2 with No such command 'ui'. The guide does not yet reach a result in a UI: no released SDK includes the local Evals UI, so step 5 documents only what exists today and its UI walkthrough is not verified.",
-      "customerNotice": "Install, first run, results and the corrected rerun are verified on SDK 0.1.3 from PyPI. The local Evals UI is not in a released SDK, so the UI step is not verified.",
+      "customerNotice": "The released SDK supports the install, first run, result files and corrected rerun below. The local Evals UI is planned and is not included in the released package.",
       "requiredValidation": [
         "Run every documented command against the released package from public PyPI",
         "Extract and run the downloadable example ZIP from the built site",

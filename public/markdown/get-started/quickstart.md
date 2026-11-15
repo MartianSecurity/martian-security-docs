@@ -10,7 +10,7 @@ Source: [Web version](https://docs.martiansecurity.ai/get-started/quickstart/)
 
 Partly verified guide
 
-Install, first run, results and the corrected rerun are verified on SDK 0.1.3 from PyPI. The local Evals UI is not in a released SDK, so the UI step is not verified.
+The released SDK supports the install, first run, result files and corrected rerun below. The local Evals UI is planned and is not included in the released package.
 
 The Community edition is free and runs on your own machine. In this quickstart you install the SDK from PyPI, run a three-case eval suite against a small example agent, read which case failed and why, then fix the agent and run again. You need no Martian account, API key or model key. [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md) compares Community with Enterprise and On-Premises.
 
@@ -24,18 +24,18 @@ With the released SDK, the result of a local run is the summary in your terminal
 
 ## 1\. Get the example and install the SDK
 
-Download the [example suite](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals-0.1.3.zip). In the folder that holds the download, extract it, create an isolated Python environment and install the SDK:
+Download the [example suite](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals.zip). In the folder that holds the download, extract it, create an isolated Python environment and install the SDK:
 
 ```sh
 python3 --version
-python3 -m zipfile -e sdk-local-evals-0.1.3.zip sdk-local-evals
+python3 -m zipfile -e sdk-local-evals.zip sdk-local-evals
 cd sdk-local-evals
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
 .venv/bin/martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last prints the installed SDK version, for example `0.1.3`.
+The first command must report Python 3.12 or newer. The last prints the installed SDK version. See the [PyPI release history](https://pypi.org/project/martian-sdk/#history) for release notes and updates.
 
 The folder holds the suite file `evals.yaml`, three cases in `cases.jsonl`, the example agent `agent.py`, and a corrected `agent-fixed.py` with its own suite, `evals-fixed.yaml`. Keep the files together.
 
@@ -124,7 +124,7 @@ To see eval results in the Martian Security console today, you need a workspace 
 
 Not in a released SDK yet: the local Evals UI
 
-A local Evals UI for Community is in development and is not in SDK 0.1.3 or any earlier release. On 0.1.3, `martian ui` stops with `No such command 'ui'` and exit code `2`. When a release includes it, this step will show your local runs in the console’s Evals pages on your own machine: one user, no login, with the data kept locally. Check the [PyPI release history](https://pypi.org/project/martian-sdk/#history) for new releases.
+A local Evals UI for Community is in development and is not included in the released SDK. The released CLI reports `No such command 'ui'` and exit code `2` for `martian ui`. When the UI is released, this step will show your local runs in the console’s Evals pages on your own machine: one user, no login, with the data kept locally. Check the [PyPI release history](https://pypi.org/project/martian-sdk/#history) for availability.
 
 ## Failures and limits
 
