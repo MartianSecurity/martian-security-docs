@@ -30,7 +30,7 @@ This tests an artificial instruction boundary, not the safety of a production mo
 | `MT-05` Many-shot priming | In the library |
 | `MT-06` Refusal suppression | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 These related techniques are prompting strategies in the selectable list. The broader published jailbreak family can also describe attacks on model weights or safety mechanisms; their presence in a research catalogue does not mean Martian can modify those components or test them through your endpoint.
 
@@ -40,11 +40,11 @@ Record the applicable policy, complete conversation, target/model configuration 
 
 Measure usefulness as well as refusal. A target that rejects every benign request may avoid some unsafe answers while failing its intended job. Include legitimate controls and review false positives, especially when the attack uses another language, quotation or encoded text.
 
-For multi-turn attacks, preserve the turn order and relevant session state. Treat a truncated conversation, unavailable target or exhausted search budget according to the [recorded result limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
+For multi-turn attacks, preserve the turn order and relevant session state. Treat a truncated conversation, unavailable target or exhausted search budget according to the [recorded result limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
 
 ## Reduce the risk
 
-Evaluate the deployed model and application policy together. Apply least privilege and independent checks to consequential actions even when content filters are present. Test safety controls with both allowed and disallowed cases, monitor policy drift after model or prompt changes, and retain representative failures as [regression cases](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/regression-cases.md).
+Evaluate the deployed model and application policy together. Apply least privilege and independent checks to consequential actions even when content filters are present. Test safety controls with both allowed and disallowed cases, monitor policy drift after model or prompt changes, and retain representative failures as [regression cases](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/regression-cases.md).
 
 ## Related standards and next steps
 
@@ -53,6 +53,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0054 — LLM Jailbreak](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3225)
 -   [AML.T0068 — LLM Prompt Obfuscation](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3640)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-Compare [prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) and [guardrail and judge evasion](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md). Use [saved-output judging](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/judging.md) when the task is to score retained responses rather than run a new adversarial campaign.
+Compare [prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) and [guardrail and judge evasion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md). Use [saved-output judging](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/judging.md) when the task is to score retained responses rather than run a new adversarial campaign.

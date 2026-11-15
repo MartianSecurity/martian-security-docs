@@ -25,31 +25,31 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/AgentOnboard.jsx",
           "line": 17
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/components/AgentDrawer.jsx",
           "line": 359
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/agents.py",
           "line": 75
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/agent_connections.py",
           "line": 479
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/schemas.py",
           "line": 428
@@ -212,19 +212,19 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/AgentDrawer.jsx",
           "line": 126
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/agents.py",
           "line": 852
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessments.py",
           "line": 590
@@ -326,25 +326,25 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/Assessment.jsx",
           "line": 30
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/lib/taxonomy.js",
           "line": 100
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessments.py",
           "line": 269
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/schemas.py",
           "line": 702
@@ -450,55 +450,55 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/Assessment.jsx",
           "line": 826
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/RunTrace.jsx",
           "line": 690
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/tracing/AssessmentReview.jsx",
           "line": 528
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_execution.py",
           "line": 642
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/History.jsx",
           "line": 98
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/RunTrace.jsx",
           "line": 707
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/tracing/AssessmentReview.jsx",
           "line": 483
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessment_reviews.py",
           "line": 305
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_review_policy.py",
           "line": 135
@@ -627,61 +627,61 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/History.jsx",
           "line": 38
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/History.jsx",
           "line": 98
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/Replay.jsx",
           "line": 105
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/RunTrace.jsx",
           "line": 684
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/components/tracing/AssessmentReview.jsx",
           "line": 567
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/History.jsx",
           "line": 98
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/RunTrace.jsx",
           "line": 707
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/tracing/AssessmentReview.jsx",
           "line": 483
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessment_reviews.py",
           "line": 305
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_review_policy.py",
           "line": 135
@@ -767,49 +767,49 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/Assessment.jsx",
           "line": 752
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/RunTrace.jsx",
           "line": 559
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessments.py",
           "line": 919
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/assessments.py",
           "line": 779
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_execution.py",
           "line": 1085
         },
         {
-          "repository": "MorningHQ/martian-agents",
+          "repository": "MartianSecurity/martian-agents",
           "commit": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
           "path": "src/martian_runtime/agents/model.py",
           "line": 85
         },
         {
-          "repository": "MorningHQ/martian-agents",
+          "repository": "MartianSecurity/martian-agents",
           "commit": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
           "path": "src/martian_runtime/budgets/postgres.py",
           "line": 130
         },
         {
-          "repository": "MorningHQ/martian-agents",
+          "repository": "MartianSecurity/martian-agents",
           "commit": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
           "path": "src/martian_runtime/llm/bedrock.py",
           "line": 80
@@ -942,31 +942,31 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/martian-agents",
+          "repository": "MartianSecurity/martian-agents",
           "commit": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
           "path": "src/martian_runtime/graph/workflow.py",
           "line": 2509
         },
         {
-          "repository": "MorningHQ/martian-agents",
+          "repository": "MartianSecurity/martian-agents",
           "commit": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
           "path": "src/martian_runtime/graph/workflow.py",
           "line": 2619
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_verification.py",
           "line": 269
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/assessment_execution.py",
           "line": 642
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/RunTrace.jsx",
           "line": 284
@@ -1051,25 +1051,25 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryCallGate.jsx",
           "line": 118
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryControls.jsx",
           "line": 131
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 196
         },
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "path": "docs/customer-integration.md",
           "line": 158
@@ -1183,19 +1183,19 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoverySources.jsx",
           "line": 72
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryOverview.jsx",
           "line": 53
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 71
@@ -1293,31 +1293,31 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryRuntimeSetup.jsx",
           "line": 56
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryRuntime.jsx",
           "line": 53
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/DiscoveryOverview.jsx",
           "line": 62
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "docs/discovery.md",
           "line": 134
         },
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "path": "docs/customer-integration.md",
           "line": 60
@@ -1416,49 +1416,49 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/EnvironmentEditor.jsx",
           "line": 416
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/pages/Environments.jsx",
           "line": 154
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/EnvironmentDataDrawer.jsx",
           "line": 83
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/SandboxDrawer.jsx",
           "line": 78
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/environments.py",
           "line": 83
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/data.py",
           "line": 824
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/sandboxes.py",
           "line": 556
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/schemas.py",
           "line": 287
@@ -1619,8 +1619,8 @@
       "route": "/#/evals/compare",
       "environment": "Isolated local QA; real pinned application and synthetic changed callback",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Two completed runs in selected project",
@@ -1710,8 +1710,8 @@
       "route": "/#/evals/datasets",
       "environment": "Isolated local QA; synthetic organization; current pinned source baseline",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready Evals organization",
@@ -1858,8 +1858,8 @@
       "route": "/#/evals",
       "environment": "Isolated local QA; real pinned Backend, Agents and MLflow; synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready organization Evals setup",
@@ -1930,8 +1930,8 @@
       "route": "/#/evals/reviews",
       "environment": "Isolated local QA; real pinned Backend, Agents and MLflow; synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Completed run in writable project",
@@ -1997,8 +1997,8 @@
       "route": "/#/evals/judges",
       "environment": "Isolated local QA; synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Completed run in writable project",
@@ -2110,8 +2110,8 @@
       "route": "/#/evals",
       "environment": "Real pinned local QA services; synthetic organization and disposable project",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready organization Evals setup",
@@ -2167,7 +2167,7 @@
       "verifiedEnvironment": "Isolated local QA",
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/components/EvalsScope.jsx",
@@ -2176,7 +2176,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "paths": [
             "app/api/evals_explorer.py",
@@ -2192,8 +2192,8 @@
       "route": "/#/evals/issues",
       "environment": "Real pinned local QA services and synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Retained real native trace with explicit failed Boolean assessment or execution error",
@@ -2250,7 +2250,7 @@
       "verifiedEnvironment": "Isolated local QA",
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/EvalExplorer.jsx",
@@ -2258,7 +2258,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "paths": [
             "app/api/evals_explorer.py",
@@ -2273,8 +2273,8 @@
       "route": "/#/evals",
       "environment": "Isolated local QA; real pinned Backend, Agents and MLflow; synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Saved completed evaluation",
@@ -2338,8 +2338,8 @@
       "route": "/#/evals",
       "environment": "Isolated local QA; genuine target cancellation and code-scoring stop",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Authorized active bounded target evaluation for target-stop example",
@@ -2422,8 +2422,8 @@
       "route": "/#/evals/suites",
       "environment": "Real pinned local QA services and synthetic organization",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready organization",
@@ -2483,7 +2483,7 @@
       "verifiedEnvironment": "Isolated local QA (code criteria)",
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/EvalSuites.jsx",
@@ -2493,7 +2493,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "paths": [
             "app/api/evals_quality.py",
@@ -2509,8 +2509,8 @@
       "route": "/#/evals/traces",
       "environment": "Isolated local QA; synthetic organization; current pinned source baseline",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready org Evals setup",
@@ -2585,7 +2585,7 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/EvalExplorer.jsx",
@@ -2594,7 +2594,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "paths": [
             "app/api/evals_explorer.py",
@@ -2603,7 +2603,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
           "paths": [
             "src/martian/evals/plugin.py",
@@ -2767,7 +2767,7 @@
       "qualification": "partial",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "paths": [
             "src/martian/cli.py",
@@ -2819,19 +2819,19 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/AttackLibrary.jsx",
           "line": 29
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/ThreatIntel.jsx",
           "line": 10
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/library.py",
           "line": 13
@@ -2917,7 +2917,7 @@
       "qualification": "verified",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
           "paths": [
             "src/martian/cli.py",
@@ -2928,7 +2928,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/Evals.jsx",
@@ -3006,7 +3006,7 @@
       "qualification": "verified",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
           "paths": [
             "src/martian/cli.py",
@@ -3017,7 +3017,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/Evals.jsx",
@@ -3079,7 +3079,7 @@
       "qualification": "verified",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "f3caf8bcc5f8aad176d2c843562fe468cd755218",
           "paths": [
             "src/martian/cli.py",
@@ -3141,7 +3141,7 @@
       "qualification": "verified",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
           "paths": [
             "src/martian/cli.py",
@@ -3152,7 +3152,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/Evals.jsx",
@@ -3205,7 +3205,7 @@
       "qualification": "verified",
       "sources": [
         {
-          "repository": "MorningHQ/martian-redteam",
+          "repository": "MartianSecurity/martian-redteam",
           "commit": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
           "paths": [
             "src/martian/cli.py",
@@ -3216,7 +3216,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/pages/Evals.jsx",
@@ -3282,19 +3282,19 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/Invitations.jsx",
           "line": 24
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/AcceptInvitation.jsx",
           "line": 49
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/deps.py",
           "line": 105
@@ -3371,8 +3371,8 @@
       "uiRoute": "/#/evals?run=<run-id>",
       "environment": "Isolated local QA; synthetic organization; retained EV-1003 canonical failure",
       "sourceRevisions": {
-        "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-        "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
+        "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+        "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b"
       },
       "prerequisites": [
         "Ready organization Evals access",
@@ -3453,7 +3453,7 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "paths": [
             "src/components/EvalsWorkbench.jsx",
@@ -3462,7 +3462,7 @@
           ]
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "paths": [
             "app/api/evals_datasets.py",
@@ -3494,13 +3494,13 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/pages/EvalExplorer.jsx",
           "line": 1
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/evals_explorer.py",
           "line": 1
@@ -3560,13 +3560,13 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
           "path": "src/components/TraceAnnotations.jsx",
           "line": 1
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
           "path": "app/api/evals_explorer.py",
           "line": 1
@@ -3629,25 +3629,25 @@
       ],
       "sources": [
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryNetworkSetup.jsx",
           "line": 1
         },
         {
-          "repository": "MorningHQ/MartianFrontend",
+          "repository": "MartianSecurity/MartianFrontend",
           "commit": "5361d1f241278e19c79e68d1d8f9325920a04d12",
           "path": "src/components/DiscoveryObserverSetup.jsx",
           "line": 1
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "app/api/network.py",
           "line": 1
         },
         {
-          "repository": "MorningHQ/MartianBackend",
+          "repository": "MartianSecurity/MartianBackend",
           "commit": "79618e45df0bc1fbbd2ca23892cd87c056f293fb",
           "path": "app/api/network_live.py",
           "line": 1

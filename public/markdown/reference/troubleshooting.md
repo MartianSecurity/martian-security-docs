@@ -33,4 +33,4 @@ Record the run ID, approximate time, action, visible error and the steps already
 
 A stop acknowledgement is not proof that an in-flight provider call has completed. Wait for final state and inspect retained work. Do not repeatedly retry an uncertain paid operation just to obtain a passing result.
 
-**Next:** [Permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md), [limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md) or the [SDK configuration guide](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md).
+**Next:** [Permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md), [limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md) or the [SDK configuration guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md).

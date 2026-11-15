@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/quickstart/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 > **Walkthrough limits:** Every command in steps 1 to 4 ran against released SDK 0.1.3 from public PyPI, using the example ZIP from the built site: install and version 0.1.3, first run 2 passed / 1 failed / 0 errors with exit 1, summary and failing record as shown, plain rerun resumed with 3 already done, corrected suite with --fresh 3 passed with exit 0. On 0.1.3, martian ui exits 2 with No such command 'ui'. The guide does not yet reach a result in a UI: no released SDK includes the local Evals UI, so step 5 documents only what exists today and its UI walkthrough is not verified.
 
@@ -12,9 +12,9 @@ Partly verified guide
 
 The released SDK supports the install, first run, result files and corrected rerun below. The local Evals UI is planned and is not included in the released package.
 
-The Community edition is free and runs on your own machine. In this quickstart you install the SDK from PyPI, run a three-case eval suite against a small example agent, read which case failed and why, then fix the agent and run again. You need no Martian account, API key or model key. [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md) compares Community with Enterprise and On-Premises.
+The Community edition is free and runs on your own machine. In this quickstart you install the SDK from PyPI, run a three-case eval suite against a small example agent, read which case failed and why, then fix the agent and run again. You need no Martian account, API key or model key. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) compares Community with Enterprise and On-Premises.
 
-With the released SDK, the result of a local run is the summary in your terminal and the files in a `results` folder. A local Evals UI is planned for a later SDK release; [step 5](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md#5-see-the-result-in-a-ui) says what you can use today.
+With the released SDK, the result of a local run is the summary in your terminal and the files in a `results` folder. A local Evals UI is planned for a later SDK release; [step 5](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md#5-see-the-result-in-a-ui) says what you can use today.
 
 ## Before you start
 
@@ -24,7 +24,7 @@ With the released SDK, the result of a local run is the summary in your terminal
 
 ## 1\. Get the example and install the SDK
 
-Download the [example suite](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals.zip). In the folder that holds the download, extract it, create an isolated Python environment and install the SDK:
+Download the [example suite](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals.zip). In the folder that holds the download, extract it, create an isolated Python environment and install the SDK:
 
 ```sh
 python3 --version
@@ -120,7 +120,7 @@ A plain rerun of a suite **resumes**: it skips cases that already have a verdict
 
 With the released SDK, a local run opens no UI. Its result is the terminal summary and the `results` folder from steps 2 to 4.
 
-To see eval results in the Martian Security console today, you need a workspace in the hosted console. That is the Enterprise edition, in beta and by invitation; [Accept an invitation and sign in](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md) explains how to request one. In a workspace, the [persisted CI gate](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) records SDK results, and [Run your first evaluation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/first-run.md) runs a dataset from the console itself.
+To see eval results in the Martian Security console today, you need a workspace in the hosted console. That is the Enterprise edition, in beta and by invitation; [Accept an invitation and sign in](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) explains how to request one. In a workspace, the [persisted CI gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) records SDK results, and [Run your first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) runs a dataset from the console itself.
 
 Not in a released SDK yet: the local Evals UI
 
@@ -130,11 +130,11 @@ A local Evals UI for Community is in development and is not included in the rele
 
 -   **`python3 -m venv` fails:** your Python installation lacks virtual-environment support. Install it for your system’s Python, or use another Python 3.12 or newer, then repeat step 1.
 -   **`.venv/bin/martian` is not found:** run the commands from the `sdk-local-evals` folder, where step 1 created `.venv`.
--   **Exit code `2`:** the suite file is invalid, a path is wrong, or a case has no verdict. The message names the field or file. [Failures and limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md#failures-and-limits) lists the causes.
+-   **Exit code `2`:** the suite file is invalid, a path is wrong, or a case has no verdict. The message names the field or file. [Failures and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#failures-and-limits) lists the causes.
 -   **Not a platform record:** a local run has no Martian session, agent or tested revision, and it does not appear in the hosted console.
 
 ## Next
 
--   [Run evals locally with a suite file](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md): test your own agent, add an LLM judge with your own model key, and run the suite in CI.
--   [Evaluate with Python](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md): the same checks and judges inside pytest.
--   [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md): what Community, Enterprise and On-Premises include.
+-   [Run evals locally with a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md): test your own agent, add an LLM judge with your own model key, and run the suite in CI.
+-   [Evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md): the same checks and judges inside pytest.
+-   [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md): what Community, Enterprise and On-Premises include.

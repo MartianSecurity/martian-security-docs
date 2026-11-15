@@ -12,16 +12,16 @@ The names below identify the official OWASP entries. The Martian reading links a
 
 | OWASP entry | Start investigating |
 | --- | --- |
-| LLM01 Prompt Injection | [Untrusted instructions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) |
-| LLM02 Sensitive Information Disclosure | [Protected data and destinations](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md) |
-| LLM03 Supply Chain | [Dependencies, tools and artifacts](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) |
-| LLM04 Data and Model Poisoning | [Poisoned context](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) and [training-related limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) |
-| LLM05 Improper Output Handling | [Unsafe tool arguments and actions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md); also review the consuming application’s output handling |
-| LLM06 Excessive Agency | [Tool scope](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [delegated authority](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) |
+| LLM01 Prompt Injection | [Untrusted instructions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) |
+| LLM02 Sensitive Information Disclosure | [Protected data and destinations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md) |
+| LLM03 Supply Chain | [Dependencies, tools and artifacts](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) |
+| LLM04 Data and Model Poisoning | [Poisoned context](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) and [training-related limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) |
+| LLM05 Improper Output Handling | [Unsafe tool arguments and actions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md); also review the consuming application’s output handling |
+| LLM06 Excessive Agency | [Tool scope](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [delegated authority](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) |
 | LLM07 System Prompt Leakage | Review what prompt content is exposed and whether it contains protected information |
-| LLM08 Vector and Embedding Weaknesses | [Retrieval poisoning and access boundaries](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) |
-| LLM09 Misinformation | Compare answers with authoritative data; inspect [scorer limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) |
-| LLM10 Unbounded Consumption | [Time, cost and resource exhaustion](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/denial-of-service.md) |
+| LLM08 Vector and Embedding Weaknesses | [Retrieval poisoning and access boundaries](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) |
+| LLM09 Misinformation | Compare answers with authoritative data; inspect [scorer limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) |
+| LLM10 Unbounded Consumption | [Time, cost and resource exhaustion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/denial-of-service.md) |
 
 Use [OWASP’s official risk pages](https://genai.owasp.org/llm-top-10/) for definitions and mitigations. For example, [LLM06](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) concerns agency granted to an application; it is not simply another name for a jailbreak.
 
@@ -39,4 +39,4 @@ Keep prompt disclosure distinct from data compromise: exposed instructions may r
 
 After a supported run, retain the underlying evidence with its OWASP reference. A framework label or a passing set of selected cases is not a security certification.
 
-Continue with the [OWASP Agentic Top 10](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [Attack Library coverage](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) and [results and scores](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/results-and-scores.md).
+Continue with the [OWASP Agentic Top 10](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [Attack Library coverage](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) and [results and scores](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/results-and-scores.md).

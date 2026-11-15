@@ -4,13 +4,13 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/results-and-scores/)
 
-> **Page qualification:** Current beta console · all customer roles read/export; member+ for supplementary mutations · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · all customer roles read/export; member+ for supplementary mutations · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Read a saved evaluation from its overall execution state down to an individual input, answer and assessment. You will be able to distinguish a failed quality check from a failed request, retain exports, and explain which evidence supports a score.
 
 ## Before you start
 
-Any customer role can inspect authorized saved runs in the current beta console. Complete a [first evaluation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/first-run.md) and confirm the correct project. Applying additional scoring or changing human reviews requires **member** access or higher; this guide’s read/export steps do not send new target requests.
+Any customer role can inspect authorized saved runs in the current beta console. Complete a [first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) and confirm the correct project. Applying additional scoring or changing human reviews requires **member** access or higher; this guide’s read/export steps do not send new target requests.
 
 ## 1\. Open and filter a run
 
@@ -19,7 +19,7 @@ Any customer role can inspect authorized saved runs in the current beta console.
 3.  On **Results**, use **Search results**, **Result status** or **Sort results** to find a record.
 4.  Adjust **Rows** to page through results. Read **Input**, **Expected**, **Actual output**, **Exact match** and **Latency**.
 
-![Completed evaluation result table showing three expected and actual answers, scores and latencies.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-first-run-results.png)
+![Completed evaluation result table showing three expected and actual answers, scores and latencies.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-first-run-results.png)
 
 Completed is the execution state. Inspect each expected and actual answer and its score; this synthetic example has three passes.
 
@@ -40,15 +40,15 @@ Exact match compares the response and expected string after trimming outer white
 3.  Read **Assessments** for any saved code-rule, model or human ratings. Each can retain its rationale, definition identity and persistence state.
 4.  Use **View trace** for available execution evidence. **Previous result** and **Next result** let you inspect adjacent filtered results.
 
-![Evaluation item inspector showing READY input, expected and actual output, latency and separate human review.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-results-inspector.png)
+![Evaluation item inspector showing READY input, expected and actual output, latency and separate human review.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-results-inspector.png)
 
 Inspect opens one retained record. Human review and supplementary assessments are separate from its original exact-match result.
 
-Save or resolve an edited human review before navigating away when the drawer reports **Review changes pending**. Read [human reviews](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/human-reviews.md) before assigning ratings.
+Save or resolve an edited human review before navigating away when the drawer reports **Review changes pending**. Read [human reviews](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md) before assigning ratings.
 
 ## 3\. Interpret supplementary scores
 
-For project-wide trace volume, latency, recorded usage and typed quality aggregates, use the separate [Evals dashboard guide](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/overview.md). The run-level Overview below describes this evaluation’s saved assessment jobs.
+For project-wide trace volume, latency, recorded usage and typed quality aggregates, use the separate [Evals dashboard guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/overview.md). The run-level Overview below describes this evaluation’s saved assessment jobs.
 
 Open the run’s **Overview** and choose the relevant **Assessment job**. Supplementary criteria do not replace the original exact-match result:
 
@@ -57,9 +57,9 @@ Open the run’s **Overview** and choose the relevant **Assessment job**. Supple
 -   **Response length (characters)** reports Unicode character count.
 -   Model judges and human ratings record opinions or rubric results with their own source and definition.
 
-Boolean criteria can show pass rates and coverage. Numeric criteria retain numeric summaries; categorical and text values are not converted into a Boolean pass rate. A missing assessment is not a passing value. See [saved-output judging](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/judging.md) and [suites and quality gates](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md).
+Boolean criteria can show pass rates and coverage. Numeric criteria retain numeric summaries; categorical and text values are not converted into a Boolean pass rate. A missing assessment is not a passing value. See [saved-output judging](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/judging.md) and [suites and quality gates](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md).
 
-![Original passing result alongside three separate persisted code assessments.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-code-feedback.png)
+![Original passing result alongside three separate persisted code assessments.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-code-feedback.png)
 
 Supplementary code assessments do not replace canonical exact match. A JSON-syntax failure and a passing exact-match answer can both be correct under their different definitions.
 
@@ -70,7 +70,7 @@ Supplementary code assessments do not replace canonical exact match. A JSON-synt
 3.  Check the downloaded records against the visible selection. The result export follows the displayed filters; a small filtered export is not a complete-run export.
 4.  Refresh and reopen the same run to confirm its results and assessment job remain available.
 
-![Evaluation provenance with native FINISHED state, pinned dataset hash and unreported model and prompt versions.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-results-provenance.png)
+![Evaluation provenance with native FINISHED state, pinned dataset hash and unreported model and prompt versions.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-results-provenance.png)
 
 Native FINISHED and three passed metrics were read back. The dataset hash matches publication; absent agent, model and prompt revisions remain Not reported.
 
@@ -83,4 +83,4 @@ Dataset versions and declared artifact revisions describe what was recorded at a
 -   Latency and token/cost data describe recorded values. Missing usage is not zero usage and is not an independently verified bill.
 -   Quality scores, human opinions and model opinions are separate from verified adversarial findings.
 
-Next, [compare runs](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/compare.md) or [inspect native traces](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/traces-and-sessions.md).
+Next, [compare runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/compare.md) or [inspect native traces](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/traces-and-sessions.md).

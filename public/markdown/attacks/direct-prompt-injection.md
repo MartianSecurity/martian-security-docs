@@ -31,11 +31,11 @@ The assertion inside the message must not become a permission grant. A response 
 | `MT-05` Many-shot priming | In the library |
 | `MT-06` Refusal suppression | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 The related techniques include a single-turn override, roleplay, gradual multi-turn escalation, obfuscation, repeated examples and constraints intended to suppress refusal. These are delivery strategies; they do not each guarantee a distinct vulnerability or outcome.
 
-For an endpoint-only assessment, confirm the [connection contract](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md) and the [supported target interface](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/supported-targets.md). A multi-turn strategy needs the intended conversation state; independent stateless requests do not establish a multi-turn result.
+For an endpoint-only assessment, confirm the [connection contract](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) and the [supported target interface](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md). A multi-turn strategy needs the intended conversation state; independent stateless requests do not establish a multi-turn result.
 
 ## Evidence to inspect
 
@@ -56,6 +56,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 
 -   [AML.T0051.000 — Direct](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2942)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-MITRE ATT&CK also describes [T1699 Direct Prompt Injection](https://attack.mitre.org/techniques/T1699/). That is a separate identifier from ATLAS. Compare [indirect injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md) and [privilege escalation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md), then inspect [recorded assessment evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
+MITRE ATT&CK also describes [T1699 Direct Prompt Injection](https://attack.mitre.org/techniques/T1699/). That is a separate identifier from ATLAS. Compare [indirect injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md) and [privilege escalation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md), then inspect [recorded assessment evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).

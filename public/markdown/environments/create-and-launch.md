@@ -4,15 +4,15 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/environments/create-and-launch/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Verified 2026-11-14 · Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · member, admin, owner · Verified 2026-11-14 · Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-Create a disposable copy of the systems needed by a red-team assessment. At the end, the intended environment revision and data are saved, each required sandbox is **Ready**, and you have checked that its application works. Then [connect the agent’s sandbox bindings](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
+Create a disposable copy of the systems needed by a red-team assessment. At the end, the intended environment revision and data are saved, each required sandbox is **Ready**, and you have checked that its application works. Then [connect the agent’s sandbox bindings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
 
 ## Before you start
 
 Use a **Member**, **Admin** or **Owner** account. Viewers can inspect existing records but cannot create, generate or launch. Your organization needs sandbox access provisioned by its operator, supported simulation images and a working orchestrator. Model-generated seed data additionally needs the configured, reachable data generator and execution allowance.
 
-Use synthetic or approved samples. Adding a custom system name describes scope; it does not deploy an arbitrary application. For an assessment without sandbox tools, choose [endpoint-only testing](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md) instead.
+Use synthetic or approved samples. Adding a custom system name describes scope; it does not deploy an arbitrary application. For an assessment without sandbox tools, choose [endpoint-only testing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) instead.
 
 The example uses **Documentation support inputs lab**, with **Gmail** as its only system. Its synthetic workflow asks an agent to triage routine support messages and refer unverified refund requests for review. Start with one system so you can check its data and readiness before adding more.
 
@@ -22,7 +22,7 @@ The example uses **Documentation support inputs lab**, with **Gmail** as its onl
 2.  Enter **Environment name** and optional **Workflow**. Describe the task, normal records and approval rules in plain language.
 3.  Select the supported systems the agent uses. **Add system** can retain another system name as context; a system marked **No sandbox** will not become a runnable simulation.
 
-![Saved Documentation support inputs lab environment reopened with its synthetic workflow and Gmail selected.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generated-editor.png)
+![Saved Documentation support inputs lab environment reopened with its synthetic workflow and Gmail selected.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-editor.png)
 
 The single save returned 201. Reopening retained the workflow and Gmail selection; this inspection was cancelled without another save.
 
@@ -32,7 +32,7 @@ The single save returned 201. Reopening retained the workflow and Gmail selectio
 
 For the bounded example, enter a workflow such as “Triage synthetic support messages for docs-example.test contacts. Answer routine return-policy questions. Refer refund requests without verification to an approver; do not invent approval.” Leave **Generate data after saving** unchecked so you can inspect generation separately. Saving alone does not launch a sandbox.
 
-![Environment editor with a whole-environment JSON Schema and Gmail-only CSV parsed as two sample records.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-optional-inputs.png)
+![Environment editor with a whole-environment JSON Schema and Gmail-only CSV parsed as two sample records.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-optional-inputs.png)
 
 Inspect each input’s type, scope and parsing result before saving. These two uploaded files and their scopes survived reopening the saved revision.
 
@@ -73,7 +73,7 @@ These are support-case inputs that the generator turns into Gmail messages. They
 
 If an input reports a parsing error, correct it or remove it before saving. The invalid JSON below was rejected before any environment was created; correcting the file allowed the single save.
 
-![Invalid JSON sample with its parsing error and Fix or remove the input marked above before saving message.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-input-parse-error.png)
+![Invalid JSON sample with its parsing error and Fix or remove the input marked above before saving message.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-input-parse-error.png)
 
 The invalid input prevented the save before a request was submitted. The corrected CSV then parsed successfully and the environment was saved once.
 
@@ -101,7 +101,7 @@ The invalid input prevented the save before a request was submitted. The correct
 
 The later **New world** check replaced the shared story and produced three users and four emails. The personal world and its four-user, four-email document stayed unchanged. Rebuilding shared data does not make Launch prefer it over your ready personal data.
 
-![Environment data after New world showing ready shared Gmail with three users and four emails, ready personal Gmail with four users and four emails, and the unchanged Fit advice.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generated-variants.png)
+![Environment data after New world showing ready shared Gmail with three users and four emails, ready personal Gmail with four users and four emails, and the unchanged Fit advice.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-variants.png)
 
 New world regenerated shared data and retained the separate personal variant. Both system documents are Generated. Fit still recommends Zendesk for the support-case input structure.
 
@@ -114,7 +114,7 @@ If one system fails after its world is ready, inspect the error before requestin
 1.  Return to **Environments** and click **Launch** on the intended revision. Each supported system gets its own sandbox. Unmapped/custom systems are reported as skipped. Automatic launch can attempt configured generation when the current shared world and seed documents are missing. Review the generation allowance as well as sandbox readiness; clicking Launch does not guarantee a model-free operation. An API client can explicitly request `seed: "built-in"`.
 2.  Watch **Pending**, **Starting** and **Seeding** until every required instance becomes **Ready**. **Retry launch** checks the original uncertain launch request; it does not mean intentionally creating another set of sandboxes.
 
-![Gmail sandbox Ready with four accounts, generated user data, remaining lifetime and Open and Details controls.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generated-sandbox-ready.png)
+![Gmail sandbox Ready with four accounts, generated user data, remaining lifetime and Open and Details controls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-sandbox-ready.png)
 
 Automatic launch selected the exact ready personal document. A real instance read after full refresh retained the generated source, document and Ready state.
 
@@ -125,14 +125,14 @@ Example: check the extended lifetime
 
 The captured instance retained a 60-minute lifetime after refresh. Its account credentials are covered for privacy.
 
-![Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generated-lifetime.png)
+![Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-lifetime.png)
 
 Extend 30 min moved this instance’s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.
 
 5.  Refresh **Environments** and confirm that the saved revision, data summary and actual sandbox states persist. Click **Prepare assessment** for a custom environment, or **Use** for a built-in sample. This chooses the environment and opens the wizard at **Agent**.
 6.  Click **Back** to inspect the wizard’s **Environment** step and check **Sandboxes ready**. If **Sandboxes need to be launched** names a system, fix that missing instance before submission. Return to **Agent** with **Continue** when ready.
 
-![Assessment Environment step showing Documentation support inputs lab and Sandboxes ready for Gmail, with endpoint-only testing unchecked.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generated-assessment-ready.png)
+![Assessment Environment step showing Documentation support inputs lab and Sandboxes ready for Gmail, with endpoint-only testing unchecked.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-assessment-ready.png)
 
 Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent’s bindings and independent business checks.
 
@@ -159,7 +159,7 @@ Earlier beta example: generation failed, built-in fixtures worked
 
 The earlier **Documentation mail lab 2026-11-13** example saved revision 1, then shared World and Gmail generation failed before QA. Its later launch used built-in fixtures, with real Gmail sign-in, refresh, extension and stop. That result remains separate from the newer generated-data walkthrough above.
 
-![Environment data drawer showing failed World and Gmail generation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/environment-generation-failed.png)
+![Environment data drawer showing failed World and Gmail generation.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generation-failed.png)
 
 One accepted generation attempt ended Failed before QA. No generated data is ready; built-in fixtures remain available. Only other environment names behind the drawer are hidden for privacy.
 
@@ -172,4 +172,4 @@ This management path is source reviewed; deletion was not part of the captured G
 3.  On **Environments**, choose the environment’s **Delete** action and read the confirmation. Deletion permanently removes its saved inputs and generated data; keep any permitted material you still need first.
 4.  Choose **Delete environment** for only the intended environment, then refresh and check that it is absent. Past assessments and findings remain. If live instances still block deletion, inspect their state rather than repeatedly submitting Delete.
 
-Continue with [agent sandbox bindings](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) and [configure an assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md).
+Continue with [agent sandbox bindings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) and [configure an assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md).

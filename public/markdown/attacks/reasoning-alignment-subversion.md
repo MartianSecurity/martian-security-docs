@@ -24,9 +24,9 @@ This illustrates pressure to optimize a claimed score instead of the authorized 
 
 This family appears in the published attack catalogue, but the current technique list has no dedicated selectable entry for it.
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
-Do not infer training access, reward manipulation or model-weight testing from the family appearing in the catalogue. If your concern can be expressed as a supported instruction or context attack, select the appropriate available technique and report that narrower scope. See [prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) and [jailbreaks](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/jailbreaks.md).
+Do not infer training access, reward manipulation or model-weight testing from the family appearing in the catalogue. If your concern can be expressed as a supported instruction or context attack, select the appropriate available technique and report that narrower scope. See [prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) and [jailbreaks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/jailbreaks.md).
 
 ## Evidence to inspect
 
@@ -34,7 +34,7 @@ Define the intended objective and the observable rule before testing. Compare th
 
 For a claim about persistent model behavior, identify what actually changed: prompt, retrieved context, memory, configuration, artifact or training input. Confirm the behavior under the relevant controlled conditions. A repeated explanation or a single surprising response cannot identify the internal mechanism by itself.
 
-Distinguish task failure from a failure of the evaluator. If the answer violates the rule but earns a high grade, investigate [judge evasion](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) as a separate boundary.
+Distinguish task failure from a failure of the evaluator. If the answer violates the rule but earns a high grade, investigate [judge evasion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) as a separate boundary.
 
 ## Reduce the risk
 
@@ -47,6 +47,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0145 — Poison AI Agent Learning Environment](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L6728)
 -   [AML.T0054 — LLM Jailbreak](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3225)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-The ATLAS learning-environment entry concerns training-related influence; it is broader than the prompt-only example above. Continue with [saved-output judging](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/judging.md) and [understanding results](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/results-and-scores.md).
+The ATLAS learning-environment entry concerns training-related influence; it is broader than the prompt-only example above. Continue with [saved-output judging](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/judging.md) and [understanding results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/results-and-scores.md).

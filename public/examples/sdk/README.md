@@ -218,10 +218,10 @@ workflow expects `demo_agent.py`, `pytest.ini`, `redteam.yaml` and both tests un
 `tests/evals/` at the checkout root; copying only the workflow will not work.
 Configure the `agent-evals` GitHub environment with the approved origin, exact
 bound agent UUID and secret token as described in the
-[public CI guide](https://morninghq.github.io/martian-security-docs/sdk/ci/).
+[public CI guide](https://martiansecurity.github.io/martian-security-docs/sdk/ci/).
 
 For an existing customer repository, follow the
-[full copy/adaptation checklist](https://morninghq.github.io/martian-security-docs/sdk/ci/#use-an-existing-customer-repository).
+[full copy/adaptation checklist](https://martiansecurity.github.io/martian-security-docs/sdk/ci/#use-an-existing-customer-repository).
 Copy the callback, YAML, tests and helpers as well as the workflow; merge pytest
 and ignore settings. Replace the demo callback/imports, dataset expectations,
 YAML-relative callback path, dependencies and any changed runner/artifact paths

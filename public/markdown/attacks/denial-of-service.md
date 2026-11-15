@@ -25,11 +25,11 @@ This explains unnecessary work; it is not a load-generation script. Test only wi
 
 This family appears in the published attack catalogue, but the current technique list has no dedicated selectable entry for it.
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 The research family does not establish a load-testing service or a dedicated selectable denial-of-service technique. Assessment budgets and cancellation controls limit supported work; their presence is not proof that every downstream provider call can be interrupted immediately.
 
-Use [assessment stopping behavior](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md) and [Evals stopping and recovery](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/stopping-and-recovery.md) for the actual workflow. Do not extend deadlines, remove quotas or retry an uncertain job merely to produce a successful example.
+Use [assessment stopping behavior](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md) and [Evals stopping and recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/stopping-and-recovery.md) for the actual workflow. Do not extend deadlines, remove quotas or retry an uncertain job merely to produce a successful example.
 
 ## Evidence to inspect
 
@@ -50,6 +50,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0029 — Denial of AI Service](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2208)
 -   [AML.T0034 — Cost Harvesting](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2247)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-See [OWASP LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/). Continue with [limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md) and [troubleshooting](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/troubleshooting.md).
+See [OWASP LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/). Continue with [limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md) and [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md).

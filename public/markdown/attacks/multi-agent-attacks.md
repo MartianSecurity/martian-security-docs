@@ -30,7 +30,7 @@ The worker’s text is evidence to inspect, not approval. The test should identi
 | `MT-35` Trust-edge injection | In the library |
 | `MT-36` Worker collusion | **Declared gap** |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 The current list contains delegation widening, supervisor capture and trust-edge injection. **MT-36 Worker collusion is a declared gap.** Related entries do not establish that Martian can compromise arbitrary peers, simulate every protocol or observe all internal workers behind an endpoint.
 
@@ -55,6 +55,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0051 — LLM Prompt Injection](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902)
 -   [AML.T0118 — Autonomous AI Agent Communication](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5656)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-ATLAS agent communication is broader than malicious collusion; the relationship here is contextual. Read [OWASP Agentic ASI07, ASI08 and ASI10](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md) with their official meanings, then compare [memory poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) and [privilege escalation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md).
+ATLAS agent communication is broader than malicious collusion; the relationship here is contextual. Read [OWASP Agentic ASI07, ASI08 and ASI10](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md) with their official meanings, then compare [memory poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) and [privilege escalation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md).

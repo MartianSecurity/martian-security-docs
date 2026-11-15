@@ -30,11 +30,11 @@ The added text attempts to make tool metadata authorize a second operation and c
 | `MT-13` Unsafe parameter binding | In the library |
 | `MT-14` Tool-chain composition | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 **MT-11 MCP descriptor poisoning** is the directly related catalogue entry. Tool-output and argument techniques examine adjacent boundaries. Support for an MCP target connection does not automatically give an assessment control over that target’s tool catalogue or server implementation. Confirm that the selected scenario supports the required implant surface.
 
-Only use an explicitly approved test server or fixture for descriptor changes. Do not alter a shared integration merely to make a catalogue entry runnable. See the [interface support reference](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/supported-targets.md) for workflow-specific limits.
+Only use an explicitly approved test server or fixture for descriptor changes. Do not alter a shared integration merely to make a catalogue entry runnable. See the [interface support reference](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) for workflow-specific limits.
 
 ## Evidence to inspect
 
@@ -53,6 +53,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0110.000 — Definition and Instructions](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5166)
 -   [AML.T0110.002 — Runtime Response](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5242)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-Read [OWASP Agentic supply-chain and tool risks](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [supply chain and backdoors](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) and [tool and action abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md). Use the [connection guide](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md) for actual registration and approval steps.
+Read [OWASP Agentic supply-chain and tool risks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) and [tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md). Use the [connection guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) for actual registration and approval steps.

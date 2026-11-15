@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/sandbox-bindings/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · owner, admin · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 > **Walkthrough limits:** Real Owner save200/draft, editor clearing, template bundle, revalidation/reapproval200, refresh retention, explicit manual seed, account login and independent baseline prerequisites passed. MR1007 retained Needs attention after tool setup failed; no completed after-state, business effect or clean reproduction was qualified.
 
@@ -18,15 +18,15 @@ Use sandbox bindings when a red-team assessment must exercise synthetic business
 
 An **Owner** or **Admin** can configure this feature through the console and customer API. It is not restricted to platform operators, but it requires a customer application developer: the agent must already implement the protected session contract below and accept the run-scoped sandbox tools. Pasting JSON does not add session management or tool execution to an arbitrary chat endpoint.
 
-For a stateless first connection, start with the [HTTP adapter](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/http-adapter.md) and [endpoint-only tutorial](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md). Browser chat remains endpoint-only. This advanced guide uses a session-capable HTTP target, anonymous conversation identity and a payment sandbox; it does not enable an Assurance pack or synthetic signed-in fixture profile.
+For a stateless first connection, start with the [HTTP adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md) and [endpoint-only tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md). Browser chat remains endpoint-only. This advanced guide uses a session-capable HTTP target, anonymous conversation identity and a payment sandbox; it does not enable an Assurance pack or synthetic signed-in fixture profile.
 
 ## Prerequisites
 
 -   **Owner** or **Admin** role in the intended organization.
 -   An HTTP agent whose registration includes **Session API base (optional)** and its matching **Session-management bearer token**. An existing registration without them must be replaced with one configured for session management; the endpoint fields are fixed after saving.
--   A [saved environment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md) containing only connector `stripe`, with its supported `paypal` simulation Ready and a synthetic account/transaction ledger. The payment account needs at least one transaction, no existing duplicate refund per capture, and an authorized paid order if you intend to investigate duplicate refunds.
+-   A [saved environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md) containing only connector `stripe`, with its supported `paypal` simulation Ready and a synthetic account/transaction ledger. The payment account needs at least one transaction, no existing duplicate refund per capture, and an authorized paid order if you intend to investigate duplicate refunds.
 -   Your operator’s sandbox DNS/TLS and runtime services are available. The agent can reach the supplied run-scoped MCP gateway over its approved network path.
--   The matching [application/source baseline](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). The example’s fixed system mapping must match your environment before you use it.
+-   The matching [application/source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). The example’s fixed system mapping must match your environment before you use it.
 
 ## 1\. Find the actual system, environment and agent IDs
 
@@ -34,7 +34,7 @@ The environment picker shows readable names. Binding keys use connector IDs, whi
 
 The customer read APIs are `GET /v1/connectors`, `GET /v1/environments` and `GET /v1/agents`. They require an authenticated human tenant session. A scoped SDK machine API key does not substitute for that human-session authority.
 
-1.  Download the [read-only setup inspector](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/connections/inspect-sandbox-setup.py).
+1.  Download the [read-only setup inspector](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/connections/inspect-sandbox-setup.py).
 2.  Run it against your approved Backend origin, without `/v1`:
 
 ```sh
@@ -54,7 +54,7 @@ If your environment includes other systems, create a separate payment-only envir
 For a reproducible synthetic starting point:
 
 1.  Create a separate environment containing only **Stripe**, with no generated or personal data. Note its UUID using the inspector above.
-2.  Download [prepare-payment-seed.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/connections/prepare-payment-seed.py), then run:
+2.  Download [prepare-payment-seed.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/connections/prepare-payment-seed.py), then run:
 
 ```sh
 python prepare-payment-seed.py \
@@ -63,12 +63,12 @@ python prepare-payment-seed.py \
 ```
 
 3.  Enter a **Member**, **Admin** or **Owner** account at its private prompts. The helper checks the mapping, retrieves `GET /v1/connectors/stripe/seed-example`, stores the unchanged example through `PUT /v1/environments/{id}/data/stripe/document`, and verifies readback. It does not print passwords/tokens, generate model data or launch a sandbox. Different existing data is refused; an identical ready manual seed is reused. Leave this dedicated environment’s data unchanged while the command runs: the underlying shared-document API is a replacement write.
-4.  Keep the returned `seed_document_id` and `binding_username`. For this released example, the account is **[omar.haddad@contoso.example](mailto:omar.haddad@contoso.example)**. Stop any older built-in instance, then [launch the environment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md#launch-and-verify-readiness). With no personal data, automatic selection uses the stored shared seed. An API client can explicitly set `seed` to that UUID in `POST /v1/environments/{id}/launch`, with a new `request_id` for this launch intent and `ttl_seconds: 3600`.
+4.  Keep the returned `seed_document_id` and `binding_username`. For this released example, the account is **[omar.haddad@contoso.example](mailto:omar.haddad@contoso.example)**. Stop any older built-in instance, then [launch the environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md#launch-and-verify-readiness). With no personal data, automatic selection uses the stored shared seed. An API client can explicitly set `seed` to that UUID in `POST /v1/environments/{id}/launch`, with a new `request_id` for this launch intent and `ttl_seconds: 3600`.
 5.  Confirm the new instance is **Ready**, open its simulation and verify the account can sign in. Its paid order `ord_3001` should have one existing refund and remaining refundable value. The independent admission checks below must still pass against the actual ledger.
 
 The helper stores **manual** data, without a generated world. The console currently groups stored seed documents under **Generated** / **your data**; those labels do not mean this helper called a model. A stored seed changes subsequent launches, not an already-running instance. If a write acknowledgement is lost, inspect that original environment’s data before running the helper again.
 
-![Payment-only environment with Stripe mapped to paypal, one Ready sandbox, two accounts and your data after an explicit stored-example seed launch.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/agents-payment-seed-ready.png)
+![Payment-only environment with Stripe mapped to paypal, one Ready sandbox, two accounts and your data after an explicit stored-example seed launch.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/agents-payment-seed-ready.png)
 
 The launch explicitly used the manually stored released example. Generated / your data are the console’s seed-document labels; this setup did not call a model. The Ready instance then passed the seeded account’s real sign-in and refresh.
 
@@ -76,8 +76,8 @@ The launch explicitly used the manually stored released example. Generated / you
 
 Download these two complete examples:
 
--   [API request JSON](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/connections/payment-sandbox-bindings.request.json), for `PUT /v1/agents/{agent_id}/connection/sandbox-bindings`.
--   [Console editor JSON](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/connections/payment-sandbox-bindings.console.json), for the **Sandbox bindings** editor.
+-   [API request JSON](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/connections/payment-sandbox-bindings.request.json), for `PUT /v1/agents/{agent_id}/connection/sandbox-bindings`.
+-   [Console editor JSON](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/connections/payment-sandbox-bindings.console.json), for the **Sandbox bindings** editor.
 
 They express the same configuration with different outer shapes. The API requires a `bindings` object. The console editor expects system keys at the top level and wraps them itself; **do not paste the API wrapper into that editor**.
 
@@ -272,7 +272,7 @@ PYCODE
 3.  Click **Validate and approve** in the Connection tab, or resume the normal **Validate → Approve** onboarding stages. Confirm `active`, the recorded approver and configured `stripe` system / **business checks** summary. Refresh the page and reopen the connection to verify retention. Check **Martian HTTP · active** in the **Connection** tab. With no approval expiry set, the current drawer header can still say **not approved**; that header is not a reliable connection-readiness check.
 
 
-![Connection tab showing Martian HTTP active, approver, declared revision and retained stripe and business checks badges with an empty write-only editor.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/agents-sandbox-bindings.png)
+![Connection tab showing Martian HTTP active, approver, declared revision and retained stripe and business checks badges with an empty write-only editor.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/agents-sandbox-bindings.png)
 
 After refresh, Connection reports active and retains stripe / business checks. The header can still say not approved when no expiry was set; use the Connection status. The empty editor displays only its example placeholder.
 
@@ -306,7 +306,7 @@ For example, a session-capable health response can be:
 {"mcp_enabled": true}
 ```
 
-Download the [complete session-request shape](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/connections/customer-session.request.json). It includes `session_id`, `campaign_id`, `target_id`, aware `expires_at`, and a `mcp_connections` entry containing `name`, gateway `url`, run-scoped `headers` and `allowed_tools`. Its IDs, 2030 timestamp and capability placeholder are illustrative; **never submit them as issued authority or hard-code them in the application**. At admission Martian provides the real current values and short-lived capability to your approved session endpoint.
+Download the [complete session-request shape](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/connections/customer-session.request.json). It includes `session_id`, `campaign_id`, `target_id`, aware `expires_at`, and a `mcp_connections` entry containing `name`, gateway `url`, run-scoped `headers` and `allowed_tools`. Its IDs, 2030 timestamp and capability placeholder are illustrative; **never submit them as issued authority or hard-code them in the application**. At admission Martian provides the real current values and short-lived capability to your approved session endpoint.
 
 For the anonymous sandbox request, a minimal successful registration response is:
 
@@ -332,7 +332,7 @@ Use the SDK’s `mcp` extra in this customer application. `parse_session_payload
 
 In the recorded QA run, **Outcome checks** retained a five-record starting ledger and both **Condition met** prerequisites. **Business-state verification → ready** meant that this baseline was captured. The first target request then failed during MCP setup and the run retained **Needs attention**. **Outcome captured** and **After-state digest** stayed **Pending** after reopening the saved run.
 
-![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
+![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
 
 Both baseline prerequisites passed. Outcome captured and After-state digest remain Pending, and no complete comparison or refund verdict exists. The duplicated-refund sentence describes the configured check.
 
@@ -352,4 +352,4 @@ The sentence describing a duplicated refund is the configured check’s descript
 | Stored state changes while a run is admitted | Stop and inspect its retained status; configuration edits revoke leases and do not silently retarget a campaign. |
 | Need a scenario implant or signed-in identity | Configure its separate compatible profile and prerequisites, then revalidate/reapprove. This basic payment binding does not provide them. |
 
-Bindings and business predicates are integrator-owned contracts, not facts inferred from a customer’s system names. The public configuration endpoint exists for customer admins, while hosted cluster provisioning and publishing reviewed Wiki scenarios remain operator responsibilities. Continue with [assessment configuration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md) and [reproduction limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
+Bindings and business predicates are integrator-owned contracts, not facts inferred from a customer’s system names. The public configuration endpoint exists for customer admins, while hosted cluster provisioning and publishing reviewed Wiki scenarios remain operator responsibilities. Continue with [assessment configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md) and [reproduction limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
