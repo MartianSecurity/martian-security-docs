@@ -4,15 +4,15 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/install-and-configure/)
 
-> **Page qualification:** Python SDK · Owner/admin to create a key; scoped machine key for SDK execution · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Python SDK · Owner/admin to create a key; scoped machine key for SDK execution · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Install the Python package and create the platform connection used by Evals and red teaming. At the end, you will have a verified SDK installation, a scoped API key, and a validated tutorial configuration.
 
-Only need local evaluations? Start with [a suite file](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md); it needs no Martian account. For package releases, see [PyPI release history](https://pypi.org/project/martian-sdk/#history). Recorded test versions and execution limits live in the [verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility).
+Only need local evaluations? Start with [a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md); it needs no Martian account. For package releases, see [PyPI release history](https://pypi.org/project/martian-sdk/#history). Recorded test versions and execution limits live in the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility).
 
 ## Before you start
 
-For the account-free [local Evals preview](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.
+For the account-free [local Evals preview](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.
 
 -   Use **Python 3.12 or newer**. The commands below use a macOS/Linux shell or WSL.
 -   Install Git. The tutorial creates a local Git repository so a persisted CI result can name the exact committed code revision.
@@ -22,7 +22,7 @@ For the account-free [local Evals preview](https://raw.githubusercontent.com/Mor
 
 ## 1\. Download the runnable tutorial and install the release
 
-[Download the complete tutorial](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/martian-sdk-tutorial.zip). Start in the directory containing that download. The following commands extract a new folder, make that folder an isolated Git repository, commit the tutorial source, and install the SDK there:
+[Download the complete tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/martian-sdk-tutorial.zip). Start in the directory containing that download. The following commands extract a new folder, make that folder an isolated Git repository, commit the tutorial source, and install the SDK there:
 
 ```sh
 unzip martian-sdk-tutorial.zip -d martian-sdk-tutorial
@@ -58,7 +58,7 @@ martian-sdk-tutorial/
   .venv/                         # local; ignored by Git
 ```
 
-`git rev-parse --show-toplevel` should identify this folder. The callback, test imports, YAML-relative callback path and CI commands all use this layout. To use an existing customer repository instead, follow the [complete copy and adaptation checklist](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md#use-an-existing-customer-repository); copying the workflow alone is insufficient.
+`git rev-parse --show-toplevel` should identify this folder. The callback, test imports, YAML-relative callback path and CI commands all use this layout. To use an existing customer repository instead, follow the [complete copy and adaptation checklist](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#use-an-existing-customer-repository); copying the workflow alone is insufficient.
 
 The final command prints your installed SDK version. The `evals` extra adds the pytest/MLflow dependencies needed for evaluations and persisted CI; base redteam support is part of the distribution. The optional `mcp` extra is for customer-side MCP integration, not a requirement for this tutorial.
 
@@ -70,7 +70,7 @@ Use a fresh environment when migrating from old code-bearing `martian-redteam` o
 2.  Select **Evals**, then **Runs**.
 3.  Find the **API keys** section and select **Create key**.
 
-![Actual SDK key metadata with four Evals and CI permissions and an agent restriction.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-api-keys.png)
+![Actual SDK key metadata with four Evals and CI permissions and an agent restriction.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-api-keys.png)
 
 The owner can manage SDK keys on Evals → Runs. This list shows permissions, restriction, expiry and a prefix; the once-shown credential was closed and is absent from the image.
 
@@ -88,13 +88,13 @@ In **Create API key**, enter **Key name**, set **Expires in days**, then select 
 | Upload CI sessions | `ci:write` | Persisting checks and CI sessions |
 | Run hosted redteam generation and judging | `redteam:run` | Hosted attack generation and judging |
 
-![Create API key form with four Evals and CI permissions, a one-day expiry and the teaching agent restriction.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-key-form.png)
+![Create API key form with four Evals and CI permissions, a one-day expiry and the teaching agent restriction.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-key-form.png)
 
 Choose permissions and an existing registration before creating the key. Hosted redteam is disabled in this QA environment. This capture precedes credential generation.
 
 For the complete Evals/CI tutorial, keep the four evaluation/CI permissions. Add **Run hosted redteam generation and judging** for redteam or combined runs. If that option is disabled, the dialog explains that hosted redteam is not enabled and configured; request access from your workspace administrator instead of changing credentials or retrying execution.
 
-For the persisted CI tutorial, select the intended existing registration **by name** under **Agent restriction**. If no registration exists, complete [agent connection onboarding](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md) first or have your workspace owner identify the existing demo registration to use. Running a local Python callback does not create a registration.
+For the persisted CI tutorial, select the intended existing registration **by name** under **Agent restriction**. If no registration exists, complete [agent connection onboarding](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) first or have your workspace owner identify the existing demo registration to use. Running a local Python callback does not create a registration.
 
 **All agents / standalone use** is available for an unrestricted key, but it does not identify one agent UUID for the lookup below. **Dataset restrictions** accepts one dataset name per line; an empty list permits datasets otherwise available to the key. Restrictions and permissions cannot be edited after creation.
 
@@ -127,7 +127,7 @@ Supply one `MartianConfig` or the complete URL/token pair. The default request t
 
 ## 5\. Resolve the exact CI agent UUID
 
-With the agent-bound key loaded, run the included [key\_agent\_id.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/key_agent_id.py) helper:
+With the agent-bound key loaded, run the included [key\_agent\_id.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/key_agent_id.py) helper:
 
 ```sh
 MARTIAN_AGENT_ID="$(.venv/bin/python key_agent_id.py)" && export MARTIAN_AGENT_ID
@@ -166,6 +166,6 @@ Review `git status --short`: commit any intended callback, test or configuration
 -   **Validated:** the tutorial YAML exits `0`. A later authenticated command is still required to establish service access.
 -   **Permission denied:** check capabilities, agent/dataset restrictions, organization, expiration and revocation. Do not switch to an operator credential.
 -   **Key lost or restrictions changed:** create a replacement, update consumers, and select **Revoke** on the old key. Revocation blocks later requests; already admitted work may finish. Issuer removal or disablement also revokes issuer keys.
--   **Network or setup failure:** preserve the safe error code/operation ID and follow [troubleshooting](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/troubleshooting.md). An uncertain execution is not a reason to submit the same work again.
+-   **Network or setup failure:** preserve the safe error code/operation ID and follow [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md). An uncertain execution is not a reason to submit the same work again.
 
-Continue with [SDK evaluations](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md), [one redteam probe](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/redteam.md), or [combined CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md). See [permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md) for role and capability boundaries.
+Continue with [SDK evaluations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md), [one redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md), or [combined CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). See [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) for role and capability boundaries.

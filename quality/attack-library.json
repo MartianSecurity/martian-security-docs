@@ -4,7 +4,7 @@
   "scope": "Reference documentation. Catalogue membership and editorial relationships do not establish executed attacks, findings or framework certification.",
   "sources": {
     "backend": {
-      "repository": "https://github.com/MorningHQ/MartianBackend",
+      "repository": "https://github.com/MartianSecurity/MartianBackend",
       "revision": "d18960e4937a1632a3f1773facecd8377cc0caab",
       "files": [
         "app/api/library.py",
@@ -17,7 +17,7 @@
       ]
     },
     "frontend": {
-      "repository": "https://github.com/MorningHQ/MartianFrontend",
+      "repository": "https://github.com/MartianSecurity/MartianFrontend",
       "revision": "5361d1f241278e19c79e68d1d8f9325920a04d12",
       "files": [
         "src/pages/AttackLibrary.jsx",

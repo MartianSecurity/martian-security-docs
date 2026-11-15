@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/human-reviews/)
 
-> **Page qualification:** Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Collect attributed human ratings on saved evaluation responses. A queue defines which results need which questions; it becomes complete only after the required answers and their native feedback are verified. Human ratings remain separate from the original automated scores.
 
@@ -24,7 +24,7 @@ Choose a small set of synthetic results for the first queue. Each queue accepts 
 6.  Confirm **Assign reviewer**. Keep yourself or an unassigned workflow unless you have administrator authority to assign another person.
 7.  Click **Create queue**.
 
-![Real queue form defining required questions for one selected teaching response.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-reviews-queue.png)
+![Real queue form defining required questions for one selected teaching response.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-reviews-queue.png)
 
 Create a small queue and define distinct required criteria. Additional question fields continue below the visible part of this real form.
 
@@ -38,7 +38,7 @@ Choose criterion names that clearly distinguish the questions. A result cannot s
 4.  Explain the rating in **Review explanation**. A completed answer needs an explanation and a value valid for that question.
 5.  Click **Save review** and wait for the saved state. Repeat for every required question on every selected result.
 
-![Member text answer and explanation saved for the READY evaluation item.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-reviews-answer.png)
+![Member text answer and explanation saved for the READY evaluation item.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-reviews-answer.png)
 
 The member saved a text answer with an evidence-based explanation. This capture still shows MLflow pending for that answer; verify native persistence and queue completion in the next step.
 
@@ -52,7 +52,7 @@ Use **Pending review** when the answer is not complete. Saving pending work does
 4.  Use **Review filter** to inspect completed reviews, and open a review to read the explanation and retained history.
 5.  Refresh and reopen the queue. Confirm its answers, reviewer attribution and completion remain available.
 
-![Completed review queue with four verified typed answers after a full page refresh.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-reviews-complete.png)
+![Completed review queue with four verified typed answers after a full page refresh.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-reviews-complete.png)
 
 Complete means all four latest answers are verified: text, category READY, numeric 5 and Boolean Pass. These persisted answers are attributed to the synthetic member account.
 
@@ -65,7 +65,7 @@ For two results with three required questions, six latest answers must be comple
 3.  When creating another queue, select that version using **Reusable question → Add saved question**.
 4.  To change the definition later, choose **Create next version**. Existing queues retain their original question versions.
 
-![Reusable Boolean review question at immutable version two.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-reviews-questions.png)
+![Reusable Boolean review question at immutable version two.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-reviews-questions.png)
 
 Create next version saved v2. The earlier queue retained the original v1 wording in both actual UI and API readback.
 
@@ -80,4 +80,4 @@ Question versions let reviewers use the same rubric consistently. They do not ca
 -   A queue waiting for native feedback can show pending synchronization after local answers exist. **Reconcile native queue**, when offered, checks its recorded feedback. Preserve unresolved evidence for administrator review rather than marking it complete manually.
 -   A rating is an attributed opinion under a rubric. It does not independently prove an exploit, permission boundary or business-side effect.
 
-Next, [compare compatible scored runs](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/compare.md) or [triage quality issues](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/quality-issues.md).
+Next, [compare compatible scored runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/compare.md) or [triage quality issues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/quality-issues.md).

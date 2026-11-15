@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/attacks/prompt-injection/)
 
 Prompt injection occurs when attacker-controlled content changes how an agent follows its intended instructions. The boundary to examine is the promotion of input or retrieved data into authority over the task, tools or protected information.
 
-An attack can arrive [directly in a user message](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md) or [indirectly through material the agent reads](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md). A [jailbreak](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/jailbreaks.md) concerns a model’s safety restrictions; the two can overlap, but a task hijack does not require a safety-policy bypass.
+An attack can arrive [directly in a user message](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md) or [indirectly through material the agent reads](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md). A [jailbreak](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/jailbreaks.md) concerns a model’s safety restrictions; the two can overlap, but a task hijack does not require a safety-policy bypass.
 
 ## How it appears
 
@@ -39,7 +39,7 @@ Common carriers include uploaded files, retrieved pages, email threads, tool res
 | `MT-10` Retrieval store poisoning | In the library |
 | `MT-11` MCP descriptor poisoning | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 Direct-message techniques and planted-content techniques require different control over the target. Before selecting a document or tool attack, confirm that the approved scenario can place content where the target will actually read it. Sending an indirect payload as an ordinary chat message tests a different boundary.
 
@@ -62,6 +62,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 
 -   [AML.T0051 — LLM Prompt Injection](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-[OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) covers prompt injection. Continue with [direct injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md), [indirect injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md) or [assessment configuration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md).
+[OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) covers prompt injection. Continue with [direct injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md), [indirect injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md) or [assessment configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md).

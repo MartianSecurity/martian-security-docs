@@ -23,7 +23,7 @@ Every item on this page carries one of these labels:
 | Price | Free | Contact us | Contact us |
 | Runs on | Your laptop or your own server | Martian cloud | Your infrastructure |
 | For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
-| How to start | [Community quickstart](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md) | [Request a workspace](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md) | Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) |
+| How to start | [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) | [Request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) | Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) |
 
 The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public source repository for Community is **Planned**.
 
@@ -33,21 +33,21 @@ The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public sour
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| [Eval suites from one YAML file](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md): deterministic checks, LLM judges with your own model key, result files and CI exit codes | **Available** | **Available**: the same SDK | **Planned** |
-| [Evaluations in Python and pytest](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md) | **Available** | **Available**: the same SDK | **Planned** |
+| [Eval suites from one YAML file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md): deterministic checks, LLM judges with your own model key, result files and CI exit codes | **Available** | **Available**: the same SDK | **Planned** |
+| [Evaluations in Python and pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) | **Available** | **Available**: the same SDK | **Planned** |
 | Evals UI | **Planned**: the console’s Evals pages on your machine, one user, no login | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
 | Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Planned**, with the local Evals UI | **Beta** | **Planned** |
 | Judges run from the UI on your own model and key | **Planned** | **Planned** | **Planned** |
-| SDK results recorded against a tested revision: API keys and [CI sessions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) | — | **Beta** | **Planned** |
+| SDK results recorded against a tested revision: API keys and [CI sessions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | — | **Beta** | **Planned** |
 
 ### Work as a team
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| [Review queues with assignment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/human-reviews.md) | — | **Beta** | **Planned** |
-| [Monitoring](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md): scoring jobs and their scorecards across runs | — | **Beta** | **Planned** |
+| [Review queues with assignment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md) | — | **Beta** | **Planned** |
+| [Monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md): scoring jobs and their scorecards across runs | — | **Beta** | **Planned** |
 | Scoring of sampled production traces, scheduled regression runs and alerts | — | **Planned** | **Planned** |
-| Organizations, projects and the four [roles](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md): owner, admin, member and viewer | — | **Beta** | **Planned** |
+| Organizations, projects and the four [roles](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md): owner, admin, member and viewer | — | **Beta** | **Planned** |
 | Single sign-on, custom roles that separate developers from validators, audit log, retention and service accounts | — | **Planned** | **Planned** |
 
 ### Evidence
@@ -61,7 +61,7 @@ The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public sour
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Red Team | **Planned**: local probes, with a monthly limit on hosted attack generation | **Beta**: [assessments](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md) in the hosted console | **Planned**: attack generation on your own models |
+| Red Team | **Planned**: local probes, with a monthly limit on hosted attack generation | **Beta**: [assessments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) in the hosted console | **Planned**: attack generation on your own models |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
 ### Delivery and support
@@ -81,8 +81,8 @@ Community also leaves out what needs a shared server or belongs to another produ
 
 ## Choose an edition
 
--   **Start on your own machine:** follow the [Community quickstart](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md). It needs no account.
--   **Share results as a team, or run Red Team assessments:** [request a workspace](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md) in the hosted console.
+-   **Start on your own machine:** follow the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md). It needs no account.
+-   **Share results as a team, or run Red Team assessments:** [request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) in the hosted console.
 -   **Keep all data inside your network:** On-Premises is planned. Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) to discuss your requirements.
 
-The [verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md) lists which guides have been walked through, against which release.
+The [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md) lists which guides have been walked through, against which release.

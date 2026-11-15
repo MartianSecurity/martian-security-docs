@@ -39,4 +39,4 @@ Source: [Web version](https://docs.martiansecurity.ai/reference/glossary/)
 | Trace | A retained execution/message record and its associated attributes/evidence |
 | Viewer / member / admin / owner | Customer roles with different allowed actions |
 
-[Choose a workflow](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/concepts.md) or [check permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md).
+[Choose a workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/concepts.md) or [check permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md).

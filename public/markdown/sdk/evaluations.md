@@ -4,17 +4,17 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/evaluations/)
 
-> **Page qualification:** Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Use `martian.evals` to run your prediction function locally and record regression results. Start with a free two-record preview, then use a published dataset whose outputs Backend can score independently.
 
 ## Before you start
 
--   For the local preview, complete only [installation step 1](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#1-download-the-runnable-tutorial-and-install-the-release). Use **`martian-sdk[evals]`**, Python 3.12+, from the tutorial **Git repository root** prepared there.
+-   For the local preview, complete only [installation step 1](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#1-download-the-runnable-tutorial-and-install-the-release). Use **`martian-sdk[evals]`**, Python 3.12+, from the tutorial **Git repository root** prepared there.
 -   The included `demo_agent.answer` is a deterministic support program. It demonstrates wiring and repeatable assertions; it is not an LLM or evidence about a production agent.
 -   A local inline preview needs no platform account or model API key.
--   Before hosted persistence, complete the remaining [SDK configuration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#2-open-api-key-management). It needs a compatible enabled organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID/tested Git revision. Commit the source before taking that revision. Dataset restrictions must permit the dataset below.
--   Members may author dataset drafts; an **owner/admin publishes** the version used by this tutorial. Use [dataset authoring](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/datasets.md) for the exact import/validation/publication flow.
+-   Before hosted persistence, complete the remaining [SDK configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#2-open-api-key-management). It needs a compatible enabled organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID/tested Git revision. Commit the source before taking that revision. Dataset restrictions must permit the dataset below.
+-   Members may author dataset drafts; an **owner/admin publishes** the version used by this tutorial. Use [dataset authoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/datasets.md) for the exact import/validation/publication flow.
 
 ## 1\. Run the free local preview
 
@@ -30,7 +30,7 @@ Inspect `.martian-local-mlflow/martian-session.json`: it should say `state: offl
 
 ## 2\. Understand the complete test
 
-The tutorial’s [quality test](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/tests/evals/test_quality.py) traces the local callback and asserts all required score rows:
+The tutorial’s [quality test](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/tests/evals/test_quality.py) traces the local callback and asserts all required score rows:
 
 ```python
 import mlflow
@@ -63,10 +63,10 @@ Keep `@mlflow.trace` and the final assertion. `assert result.passed` is not a su
 ## 3\. Publish the two-record tutorial dataset
 
 1.  In the intended organization, open **Evals → Datasets**.
-2.  Follow [dataset authoring](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/datasets.md) to import [support-regressions.jsonl](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/support-regressions.jsonl).
+2.  Follow [dataset authoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/datasets.md) to import [support-regressions.jsonl](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/support-regressions.jsonl).
 3.  Name the dataset **`docs-support-regressions`**, confirm automatic validation reports **2 usable in runs**, and have an owner/admin publish the version. The download uses console import fields `input` and `expected_output`; the inline Python example above uses nested `inputs.message` and `expectations.expected_response` fields.
 
-![Corrected SDK tutorial dataset published with two usable synthetic support records.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-dataset-published.png)
+![Corrected SDK tutorial dataset published with two usable synthetic support records.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-dataset-published.png)
 
 The console accepted input/expected\_output import fields and published both records. The SDK loads this dataset by its published name; the inline Python example uses nested inputs.message and expectations.expected\_response fields.
 
@@ -82,7 +82,7 @@ Set the connection and CI attribution from the installation guide. Ensure `MARTI
 .venv/bin/martian ci --evals-path tests/evals --require-export --output results/evals
 ```
 
-This executes the tutorial’s inline checks and published-dataset test in one session. The dataset test is complete and available as [test\_dataset.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/tests/evals/test_dataset.py):
+This executes the tutorial’s inline checks and published-dataset test in one session. The dataset test is complete and available as [test\_dataset.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/tests/evals/test_dataset.py):
 
 ```python
 import os
@@ -111,23 +111,23 @@ def test_published_dataset():
 2.  Open **Evals → Runs** in the console and find the saved dataset run.
 3.  Open it, inspect the two records and their pass/fail values, then refresh the page. The result should remain available with its dataset version, agent and revision attribution.
 
-![Retained EV-1004 SDK dataset run with two matching answers and two canonical passes after refresh.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-evaluation-result.png)
+![Retained EV-1004 SDK dataset run with two matching answers and two canonical passes after refresh.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-evaluation-result.png)
 
 The released SDK executed its local callback and Backend scored both outputs. The recorded results survived refresh; native finalization was recovered separately without another callback execution.
 
 4.  Select **Evals** in the main sidebar to return to its default **Runs** view. In the organization-wide **CI sessions** section, select **Refresh**, locate the tested commit, and select **Show tests**. Verify that both tutorial tests are present. This organization-wide section is hidden while a specific Evals project is selected.
 
-![Expanded saved CI session containing a dataset test and an inline scorer-check test.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-ci-test-results.png)
+![Expanded saved CI session containing a dataset test and an inline scorer-check test.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-ci-test-results.png)
 
 Show tests retains the server-scored dataset result and the client-scored inline checks. Inline content is represented by digests. The stored export was recovered without running the tests again.
 
 The later **EV-1009** qualification ran this Evals-only command once with a fresh scoped key. It exited `0`; the saved receipt and server readback agreed on **passed**, **persisted**, **exported**, and **2 of 2 tests passed**, with no reported problems. This was a new local-callback session. The earlier EV-1004 required-export failure and its separate recovery remain recorded as their original outcomes.
 
-![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
+![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
 
 The fresh strict SDK session retained both expected support answers with two passes and no errors or skips. Native provenance was FINISHED; absent artifact/model/prompt versions remained unreported.
 
-![Expanded passing SDK session with dataset and inline scorer-check tests](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-ci-strict-tests.png)
+![Expanded passing SDK session with dataset and inline scorer-check tests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-ci-strict-tests.png)
 
 EV-1009 and the inline scorer checks both passed. Dataset results are client-executed/server-scored; inline checks are client-executed/client-scored.
 
@@ -182,7 +182,7 @@ def test_support_reply_is_safe():
     assert_checks(result)
 ```
 
-Replace `YOUR_JUDGE_MODEL` and set your provider’s key as described in [provider setup](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md#6-add-an-llm-judge). Then run it as a local preview:
+Replace `YOUR_JUDGE_MODEL` and set your provider’s key as described in [provider setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#6-add-an-llm-judge). Then run it as a local preview:
 
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
@@ -198,7 +198,7 @@ Keep these execution rules in mind:
 -   **A judgment that is invalid or uncertain is an error, never a pass.** If the provider rate-limits or is unavailable, a judge retries up to five times by default (`max_retries`) and never asks again once it has a judgment.
 -   **`evaluate` raises `EvaluationError` when per-row results are missing**, and traces a prediction function that is not decorated. Keeping `@mlflow.trace` is still recommended, so the trace has the name and span type you chose.
 
-To run a whole file of cases without writing tests, use a [suite file](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md).
+To run a whole file of cases without writing tests, use a [suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md).
 
 ## Failures and limits
 
@@ -206,10 +206,10 @@ To run a whole file of cases without writing tests, use a [suite file](https://r
 -   A wrong answer, missing score, target error, skipped/deselected required test, swallowed gate exception or missing final assertion fails the gate. Do not lower thresholds to hide incomplete execution.
 -   Strict policy requires every pinned row to pass. A lower declared threshold can produce a visibly **relaxed** verdict; it does not excuse missing rows or execution errors.
 -   SDK dataset CI pulls are capped at **100 active records per dataset test**. Checks support up to **100 rows and 20 scorers** per test; sessions support **100 tests and 1,000 combined rows/probes**, within the request-body limit. These limits differ from the console’s admitted run budgets.
--   These limits apply to tests recorded through the gate. A [local suite-file run](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md) has no row limit and records nothing on the platform.
--   The pytest/persisted-gate path on this page uses a private local MLflow store. Do not substitute a remote `MLFLOW_TRACKING_URI` for that path or publish `.martian-local-mlflow/` as a CI artifact. The separate [suite-file runner](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/local-evals.md#failures-and-limits) can explicitly log to your own MLflow server. Retain the persisted gate’s safe receipt.
+-   These limits apply to tests recorded through the gate. A [local suite-file run](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) has no row limit and records nothing on the platform.
+-   The pytest/persisted-gate path on this page uses a private local MLflow store. Do not substitute a remote `MLFLOW_TRACKING_URI` for that path or publish `.martian-local-mlflow/` as a CI artifact. The separate [suite-file runner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#failures-and-limits) can explicitly log to your own MLflow server. Retain the persisted gate’s safe receipt.
 -   `--require-export` waits for bounded export confirmation. An export problem does not justify rerunning the target; inspect the saved session and available **Retry export** action first.
 
-If the tests pass and upload is persisted but required export fails, preserve the original failed receipt. An owner/admin can use **Retry export** in **CI sessions**, then **Refresh** to inspect the retained export. For a separate dataset-run telemetry warning, contact your workspace operator or [Martian support](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md); it needs investigation of that run. Recovering saved evidence does not change the original command’s exit code; record recovery separately.
+If the tests pass and upload is persisted but required export fails, preserve the original failed receipt. An owner/admin can use **Retry export** in **CI sessions**, then **Refresh** to inspect the retained export. For a separate dataset-run telemetry warning, contact your workspace operator or [Martian support](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md); it needs investigation of that run. Recovering saved evidence does not change the original command’s exit code; record recovery separately.
 
-Continue with [red teaming](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/redteam.md) or [combined CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md). For the browser-run workflow, see [your first evaluation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/first-run.md).
+Continue with [red teaming](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md) or [combined CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). For the browser-run workflow, see [your first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md).

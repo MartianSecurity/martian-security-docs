@@ -28,11 +28,11 @@ Use only a controlled test implementation and an approved synthetic receiver. A 
 | `MT-11` MCP descriptor poisoning | In the library |
 | `MT-24` Standing backdoor | **Declared gap** |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 MCP descriptor poisoning is related to one part of this family. **MT-24 Standing backdoor is a declared gap.** The broader published catalogue includes software and model supply-chain research; it does not establish support for changing weights, training models, compromising dependencies or testing arbitrary build systems.
 
-An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach.
+An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach.
 
 ## Evidence to inspect
 
@@ -54,6 +54,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0110 — AI Agent Tool Poisoning](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5113)
 -   [AML.T0115 — Publish Poisoned AI Artifacts](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L5446)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-See [OWASP LLM supply-chain risks](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) and [OWASP Agentic ASI04](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md). Continue with [MCP and tool poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md) or [memory and context poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md).
+See [OWASP LLM supply-chain risks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) and [OWASP Agentic ASI04](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md). Continue with [MCP and tool poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md) or [memory and context poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md).

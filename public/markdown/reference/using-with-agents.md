@@ -18,13 +18,13 @@ The agent link opens a public, plain-text Markdown copy on GitHub. It needs no a
 
 ## Give an assistant more context
 
--   [Agent index](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms.txt): a list of pages with short descriptions and direct Markdown links. The page menu also links to this index.
--   [Complete documentation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/llms-full.txt): every page in one text file. It is larger; start with a specific guide when possible.
+-   [Agent index](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms.txt): a list of pages with short descriptions and direct Markdown links. The page menu also links to this index.
+-   [Complete documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt): every page in one text file. It is larger; start with a specific guide when possible.
 
 The site publishes the same files at `/markdown/<page-path>.md`, `/llms.txt` and `/llms-full.txt`. Each HTML page advertises its Markdown alternatives in its document head, so tools that inspect page metadata can discover them.
 
 ## Keep the guide’s limits in context
 
-A copied page retains its role requirements, walkthrough qualification and links to the tested-version record. Ask the assistant to check those before suggesting a step. A partly verified guide still has unverified steps; a Markdown copy does not change that status. See [Verification and limitations](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+A copied page retains its role requirements, walkthrough qualification and links to the tested-version record. Ask the assistant to check those before suggesting a step. A partly verified guide still has unverified steps; a Markdown copy does not change that status. See [Verification and limitations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 These are public instructions. Sharing a page does not give an assistant access to your workspace, API keys or authenticated product. Supply only the context you intend to share.

@@ -4,13 +4,13 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/runtime-and-blast-radius/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Follow application-reported model/tool activity for one deployment and compare it with collected potential access. Success means the intended binding receives real instrumented calls and you can trace each visible relationship to its evidence and time boundary.
 
 ## Before you start
 
-An **Owner** or **Admin** enrolls reporting. Any signed-in tenant user can inspect accessible evidence. First [connect an authorized infrastructure source](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) and collect the workload. Install the compatible Martian SDK in that customer application and explicitly instrument its normal model/tool calls. Do not report invented calls to make a diagram look complete.
+An **Owner** or **Admin** enrolls reporting. Any signed-in tenant user can inspect accessible evidence. First [connect an authorized infrastructure source](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/inventory.md) and collect the workload. Install the compatible Martian SDK in that customer application and explicitly instrument its normal model/tool calls. Do not report invented calls to make a diagram look complete.
 
 Deployment, environment and version labels attribute reports; they do not attest the running binary. Use a separate binding for each intended environment/version and keep assessment traffic distinguishable from other traffic.
 
@@ -19,7 +19,7 @@ Deployment, environment and version labels attribute reports; they do not attest
 1.  Open **Discovery → Sources → Runtime reporting**, then **Connect runtime reporter**.
 2.  Use **Find workload**, choose **Discovered workload**, then enter **Deployment label**, **Environment** and **Deployed version**. The first 50 search matches are listed; narrow the search if necessary.
 
-![The runtime binding form selects the actual support-agent workload and documentation QA version.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-binding-form.png)
+![The runtime binding form selects the actual support-agent workload and documentation QA version.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-binding-form.png)
 
 Choose the collected workload and explicit deployment, environment and version before creating its private runtime credential.
 
@@ -30,7 +30,7 @@ Choose the collected workload and explicit deployment, environment and version b
 
 ## Integrate one real call
 
-[Download report\_once.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the intended enrolled workload, alongside your application’s dependencies. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
+[Download report\_once.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the intended enrolled workload, alongside your application’s dependencies. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
 
 Use a trusted module that exposes your existing real model/tool call as a sync or async function. The JSON input file supplies its keyword arguments. Do not put business requests at module import time. Run the helper only in the workload/version that the binding actually describes, using a legitimate authorized synthetic task.
 
@@ -65,7 +65,7 @@ This minimal integration emits call metadata. Resource links require explicit re
 2.  Select **Deployment / environment / version** and **Time window**: **Last hour**, **Last 24 hours** or **Last 7 days**.
 3.  Read **Where calls went**. Select a model/tool to inspect its configured name, counts, outcomes and recent reports. Use **Previous connections** / **Next connections** when additional targets are available.
 
-![The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-eight-tool-calls.png)
+![The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-eight-tool-calls.png)
 
 The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.
 
@@ -73,7 +73,7 @@ The captured example is a real read-only `get_shipping_policy` tool in the selec
 
 4.  For a resource link, inspect its service/type, opaque reference, reported action, outcome and time. These links require explicit response-ID mappings in the customer integration. Use **Previous resources** / **Next resources** to page the displayed links.
 
-![The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-resource-detail.png)
+![The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-resource-detail.png)
 
 The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.
 
@@ -86,13 +86,13 @@ The initial successful lookup mapped the actual response UID to an opaque refere
 2.  Inspect runtime-reported domains, collected identity/permission paths and shared configured peers separately. Open the relevant resource or evidence row to see its source and matching limitations.
 3.  Use record details such as **Configured access**, **Network evidence**, and **Hosting & identity** to answer their specific evidence questions. A network window or an RBAC policy is not a substitute for an independently verified business effect.
 
-![The actual workload exposure diagram separates configured domains and a matching Kubernetes request.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-blast-radius-configured-reach.png)
+![The actual workload exposure diagram separates configured domains and a matching Kubernetes request.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-blast-radius-configured-reach.png)
 
 The diagram summarizes the latest collected configuration and reported request evidence. Twenty resource patterns and twenty-five potential paths do not establish effective access or measured business impact.
 
 For the example lookup, **Kubernetes request evidence** links the caller-declared named GET and service account to a matching collected ConfigMap rule. Select the request to inspect its supporting path and collection time. The RBAC snapshot is the latest collected configuration; it is not pinned to the call time or the binding’s declared version. A match establishes evidence alignment, not effective authorization.
 
-![The selected named ConfigMap GET has matching RBAC evidence and eight successful application reports.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-request-rbac-match.png)
+![The selected named ConfigMap GET has matching RBAC evidence and eight successful application reports.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-request-rbac-match.png)
 
 The named GET and caller-declared service account align with the latest collected RBAC fields. The independent snapshot does not attest identity or permission at call time.
 
@@ -103,9 +103,9 @@ The named GET and caller-declared service account align with the latest collecte
 
 If no workload is listed
 
-**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
+**No matching workloads** means there is no collected workload matching the search. [Connect an authorized source and collect its inventory](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/inventory.md), or change the search. Entering a deployment label does not create the missing workload; **Create runtime binding** stays disabled until you select one.
 
-![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
+![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
 
 Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
 
@@ -115,4 +115,4 @@ Runtime setup stops until an authorized source has collected a matching workload
 -   Opaque resource references remain within their binding. Unmapped resources, errors and downstream effects can be unknown; do not merge them across deployments by name.
 -   Customer-reported success, configured permissions and TCP observations do not independently establish effective access, complete capture or business impact.
 
-Continue with [network observer setup](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/network-observation.md), [SDK call gates](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/call-gates.md) or [assessment outcome verification](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
+Continue with [network observer setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/network-observation.md), [SDK call gates](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/call-gates.md) or [assessment outcome verification](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).

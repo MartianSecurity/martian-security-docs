@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/reproduction-and-limits/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 > **Walkthrough limits:** In isolated local QA, MR-1002 had unverifiable disclosure coverage and no deterministic oracle. Model opinions and requested-versus-used budgets were inspected. Clean-world reproduction and negative controls remain unverified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged.
 
@@ -20,7 +20,7 @@ Any tenant role can inspect a retained run it can access. You need an actual run
 
 ## Review the reproduction claim
 
-The [glossary](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/glossary.md) defines oracle, world epoch, carrier/implant and no-implant control. These terms identify different evidence checks; they are not interchangeable labels for a passed run.
+The [glossary](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/glossary.md) defines oracle, world epoch, carrier/implant and no-implant control. These terms identify different evidence checks; they are not interchangeable labels for a passed run.
 
 1.  Open the run and read **Security outcome** separately from **Assessment execution**. A completed bounded search may have findings, no findings or inconclusive coverage; completion does not certify the agent.
 2.  Open a verification row or the versioned **Verification receipts** section. Inspect **Reproduction status**, repetitions, successful reproductions, target calls, evidence and the control result.
@@ -48,9 +48,9 @@ The normal profiles request two verification repetitions and two successful repr
 3.  For state-changing objectives, use independent before/after records rather than the target’s statement that it completed an action. A strong text match can establish disclosure in a reply, but not an unobserved payment or permission change.
 4.  For imported history, retain its original provenance. It does not represent a fresh execution in the current deployment.
 
-The captured sandbox run passed its starting-ledger prerequisites, then retained **Needs attention** after a target setup error. Its **ready** baseline, pending after-state and unavailable cleanly reproduced refund support no business-effect or reproduction claim. [Read the complete example](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-passed-baseline-with-no-outcome-verdict).
+The captured sandbox run passed its starting-ledger prerequisites, then retained **Needs attention** after a target setup error. Its **ready** baseline, pending after-state and unavailable cleanly reproduced refund support no business-effect or reproduction claim. [Read the complete example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-passed-baseline-with-no-outcome-verdict).
 
-![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
+![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
 
 Both baseline prerequisites passed. Outcome captured and After-state digest remain Pending, and no complete comparison or refund verdict exists. The duplicated-refund sentence describes the configured check.
 
@@ -64,4 +64,4 @@ The depth selector reports ceilings, not a promise that every allowance will be 
 
 If evidence is insufficient, keep the result inconclusive, fix the missing prerequisite and explicitly schedule an appropriate new bounded assessment. Reading, comparing or exporting saved evidence does not fill missing execution coverage.
 
-Next: [inspect evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md), [find and export retained runs](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/history-and-exports.md), or [review platform limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md).
+Next: [inspect evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md), [find and export retained runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md), or [review platform limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md).

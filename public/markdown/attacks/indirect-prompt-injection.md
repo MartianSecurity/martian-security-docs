@@ -30,11 +30,11 @@ The marker can help detect a task deviation in a controlled fixture. It does not
 | `MT-09` Tool-output poisoning | In the library |
 | `MT-10` Retrieval store poisoning | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 Document, email and tool-output techniques depend on control of the corresponding surface. A compatible scenario must expose that carrier and the target must actually consume it. Catalogue availability does not give a generic endpoint permission or ability to plant data in a customer’s production system.
 
-Memory or retrieval-store poisoning can outlast the initial read. See [memory and context poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) for the additional persistence evidence required. A poisoned MCP definition has a different delivery point; see [MCP and tool poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md).
+Memory or retrieval-store poisoning can outlast the initial read. See [memory and context poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) for the additional persistence evidence required. A poisoned MCP definition has a different delivery point; see [MCP and tool poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md).
 
 ## Plan a useful test
 
@@ -56,6 +56,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 
 -   [AML.T0051.001 — Indirect](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2957)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-See [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [ATT&CK T1698 Indirect Prompt Injection](https://attack.mitre.org/techniques/T1698/). Continue with [reproduction and outcome limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md) or [data exfiltration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md).
+See [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [ATT&CK T1698 Indirect Prompt Injection](https://attack.mitre.org/techniques/T1698/). Continue with [reproduction and outcome limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md) or [data exfiltration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md).

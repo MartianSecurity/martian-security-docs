@@ -6,17 +6,17 @@ Source: [Web version](https://docs.martiansecurity.ai/)
 
 Find security failures with **red teaming**. Measure response quality with **Evals**. Keep both checks in your development workflow with the **SDK and CI**.
 
-- [Run your first assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md): Connect an agent, choose a small test, and inspect the evidence.
+- [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md): Connect an agent, choose a small test, and inspect the evidence.
 
-- [Run your first evaluation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/first-run.md): Use a published dataset to compare expected and actual answers.
+- [Run your first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md): Use a published dataset to compare expected and actual answers.
 
-- [Integrate the SDK and CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md): Run local callbacks and record repeatable checks for a tested revision.
+- [Integrate the SDK and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md): Run local callbacks and record repeatable checks for a tested revision.
 
 ## Start with your workspace
 
-Want to start free, on your own machine? Follow the [Community quickstart](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/quickstart.md) or [try a two-record SDK evaluation in pytest](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md); neither needs a Martian account or model key. [Editions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/editions.md) shows what Community, Enterprise and On-Premises include.
+Want to start free, on your own machine? Follow the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) or [try a two-record SDK evaluation in pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md); neither needs a Martian account or model key. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) shows what Community, Enterprise and On-Premises include.
 
-New to Martian? [Accept your invitation and sign in](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/access.md), then read [the concepts](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/concepts.md). You need an agent connection that you are authorized to test. Each tutorial explains the role, setup and limits before you start.
+New to Martian? [Accept your invitation and sign in](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md), then read [the concepts](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/concepts.md). You need an agent connection that you are authorized to test. Each tutorial explains the role, setup and limits before you start.
 
 ## Choose the evidence you need
 
@@ -50,14 +50,14 @@ flowchart LR
 
 ## Explore the product
 
-Use the [console map](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/console-navigation.md) to find each customer area, including the Evals dashboard, account menu and features that remain templates or previews.
+Use the [console map](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/console-navigation.md) to find each customer area, including the Evals dashboard, account menu and features that remain templates or previews.
 
--   [Agents and connections](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md) — registration, validation and approval.
--   [Attack library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/attacks.md) — individual attack guides, examples and security framework references.
--   [Environments](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md) — synthetic seed data and sandbox readiness.
--   [Discovery](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/inventory.md) — inventory and runtime evidence.
--   [Permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md) — understand what your role and environment support.
--   [Troubleshooting](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/troubleshooting.md) — recover without starting duplicate work.
--   [Hermes documentation](https://morninghq.github.io/martian-hermes-docs/) — the separate Hermes agent and its operator workflow.
+-   [Agents and connections](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) — registration, validation and approval.
+-   [Attack library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md) — individual attack guides, examples and security framework references.
+-   [Environments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md) — synthetic seed data and sandbox readiness.
+-   [Discovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/inventory.md) — inventory and runtime evidence.
+-   [Permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md) — understand what your role and environment support.
+-   [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md) — recover without starting duplicate work.
+-   [Hermes documentation](https://martiansecurity.github.io/martian-hermes-docs/) — the separate Hermes agent and its operator workflow.
 
-These are beta product guides. The [verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md) identifies observed walkthroughs and any qualification still in progress.
+These are beta product guides. The [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md) identifies observed walkthroughs and any qualification still in progress.

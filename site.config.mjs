@@ -1,3 +1,3 @@
 export const siteOrigin = 'https://docs.martiansecurity.ai';
 export const siteBase = '/';
-export const documentationRepository = 'https://github.com/MorningHQ/martian-security-docs';
+export const documentationRepository = 'https://github.com/MartianSecurity/martian-security-docs';

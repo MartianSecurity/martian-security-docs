@@ -12,48 +12,48 @@ The reference covers all **12 major families** in Martian’s published catalogu
 
 | Attack family | What to investigate |
 | --- | --- |
-| [Prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) | Untrusted instructions redirect the intended task |
-| [Jailbreaks](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/jailbreaks.md) | A model is pushed past its safety policy |
-| [Tool and action abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) | Tools perform an unauthorized or unsafe operation |
-| [Memory and context poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) | Stored material changes later behavior |
-| [Data exfiltration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md) | Protected information crosses an unauthorized boundary |
-| [Privilege escalation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) | The agent exercises authority the requester does not have |
-| [Multi-agent attacks](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) | A malicious instruction or permission crosses an agent handoff |
-| [Supply chain and backdoors](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) | A compromised dependency, tool or artifact changes behavior |
-| [Reasoning and alignment subversion](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) | Manipulated objectives, feedback or reasoning steer decisions |
-| [Guardrail and judge evasion](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) | A safety check or evaluator accepts an unsafe result |
-| [Denial of service](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/denial-of-service.md) | Work consumes excessive time, tokens, money or capacity |
-| [Human manipulation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/human-manipulation.md) | The agent persuades a person to approve an unsafe action |
+| [Prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) | Untrusted instructions redirect the intended task |
+| [Jailbreaks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/jailbreaks.md) | A model is pushed past its safety policy |
+| [Tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) | Tools perform an unauthorized or unsafe operation |
+| [Memory and context poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) | Stored material changes later behavior |
+| [Data exfiltration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md) | Protected information crosses an unauthorized boundary |
+| [Privilege escalation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) | The agent exercises authority the requester does not have |
+| [Multi-agent attacks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) | A malicious instruction or permission crosses an agent handoff |
+| [Supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) | A compromised dependency, tool or artifact changes behavior |
+| [Reasoning and alignment subversion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) | Manipulated objectives, feedback or reasoning steer decisions |
+| [Guardrail and judge evasion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/guardrail-judge-evasion.md) | A safety check or evaluator accepts an unsafe result |
+| [Denial of service](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/denial-of-service.md) | Work consumes excessive time, tokens, money or capacity |
+| [Human manipulation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/human-manipulation.md) | The agent persuades a person to approve an unsafe action |
 
 ## Common starting points
 
-[Direct prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md)Instructions arrive in the attacker's own message.
+[Direct prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/direct-prompt-injection.md)Instructions arrive in the attacker's own message.
 
-[Indirect prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md)Instructions arrive inside a document, email or tool result.
+[Indirect prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md)Instructions arrive inside a document, email or tool result.
 
-[MCP and tool poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md)Tool descriptions and responses become an instruction channel.
+[MCP and tool poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md)Tool descriptions and responses become an instruction channel.
 
-[Business workflow abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/business-workflow-abuse.md)Refunds, credits and claims break application rules.
+[Business workflow abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/business-workflow-abuse.md)Refunds, credits and claims break application rules.
 
 ## Use security frameworks
 
 These frameworks answer different questions. Their mappings help organize an assessment; selecting a framework does not run every associated attack or certify a system.
 
--   [MITRE ATLAS](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md) — adversary behavior against AI systems, including prompt injection, tools, memory and the AI supply chain.
--   [MITRE ATT&CK](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-attack.md) — adversary behavior across enterprise, mobile and industrial environments; useful when AI abuse reaches conventional infrastructure.
--   [OWASP LLM Top 10](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) — application risk categories, including disclosure, output handling and excessive agency.
--   [OWASP Agentic Top 10](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md) — risks in planning, delegated identity, tools, memory and agent coordination.
--   [NIST AI RMF](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/nist-ai-rmf.md) — a way to govern, understand, measure and manage risk across the lifecycle.
+-   [MITRE ATLAS](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md) — adversary behavior against AI systems, including prompt injection, tools, memory and the AI supply chain.
+-   [MITRE ATT&CK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-attack.md) — adversary behavior across enterprise, mobile and industrial environments; useful when AI abuse reaches conventional infrastructure.
+-   [OWASP LLM Top 10](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) — application risk categories, including disclosure, output handling and excessive agency.
+-   [OWASP Agentic Top 10](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md) — risks in planning, delegated identity, tools, memory and agent coordination.
+-   [NIST AI RMF](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/nist-ai-rmf.md) — a way to govern, understand, measure and manage risk across the lifecycle.
 
 ## Take a reference into an assessment
 
 1.  State the protected rule and the observable failure. For example: a support agent must not credit more than the authorized amount for one order.
 2.  Read the relevant attack page and confirm the required surface exists. A chat-only endpoint does not automatically provide document planting, memory editing or MCP descriptor control.
-3.  [Find available techniques in Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md), then [configure the assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md). Use an approved target, synthetic records and a bounded budget.
-4.  Inspect [actual attempts and evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md). Separate a proposed action, a dispatched action and a verified effect. A timeout or unknown action remains unresolved.
-5.  Retain the evidence and [add a regression case](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/regression-cases.md) where the relevant behavior can be reproduced safely.
+3.  [Find available techniques in Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md), then [configure the assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md). Use an approved target, synthetic records and a bounded budget.
+4.  Inspect [actual attempts and evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md). Separate a proposed action, a dispatched action and a verified effect. A timeout or unknown action remains unresolved.
+5.  Retain the evidence and [add a regression case](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/regression-cases.md) where the relevant behavior can be reproduced safely.
 
-All examples in this reference are explanatory synthetic examples. They are not newly executed walkthroughs or ready-made Martian configuration files. Target support and execution limits are described in [supported targets](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/supported-targets.md) and [reproduction and limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
+All examples in this reference are explanatory synthetic examples. They are not newly executed walkthroughs or ready-made Martian configuration files. Target support and execution limits are described in [supported targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) and [reproduction and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
 
 ## Read catalogue states
 
@@ -100,8 +100,8 @@ Browse all 36 Martian techniques
 | `MT-35` Trust-edge injection | In the library |
 | `MT-36` Worker collusion | **Declared gap** |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 The published matrix also contains research counts across attack families and surfaces. Those counts are reference material, not a count of runnable tests, completed probes or unique verified findings. A technique can relate to more than one attack family.
 
-Use **Copy page** to share a page’s Markdown, or choose **Copy agent link** for a public text link an agent can fetch. The [agent access guide](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/using-with-agents.md) explains the page index and full documentation export.
+Use **Copy page** to share a page’s Markdown, or choose **Copy agent link** for a public text link an agent can fetch. The [agent access guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/using-with-agents.md) explains the page index and full documentation export.

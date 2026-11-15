@@ -1,12 +1,12 @@
 {
   "reviewedAt": "2026-11-12",
   "repositories": {
-    "MorningHQ/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
-    "MorningHQ/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
-    "MorningHQ/martian-agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
-    "MorningHQ/martian-evals": "60c25994958105db4baa91f377ba46c24fdf253d",
-    "MorningHQ/martian-redteam": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
-    "MorningHQ/martian-hermes-docs": "3593a4bae03e96cf6c7597ececf99fbfc32997ae"
+    "MartianSecurity/MartianFrontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
+    "MartianSecurity/MartianBackend": "01343fa93feb518f6c7cd1928b63a01d2ec5ee0b",
+    "MartianSecurity/martian-agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+    "MartianSecurity/martian-evals": "60c25994958105db4baa91f377ba46c24fdf253d",
+    "MartianSecurity/martian-redteam": "8fb884cbfea0a2cee78eee02eda615d8823b7718",
+    "MartianSecurity/martian-hermes-docs": "3593a4bae03e96cf6c7597ececf99fbfc32997ae"
   },
   "releasedSDK": {
     "version": "0.1.2",
@@ -29,11 +29,11 @@
   "completenessAudit": {
     "reviewedAt": "2026-11-13",
     "remoteHeads": {
-      "MorningHQ/MartianFrontend": "b6d305cb3bdf0bb322008554fb826ef74bf02239",
-      "MorningHQ/MartianBackend": "d18960e4937a1632a3f1773facecd8377cc0caab",
-      "MorningHQ/martian-agents": "d021180e92156ff6b4f442ed21c8d87a13582dc2",
-      "MorningHQ/martian-evals": "e2852d685610608931316cb44238fe09cb076d10",
-      "MorningHQ/martian-redteam": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
+      "MartianSecurity/MartianFrontend": "b6d305cb3bdf0bb322008554fb826ef74bf02239",
+      "MartianSecurity/MartianBackend": "d18960e4937a1632a3f1773facecd8377cc0caab",
+      "MartianSecurity/martian-agents": "d021180e92156ff6b4f442ed21c8d87a13582dc2",
+      "MartianSecurity/martian-evals": "e2852d685610608931316cb44238fe09cb076d10",
+      "MartianSecurity/martian-redteam": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
     },
     "comparison": "Newer service/console commits refresh repository documentation, except a Frontend resizable-panel ID adjustment. Runtime qualification remains tied to the original recorded pins; these remote heads are source-audit context, not deployed image attestations."
   },
@@ -41,9 +41,9 @@
     {
       "reviewedAt": "2026-11-14",
       "remoteHeads": {
-        "MorningHQ/MartianFrontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
-        "MorningHQ/MartianBackend": "d18960e4937a1632a3f1773facecd8377cc0caab",
-        "MorningHQ/martian-agents": "d021180e92156ff6b4f442ed21c8d87a13582dc2"
+        "MartianSecurity/MartianFrontend": "5361d1f241278e19c79e68d1d8f9325920a04d12",
+        "MartianSecurity/MartianBackend": "d18960e4937a1632a3f1773facecd8377cc0caab",
+        "MartianSecurity/martian-agents": "d021180e92156ff6b4f442ed21c8d87a13582dc2"
       },
       "comparison": "Backend/Agents differences from the original runtime pins contain documentation/instruction files only. Frontend42changedfiles include docs and UI polish; package manifest/lock unchanged. Actual Pipeline now explicitly Preview/unavailable and downloads a template without the old illustrative scan command. CI/key navigation and action contracts retained; current browser failure capture uses the newer frontend. Earlier screenshot pins remain historical and unchanged.",
       "runtimeByteMatches": 17,
@@ -86,7 +86,7 @@
         "collector": "7f022e59f2db4bc6401c9706663400cdc6a91e20",
         "sdk": "f3caf8bcc5f8aad176d2c843562fe468cd755218"
       },
-      "backendPullRequest": "https://github.com/MorningHQ/MartianBackend/pull/112",
+      "backendPullRequest": "https://github.com/MartianSecurity/MartianBackend/pull/112",
       "backendMerged": false,
       "runtimeByteMatches": 23,
       "fullHostedParity": false,
@@ -112,12 +112,12 @@
       "reviewedAt": "2026-11-15",
       "scope": "get-started/editions",
       "repositories": {
-        "MorningHQ/martian-redteam": "fbc44ca17434c9b8f8a8fbbbc7937b4232eeea7e",
-        "MorningHQ/MartianBackend": "15e3270090ebacec4ebca404bed30c4d111cd750"
+        "MartianSecurity/martian-redteam": "fbc44ca17434c9b8f8a8fbbbc7937b4232eeea7e",
+        "MartianSecurity/MartianBackend": "15e3270090ebacec4ebca404bed30c4d111cd750"
       },
       "paths": [
-        "MorningHQ/martian-redteam:src/martian/evals/server/entitlements.py",
-        "MorningHQ/MartianBackend:app/entitlements.py"
+        "MartianSecurity/martian-redteam:src/martian/evals/server/entitlements.py",
+        "MartianSecurity/MartianBackend:app/entitlements.py"
       ],
       "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
     }
