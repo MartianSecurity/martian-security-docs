@@ -146,6 +146,13 @@ export default defineConfig({
     ]
   },
   {
+    "label": "On-Premises",
+    "collapsed": true,
+    "items": [
+      { "autogenerate": { "directory": "on-premises" } }
+    ]
+  },
+  {
     "label": "Workspace",
     "collapsed": true,
     "items": [
