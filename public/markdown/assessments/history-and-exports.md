@@ -6,11 +6,11 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/history-and-ex
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified.
+> **Walkthrough limits:** Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified. Later MR1002 published complete retained review content:3conversations/17turns/103customer events/51gatewayrecords. ActualHTTP200 download hadmatchingrevision and ZIP media type, but lacked a complete archive directory and failed validation.
 
 Partly verified guide
 
-Run/domain JSON downloads and on-screen redacted review are checked. The review ZIP download remains unverified.
+Run/domain JSON and retained review records are checked. A later ZIP response failed archive validation; complete archive delivery remains unverified.
 
 Find a recorded assessment after leaving its wizard, inspect retained evidence and download the right report. These history and replay actions read existing work; **Replay** does not execute the assessment again.
 
@@ -73,12 +73,19 @@ The actual target response contains \[REDACTED\] instead of the fixture’s toke
 
 The JSON downloads and redacted turn reads passed in this example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP, so archive download and inspection remain unverified. A published revision and a readable turn do not establish that its ZIP downloaded successfully.
 
+### Later publication and archive-integrity check
+
+A separate **MR-1002** in **Harbor Assessment Lab** published a durable review containing **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Its retained review-content coverage was **complete**, while native span delivery remained **pending**. These are separate delivery states.
+
+Its revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. Archive download and inspection therefore remain unqualified. A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download.
+
 ## Failure and recovery
 
 If **Refresh review** still offers no published revision, ask your workspace owner or Martian operator who manages review publication. Include the run code, displayed review revision/status and error, without credentials or private payloads. Refresh reads availability; it does not publish an artifact. Keep the available run/legacy JSON as its separately described evidence scope; it is not a substitute for a published redacted review ZIP.
 
 -   **No finished reports on this page** may mean your current page/filter contains no terminal run. Search or page to the intended run; it does not establish that all organization history is empty.
 -   A failed download should retain an error. Retry the read after checking service/evidence availability; downloading does not justify starting a new assessment.
+-   If a downloaded ZIP does not open, retain the run ID, selected revision, response status and archive-validation error for your operator. A partial stream can begin with a valid ZIP header and still lack its final directory.
 -   `review_provider_wait_exceeded` can appear even when **Review delivery** says **persisted**. Preserve the displayed revision and retry the read after availability recovers. **0 loaded · 12 retained records** beside a read error means the page has not loaded those records; it does not mean the review is empty.
 -   Missing retained content or expired artifact custody cannot be reconstructed by a screenshot of an old report. Keep the availability limitation visible.
 -   Imported history reflects its original execution and evidence. It does not prove that the current deployment executed that run.

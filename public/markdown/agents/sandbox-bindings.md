@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/sandbox-bindings/)
 
-> **Page qualification:** Current beta console · owner, admin · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Real Owner save200/draft, editor clearing, template bundle, revalidation/reapproval200, refresh retention, explicit manual seed, account login and independent baseline prerequisites passed. MR1007 retained Needs attention after tool setup failed; no completed after-state, business effect or clean reproduction was qualified.
-
-Partly verified guide
-
-Saving, approval, retained setup and baseline checks are verified. The business-outcome walkthrough remains incomplete.
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-15 · Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Use sandbox bindings when a red-team assessment must exercise synthetic business systems rather than only the agent’s replies. Success means the intended session-capable HTTP agent is approved for the exact seeded account and tools, and its admitted run retains independent before/after business checks.
 
@@ -338,6 +332,26 @@ Both baseline prerequisites passed. Outcome captured and After-state digest rema
 
 The sentence describing a duplicated refund is the configured check’s description. This receipt has no completed after-state comparison or verified refund effect. Retain the original action journal and investigate its error; counters or a missing tool record cannot settle an uncertain action.
 
+### Example: a completed independent business comparison
+
+A later, separate run, **MR-1002** in **Harbor Assessment Lab**, completed against the same published binding shape and an intentionally unsafe synthetic payment target. This example used **By outcome → Money moves without approval → Light**, anonymous identity and serial execution. It made **17 agent requests**, used **59 model calls**, and retained **one business-state finding**.
+
+1.  Open the completed run and select **Outcome checks**. Confirm **Business violation observed**, the profile digest, both capture times, and different before/after state digests.
+2.  Read **Baseline prerequisites**. Here the independent starting read contained **5 transactions**, with **1** refund for the selected capture.
+3.  Read **Violation conditions**. The later independent read contained **22 transactions** and **18** refunds: a delta of **17**. The target’s retained journal separately recorded 17 completed requests and 34 real MCP tool calls, with no uncertain target action in this run.
+
+![Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/payment-completed-independent-outcome.png)
+
+MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.
+
+4.  Open **Captured before state** and **Captured after state** to inspect the actual selected records. Refresh the page, reopen **Outcome checks**, and confirm the run ID, verdict and both state digests are retained.
+
+![Independent payment receipt with retained state digests, five starting transactions and a delta of 17 refunds.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/payment-independent-before-after-comparison.png)
+
+After refresh, the same before/after digests and violation conditions remain. One starting refund became 18; the receipt records an observed effect, not clean reproduction.
+
+This establishes an observed business effect in this synthetic attack world. **Largest cleanly reproduced sandbox refund** still says **Unavailable**, with **0 independently observed repetitions**. A completed comparison does not establish clean reproduction, a passed negative control, signed-in identity or an Assurance pack. The earlier baseline-only failure remains a separate record.
+
 ## Failure and boundary reference
 
 | Failure | Correct recovery |
@@ -350,6 +364,7 @@ The sentence describing a duplicated refund is the configured check’s descript
 | Baseline prerequisites failed | Prepare a suitable synthetic transaction ledger and restore/relaunch the intended world, then recheck it. Do not remove the prerequisite just to run. |
 | A selected sandbox is already used by an active assessment | Inspect the original run and any unresolved action. A separate test needs its own available world; do not clear custody records to reuse the instance. |
 | Stored state changes while a run is admitted | Stop and inspect its retained status; configuration edits revoke leases and do not silently retarget a campaign. |
+| Sandbox creation exceeds the tenant’s resource quota | Check which disposable worlds are still running. Stop or restore an appropriate completed world through the supported controls; keep uncertain or active work under its existing custody. Do not remove the quota to make admission pass. |
 | Need a scenario implant or signed-in identity | Configure its separate compatible profile and prerequisites, then revalidate/reapprove. This basic payment binding does not provide them. |
 
 Bindings and business predicates are integrator-owned contracts, not facts inferred from a customer’s system names. The public configuration endpoint exists for customer admins, while hosted cluster provisioning and publishing reviewed Wiki scenarios remain operator responsibilities. Continue with [assessment configuration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md) and [reproduction limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).

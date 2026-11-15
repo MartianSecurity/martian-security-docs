@@ -4398,6 +4398,56 @@
       "validationStatus": "Actual UI against real Backend/provider; individual visual and privacy review passed. Direct unedited PNG, exact dimensions, CRC, metadata, known-secret byte and SHA checks passed. Unrelated unconfigured bootstrap503s remain recorded.",
       "reviewedForSecrets": true,
       "sha256": "93a394861ef9697a7f8c7df9908dce2ed3f9b4524abe15bf44b81c08ae5b61d7"
+    },
+    {
+      "id": "assessment-payment-completed",
+      "file": "payment-completed-independent-outcome.png",
+      "alt": "Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.",
+      "caption": "MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "agents/sandbox-bindings: Example: a completed independent business comparison",
+        "assessments/evidence-and-results: Inspect findings and independent outcomes"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; synthetic deliberately unsafe payment target; real Backend, Native, released SDK MCP client and Kubernetes payment simulation",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-15T09:48:36.817256+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Frontend ran from immutable source 90351b7; Backend image built from 7cb888aa. Native cached image f7de3e0 has unchanged runtime code/dependencies compared with d021180e. MLflow 3.18.0 and verified released SDK were used in this isolated QA; hosted parity is not claimed.",
+      "validationStatus": "Direct unedited real UI PNG; individually viewed for readability and secrets; dimensions, CRC, metadata and hash checked. Real before/after comparison and retained digests passed. Clean reproduction and negative controls are not inherited.",
+      "reviewedForSecrets": true,
+      "sha256": "353934a3114c1ab6078e20ce62b864217ae5355ccaa89b0ccfe7dc132a4310a2"
+    },
+    {
+      "id": "assessment-payment-comparison",
+      "file": "payment-independent-before-after-comparison.png",
+      "alt": "Independent payment receipt with retained state digests, five starting transactions and a delta of 17 refunds.",
+      "caption": "After refresh, the same before/after digests and violation conditions remain. One starting refund became 18; the receipt records an observed effect, not clean reproduction.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "agents/sandbox-bindings: Example: a completed independent business comparison",
+        "assessments/evidence-and-results: Inspect findings and independent outcomes"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; synthetic deliberately unsafe payment target; real Backend, Native, released SDK MCP client and Kubernetes payment simulation",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-15T09:55:53.867926+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Frontend ran from immutable source 90351b7; Backend image built from 7cb888aa. Native cached image f7de3e0 has unchanged runtime code/dependencies compared with d021180e. MLflow 3.18.0 and verified released SDK were used in this isolated QA; hosted parity is not claimed.",
+      "validationStatus": "Direct unedited real UI PNG; individually viewed for readability and secrets; dimensions, CRC, metadata and hash checked. Real before/after comparison and retained digests passed. Clean reproduction and negative controls are not inherited.",
+      "reviewedForSecrets": true,
+      "sha256": "01725afed2dfca98159b0510ffb96e427825002d0f51eaeab143c8e7877dc03d"
     }
   ]
 }
