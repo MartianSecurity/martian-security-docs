@@ -55,7 +55,7 @@ The SDK is the `martian-sdk` package on PyPI, licensed Apache-2.0. A public sour
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
 | Export results | **Available**: JSONL, JSON summary and JUnit files | **Beta**: CSV and JSON exports | **Planned** |
-| Evidence packs and sign-off records | — | **Planned** | **Planned** |
+| Evidence packs and sign-off records, with a [mapping to the EU AI Act and model-risk guidance](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evidence/requirement-mapping.md) | — | **Planned** | **Planned** |
 
 ### Red Team
 

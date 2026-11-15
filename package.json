@@ -5,10 +5,11 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/export-agent-docs.mjs",
     "preview": "astro preview",
-    "check": "node scripts/check-docs.mjs && node scripts/check-qualification.mjs && node scripts/check-examples.mjs && node --test scripts/agent-docs.test.mjs && node scripts/check-agent-docs.mjs",
-    "check:release": "node scripts/check-docs.mjs && node scripts/check-examples.mjs && node --test scripts/agent-docs.test.mjs && node scripts/check-agent-docs.mjs && node scripts/check-qualification.mjs --release",
+    "check": "node scripts/check-docs.mjs && node scripts/check-qualification.mjs && node scripts/check-examples.mjs && node scripts/check-evidence-mapping.mjs && node --test scripts/agent-docs.test.mjs && node scripts/check-agent-docs.mjs",
+    "check:release": "node scripts/check-docs.mjs && node scripts/check-examples.mjs && node scripts/check-evidence-mapping.mjs && node --test scripts/agent-docs.test.mjs && node scripts/check-agent-docs.mjs && node scripts/check-qualification.mjs --release",
     "check:examples": "node scripts/check-examples.mjs",
-    "docs:sync": "astro build && node scripts/export-agent-docs.mjs --update"
+    "docs:sync": "astro build && node scripts/export-agent-docs.mjs --update",
+    "check:evidence-mapping": "node scripts/check-evidence-mapping.mjs"
   },
   "keywords": [],
   "author": "",

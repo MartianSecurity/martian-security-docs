@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "guides": [
     {
       "id": "agents/connections",
@@ -3799,6 +3799,75 @@
           "Long retention/deletion timing and production least-privilege observer packaging were not qualified"
         ]
       }
+    },
+    {
+      "id": "evidence/requirement-mapping",
+      "title": "Map evidence to the EU AI Act and model-risk guidance",
+      "description": "Which sections of a Martian evidence pack are relevant to which requirements of the EU AI Act and SR 26-2, what each mapping does not show, and what the product does not cover.",
+      "customerTask": "Read an evidence pack against the EU AI Act's requirements for high-risk systems and SR 26-2's validation and governance components, knowing what each label does not mean.",
+      "requiredRoles": [
+        "any member who exports a pack",
+        "risk and compliance reader of the pack"
+      ],
+      "uiRoute": "/#/evals/runs",
+      "supportedInterfaces": [
+        "evidence-pack.json",
+        "evidence-pack.html"
+      ],
+      "prerequisites": [
+        "An Enterprise or On-Premises installation that includes evidence and approvals; it is not released",
+        "Finished eval runs to export as a release"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "a8ba4025e42a53e961a31346d9119bd4c98ea2fa",
+          "path": "app/evidence_mapping.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "a8ba4025e42a53e961a31346d9119bd4c98ea2fa",
+          "path": "app/evidence_pack.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "a8ba4025e42a53e961a31346d9119bd4c98ea2fa",
+          "path": "app/evidence_pack.schema.json"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "a8ba4025e42a53e961a31346d9119bd4c98ea2fa",
+          "path": "docs/how-it-works.md"
+        }
+      ],
+      "numberedTaskStages": [],
+      "screenshotIds": [],
+      "qualification": "partial",
+      "validationStatus": "Reviewed against the backend's pack builder, schema and mapping, and against the primary texts of the two frameworks. The backend's tests build a pack from a fixture release and check that its mapping, this page's tables and the backend guide name the same requirements and sections. The pack is not released: no one has exported one from a released console, and the console's export and the pack's document have not been walked through for this page.",
+      "documentationRoute": "/evidence/requirement-mapping/",
+      "role": "any member who exports a pack; risk and compliance reader",
+      "route": "/#/evals/runs",
+      "interfaces": [
+        "evidence-pack.json",
+        "evidence-pack.html"
+      ],
+      "requiredValidation": [
+        "Export the evidence pack of a release from a released Enterprise console",
+        "Open the document and confirm a Supports line under each mapped section and the Requirement mapping section",
+        "Confirm the pack's mapping lists the same requirement identifiers as this page"
+      ],
+      "sourceReview": {
+        "sourceReviewed": true,
+        "realBackendWalkthrough": "not run",
+        "screenshots": "none",
+        "remainingGaps": [
+          "The pack is built on the backend's pull-request branch, not released; no export from a released console has been observed.",
+          "The mapping says which evidence is relevant to a requirement. It was not reviewed by counsel, and it is not a statement that any requirement is met."
+        ]
+      },
+      "screenshots": [],
+      "environment": "Source review of the unreleased backend; no running console",
+      "customerNotice": "This page describes the evidence pack as built in the Martian backend. The pack is not released, so no one has exported one from a released console yet. The mapping says which evidence is relevant to a requirement. It does not say that any requirement is met."
     }
   ]
 }

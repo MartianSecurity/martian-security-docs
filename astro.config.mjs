@@ -106,6 +106,17 @@ export default defineConfig({
     ]
   },
   {
+    "label": "Evidence and approvals",
+    "collapsed": true,
+    "items": [
+      {
+        "autogenerate": {
+          "directory": "evidence"
+        }
+      }
+    ]
+  },
+  {
     "label": "SDK and CI",
     "collapsed": true,
     "items": [

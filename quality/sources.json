@@ -120,6 +120,28 @@
         "MartianSecurity/MartianBackend:app/entitlements.py"
       ],
       "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
+    },
+    {
+      "reviewedAt": "2026-11-16",
+      "scope": "Evidence pack requirement mapping",
+      "usedBy": [
+        "evidence/requirement-mapping"
+      ],
+      "repositories": {
+        "MartianSecurity/MartianBackend": "a8ba4025e42a53e961a31346d9119bd4c98ea2fa"
+      },
+      "paths": [
+        "MartianSecurity/MartianBackend:app/evidence_mapping.py",
+        "MartianSecurity/MartianBackend:app/evidence_pack.py",
+        "MartianSecurity/MartianBackend:app/evidence_pack.schema.json",
+        "MartianSecurity/MartianBackend:docs/how-it-works.md"
+      ],
+      "primaryTexts": [
+        "Regulation (EU) 2024/1689, Official Journal text of 12 July 2024, https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+        "Regulation (EU) 2026/1744 of 8 July 2026, which amends it, https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1744",
+        "SR 26-2, Revised Guidance on Model Risk Management, 17 April 2026, https://www.federalreserve.gov/supervisionreg/srletters/sr2602.htm"
+      ],
+      "comparison": "The backend change is on its pull-request branch, not merged or released. The page maps to SR 26-2 because its letter lists SR 11-7 as superseded. SR 26-2 states that generative AI and agentic AI models are outside its scope, and the page says so. The Regulation's articles were read in the Official Journal text and checked against the amending regulation, which changes Articles 10(1), (5) and (6), 11(1), 17(2) and 72(3) and the dates of application, none of them a paragraph a row relies on. No counsel has reviewed the mapping."
     }
   ]
 }
