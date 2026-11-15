@@ -29,7 +29,7 @@ If the authoritative count is 3, a full-credit grade is wrong. The instruction i
 | `MT-06` Refusal suppression | In the library |
 | `MT-34` Supervisor capture | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 Obfuscation, refusal suppression and supervisor capture are related mechanisms. Their catalogue presence does not mean the assessment can edit every guardrail or attack every configured Evals judge. Use the workflow’s actual scorer interface and distinguish target testing from scoring saved outputs.
 
@@ -52,6 +52,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 -   [AML.T0068 — LLM Prompt Obfuscation](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3640)
 -   [AML.T0051 — LLM Prompt Injection](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L2902)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-The ATLAS links describe related obfuscation and injection behavior, not a universal judge-evasion test. Continue with [saved-output judging](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/judging.md), [results and scores](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/results-and-scores.md) and [human reviews](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/human-reviews.md).
+The ATLAS links describe related obfuscation and injection behavior, not a universal judge-evasion test. Continue with [saved-output judging](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/judging.md), [results and scores](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/results-and-scores.md) and [human reviews](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md).

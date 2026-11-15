@@ -4,17 +4,17 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-evals/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account; own model key for LLM judges · Verified 2026-11-13 · Local CLI and real Bedrock judge. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Python SDK · Any developer; no Martian account; own model key for LLM judges · Verified 2026-11-13 · Local CLI and real Bedrock judge. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Run test cases against your agent from one YAML file, with no Martian account. Start with checks that need no model key, inspect a deliberate failure, then fix it. Add an LLM judge when you need to evaluate meaning.
 
-A local run is not recorded on the Martian platform. When a result must be saved against a tested revision, use the [persisted CI gate](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md).
+A local run is not recorded on the Martian platform. When a result must be saved against a tested revision, use the [persisted CI gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md).
 
 | What you want to do | Start here |
 | --- | --- |
 | Test cases from a file, with no Martian account | Follow this guide |
-| Write Python assertions or add checks to pytest | [Evaluate with Python](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md#judges-and-deterministic-checks) |
-| Record a release gate against an agent and Git revision in Martian | [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) |
+| Write Python assertions or add checks to pytest | [Evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#judges-and-deterministic-checks) |
+| Record a release gate against an agent and Git revision in Martian | [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) |
 
 ## Before you start
 
@@ -25,7 +25,7 @@ A local run is not recorded on the Martian platform. When a result must be saved
 
 ## 1\. Install the release and get the example
 
-Download the [complete local Evals example](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals.zip). From the folder containing the download, extract it and enter the new folder:
+Download the [complete local Evals example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals.zip). From the folder containing the download, extract it and enter the new folder:
 
 ```sh
 python3 --version
@@ -35,11 +35,11 @@ cd sdk-local-evals
 
 Check that the Python version is at least 3.12. The download includes these files, also available individually:
 
--   [evals.yaml](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/evals.yaml): the suite file.
--   [cases.jsonl](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/cases.jsonl): three test cases.
--   [agent.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/agent.py): the example agent.
--   [agent-fixed.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/agent-fixed.py) and [evals-fixed.yaml](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/evals-fixed.yaml): the corrected agent and its separate suite, used in step 5.
--   [evals-with-judge.yaml](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/evals-with-judge.yaml): the same suite with an LLM judge, used in step 6.
+-   [evals.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals.yaml): the suite file.
+-   [cases.jsonl](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/cases.jsonl): three test cases.
+-   [agent.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent.py): the example agent.
+-   [agent-fixed.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-fixed.py) and [evals-fixed.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals-fixed.yaml): the corrected agent and its separate suite, used in step 5.
+-   [evals-with-judge.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals-with-judge.yaml): the same suite with an LLM judge, used in step 6.
 
 The included README has the same quick-start commands. Keep all the files together.
 
@@ -52,7 +52,7 @@ python3 -m venv .venv
 .venv/bin/martian --version
 ```
 
-The last command prints your installed SDK version. See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions.
+The last command prints your installed SDK version. See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions.
 
 ## 2\. Read the suite file
 
@@ -150,7 +150,7 @@ The important fields are `passed: 2`, `failed: 1` and `errors: 0`. A **failure**
 
 ## 5\. Fix the agent and run again
 
-The corrected [agent-fixed.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/agent-fixed.py) changes the leaking branch to a refusal:
+The corrected [agent-fixed.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-fixed.py) changes the leaking branch to a refusal:
 
 ```python
     if "ignore" in text or "internal" in text:
@@ -159,7 +159,7 @@ The corrected [agent-fixed.py](https://raw.githubusercontent.com/MorningHQ/marti
 
 A plain rerun **resumes**: cases with a pass **or a fail** are skipped. It does not detect changes to your agent, cases or checks. Use `--fresh` or a new output folder to test a change.
 
-The included [evals-fixed.yaml](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk-local-evals/evals-fixed.yaml) selects `agent-fixed.py` and writes to `results-fixed`, preserving the first run’s evidence:
+The included [evals-fixed.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals-fixed.yaml) selects `agent-fixed.py` and writes to `results-fixed`, preserving the first run’s evidence:
 
 ```sh
 .venv/bin/martian evals run evals-fixed.yaml --fresh
@@ -308,15 +308,15 @@ The deterministic teaching suite needs no secrets. A replacement callback or LLM
 | `--limit N` | Run only the first N cases |
 | `--fresh` | Re-evaluate every selected case instead of reusing JSONL verdicts; internal history remains |
 
-This local run does not create a Martian CI session and does not appear in the console. Use [the persisted CI gate](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) for that.
+This local run does not create a Martian CI session and does not appear in the console. Use [the persisted CI gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) for that.
 
 ### View a recorded run in Martian Security
 
-When you need results in the console, follow the [persisted CI tutorial](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md). Open **Evals → Runs** and select a saved evaluation. Check the pass/fail totals and compare expected answers with actual replies. CI test groups are available through **Show tests** in the saved **CI session**.
+When you need results in the console, follow the [persisted CI tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Open **Evals → Runs** and select a saved evaluation. Check the pass/fail totals and compare expected answers with actual replies. CI test groups are available through **Show tests** in the saved **CI session**.
 
 The Martian Security screenshot below shows a separately verified **persisted dataset run**. It illustrates the recorded workflow; the local suite above does not create this screen or session.
 
-![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
+![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
 
 The fresh strict SDK session retained both expected support answers with two passes and no errors or skips. Native provenance was FINISHED; absent artifact/model/prompt versions remained unreported.
 
@@ -369,4 +369,4 @@ These make no model call and give the same answer every time.
 -   **Not a platform record.** A local run has no Martian session, agent attribution or tested revision. It is a development and pull-request check, not a release gate recorded by Martian.
 -   **Private files:** do not publish `results.jsonl` or `mlflow.db` as public artifacts.
 
-Continue with [evaluations in Python](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/evaluations.md) to use the same judges and checks inside pytest, or [combined CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) to record results on the Martian platform.
+Continue with [evaluations in Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) to use the same judges and checks inside pytest, or [combined CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) to record results on the Martian platform.

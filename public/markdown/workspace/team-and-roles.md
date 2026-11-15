@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/workspace/team-and-roles/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Give a teammate the appropriate access to your organization and verify that the invitation and membership are retained. Each email address belongs to one organization in the current product.
 
@@ -19,7 +19,7 @@ An **Owner** or **Admin** can invite teammates. Any tenant role can inspect the 
 | Admin | Member actions plus connection approval, invitations, publishing/management and scoped API-key/control administration |
 | Owner | The highest organization role, including admin authority |
 
-Feature-specific restrictions still apply. An API key has its own scopes and restrictions; it is not an Owner browser session. See the [permissions reference](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md).
+Feature-specific restrictions still apply. An API key has its own scopes and restrictions; it is not an Owner browser session. See the [permissions reference](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md).
 
 ## Invite a teammate
 
@@ -27,7 +27,7 @@ Feature-specific restrictions still apply. An API key has its own scopes and res
 2.  Under **Invite a teammate**, fill **Recipient name**, **Email** and **Role**: Member, Admin or Viewer. Grant only the role the task needs.
 3.  Optionally enter **Internal description** and **Welcome note**. Internal description is visible to invitation administrators, not included in the email. The welcome note is shown to the recipient or included in an email, depending on delivery mode.
 
-![Owner invitation form for a synthetic member before generating a private link.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/workspace-invite-form.png)
+![Owner invitation form for a synthetic member before generating a private link.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/workspace-invite-form.png)
 
 Choose the recipient and role before generating an invitation. No live invitation link or password appears in this capture.
 
@@ -41,14 +41,14 @@ Choose the recipient and role before generating an invitation. No live invitatio
 2.  Confirm the organization, invited email, role and expiry. Enter **Your name**, **Password** and **Confirm password**, then **Join organization**. Use a password between 12 and 72 characters.
 3.  For an organization-owner invitation, complete **Organization name**, **Organization subdomain** and **About your organization**, then **Create organization**. This is distinct from joining an existing team.
 
-![Real member invitation acceptance form with empty password fields.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/workspace-accept-invitation.png)
+![Real member invitation acceptance form with empty password fields.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/workspace-accept-invitation.png)
 
 The signed-out recipient confirms Martian Docs Lab and the member role before joining. The private invitation URL is outside the captured page.
 
 4.  Confirm **You joined your organization**, **Your workspace is ready**, or **Your account is ready**, then **Continue to sign in** at the returned organization address.
 5.  Sign in with the invited email and chosen password. Open **Team** and verify the member/role after refresh. Account readiness and Evals readiness are separate: **Eval setup needs attention** requires operator completion even when sign-in succeeds.
 
-![Retained Team list with synthetic owner, member and viewer accounts.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/workspace-team.png)
+![Retained Team list with synthetic owner, member and viewer accounts.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/workspace-team.png)
 
 After signing in, the member can read all three retained organization roles. Invitation administration is reserved for owners/admins.
 
@@ -62,4 +62,4 @@ After signing in, the member can read all three retained organization roles. Inv
 
 The Team screen lists existing members and manages invitations. Do not assume it provides a complete existing-member role-change or removal workflow when those controls are absent in your release.
 
-Next: [connect an agent](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md), [run your first assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md), or review [permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md).
+Next: [connect an agent](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md), [run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md), or review [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md).

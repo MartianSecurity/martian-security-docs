@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/history-and-exports/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 > **Walkthrough limits:** Actual retained Assessments/Replay filtering and refresh, Reports JSON, legacy finding-page JSON, modern domain JSON and a published revision with redacted turn/detail reads passed. Four redacted ZIP reads returned503 without an archive; ZIP download/inspection remain unverified. Later MR1002 published complete retained review content:3conversations/17turns/103customer events/51gatewayrecords. ActualHTTP200 download hadmatchingrevision and ZIP media type, but lacked a complete archive directory and failed validation.
 
@@ -23,7 +23,7 @@ Use any signed-in role with access to the organization and know a run code or ag
 1.  Open **Assessments** to browse saved runs. Use the search/pagination controls and inspect the requested scope, security outcome and execution state.
 2.  Open **Replay** to explore recorded assessments. **Filter displayed runs** filters the rows currently shown; use the supplied collection search and pages for broader history. The execution-state and sorting controls change the selection, not the run.
 
-![Replay filtered to recorded MR-1002 with Completed and INCONCLUSIVE labels](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-replay.png)
+![Replay filtered to recorded MR-1002 with Completed and INCONCLUSIVE labels](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-replay.png)
 
 Filter displayed runs narrowed this loaded page to MR-1002. Selecting its run code reads retained evidence; Replay does not execute it again.
 
@@ -35,7 +35,7 @@ Filter displayed runs narrowed this loaded page to MR-1002. Selecting its run co
 
 1.  Open **Reports**, locate the finished run on the displayed assessment page and click **Download**. The file is JSON evidence, not a generated PDF. It includes safe run metadata, coverage summary and all retrieved findings for that run.
 
-![Reports lists completed and failed synthetic assessment evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-reports.png)
+![Reports lists completed and failed synthetic assessment evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-reports.png)
 
 Download selects JSON evidence for the matching run code. MR-1002 retained INCONCLUSIVE; the earlier rejected MR-1001 has no verdict.
 
@@ -58,14 +58,14 @@ This separate example uses **MR-1010** in **Documentation Browser Execution QA**
 
 1.  Open **Assessments** and select your run code to see the full summary. Here, **MR-1010** shows **Completed** execution, **INCONCLUSIVE** security outcome, **12** agent requests, **44** model calls and **0** displayed findings. Open **Probe coverage** below the summary to inspect the tested scope.
 
-![MR-1010 full assessment summary with Completed execution, INCONCLUSIVE security outcome, twelve agent requests, forty-four model calls and zero displayed findings.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-modern-result.png)
+![MR-1010 full assessment summary with Completed execution, INCONCLUSIVE security outcome, twelve agent requests, forty-four model calls and zero displayed findings.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-modern-result.png)
 
 Open the run from Assessments for the full counters. Probe coverage is selected below the summary; completed execution and zero findings do not establish a security pass.
 
 2.  Use **Download domain outcomes**, then find the same run in **Reports** and click its **Download**. Both actual JSON downloads in this example retained the same run, agent, execution state, verdict and start/end times. Neither file contained the Recorded review’s turn content.
 3.  In **Recorded review**, check **Review revision**, open **Turns** (**Turns (12)** here) and select a turn. The first turn’s **target response** shows **redacted · credential\_scrubbed** and `[REDACTED]` in place of the fixture’s token-shaped test string. Check the exported-content status and byte counts when reading an excerpt.
 
-![First retained turn with redacted target response, credential\_scrubbed status, exported byte counts and twelve loaded turn records.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-modern-redacted-turn.png)
+![First retained turn with redacted target response, credential\_scrubbed status, exported byte counts and twelve loaded turn records.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-modern-redacted-turn.png)
 
 The actual target response contains \[REDACTED\] instead of the fixture’s token-shaped test string. The critic rationale is model interpretation. This on-screen read does not establish a successful ZIP download.
 
@@ -91,4 +91,4 @@ If **Refresh review** still offers no published revision, ask your workspace own
 -   Imported history reflects its original execution and evidence. It does not prove that the current deployment executed that run.
 -   The modern redacted bundle, domain JSON and legacy JSON have different scopes. Redaction and an export filename are not substitutes for checking what the file actually contains.
 
-Continue with [evidence and results](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md) or [configure a new assessment](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/configure.md) when you intentionally need new execution.
+Continue with [evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md) or [configure a new assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/configure.md) when you intentionally need new execution.

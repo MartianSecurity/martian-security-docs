@@ -4,15 +4,15 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/trace-annotations/)
 
-> **Page qualification:** Current beta console · member/admin/owner writes; authorized roles read · Verified 2026-11-13 · Isolated local QA; native traces. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · member/admin/owner writes; authorized roles read · Verified 2026-11-13 · Isolated local QA; native traces. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-Attach a human opinion or expected behavior to a native trace, including a conversation trace that has no dataset evaluation run. This is separate from [assigned human-review queues](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/human-reviews.md). Saving an annotation does not execute a target or model.
+Attach a human opinion or expected behavior to a native trace, including a conversation trace that has no dataset evaluation run. This is separate from [assigned human-review queues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md). Saving an annotation does not execute a target or model.
 
 ## Before you start
 
 Any authorized customer role can read annotations. A **member/admin/owner** can add one in a ready, writable project. Archived projects are read-only. Start from an existing trace you are authorized to inspect.
 
-The screenshots annotate the retained **recall → BLUE** trace from the [native conversation walkthrough](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/traces-and-sessions.md#3-group-recorded-conversations). Adding feedback to that trace does not repeat either conversation turn.
+The screenshots annotate the retained **recall → BLUE** trace from the [native conversation walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/traces-and-sessions.md#3-group-recorded-conversations). Adding feedback to that trace does not repeat either conversation turn.
 
 ## 1\. Open the annotation form
 
@@ -21,7 +21,7 @@ The screenshots annotate the retained **recall → BLUE** trace from the [native
 3.  Select **Annotation type**: **Feedback** or **Expectation**.
 4.  Enter **Name**: start with a lowercase letter, then use lowercase letters, digits or underscores, up to 60 characters. `exact_match` is reserved.
 
-![Actual Add annotation form for response\_correct with Feedback, Pass, rationale and Save annotation.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-trace-annotation-form.png)
+![Actual Add annotation form for response\_correct with Feedback, Pass, rationale and Save annotation.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-trace-annotation-form.png)
 
 This real form rates the saved recall response. Save appends feedback to that trace without calling the target again.
 
@@ -39,7 +39,7 @@ This real form rates the saved recall response. Save appends feedback to that tr
 3.  Review the trace, name, type and value, then select **Save annotation** once. **Close** leaves the form without submitting it.
 4.  Read the saved annotation’s type, value and author. Your own annotation shows **You**. Refresh and reopen the same trace to confirm it remains in **Annotations**.
 
-![Refreshed trace details retaining response\_correct, Feedback, You, Pass and the saved rationale.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-trace-annotation-saved.png)
+![Refreshed trace details retaining response\_correct, Feedback, You, Pass and the saved rationale.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-trace-annotation-saved.png)
 
 After page refresh and a supported Refresh traces recovery, the same Boolean annotation remains beside the original recall input and BLUE output.
 
@@ -57,4 +57,4 @@ Feedback and Expectation are retained human assessments. They do not rewrite spa
 
 A human annotation is an opinion or expectation, not a model judgment or independently verified security finding. Keep sensitive values within the trace’s authorized audience.
 
-Continue with [Evals dashboard summaries](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/overview.md) or [quality issues](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/quality-issues.md).
+Continue with [Evals dashboard summaries](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/overview.md) or [quality issues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/quality-issues.md).

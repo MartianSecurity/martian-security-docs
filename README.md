@@ -16,4 +16,4 @@ Each page offers **Copy page**, **Copy agent link**, **View Markdown** and an **
 
 GitHub Actions builds/checks PRs and deploys successful main builds through the github-pages environment. Settings → Pages must use GitHub Actions, with `docs.martiansecurity.ai` as the custom domain and Enforce HTTPS enabled. Its Squarespace DNS `docs` CNAME points to `morninghq.github.io`. The Pages origin and root base are defined once in `site.config.mjs`.
 
-The site reuses the branding, typography, spacing, code wrapping, local font and build-time diagram renderer from [Martian Hermes docs](https://github.com/MorningHQ/martian-hermes-docs), baseline 3593a4bae03e96cf6c7597ececf99fbfc32997ae. Inter's OFL license is retained under public/brand/.
+The site reuses the branding, typography, spacing, code wrapping, local font and build-time diagram renderer from [Martian Hermes docs](https://github.com/MartianSecurity/martian-hermes-docs), baseline 3593a4bae03e96cf6c7597ececf99fbfc32997ae. Inter's OFL license is retained under public/brand/.

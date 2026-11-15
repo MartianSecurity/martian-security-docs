@@ -4,25 +4,25 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam/)
 
-> **Page qualification:** Python SDK · Owner/admin issues key; machine key with redteam:run executes · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Python SDK · Owner/admin issues key; machine key with redteam:run executes · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Run one adversarial probe against a local callback using platform-hosted generation and judging. You will get retained JSON/Markdown reports and an explicit gate result. Use the CLI or Python entry point for an attempt; running both executes new work twice.
 
 ## Before you start
 
--   Complete [installation and configuration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) using **`martian-sdk[evals]`**, Python 3.12+, and the downloadable tutorial files.
+-   Complete [installation and configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) using **`martian-sdk[evals]`**, Python 3.12+, and the downloadable tutorial files.
 -   An owner/admin must issue a key with **Run hosted redteam generation and judging** (`redteam:run`). The organization must be enabled and configured for hosted redteam. Existing Evals keys do not gain this permission automatically.
 -   Running a probe can incur platform generation/judging costs. Keep the tutorial’s single vulnerability type, single attack, one repetition and concurrency of one.
 -   The included target is a deterministic support callback. It verifies the integration; a passing result does not qualify a production LLM, connected tools or business outcomes.
 -   Standalone redteam does not require an agent UUID/Git revision. Respect a key’s agent restriction; persisted CI additionally requires attribution and CI permissions.
 
-![Create API key with hosted redteam permission and teaching-agent restriction selected](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-redteam-create-key.png)
+![Create API key with hosted redteam permission and teaching-agent restriction selected](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-redteam-create-key.png)
 
 Select the needed permissions and restrictions before issuing the key. This capture precedes creation; the once-shown secret is excluded.
 
 ## 1\. Inspect the one-probe plan
 
-Open [redteam.yaml](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/redteam.yaml):
+Open [redteam.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/redteam.yaml):
 
 ```yaml
 target:
@@ -51,7 +51,7 @@ gate:
   pass_rate_threshold: 1.0
 ```
 
-`callback.file` is resolved relative to the YAML file. The sample function in [demo\_agent.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/demo_agent.py) returns a string. Replace it with your own synchronous or asynchronous application callback when testing your agent. The callback owns target/provider authentication; the platform key is not a target credential.
+`callback.file` is resolved relative to the YAML file. The sample function in [demo\_agent.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/demo_agent.py) returns a string. Replace it with your own synchronous or asynchronous application callback when testing your agent. The callback owns target/provider authentication; the platform key is not a target credential.
 
 This configuration plans one **PromptLeakage / system\_prompt** case using **PromptInjection**. Adding types, attacks or repetitions increases work. A callback may return a string or the supported `Turn` type when retaining tool-call names is useful.
 
@@ -83,7 +83,7 @@ Reports are written before applying the gate, so a failed assessment still has e
 
 ## 4\. Use the equivalent Python interface
 
-Choose this instead of the preceding execution command for a new attempt. The full [redteam.py](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/examples/sdk/redteam.py) includes an entry point and exit handling:
+Choose this instead of the preceding execution command for a new attempt. The full [redteam.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/redteam.py) includes an entry point and exit handling:
 
 ```python
 import asyncio
@@ -138,25 +138,25 @@ Async callback cancellation is cooperative. Synchronous callbacks use bounded wo
 
 ## 6\. Persist a redteam result in the console
 
-Standalone `martian redteam run` retains a local report. To record a new redteam-only session in Backend, prepare the committed tutorial/customer Git repository and CI scopes, then use the installation guide’s [agent-bound key lookup](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#5-resolve-the-exact-ci-agent-uuid) to obtain the exact agent UUID and set the tested revision. From that repository root, run:
+Standalone `martian redteam run` retains a local report. To record a new redteam-only session in Backend, prepare the committed tutorial/customer Git repository and CI scopes, then use the installation guide’s [agent-bound key lookup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#5-resolve-the-exact-ci-agent-uuid) to obtain the exact agent UUID and set the tested revision. From that repository root, run:
 
 ```sh
 .venv/bin/martian ci --redteam-config redteam.yaml \
   --require-export --output results/redteam-ci
 ```
 
-This is a **new** one-probe execution. For the main combined tutorial, use [combined CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) instead of duplicating the same assessment.
+This is a **new** one-probe execution. For the main combined tutorial, use [combined CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) instead of duplicating the same assessment.
 
 Select **Evals** in the main sidebar to return to the default **Runs** view. Find **CI sessions**, select **Refresh**, then **Show tests** on the matching commit. The redteam test is labelled **adversarial probes**, with its policy, counts, judgments and provenance.
 
-![Combined CI saved a failed two-of-four result with exported evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/sdk-combined-ci-failed.png)
+![Combined CI saved a failed two-of-four result with exported evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-combined-ci-failed.png)
 
 The original combined attempt retained Failed and Exported to MLflow. Its generation acknowledgement was uncertain, so target execution and judging did not follow; later same-operation readback did not change this failed session.
 
 The captured local combined-CI attempt is a **failed** result: its generation response was uncertain to the runner, so target execution and judging did not proceed. A later read of that same operation confirmed generation succeeded. The original failed CI verdict remained saved and exported; retrieving the generation result did not complete the missing probe or turn the gate into a pass.
 
-A subsequent, distinct qualification ran an earlier tutorial snapshot on a GitHub-hosted runner. The combined CLI passed all three test groups, persisted and exported its session, and independently verified one generation plus one judging model call, both settled. See [CI qualification results](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md#observed-qualification-results) and the [tested SDK record](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility). The deterministic callback checks wiring and retained evidence; it does not establish production-agent security.
+A subsequent, distinct qualification ran an earlier tutorial snapshot on a GitHub-hosted runner. The combined CLI passed all three test groups, persisted and exported its session, and independently verified one generation plus one judging model call, both settled. See [CI qualification results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#observed-qualification-results) and the [tested SDK record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility). The deterministic callback checks wiring and retained evidence; it does not establish production-agent security.
 
 Redteam judgments saved by the runner are **client-executed/client-scored**, including judgments originally obtained from Agents. They are useful regression evidence, not a release authorization or independent proof of the executed binary. SDK callback testing also does not establish sandbox reproduction or verified business effects from a console assessment.
 
-Reports use digests by default. Keep content reporting disabled for ordinary CI and never publish raw callback data, credentials or a local MLflow store. Continue with [combined CI](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/ci.md) or [troubleshooting](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/troubleshooting.md).
+Reports use digests by default. Keep content reporting disabled for ordinary CI and never publish raw callback data, credentials or a local MLflow store. Continue with [combined CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) or [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md).

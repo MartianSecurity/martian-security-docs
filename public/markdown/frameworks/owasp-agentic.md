@@ -4,22 +4,22 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/frameworks/owasp-agentic/)
 
-The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) focuses on risks in systems that plan, act and coordinate. It complements the [LLM Top 10](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) rather than replacing it.
+The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) focuses on risks in systems that plan, act and coordinate. It complements the [LLM Top 10](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md) rather than replacing it.
 
 ## The official entries
 
 | OWASP entry | Related reading in this reference |
 | --- | --- |
-| ASI01 Agent Goal Hijack | [Prompt injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) |
-| ASI02 Tool Misuse and Exploitation | [Tool and action abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) |
-| ASI03 Identity and Privilege Abuse | [Privilege escalation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) |
-| ASI04 Agentic Supply Chain Vulnerabilities | [Supply chain and backdoors](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) |
-| ASI05 Unexpected Code Execution (RCE) | [Tool abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md), with independent execution evidence |
-| ASI06 Memory and Context Poisoning | [Memory and context poisoning](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) |
-| ASI07 Insecure Inter-Agent Communication | [Multi-agent handoff boundaries](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) |
-| ASI08 Cascading Failures | [Propagation across agents](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) |
-| ASI09 Human-Agent Trust Exploitation | [Human manipulation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/human-manipulation.md) |
-| ASI10 Rogue Agents | [Multi-agent behavior](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) and [objective-related limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) |
+| ASI01 Agent Goal Hijack | [Prompt injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/prompt-injection.md) |
+| ASI02 Tool Misuse and Exploitation | [Tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) |
+| ASI03 Identity and Privilege Abuse | [Privilege escalation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/privilege-escalation.md) |
+| ASI04 Agentic Supply Chain Vulnerabilities | [Supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) |
+| ASI05 Unexpected Code Execution (RCE) | [Tool abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md), with independent execution evidence |
+| ASI06 Memory and Context Poisoning | [Memory and context poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md) |
+| ASI07 Insecure Inter-Agent Communication | [Multi-agent handoff boundaries](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) |
+| ASI08 Cascading Failures | [Propagation across agents](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) |
+| ASI09 Human-Agent Trust Exploitation | [Human manipulation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/human-manipulation.md) |
+| ASI10 Rogue Agents | [Multi-agent behavior](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/multi-agent-attacks.md) and [objective-related limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md) |
 
 The names identify the official entries in the [OWASP publication](https://genai.owasp.org/download/52117/?tmstv=1765059207). The reading links are editorial relationships. They do not declare complete coverage or equate every attack on that page with the corresponding risk.
 
@@ -43,4 +43,4 @@ For a tool test, identify the operation and authority. For an agent handoff, ide
 
 Use an approved synthetic scenario that actually exposes the required surface. Keep a proposed action, a dispatched call and an independently verified effect separate in the result. A passing judge or framework filter is not proof of enforcement at every boundary.
 
-Continue with [Attack Library coverage](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md), [the attack families](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/attacks.md) and [assessment evidence](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
+Continue with [Attack Library coverage](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md), [the attack families](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md) and [assessment evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).

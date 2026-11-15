@@ -36,7 +36,7 @@ This is an explanatory fixture, not a claim that a particular Martian sandbox us
 | `MT-32` Price arbitrage | **Declared gap** |
 | `MT-33` Duplicate claim | In the library |
 
-These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
+These are related catalogue entries, not a record of execution. Confirm availability, target compatibility and approved scope in [Attack Library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md) before configuring an assessment. A declared gap stays unavailable.
 
 The list includes refund loops, compensation stacking and duplicate claims. **MT-32 Price arbitrage is a declared gap.** The native `business` tag is a Martian grouping, not an OWASP identifier.
 
@@ -48,7 +48,7 @@ Capture the relevant initial state, record identity and allowed operation. Retai
 
 Check whether retries represent the same operation or a new operation. If dispatch succeeded but confirmation timed out, preserve the unknown result and inspect the receipt or ledger before resubmitting. A retry that creates another credit can itself change the state being measured.
 
-When a supported scenario provides an independent outcome check or no-implant control, inspect that evidence and its scope. Do not label an effect verified solely because the attacker, target or another model says it happened. See [reproduction and limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
+When a supported scenario provides an independent outcome check or no-implant control, inspect that evidence and its scope. Do not label an effect verified solely because the attacker, target or another model says it happened. See [reproduction and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
 
 ## Reduce the risk
 
@@ -60,6 +60,6 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 
 -   [AML.T0053 — AI Agent Tool Invocation](https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.10.yaml#L3187)
 
-These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
+These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-The ATLAS relationship concerns tool invocation, not a dedicated official refund-loop technique. See [OWASP excessive agency](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md), [tool and action abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [assessment results](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
+The ATLAS relationship concerns tool invocation, not a dedicated official refund-loop technique. See [OWASP excessive agency](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-llm.md), [tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [assessment results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).

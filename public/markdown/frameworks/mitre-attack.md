@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/frameworks/mitre-attack/)
 
 [MITRE ATT&CK](https://attack.mitre.org/) organizes adversary tactics and techniques based on observed behavior across enterprise, mobile and industrial environments. It is useful when an AI attack interacts with accounts, endpoints, cloud services, code execution or other conventional infrastructure.
 
-[MITRE ATLAS](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md) focuses on AI-related adversary behavior. The knowledge bases can overlap; an AI system is also software running in an environment with identities, data and tools.
+[MITRE ATLAS](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md) focuses on AI-related adversary behavior. The knowledge bases can overlap; an AI system is also software running in an environment with identities, data and tools.
 
 ## ATT&CK includes prompt injection
 
@@ -29,12 +29,12 @@ Suppose a synthetic document redirects an agent into sending a protected demo re
 3.  A tool request targeted an unauthorized destination.
 4.  The receiving system confirms a transfer, if that evidence is available.
 
-The first two observations concern [indirect injection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md); the latter observations concern [tool abuse](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [exfiltration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md). Choose additional infrastructure references only when the evidence supports the specific technique’s definition. A printed shell command does not prove command execution.
+The first two observations concern [indirect injection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/indirect-prompt-injection.md); the latter observations concern [tool abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md) and [exfiltration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/data-exfiltration.md). Choose additional infrastructure references only when the evidence supports the specific technique’s definition. A printed shell command does not prove command execution.
 
 ## What Martian’s lens establishes
 
 The current library offers a **MITRE ATLAS** view. This reference page does not add an ATT&CK selector, an ATT&CK test pack or general infrastructure penetration-testing support. An approved agent endpoint also does not authorize probing its surrounding hosts or accounts.
 
-Use the [available catalogue](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/coverage.md), [supported targets](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/supported-targets.md) and the actual approved scenario to define scope. Treat an ATT&CK mapping as an annotation on observed behavior, with the framework ID and source kept separate from Martian’s technique ID and execution status.
+Use the [available catalogue](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md), [supported targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) and the actual approved scenario to define scope. Treat an ATT&CK mapping as an annotation on observed behavior, with the framework ID and source kept separate from Martian’s technique ID and execution status.
 
-Continue with [ATLAS](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md), the [attack reference](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/library/attacks.md) and [evidence interpretation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).
+Continue with [ATLAS](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md), the [attack reference](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md) and [evidence interpretation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md).

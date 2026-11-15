@@ -25,7 +25,7 @@ Platform-admin organization and global-dataset administration are separate opera
 
 A scoped API key authorizes only its granted capabilities and resource restrictions. It does not sign a person in to the console, enable a hosted feature or provide a target model’s credentials. Existing Evals keys do not automatically gain hosted redteam rights.
 
-[Create and configure an SDK key](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) and [read team management](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/workspace/team-and-roles.md) for the actual controls.
+[Create and configure an SDK key](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) and [read team management](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/workspace/team-and-roles.md) for the actual controls.
 
 ## If a control is missing or disabled
 

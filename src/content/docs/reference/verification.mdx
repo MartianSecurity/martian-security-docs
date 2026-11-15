@@ -128,13 +128,13 @@ The Community quickstart's CLI path was checked against the released SDK; its lo
 
 ## Attack reference
 
-The [attack reference](/library/attacks/) documents all 12 major families in the stored catalogue, four focused attack surfaces and five security frameworks. Its related-technique tables match an observed stock Backend list of 36 entries: 32 in the library and four declared gaps. The [reference source record](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/attack-library.json) identifies the inspected implementation, official ATLAS data and editorial relationships.
+The [attack reference](/library/attacks/) documents all 12 major families in the stored catalogue, four focused attack surfaces and five security frameworks. Its related-technique tables match an observed stock Backend list of 36 entries: 32 in the library and four declared gaps. The [reference source record](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/attack-library.json) identifies the inspected implementation, official ATLAS data and editorial relationships.
 
 The examples are synthetic explanations, not newly executed attacks. Official framework names and native console groupings are distinguished, including differences in OWASP Agentic labels. These articles do not change the task-guide qualifications above.
 
 ## Discovery compatibility walkthrough
 
-A separate isolated QA organization used a real customer Owner (**platform_admin false**), an explicitly authorized Kubernetes namespace, the unchanged customer collector and the compatible Backend candidate in [PR112](https://github.com/MorningHQ/MartianBackend/pull/112). Twelve served Frontend files and eleven running Backend files matched the recorded sources. This is a candidate-environment result; the Backend PR is waiting for GitHub Actions billing to allow checks to run. It has not been merged or deployed to beta.
+A separate isolated QA organization used a real customer Owner (**platform_admin false**), an explicitly authorized Kubernetes namespace, the unchanged customer collector and the compatible Backend candidate in [PR112](https://github.com/MartianSecurity/MartianBackend/pull/112). Twelve served Frontend files and eleven running Backend files matched the recorded sources. This is a candidate-environment result; the Backend PR is waiting for GitHub Actions billing to allow checks to run. It has not been merged or deployed to beta.
 
 - **Inventory:** actual enrollment and private assignment download passed. Four distinct real collection cycles retained the same Deployment and supporting Pod identities, including later application updates. Pause rejected collection before a new run; resume and a new completion survived full refresh. Reader permission denials and provider TLS were checked. AWS collection and credential replacement were not exercised.
 - **Runtime:** the released SDK reported eight distinct successful reads of one named synthetic ConfigMap from the actual enrolled Pod. Full refresh and explicit binding/time selection retained **8 tool calls / 0 model calls**, eight response-resource mappings and all eight original trace IDs. The latest collected RBAC snapshot aligned with the caller-declared named GET and service account. Identity, call-time permission and business impact remain independent claims; no assessed baseline was invented.
@@ -178,11 +178,11 @@ The generated-environment follow-up separately matched **18** relevant served/ru
 
 The public repository retains the guide coverage matrix, screenshot provenance and validation results under quality/. Source revision records describe the inspected implementation; they do not by themselves prove which image is deployed in a particular workspace.
 
-- [Guide coverage](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/coverage.json)
-- [Screenshot provenance](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/screenshots.json)
-- [Validation results](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/validation.json)
-- [Observed application walkthroughs](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/walkthroughs.json)
-- [Attack-reference sources and relationships](https://github.com/MorningHQ/martian-security-docs/blob/main/quality/attack-library.json)
+- [Guide coverage](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/coverage.json)
+- [Screenshot provenance](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/screenshots.json)
+- [Validation results](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/validation.json)
+- [Observed application walkthroughs](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/walkthroughs.json)
+- [Attack-reference sources and relationships](https://github.com/MartianSecurity/martian-security-docs/blob/main/quality/attack-library.json)
 
 ## Availability distinctions
 

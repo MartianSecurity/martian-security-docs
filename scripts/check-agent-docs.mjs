@@ -53,7 +53,7 @@ for (const source of sources) {
     }
   });
   // Every link to the mirror must have a real public artifact (no authenticated app routes).
-  for (const match of markdown.matchAll(/https:\/\/raw\.githubusercontent\.com\/MorningHQ\/martian-security-docs\/main\/public\/([^\s)"?#]+)/g)) {
+  for (const match of markdown.matchAll(/https:\/\/raw\.githubusercontent\.com\/MartianSecurity\/martian-security-docs\/main\/public\/([^\s)"?#]+)/g)) {
     assert.ok(existsSync(path.join('public', decodeURIComponent(match[1]))), `${slug}: missing mirrored artifact ${match[1]}`);
   }
 }

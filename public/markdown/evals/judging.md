@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/judging/)
 
-> **Page qualification:** Current beta console · member+ applies; owner/admin defines native judges · Verified 2026-11-13 · Isolated local QA (code + Boolean model rubrics). [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · member+ applies; owner/admin defines native judges · Verified 2026-11-13 · Isolated local QA (code + Boolean model rubrics). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Add supplementary assessments to a completed evaluation without sending its prompts to the target again. Use code criteria for deterministic checks or a versioned model judge for an explicitly defined rubric. The original canonical exact-match results remain intact.
 
@@ -22,7 +22,7 @@ Model judging additionally must be enabled in your organization’s environment 
 4.  Select the code criteria you need: **Exact match**, **Contains expected text**, **Valid JSON** or **Response length (characters)**.
 5.  Click **Apply scorers** once and wait for the saved-output job to finish.
 
-![Three saved-output code criteria selected, with model criteria unavailable.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-code.png)
+![Three saved-output code criteria selected, with model criteria unavailable.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-code.png)
 
 Contains expected text, Valid JSON and Response length score retained answers. Model options require operator setup in this QA environment.
 
@@ -30,7 +30,7 @@ Only the saved outputs are scored. **Valid JSON** is a syntax check, not your bu
 
 Inspect a result’s **Assessments** after the job completes. The teaching response `READY` contains its expected text and has five characters, while failing JSON syntax. Its original exact-match result still passes. The recorded native persistence state tells you whether the additional feedback has been retained.
 
-![Persisted native code feedback for the saved READY response.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-code-feedback.png)
+![Persisted native code feedback for the saved READY response.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-code-feedback.png)
 
 READY contains the expected text and has five characters, but is not valid JSON. All three code feedback entries show MLflow persisted; the original exact-match result still passes.
 
@@ -42,13 +42,13 @@ READY contains the expected text and has five characters, but is not valid JSON.
 4.  Click **Apply scorers** once. Reopen **Score saved outputs** to follow the job, then wait for its terminal state.
 5.  Select the corresponding **Assessment job** and inspect a result’s **Assessments**. Read the value, explanation and **Model opinion** persistence state together.
 
-![Available correctness and safety judges selected with provider-cost acknowledgement.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-model-judges-selection.png)
+![Available correctness and safety judges selected with provider-cost acknowledgement.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-model-judges-selection.png)
 
 The real local QA environment exposes both model judges. Only correctness and safety are selected, and the owner has acknowledged provider charges before admission.
 
 The local teaching example produced six values across three saved responses, with zero judgment errors. Correctness and safety were both rated true for these benign examples. **Assessment identity** retained the model/judge revision; the original exact-match outcomes stayed unchanged. These ratings describe this small sample, not the target’s general security.
 
-![Real correctness and safety model opinions with retained feedback and source identity.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-model-judges-feedback.png)
+![Real correctness and safety model opinions with retained feedback and source identity.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-model-judges-feedback.png)
 
 The saved READY result has true safety and correctness opinions, explanations and persisted MLflow feedback. Assessment identity records the Bedrock GLM-5 judge revision. One pending feedback delivery was reconciled without requesting another judgment.
 
@@ -70,7 +70,7 @@ the saved text; do not assume external actions or unrecorded facts.
 4.  Choose **Output type**: `boolean`, `numeric`, `categorical` or `text`. For numeric output, set **Minimum** and **Maximum**; for categorical output, enter one category per line in **Category options**.
 5.  Click **Save version 1**. Reopen the judge and confirm the saved immutable version.
 
-![Real Boolean custom-judge definition with a stable name and saved-text instructions.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-definition.png)
+![Real Boolean custom-judge definition with a stable name and saved-text instructions.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-definition.png)
 
 Owner enters the docs\_answer\_present Boolean rubric before Save version 1. Saving the definition invokes no judging model.
 
@@ -87,17 +87,17 @@ A judge name begins with a lowercase letter and uses lowercase letters, digits o
 
 ### Create and apply v2
 
-For the pictured differences, use the completed [comparison-variant run](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/compare.md) with the saved outputs `ready`, `hello` and `4.`. Your own responses can receive identical opinions when both rubrics accept them.
+For the pictured differences, use the completed [comparison-variant run](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/compare.md) with the saved outputs `ready`, `hello` and `4.`. Your own responses can receive identical opinions when both rubrics accept them.
 
 1.  Open **Evals → Judges**, find the same judge, and choose **Create next version**.
 2.  Edit **Description** and **Instructions**. In this example, v2 requires the expected letter case and punctuation; v1 accepts the required answer despite those differences.
 3.  Click **Save version 2**. Reopen the judge to read **Version history** and confirm that both definitions remain available. Saving v2 does not apply it to a run.
 
-![Create version 2 preserves the judge name while allowing stricter instructions.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-next-version.png)
+![Create version 2 preserves the judge name while allowing stricter instructions.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-next-version.png)
 
 The immutable judge name remains disabled. Owner prepares a stricter Boolean v2 rubric requiring expected case and punctuation, then saves it as a new version.
 
-![Read-back version history retaining the stricter v2 and original v1 definitions.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-version-history.png)
+![Read-back version history retaining the stricter v2 and original v1 definitions.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-version-history.png)
 
 The real Version history panel retains both Boolean definitions, their original instructions and capture-time creation dates. Saving v2 did not replace v1.
 
@@ -105,7 +105,7 @@ The real Version history panel retains both Boolean definitions, their original 
 5.  Read and select **I acknowledge that model judging can incur provider charges.** Then click **Apply scorers** once.
 6.  Wait for the new job to finish, select its **Assessment job**, and inspect the retained **Assessments**. Refresh and reselect that job to verify persistence.
 
-![Two persisted opinions on the same punctuation response with different retained definition identities.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-feedback.png)
+![Two persisted opinions on the same punctuation response with different retained definition identities.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-feedback.png)
 
 V2 rejects the extra period while the earlier v1 accepts the required answer. Both native feedback records, rationales, jobs and definition digests remain visible. The identical engine-v2 source suffix is separate from each rubric version.
 
@@ -117,7 +117,7 @@ The catalogue checkbox label names the latest version. Use the adjacent version 
 
 To score another completed run with that older rubric, repeat the application steps at the start of this section, selecting **v1** before cost acknowledgement and **Apply scorers**. To inspect an existing v1 result, reselect its saved **Assessment job**.
 
-![Latest catalogue label v2 with historical v1 selected for execution.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/evals-judging-historical-version.png)
+![Latest catalogue label v2 with historical v1 selected for execution.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-historical-version.png)
 
 The checkbox label identifies the latest catalogue version; the adjacent selector pins v1. This actual selection was admitted against baseline EV-1001 after v2 existed and retained three native v1 assessments.
 
@@ -127,10 +127,10 @@ For a retained version record, select the relevant **Assessment job**, use **Res
 
 Boolean results can form pass rates; numeric, category and text outputs retain their own types. Coverage and errors matter alongside scores. A model opinion is separate from a verified security finding or independently observed business outcome.
 
-Ad hoc judgments do not automatically define a passing gate. **Unconfigured** means no threshold policy was supplied, even if every Boolean rating is true. For built-in criteria, a [scoring suite](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) can supply a threshold and minimum coverage. Registered custom rubrics cannot be attached to suite versions in the current console; their jobs have no suite-threshold control. Review their typed values and coverage directly.
+Ad hoc judgments do not automatically define a passing gate. **Unconfigured** means no threshold policy was supplied, even if every Boolean rating is true. For built-in criteria, a [scoring suite](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) can supply a threshold and minimum coverage. Registered custom rubrics cannot be attached to suite versions in the current console; their jobs have no suite-threshold control. Review their typed values and coverage directly.
 
-A scoring request supports one to seven unique criteria. One active scoring job is allowed per organization. Completed runs are required. If submission is unresolved, use **Retry saved scoring request** to inspect that same operation. Stop controls are cooperative and may allow the in-flight judgment to finish; see [stopping and recovery](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/stopping-and-recovery.md).
+A scoring request supports one to seven unique criteria. One active scoring job is allowed per organization. Completed runs are required. If submission is unresolved, use **Retry saved scoring request** to inspect that same operation. Stop controls are cooperative and may allow the in-flight judgment to finish; see [stopping and recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/stopping-and-recovery.md).
 
 If feedback delivery remains uncertain, retain the run and job identifiers for administrator review rather than rerunning paid work. Applying a different job or rubric does not overwrite the first job’s provenance.
 
-Next, [apply a reusable suite](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) or [collect human reviews](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/evals/human-reviews.md).
+Next, [apply a reusable suite](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) or [collect human reviews](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md).

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 > **Walkthrough limits:** Endpoint-only HTTP configuration and saved scope were exercised previously. A separate anonymous endpoint-only MCP campaign retained edited goals, a data outcome, Light and serial settings, then made three real tool calls. Its admission acknowledgment failed and required operator-assisted reconciliation of the original campaign. Browser, sandbox, signed-in and prepared-scenario execution remain unverified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. Later separate QA completed an anonymous payment assessment and restored-world API scope. Two native browser runs stopped at blocked form navigation and login timeout; signed-in/prepared-scenario execution remains unverified.
 
@@ -12,11 +12,11 @@ Partly verified guide
 
 Basic HTTP, operator-assisted MCP and sandbox admission are checked. Complete sandbox outcomes, browser execution and advanced profiles remain unverified.
 
-Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
+Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 
 ## Before you start
 
-Use a **Member**, **Admin** or **Owner** account and an active [approved connection](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md). Your organization must be ready to admit work, with a working runtime and execution allowance. A sandbox-backed run additionally needs [ready instances](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/environments/create-and-launch.md) and the agent’s [approved sandbox integration](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
+Use a **Member**, **Admin** or **Owner** account and an active [approved connection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md). Your organization must be ready to admit work, with a working runtime and execution allowance. A sandbox-backed run additionally needs [ready instances](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md) and the agent’s [approved sandbox integration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
 
 ## Choose the environment and target
 
@@ -25,7 +25,7 @@ Use a **Member**, **Admin** or **Owner** account and an active [approved connect
 3.  Click **Continue**. In **Agent**, select the approved target. A draft or validated registration needs **Resume onboarding** and Owner/Admin approval; it is not ready merely because it appears in the list.
 4.  Check the connection type and click **Continue**. Selecting Browser chat forces endpoint-only testing, one conversation at a time and the supported outcome choices.
 
-![Approved Docs teaching agent selected in the assessment wizard](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/first-assessment-agent.png)
+![Approved Docs teaching agent selected in the assessment wizard](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-agent.png)
 
 Select the approved teaching agent. HTTP connected describes its connection; NOT TESTED describes its assessment history.
 
@@ -35,13 +35,13 @@ Select the approved teaching agent. HTTP connected describes its connection; NOT
 2.  Add relevant **Declared behaviors** through **New behavior → Add**. Each entry is 4–500 characters; the maximum is 32. Describe concrete permissions or approval boundaries, such as refusing changes requested inside untrusted documents.
 3.  Review the purpose and behavior list, then click **Continue**. These edited goals are sent with the assessment; they are not just a browser note.
 
-![Synthetic target purpose and one behavior boundary in Goals](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/first-assessment-goals.png)
+![Synthetic target purpose and one behavior boundary in Goals](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-goals.png)
 
 Declare the actual task and its behavior boundary. This deterministic teaching target has no private records, business tools or account actions.
 
 ## Select identity, coverage and budget
 
-The advanced signed-in and Assurance-pack options select **already-provisioned** integrations. Before using them, have your workspace owner and application integrator arrange the compatible approved fixture/scenario profile with the Martian operator. The basic [sandbox-binding example](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) does not create those profiles. If no compatible option is available, use the anonymous endpoint-only tutorial or stop for that setup; changing the dropdown or a system name cannot supply it.
+The advanced signed-in and Assurance-pack options select **already-provisioned** integrations. Before using them, have your workspace owner and application integrator arrange the compatible approved fixture/scenario profile with the Martian operator. The basic [sandbox-binding example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) does not create those profiles. If no compatible option is available, use the anonymous endpoint-only tutorial or stop for that setup; changing the dropdown or a system name cannot supply it.
 
 1.  In **Tests**, choose an approved **Conversation identity**. **Anonymous caller** asserts no synthetic customer identity. **Synthetic signed-in customer** appears only for an explicitly approved HTTP fixture profile. Browser website sign-in is labeled **Configured website account** and does not establish a verified fixture identity.
 
@@ -62,7 +62,7 @@ The advanced signed-in and Assurance-pack options select **already-provisioned**
 5.  Use **Plan independent rounds up front and run probe lanes in parallel** only when the connection explicitly approves concurrency. Parallel rounds do not adapt to earlier replies. Browser and prepared-scenario runs remain serial.
 
 
-![Only Customer records leave selected with Light and serial execution](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/first-assessment-tests.png)
+![Only Customer records leave selected with Light and serial execution](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-tests.png)
 
 Only Customer records leave is selected. Light allows at most five rounds, 30 agent requests, 100 model calls and six minutes here; the five techniques are requested scope.
 
@@ -73,12 +73,12 @@ Start with an approved **Browser chat** connection from the Agent step. Browser 
 1.  In **Tests**, confirm **Configured website account** if you supplied website credentials during onboarding. This signs in to the website; it does not establish an independently verified customer identity or connected-system permissions.
 2.  Choose **By outcome** and one supported outcome. The example below selects **Customer records leave** and **Light**. Read the allowance shown for your workspace; the disabled parallel option remains unchecked.
 
-![Browser assessment Tests step with Configured website account, only Customer records leave selected, Light depth and the disabled parallel option unchecked.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/assessment-browser-tests.png)
+![Browser assessment Tests step with Configured website account, only Customer records leave selected, Light depth and the disabled parallel option unchecked.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-browser-tests.png)
 
 Choose a supported outcome and read the current allowance. Website sign-in is separate from a verified customer identity; browser conversations remain serial.
 
 3.  Click **Start assessment** once. In the saved trace, confirm **Website access**, **Effective target concurrency** and **Time limit**, along with the target and edited goals.
-4.  Inspect the actual execution result. The executor sends two neutral setup messages before probing, and those messages consume the run allowance. Successful sign-in and setup do not establish a completed assessment. See the [browser failure example](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention).
+4.  Inspect the actual execution result. The executor sends two neutral setup messages before probing, and those messages consume the run allowance. Successful sign-in and setup do not establish a completed assessment. See the [browser failure example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention).
 
 The executor also restricts page navigation. In a separate synthetic website check, ordinary sign-in succeeded, but a **New chat** control that submitted a full-page form was blocked and the run stopped with **chat not found**. A revised website using client-side reset and real asynchronous chat requests passed manual browser checks; its later native run stopped on a sign-in timeout. Manual website success does not qualify execution in Martian’s fresh browser context. Keep the saved failure and ask your operator to inspect its setup evidence.
 
@@ -99,6 +99,6 @@ The normal wizard selects scenario-backed packs. Arbitrary Wiki `scenario_id` se
 2.  Click **Start assessment** once. Acknowledgment creates a run code and opens **Run**. If the acknowledgment is uncertain, use **Retry saved assessment** to confirm that original intent rather than submitting a different configuration.
 3.  Open the run’s trace and verify its saved target, requested coverage, goals, environment/seed and displayed limits. Refresh and reopen it from **Assessments** to confirm persistence.
 
-For an MCP target, the approved entry tool and message argument come from its [connection setup](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/agents/connections.md#register-the-target). A bounded anonymous, endpoint-only MCP example made real tool calls, but its lost admission acknowledgment required operator-assisted reconciliation of the original campaign. See the [MCP evidence example](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-an-mcp-endpoint-example) and [submission-failure recovery](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures) before repeating work after an error.
+For an MCP target, the approved entry tool and message argument come from its [connection setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md#register-the-target). A bounded anonymous, endpoint-only MCP example made real tool calls, but its lost admission acknowledgment required operator-assisted reconciliation of the original campaign. See the [MCP evidence example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-an-mcp-endpoint-example) and [submission-failure recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures) before repeating work after an error.
 
-Continue with [progress and cancellation](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md) and [evidence and results](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md). A completed run applies only to its admitted scope; it is not a general security certification.
+Continue with [progress and cancellation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md) and [evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md). A completed run applies only to its admitted scope; it is not a general security certification.

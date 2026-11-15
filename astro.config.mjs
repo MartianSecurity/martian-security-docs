@@ -165,7 +165,7 @@ export default defineConfig({
   },
   {
     "label": "Hermes documentation \u2197",
-    "link": "https://morninghq.github.io/martian-hermes-docs/"
+    "link": "https://martiansecurity.github.io/martian-hermes-docs/"
   }
 ],
   })],

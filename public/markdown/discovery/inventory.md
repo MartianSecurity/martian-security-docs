@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/inventory/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta. [Verification details](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/verification.md).
+> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Build an inventory from authorized infrastructure evidence and inspect what qualifies each record as an agent, candidate or supporting workload. Enrollment succeeds when the source is saved, its intended collector reports and retained inventory appears with a clear freshness boundary.
 
@@ -23,7 +23,7 @@ This walkthrough uses a customer-run Kubernetes collector in an authorized test 
 1.  Open **Discovery → Sources** and choose **Connect source** to open **Add a read-only source**.
 2.  Select the supported provider and enter its authorized scope. For Kubernetes, choose an authorized cluster and namespaces. For AWS Bedrock, enter the approved account, regions and **Read-only role ARN**. An empty authorized-cluster list needs operator setup first.
 
-![Authorized Kubernetes source form with Documentation cluster, the approved cluster alias and docs-discovery namespace.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-authorized-form.png)
+![Authorized Kubernetes source form with Documentation cluster, the approved cluster alias and docs-discovery namespace.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-authorized-form.png)
 
 Select the operator-approved cluster and namespace before Create source. Enrollment alone does not collect inventory.
 
@@ -38,7 +38,7 @@ Select the operator-approved cluster and namespace before Create source. Enrollm
 7.  Wait for a distinct collection run and a newer completion / **Last success** time. Inspect its complete, partial or failed coverage and the retained workload identities, then refresh. A queued response or an unchanged old inventory snapshot is not evidence of a new successful collection. If the collector cannot run, fix that prerequisite instead of repeatedly selecting Collect now.
 
 
-![Completed Kubernetes source with a real Last success and two retained inventory records.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-complete.png)
+![Completed Kubernetes source with a real Last success and two retained inventory records.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-complete.png)
 
 Scope and collection coverage records one Deployment and two listed Pods. The resulting two inventory records include a candidate and supporting infrastructure.
 
@@ -51,13 +51,13 @@ Expand **Scope and collection coverage** to read the namespace and per-kind API 
 3.  Use **Search displayed agents** for the loaded page. Check loaded/total counts and pagination; a page search is not a proof that the entire organization has no matching record.
 4.  Choose **Candidates** when inspecting metadata-only records. Select **Inspect candidate ↗** to open **Hosting & identity** or **Configured access**. Check the source, namespace, collected identity and collection time. The console’s hosting view does not show a live running-state check; confirm current workload health in your infrastructure.
 
-![Candidates inventory showing support-agent as a metadata candidate with no runtime reports.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-inventory-candidate.png)
+![Candidates inventory showing support-agent as a metadata candidate with no runtime reports.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-inventory-candidate.png)
 
 The labeled Deployment is a candidate, not an established AI agent. Inspect candidate opens its retained infrastructure evidence.
 
 5.  Choose **Supporting workloads** to open **Sources**, then **Review supporting workloads** if the section is collapsed. In this example, `metadata-worker` is retained as supporting infrastructure because its metadata has no recognized agent signal.
 
-![Supporting workloads section with the unclassified metadata-worker Pod.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-inventory-supporting.png)
+![Supporting workloads section with the unclassified metadata-worker Pod.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-inventory-supporting.png)
 
 The standalone Pod remains supporting infrastructure outside the agent and candidate counts. A successful collection does not imply that every workload is an agent.
 
@@ -67,14 +67,14 @@ The standalone Pod remains supporting infrastructure outside the agent and candi
 
 1.  Under **Sources → Your sources**, select **Pause collection**. Expect a **disabled** source, disabled **Collect now**, and a retained **Last success** time. A customer collector that requests a new lease while paused is rejected; its old collection remains available.
 
-![Disabled source after Pause collection with Collect now disabled and the earlier Last success retained.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-paused.png)
+![Disabled source after Pause collection with Collect now disabled and the earlier Last success retained.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-paused.png)
 
 Pausing rejects a new collector lease and preserves earlier inventory. It does not stop the workload.
 
 2.  Select **Resume collection**, then **Collect now** to queue the next poll. Run or wait for the actual authorized collector. Resuming or queueing alone does not establish a new collection.
 3.  Confirm a distinct completed collection and a newer **Last success**, then refresh the page. Check that the expected candidate and supporting record remain visible.
 
-![Resumed source with a newer completed collection and retained two-record coverage after full page reload.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-resumed.png)
+![Resumed source with a newer completed collection and retained two-record coverage after full page reload.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-resumed.png)
 
 Resume collection and Collect now were followed by an actual collector run. A newer Last success and retained inventory confirm that distinct completion.
 
@@ -86,7 +86,7 @@ No authorized clusters
 
 Ask your operator to authorize the cluster alias and namespace scope. The disabled **Create source** button cannot be fixed by entering an arbitrary cluster name. Confirm the collector and Backend contracts are compatible before running collection.
 
-![Beta QA source dialog showing No authorized clusters and disabled Create source.](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/media/screenshots/discovery-source-form-blocked.png)
+![Beta QA source dialog showing No authorized clusters and disabled Create source.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-form-blocked.png)
 
 This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.
 
@@ -95,4 +95,4 @@ This beta QA Owner can inspect the source form, but no cluster alias is authoriz
 -   Revoking a runtime reporter is a different operation from pausing inventory collection. Separate historical identity evidence from recent activity.
 -   Network observations do not promote a workload into an agent or prove that every connection succeeded.
 
-Network capture and continuous observers have a separate [setup and lifecycle](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/network-observation.md); inventory-reader credentials do not install node sensors. Continue with [runtime reporting and blast radius](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) and [call gates](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/discovery/call-gates.md). Review [permissions](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MorningHQ/martian-security-docs/main/public/markdown/reference/limits.md) before interpreting coverage.
+Network capture and continuous observers have a separate [setup and lifecycle](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/network-observation.md); inventory-reader credentials do not install node sensors. Continue with [runtime reporting and blast radius](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/runtime-and-blast-radius.md) and [call gates](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/discovery/call-gates.md). Review [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md) before interpreting coverage.
