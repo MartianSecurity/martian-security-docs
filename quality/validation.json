@@ -663,6 +663,24 @@
       "environment": "Local production preview; Chrome; desktop 1440x1000 Light, 390x844 Dark and 320x844 Light",
       "result": "passed",
       "details": "Seven page/viewport/theme combinations passed for Community quickstart, Editions and local Evals, including the narrow-menu theme control. Exact page Markdown and install-code clipboard copies passed. The browser downloaded sdk-local-evals.zip with the stable name and verified SHA-256 bfa5319b15050f26e8840dd8dfe58256e11ab94157c899564facd716d068f37a. Header caption absent; no page overflow, document errors, HTTP failures or failed requests in the final settled checks. Desktop and narrow captures were individually viewed for readable code, callouts and navigation. This was an AI-simulated novice review, not a human participant. Earlier preview startup/base-path and hidden mobile-control observation failures are retained privately."
+    },
+    {
+      "scope": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
+      "result": "passed for completed independent comparison and retained records; reproduction/browser/export qualification incomplete",
+      "record": "quality/walkthroughs.json",
+      "details": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed."
+    },
+    {
+      "scope": "Published evergreen docs and external agent access",
+      "result": "passed",
+      "details": "PR38/main d05aa2af Pages passed. Seven changed public raw/download files matched reviewed hashes over trusted HTTPS. Real public page/code clipboard and browser ZIP download passed; seven desktop/narrow theme combinations had zero errors/failed requests/overflow. Existing GitHub Markdown mirror was read by an external agent reader. Novice review was AI-simulated, with no human participant."
+    },
+    {
+      "scope": "Independent payment documentation render and navigation",
+      "environment": "Local production build; Chrome; six changed pages at 1440x1000 Light and 390x844 Dark",
+      "result": "passed",
+      "details": "Twelve page/viewport/theme combinations had no document errors, HTTP failures or page overflow. Actual Copy page matched the exported Markdown exactly. The full-size screenshot link opened the original 1440x1000 image. Search found the updated sandbox-binding guide and its completed-comparison section. Both new images decoded in desktop and narrow layouts; settled captures were individually viewed. First captures taken before lazy image decode were retained as observation artifacts, then the actual loaded renders were checked. AI-simulated novice review only; no human participant."
     }
   ],
   "remainingGaps": [
@@ -675,6 +693,7 @@
     "SDK task guides and current tutorial install the latest release;exact persisted Evals/hosted redteam/combined-CI qualification remains on0.1.2. Account-free current-install steps and the local suite guide were exercised on0.1.3,with one judge model/provider route. Newer installation does not requalify hosted workflows.",
     "SDK 0.1.3 native bedrock:/ response-judge routing fails through MLflow 3.16.1 AmazonBedrockProvider.get_endpoint_url; use the verified OpenAI-compatible Bedrock endpoint. A native-routing SDK fix and release remain follow-up work.",
     "Original MR-1004 retains a conservative unknown-usage reservation for a failed first provider transport, alongside its settled successful retry. Its origin and terminal native owner were inspected; provider usage remains unknown and is not manually settled.",
-    "The separate Browser Execution QA native journal retains three unknown-usage model reservations, including the modern review run, and two unresolved target actions. None was manually settled, released or treated as zero usage. Artifact ZIP/provider waits and new foreign-tenant artifact readback remain incomplete; earlier teaching-lab uncertainty is a separate scope."
+    "The separate Browser Execution QA native journal retains three unknown-usage model reservations, including the modern review run, and two unresolved target actions. None was manually settled, released or treated as zero usage. Artifact ZIP/provider waits and new foreign-tenant artifact readback remain incomplete; earlier teaching-lab uncertainty is a separate scope.",
+    "Later Harbor QA qualifies payment business effects but not successful clean reproduction, formal controls, completed native browser setup, signed-in fixtures or prepared scenarios. Published review HTTP200 ZIP failed archive integrity. Original unknown actions/usage remain unresolved; Community local UI remains unreleased."
   ]
 }

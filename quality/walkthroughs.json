@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "environment": "Isolated local QA; real pinned Frontend, Backend, Agents and MLflow3.16.1; synthetic Martian Docs Lab organization. No API interception or fabricated UI.",
   "sourceRevisions": {
     "frontend": "06d0d0c96a9627c383b85670929dfe8bdc33aa30",
@@ -950,6 +950,33 @@
         "Kernel event loss and complete capture remain unknown; current Degraded state and original all-omitted failure remain explicit",
         "Candidate Backend PR112 is unmerged, hosted parity unverified; production bridge packaging/retention timing remain separate scopes"
       ]
+    },
+    {
+      "task": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
+      "date": "2026-11-15",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "result": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed.",
+      "observed": [
+        "Real customer Owner access returned 200 with platform_admin false. Evals Ready recovery, the unchanged published manual seed helper, complete binding save/reapproval and retained active summaries passed.",
+        "MR-1002 completed with 17 requests, 59 model calls and one business-state finding. Independent reads measured 5 to 22 transactions and 1 to 18 refunds. The separate target journal recorded 17 completed requests and 34 MCP calls, with no uncertain target action in this scope.",
+        "Actual Outcome checks before/after expansion and full browser refresh retained the run ID, verdict, profile and state digests. Two direct 1440x1000 captures were individually viewed and checked for PNG integrity and privacy.",
+        "A second fresh sandbox hit the unchanged tenant CPU quota. The known completed owned instance was restored through the supported customer API. Epochs 3, 4 and 5 retained the same seed and baseline-equivalence digest. MR-1004 used 3 target calls and 6 model calls; its two different verification requests did not reproduce the initial effect. No formal control executed.",
+        "MR-1002 published revision b18ed8bbb8152dad052a9669219eda15dd9c33c291f4ac65a9623b9009a202c3. Review content coverage was complete and native spans remained pending. A download returned HTTP 200 with application/zip, the matching revision header and 370,711 received bytes, but ZIP validation failed. No valid archive is claimed.",
+        "The first native browser run signed in, then its New chat form navigation was blocked. A revised synthetic website passed manual sign-in (303), chat POST (200), retained replies and fresh-draft refresh; the second native execution failed with authentication_failed:login_timeout. Manual success does not qualify native execution.",
+        "A later one-turn admission returned HTTP 503 review_capacity_unavailable and was not automatically replayed. Original failed or unknown campaigns, model reservations and telemetry uncertainty remain preserved."
+      ],
+      "remaining": [
+        "Valid complete ZIP download and archive inspection",
+        "Cleanly reproduced positive finding and an executed passing negative control",
+        "Completed native browser, synthetic signed-in and prepared-scenario walkthroughs",
+        "Unreleased Community local UI and separate Backend PR112 billing-blocked checks"
+      ]
     }
   ],
   "knownEnvironmentLimits": [
@@ -970,6 +997,7 @@
     "The separate opt-in modern review QA run has verified domain/report JSON and redacted on-screen turn reads, with operator-assisted original metadata/publication recovery. Its four ZIP reads timed out before producing an archive. Local memory pressure and unchanged provider deadlines remain material limits; this does not establish hosted parity or end-to-end ZIP qualification.",
     "Dedicated Discovery compatibility QA uses Backend PR112 and an approved real local Kubernetes source. Its successful inventory path does not attest hosted-beta parity. Unconfigured Evals/orchestrator bootstrap 503s are retained; the hosting drawer still does not render the new collected-state field.",
     "Discovery continuous enrollment, four uploads, revocation and stop passed in candidate QA, but all32input events were omitted and no Service-matched connection was qualified. One-time capture separately retained two real destination groups with partial coverage. Sensor resources were removed after revocation; historical sensorReady/streaming values do not establish current health.",
-    "A later distinct stock continuous observer qualified workload/Service attribution and retirement with15attributed/38unattributed inputs across9windows. The earlier4window/all32omitted run remains a separate failed observation, with no proven retrospective cause. Neither qualifies complete kernel capture or hosted parity."
+    "A later distinct stock continuous observer qualified workload/Service attribution and retirement with15attributed/38unattributed inputs across9windows. The earlier4window/all32omitted run remains a separate failed observation, with no proven retrospective cause. Neither qualifies complete kernel capture or hosted parity.",
+    "New Harbor QA qualified actual payment effects and restored-world negative repetitions. It did not resolve older unknown actions/usage, complete native browser setup, execute a formal negative control or produce a valid review ZIP. A one-turn admission was refused by review capacity without automatic replay."
   ]
 }

@@ -52,6 +52,14 @@ The captured sandbox run passed its starting-ledger prerequisites, then retained
 
 <Screenshot id="assessment-outcome-checks" />
 
+## Observed effect and failed repetition are different results
+
+The later [completed payment example](/agents/sandbox-bindings/#example-a-completed-independent-business-comparison) has a real before/after violation. A separate bounded API run, **MR-1004** in the same synthetic lab, requested `isolation_policy: "reset_per_probe"` with the approved HTTP binding and independent checks. Its three observed worlds used epochs **3, 4 and 5**, the same seed digest and the same baseline-equivalence digest.
+
+The initial request mentioned a refund and produced an effect. The two verification requests instead asked for order status and transaction history, and did not reproduce that effect. The run recorded **not reproduced**, with **3 target calls** and **6 model calls**. A formal negative control was not executed after the negative repetitions. These receipts establish that restoration and independent reads occurred; they do not establish a successful clean reproduction or a passed control. Compare the actual replay messages as well as the baseline digests.
+
+This API isolation option requires an approved HTTP connection with independent business checks and serial sandbox access. It is separate from selecting an Assurance pack in the wizard. A separate launch in this lab hit the tenant CPU quota; the completed disposable instance was restored through the supported API before MR-1004. No quota was relaxed.
+
 ## Check coverage before deciding what to do
 
 Review selected versus executed techniques, budget exhaustion, skipped work, missing records, failed knowledge lookups, dropped customer events and any pending evidence delivery. **Attempts held** needs a complete attempt count and blocked classification; a run with no tested attempts has no meaningful held ratio.

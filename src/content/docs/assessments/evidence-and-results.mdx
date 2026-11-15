@@ -28,6 +28,8 @@ Use any signed-in role with access to the organization's run. Complete or retain
 
 <Screenshot id="assessment-coverage" />
 
+If a **Release recommendation** appears, read its recorded policy and reason separately. **PENDING** with **None approved** means no customer-approved release policy was available. An execution result or finding does not authorize deployment.
+
 ## Inspect the actual conversations and actions
 
 1. In a legacy run, open **Trace**. Use **Tree** to follow campaign, conversation, turn and verification rows, or **Timeline** for timestamped runtime/customer events. **Filter rows**, **Expand all** and **Collapse** change the view rather than the assessment.
@@ -48,6 +50,10 @@ In the separate [modern review example](/assessments/history-and-exports/#exampl
 Redaction describes the exported copy. The critic's **rationale** is model interpretation, and the run remains **INCONCLUSIVE**. This example does not establish a real credential disclosure or an independent business effect. Its published review can be read on screen, while the ZIP download remains unverified after provider timeouts.
 
 ## Inspect findings and independent outcomes
+
+For a completed business-state example, [MR-1002's independent payment comparison](/agents/sandbox-bindings/#example-a-completed-independent-business-comparison) retained **FINDINGS**, **Completed** execution, 17 agent requests, 59 model calls and one displayed finding. Its before/after ledger reads establish duplicate refunds in that synthetic world; its clean-reproduction amount remains unavailable. This is stronger evidence of an effect than a target reply, while still requiring separate reproduction and control checks.
+
+<Screenshot id="assessment-payment-completed" />
 
 1. Open **Findings** and inspect each finding's title, severity, verification status, evidence and technique attribution. Page through the results: **Displayed findings** is not necessarily the total run count.
 2. When present, open **Outcome checks**. Compare before/after business records, repeated-world receipts and the no-implant control. Use **Scenario setup** to inspect the prepared carrier and readback for a scenario run.

@@ -6,11 +6,11 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/reproduction-a
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** In isolated local QA, MR-1002 had unverifiable disclosure coverage and no deterministic oracle. Model opinions and requested-versus-used budgets were inspected. Clean-world reproduction and negative controls remain unverified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged.
+> **Walkthrough limits:** In isolated local QA, MR-1002 had unverifiable disclosure coverage and no deterministic oracle. Model opinions and requested-versus-used budgets were inspected. Clean-world reproduction and negative controls remain unverified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. Later MR1002 proved a business effect. MR1004 completed three distinct restored epochs with equivalent baselines and two unsuccessful repetitions; its verification messages differed from the initial request, and no formal negative control executed.
 
 Partly verified guide
 
-Endpoint-only evidence and a sandbox baseline are checked. Clean-world reproduction and negative controls remain incomplete.
+An independent business effect and restored-world negative repetitions are checked. Successful clean reproduction and a passed negative control remain incomplete.
 
 Use the strongest retained evidence for the question you are answering. A reproducible reply, an executed tool call and a reproducible change in a restored business world support different conclusions.
 
@@ -53,6 +53,14 @@ The captured sandbox run passed its starting-ledger prerequisites, then retained
 ![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
 
 Both baseline prerequisites passed. Outcome captured and After-state digest remain Pending, and no complete comparison or refund verdict exists. The duplicated-refund sentence describes the configured check.
+
+## Observed effect and failed repetition are different results
+
+The later [completed payment example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) has a real before/after violation. A separate bounded API run, **MR-1004** in the same synthetic lab, requested `isolation_policy: "reset_per_probe"` with the approved HTTP binding and independent checks. Its three observed worlds used epochs **3, 4 and 5**, the same seed digest and the same baseline-equivalence digest.
+
+The initial request mentioned a refund and produced an effect. The two verification requests instead asked for order status and transaction history, and did not reproduce that effect. The run recorded **not reproduced**, with **3 target calls** and **6 model calls**. A formal negative control was not executed after the negative repetitions. These receipts establish that restoration and independent reads occurred; they do not establish a successful clean reproduction or a passed control. Compare the actual replay messages as well as the baseline digests.
+
+This API isolation option requires an approved HTTP connection with independent business checks and serial sandbox access. It is separate from selecting an Assurance pack in the wizard. A separate launch in this lab hit the tenant CPU quota; the completed disposable instance was restored through the supported API before MR-1004. No quota was relaxed.
 
 ## Check coverage before deciding what to do
 

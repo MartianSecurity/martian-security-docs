@@ -10,7 +10,7 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **38 task guides**, **32 are verified**, **6 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **189 captured references** across **177 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **38 task guides**, **33 are verified**, **5 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **191 captured references** across **179 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
@@ -110,6 +110,18 @@ The published revision retained **2 conversation records** and **12 turn records
 Four actual redacted ZIP requests returned **503 / review\_provider\_wait\_exceeded**, without an archive. ZIP download and inspection remain unverified. Heavy local VM memory stalls were observed; a reversible artifact-service memory reservation preserved its process, hard limits, source and native custody. A later turn read succeeded, while ZIP timeouts persisted. Provider deadlines and qualification gates were unchanged. Owner reads and three anonymous **401** boundaries were checked; existing foreign-owner credentials did not sign in to this separate Backend, so new cross-tenant artifact readback remains unqualified.
 
 Twenty-eight relevant source files matched the served archive and running images. Two direct application captures were individually inspected. The simulated novice pass corrected the example to use **Assessments** for full counters: Replay’s compact view and its release-decision disclosure do not expose those counters. Three unknown-usage model reservations and the earlier unresolved target actions remain preserved; they were not manually settled or treated as free work.
+
+## Observed walkthroughs — 15 November 2026
+
+A separate **Harbor Assessment Lab** used a genuine customer Owner with `platform_admin: false`, Frontend `90351b7`, Backend `7cb888aa`, Native `f7de3e0` and MLflow 3.18.0. Native runtime code and dependencies are unchanged in the later `d021180e` source. The target and payment data were synthetic; these checks do not attest hosted-beta parity.
+
+-   The published manual payment-seed helper, complete bindings, validation/approval and retained configured summaries passed. **MR-1002** then completed **17 agent requests**, **59 model calls** and **one independently observed business-state finding**. A separate Backend ledger read measured **1 → 18 refunds**, with a delta of **17**. The target journal retained 17 completed actions and 34 real MCP calls, with no uncertain target action in this run. Full refresh retained the run, verdict and before/after digests. This completes the sandbox-binding guide’s five original stages.
+-   **MR-1004** used the supported API world-isolation option. Actual restored epochs **3, 4 and 5** had the same seed and equivalent baseline. Two verification requests differed from the initial refund request and did not reproduce its effect. The run recorded **not reproduced**, with 3 target calls and 6 model calls; no formal negative control executed. Successful clean reproduction and a passed control remain unqualified.
+-   MR-1002’s durable review published 113 parts containing 3 conversations, 17 turns, 103 customer events and 51 gateway records. Review content was complete while native span delivery remained pending. Its actual revision-pinned HTTP 200 ZIP download failed archive validation; a valid complete archive remains unqualified.
+-   Two native browser checks stopped at blocked form navigation and a later sign-in timeout. The revised synthetic website passed separate manual sign-in, asynchronous chat, retained replies and fresh-conversation refresh checks. Manual website success does not qualify native execution. Synthetic signed-in identity and prepared-scenario walkthroughs also remain unqualified.
+-   A separate one-turn admission returned `review_capacity_unavailable`; it was not automatically resubmitted. Earlier unknown actions, model reservations and telemetry delivery uncertainty were preserved. The strict release audit remains active.
+
+The Community quickstart’s CLI path was checked against the released SDK; its local Evals UI remains unreleased. Evergreen installs, the stable tutorial ZIP, Copy page/code controls, public Markdown and agent mirrors passed the separately recorded documentation checks. The novice review was AI-simulated, with no human participant.
 
 ## Attack reference
 

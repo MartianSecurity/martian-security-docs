@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-r
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive.
+> **Walkthrough limits:** In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified.
 
 Partly verified guide
 
@@ -34,6 +34,8 @@ MR-1002 completed with three agent requests and 15 model calls, but its one atte
 
 One outcome-data probe was attempted. Its unverifiable outcome and 3/30 target, 15/100 model usage are separate from the five requested technique labels.
 
+If a **Release recommendation** appears, read its recorded policy and reason separately. **PENDING** with **None approved** means no customer-approved release policy was available. An execution result or finding does not authorize deployment.
+
 ## Inspect the actual conversations and actions
 
 1.  In a legacy run, open **Trace**. Use **Tree** to follow campaign, conversation, turn and verification rows, or **Timeline** for timestamped runtime/customer events. **Filter rows**, **Expand all** and **Collapse** change the view rather than the assessment.
@@ -58,6 +60,12 @@ The actual target response contains \[REDACTED\] instead of the fixture’s toke
 Redaction describes the exported copy. The critic’s **rationale** is model interpretation, and the run remains **INCONCLUSIVE**. This example does not establish a real credential disclosure or an independent business effect. Its published review can be read on screen, while the ZIP download remains unverified after provider timeouts.
 
 ## Inspect findings and independent outcomes
+
+For a completed business-state example, [MR-1002’s independent payment comparison](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) retained **FINDINGS**, **Completed** execution, 17 agent requests, 59 model calls and one displayed finding. Its before/after ledger reads establish duplicate refunds in that synthetic world; its clean-reproduction amount remains unavailable. This is stronger evidence of an effect than a target reply, while still requiring separate reproduction and control checks.
+
+![Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/payment-completed-independent-outcome.png)
+
+MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.
 
 1.  Open **Findings** and inspect each finding’s title, severity, verification status, evidence and technique attribution. Page through the results: **Displayed findings** is not necessarily the total run count.
 
