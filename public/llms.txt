@@ -122,7 +122,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=12db185b987a): Complete a small endpoint-only assessment and inspect the recorded result.
 
-- [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md?v=ffec0bc71e21): Install the open-source SDK, run a first eval suite on your own machine and open the result in the local Evals UI, with no Martian account. The UI step needs SDK 0.1.4.
+- [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md?v=4fde369f7013): Install the open-source SDK, run a first eval suite on your own machine and open the result in the local Evals UI, with no Martian account. The UI step needs SDK 0.1.4.
 
 - [Attack library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md?v=78d05688323c): Understand major AI attack families, find related Martian techniques and use MITRE ATLAS, OWASP and NIST references accurately.
 
@@ -164,6 +164,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=ddf77dae2e29): all 73 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=f3cd46f5152e): all 73 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
