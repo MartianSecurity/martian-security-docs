@@ -101,7 +101,11 @@ This separate **Harbor Assessment Lab** example used an approved synthetic suppo
 <Screenshot id="assessment-browser-completed-probe" />
 
 3. Refresh and reopen the same run. In this check, its completed state, inconclusive verdict, target revision, counters and probe result survived a full reload. **Configured website account** still describes website access, not an independently verified customer identity or business-state check.
-4. Check **Recorded review** separately. This run's review export entered **Needs review** with an artifact conflict while its execution stayed completed. Missing review content is not a reason to rerun the assessment. Preserve the run and ask your operator to inspect the saved publication receipts; [review recovery](/assessments/history-and-exports/) does not execute the target again.
+4. Check **Recorded review** separately. This run initially entered **Needs review** with an artifact conflict while execution stayed completed. An operator later recovered its saved publication in an isolated QA recovery build. The same revision now shows **available**, **Review delivery: persisted** and **Review coverage: complete**. Open **Turns (2)** and select a turn to inspect the retained request and reply.
+
+<Screenshot id="assessment-browser-recovered-review" />
+
+5. Click **Download redacted review** and check the archive locally. This original revision produced **121,320 bytes** and **43 entries**: one manifest and 42 parts. Every part passed its hash, byte-count and CRC checks. Recovery did not execute the target or model again, change the inconclusive outcome or qualify a successful reproduction. See the [recovery example and availability limits](/assessments/history-and-exports/#recovery-of-two-frozen-reviews).
 
 The earlier failures below remain separate observations. This completed example does not resolve their uncertain actions or qualify browser cancellation.
 

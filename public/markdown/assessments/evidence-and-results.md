@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-r
 
 > **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Endpoint and completed browser results, independent payment before/after effects, persisted redacted review content, actual MR-1002ZIP integrity/download and report/history paths passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified. Browser MR-1006 retained Completed/INCONCLUSIVE after refresh; its distinct review export needs attention.
+> **Walkthrough limits:** Endpoint and completed browser results, independent payment effects, original review recovery, actual complete ZIP downloads and retained UI reads passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified.
 
 Partly verified guide
 
@@ -129,7 +129,13 @@ The bounded browser assessment completed, but its evidence did not support a sec
 Probe counters cover this disclosure probe. The campaign summary also includes setup and other work; an attempted probe is not a verified finding.
 
 3.  Refresh and reopen the same run. In this check, its completed state, inconclusive verdict, target revision, counters and probe result survived a full reload. **Configured website account** still describes website access, not an independently verified customer identity or business-state check.
-4.  Check **Recorded review** separately. This run’s review export entered **Needs review** with an artifact conflict while its execution stayed completed. Missing review content is not a reason to rerun the assessment. Preserve the run and ask your operator to inspect the saved publication receipts; [review recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md) does not execute the target again.
+4.  Check **Recorded review** separately. This run initially entered **Needs review** with an artifact conflict while execution stayed completed. An operator later recovered its saved publication in an isolated QA recovery build. The same revision now shows **available**, **Review delivery: persisted** and **Review coverage: complete**. Open **Turns (2)** and select a turn to inspect the retained request and reply.
+
+![Recovered browser review with its original persisted revision, two retained turns and the selected synthetic request.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-recovered-review.png)
+
+The original browser review is available after operator-assisted publication recovery in isolated QA. Its inconclusive outcome is unchanged.
+
+5.  Click **Download redacted review** and check the archive locally. This original revision produced **121,320 bytes** and **43 entries**: one manifest and 42 parts. Every part passed its hash, byte-count and CRC checks. Recovery did not execute the target or model again, change the inconclusive outcome or qualify a successful reproduction. See the [recovery example and availability limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md#recovery-of-two-frozen-reviews).
 
 The earlier failures below remain separate observations. This completed example does not resolve their uncertain actions or qualify browser cancellation.
 
