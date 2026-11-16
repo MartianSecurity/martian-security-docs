@@ -128,6 +128,38 @@
         "MartianSecurity/MartianBackend:app/entitlements.py"
       ],
       "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
+    },
+    {
+      "reviewedAt": "2026-11-16",
+      "scope": "On-Premises install, sizing and operations guides",
+      "usedBy": [
+        "on-premises/install",
+        "on-premises/sizing",
+        "on-premises/operations"
+      ],
+      "repositories": {
+        "MartianSecurity/martian-helm-charts": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+        "MartianSecurity/MartianBackend": "b04ba90d577c0e58140364640852d3be909c2425",
+        "MartianSecurity/MartianFrontend": "adfc9882db8a16feca7e837ddec46a5882cbdc64",
+        "MartianSecurity/martian-evals": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
+        "MartianSecurity/martian-redteam": "08ef6695aa8d8bf676a6742eb09ba642f847cd34"
+      },
+      "paths": [
+        "MartianSecurity/MartianBackend:app/config.py",
+        "MartianSecurity/MartianBackend:app/evals_worker.py",
+        "MartianSecurity/MartianBackend:app/licence.py",
+        "MartianSecurity/MartianBackend:app/organisation_evals.py",
+        "MartianSecurity/MartianBackend:docs/evals-workbench.md",
+        "MartianSecurity/MartianBackend:docs/usage.md",
+        "MartianSecurity/MartianBackend:tests/upgrade_across_releases.py",
+        "MartianSecurity/MartianFrontend:Dockerfile",
+        "MartianSecurity/MartianFrontend:src/pages/Invitations.jsx",
+        "MartianSecurity/martian-evals:mlflow/server.py",
+        "MartianSecurity/martian-helm-charts:charts/martian-evals/",
+        "MartianSecurity/martian-helm-charts:docs/private-registry.md",
+        "MartianSecurity/martian-redteam:docs/trace-store-limits.md"
+      ],
+      "comparison": "The chart is on its epic branch, not released, and the backend that mounts the evals core, its worker, the offline licence and the environments setting is on main with the epic's upgrade test. The guides describe that chart's values, Secrets, commands and limits. Sizing's storage and database CPU figures come from the trace store load test of MLflow's SQL store on PostgreSQL 17; no load test of an installation of this chart exists, and the memory of a running process in the evals worker is not measured."
     }
   ]
 }

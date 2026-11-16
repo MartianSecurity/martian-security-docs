@@ -718,10 +718,17 @@
       "date": "2026-11-16",
       "result": "Production build/check passed; strict completeness remains incomplete",
       "details": "71built pages,70agentexports,91exactcodeblocks,190captions and3existing export regressions passed. Eight actual local route/viewport/theme checks, exact Copy page and both fullsize1440x1000images passed with no failed responses/pageerrors/overflow. Both local renders were viewed. Current publicPyPI version and wheelhash still match the previously qualified release; no localUI release was found. Original38guide requirements/192prior capture records and all4partial guides remain unchanged; strict audit retains the same5failures. Actual search for completed browser assessment opened the updated guide and survived deep refresh. The initial observer used the wrong input type; the real placeholder selector passed, with no product change."
+    },
+    {
+      "scope": "On-Premises guides reconciled with the backend on main and the chart's licence, network and rollback behaviour",
+      "date": "2026-11-16",
+      "environment": "Local documentation build, the chart's offline rendering checks and the backend's upgrade job in containers; no Kubernetes cluster",
+      "result": "Reviewed against source; upgrade, serve and restore tested with containers; not walked through on a cluster",
+      "details": "The guides now describe the offline licence, the evals worker container, the optional single sign-on key, hosts the backend may call, the model catalogue setting and what each part connects to, and a rollback that runs the previous release on the upgraded schema or restores the backup, since the backend refuses a downgrade below its append-only records. The backend's upgrade job passed from the releases at schema 0048 and 0050 to the head. No install on a cluster was walked through, and the On-Premises edition stays Planned."
     }
   ],
   "remainingGaps": [
-    "Four guides remain partly verified: assessment configuration, evidence/results, reproduction/limits and Community quickstart. Current coverage is34verified/4partial/0pending across38taskguides, with one required assessment-verification capture still missing. The strict release audit remains enforced.",
+    "Four guides remain partly verified: assessment configuration, evidence/results, reproduction/limits and Community quickstart. Current coverage is 34 verified, 4 partial and 2 pending (the On-Premises install and operations guides) across 40 task guides, with one required assessment-verification capture still missing. The strict release audit remains enforced.",
     "Synthetic signed-in fixture identity and prepared Assurance scenarios remain unqualified. Basic HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment effects are checked in their named scopes.",
     "Successful clean reproduction and an executed passing negative control remain unverified. MR-1004 restored equivalent worlds but its different verification messages were negative and its formal control was skipped. No security pass is inferred.",
     "The Community quickstart local Evals UI is not in the released SDK. Its install, CLI runs, files, failed first run and corrected rerun passed; the UI stage remains incomplete.",
@@ -731,6 +738,7 @@
     "Non-Boolean model-rubric execution remains unqualified. Native conversation sessions passed with separately provisioned instrumentation; the earlier SDK does not supply a native-ingestion credential feature.",
     "Named local/CI checks do not attest whole hosted-beta parity. Discovery passed with the compatible Backend PR112candidate; PR112 and its mainCI subsequently passed and the approved change merged, but no Backend beta deployment occurred. Other simulations and network-policy enforcement remain unqualified.",
     "Task guides install the latest SDK release. Historical persisted Evals, hosted redteam and combinedCI qualification remains pinned to its recorded release; later account-free/current-install checks do not requalify those hosted paths.",
-    "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work."
+    "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work.",
+    "The On-Premises install, sizing and operations pages are reviewed against the unreleased martian-evals chart and its services; no install on a cluster has been walked through, the private registry route has not been run on an air-gapped cluster, and their sizing has no load test of an installation behind it. Their upgrade and rollback are tested with containers in the backend's CI, not with Helm on a cluster."
   ]
 }

@@ -3815,6 +3815,255 @@
           "Long retention/deletion timing and production least-privilege observer packaging were not qualified"
         ]
       }
+    },
+    {
+      "id": "on-premises/install",
+      "title": "Install Evals in your cluster",
+      "description": "Install Martian Evals in your own Kubernetes cluster with the martian-evals Helm chart, then sign in and invite the organization that will use it.",
+      "customerTask": "Install the martian-evals chart from its Secrets and values, sign in as the operator and invite the organization that uses Evals.",
+      "requiredRoles": [
+        "platform engineer with namespace administration",
+        "master admin (the bootstrap operator account)"
+      ],
+      "uiRoute": "/#/admin/invitations",
+      "supportedInterfaces": [
+        "helm install of charts/martian-evals",
+        "kubectl Secrets",
+        "master-admin organization invitations"
+      ],
+      "prerequisites": [
+        "Kubernetes 1.30 or later, Helm 3, an ingress controller and a default StorageClass",
+        "The chart package and same-release backend, console and MLflow images from Martian Security",
+        "A DNS name and TLS certificate for the console host"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/values.yaml"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/_backend-env.tpl"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/backend.yaml"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/postgres.yaml"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/README.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/organisation_evals.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/seed.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/licence.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/config.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "docs/usage.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "adfc9882db8a16feca7e837ddec46a5882cbdc64",
+          "path": "src/pages/Invitations.jsx"
+        },
+        {
+          "repository": "MartianSecurity/martian-evals",
+          "commit": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
+          "path": "mlflow/server.py"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "docs/private-registry.md"
+        }
+      ],
+      "numberedTaskStages": [
+        "Create the namespace",
+        "Create the Secrets and the licence Secret",
+        "Write the values file",
+        "Install with --wait --wait-for-jobs",
+        "Sign in as the operator and invite the Evals organization",
+        "Connect the SDK",
+        "List your own agents and models"
+      ],
+      "screenshotIds": [],
+      "qualification": "pending",
+      "validationStatus": "Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal, including the licence mount, the managed hosts and the model catalogue address. No install has been walked through on a Kubernetes cluster, so no step below is observed live.",
+      "customerNotice": "This guide is reviewed against the chart and the services it installs, and the chart passes its rendering checks. An install on a cluster has not yet been walked through.",
+      "documentationRoute": "/on-premises/install/",
+      "role": "platform engineer; master admin",
+      "route": "helm install; /#/admin/invitations",
+      "interfaces": [
+        "helm install of charts/martian-evals",
+        "kubectl Secrets",
+        "master-admin organization invitations"
+      ],
+      "requiredValidation": [
+        "Install the documented values on a clean cluster from one helm install command",
+        "Sign in as the operator and invite an organization to Evals: ready",
+        "Sign in as the invited owner and open the Evals pages without a setup error",
+        "Upload a CI run with the SDK against the console host",
+        "Repeat with an external PostgreSQL and with S3 artifacts",
+        "Install from a bundle through global.privateRegistry on a cluster with no outbound network",
+        "Mount the licence Secret and see the On-Premises edition with a valid licence and the Community edition without one",
+        "Mount the licence Secret and see the On-Premises edition with a valid licence and the Community edition without one",
+        "Mount the licence Secret and see the On-Premises edition with a valid licence and the Community edition without one"
+      ],
+      "sourceReview": {
+        "sourceReviewed": true,
+        "realBackendWalkthrough": "not run",
+        "screenshots": "none",
+        "remainingGaps": [
+          "No install on a Kubernetes cluster has been walked through.",
+          "The bundled database's init script and backend migrations 0001 to 0050 were run as the non-superuser owner against a disposable PostgreSQL 17; the later migrations were run by the backend's upgrade test as the chart's bundled PostgreSQL image and login, not by an install of the chart.",
+          "External PostgreSQL with TLS for the backend, and S3-compatible artifact storage, are not qualified.",
+          "The private registry route (a bundle loaded into the site's registry and global.privateRegistry) is checked only by rendering; it has not been run on an air-gapped cluster.",
+          "The licence mount, a judge on an organization's own endpoint and a remote runner are built in the chart and the backend and checked by rendering and the backend's tests; none has been run against an installation of the chart.",
+          "No installation has been run on a cluster that denies egress by default."
+        ]
+      },
+      "screenshots": [],
+      "environment": "Source review and offline chart rendering; no cluster"
+    },
+    {
+      "id": "on-premises/operations",
+      "title": "Operate an Evals installation",
+      "description": "Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and upgrade it or roll it back.",
+      "customerTask": "Back up and restore the three databases and the artifacts, check health, the licence and logs, troubleshoot, and upgrade or roll back along a tested path.",
+      "requiredRoles": [
+        "platform engineer with namespace administration"
+      ],
+      "uiRoute": "/#/admin/invitations",
+      "supportedInterfaces": [
+        "kubectl exec pg_dump and pg_restore",
+        "kubectl logs",
+        "helm upgrade",
+        "helm rollback",
+        "kubectl exec alembic current and python -m app.licence status"
+      ],
+      "prerequisites": [
+        "An installation of the martian-evals chart",
+        "The three Secrets' values in a secret store",
+        "A private directory for backups"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/jobs.yaml"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/mlflow.yaml"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/templates/backend.yaml"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/evals_records.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "app/licence.py"
+        },
+        {
+          "repository": "MartianSecurity/martian-evals",
+          "commit": "0593184925de8cb5f8cc38a9aef354bee7bdabc8",
+          "path": "docs/how-it-works.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "docs/usage.md"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "tests/upgrade_across_releases.py"
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "b04ba90d577c0e58140364640852d3be909c2425",
+          "path": "migrations/versions/"
+        },
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "98fe92282ddc5bd0fbdef7de41813e2c475aa960",
+          "path": "charts/martian-evals/README.md"
+        }
+      ],
+      "numberedTaskStages": [
+        "Back up the three databases and the artifacts",
+        "Restore into the same release",
+        "Check health, the licence and logs",
+        "Troubleshoot",
+        "Upgrade along a tested path",
+        "Roll back"
+      ],
+      "screenshotIds": [],
+      "qualification": "pending",
+      "validationStatus": "Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's upgrade job, run locally because the private repository's CI is off: it upgrades a database seeded by the releases at schema 0048 and 0050 to the head with containers, checks that every row survives, that both backends serve the upgraded database, that a downgrade is refused and changes nothing, and that a restore of the database backup gives the earlier release back; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.",
+      "customerNotice": "This guide is reviewed against the chart and the services it installs. Its procedures have not yet been walked through on a cluster; the upgrade and rollback are tested with containers, not with Helm.",
+      "documentationRoute": "/on-premises/operations/",
+      "role": "platform engineer",
+      "route": "kubectl and helm against the release namespace",
+      "interfaces": [
+        "kubectl exec pg_dump and pg_restore",
+        "kubectl logs",
+        "helm upgrade",
+        "helm rollback",
+        "kubectl exec alembic current and downgrade"
+      ],
+      "requiredValidation": [
+        "Back up and restore an installation with runs, datasets and traces, and read them back in the console",
+        "Restore the artifact volume and open a run's artifacts",
+        "Reproduce each troubleshooting symptom and its documented action",
+        "Upgrade and roll back an installation with helm upgrade and helm rollback on a cluster"
+      ],
+      "sourceReview": {
+        "sourceReviewed": true,
+        "realBackendWalkthrough": "not run",
+        "screenshots": "none",
+        "remainingGaps": [
+          "Backup and restore were not run through kubectl on a cluster, and the artifact tar restore was not run; the MLflow databases were not part of the backend's restore test.",
+          "The upgrade and rollback were tested with containers by the backend's upgrade job, not with helm upgrade and helm rollback on a cluster, and no two releases of the chart exist yet.",
+          "The licence states, a replaced licence Secret taking effect without a restart, and a retention policy were checked in the backend's tests and by reading its source, not on an installation of the chart."
+        ]
+      },
+      "screenshots": [],
+      "environment": "Source review and offline chart rendering; database restore on a disposable PostgreSQL 17"
     }
   ]
 }
