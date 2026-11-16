@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/on-premises/install/)
 
 > **Page qualification:** On-Premises Helm chart · platform engineer; master admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live.
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal, including the licence mount, the managed hosts and the model catalogue address. No install has been walked through on a Kubernetes cluster, so no step below is observed live.
 
 Guide in progress
 
@@ -20,18 +20,19 @@ On-Premises is a **Planned** edition ([Editions](https://raw.githubusercontent.c
 
 | Part | What it does |
 | --- | --- |
-| Backend | The Martian API, including Evals. It runs each eval run and scoring job in a process of its own ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#one-process-per-run)) |
+| Backend | One pod with two containers: the Martian API, including Evals, and the evals worker, which takes each eval run and scoring job from a queue in the database and runs it in a process of its own ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#one-process-per-run)) |
 | Console | The Martian console. It calls the API at `/v1` on its own host |
 | MLflow | Stores traces, datasets, judges and artifacts. Only the backend reaches it; people never open it |
 | PostgreSQL | Optional. Holds the backend’s records and MLflow’s two databases. You can use your own server instead |
 | Migrate and seed jobs | Prepare the database schema, and on the first install create your operator account |
 
-Everything runs in one namespace. The chart points the backend and MLflow only at each other and at PostgreSQL (and at your bucket, if you choose one), and MLflow’s usage telemetry is off in both.
+Everything runs in one namespace. The chart points the backend and MLflow only at each other and at PostgreSQL (and at your bucket, if you choose one). It turns MLflow’s usage telemetry off in both and stops MLflow downloading its model-price catalogue from github.com, so nothing in the installation calls out by itself ([what each part connects to](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#network-use)).
+
+The edition of every organization comes from the licence file that Martian Security signs for your installation ([the licence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#the-licence)). Without a licence in force, every organization runs the Community edition, which has no review queues or Monitoring.
 
 ## What it does not include yet
 
--   **Runs launched from the console, and model judges.** Both run through the Red Team engine, which this chart does not install. Record runs from your own environment with the SDK and CI instead: [evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) and [gate CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
--   **An offline licence.** Each organization gets the edition of its plan, **Enterprise** unless you change it ([plans](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#organization-plans)). Enterprise includes review queues and Monitoring.
+-   **Runs launched from the console and model judges, as the hosted console runs them.** Both run through the Red Team engine, which this chart does not install. Two things replace them: a **remote runner** that you run in your network calls an agent that only your network reaches, and a **judge on your own model endpoint** runs in the evals worker with a key an organization stores ([your own agents and models](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)). Neither has been run against an installation of this chart. Otherwise record runs from your own environment with the SDK and CI: [evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) and [gate CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
 -   **A verified air-gapped install.** A cluster without outbound network can install from your own registry ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)), but that route has not yet been run on an air-gapped cluster.
 -   **A later release to upgrade to.** This is the chart’s first release. The supported upgrade paths, each tested with a rollback, are in [upgrades](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#upgrades).
 -   The console’s Red Team, environment and Discovery pages, which need services this chart does not install.
@@ -41,8 +42,8 @@ Everything runs in one namespace. The chart points the backend and MLflow only a
 -   **Role:** a platform engineer who can create a namespace, Secrets and Ingress objects, and run Helm in that namespace.
 -   **Cluster:** Kubernetes 1.30 or later, `kubectl` and Helm 3, an ingress controller whose IngressClass passes WebSocket upgrades, and a default StorageClass with `ReadWriteOnce` volumes.
 -   **Host and TLS:** a DNS name for the console, for example `evals.example.com`, and its certificate in a `kubernetes.io/tls` Secret in the namespace, unless TLS ends at a load balancer in front of the ingress controller.
--   **From Martian Security:** the chart package `martian-evals-<version>.tgz` and the image references for the backend, the console and MLflow, all from one release. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry. Without outbound network, use a release bundle instead ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)).
--   **Capacity:** about 2 CPUs and 4 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md)).
+-   **From Martian Security:** the chart package `martian-evals-<version>.tgz`, the image references for the backend, the console and MLflow, all from one release, and your licence file. The backend image is the on-premises build, which verifies the licence offline. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry. Without outbound network, use a release bundle instead ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)).
+-   **Capacity:** about 2.3 CPUs and 4.8 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md)).
 -   `openssl` on the machine you run the commands from.
 
 ## 1\. Create the namespace
@@ -55,7 +56,7 @@ The commands in this guide use the namespace `martian-evals` and the release nam
 
 ## 2\. Create the Secrets
 
-The chart reads three Secrets and never creates one. Generate their values in the shell, so that no key is typed or kept in your shell history. Choose the operator account’s email and password: this account signs in first and invites the organizations that use Evals.
+The chart reads three Secrets, and a fourth that holds your licence, and never creates one. Generate their values in the shell, so that no key is typed or kept in your shell history. Choose the operator account’s email and password: this account signs in first and invites the organizations that use Evals.
 
 ```sh
 read -r -p 'Operator email: ' OPERATOR_EMAIL
@@ -67,7 +68,8 @@ kubectl -n martian-evals create secret generic martian-evals-backend \
   --from-literal=BOOTSTRAP_OWNER_EMAIL="$OPERATOR_EMAIL" \
   --from-literal=BOOTSTRAP_OWNER_PASSWORD="$OPERATOR_PASSWORD" \
   --from-literal=EVALS_SECRET_ENCRYPTION_KEY="$(key)" \
-  --from-literal=AGENT_SECRET_ENCRYPTION_KEY="$(key)"
+  --from-literal=AGENT_SECRET_ENCRYPTION_KEY="$(key)" \
+  --from-literal=SSO_SECRET_ENCRYPTION_KEY="$(key)"
 
 kubectl -n martian-evals create secret generic martian-evals-mlflow \
   --from-literal=tracking_password="$(openssl rand -hex 32)" \
@@ -84,11 +86,21 @@ unset OPERATOR_PASSWORD
 
 | Secret | Holds |
 | --- | --- |
-| `martian-evals-backend` | The session signing key, the operator account, and the two keys that encrypt stored MLflow and agent credentials |
+| `martian-evals-backend` | The session signing key, the operator account, and the keys that encrypt stored MLflow credentials, agent credentials and your model keys, and single sign-on client secrets. The last key is optional: without it an organization cannot save an OIDC client secret |
 | `martian-evals-mlflow` | MLflow’s database passwords, its administrator password, which only the backend uses, and its session key |
 | `martian-evals-postgres` | The bundled PostgreSQL’s superuser password and the backend’s database password |
 
-Copy the three Secrets into your secret store now; `kubectl -n martian-evals get secret martian-evals-backend martian-evals-mlflow martian-evals-postgres -o yaml` prints them. The bundled database takes its passwords from them when it first starts, and the encryption keys are needed to read what the backend stores. Changing a value later does not change the database or the stored data; [operations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-to-keep) says what to keep.
+Copy the Secrets into your secret store now; `kubectl -n martian-evals get secret martian-evals-backend martian-evals-mlflow martian-evals-postgres -o yaml` prints them. The bundled database takes its passwords from them when it first starts, and the encryption keys are needed to read what the backend stores. Changing a value later does not change the database or the stored data; [operations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-to-keep) says what to keep.
+
+### The licence
+
+The licence is a signed file that Martian Security issues for your installation. The backend verifies it offline, with a public key built into its image; nothing calls a licence server. Put it in a Secret:
+
+```sh
+kubectl -n martian-evals create secret generic martian-evals-licence --from-file=licence.json=<licence file>
+```
+
+Name the Secret in your values file ([next step](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#3-write-your-values-file)). The chart mounts the file in both backend containers, and the API checks it again every five minutes, so a replaced Secret is in force without a restart. While the licence is valid, or in its grace period after it expires, every organization has the On-Premises edition with the features and limits the licence lists. Without a licence, with an expired one, or with one the image cannot verify, every organization runs the Community edition: the free features keep working and the paid ones are refused. A licence that is not in force never stops the backend from starting. Keep the backend image the on-premises build; an image built without the licence key is a hosted build, which cannot verify your licence.
 
 ## 3\. Write your values file
 
@@ -109,6 +121,9 @@ secrets:
   backend: martian-evals-backend
   mlflow: martian-evals-mlflow
   postgres: martian-evals-postgres
+
+licence:
+  existingSecret: martian-evals-licence
 
 backend:
   image: {repository: martian-backend, digest: "sha256:<backend digest>"}
@@ -219,15 +234,25 @@ The SDK and CI use your console host as the API address:
 export MARTIAN_API_URL='https://evals.example.com'
 ```
 
-Create an API key in the organization and continue with [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). Agents that the backend checks at an address inside your network, or over plain HTTP, need that host in the backend’s `MANAGED_TARGET_HOSTS` setting:
+Create an API key in the organization and continue with [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). An agent that the backend checks at an address inside your network, or over plain HTTP, needs its host in the chart’s `backend.managedTargetHosts` ([next step](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)).
+
+## 7\. Your own agents and models
+
+In your own network, the agents that organizations register, the model endpoints their judges call and your identity provider are usually on private addresses. The backend refuses to call a private address, or plain HTTP, unless you list the host. List host names only, with no scheme or port:
 
 ```yaml
 backend:
-  env:
-    MANAGED_TARGET_HOSTS: agent.internal.example.com
+  managedTargetHosts:
+    - agent.internal.example.com
+    - models.internal.example.com
 ```
 
 Apply a values change with `helm upgrade martian-evals ./martian-evals-<version>.tgz -n martian-evals -f values.yaml --wait --wait-for-jobs`, with no run in progress.
+
+Two features rely on those hosts. Both are built in the backend and its tests; neither has been run against an installation of this chart.
+
+-   **A judge on your own model endpoint.** Set `backend.judge.enabled: true`. An organization’s owner or admin stores a key for an OpenAI-compatible HTTPS endpoint under **Organization → Provider keys** and sets that endpoint’s model as the organization’s default judge model. The worker then judges at the endpoint with that key, encrypted at rest with `AGENT_SECRET_ENCRYPTION_KEY`, and nothing else is called.
+-   **A remote runner for console-launched runs.** A runner is the backend image with the command `python -m app.evals_runner`, which you run on a host in your network that reaches the agent. It only connects out, to your console’s host over HTTPS, with a key an owner or admin creates through the API (`POST /v1/runner-keys`; the console has no page for it yet), and calls only the hosts you allow it. An agent that only the runner reaches is registered with a runner pool. A runner is not part of the chart.
 
 ## Next
 

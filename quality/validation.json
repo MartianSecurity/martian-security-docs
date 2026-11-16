@@ -718,6 +718,13 @@
       "date": "2026-11-16",
       "result": "Production build/check passed; strict completeness remains incomplete",
       "details": "71built pages,70agentexports,91exactcodeblocks,190captions and3existing export regressions passed. Eight actual local route/viewport/theme checks, exact Copy page and both fullsize1440x1000images passed with no failed responses/pageerrors/overflow. Both local renders were viewed. Current publicPyPI version and wheelhash still match the previously qualified release; no localUI release was found. Original38guide requirements/192prior capture records and all4partial guides remain unchanged; strict audit retains the same5failures. Actual search for completed browser assessment opened the updated guide and survived deep refresh. The initial observer used the wrong input type; the real placeholder selector passed, with no product change."
+    },
+    {
+      "scope": "On-Premises guides reconciled with the backend on main and the chart's licence, network and rollback behaviour",
+      "date": "2026-11-16",
+      "environment": "Local documentation build, the chart's offline rendering checks and the backend's upgrade job in containers; no Kubernetes cluster",
+      "result": "Reviewed against source; upgrade, serve and restore tested with containers; not walked through on a cluster",
+      "details": "The guides now describe the offline licence, the evals worker container, the optional single sign-on key, hosts the backend may call, the model catalogue setting and what each part connects to, and a rollback that runs the previous release on the upgraded schema or restores the backup, since the backend refuses a downgrade below its append-only records. The backend's upgrade job passed from the releases at schema 0048 and 0050 to the head. No install on a cluster was walked through, and the On-Premises edition stays Planned."
     }
   ],
   "remainingGaps": [

@@ -128,11 +128,11 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Use the Attack Library and coverage views](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md?v=8f00cab1b18f): Explore catalogued techniques, distinguish runnable coverage from reference material and understand the current Threat Intel view.
 
-- [Install Evals in your cluster](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md?v=5dd89b76efed): Install Martian Evals in your own Kubernetes cluster with the martian-evals Helm chart, then sign in and invite the organization that will use it.
+- [Install Evals in your cluster](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md?v=26397e07c08b): Install Martian Evals in your own Kubernetes cluster with the martian-evals Helm chart, then sign in and invite the organization that will use it.
 
-- [Operate an Evals installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md?v=be9b8da9fa87): Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and upgrade it or roll it back.
+- [Operate an Evals installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md?v=23ca78991e1a): Back up and restore an installation of the martian-evals Helm chart, read its logs and health, troubleshoot it, and upgrade it or roll it back.
 
-- [Size an Evals installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md?v=ceb6561a031b): Resources, volumes and limits of the martian-evals Helm chart, the one-process-per-run rule, and what is and is not measured.
+- [Size an Evals installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md?v=326a7fc759a0): Resources, volumes and limits of the martian-evals Helm chart, the one-process-per-run rule, and what is and is not measured.
 
 - [Find your way around the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/console-navigation.md?v=432459fb66db): Locate every customer console area, its guide and the boundary between available workflows, templates and previews.
 
@@ -164,6 +164,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=2d4fd9d18ca0): all 73 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=08a2a9297947): all 73 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

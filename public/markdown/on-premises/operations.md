@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/on-premises/operations/)
 
 > **Page qualification:** On-Premises Helm chart · platform engineer · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's CI job, which upgrades a database seeded by the releases at schema 0048 and 0050 to 0056 with containers, checks that every row survives and that both backends serve it, then downgrades it and runs the earlier backend again; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's upgrade job, run locally because the private repository's CI is off: it upgrades a database seeded by the releases at schema 0048 and 0050 to the head with containers, checks that every row survives, that both backends serve the upgraded database, that a downgrade is refused and changes nothing, and that a restore of the database backup gives the earlier release back; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.
 
 Guide in progress
 
@@ -22,9 +22,9 @@ Keep an installation of the `martian-evals` chart ([install](https://raw.githubu
 | `mlflow_tracking` database | PostgreSQL | Traces, datasets, judges and run metadata |
 | `mlflow_auth` database | PostgreSQL | MLflow’s accounts: one hidden service account and workspace per organization |
 | Artifacts | The volume `martian-evals-mlflow-artifacts`, or your bucket | Run artifacts and review attachments |
-| The three Secrets | Your secret store | Database passwords, and the keys that decrypt the stored MLflow and agent credentials |
+| The Secrets | Your secret store | Database passwords, and the keys that decrypt the stored MLflow credentials, agent credentials, model keys and single sign-on client secrets. The licence Secret is also kept by Martian Security, who can issue it again |
 
-A backup needs all of them, from the same moment. Without the original `EVALS_SECRET_ENCRYPTION_KEY` and `AGENT_SECRET_ENCRYPTION_KEY`, a restored database cannot read the credentials it stores, and without the original passwords the restored roles do not match the Secrets.
+A backup needs all of them, from the same moment. Without the original `EVALS_SECRET_ENCRYPTION_KEY`, `AGENT_SECRET_ENCRYPTION_KEY` and `SSO_SECRET_ENCRYPTION_KEY`, a restored database cannot read the credentials it stores, and without the original passwords the restored roles do not match the Secrets.
 
 `helm uninstall` keeps the PostgreSQL volume, the artifact volume and the Secrets. Delete them yourself only to discard the data.
 
@@ -99,22 +99,25 @@ kubectl -n martian-evals top pods
 
 | Check | Healthy |
 | --- | --- |
-| Backend probes `/readyz` (database reachable) and `/healthz` | Pod `Ready`, restarts not growing |
+| Backend probes `/readyz` (database reachable) and `/healthz` | Pod `Ready`, restarts not growing in either container |
 | MLflow probe `/health` | Pod `Ready` |
 | PostgreSQL `pg_isready` | Pod `Ready`; data volume not close to full |
 | An organization’s evaluation store | **Master admin → Invitations** shows **Evals: ready** on its row |
-| The Evals schema | `kubectl -n martian-evals exec deploy/martian-evals-backend -- python -m app.evals_records current` prints the same revision twice, as `<revision> (head <revision>)` |
+| The Evals schema | `kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- python -m app.evals_records current` prints the same revision twice, as `<revision> (head <revision>)` |
+| The evals worker | The pod’s second container, `evals-worker`, is `Ready` with restarts not growing; its log starts with a line that it started. Without it a launched run stays queued |
+| The licence | `kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- python -m app.licence status` prints the licence’s state as JSON and exits 0 only for `valid` or `grace` ([the licence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#the-licence)) |
 
 ## Logs
 
 ```sh
-kubectl -n martian-evals logs deploy/martian-evals-backend      # the API, and the run and scoring processes it starts
+kubectl -n martian-evals logs deploy/martian-evals-backend -c backend       # the API
+kubectl -n martian-evals logs deploy/martian-evals-backend -c evals-worker  # the worker, and the run and scoring processes it starts
 kubectl -n martian-evals logs deploy/martian-evals-mlflow
 kubectl -n martian-evals logs statefulset/martian-evals-postgres
 kubectl -n martian-evals logs job/martian-evals-migrate         # within ten minutes of it finishing
 ```
 
-A run’s or scoring job’s process writes to the backend’s log. The migrate and seed jobs are deleted ten minutes after they finish, whether they succeeded or failed, and a successful upgrade-time migrate job or seed job at once. Read a job’s log within that time.
+A run’s or scoring job’s process writes to the evals worker’s log. The migrate and seed jobs are deleted ten minutes after they finish, whether they succeeded or failed, and a successful upgrade-time migrate job or seed job at once. Read a job’s log within that time.
 
 ## Troubleshooting
 
@@ -129,21 +132,41 @@ A run’s or scoring job’s process writes to the backend’s log. The migrate 
 | A CI upload returns 413 | The ingress controller’s request size limit is below 4 MiB ([values](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#3-write-your-values-file)) |
 | **Eval setup is unavailable; contact your administrator** | The organization’s evaluation store is not ready. Use **Complete eval setup** on its invitation row; check that MLflow is `Ready` and its log shows no authentication errors |
 | The operator’s own organization shows the same error | Expected: the operator organization has no evaluation store. Use an invited organization |
-| A run or scoring job stays **running** after a restart | Its process ended with the backend. Stop it from the console |
-| Registering an agent at an internal or `http://` address is refused | Add its host to the backend’s `MANAGED_TARGET_HOSTS` ([SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#6-connect-the-sdk)) |
-| Launching a run or a model judge from the console fails | Both need the Red Team engine, which this chart does not install. Record runs from the SDK and CI |
+| A run or scoring job stays **queued** | The evals worker is not running or not taking work. Check that the pod’s `evals-worker` container is `Ready` and read its log |
+| A run or scoring job is **running** after a restart | A stopped worker gives its work back at once, and a killed one’s work is taken over after 30 seconds; the run then resumes after the cases it had finished. Work whose worker was killed three times is marked **failed** |
+| Registering an agent, a model endpoint or an identity provider at an internal or `http://` address is refused | Add its host to `backend.managedTargetHosts` ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)) |
+| Every organization is on the Community edition | No licence is in force. Run the licence check under [Health and monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#health-and-monitoring): `missing` means the Secret is not mounted or the file is absent, `invalid` that the image cannot verify the file, and `expired` that the grace period is over |
+| Setting an OIDC client secret fails | The backend Secret has no `SSO_SECRET_ENCRYPTION_KEY` ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#2-create-the-secrets)) |
+| Launching a run from the console fails, or a model judge cannot run | A run needs a remote runner for an agent only your network reaches, and a model judge needs `backend.judge.enabled` and a provider key; the Red Team engine is not installed ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)). Record runs from the SDK and CI instead |
 | Sign-in fails after a Secret value was changed | The database and stored credentials still use the first values. Restore the original values from your secret store |
 
-## Organization plans
+## The licence
 
-An organization’s plan decides its edition: `enterprise`, the default, or `community` ([Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md)). No page changes it. To change one, run as the database administrator:
+On the on-premises image, every organization’s edition comes from the licence file, never from an organization’s plan. The backend verifies the file offline, checks it at start-up and every five minutes, and compares its dates with the clock on every request:
 
-```sh
-kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d martian_backend \
-  -c "UPDATE organisations SET plan = 'community' WHERE slug = '<organization subdomain>'"
-```
+| State | When | Edition |
+| --- | --- | --- |
+| `valid` | Between the licence’s issue and expiry dates | On-Premises, with the features and limits the licence lists |
+| `grace` | For the licence’s grace days after expiry; each check logs a warning | On-Premises, as `valid` |
+| `expired`, `not_yet_valid`, `missing`, `invalid` | After the grace period, before issue, no file at the path, or a file the image refuses | Community |
 
-The On-Premises edition, which a licence file will turn on, is not available yet.
+On the Community edition the paid features, review queues and Monitoring among them, are refused, every free feature keeps working, and reviews already recorded stay readable. A licence that is not in force never stops the backend from starting. To renew, replace the Secret’s file (`kubectl create secret generic martian-evals-licence --from-file=licence.json=<new file> --dry-run=client -o yaml | kubectl -n martian-evals apply -f -`); the API reads it again within five minutes and no restart is needed. No setting turns an on-premises image into a hosted one.
+
+## Network use
+
+The chart installs nothing that calls out by itself. What each part connects to:
+
+| Part | Connects to |
+| --- | --- |
+| Backend API | PostgreSQL and MLflow in the release. Then only what an organization configures: its identity provider (single sign-on), the endpoint of a judge, and an agent’s address, which the API resolves and, for an agent, calls once to validate it |
+| Evals worker | PostgreSQL and MLflow, and the model endpoint a judge names. A remote runner of yours calls an agent; the worker does not |
+| MLflow | PostgreSQL and, if you chose object storage, your bucket |
+| Console | Nothing. It serves static files |
+| PostgreSQL, migrate and seed jobs | PostgreSQL only (the jobs) |
+
+The chart sets what keeps it so: MLflow’s usage telemetry is off (`MLFLOW_DISABLE_TELEMETRY=true`) and MLflow’s model-price catalogue, which it downloads from github.com by default when a trace carries a model call, is not (`MLFLOW_MODEL_CATALOG_URI` is empty). With it empty no model call on a trace is priced. To price them, point `mlflow.modelCatalogUri` at a mirror of that catalogue inside your network. Invitation e-mail through a cloud mail service and the hosted red-team admission are off, and the chart sets no address for the Red Team engine, the Wiki or the sandbox orchestrator.
+
+The chart adds NetworkPolicies for the pods that reach MLflow and PostgreSQL, and none for egress. A cluster that denies egress by default must let the backend and the worker reach PostgreSQL, MLflow, DNS and the endpoints above, and MLflow reach PostgreSQL and your bucket. Martian Security’s tests run the Evals core with the network blocked and fail on any outbound attempt; an installation of this chart on a cluster that denies egress has not been run yet.
 
 ## Upgrades
 
@@ -153,68 +176,48 @@ A release is identified by the backend’s schema revision. To see yours:
 kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic current
 ```
 
-These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, and it is rolled back.
+These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, the earlier release’s backend serves the upgraded database again, and a backup of the earlier release restores.
 
 | Installed schema | Upgrades to | Upgrade | Rollback |
 | --- | --- | --- | --- |
-| `0056`, the release this chart installs | No later release yet |  |  |
-| `0050` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
-| `0048` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
-| Earlier than `0048` |  | Not supported | Not possible |
+| The release this chart installs | No later release yet |  |  |
+| `0050` | The release this chart installs | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| `0048` | The release this chart installs | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| Earlier than `0048` |  | Not supported | Not tested |
 
-An installation of this chart starts at `0056`; `0048` and `0050` are the backend releases before it. Upgrade only along a row of this table, to a chart and images that Martian Security gives you.
+`0048` and `0050` are backend releases before the one the chart installs. Upgrade only along a row of this table, to a chart and images that Martian Security gives you. When a release ships, its schema is added to the table.
 
 ### Upgrade
 
-1.  Wait until no run or scoring job is in progress. The upgrade restarts the backend, which ends them.
+1.  Wait until no run or scoring job is in progress. A restart of the backend gives its work back to the queue, and the work resumes, but an upgrade under running work is not tested.
 2.  [Back up](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#back-up) all three databases, the artifacts and the Secrets.
-3.  Note the current Helm revision (`helm -n martian-evals history martian-evals`) and schema revision (`alembic current`, above). A rollback needs both.
-4.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts, while the current backend keeps serving. It takes seconds: about 23 s from `0048` on a 1.2 GB database.
+3.  Note the current Helm revision (`helm -n martian-evals history martian-evals`) and schema revision (`alembic current`, above). A rollback needs the Helm revision.
+4.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts, while the current backend keeps serving. It takes seconds: about 20 s on an empty database and 20 to 25 s from `0048` or `0050` on a small one, almost all of it the Evals schema’s own steps. The larger the database, the longer the few migrations that read a whole table; the time on a large database has not been measured for every revision.
 5.  Change the MLflow image only with Martian Security’s instructions for that release. A new MLflow release can need its database migrated while MLflow is stopped, and the chart does not do that step: MLflow refuses to start until it is done.
 
 **Expected result.** `alembic current` prints the new revision with `(head)`, the Evals schema check under [Health and monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#health-and-monitoring) prints the same revision twice, and members sign in and see their runs.
 
 ### Roll back
 
-`helm rollback` does not change the database, and the previous backend does not know the newer schema. Take the schema back first, with the backend that is running, then roll back at once. Between the two steps the API answers errors and the evals worker may fail.
+Do not downgrade the database. The backend refuses to take its schema back below the audit log, evidence sign-offs and release gates, because those are records that must be kept, and a refused downgrade changes nothing. A rollback is one of two things, and both are tested.
 
-If the release changed the MLflow image, do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
-
-#### 1\. Check that the downgrade can run
-
-Both counts must be `0`. Otherwise do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
-
-```sh
-kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d martian_backend -c \
-  "SELECT (SELECT count(*) FROM target_leases WHERE core_owner IS NOT NULL) AS core_leases,
-          (SELECT count(*) FROM eval_review_queues WHERE project_key IS NOT NULL) AS core_queues"
-```
-
-#### 2\. Downgrade the schema
-
-Use the schema revision you noted before the upgrade:
-
-```sh
-kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic downgrade <previous schema revision>
-```
-
-#### 3\. Roll back the release
-
-Use the Helm revision you noted before the upgrade:
+**Run the previous release.** `helm rollback` does not change the database, so the previous backend starts on the upgraded database and ignores what it does not know. Use the Helm revision you noted before the upgrade:
 
 ```sh
 helm -n martian-evals rollback martian-evals <previous Helm revision> --wait --timeout 15m
 ```
 
-**Expected result.** `alembic current` prints the previous revision, and members sign in and see what they had before the upgrade.
+**Expected result.** The previous backend and worker are `Ready`, `alembic current` prints the upgraded revision, and members sign in and see their runs. Upgrade again when the cause is fixed.
+
+**Restore the backup.** If the release changed the MLflow image, if the previous release does not enforce something you need ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep)), or if you want the data as it was, restore the backup you took before the upgrade into the previous chart and images: run `helm rollback`, then [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) from step 2.
 
 ### What a rollback cannot keep
 
-A downgrade gives back the previous schema. What was written after the upgrade into the tables and columns it removes is gone:
+When the previous release runs on the upgraded database, what the newer one wrote stays in the database and is not shown by the older one:
 
--   **Evals work done after the upgrade:** runs launched or recorded through the console and the SDK, their results, scores, scoring jobs, reviews, suites, dataset drafts and saved views. Datasets published since stay in MLflow but are no longer listed. Runs uploaded by the CI gate stay.
--   **Settings introduced by the release:** each organization’s default judge model and, going back to `0048`, organization plans.
--   **Refusals:** once a run or scoring job has run through the backend’s worker, or a review queue has been created since the upgrade, the downgrade refuses. Its first step has then already removed part of the Evals schema, so always run the [check](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#1-check-that-the-downgrade-can-run) first, and restore the backup when it finds anything.
+-   **Evals work done after the upgrade:** runs launched or recorded through the console and the SDK, their results, scores, scoring jobs, reviews, suites, dataset drafts and saved views, and datasets published since. Runs uploaded by the CI gate stay.
+-   **What the newer release added:** single sign-on settings, custom roles, provisioning, provider keys, the audit log, applications and release gates, evidence sign-offs, retention policies and holds, and remote runner keys.
+-   **What the previous release does not enforce:** an organization that turned password sign-in off to require single sign-on can sign in with its password again, the audit log gets no new entries, and no retention pass deletes anything, until you upgrade again. Where that matters, restore the backup instead.
 -   **MLflow** keeps whatever schema its image migrated to; the chart does not take it back.
 
 Restoring the backup taken before the upgrade gives back everything as it was then, and loses everything since.

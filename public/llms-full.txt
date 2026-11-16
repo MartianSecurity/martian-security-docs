@@ -5167,7 +5167,7 @@ Source: [Web version](https://docs.martiansecurity.ai/on-premises/install/)
 
 > **Page qualification:** On-Premises Helm chart · platform engineer; master admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live.
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal, including the licence mount, the managed hosts and the model catalogue address. No install has been walked through on a Kubernetes cluster, so no step below is observed live.
 
 Guide in progress
 
@@ -5181,18 +5181,19 @@ On-Premises is a **Planned** edition ([Editions](https://raw.githubusercontent.c
 
 | Part | What it does |
 | --- | --- |
-| Backend | The Martian API, including Evals. It runs each eval run and scoring job in a process of its own ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#one-process-per-run)) |
+| Backend | One pod with two containers: the Martian API, including Evals, and the evals worker, which takes each eval run and scoring job from a queue in the database and runs it in a process of its own ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#one-process-per-run)) |
 | Console | The Martian console. It calls the API at `/v1` on its own host |
 | MLflow | Stores traces, datasets, judges and artifacts. Only the backend reaches it; people never open it |
 | PostgreSQL | Optional. Holds the backend’s records and MLflow’s two databases. You can use your own server instead |
 | Migrate and seed jobs | Prepare the database schema, and on the first install create your operator account |
 
-Everything runs in one namespace. The chart points the backend and MLflow only at each other and at PostgreSQL (and at your bucket, if you choose one), and MLflow’s usage telemetry is off in both.
+Everything runs in one namespace. The chart points the backend and MLflow only at each other and at PostgreSQL (and at your bucket, if you choose one). It turns MLflow’s usage telemetry off in both and stops MLflow downloading its model-price catalogue from github.com, so nothing in the installation calls out by itself ([what each part connects to](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#network-use)).
+
+The edition of every organization comes from the licence file that Martian Security signs for your installation ([the licence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#the-licence)). Without a licence in force, every organization runs the Community edition, which has no review queues or Monitoring.
 
 ## What it does not include yet
 
--   **Runs launched from the console, and model judges.** Both run through the Red Team engine, which this chart does not install. Record runs from your own environment with the SDK and CI instead: [evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) and [gate CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
--   **An offline licence.** Each organization gets the edition of its plan, **Enterprise** unless you change it ([plans](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#organization-plans)). Enterprise includes review queues and Monitoring.
+-   **Runs launched from the console and model judges, as the hosted console runs them.** Both run through the Red Team engine, which this chart does not install. Two things replace them: a **remote runner** that you run in your network calls an agent that only your network reaches, and a **judge on your own model endpoint** runs in the evals worker with a key an organization stores ([your own agents and models](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)). Neither has been run against an installation of this chart. Otherwise record runs from your own environment with the SDK and CI: [evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) and [gate CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Datasets, runs and their results, traces, code scoring of saved results, reviews and comparison work in the console.
 -   **A verified air-gapped install.** A cluster without outbound network can install from your own registry ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)), but that route has not yet been run on an air-gapped cluster.
 -   **A later release to upgrade to.** This is the chart’s first release. The supported upgrade paths, each tested with a rollback, are in [upgrades](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#upgrades).
 -   The console’s Red Team, environment and Discovery pages, which need services this chart does not install.
@@ -5202,8 +5203,8 @@ Everything runs in one namespace. The chart points the backend and MLflow only a
 -   **Role:** a platform engineer who can create a namespace, Secrets and Ingress objects, and run Helm in that namespace.
 -   **Cluster:** Kubernetes 1.30 or later, `kubectl` and Helm 3, an ingress controller whose IngressClass passes WebSocket upgrades, and a default StorageClass with `ReadWriteOnce` volumes.
 -   **Host and TLS:** a DNS name for the console, for example `evals.example.com`, and its certificate in a `kubernetes.io/tls` Secret in the namespace, unless TLS ends at a load balancer in front of the ingress controller.
--   **From Martian Security:** the chart package `martian-evals-<version>.tgz` and the image references for the backend, the console and MLflow, all from one release. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry. Without outbound network, use a release bundle instead ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)).
--   **Capacity:** about 2 CPUs and 4 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md)).
+-   **From Martian Security:** the chart package `martian-evals-<version>.tgz`, the image references for the backend, the console and MLflow, all from one release, and your licence file. The backend image is the on-premises build, which verifies the licence offline. Push the three images to a registry your cluster pulls from. The bundled PostgreSQL uses the public `pgvector/pgvector:0.8.6-pg18-bookworm` image; mirror it to the same registry. Without outbound network, use a release bundle instead ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#a-cluster-without-outbound-network)).
+-   **Capacity:** about 2.3 CPUs and 4.8 GiB of memory requested, and two 20 GiB volumes, with the defaults ([sizing](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md)).
 -   `openssl` on the machine you run the commands from.
 
 ## 1\. Create the namespace
@@ -5216,7 +5217,7 @@ The commands in this guide use the namespace `martian-evals` and the release nam
 
 ## 2\. Create the Secrets
 
-The chart reads three Secrets and never creates one. Generate their values in the shell, so that no key is typed or kept in your shell history. Choose the operator account’s email and password: this account signs in first and invites the organizations that use Evals.
+The chart reads three Secrets, and a fourth that holds your licence, and never creates one. Generate their values in the shell, so that no key is typed or kept in your shell history. Choose the operator account’s email and password: this account signs in first and invites the organizations that use Evals.
 
 ```sh
 read -r -p 'Operator email: ' OPERATOR_EMAIL
@@ -5228,7 +5229,8 @@ kubectl -n martian-evals create secret generic martian-evals-backend \
   --from-literal=BOOTSTRAP_OWNER_EMAIL="$OPERATOR_EMAIL" \
   --from-literal=BOOTSTRAP_OWNER_PASSWORD="$OPERATOR_PASSWORD" \
   --from-literal=EVALS_SECRET_ENCRYPTION_KEY="$(key)" \
-  --from-literal=AGENT_SECRET_ENCRYPTION_KEY="$(key)"
+  --from-literal=AGENT_SECRET_ENCRYPTION_KEY="$(key)" \
+  --from-literal=SSO_SECRET_ENCRYPTION_KEY="$(key)"
 
 kubectl -n martian-evals create secret generic martian-evals-mlflow \
   --from-literal=tracking_password="$(openssl rand -hex 32)" \
@@ -5245,11 +5247,21 @@ unset OPERATOR_PASSWORD
 
 | Secret | Holds |
 | --- | --- |
-| `martian-evals-backend` | The session signing key, the operator account, and the two keys that encrypt stored MLflow and agent credentials |
+| `martian-evals-backend` | The session signing key, the operator account, and the keys that encrypt stored MLflow credentials, agent credentials and your model keys, and single sign-on client secrets. The last key is optional: without it an organization cannot save an OIDC client secret |
 | `martian-evals-mlflow` | MLflow’s database passwords, its administrator password, which only the backend uses, and its session key |
 | `martian-evals-postgres` | The bundled PostgreSQL’s superuser password and the backend’s database password |
 
-Copy the three Secrets into your secret store now; `kubectl -n martian-evals get secret martian-evals-backend martian-evals-mlflow martian-evals-postgres -o yaml` prints them. The bundled database takes its passwords from them when it first starts, and the encryption keys are needed to read what the backend stores. Changing a value later does not change the database or the stored data; [operations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-to-keep) says what to keep.
+Copy the Secrets into your secret store now; `kubectl -n martian-evals get secret martian-evals-backend martian-evals-mlflow martian-evals-postgres -o yaml` prints them. The bundled database takes its passwords from them when it first starts, and the encryption keys are needed to read what the backend stores. Changing a value later does not change the database or the stored data; [operations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-to-keep) says what to keep.
+
+### The licence
+
+The licence is a signed file that Martian Security issues for your installation. The backend verifies it offline, with a public key built into its image; nothing calls a licence server. Put it in a Secret:
+
+```sh
+kubectl -n martian-evals create secret generic martian-evals-licence --from-file=licence.json=<licence file>
+```
+
+Name the Secret in your values file ([next step](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#3-write-your-values-file)). The chart mounts the file in both backend containers, and the API checks it again every five minutes, so a replaced Secret is in force without a restart. While the licence is valid, or in its grace period after it expires, every organization has the On-Premises edition with the features and limits the licence lists. Without a licence, with an expired one, or with one the image cannot verify, every organization runs the Community edition: the free features keep working and the paid ones are refused. A licence that is not in force never stops the backend from starting. Keep the backend image the on-premises build; an image built without the licence key is a hosted build, which cannot verify your licence.
 
 ## 3\. Write your values file
 
@@ -5270,6 +5282,9 @@ secrets:
   backend: martian-evals-backend
   mlflow: martian-evals-mlflow
   postgres: martian-evals-postgres
+
+licence:
+  existingSecret: martian-evals-licence
 
 backend:
   image: {repository: martian-backend, digest: "sha256:<backend digest>"}
@@ -5380,15 +5395,25 @@ The SDK and CI use your console host as the API address:
 export MARTIAN_API_URL='https://evals.example.com'
 ```
 
-Create an API key in the organization and continue with [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). Agents that the backend checks at an address inside your network, or over plain HTTP, need that host in the backend’s `MANAGED_TARGET_HOSTS` setting:
+Create an API key in the organization and continue with [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). An agent that the backend checks at an address inside your network, or over plain HTTP, needs its host in the chart’s `backend.managedTargetHosts` ([next step](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)).
+
+## 7\. Your own agents and models
+
+In your own network, the agents that organizations register, the model endpoints their judges call and your identity provider are usually on private addresses. The backend refuses to call a private address, or plain HTTP, unless you list the host. List host names only, with no scheme or port:
 
 ```yaml
 backend:
-  env:
-    MANAGED_TARGET_HOSTS: agent.internal.example.com
+  managedTargetHosts:
+    - agent.internal.example.com
+    - models.internal.example.com
 ```
 
 Apply a values change with `helm upgrade martian-evals ./martian-evals-<version>.tgz -n martian-evals -f values.yaml --wait --wait-for-jobs`, with no run in progress.
+
+Two features rely on those hosts. Both are built in the backend and its tests; neither has been run against an installation of this chart.
+
+-   **A judge on your own model endpoint.** Set `backend.judge.enabled: true`. An organization’s owner or admin stores a key for an OpenAI-compatible HTTPS endpoint under **Organization → Provider keys** and sets that endpoint’s model as the organization’s default judge model. The worker then judges at the endpoint with that key, encrypted at rest with `AGENT_SECRET_ENCRYPTION_KEY`, and nothing else is called.
+-   **A remote runner for console-launched runs.** A runner is the backend image with the command `python -m app.evals_runner`, which you run on a host in your network that reaches the agent. It only connects out, to your console’s host over HTTPS, with a key an owner or admin creates through the API (`POST /v1/runner-keys`; the console has no page for it yet), and calls only the hosts you allow it. An agent that only the runner reaches is registered with a runner pool. A runner is not part of the chart.
 
 ## Next
 
@@ -5405,7 +5430,7 @@ Source: [Web version](https://docs.martiansecurity.ai/on-premises/operations/)
 
 > **Page qualification:** On-Premises Helm chart · platform engineer · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's CI job, which upgrades a database seeded by the releases at schema 0048 and 0050 to 0056 with containers, checks that every row survives and that both backends serve it, then downgrades it and runs the earlier backend again; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.
+> **Walkthrough limits:** Reviewed against the martian-evals chart and the backend, frontend and MLflow sources it installs, at the revisions recorded as sources. The chart's own checks render every documented values variant and refusal. No install has been walked through on a Kubernetes cluster, so no step below is observed live. The backup and restore commands for the databases were run with docker exec in place of kubectl exec against a disposable PostgreSQL 17 holding a seeded backend database at migration 0050; the restored database kept its data, ownership and row-level security policies and the backend's seed ran on it. The upgrade paths and the rollback were tested by the backend's upgrade job, run locally because the private repository's CI is off: it upgrades a database seeded by the releases at schema 0048 and 0050 to the head with containers, checks that every row survives, that both backends serve the upgraded database, that a downgrade is refused and changes nothing, and that a restore of the database backup gives the earlier release back; the helm upgrade, helm rollback and kubectl exec commands themselves were not run on a cluster.
 
 Guide in progress
 
@@ -5421,9 +5446,9 @@ Keep an installation of the `martian-evals` chart ([install](https://raw.githubu
 | `mlflow_tracking` database | PostgreSQL | Traces, datasets, judges and run metadata |
 | `mlflow_auth` database | PostgreSQL | MLflow’s accounts: one hidden service account and workspace per organization |
 | Artifacts | The volume `martian-evals-mlflow-artifacts`, or your bucket | Run artifacts and review attachments |
-| The three Secrets | Your secret store | Database passwords, and the keys that decrypt the stored MLflow and agent credentials |
+| The Secrets | Your secret store | Database passwords, and the keys that decrypt the stored MLflow credentials, agent credentials, model keys and single sign-on client secrets. The licence Secret is also kept by Martian Security, who can issue it again |
 
-A backup needs all of them, from the same moment. Without the original `EVALS_SECRET_ENCRYPTION_KEY` and `AGENT_SECRET_ENCRYPTION_KEY`, a restored database cannot read the credentials it stores, and without the original passwords the restored roles do not match the Secrets.
+A backup needs all of them, from the same moment. Without the original `EVALS_SECRET_ENCRYPTION_KEY`, `AGENT_SECRET_ENCRYPTION_KEY` and `SSO_SECRET_ENCRYPTION_KEY`, a restored database cannot read the credentials it stores, and without the original passwords the restored roles do not match the Secrets.
 
 `helm uninstall` keeps the PostgreSQL volume, the artifact volume and the Secrets. Delete them yourself only to discard the data.
 
@@ -5498,22 +5523,25 @@ kubectl -n martian-evals top pods
 
 | Check | Healthy |
 | --- | --- |
-| Backend probes `/readyz` (database reachable) and `/healthz` | Pod `Ready`, restarts not growing |
+| Backend probes `/readyz` (database reachable) and `/healthz` | Pod `Ready`, restarts not growing in either container |
 | MLflow probe `/health` | Pod `Ready` |
 | PostgreSQL `pg_isready` | Pod `Ready`; data volume not close to full |
 | An organization’s evaluation store | **Master admin → Invitations** shows **Evals: ready** on its row |
-| The Evals schema | `kubectl -n martian-evals exec deploy/martian-evals-backend -- python -m app.evals_records current` prints the same revision twice, as `<revision> (head <revision>)` |
+| The Evals schema | `kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- python -m app.evals_records current` prints the same revision twice, as `<revision> (head <revision>)` |
+| The evals worker | The pod’s second container, `evals-worker`, is `Ready` with restarts not growing; its log starts with a line that it started. Without it a launched run stays queued |
+| The licence | `kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- python -m app.licence status` prints the licence’s state as JSON and exits 0 only for `valid` or `grace` ([the licence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#the-licence)) |
 
 ## Logs
 
 ```sh
-kubectl -n martian-evals logs deploy/martian-evals-backend      # the API, and the run and scoring processes it starts
+kubectl -n martian-evals logs deploy/martian-evals-backend -c backend       # the API
+kubectl -n martian-evals logs deploy/martian-evals-backend -c evals-worker  # the worker, and the run and scoring processes it starts
 kubectl -n martian-evals logs deploy/martian-evals-mlflow
 kubectl -n martian-evals logs statefulset/martian-evals-postgres
 kubectl -n martian-evals logs job/martian-evals-migrate         # within ten minutes of it finishing
 ```
 
-A run’s or scoring job’s process writes to the backend’s log. The migrate and seed jobs are deleted ten minutes after they finish, whether they succeeded or failed, and a successful upgrade-time migrate job or seed job at once. Read a job’s log within that time.
+A run’s or scoring job’s process writes to the evals worker’s log. The migrate and seed jobs are deleted ten minutes after they finish, whether they succeeded or failed, and a successful upgrade-time migrate job or seed job at once. Read a job’s log within that time.
 
 ## Troubleshooting
 
@@ -5528,21 +5556,41 @@ A run’s or scoring job’s process writes to the backend’s log. The migrate 
 | A CI upload returns 413 | The ingress controller’s request size limit is below 4 MiB ([values](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#3-write-your-values-file)) |
 | **Eval setup is unavailable; contact your administrator** | The organization’s evaluation store is not ready. Use **Complete eval setup** on its invitation row; check that MLflow is `Ready` and its log shows no authentication errors |
 | The operator’s own organization shows the same error | Expected: the operator organization has no evaluation store. Use an invited organization |
-| A run or scoring job stays **running** after a restart | Its process ended with the backend. Stop it from the console |
-| Registering an agent at an internal or `http://` address is refused | Add its host to the backend’s `MANAGED_TARGET_HOSTS` ([SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#6-connect-the-sdk)) |
-| Launching a run or a model judge from the console fails | Both need the Red Team engine, which this chart does not install. Record runs from the SDK and CI |
+| A run or scoring job stays **queued** | The evals worker is not running or not taking work. Check that the pod’s `evals-worker` container is `Ready` and read its log |
+| A run or scoring job is **running** after a restart | A stopped worker gives its work back at once, and a killed one’s work is taken over after 30 seconds; the run then resumes after the cases it had finished. Work whose worker was killed three times is marked **failed** |
+| Registering an agent, a model endpoint or an identity provider at an internal or `http://` address is refused | Add its host to `backend.managedTargetHosts` ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)) |
+| Every organization is on the Community edition | No licence is in force. Run the licence check under [Health and monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#health-and-monitoring): `missing` means the Secret is not mounted or the file is absent, `invalid` that the image cannot verify the file, and `expired` that the grace period is over |
+| Setting an OIDC client secret fails | The backend Secret has no `SSO_SECRET_ENCRYPTION_KEY` ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#2-create-the-secrets)) |
+| Launching a run from the console fails, or a model judge cannot run | A run needs a remote runner for an agent only your network reaches, and a model judge needs `backend.judge.enabled` and a provider key; the Red Team engine is not installed ([install](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/install.md#7-your-own-agents-and-models)). Record runs from the SDK and CI instead |
 | Sign-in fails after a Secret value was changed | The database and stored credentials still use the first values. Restore the original values from your secret store |
 
-## Organization plans
+## The licence
 
-An organization’s plan decides its edition: `enterprise`, the default, or `community` ([Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md)). No page changes it. To change one, run as the database administrator:
+On the on-premises image, every organization’s edition comes from the licence file, never from an organization’s plan. The backend verifies the file offline, checks it at start-up and every five minutes, and compares its dates with the clock on every request:
 
-```sh
-kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d martian_backend \
-  -c "UPDATE organisations SET plan = 'community' WHERE slug = '<organization subdomain>'"
-```
+| State | When | Edition |
+| --- | --- | --- |
+| `valid` | Between the licence’s issue and expiry dates | On-Premises, with the features and limits the licence lists |
+| `grace` | For the licence’s grace days after expiry; each check logs a warning | On-Premises, as `valid` |
+| `expired`, `not_yet_valid`, `missing`, `invalid` | After the grace period, before issue, no file at the path, or a file the image refuses | Community |
 
-The On-Premises edition, which a licence file will turn on, is not available yet.
+On the Community edition the paid features, review queues and Monitoring among them, are refused, every free feature keeps working, and reviews already recorded stay readable. A licence that is not in force never stops the backend from starting. To renew, replace the Secret’s file (`kubectl create secret generic martian-evals-licence --from-file=licence.json=<new file> --dry-run=client -o yaml | kubectl -n martian-evals apply -f -`); the API reads it again within five minutes and no restart is needed. No setting turns an on-premises image into a hosted one.
+
+## Network use
+
+The chart installs nothing that calls out by itself. What each part connects to:
+
+| Part | Connects to |
+| --- | --- |
+| Backend API | PostgreSQL and MLflow in the release. Then only what an organization configures: its identity provider (single sign-on), the endpoint of a judge, and an agent’s address, which the API resolves and, for an agent, calls once to validate it |
+| Evals worker | PostgreSQL and MLflow, and the model endpoint a judge names. A remote runner of yours calls an agent; the worker does not |
+| MLflow | PostgreSQL and, if you chose object storage, your bucket |
+| Console | Nothing. It serves static files |
+| PostgreSQL, migrate and seed jobs | PostgreSQL only (the jobs) |
+
+The chart sets what keeps it so: MLflow’s usage telemetry is off (`MLFLOW_DISABLE_TELEMETRY=true`) and MLflow’s model-price catalogue, which it downloads from github.com by default when a trace carries a model call, is not (`MLFLOW_MODEL_CATALOG_URI` is empty). With it empty no model call on a trace is priced. To price them, point `mlflow.modelCatalogUri` at a mirror of that catalogue inside your network. Invitation e-mail through a cloud mail service and the hosted red-team admission are off, and the chart sets no address for the Red Team engine, the Wiki or the sandbox orchestrator.
+
+The chart adds NetworkPolicies for the pods that reach MLflow and PostgreSQL, and none for egress. A cluster that denies egress by default must let the backend and the worker reach PostgreSQL, MLflow, DNS and the endpoints above, and MLflow reach PostgreSQL and your bucket. Martian Security’s tests run the Evals core with the network blocked and fail on any outbound attempt; an installation of this chart on a cluster that denies egress has not been run yet.
 
 ## Upgrades
 
@@ -5552,68 +5600,48 @@ A release is identified by the backend’s schema revision. To see yours:
 kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic current
 ```
 
-These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, and it is rolled back.
+These are the supported upgrade paths. Each is tested by Martian Security’s CI with containers: a database seeded by the earlier release is upgraded, the backend serves its data, the earlier release’s backend serves the upgraded database again, and a backup of the earlier release restores.
 
 | Installed schema | Upgrades to | Upgrade | Rollback |
 | --- | --- | --- | --- |
-| `0056`, the release this chart installs | No later release yet |  |  |
-| `0050` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
-| `0048` | `0056` | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
-| Earlier than `0048` |  | Not supported | Not possible |
+| The release this chart installs | No later release yet |  |  |
+| `0050` | The release this chart installs | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| `0048` | The release this chart installs | Tested | Tested, with the [limits below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep) |
+| Earlier than `0048` |  | Not supported | Not tested |
 
-An installation of this chart starts at `0056`; `0048` and `0050` are the backend releases before it. Upgrade only along a row of this table, to a chart and images that Martian Security gives you.
+`0048` and `0050` are backend releases before the one the chart installs. Upgrade only along a row of this table, to a chart and images that Martian Security gives you. When a release ships, its schema is added to the table.
 
 ### Upgrade
 
-1.  Wait until no run or scoring job is in progress. The upgrade restarts the backend, which ends them.
+1.  Wait until no run or scoring job is in progress. A restart of the backend gives its work back to the queue, and the work resumes, but an upgrade under running work is not tested.
 2.  [Back up](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#back-up) all three databases, the artifacts and the Secrets.
-3.  Note the current Helm revision (`helm -n martian-evals history martian-evals`) and schema revision (`alembic current`, above). A rollback needs both.
-4.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts, while the current backend keeps serving. It takes seconds: about 23 s from `0048` on a 1.2 GB database.
+3.  Note the current Helm revision (`helm -n martian-evals history martian-evals`) and schema revision (`alembic current`, above). A rollback needs the Helm revision.
+4.  Run `helm upgrade martian-evals ./martian-evals-<new version>.tgz --namespace martian-evals -f values.yaml --wait --wait-for-jobs --timeout 15m`. The migrate job runs before the new backend starts, while the current backend keeps serving. It takes seconds: about 20 s on an empty database and 20 to 25 s from `0048` or `0050` on a small one, almost all of it the Evals schema’s own steps. The larger the database, the longer the few migrations that read a whole table; the time on a large database has not been measured for every revision.
 5.  Change the MLflow image only with Martian Security’s instructions for that release. A new MLflow release can need its database migrated while MLflow is stopped, and the chart does not do that step: MLflow refuses to start until it is done.
 
 **Expected result.** `alembic current` prints the new revision with `(head)`, the Evals schema check under [Health and monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#health-and-monitoring) prints the same revision twice, and members sign in and see their runs.
 
 ### Roll back
 
-`helm rollback` does not change the database, and the previous backend does not know the newer schema. Take the schema back first, with the backend that is running, then roll back at once. Between the two steps the API answers errors and the evals worker may fail.
+Do not downgrade the database. The backend refuses to take its schema back below the audit log, evidence sign-offs and release gates, because those are records that must be kept, and a refused downgrade changes nothing. A rollback is one of two things, and both are tested.
 
-If the release changed the MLflow image, do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
-
-#### 1\. Check that the downgrade can run
-
-Both counts must be `0`. Otherwise do not downgrade: [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) the backup into the previous chart and images instead.
-
-```sh
-kubectl -n martian-evals exec martian-evals-postgres-0 -- psql -U postgres -d martian_backend -c \
-  "SELECT (SELECT count(*) FROM target_leases WHERE core_owner IS NOT NULL) AS core_leases,
-          (SELECT count(*) FROM eval_review_queues WHERE project_key IS NOT NULL) AS core_queues"
-```
-
-#### 2\. Downgrade the schema
-
-Use the schema revision you noted before the upgrade:
-
-```sh
-kubectl -n martian-evals exec deploy/martian-evals-backend -c backend -- alembic downgrade <previous schema revision>
-```
-
-#### 3\. Roll back the release
-
-Use the Helm revision you noted before the upgrade:
+**Run the previous release.** `helm rollback` does not change the database, so the previous backend starts on the upgraded database and ignores what it does not know. Use the Helm revision you noted before the upgrade:
 
 ```sh
 helm -n martian-evals rollback martian-evals <previous Helm revision> --wait --timeout 15m
 ```
 
-**Expected result.** `alembic current` prints the previous revision, and members sign in and see what they had before the upgrade.
+**Expected result.** The previous backend and worker are `Ready`, `alembic current` prints the upgraded revision, and members sign in and see their runs. Upgrade again when the cause is fixed.
+
+**Restore the backup.** If the release changed the MLflow image, if the previous release does not enforce something you need ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#what-a-rollback-cannot-keep)), or if you want the data as it was, restore the backup you took before the upgrade into the previous chart and images: run `helm rollback`, then [restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#restore) from step 2.
 
 ### What a rollback cannot keep
 
-A downgrade gives back the previous schema. What was written after the upgrade into the tables and columns it removes is gone:
+When the previous release runs on the upgraded database, what the newer one wrote stays in the database and is not shown by the older one:
 
--   **Evals work done after the upgrade:** runs launched or recorded through the console and the SDK, their results, scores, scoring jobs, reviews, suites, dataset drafts and saved views. Datasets published since stay in MLflow but are no longer listed. Runs uploaded by the CI gate stay.
--   **Settings introduced by the release:** each organization’s default judge model and, going back to `0048`, organization plans.
--   **Refusals:** once a run or scoring job has run through the backend’s worker, or a review queue has been created since the upgrade, the downgrade refuses. Its first step has then already removed part of the Evals schema, so always run the [check](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#1-check-that-the-downgrade-can-run) first, and restore the backup when it finds anything.
+-   **Evals work done after the upgrade:** runs launched or recorded through the console and the SDK, their results, scores, scoring jobs, reviews, suites, dataset drafts and saved views, and datasets published since. Runs uploaded by the CI gate stay.
+-   **What the newer release added:** single sign-on settings, custom roles, provisioning, provider keys, the audit log, applications and release gates, evidence sign-offs, retention policies and holds, and remote runner keys.
+-   **What the previous release does not enforce:** an organization that turned password sign-in off to require single sign-on can sign in with its password again, the audit log gets no new entries, and no retention pass deletes anything, until you upgrade again. Where that matters, restore the backup instead.
 -   **MLflow** keeps whatever schema its image migrated to; the chart does not take it back.
 
 Restoring the backup taken before the upgrade gives back everything as it was then, and loses everything since.
@@ -5639,29 +5667,29 @@ Plan CPU, memory and storage for an installation of the `martian-evals` chart ([
 
 | Workload | Replicas | CPU request | Memory request | Memory limit | Volume | Values |
 | --- | --- | --- | --- | --- | --- | --- |
-| Backend, with its run and scoring processes | 1 | 500m | 1 GiB | 2 GiB | none | `backend.replicas`, `backend.resources` |
+| Backend API container | 1 | 500m | 1 GiB | 2 GiB | none | `backend.replicas`, `backend.resources` |
+| Evals worker container, in the same pod, with the run and scoring processes | 1 | 250m | 768 MiB | 1536 MiB | none | `backend.worker.resources`, `backend.worker.concurrency` |
 | Console | 1 | 50m | 64 MiB | 128 MiB | none | `frontend.replicas`, `frontend.resources` |
 | MLflow | 1, fixed | 1 | 2 GiB | 4 GiB, 2 CPU | 20 GiB artifacts | `mlflow.resources`, `mlflow.workers`, `mlflow.artifacts.persistence.size` |
 | PostgreSQL (bundled) | 1, fixed | 500m | 1 GiB | 2 GiB | 20 GiB data | `postgres.resources`, `postgres.size` |
 | Migrate job, at install and upgrade | 1 | 100m | 256 MiB | 1 GiB | none | `backend.migration.resources` |
 
-In total about 2 CPUs and 4 GiB of memory are requested, with memory limits of about 8 GiB, plus 40 GiB of volumes. The volume sizes are starting points; size them from the [storage figures](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#storage). Volumes use your default StorageClass unless you set `postgres.storageClassName` and `mlflow.artifacts.persistence.storageClassName`.
+In total about 2.3 CPUs and 4.8 GiB of memory are requested, with memory limits of about 9.6 GiB, plus 40 GiB of volumes. The volume sizes are starting points; size them from the [storage figures](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/sizing.md#storage). Volumes use your default StorageClass unless you set `postgres.storageClassName` and `mlflow.artifacts.persistence.storageClassName`.
 
 MLflow and PostgreSQL run as one pod each, and MLflow replaces its pod rather than rolling it, so each is briefly unavailable when it restarts. There is no failover; plan for this in your maintenance windows.
 
 ## One process per run
 
-Each eval run and scoring job that the backend executes runs in a process of its own, started by the backend process that admitted it, inside the same container. MLflow keeps per-process state, so two organizations’ work must never share a process.
+The API puts each eval run and scoring job in a queue in the backend’s database. The evals worker, a second container of the backend pod, takes work from the queue and runs each piece in a process of its own, inside that container. MLflow keeps per-process state, so two organizations’ work must never share a process.
 
-That has three consequences:
+That has four consequences:
 
--   **Memory.** The backend container’s memory limit covers the API and every process it has started. When the limit is reached, Kubernetes stops the container, and with it every run in it. The memory of one run’s process is not measured yet. Raise `backend.resources.limits.memory` when several organizations run or score at the same time, and watch for restarts with the reason `OOMKilled`.
--   **Concurrency.** Each organization’s plan bounds how much work it has at once: **Enterprise**, the default, allows 5 runs and 5 scoring jobs in progress; **Community** allows 1 of each. A request beyond the bound is refused, not queued. The worst case for the backend is therefore 10 processes per active organization.
--   **Restarts.** A backend restart, for an upgrade, a values change or a crash, ends the processes it was running. Their runs and scoring jobs stay **running** until someone stops them. Change the installation when no work is in progress ([upgrades](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#upgrades)).
+-   **Memory.** The worker container’s memory limit (1536 MiB by default) covers the worker and every process it has started, each about 250 MB when it starts and more while it works. When the limit is reached, Kubernetes stops the container, and with it every run in it. The memory of a running process beyond its start is not measured yet. Raise `backend.worker.resources.limits.memory` before raising `backend.worker.concurrency`, and watch for restarts with the reason `OOMKilled`. The API container has its own limit and shares none of this.
+-   **Concurrency.** `backend.worker.concurrency` (default 2) is how many runs and scoring jobs one worker runs at once, of any organizations; the others wait in the queue, oldest first, and a worker takes the next from the organization with the fewest running. The On-Premises edition sets no limit of its own, so the workers bound what runs at once, unless the licence lists `concurrent_runs` or `concurrent_scoring_jobs`: a launch or a scoring request that would put more than that many queued or running is refused. Without a licence in force an organization runs the Community edition, which allows 1 run and 1 scoring job queued or running.
+-   **Restarts.** A restart of either container loses no run. A stopped worker gives its work back to the queue at once. A worker that was killed has its work taken over 30 seconds later. Either way the run resumes after the cases it had finished and calls your agent again for the case that was in flight. Work whose worker was killed three times is marked **failed**. Still, change the installation when no work is in progress ([upgrades](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/on-premises/operations.md#upgrades)).
+-   **Replicas.** Every backend pod has its own worker, and all workers take from the same queue, so `backend.replicas` above 1 adds capacity (CPU and memory for each pod) and no run is taken twice. MLflow and PostgreSQL stay single.
 
 With this chart, most processes are scoring jobs on saved results. Runs from the SDK and CI execute in your own environment and are uploaded; they use no process in the backend.
-
-A run stays with the backend replica that started it. The chart defaults to one replica.
 
 ## Storage
 
@@ -5675,7 +5703,7 @@ Most of the database is MLflow’s traces. Measured on MLflow’s SQL store on P
 -   Storage grows linearly, about **1.7 GB per 100,000 traces** of that shape. Larger traces take more: about 47 KB with 20 spans and 98 KB with 50 spans.
 -   Read these as lower bounds. The test text compressed better than real traffic does.
 -   PostgreSQL spent about 6 to 9 ms of CPU per trace written, so one core takes on the order of 100 traces a second before disk I/O, which was not measured.
--   Nothing deletes old traces. Plan the volume for the traces you keep, and grow it before it fills.
+-   Nothing deletes old traces until a retention policy is set. With a licence that includes retention, a member with the retention permission sets a maximum age, in days, for traces and for runs, for the organization or for a project, under **Organization → Retention**; the backend then deletes what is older, in batches, from every replica, one at a time per project. A legal hold stops deletion. Without a policy, plan the volume for every trace you keep, and grow it before it fills.
 
 Run artifacts and review attachments are on the MLflow artifact volume or in your bucket. Their size depends on your use and is not measured.
 
