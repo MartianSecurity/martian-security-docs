@@ -10,15 +10,15 @@ Source: [Web version](https://docs.martiansecurity.ai/migrate/inspect/)
 
 Partly verified guide
 
-Every command on this page was run against the SDK source that is to be released as 0.1.4, with sample projects made by Inspect AI 0.3.290. It has not yet been run against a published 0.1.4 package, because 0.1.4 is not on PyPI.
+Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by Inspect AI 0.3.290. It was not run again on the later source or on the package published to PyPI.
 
 Bring the logs your Inspect AI evals wrote into the local Evals UI. Each log becomes a run whose cases, scores and conversations you can open, compare with another run case by case, and review.
 
 The importer reads log files only. It does not run Inspect tasks, and Inspect does not need to be installed next to the SDK. Keep running your tasks in Inspect and import their logs, or write new evals as [suite files](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md).
 
-Needs SDK 0.1.4, which is not on PyPI yet
+Needs SDK 0.1.4 or later
 
-`martian evals import inspect` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. That release is not published yet; the released 0.1.3 answers `No such command 'import'`. Check the [PyPI release history](https://pypi.org/project/martian-sdk/#history) before you start.
+`martian evals import inspect` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. The earlier 0.1.3 answers `No such command 'import'`.
 
 ## Before you start
 

@@ -10,15 +10,15 @@ Source: [Web version](https://docs.martiansecurity.ai/migrate/mlflow/)
 
 Partly verified guide
 
-Every command on this page was run against the SDK source that is to be released as 0.1.4, with sample projects made by MLflow 3.18.0 and 3.16.1. It has not yet been run against a published 0.1.4 package, because 0.1.4 is not on PyPI.
+Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by MLflow 3.18.0 and 3.16.1. It was not run again on the later source or on the package published to PyPI.
 
 If your team traced and evaluated an agent with MLflow, copy its tracking store into the local Evals UI. Each experiment becomes a project, with its traces, the feedback and expectations on them, its evaluation datasets and its evaluation runs. You can then compare runs case by case and review results without a Martian account.
 
 The import is a **copy**. It reads the store over a connection that cannot write and never changes it, so your MLflow keeps working as before. Changes made in MLflow later are not seen until you copy again.
 
-Needs SDK 0.1.4, which is not on PyPI yet
+Needs SDK 0.1.4 or later
 
-`martian evals import mlflow` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. That release is not published yet; the released 0.1.3 answers `No such command 'import'`. Check the [PyPI release history](https://pypi.org/project/martian-sdk/#history) before you start.
+`martian evals import mlflow` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. The earlier 0.1.3 answers `No such command 'import'`.
 
 ## Before you start
 

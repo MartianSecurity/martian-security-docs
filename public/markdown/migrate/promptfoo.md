@@ -6,19 +6,19 @@ Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo/)
 
 > **Page qualification:** Python SDK · Any developer with promptfoo results or config files; no Martian account or API key; a model key only for a converted llm-rubric judge · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Every documented command ran against the SDK source at martian-redteam 08d2673. The sample was the guide's config with two Python providers; promptfoo 0.125.1 itself wrote results.json (both providers) and one results file per provider (--filter-providers), with no model call. Import printed the documented lines with exit 0. Compare of the two providers from one file reported Comparison unavailable with 0 paired cases, because promptfoo 0.125.1 gives each provider its own promptIdx and the importer reads it as a prompt index (case ids test N, prompt 1 and test N, prompt 2); the guide states this. The two per-provider files paired: 1 improved, 2 unchanged. Conversion printed the documented output and wrote evals.yaml and evals-2.yaml; both ran with exit 0. Adding the documented python check and running again discarded the earlier verdict and passed the new check. A second conversion into the same folder failed with exit 2; --judge-model on a config with llm-rubric wrote a rubric check and judge model without calling it. Not verified: a published 0.1.4 package, running a converted LLM judge, and stored-reply conversion without --target.
+> **Walkthrough limits:** On 2026-11-15 every documented command ran against the SDK source at martian-redteam 08d2673. The sample was the guide's config with two Python providers; promptfoo 0.125.1 itself wrote results.json (both providers) and one results file per provider (--filter-providers), with no model call. Import printed the documented lines with exit 0. Conversion printed the documented output and wrote evals.yaml and evals-2.yaml; both ran with exit 0. Adding the documented python check and running again discarded the earlier verdict and passed the new check. A second conversion into the same folder failed with exit 2; --judge-model on a config with llm-rubric wrote a rubric check and judge model without calling it. On 2026-11-16, on a wheel built from martian-redteam main at cbfcc8a1485ad14a852fd3c6860535a93ce73172 with the version string set to 0.1.4: the guide's config and agent.py were converted again and printed the guide's output except the levenshtein reason, which now reads 'no built-in check does' (the guide is updated); both converted suites ran with exit 0 and the table shown; the python check, added inside the checks list of suite/evals-2.yaml, discarded the earlier result ('1 earlier result discarded because the suite, the data or the target changed') and passed. Two providers of one results file now pair in Compare: the real promptfoo 0.125.1 results file in the SDK repository's tests/evals/promptfoo (two providers, two prompts each, distinct promptIdx per provider) imported as promptfoo-bot-v1-1 (6 cases, 2 errors) and promptfoo-bot-v2-1, and Compare of the two read 6 paired records, 2 improved, 0 regressed of 4 compared, 2 Not Comparable (the errored rows), where 08d2673 reported Comparison unavailable. The guide's own sample results file was not regenerated, because promptfoo was not installed for this check, so the guide does not state a Compare result for its sample. Not verified: a published 0.1.4 package, running a converted LLM judge, and stored-reply conversion without --target. pending: re-run against PyPI martian-sdk 0.1.4 after publication.
 
 Partly verified guide
 
-Every command on this page was run against the SDK source that is to be released as 0.1.4, with sample projects made by promptfoo 0.125.1. It has not yet been run against a published 0.1.4 package, because 0.1.4 is not on PyPI.
+The commands on this page ran against SDK source built for 0.1.4, with sample results that promptfoo 0.125.1 wrote itself. Compare of two providers of one results file was checked on a real promptfoo results file from the SDK repository, not on this guide's own sample. It has not been run on the package published to PyPI.
 
 Two commands move a promptfoo project. `martian evals import promptfoo` brings the results you already have into the local Evals UI, one run per provider. `martian evals convert promptfoo` turns your config’s tests into [suite files](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) that `martian evals run` runs against your agent, wherever its assertions have an equivalent check, and lists everything it leaves out.
 
 Neither command runs promptfoo or calls its providers, and promptfoo does not need to be installed next to the SDK.
 
-Needs SDK 0.1.4, which is not on PyPI yet
+Needs SDK 0.1.4 or later
 
-`martian evals import promptfoo`, `martian evals convert promptfoo` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. That release is not published yet; the released 0.1.3 answers `No such command 'import'`. Check the [PyPI release history](https://pypi.org/project/martian-sdk/#history) before you start.
+`martian evals import promptfoo`, `martian evals convert promptfoo` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. The earlier 0.1.3 answers `No such command 'import'`.
 
 ## Before you start
 
@@ -117,16 +117,9 @@ The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
 
 1.  **Runs** lists one run for each provider in the **Default** project. The config’s `description` appears under each run’s name.
-2.  Select a run. Each case’s input is the prompt with its vars filled in. The expected column shows the test’s assertions, and the verdict is promptfoo’s own verdict on that row.
+2.  Select a run. Each case’s input is the prompt with its vars filled in. The prompt text is the same under every provider, so the same test has the same case ID in every run of the file. The expected column shows the test’s assertions, and the verdict is promptfoo’s own verdict on that row.
 3.  Select a row’s **Inspect** button, which opens the case. Each assertion promptfoo graded is an assessment that passed or failed, with promptfoo’s reason.
-
-**Compare providers from separate files.** promptfoo numbers each provider’s results as a separate prompt column. As a result, two providers imported from **one** results file get different case IDs (`test 1, prompt 1` and `test 1, prompt 2`), and **Compare** reports _Comparison unavailable_ without pairing any case. To compare two providers, write one results file for each, for example with promptfoo’s `--filter-providers` option, and import both:
-
-```sh
-.venv/bin/martian evals import promptfoo results-v1.json results-v2.json
-```
-
-Then open **Compare**, choose the two runs as **Baseline** and **Candidate**, and select **Compare runs**. In the example, the `bot-v2` run improves one test and leaves two unchanged.
+4.  Open **Compare**, choose the runs of two providers as **Baseline** and **Candidate**, and select **Compare runs**. Providers that ran the same tests on the same prompts pair case by case, whether they come from one results file or from two. A case on which a provider errored counts as **Not Comparable**.
 
 ## 4\. Convert your config
 
@@ -159,7 +152,7 @@ Not converted (also listed at the top of each suite file):
 - providers[0] bot-v1 (file://provider.py:bot_v1): not called: the suite calls agent.py:answer instead
 - providers[1] bot-v2 (file://provider.py:bot_v2): not called: the suite calls agent.py:answer instead
 - tests[1].assert[1] javascript: runs custom code, which a suite file's built-in checks do not; write the rule as a custom Python scorer, `def scorer(inputs, outputs, expectations)` (name only the arguments it reads; `trace` too) returning True or False, a number, or a pair of either with a reason, and add it with `type: python` (`file:` and `function:`) by hand; this converter does not translate the code
-- tests[2].assert[1] levenshtein: scores closeness to a reference text, or perplexity; no check on main does
+- tests[2].assert[1] levenshtein: scores closeness to a reference text, or perplexity; no built-in check does
 Run each with `martian evals run`, such as: martian evals run suite/evals.yaml
 ```
 
@@ -229,7 +222,7 @@ Because the checks changed, the earlier verdict is discarded and the case is gra
 | In promptfoo results | In the local Evals UI |
 | --- | --- |
 | One provider | One run, named `promptfoo-<label>-<n>` |
-| One test on one prompt | A case, `test <n>`. With several prompts, `test <n>, prompt <m>`; a later repeat adds `(repeat <k>)` |
+| One test on one prompt | A case, `test <n>`. With several prompts, `test <n>, prompt <m>`, where the prompts are counted by their text and not by promptfoo’s numbering of each provider’s columns, so every provider’s run names the same test and prompt the same way; a later repeat adds `(repeat <k>)` |
 | The rendered prompt and the vars | The case’s input |
 | The test’s assertions | The case’s expected value |
 | The provider’s output | The reply |
@@ -278,7 +271,6 @@ From results files, only the config’s `description` is kept; the rest of the c
 -   **`No such command 'import'` or `No such command 'convert'`:** the installed SDK is older than 0.1.4. See the note at the top of this page.
 -   **`Importing promptfoo results needs martian-sdk[evals]`:** install the `evals` extra, as in step 1.
 -   **Exit code `2` with `Import failed:`:** the file is not promptfoo’s JSON results of the current version, has no results, gives one provider the same case twice, or gives two providers one label. Nothing was imported.
--   **Compare reports _Comparison unavailable_ for two providers of one file:** import one results file for each provider, as in step 3.
 -   **Exit code `2` with `Conversion failed:`:** the config cannot be read, the `--target` file does not exist, or the output folder already holds a file the converter would write. Choose a new `--output` folder.
 -   **`Nothing written: no test converts.`:** none of the tests has an assertion that converts. Exit code `2`.
 -   **Case-insensitive checks** compare with Python’s case folding, where promptfoo lowercases, so a few non-English letters can compare differently.

@@ -20,7 +20,7 @@ Every item on this page carries one of these labels:
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Status | **Available**: the SDK on PyPI. **Built**: the local Evals UI, in the next SDK release | **Beta** | **Planned** |
+| Status | **Available**: the SDK on PyPI, with the local Evals UI from version 0.1.4 | **Beta** | **Planned** |
 | Source and licence | Open source under Apache-2.0, in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) | The hosted service. It uses the same open-source SDK | Under an agreement with Martian Security, with an offline licence file |
 | Runs on | Your laptop, or a small server you run, for one user | Martian cloud | Your infrastructure |
 | For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
@@ -36,10 +36,10 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 | --- | --- | --- | --- |
 | [Eval suites from one YAML file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md): deterministic checks, LLM judges with your own model key, result files and CI exit codes | **Available** | **Available**: the same SDK | **Planned** |
 | [Evaluations in Python and pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) | **Available** | **Available**: the same SDK | **Planned** |
-| Evals UI | **Built**: `martian ui`, the console’s Evals pages on your machine for one user, with no login and the data in a local folder. Needs SDK 0.1.4 ([quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md#5-see-the-result-in-the-local-evals-ui)) | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
-| Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Built**, with the local Evals UI | **Beta** | **Planned** |
-| Judges run from the UI on your own model and key | **Built**, with the local Evals UI. The targets you define and their keys stay in its data folder | **Planned** | **Planned** |
-| [Results from MLflow, promptfoo and Inspect AI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/mlflow.md) imported into the Evals UI | **Built**: SDK 0.1.4 | — | — |
+| Evals UI | **Available**: `martian ui`, the console’s Evals pages on your machine for one user, with no login and the data in a local folder. Needs SDK 0.1.4 or later ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md), [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md#5-see-the-result-in-the-local-evals-ui)) | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
+| Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Available**, with the local Evals UI | **Beta** | **Planned** |
+| Runs and judges started from the UI on your own agent, model and key | **Available**, with the local Evals UI. The targets you define and their keys stay in its data folder | **Planned** | **Planned** |
+| [Results from MLflow, promptfoo and Inspect AI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/mlflow.md) imported into the Evals UI | **Available**: SDK 0.1.4 or later | — | — |
 | SDK results recorded against a tested revision: API keys and [CI sessions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | — | **Beta** | **Planned** |
 
 ### Work as a team
@@ -59,7 +59,7 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Export results | **Available**: JSONL, JSON summary and JUnit files. **Built**: CSV and JSON exports in the Evals UI, and `martian evals export` for everything in its data folder | **Beta**: CSV and JSON exports | **Planned** |
+| Export results | **Available**: JSONL, JSON summary and JUnit files. With SDK 0.1.4 or later, also CSV and JSON exports in the local Evals UI, and `martian evals export` for everything in its data folder | **Beta**: CSV and JSON exports | **Planned** |
 | Evidence packs and sign-off records | — | **Planned** | **Planned** |
 
 ### Red Team
@@ -73,7 +73,7 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Delivery | **Available**: `pip install` from PyPI. **Built**: a Docker image of the local Evals UI for one user on a small server, that you build from the repository’s `Dockerfile`; no image is published yet. It has no login and must not be exposed publicly | **Beta**: managed by Martian | **Built**: the offline licence file. **Planned**: Helm chart, air-gapped image bundle, a runner inside your network and a named deployment engineer |
+| Delivery | **Available**: `pip install` from PyPI, and a Docker image of the local Evals UI for one user on a small server, published as `ghcr.io/martiansecurity/martian-evals:<version>` ([how to run it](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#6-run-the-ui-in-a-container)). It has no login and must not be exposed publicly | **Beta**: managed by Martian | **Built**: the offline licence file. **Planned**: Helm chart, air-gapped image bundle, a runner inside your network and a named deployment engineer |
 | Support | **Planned**: community support in the public repository | **Planned**: priority support with an SLA | **Planned**: priority support with an SLA |
 
 ## What separates the editions
