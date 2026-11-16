@@ -158,7 +158,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Run evals locally with a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md?v=e089d4e9f0ee): Run an eval suite from one YAML file on your own machine, using deterministic checks and LLM judges with your own model key.
 
-- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=e26260c284d1): Start the Evals UI on your own machine with martian ui, read your runs, traces and quality issues, run an eval against an agent, and keep the data private. Needs SDK 0.1.4 or later.
+- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=55f9a949af6c): Start the Evals UI on your own machine with martian ui, read your runs, traces and quality issues, run an eval against an agent, and keep the data private. Needs SDK 0.1.4 or later.
 
 - [Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md?v=a126566f7dec): Validate and execute a bounded adversarial test against a local callback, inspect safe reports, and apply a strict gate.
 
@@ -166,6 +166,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=e560959e2004): all 74 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=b990826ff5b0): all 74 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
