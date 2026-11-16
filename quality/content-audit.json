@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-14T14:36:28.357947+00:00",
-  "scope": "Public source-page inventory. Attack-reference additions passed current source/content and local render review; earlier entries retain their recorded review scope. Not complete product or hosted-parity signoff.",
+  "scope": "Public source-page inventory with earlier dated content/render review notes preserved. Current task-guide qualification was reconciled against quality/coverage.json; this is not complete product or hosted-parity signoff.",
   "aiReview": true,
   "humanParticipant": false,
   "sourceRecord": "quality/sources.json",
@@ -18,7 +18,7 @@
       "title": "Connect an agent",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "agents/http-adapter",
@@ -32,7 +32,7 @@
       "title": "Connect an agent to sandbox systems",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "pending"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "assessments/configure",
@@ -53,14 +53,14 @@
       "title": "Find recorded runs and export reports",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "assessments/progress-and-cancellation",
       "title": "Follow progress and stop a run",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "assessments/reproduction-and-limits",
@@ -74,35 +74,35 @@
       "title": "Review and activate an SDK call block",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "pending"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "discovery/inventory",
       "title": "Connect sources and inspect inventory",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "discovery/network-observation",
       "title": "Set up network observation",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "pending"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "discovery/runtime-and-blast-radius",
       "title": "Inspect runtime activity and blast radius",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "pending"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "environments/create-and-launch",
       "title": "Create and launch an environment",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "evals/compare",
@@ -116,7 +116,7 @@
       "title": "Create and publish datasets",
       "contentReview": "reviewed",
       "renderCheck": "passed desktop1440light/mobile390dark real browser",
-      "walkthroughQualification": "partial"
+      "walkthroughQualification": "verified"
     },
     {
       "page": "evals/first-run",
@@ -694,5 +694,6 @@
     "pullRequest": 17,
     "commit": "be4394784fedb55128e58dba9d55a1bf3604ca53",
     "preserved": "Seven-file local SDK example ZIP, separate corrected agent/suite/output, all three real Bedrock judge qualifications, customer-only screenshot rule and clearly separate persisted SDK screenshot. Original/new SDK walkthroughs remain named independent scopes."
-  }
+  },
+  "qualificationReconciledAt": "2026-11-16"
 }

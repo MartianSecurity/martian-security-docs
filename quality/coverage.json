@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "guides": [
     {
       "id": "agents/connections",
@@ -94,7 +94,7 @@
         "realBackendWalkthrough": "passed for all required connection-management stages",
         "screenshots": "captured; four additional direct application images individually reviewed",
         "remainingGaps": [
-          "Setup approval alone does not establish executor behavior. A later MCP campaign was exercised with operator-assisted evidence recovery in assessments/evidence-and-results; browser execution remains unqualified.",
+          "Setup approval alone does not establish executor behavior. MCP execution required operator-assisted evidence recovery. A distinct browser assessment later completed in Harbor QA; earlier uncertain actions and browser cancellation remain unqualified.",
           "Active-run deletion guards, preservation of populated historical runs, browser credential rotation and every authentication variant remain source reviewed.",
           "No campaign leases were issued to the disposable HTTP registration; approval revocation was read back, while revocation of an in-flight lease was not exercised."
         ]
@@ -373,7 +373,7 @@
         "assessment-browser-tests"
       ],
       "qualification": "partial",
-      "validationStatus": "Endpoint-only HTTP configuration and saved scope were exercised previously. A separate anonymous endpoint-only MCP campaign retained edited goals, a data outcome, Light and serial settings, then made three real tool calls. Its admission acknowledgment failed and required operator-assisted reconciliation of the original campaign. Browser, sandbox, signed-in and prepared-scenario execution remain unverified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. Later separate QA completed an anonymous payment assessment and restored-world API scope. Two native browser runs stopped at blocked form navigation and login timeout; signed-in/prepared-scenario execution remains unverified.",
+      "validationStatus": "Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted.",
       "documentationRoute": "/assessments/configure/",
       "role": "member, admin, owner",
       "route": "/#/assessment",
@@ -394,7 +394,7 @@
         "realBackendWalkthrough": "partial; see validationStatus",
         "screenshots": "captured",
         "remainingGaps": [
-          "Synthetic signed-in identity and prepared scenarios remain unqualified. Native browser execution remains incomplete after observed setup failures.",
+          "Synthetic signed-in fixture identity and prepared scenarios remain unqualified. Completed browser execution is checked separately from earlier setup failures and browser cancellation.",
           "The earlier MCP lost-acknowledgment recovery remains operator-assisted; customer self-service recovery is not inherited from the new payment run."
         ]
       },
@@ -432,6 +432,13 @@
           "observedPath": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
           "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
           "result": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed."
+        },
+        {
+          "date": "2026-11-16",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Completed native browser execution and retained inconclusive coverage",
+          "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+          "result": "MR-1006 completed native browser execution with4target requests/12model calls, one attempted/unverifiable disclosure probe and nofindings. Its completed state, INCONCLUSIVE verdict, pinned website revision and probe counts survived a real full UI reload. Review export separately reported needs_review/review_artifact_conflict; no review content or archive success is claimed. Earlier failed campaigns remain unchanged."
         }
       ],
       "screenshots": [
@@ -441,7 +448,7 @@
         "assessment-browser-tests"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "Basic HTTP, operator-assisted MCP, sandbox admission and an independent payment outcome are checked. Native browser execution and advanced profiles remain unverified."
+      "customerNotice": "HTTP, operator-assisted MCP, completed browser execution, sandbox admission and an independent payment outcome are checked. Synthetic signed-in fixtures and prepared scenarios remain unverified."
     },
     {
       "id": "assessments/evidence-and-results",
@@ -543,7 +550,7 @@
         "assessment-modern-redacted-turn"
       ],
       "qualification": "partial",
-      "validationStatus": "In isolated local QA, MR-1002 retained its actual trace turns, probe coverage, knowledge/skill records, final state and exports after refresh. This run had no verified findings, independent business checks or published artifact-backed Recorded review. A separate real MCP campaign retained three actual refusals, attempted/unverifiable probe coverage and Completed/INCONCLUSIVE after operator-assisted reconciliation of its original uncertain admission. Reload and actual legacy JSON agreed; artifact-backed modern review and sandbox effect checks remain unqualified. A separate browser campaign admitted202 and completed website sign-in/two neutral setup messages, then retained Needs attention after fresh-conversation verification failed. Reload, legacy JSON and native awaiting-recovery state agree; the original uncertain action is unchanged and completed browser execution remains unqualified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. A separate modern review retained a published revision and12 redacted turn reads;48 content envelope hashes/byte counts passed. Domain/report JSON and refresh matched. Redacted ZIP reads timed out without an archive. Later MR1002 completed a genuine independent before/after duplicate-refund finding; its published113-part review was readable, but HTTP200 ZIP failed archive validation. Cleanly reproduced positive findings/controls remain unverified. Later same-revision Firefox ZIP download and all113part integrity checks passed; native coverage and clean reproduction remain separate.",
+      "validationStatus": "Endpoint and completed browser results, independent payment before/after effects, persisted redacted review content, actual MR-1002ZIP integrity/download and report/history paths passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified. Browser MR-1006 retained Completed/INCONCLUSIVE after refresh; its distinct review export needs attention.",
       "documentationRoute": "/assessments/evidence-and-results/",
       "role": "viewer, member, admin, owner",
       "route": "/#/runs/<run-id>",
@@ -563,7 +570,7 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "partial: endpoint/baseline and redacted published record reads passed; business effects and ZIP incomplete",
+        "realBackendWalkthrough": "Partial: endpoint and browser execution, independent sandbox business effects, published redacted review reads and the MR-1002 archive passed; successful clean reproduction with its control remains unqualified.",
         "screenshots": "partial",
         "remainingGaps": [
           "A cleanly reproduced positive finding with required control remains unverified."
@@ -610,6 +617,13 @@
           "observedPath": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
           "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
           "result": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed."
+        },
+        {
+          "date": "2026-11-16",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Completed native browser execution and retained inconclusive coverage",
+          "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+          "result": "MR-1006 completed native browser execution with4target requests/12model calls, one attempted/unverifiable disclosure probe and nofindings. Its completed state, INCONCLUSIVE verdict, pinned website revision and probe counts survived a real full UI reload. Review export separately reported needs_review/review_artifact_conflict; no review content or archive success is claimed. Earlier failed campaigns remain unchanged."
         }
       ],
       "screenshots": [
@@ -624,7 +638,9 @@
         "assessment-browser-needs-attention",
         "assessment-browser-coverage",
         "assessment-modern-redacted-turn",
-        "assessment-payment-completed"
+        "assessment-payment-completed",
+        "assessment-browser-completed",
+        "assessment-browser-completed-probe"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
       "customerNotice": "Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified."

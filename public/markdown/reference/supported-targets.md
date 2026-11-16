@@ -24,7 +24,7 @@ MCP validation discovers tools and binds approval to the selected schema. Revali
 
 The browser executor supports the approved website flow and optional username/password website sign-in. URL validation checks URL/access configuration, not successful login. SSO, MFA, CAPTCHA, handoff and unsupported chat discovery can stop execution. Website sign-in is distinct from an attested synthetic business identity.
 
-A reusable fresh conversation must also work after setup. The [recorded browser example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention) signed in and sent two neutral messages, then stopped with an uncertain action when fresh-conversation verification timed out. That observation does not qualify a completed browser assessment.
+A reusable fresh conversation must also work after setup. One [recorded failure](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention) signed in and sent two neutral messages, then stopped with an uncertain action when fresh-conversation verification timed out. A distinct [completed browser assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-completed-browser-assessment) used in-place conversation reset and real asynchronous chat requests. It retained an inconclusive security outcome after its bounded search; completion does not establish protection or qualify every website.
 
 ## Evals and saved outputs
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -688,20 +688,50 @@
       "result": "passed for the unchanged history/export stages; native span coverage remains pending",
       "record": "quality/walkthroughs.json",
       "details": "Actual Firefox Download redacted review saved the original revision-pinned 674,489-byte ZIP and displayed success. Its 114 entries contained the matching manifest and 113 parts; all CRC, SHA-256, byte-count and JSON checks passed. Reports JSON retained MR-1002, payment-support-final, completed/FINDINGS and one finding, without review turn content. Replay filtering/opening and full refresh retained the exact run and review revision. Native span coverage remains pending. Earlier provider503 and incomplete HTTP200 files are preserved; no new assessment or model call was used."
+    },
+    {
+      "scope": "Published review-archive recovery and retained history",
+      "result": "passed",
+      "details": "PR41/main00f39df2 Pages passed. All154 trustedHTTPS/hash checks passed, including every publicHTML and70agentMarkdown mirrors. Eight deployed desktop/narrow theme combinations had zero page errors, failed responses or overflow. Exact page copy, full-size image and actual search navigation passed. Both deployed renders were individually viewed. The actual application Firefox ZIP and Reports downloads plus Replay refresh passed; no new model call was used."
+    },
+    {
+      "scope": "Approved Discovery compatibility merge after recovered CI",
+      "result": "passed; no beta deployment",
+      "record": "https://github.com/MartianSecurity/MartianBackend/pull/112",
+      "details": "PR112 merged asaf36ece97e042108cdbef1ffee3cb0fce8dbb6ef after all9CI checks passed oncurrentmain: Python, six PostgreSQL integration suites, image build and the required gate. Local compile and335existing unit tests passed, with74opt-in cases skipped locally; the six specified PostgreSQL integration suites passed separately in CI. The three implementation files are byte-identical to the real API/UI-qualified candidate; only the collector documentation URL follows the new owner. All4merged file hashes and tree matched. No product deployment was performed."
+    },
+    {
+      "scope": "Canonical Pages addresses after repository transfer",
+      "result": "canonical paths passed; former Pages address unavailable",
+      "details": "Trusted readback confirmed HTTP custom domain and the current MartianSecurity GitHub Pages address redirect to https://docs.martiansecurity.ai/ with final200. The former MorningHQ project Pages address returned404. New and old GitHub raw Markdown aliases returned200 with the expected content; copied agent links use the canonical repository. The verification page now distinguishes these routes. No legacy repository was recreated."
+    },
+    {
+      "scope": "Completed native browser assessment, real UI refresh and coverage capture",
+      "date": "2026-11-16",
+      "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
+      "result": "Passed completed execution and retained inconclusive result; review publication remains separate",
+      "record": "quality/walkthroughs.json",
+      "details": "MR-1006 completed native browser execution with4target requests/12model calls, one attempted/unverifiable disclosure probe and nofindings. Its completed state, INCONCLUSIVE verdict, pinned website revision and probe counts survived a real full UI reload. Review export separately reported needs_review/review_artifact_conflict; no review content or archive success is claimed. Earlier failed campaigns remain unchanged. Two direct1440x1000captures passed visual/privacy/PNGCRC/dimension/hash checks. All38original guide requirements and192earlier screenshot registry objects remain unchanged; no qualification gate was modified."
+    },
+    {
+      "scope": "Completed-browser documentation build, agent exports and focused visual review",
+      "date": "2026-11-16",
+      "result": "Production build/check passed; strict completeness remains incomplete",
+      "details": "71built pages,70agentexports,91exactcodeblocks,190captions and3existing export regressions passed. Eight actual local route/viewport/theme checks, exact Copy page and both fullsize1440x1000images passed with no failed responses/pageerrors/overflow. Both local renders were viewed. Current publicPyPI version and wheelhash still match the previously qualified release; no localUI release was found. Original38guide requirements/192prior capture records and all4partial guides remain unchanged; strict audit retains the same5failures. Actual search for completed browser assessment opened the updated guide and survived deep refresh. The initial observer used the wrong input type; the real placeholder selector passed, with no product change."
     }
   ],
   "remainingGaps": [
-    "Six guides remain incomplete: sandbox bindings; assessment configuration, evidence, history and reproduction; and the Community quickstart, whose local Evals UI step waits for an SDK release that includes it. All four Discovery workflows now passed in named compatible candidate QA scopes with explicit partial/degraded capture limits.",
-    "Thirty-four guides are verified in named local/CI scopes; four are partial and two, the On-Premises install and operations guides, are pending. The 37 earlier required task-stage lists are unchanged and the Community quickstart adds one. One required assessment-verification screenshot remains missing; the strict release audit remains enforced.",
-    "Sandbox-backed verified effects, fresh-world repetitions/negative controls and complete redacted-review ZIP download/inspection remain unverified. Modern domain/report JSON and published redacted on-screen records were checked separately.",
-    "The earlier MR-1003 teaching-tunnel action remains uncertain. Separate queued and active HTTP cancellation are qualified; evidence-based resolution of the older action and other target-interface cancellation remain unverified.",
-    "Non-Boolean model execution, completed browser assessment execution and untested connection-management variants still need qualification. MCP endpoint execution was observed with explicitly operator-assisted recovery; the public lost-admission sync path remains a product gap. Native session views are verified through separately provisioned instrumentation; SDK0.1.2 native-ingestion/credential issuance is not provided.",
-    "Local QA demonstrates named pinned-source behavior, not whole hosted AWS-beta parity. A later separate local sandbox deployment is available and Gmail is qualified; earlier connectors503 and intermittent native-view502/timeouts remain recorded. Discovery was checked with an approved source and sensors against candidatePR112; merge waits for Actions billing, and hosted parity remains unqualified. Other simulations and network-policy enforcement are unqualified.",
-    "SDK task guides and current tutorial install the latest release;exact persisted Evals/hosted redteam/combined-CI qualification remains on0.1.2. Account-free current-install steps and the local suite guide were exercised on0.1.3,with one judge model/provider route. Newer installation does not requalify hosted workflows.",
-    "SDK 0.1.3 native bedrock:/ response-judge routing fails through MLflow 3.16.1 AmazonBedrockProvider.get_endpoint_url; use the verified OpenAI-compatible Bedrock endpoint. A native-routing SDK fix and release remain follow-up work.",
-    "Original MR-1004 retains a conservative unknown-usage reservation for a failed first provider transport, alongside its settled successful retry. Its origin and terminal native owner were inspected; provider usage remains unknown and is not manually settled.",
-    "The separate Browser Execution QA native journal retains three unknown-usage model reservations, including the modern review run, and two unresolved target actions. None was manually settled, released or treated as zero usage. Artifact ZIP/provider waits and new foreign-tenant artifact readback remain incomplete; earlier teaching-lab uncertainty is a separate scope.",
-    "Later Harbor QA qualifies payment business effects but not successful clean reproduction, formal controls, completed native browser setup, signed-in fixtures or prepared scenarios. Published review HTTP200 ZIP failed archive integrity. Original unknown actions/usage remain unresolved; Community local UI remains unreleased.",
+    "Four guides remain partly verified: assessment configuration, evidence/results, reproduction/limits and Community quickstart. Current coverage is 34 verified, 4 partial and 2 pending (the On-Premises install and operations guides) across 40 task guides, with one required assessment-verification capture still missing. The strict release audit remains enforced.",
+    "Synthetic signed-in fixture identity and prepared Assurance scenarios remain unqualified. Basic HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment effects are checked in their named scopes.",
+    "Successful clean reproduction and an executed passing negative control remain unverified. MR-1004 restored equivalent worlds but its different verification messages were negative and its formal control was skipped. No security pass is inferred.",
+    "The Community quickstart local Evals UI is not in the released SDK. Its install, CLI runs, files, failed first run and corrected rerun passed; the UI stage remains incomplete.",
+    "MR-1002 redacted review ZIP and Reports/history paths passed in the later same-revision recovery, including all113parts. Native span coverage remains pending. MR-1004 review publication entered needs-review after supported artifact recovery; MR-1006 review reported an artifact conflict despite separately completed browser execution.",
+    "Earlier uncertain actions, model usage and paid-operation reservations remain preserved. No unknown usage was treated as zero or manually settled. Separate successful runs do not resolve those older scopes.",
+    "MCP admission lost-acknowledgment recovery was operator-assisted. Browser cancellation, active-run connection deletion, populated-history retention and every authentication-management variant are not inherited from the completed browser run.",
+    "Non-Boolean model-rubric execution remains unqualified. Native conversation sessions passed with separately provisioned instrumentation; the earlier SDK does not supply a native-ingestion credential feature.",
+    "Named local/CI checks do not attest whole hosted-beta parity. Discovery passed with the compatible Backend PR112candidate; PR112 and its mainCI subsequently passed and the approved change merged, but no Backend beta deployment occurred. Other simulations and network-policy enforcement remain unqualified.",
+    "Task guides install the latest SDK release. Historical persisted Evals, hosted redteam and combinedCI qualification remains pinned to its recorded release; later account-free/current-install checks do not requalify those hosted paths.",
+    "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work.",
     "The On-Premises install, sizing and operations pages are reviewed against the unreleased martian-evals chart and its services; no install on a cluster has been walked through, the private registry route has not been run on an air-gapped cluster, and their sizing has no load test of an installation behind it. Their upgrade and rollback are tested with containers in the backend's CI, not with Helm on a cluster."
   ]
 }
