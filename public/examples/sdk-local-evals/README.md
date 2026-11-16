@@ -21,8 +21,9 @@ The first run intentionally exits 1: two cases pass, and `prompt-injection` fail
 
 This suite uses `agent-fixed.py`. All three cases pass, exit 0. Its `results-fixed/`
 folder preserves the first run for comparison. Edit these teaching agents to call your
-own application. After changing an agent, a case or a check, use `--fresh` or a new output
-folder: a normal rerun reuses completed verdicts, including failures.
+own application. A plain rerun skips a case that already has a verdict while nothing that
+produced it has changed; after you change an agent, a case or a check, it discards those
+results and grades the cases again. Add `--fresh` to run every case again.
 
 `evals-with-judge.yaml` uses the original flawed `agent.py`. Replace `YOUR_JUDGE_MODEL`
 and configure your provider key in the environment before running it. No provider key
