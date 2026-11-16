@@ -189,8 +189,10 @@ docker run -d --name martian-evals -p 127.0.0.1:7600:7600 -v martian-evals:/data
 
 Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds the data folder, so the data outlives `docker stop` and a new container started on the same volume. To keep the data in a folder on the server, mount that folder at `/data`; the image runs as user ID `10001`, which must be able to write to it.
 
+The image is public: `docker pull` needs no login. This guide ran the 0.1.5 image with the command above on Linux, including the `Host` check and `MARTIAN_EVALS_ALLOWED_HOSTS` below and a second container on the same volume.
+
 <Aside type="caution" title="Not exercised by this guide">
-This guide did not build, pull or run the image. The command and the settings come from the SDK's release documentation, and the image exists only once a release publishes it.
+The SSH tunnel and a folder mounted from the server were not run.
 </Aside>
 
 **The image has no login either. Do not expose it publicly.** The command above publishes the port on the server's `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:

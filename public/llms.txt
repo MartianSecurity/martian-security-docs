@@ -12,7 +12,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=66667155e701): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=4209822180f4): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=3e601b311af2): Review source revisions, real captures, completed checks and remaining gaps.
 
 ## Documentation
 
@@ -148,7 +148,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Use these docs with an AI assistant](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/using-with-agents.md?v=f3319b1e4a1f): Copy a complete page or share a public Markdown link that an assistant can read without signing in.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=4209822180f4): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=3e601b311af2): Review source revisions, real captures, completed checks and remaining gaps.
 
 - [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=256a40bfcbc9): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
@@ -158,7 +158,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Run evals locally with a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md?v=1eefade956a9): Run an eval suite from one YAML file on your own machine, using deterministic checks and LLM judges with your own model key.
 
-- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=b31c4580d6a8): Start the Evals UI on your own machine with martian ui, read your runs, traces and quality issues, run an eval against an agent, and keep the data private. Needs SDK 0.1.5 or later.
+- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=89d5ce58f9c9): Start the Evals UI on your own machine with martian ui, read your runs, traces and quality issues, run an eval against an agent, and keep the data private. Needs SDK 0.1.5 or later.
 
 - [Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md?v=a126566f7dec): Validate and execute a bounded adversarial test against a local callback, inspect safe reports, and apply a strict gate.
 
@@ -166,6 +166,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=376ba0db6ddf): all 74 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=0f243b93b624): all 74 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
