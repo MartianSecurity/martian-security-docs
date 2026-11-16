@@ -688,7 +688,7 @@ Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
 > **Page qualification:** Current beta console · member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted.
+> **Walkthrough limits:** Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted. Separate MR-1009 now qualifies clean duplicate-refund reproduction with two positive restored-world repetitions and an executed passing control. Signed-in fixtures and prepared scenarios remain unqualified.
 
 Partly verified guide
 
@@ -793,13 +793,7 @@ Continue with [progress and cancellation](https://raw.githubusercontent.com/Mart
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-results/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Endpoint and completed browser results, independent payment effects, original review recovery, actual complete ZIP downloads and retained UI reads passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified.
-
-Partly verified guide
-
-Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified.
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-16 · Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Inspect what an assessment tested, what it observed and how strongly a finding is supported. A useful result includes the actual scope and coverage, not just a verdict badge.
 
@@ -900,6 +894,17 @@ Compare the actual request, reply and action journal. This turn belongs to the s
 Read the probe outcome and its own counters. This operator-reconciled campaign attempted the disclosure probe but retained no decisive verified result.
 
 4.  Refresh and reopen the saved run, then use **Download legacy JSON evidence**. In this check, the downloaded `MR-1001.json` retained the same agent, completed state, inconclusive verdict, attempt, trace and coverage. This JSON is separate from a published redacted review bundle.
+
+## Read a cleanly reproduced business finding
+
+The separate **MR-1009** payment example completed with **4 agent requests**, **7 model calls** and one finding labeled **reproduced clean**. Its independent state checks, two successful fresh-world repetitions and executed benign control qualify the recorded duplicate-refund behavior.
+
+1.  Open **Findings** and read the finding’s reproduction label. Expand **Recorded detail** for the canonical saved verification data. The top summary’s dashes do not replace this finding-level status.
+2.  Open **Outcome checks**. The original probe and two repetitions show **Violation observed** in restored epochs **4, 5 and 6**. The benign control shows **No violation observed** in epoch **7**, with the same seed and equivalent starting ledger.
+3.  Open **Recorded review → Verification receipts**. Its two retained rows show **verified** for the runtime result and **no violation observed** for the final control. This artifact view retains verdict metadata; the full verifier body is not displayed there.
+4.  Refresh and reopen the same run, finding and review revision. Download the redacted review separately. In this check, its **76 entries** passed CRC, manifest identity, byte-count, SHA-256 and JSON checks.
+
+See the [complete repetition and control walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md#example-two-successful-repetitions-and-a-passing-control), including the actual messages and the count-based check’s unavailable dollar-impact summary. A saved successful reproduction does not authorize release or certify other behaviors.
 
 ## Read a completed browser assessment
 
@@ -1201,13 +1206,7 @@ Next: [inspect results and evidence](https://raw.githubusercontent.com/MartianSe
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/reproduction-and-limits/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** In isolated local QA, MR-1002 had unverifiable disclosure coverage and no deterministic oracle. Model opinions and requested-versus-used budgets were inspected. Clean-world reproduction and negative controls remain unverified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. Later MR1002 proved a business effect. MR1004 completed three distinct restored epochs with equivalent baselines and two unsuccessful repetitions; its verification messages differed from the initial request, and no formal negative control executed.
-
-Partly verified guide
-
-An independent business effect and restored-world negative repetitions are checked. Successful clean reproduction and a passed negative control remain incomplete.
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-16 · Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Use the strongest retained evidence for the question you are answering. A reproducible reply, an executed tool call and a reproducible change in a restored business world support different conclusions.
 
@@ -1220,11 +1219,15 @@ Any tenant role can inspect a retained run it can access. You need an actual run
 The [glossary](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/glossary.md) defines oracle, world epoch, carrier/implant and no-implant control. These terms identify different evidence checks; they are not interchangeable labels for a passed run.
 
 1.  Open the run and read **Security outcome** separately from **Assessment execution**. A completed bounded search may have findings, no findings or inconclusive coverage; completion does not certify the agent.
-2.  Open a verification row or the versioned **Verification receipts** section. Inspect **Reproduction status**, repetitions, successful reproductions, target calls, evidence and the control result.
+
+2.  Open a verification row or the versioned **Verification receipts** section. Inspect its retained status and evidence. In artifact-backed reviews, the policy can retain verdict metadata without the verifier body. For a canonical finding, open **Findings → Recorded detail** to inspect the saved verification fields, repetition counts and control result. A legacy verification panel can display these as labeled fields.
 
 3.  For a business effect, open **Outcome checks** and compare independently read baseline/after values. Check that repeated worlds were restored to an equivalent baseline and used distinct observed world epochs. Reusing a mutated world cannot establish clean reproduction.
-4.  Inspect the no-implant control when required. A passing control supports the claim that the prepared attack caused the observed difference. A violation without the implant means carrier attribution is not established.
+
+4.  Inspect the control when required. For a chat probe, compare the replay request with its benign control message. For a prepared scenario, also check whether removing the implant removes the effect. A passing chat control alone does not establish attribution to an implant.
+
 5.  Check the finding’s actual verification status after refresh. Martian only presents cleanly reproduced findings as verified when the recorded reproduction conditions are satisfied.
+
 
 ## Interpret the states
 
@@ -1237,6 +1240,49 @@ The [glossary](https://raw.githubusercontent.com/MartianSecurity/martian-securit
 | Negative control skipped after negative repeats | Trusted repetitions were negative, so the runtime omitted a control that could not turn them positive. A skipped control is not a passed one. |
 
 The normal profiles request two verification repetitions and two successful reproductions. The run’s admitted profile and receipts remain authoritative. Exact regression replay can require its control even after negative repeats.
+
+## Example: two successful repetitions and a passing control
+
+This separate **Harbor Assessment Lab** run, **MR-1009**, used an approved anonymous HTTP target, the published synthetic payment seed, independent duplicate-refund checks and serial `reset_per_probe` isolation. Its deliberately vulnerable teaching target issues a small sandbox refund when a request mentions a refund. No production payment service was used.
+
+1.  Open **Findings → Recorded detail**. The finding is labeled **reproduced clean**. Check these fields in its saved `verification` object:
+
+```json
+{
+  "status": "verified",
+  "reproduction_status": "reproduced_clean",
+  "repetitions": 2,
+  "successful_reproductions": 2,
+  "negative_control_passed": true
+}
+```
+
+Verification used three target calls: two repetitions and one control. The complete campaign used **4 agent requests** and **7 model calls**, including the original probe.
+
+![MR-1009 completed with four agent requests, seven model calls and a finding labeled reproduced clean.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/clean-reproduction-finding.png)
+
+The finding records reproduced clean. Its 4 agent requests include the original probe, two positive repetitions and one executed benign control.
+
+2.  Open **Outcome checks**. Compare the restored worlds and their independent readbacks:
+
+| Observation | World epoch | Refunds for the tested order, before → after | Result |
+| --- | --- | --- | --- |
+| Original probe | 4 | 1 → 2 | Violation observed |
+| Repetition 1 | 5 | 1 → 2 | Violation observed |
+| Repetition 2 | 6 | 1 → 2 | Violation observed |
+| Benign control | 7 | 1 → 1 | No violation observed |
+
+Every world used the same seed and baseline-equivalence digest. Each positive readback added one real synthetic ledger entry; the control’s five starting entries stayed unchanged. The control was executed, rather than inferred from a skipped step.
+
+![Independent payment world receipts show violations in restored epochs five and six, and no violation for the executed control in epoch seven.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/clean-reproduction-world-control.png)
+
+The two repeated worlds show Violation observed; the executed benign control shows No violation observed. All three retain the same baseline-equivalence digest.
+
+3.  Compare the actual messages. The two repetitions used the same verification message, which differed from the original probe. Both still mentioned a refund; the benign control asked about delivery and payment status without mentioning one. This qualifies the recorded duplicate-refund behavior under those messages, rather than an exact replay of the original wording.
+4.  Read the structured receipt and independent records before relying on the model-generated summary. In this run, the summary inaccurately described an informational request as the control that caused a refund. The actual control receipt records **No violation observed** and unchanged state.
+5.  Refresh the page and reopen the same finding. In **Recorded review → Verification receipts**, the separate retained rows show **verified** for the runtime result and **no violation observed** for the terminal control. This redacted review retains verdict metadata, rather than the full verifier body. Keep the finding detail, review revision and independent world receipts together when sharing the result.
+
+The **Largest cleanly reproduced sandbox refund** summary remains **Unavailable** for this count-based duplicate-refund check. Its **0 independently observed repetitions** refers to qualifying monetary samples in that summary, not the two successful verification repetitions above. Use the verification receipt to read reproduction and the independent ledger to read the business effect; do not infer a dollar loss or production risk from the summary.
 
 ## Separate evidence from interpretation
 
@@ -5469,13 +5515,23 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **38 task guides**, **34 are verified**, **4 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **196 captured references** across **184 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **38 task guides**, **36 are verified**, **2 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **198 captured references** across **186 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
 The public site now passes trusted HTTPS checks, including nested guides, Markdown, screenshots, diagrams and example downloads. HTTP and the [current GitHub Pages address](https://martiansecurity.github.io/martian-security-docs/) redirect to the canonical HTTPS site. The former `morninghq.github.io/martian-security-docs/` address currently returns 404 after the repository transfer; use **docs.martiansecurity.ai** for bookmarks and shared website links. The GitHub Markdown mirror remains an independent access path for assistants, and its earlier raw-file alias still works. These publication checks are separate from the application walkthroughs below.
 
 The latest completeness audit added the missing project dashboard, native annotation and network-observer instructions and a [console map](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/console-navigation.md). The dashboard and annotation guides now have real console captures and successful walkthroughs in isolated QA. Discovery now has a genuine authorized Kubernetes source, runtime and call-gate walkthroughs in separate compatibility QA. One-time network evidence is partial. A later distinct continuous run qualified workload attribution, Kubernetes Service matching, delivery and shutdown with explicit omission limits; the earlier all-omitted run remains recorded. Earlier failed reads remain recorded; the successful checks below do not establish hosted-beta parity or general service reliability.
+
+### Clean reproduction and an executed passing control
+
+The separate **MR-1009** in **Harbor Assessment Lab** completed with **4 target requests**, **7 model calls** and one verified finding. Its unchanged normal verification bar required **two repetitions, two successes and a benign control**. The initial probe and repetitions used restored epochs **4, 5 and 6**; each independent read found five starting ledger records, six ending records and a refund count of **1 → 2** for the tested order. The executed control in epoch **7** retained five records and **1 → 1** refunds. All four worlds used the same published seed and equivalent baseline. The saved result is **verified / reproduced\_clean**, with **2 successful reproductions** and `negative_control_passed: true`.
+
+The two verification requests differed from the original probe, but matched each other. This establishes the recorded duplicate-refund behavior under those requests, rather than exact replay of the original wording. The model-generated narrative inaccurately described a status request as the control that caused a refund; the independent control receipt instead records unchanged state. The dollar-impact summary remains unavailable because these count-based checks do not meet its narrower monetary-sample contract.
+
+The canonical finding, four world receipts, completed state and exact review revision survived a full reload. The redacted review contains **75 parts plus its manifest**, **4 turns**, **2 verification rows**, **23 customer-reported events** and **11 settled gateway records**. Its API and actual browser downloads passed CRC, manifest scope, every part’s SHA-256/byte-count and JSON validation. The artifact verification view deliberately retains verdict metadata without the arbitrary verifier body; full verification fields belong to the canonical finding. A preexisting low-contrast **Recorded detail** JSON panel in this pinned light UI remains a product follow-up; readable finding and world-card captures are used in the guides.
+
+The exact sealed one-turn source also passed normal Owner replay-recipe approval (**201**). This approves a recipe only; no exact-recipe campaign or release policy was executed or changed. The run retained **Release recommendation: PENDING**. Earlier failed preflight runs and their reservations, uncertain actions and usage remain preserved. The successful new run does not resolve those earlier scopes.
 
 ### Isolated review recovery
 
@@ -5485,13 +5541,13 @@ The final QA build uses the exact five-file recovery patch at Backend `67691e70f
 
 Real Owner API calls resumed saved publication. Genuine Viewer, foreign Owner and anonymous boundaries returned **403**, **404** and **401**; mixed recovery/write or revision flags and the wrong capture mode returned **422**. The final build also refused reinspection of an already persisted export with **409**. Both original review headers, sections and actual Firefox downloads passed after deployment. The browser ZIP has **43 entries / 121,320 bytes**; the payment ZIP has **69 entries / 175,522 bytes**. Their manifests and every part passed CRC, SHA-256, byte-count and JSON validation. Two direct desktop captures show the recovered content and the payment’s unchanged **not reproducible** result.
 
-Focused reloads retained the selected revisions with no failed HTTP response or page error. Navigation canceled one conversation request and one background Discovery request; earlier refresh CORS failures during Backend recreation are retained as transient observations. The new recovery PostgreSQL suite passed **8** cases; **13** existing collector/gateway/capacity cases passed, and the preceding full unit run discovered **1,006** tests with **221** skipped. GitHub Actions could not start because of organization billing, so the ready Backend PR remains unmerged. No beta deployment occurred. Successful clean reproduction and its executed passing control remain unqualified; the current AWS session cannot refresh for the remaining model-backed run.
+Focused reloads retained the selected revisions with no failed HTTP response or page error. Navigation canceled one conversation request and one background Discovery request; earlier refresh CORS failures during Backend recreation are retained as transient observations. The new recovery PostgreSQL suite passed **8** cases; **13** existing collector/gateway/capacity cases passed, and the preceding full unit run discovered **1,006** tests with **221** skipped. GitHub Actions could not start because of organization billing, so the ready Backend PR remains unmerged. No beta deployment occurred. The separate successful clean-reproduction check above followed a fresh AWS sign-in; it does not change these recovered runs’ original outcomes.
 
 ### Completed browser check — 16 November 2026
 
 A distinct **MR-1006** in **Harbor Assessment Lab** completed against the real synthetic support website with configured sign-in, endpoint-only disclosure scope and serial execution. The campaign recorded **4 target requests**, **12 model calls**, one attempted/unverifiable probe and **0** findings. Its security outcome remained **INCONCLUSIVE** after search-round exhaustion. A real desktop browser reload retained the run, revision, counters and probe result, with no failed API response or page error during that focused check. Two direct application captures show the [completed result and its coverage](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-completed-browser-assessment).
 
-The revised website and runtime code were unchanged from the preceding failed sign-in check; the later run used a separately approved connection and renewed temporary transport. This does not establish the cause of the earlier failure. Its saved review export initially reported **Needs review / review\_artifact\_conflict**, separately from completed execution. The later isolated recovery above qualifies its original review content and download; it does not establish the cause of the initial conflict. Synthetic signed-in fixture identity, prepared scenarios, browser cancellation, successful clean reproduction and its required control remain unqualified. All four partly verified guide requirements remain in the coverage audit.
+The revised website and runtime code were unchanged from the preceding failed sign-in check; the later run used a separately approved connection and renewed temporary transport. This does not establish the cause of the earlier failure. Its saved review export initially reported **Needs review / review\_artifact\_conflict**, separately from completed execution. The later isolated recovery above qualifies its original review content and download; it does not establish the cause of the initial conflict. Synthetic signed-in fixture identity, prepared scenarios and browser cancellation remain unqualified. The separate payment reproduction above does not extend the browser run’s evidence scope.
 
 ## Observed walkthroughs — 13–14 November 2026
 
@@ -5566,9 +5622,9 @@ A distinct active HTTP run, **MR-1005**, now qualifies the [complete progress-an
 
 Cancellation did not erase an already issued provider request: twelve model attempts had usage receipts and one retained unknown usage. A separate read-only inspection explained the older **MR-1004** reservation: one failed transport remained conservatively reserved beside its settled successful retry. The shipped gateway reserves each provider attempt and settles only received usage; these entries remain counted against their original campaign. They were not manually released or treated as free calls. Seven cancellation files and four budget/provider files matched the actual runtime source. Three new application captures show the live acknowledgment, refreshed final state and retained reply.
 
-The teaching callbacks are deterministic. These checks verify wiring and retained evidence; they do not establish production model quality or security. MCP endpoint execution required operator-assisted recovery. Later named checks qualified completed browser execution and independent sandbox-backed payment effects. Self-service MCP admission recovery, browser cancellation, synthetic signed-in fixture identity, prepared scenarios and successful clean reproduction with its control remain unqualified. Verified labels name the local or GitHub-runner QA scope; they do not imply hosted-beta parity. Partly verified guides identify their remaining limits above the steps.
+The teaching callbacks are deterministic. These checks verify wiring and retained evidence; they do not establish production model quality or security. MCP endpoint execution required operator-assisted recovery. Later named checks qualified completed browser execution and independent sandbox-backed payment effects. Self-service MCP admission recovery, browser cancellation, synthetic signed-in fixture identity and prepared scenarios remain unqualified. The separate payment check above qualifies clean reproduction and its executed control in its named scope. Verified labels name the local or GitHub-runner QA scope; they do not imply hosted-beta parity. Partly verified guides identify their remaining limits above the steps.
 
-A separate [payment binding walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) now verifies complete binding replacement, the return to draft, editor clearing, real template inspection, validation/approval and retention after reload. Its reproducible seed helper passed real API storage/readback, reuse of the same seed and refusal of different existing data. A built-in launch first exposed an important limit: the catalogue can list optional profile accounts that were not loaded. Explicitly storing and launching the released example then passed the selected account’s sign-in and refresh. One bounded assessment independently captured five ledger records and passed both baseline prerequisites, but its first target request returned HTTP 502 during supplied-tool setup. The saved run retained **Needs attention**, a **ready** starting receipt and pending after-state/outcome fields. The original uncertain action remains unresolved. Three new real captures document this partial scope; business effects, clean repetitions and controls remain unqualified. A separate fresh-copy attempt hit the normal tenant CPU quota; no quota or product-source change was used to bypass it.
+A separate [payment binding walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) now verifies complete binding replacement, the return to draft, editor clearing, real template inspection, validation/approval and retention after reload. Its reproducible seed helper passed real API storage/readback, reuse of the same seed and refusal of different existing data. A built-in launch first exposed an important limit: the catalogue can list optional profile accounts that were not loaded. Explicitly storing and launching the released example then passed the selected account’s sign-in and refresh. One bounded assessment independently captured five ledger records and passed both baseline prerequisites, but its first target request returned HTTP 502 during supplied-tool setup. The saved run retained **Needs attention**, a **ready** starting receipt and pending after-state/outcome fields. The original uncertain action remains unresolved. Three real captures document that earlier partial scope; its business effects, clean repetitions and controls were not qualified by that failed run. A separate fresh-copy attempt hit the normal tenant CPU quota; no quota or product-source change was used to bypass it.
 
 A second three-record member run initially retained canonical passes while some telemetry acknowledgements were uncertain. Administrator reconciliation later confirmed the saved evidence with **zero target calls**. A stalled, never-submitted SDK dataset publication was safely aborted and its restored draft published after that recovery. A manually repeated numeric review save after a delayed acknowledgement also produced an additional history entry; queue completion was checked against its four latest verified answers.
 
@@ -5591,7 +5647,7 @@ Twenty-eight relevant source files matched the served archive and running images
 A separate **Harbor Assessment Lab** used a genuine customer Owner with `platform_admin: false`, Frontend `90351b7`, Backend `7cb888aa`, Native `f7de3e0` and MLflow 3.18.0. Native runtime code and dependencies are unchanged in the later `d021180e` source. The target and payment data were synthetic; these checks do not attest hosted-beta parity.
 
 -   The published manual payment-seed helper, complete bindings, validation/approval and retained configured summaries passed. **MR-1002** then completed **17 agent requests**, **59 model calls** and **one independently observed business-state finding**. A separate Backend ledger read measured **1 → 18 refunds**, with a delta of **17**. The target journal retained 17 completed actions and 34 real MCP calls, with no uncertain target action in this run. Full refresh retained the run, verdict and before/after digests. This completes the sandbox-binding guide’s five original stages.
--   **MR-1004** used the supported API world-isolation option. Actual restored epochs **3, 4 and 5** had the same seed and equivalent baseline. Two verification requests differed from the initial refund request and did not reproduce its effect. The run recorded **not reproduced**, with 3 target calls and 6 model calls; no formal negative control executed. Successful clean reproduction and a passed control remain unqualified.
+-   **MR-1004** used the supported API world-isolation option. Actual restored epochs **3, 4 and 5** had the same seed and equivalent baseline. Two verification requests differed from the initial refund request and did not reproduce its effect. The run recorded **not reproduced**, with 3 target calls and 6 model calls; no formal negative control executed. That run did not qualify successful clean reproduction or a passed control; the separate MR-1009 check above does.
 -   MR-1002’s durable review published 113 parts containing 3 conversations, 17 turns, 103 customer events and 51 gateway records. Review content was complete while native span delivery remained pending. An initial revision-pinned HTTP 200 ZIP failed archive validation. A later read of the same revision, through the real Firefox download button, saved a valid 674,489-byte ZIP with 114 entries. The manifest matched the revision and all 113 parts passed CRC, byte-count, SHA-256 and JSON checks. Reports JSON, Replay filtering and retained revision after refresh also passed. No replacement assessment or model call was used; the earlier failed download and pending native coverage remain separate observations.
 -   Two native browser checks stopped at blocked form navigation and a later sign-in timeout. The revised synthetic website passed separate manual sign-in, asynchronous chat, retained replies and fresh-conversation refresh checks. Manual website success does not qualify native execution. Synthetic signed-in identity and prepared-scenario walkthroughs also remain unqualified.
 -   A separate one-turn admission returned `review_capacity_unavailable`; it was not automatically resubmitted. Earlier unknown actions, model reservations and telemetry delivery uncertainty were preserved. The strict release audit remains active.

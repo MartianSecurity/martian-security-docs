@@ -373,7 +373,7 @@
         "assessment-browser-tests"
       ],
       "qualification": "partial",
-      "validationStatus": "Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted.",
+      "validationStatus": "Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted. Separate MR-1009 now qualifies clean duplicate-refund reproduction with two positive restored-world repetitions and an executed passing control. Signed-in fixtures and prepared scenarios remain unqualified.",
       "documentationRoute": "/assessments/configure/",
       "role": "member, admin, owner",
       "route": "/#/assessment",
@@ -439,6 +439,13 @@
           "observedPath": "Completed native browser execution and retained inconclusive coverage",
           "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 with runtime equivalent to d021180e, MLflow3.18.0 and real synthetic HTTPS support website",
           "result": "MR-1006 completed native browser execution with4target requests/12model calls, one attempted/unverifiable disclosure probe and nofindings. Its completed state, INCONCLUSIVE verdict, pinned website revision and probe counts survived a real full UI reload. Review export separately reported needs_review/review_artifact_conflict; no review content or archive success is claimed. Earlier failed campaigns remain unchanged."
+        },
+        {
+          "date": "2026-11-16",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Clean duplicate-refund reproduction: two positive fresh-world repetitions and an executed passing benign control",
+          "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+          "result": "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release."
         }
       ],
       "screenshots": [
@@ -550,8 +557,8 @@
         "assessment-modern-redacted-turn",
         "assessment-browser-recovered-review"
       ],
-      "qualification": "partial",
-      "validationStatus": "Endpoint and completed browser results, independent payment effects, original review recovery, actual complete ZIP downloads and retained UI reads passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified.",
+      "qualification": "verified",
+      "validationStatus": "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release.",
       "documentationRoute": "/assessments/evidence-and-results/",
       "role": "viewer, member, admin, owner",
       "route": "/#/runs/<run-id>",
@@ -571,11 +578,9 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "Partial: endpoint and browser execution, independent sandbox business effects, published redacted review reads and the MR-1002 archive passed; successful clean reproduction with its control remains unqualified.",
-        "screenshots": "partial",
-        "remainingGaps": [
-          "A cleanly reproduced positive finding with required control remains unverified."
-        ]
+        "realBackendWalkthrough": "passed in the recorded isolated QA scopes; see validation",
+        "screenshots": "captured",
+        "remainingGaps": []
       },
       "validation": [
         {
@@ -632,6 +637,13 @@
           "observedPath": "Original review conflict recovery, receipt-driven cleanup and real UI/ZIP readback",
           "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
           "result": "Original MR-1006 and MR-1004 revisions published and cleaned up through explicitly approved isolated-QA recovery. Frozen pins/descriptors and all execution/budget/action records were unchanged; only their two review reservations were normally released. Real Owner reinspection and Viewer/foreign/anonymous/mixed-mode boundaries passed. Both exact original revisions and real UI downloads survived refresh; all43/69ZIP entries passed integrity. Reproduction/control and other four-guide gaps remain unqualified; Backend PR198 is ready but unmerged because GitHub Actions billing prevented jobs from starting."
+        },
+        {
+          "date": "2026-11-16",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Clean duplicate-refund reproduction: two positive fresh-world repetitions and an executed passing benign control",
+          "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+          "result": "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release."
         }
       ],
       "screenshots": [
@@ -652,7 +664,8 @@
         "assessment-browser-recovered-review"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified."
+      "verifiedAt": "2026-11-16",
+      "verifiedEnvironment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity"
     },
     {
       "id": "assessments/history-and-exports",
@@ -1073,8 +1086,8 @@
         "assessment-verification",
         "assessment-outcome-checks"
       ],
-      "qualification": "partial",
-      "validationStatus": "In isolated local QA, MR-1002 had unverifiable disclosure coverage and no deterministic oracle. Model opinions and requested-versus-used budgets were inspected. Clean-world reproduction and negative controls remain unverified. A separate payment run passed explicit seeded-account authentication and independent starting-ledger prerequisites, then retained Needs attention after MCP setup failed. Reopened before-only Outcome checks remained ready with no after-state or business-effect verdict; the original uncertain action is unchanged. Later MR1002 proved a business effect. MR1004 completed three distinct restored epochs with equivalent baselines and two unsuccessful repetitions; its verification messages differed from the initial request, and no formal negative control executed.",
+      "qualification": "verified",
+      "validationStatus": "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release.",
       "documentationRoute": "/assessments/reproduction-and-limits/",
       "role": "viewer, member, admin, owner",
       "route": "/#/runs/<run-id>",
@@ -1090,11 +1103,9 @@
       ],
       "sourceReview": {
         "sourceReviewed": true,
-        "realBackendWalkthrough": "partial; see validationStatus",
-        "screenshots": "partial",
-        "remainingGaps": [
-          "Successful clean reproduction and an executed passing negative control remain unverified; restored-world reads and negative repetition results are qualified separately."
-        ]
+        "realBackendWalkthrough": "passed in the recorded isolated QA scopes; see validation",
+        "screenshots": "captured",
+        "remainingGaps": []
       },
       "validation": [
         {
@@ -1116,14 +1127,23 @@
           "observedPath": "Completed payment business comparison, restored-world repetitions and export integrity boundary",
           "environment": "Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox",
           "result": "MR-1002 completed 17 target requests and 59 model calls with one independent business-state finding. Before/after records changed from 5 to 22 transactions and from 1 to 18 refunds; the target journal retained 17 completed actions and 34 MCP calls, with no uncertain target action. Run ID, verdict and state digests survived UI refresh. MR-1004 restored epochs 3, 4 and 5 with equivalent baselines, but two different verification messages did not reproduce the initial effect; no formal control ran. The published MR-1002 review metadata lists 113 parts, 17 turns, 103 customer events and 51 gateway records. Its HTTP 200 ZIP failed archive validation. Completed browser execution, signed-in profiles, prepared scenarios and successful clean reproduction are not claimed."
+        },
+        {
+          "date": "2026-11-16",
+          "record": "quality/walkthroughs.json",
+          "observedPath": "Clean duplicate-refund reproduction: two positive fresh-world repetitions and an executed passing benign control",
+          "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+          "result": "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release."
         }
       ],
       "screenshots": [
         "assessment-verification",
-        "assessment-outcome-checks"
+        "assessment-outcome-checks",
+        "assessment-clean-world-control"
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
-      "customerNotice": "An independent business effect and restored-world negative repetitions are checked. Successful clean reproduction and a passed negative control remain incomplete."
+      "verifiedAt": "2026-11-16",
+      "verifiedEnvironment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity"
     },
     {
       "id": "discovery/call-gates",
