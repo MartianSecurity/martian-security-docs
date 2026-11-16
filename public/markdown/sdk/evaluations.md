@@ -195,7 +195,7 @@ Expect one passing test. The judge sends the request, the reply and your rubric 
 Keep these execution rules in mind:
 
 -   **Scorer names must differ from expectation keys.** A scorer called `rubric` with `expectations.rubric` now raises `ValueError` before anything runs, because the result column would be overwritten. Give the scorer its own name, as above.
--   **A judgment that is invalid or uncertain is an error, never a pass.** If the provider rate-limits, a judge waits as long as the provider asks, for up to `rate_limit_wait_seconds` (default 300; 0 turns it off), separately from the retries. Server errors and connection failures are retried up to five times by default (`max_retries`). The rate-limit setting and the separate budget need SDK 0.1.4. A judge never asks again once it has a judgment.
+-   **A judgment that is invalid or uncertain is an error, never a pass.** If the provider rate-limits, a judge waits as long as the provider asks, for up to `rate_limit_wait_seconds` (default 300; 0 turns it off), separately from the retries. Server errors and connection failures are retried up to five times by default (`max_retries`). The rate-limit setting and the separate budget need SDK 0.1.4 or later. A judge never asks again once it has a judgment.
 -   **`evaluate` raises `EvaluationError` when per-row results are missing**, and traces a prediction function that is not decorated. Keeping `@mlflow.trace` is still recommended, so the trace has the name and span type you chose.
 
 To run a whole file of cases without writing tests, use a [suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md).

@@ -1,6 +1,6 @@
 # Move from Inspect AI
 
-> Import the logs Inspect AI wrote as runs in the local Evals UI, then open, compare and review them. Needs SDK 0.1.4.
+> Import the logs Inspect AI wrote as runs in the local Evals UI, then open, compare and review them. Needs SDK 0.1.4 or later.
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/inspect/)
 

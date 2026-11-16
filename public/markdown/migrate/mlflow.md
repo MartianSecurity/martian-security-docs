@@ -1,6 +1,6 @@
 # Move from MLflow
 
-> Copy an MLflow tracking store into the local Evals UI: experiments, traces, assessments, evaluation datasets and evaluation runs. Needs SDK 0.1.4.
+> Copy an MLflow tracking store into the local Evals UI: experiments, traces, assessments, evaluation datasets and evaluation runs. Needs SDK 0.1.4 or later.
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/mlflow/)
 
