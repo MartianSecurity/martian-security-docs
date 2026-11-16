@@ -4520,6 +4520,56 @@
       "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Completed state, original campaign identity, actual counters and probe outcome were checked against the real API and after a full browser reload; no failed API response or pageerror during that focused check. All PNG CRCs, dimensions and SHA256 passed.",
       "reviewedForSecrets": true,
       "sha256": "6558d5735ab881d3c9e9c2280d78de9f8c4af7e714f995da78095c930af47516"
+    },
+    {
+      "id": "assessment-browser-recovered-review",
+      "file": "browser-recovered-review.png",
+      "alt": "Recovered browser review with its original persisted revision, two retained turns and the selected synthetic request.",
+      "caption": "The original browser review is available after operator-assisted publication recovery in isolated QA. Its inconclusive outcome is unchanged.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "assessments/evidence-and-results: Read a completed browser assessment, steps4\u20135"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-16T04:09:46.243083+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "backendRecoveryPatch": "67691e70fe39a9788e64a8950087b58a93715188",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Final QA five-file patch67691e7: four files match the PR byte-for-byte and API bodies match; only the pinned baseline Owner/Admin guard differs. No full-main or beta parity claimed.",
+      "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Exact revision and real content survived full reload. Actual UI and independent HTTP downloads passed complete archive integrity. No failed HTTP response or pageerror during focused final checks; navigation-aborted reads and earlier restart CORS observations are retained.",
+      "reviewedForSecrets": true,
+      "sha256": "afd6e566bbed9a37ad787c88b05bf80613aa37ef8a0cd87aadf6a3a65b7c214b"
+    },
+    {
+      "id": "assessment-payment-recovered-review",
+      "file": "payment-recovered-review.png",
+      "alt": "Recovered payment review showing the original revision and two verification receipts, including a not-reproducible result.",
+      "caption": "The recovered payment review retains not reproducible and no violation observed. Evidence availability does not establish a successful reproduction.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "assessments/history-and-exports: Recovery of two frozen reviews, steps1\u20133"
+      ],
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "role": "Organization Owner; platform_admin false",
+      "capturedAt": "2026-11-16T04:13:53.439359+00:00",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "backendRecoveryPatch": "67691e70fe39a9788e64a8950087b58a93715188",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Final QA five-file patch67691e7: four files match the PR byte-for-byte and API bodies match; only the pinned baseline Owner/Admin guard differs. No full-main or beta parity claimed.",
+      "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Exact revision and real content survived full reload. Actual UI and independent HTTP downloads passed complete archive integrity. No failed HTTP response or pageerror during focused final checks; navigation-aborted reads and earlier restart CORS observations are retained.",
+      "reviewedForSecrets": true,
+      "sha256": "129e3fec8867e54b94c6490844b8f751b41400b36c18c0881ec1bfd76bd89065"
     }
   ]
 }

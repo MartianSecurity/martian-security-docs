@@ -718,6 +718,18 @@
       "date": "2026-11-16",
       "result": "Production build/check passed; strict completeness remains incomplete",
       "details": "71built pages,70agentexports,91exactcodeblocks,190captions and3existing export regressions passed. Eight actual local route/viewport/theme checks, exact Copy page and both fullsize1440x1000images passed with no failed responses/pageerrors/overflow. Both local renders were viewed. Current publicPyPI version and wheelhash still match the previously qualified release; no localUI release was found. Original38guide requirements/192prior capture records and all4partial guides remain unchanged; strict audit retains the same5failures. Actual search for completed browser assessment opened the updated guide and survived deep refresh. The initial observer used the wrong input type; the real placeholder selector passed, with no product change."
+    },
+    {
+      "scope": "Approved isolated-QA frozen review recovery and real customer UI/archive verification",
+      "date": "2026-11-16",
+      "result": "Recovery, unchanged-execution integrity, two real UI archives and authorization boundaries passed; Backend merge and model-backed walkthrough remain blocked",
+      "details": "Original MR-1006 and MR-1004 revisions published and cleaned up through explicitly approved isolated-QA recovery. Frozen pins/descriptors and all execution/budget/action records were unchanged; only their two review reservations were normally released. Real Owner reinspection and Viewer/foreign/anonymous/mixed-mode boundaries passed. Both exact original revisions and real UI downloads survived refresh; all43/69ZIP entries passed integrity. Reproduction/control and other four-guide gaps remain unqualified; Backend PR198 is ready but unmerged because GitHub Actions billing prevented jobs from starting. Final review found and fixed a byte-count integrity omission. Eight focused PostgreSQL recovery cases passed; thirteen existing PostgreSQL cases and all68migrations from empty passed. The preceding full discovery ran1006tests/221skipped. No checks or original required guide stages were weakened."
+    },
+    {
+      "scope": "Recovery guide build, unchanged qualification gates, agent exports and focused visual review",
+      "date": "2026-11-16",
+      "result": "Production build/check and focused real-browser checks passed; strict completion remains incomplete",
+      "details": "71builtpages,70agentexports,91exactcodeblocks and3existing export tests passed. Six actual route/viewport/theme checks on the3changedguides passed, with desktopLight and narrowDark, exact Copy page text, both1440x1000fullsizeimages, actual search and deeprefresh. Both local renders were individually viewed. No failed response/pageerror/overflow in this focused docs check. All38originalrequiredValidation arrays, theirqualificationstates and194priorcaptureobjects are unchanged. Strict release retains the same5failures across4partlyverifiedguides; the required successful-verification capture is not replaced by the new not-reproducible receipt image."
     }
   ],
   "remainingGaps": [
@@ -725,7 +737,7 @@
     "Synthetic signed-in fixture identity and prepared Assurance scenarios remain unqualified. Basic HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment effects are checked in their named scopes.",
     "Successful clean reproduction and an executed passing negative control remain unverified. MR-1004 restored equivalent worlds but its different verification messages were negative and its formal control was skipped. No security pass is inferred.",
     "The Community quickstart local Evals UI is not in the released SDK. Its install, CLI runs, files, failed first run and corrected rerun passed; the UI stage remains incomplete.",
-    "MR-1002 redacted review ZIP and Reports/history paths passed in the later same-revision recovery, including all113parts. Native span coverage remains pending. MR-1004 review publication entered needs-review after supported artifact recovery; MR-1006 review reported an artifact conflict despite separately completed browser execution.",
+    "Original MR-1002 archive/history checks passed previously. MR-1004 and MR-1006 reviews now publish and download through an explicitly approved isolated-QA recovery patch, with original revisions and all part integrity retained. Backend PR198 is ready but cannot merge while GitHub Actions is billing-blocked; hosted availability is not established. Current AWS access cannot refresh for the remaining clean-reproduction/control run.",
     "Earlier uncertain actions, model usage and paid-operation reservations remain preserved. No unknown usage was treated as zero or manually settled. Separate successful runs do not resolve those older scopes.",
     "MCP admission lost-acknowledgment recovery was operator-assisted. Browser cancellation, active-run connection deletion, populated-history retention and every authentication-management variant are not inherited from the completed browser run.",
     "Non-Boolean model-rubric execution remains unqualified. Native conversation sessions passed with separately provisioned instrumentation; the earlier SDK does not supply a native-ingestion credential feature.",

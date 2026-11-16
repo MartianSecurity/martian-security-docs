@@ -1022,6 +1022,30 @@
         "Successful clean reproduction with its executed passing negative control",
         "Browser cancellation and completed review publication for this browser run"
       ]
+    },
+    {
+      "date": "2026-11-16",
+      "record": "quality/walkthroughs.json",
+      "observedPath": "Original review conflict recovery, receipt-driven cleanup and real UI/ZIP readback",
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "result": "Original MR-1006 and MR-1004 revisions published and cleaned up through explicitly approved isolated-QA recovery. Frozen pins/descriptors and all execution/budget/action records were unchanged; only their two review reservations were normally released. Real Owner reinspection and Viewer/foreign/anonymous/mixed-mode boundaries passed. Both exact original revisions and real UI downloads survived refresh; all43/69ZIP entries passed integrity. Reproduction/control and other four-guide gaps remain unqualified; Backend PR198 is ready but unmerged because GitHub Actions billing prevented jobs from starting.",
+      "task": "Original review conflict recovery with verified cleanup and unchanged execution",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "backendRecoveryPatch": "67691e70fe39a9788e64a8950087b58a93715188",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "observed": [
+        "Read-only authenticated reinspection matched the existing browser part; the absent payment part had no prior mutation intent and returned ready. No uncertain provider write was blindly reissued.",
+        "Both original exports reached persisted/cleanup complete. Exact frozen identities, all part descriptors, Native campaign/ledger/budget rows and target journals matched the pre-recovery snapshot. Only the two expected review reservations were released.",
+        "Final deployed runtime hashes match the reviewed five-file patch, with the documented preexisting role-guard difference. Actual persisted headers, four section reads per run, selected record reads, reloads and both UI downloads passed.",
+        "Browser and payment ZIPs contain43/69entries and121320/175522bytes. Both actual UI files and independent HTTP files passed CRC, manifest scope/revision, all part hashes/lengths and JSON validation.",
+        "Genuine Viewer403, foreign Owner404, anonymous401, mixed recovery flags422, wrong capture mode422 and already-persisted409 were observed.",
+        "Two direct1440x1000Light product captures were individually viewed. No failed HTTP response/pageerror during focused final reloads; navigation-aborted reads and earlier restart CORS failures are retained.",
+        "Backend PR198 remains ready/unmerged because organization billing prevented all23CIjobs from starting. No beta deployment. Successful clean reproduction/control remains blocked by expired AWS access."
+      ]
     }
   ],
   "knownEnvironmentLimits": [

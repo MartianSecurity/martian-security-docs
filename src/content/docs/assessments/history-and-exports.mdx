@@ -81,6 +81,21 @@ A later read of the **same run and published revision** completed through the ac
 
 A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download. The successful later read does not establish general artifact-service reliability or complete native telemetry.
 
+### Recovery of two frozen reviews
+
+This operator-assisted example uses an approved Backend recovery patch in **isolated QA**. It does not establish hosted availability. If your review remains **Needs review**, preserve its run and revision and contact the operator responsible for publication.
+
+The completed browser **MR-1006** and payment **MR-1004** in **Harbor Assessment Lab** initially retained artifact conflicts. Their original revisions were recovered without repeating an assessment, target request or model call. To inspect the recovered evidence:
+
+1. Open **Recorded review** and confirm **Review delivery: persisted**, **Review coverage: complete** and the selected **Review revision**. The browser revision begins `8a989daa25b0`; the payment revision begins `899ec6be2df4`. Reloading the application retained each original revision.
+2. Open a relevant section. The browser's **Turns (2)** retains the actual request and reply. The payment review's **Verification receipts (2)** retains **not reproducible** and **no violation observed**. Restoring access to evidence does not turn those results into a successful reproduction.
+
+<Screenshot id="assessment-payment-recovered-review" />
+
+3. Click **Download redacted review**. Both actual Firefox downloads completed: the browser archive contains **43 entries / 121,320 bytes**, and the payment archive contains **69 entries / 175,522 bytes**. Each contains its original matching manifest; every content part passed CRC, SHA-256, byte-count and JSON checks.
+
+The two review reservations were released only after verified publication and normal cleanup. Original assessment outcomes, frozen descriptors, target journals, execution ledgers and usage reservations were unchanged. The earlier failed run's reservation remains retained. See the [qualification record](/reference/verification/#isolated-review-recovery) for the build boundary and remaining gaps.
+
 ## Failure and recovery
 
 If **Refresh review** still offers no published revision, ask your workspace owner or Martian operator who manages review publication. Include the run code, displayed review revision/status and error, without credentials or private payloads. Refresh reads availability; it does not publish an artifact. Keep the available run/legacy JSON as its separately described evidence scope; it is not a substitute for a published redacted review ZIP.
