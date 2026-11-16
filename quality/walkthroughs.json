@@ -1046,6 +1046,26 @@
         "Two direct1440x1000Light product captures were individually viewed. No failed HTTP response/pageerror during focused final reloads; navigation-aborted reads and earlier restart CORS failures are retained.",
         "Backend PR198 remains ready/unmerged because organization billing prevented all23CIjobs from starting. No beta deployment. Successful clean reproduction/control remains blocked by expired AWS access."
       ]
+    },
+    {
+      "task": "Clean duplicate-refund reproduction: two positive fresh-world repetitions and an executed passing benign control",
+      "result": "passed in isolated QA; exact-recipe execution/release policy and hosted parity remain separate",
+      "date": "2026-11-16",
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "observed": [
+        "MR-1009 completed one attempt,4target/7model calls. Original epoch4 and positive repetitions5/6 each changed the independent ledger5->6 and tested-order refunds1->2. Executed control epoch7 retained5records/refunds1->1. Same seed/equivalent baseline; normal2repetitions/2successes/control threshold unchanged. Canonical finding verified/reproduced_clean. Full UI reload retained finding fields and world/control receipts; review revisionf3f0567... persisted with75parts/76archiveentries/211400bytes. Actual browser and API ZIPs passed CRC/all SHA/size/JSON checks;4turns/2verification rows/23customer events/11settledgateway records. No failed HTTP response/pageerror;2navigation-aborted reads retained. Verification messages differed from the original and model narrative was not used as the oracle. Artifact verification rows retain verdict metadata; full verification body is in the canonical finding. Count-based checks do not qualify the monetary summary. Existing light UI detail contrast is recorded as a follow-up. Exact sealed source recipe approval201 is separate from executing a recipe or approving release.",
+        "Supported Owner sandbox reset restored the own world before the new admission. Earlier failed preflight runs and their reservations remain retained. No quota, usage or unknown action was manually settled.",
+        "A stale QA telemetry origin was corrected on the unchanged runtime. Only MR1007 original frozen telemetry received an attributed, exact-spool replay grant; no target/model replay. MR1009 telemetry completed normally.",
+        "Recorded review, Probe coverage, Findings, Outcome checks, full reload, real browser download and independent API/archive validation passed. The two direct published captures were individually viewed; the unreadable detail-panel capture was excluded."
+      ],
+      "screenshots": [
+        "assessment-verification",
+        "assessment-clean-world-control"
+      ],
+      "remaining": [
+        "Synthetic signed-in fixtures and prepared scenarios are separate incomplete paths. Local Evals UI is unreleased. BackendPR198 remains unmerged while required Actions are billing-blocked.",
+        "Exact source recipe approved201, but no exact-recipe execution or release policy approval was exercised. No hosted-beta parity or human Mom test is claimed."
+      ]
     }
   ],
   "knownEnvironmentLimits": [

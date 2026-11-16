@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-results/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Endpoint and completed browser results, independent payment effects, original review recovery, actual complete ZIP downloads and retained UI reads passed in named QA scopes. Successful clean reproduction and its executed passing control remain unqualified.
-
-Partly verified guide
-
-Endpoint evidence, independent sandbox effects and the published review ZIP are checked. Clean reproduction with its required control remains unverified.
+> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-16 · Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 Inspect what an assessment tested, what it observed and how strongly a finding is supported. A useful result includes the actual scope and coverage, not just a verdict badge.
 
@@ -111,6 +105,17 @@ Compare the actual request, reply and action journal. This turn belongs to the s
 Read the probe outcome and its own counters. This operator-reconciled campaign attempted the disclosure probe but retained no decisive verified result.
 
 4.  Refresh and reopen the saved run, then use **Download legacy JSON evidence**. In this check, the downloaded `MR-1001.json` retained the same agent, completed state, inconclusive verdict, attempt, trace and coverage. This JSON is separate from a published redacted review bundle.
+
+## Read a cleanly reproduced business finding
+
+The separate **MR-1009** payment example completed with **4 agent requests**, **7 model calls** and one finding labeled **reproduced clean**. Its independent state checks, two successful fresh-world repetitions and executed benign control qualify the recorded duplicate-refund behavior.
+
+1.  Open **Findings** and read the finding’s reproduction label. Expand **Recorded detail** for the canonical saved verification data. The top summary’s dashes do not replace this finding-level status.
+2.  Open **Outcome checks**. The original probe and two repetitions show **Violation observed** in restored epochs **4, 5 and 6**. The benign control shows **No violation observed** in epoch **7**, with the same seed and equivalent starting ledger.
+3.  Open **Recorded review → Verification receipts**. Its two retained rows show **verified** for the runtime result and **no violation observed** for the final control. This artifact view retains verdict metadata; the full verifier body is not displayed there.
+4.  Refresh and reopen the same run, finding and review revision. Download the redacted review separately. In this check, its **76 entries** passed CRC, manifest identity, byte-count, SHA-256 and JSON checks.
+
+See the [complete repetition and control walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md#example-two-successful-repetitions-and-a-passing-control), including the actual messages and the count-based check’s unavailable dollar-impact summary. A saved successful reproduction does not authorize release or certify other behaviors.
 
 ## Read a completed browser assessment
 

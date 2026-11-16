@@ -4570,6 +4570,56 @@
       "validationStatus": "Direct unedited real UI PNG, individually viewed for readability and secrets. Exact revision and real content survived full reload. Actual UI and independent HTTP downloads passed complete archive integrity. No failed HTTP response or pageerror during focused final checks; navigation-aborted reads and earlier restart CORS observations are retained.",
       "reviewedForSecrets": true,
       "sha256": "129e3fec8867e54b94c6490844b8f751b41400b36c18c0881ec1bfd76bd89065"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "role": "Organization Owner; platform_admin false",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "backendRecoveryPatch": "67691e70fe39a9788e64a8950087b58a93715188",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Final QA five-file patch67691e7: four files match the PR byte-for-byte and API bodies match; only the pinned baseline Owner/Admin guard differs. No full-main or beta parity claimed.",
+      "id": "assessment-verification",
+      "file": "clean-reproduction-finding.png",
+      "alt": "MR-1009 completed with four agent requests, seven model calls and a finding labeled reproduced clean.",
+      "caption": "The finding records reproduced clean. Its 4 agent requests include the original probe, two positive repetitions and one executed benign control.",
+      "guideSteps": [
+        "assessments/reproduction-and-limits: Example: two successful repetitions and a passing control, step1"
+      ],
+      "capturedAt": "2026-11-16T06:44:55.302721+00:00",
+      "validationStatus": "Direct unedited real 1440x1000 light desktop UI capture; decoded and individually viewed for readability and secrets. Genuine Owner actions, full reload, canonical verified finding, independent epoch/control receipts and complete browser/API archive validation passed. No failed HTTP response or page error; two navigation-aborted reads retained. Pinned product JSON contrast follow-up is separate; unreadable private capture is excluded.",
+      "reviewedForSecrets": true,
+      "sha256": "9a720bfbdbe42b98655fa08bc46a60ab668b964d05a0c3b99d1c4c7208e6c886"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "environment": "Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity",
+      "role": "Organization Owner; platform_admin false",
+      "sourceRevisions": {
+        "frontend": "90351b712194e2e6f8c5fdbedc6ee1382caf743a",
+        "backend": "7cb888aa2d3eabf4033bf4725da243ad52a18e2f",
+        "backendRecoveryPatch": "67691e70fe39a9788e64a8950087b58a93715188",
+        "agents": "f7de3e068d66fe478f642d43a658ed9b3ed321f5",
+        "evals": "382b4404318b3160504e4067c7b532539e90820a"
+      },
+      "sourceMatchesDeployment": "Final QA five-file patch67691e7: four files match the PR byte-for-byte and API bodies match; only the pinned baseline Owner/Admin guard differs. No full-main or beta parity claimed.",
+      "id": "assessment-clean-world-control",
+      "file": "clean-reproduction-world-control.png",
+      "alt": "Independent payment world receipts show violations in restored epochs five and six, and no violation for the executed control in epoch seven.",
+      "caption": "The two repeated worlds show Violation observed; the executed benign control shows No violation observed. All three retain the same baseline-equivalence digest.",
+      "guideSteps": [
+        "assessments/reproduction-and-limits: Example: two successful repetitions and a passing control, step2"
+      ],
+      "capturedAt": "2026-11-16T06:47:56.647370+00:00",
+      "validationStatus": "Direct unedited real 1440x1000 light desktop UI capture; decoded and individually viewed for readability and secrets. Genuine Owner actions, full reload, canonical verified finding, independent epoch/control receipts and complete browser/API archive validation passed. No failed HTTP response or page error; two navigation-aborted reads retained. Pinned product JSON contrast follow-up is separate; unreadable private capture is excluded.",
+      "reviewedForSecrets": true,
+      "sha256": "2198ae1c382b4559ad742530e28a31fd36fade986f47caee321d756a9f5dc6fe"
     }
   ]
 }
