@@ -4624,25 +4624,26 @@
     {
       "id": "quickstart-ui-runs",
       "file": "quickstart-ui-runs.png",
-      "alt": "Runs lists evals-fixed-1 at 100 percent and evals-1 at 67 percent.",
-      "caption": "Runs in the local Evals UI after the quickstart: evals-fixed-1 with 3 passed and 0 failed, and evals-1 with 2 passed and 1 failed.",
+      "alt": "Runs in the local Evals UI, with the sidebar, lists evals-fixed-1 at 100 percent and evals-1 at 67 percent.",
+      "caption": "Runs in the local Evals UI after the quickstart: evals-fixed-1 with 3 passed and 0 failed, and evals-1 with 2 passed and 1 failed. The sidebar on the left lists the other Evals pages.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "get-started/quickstart: 5. See the result in the local Evals UI, step 1"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:23:49+05:30",
+      "capturedAt": "2026-11-16T19:51:03+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "6b1ebd3f3a66281d64e7a831e1956648c4bd205aad0dfb3136503c678bb6c017"
+      "sha256": "2a2e30393e3dd543ab84c4749b020a2fe9c497aa19dd6f0796087385a9a1d5ce",
+      "bytes": 73749
     },
     {
       "id": "local-ui-compare",
@@ -4655,41 +4656,43 @@
         "sdk/local-ui: 2. Read what each page shows, Compare",
         "get-started/quickstart: 5. See the result in the local Evals UI, step 4"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:23:52+05:30",
+      "capturedAt": "2026-11-16T19:51:11+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "2d796847c38f7bff0aad59ef5c6a0e64aa98e8ddd2cf289dc91e8d29599cd5c7"
+      "sha256": "e0974311d32c30b1c79104bc3d1e4deb7ef30d50cd18bba17aff988fd2782dd2",
+      "bytes": 151359
     },
     {
       "id": "local-ui-runs",
       "file": "local-ui-runs.png",
       "alt": "Runs lists six local runs with pass rates, counts and state.",
-      "caption": "Runs after six suite-file runs: the pass rate with its 95 percent interval, passed and failed counts, state and start time, and a Run eval button.",
+      "caption": "Runs after six suite-file runs: the pass rate with its 95 percent interval, passed and failed counts, state and start time, and a Run eval button. The sidebar holds the Evals pages, the Red Team link Run from the CLI, the Documentation and Source on GitHub links, and the Local user footer.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Runs"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:23:55+05:30",
+      "capturedAt": "2026-11-16T19:43:27+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "1ab192dbbfae66d693d40d6d6cc687fe46a1f8c3bdc5e14e8496cc25438a7aec"
+      "sha256": "1fdab2e223018cdd27e53a81cd19c393d16bb28929f608a277a5d95aed538e72",
+      "bytes": 100344
     },
     {
       "id": "local-ui-case-inspect",
@@ -4701,41 +4704,43 @@
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, a run's page"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:23:58+05:30",
+      "capturedAt": "2026-11-16T19:43:30+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "baa5724794efc39245e9d1e7f57fc1e88074b4b54d6972b147b7b2da689e65a6"
+      "sha256": "24b2576f2fb52d930fd2aca6fd332ab5ed9469a93b8a6c89019f47e38796a064",
+      "bytes": 107580
     },
     {
       "id": "local-ui-sessions",
       "file": "local-ui-sessions.png",
       "alt": "Sessions lists two recorded conversations of three turns each.",
-      "caption": "Traces grouped by session: two conversations of three turns each, from the conversation example suite, and the 19 traces that have no session ID.",
+      "caption": "Sessions, from the sidebar or Group by session on Traces: two conversations of three turns each, from the conversation example suite, and 19 traces without a session ID.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Traces and Sessions"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:24:00+05:30",
+      "capturedAt": "2026-11-16T19:43:36+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "1b73ecde3219c5d2d17e9c762539f484215807bafa6b6bf875d87cb2c517ab60"
+      "sha256": "b85bc9bf9949e41128f8e2bdc4cee9cfb15be5d2d94e03fdaf66a0dc57535550",
+      "bytes": 84356
     },
     {
       "id": "local-ui-overview",
@@ -4747,18 +4752,19 @@
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Overview"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:24:05+05:30",
+      "capturedAt": "2026-11-16T19:43:38+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "ad5b66d715c7e12b0ec8609b4486df18dd7bcb6b2ea809b751f321e46814d48f"
+      "sha256": "38bca9f054afec5fbc53c6a6cc050ee163a3d3ea032396f3d42d35571a7d8dfd",
+      "bytes": 127332
     },
     {
       "id": "local-ui-quality-issues",
@@ -4770,41 +4776,43 @@
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Quality issues"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:24:02+05:30",
+      "capturedAt": "2026-11-16T19:43:40+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "a4d23e3f50fbcc45f707a6c90e7bc217c76080b50cf0d3e64079c69405a60e55"
+      "sha256": "bcae8c717395aa5f4ede5814774b700dd5be218f430c8619cdeb86ca1062e66c",
+      "bytes": 99044
     },
     {
       "id": "local-ui-not-in-edition",
       "file": "local-ui-not-in-edition.png",
       "alt": "The Monitoring page says Not in this edition: the Community edition does not include monitoring.",
-      "caption": "Opening the Monitoring address in the local edition shows Not in this edition, with a Go to runs button. The Reviews address says the same for review queues.",
+      "caption": "Opening the Monitoring address in the local edition shows Not in this edition, with a Go to runs button. The Reviews address says the same for review queues, and the sidebar lists neither.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 3. What the local edition leaves out"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:24:07+05:30",
+      "capturedAt": "2026-11-16T19:50:47+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "f6b5fe6c348ad217371a71c4ffc08fe69b457d46bf2e107deaf4aed1c4af1357"
+      "sha256": "0e0d9bcfd1049df2189625eef402a2196efe06f536a6675c549c815092957fc3",
+      "bytes": 54565
     },
     {
       "id": "local-ui-run-eval",
@@ -4816,18 +4824,19 @@
       "guideSteps": [
         "sdk/local-ui: 4. Run an eval from the UI, step 4"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5, then the support-faq dataset imported and published in the UI and a target defined for the example agent; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:27:43+05:30",
+      "capturedAt": "2026-11-16T19:47:01+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "af08b92657ce3bf6823777e9adea3447deabd58ab86002fa1834f9be37ed49d8"
+      "sha256": "f29735062edcd5e90ec6f2b6a6dc1f0212a37c6d89da558865d069a884b152f2",
+      "bytes": 158010
     },
     {
       "id": "local-ui-launched-run",
@@ -4839,18 +4848,19 @@
       "guideSteps": [
         "sdk/local-ui: 4. Run an eval from the UI, step 5"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built with uv build from a worktree of MartianSecurity/martian-redteam main at cbfcc8a, with only the version string set to 0.1.4, and installed in a fresh virtual environment (mlflow-skinny 3.18.0); the Evals UI packaged in that wheel; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 151) driven by Playwright at 1440 by 1000, light theme; synthetic data written by the SDK's own deterministic example suites; no model call, no Martian platform service",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5, then the support-faq dataset imported and published in the UI and a target defined for the example agent; no model call, no Martian platform service",
       "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T15:27:51+05:30",
+      "capturedAt": "2026-11-16T19:47:06+05:30",
       "sourceRevisions": {
-        "sdk": "cbfcc8a1485ad14a852fd3c6860535a93ce73172 (martian-redteam main; version string set to 0.1.4 for the build)",
-        "evalsUi": "fc69bd5e3fa83816ffb27c6d7a2c77fca4980542 (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "aaf3f027874dfd6b63b5f5bf37d2b5858a2baf12c459ada7fecc943e69af5f07"
+        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
+        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
+        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
       },
-      "sourceMatchesDeployment": "Built from the SDK source to be released as 0.1.4, not from a package published on PyPI. Pending: capture again against PyPI martian-sdk 0.1.4 after publication.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI against its real local store and server. No DOM change, no request interception. Individually viewed. The Evals UI shows no Martian logo; its page title is Martian Evals.",
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
       "reviewedForSecrets": true,
-      "sha256": "3be5ad86be20a3e5db8848b8a8f78499ee24cad9f81eb852025aff4b588f357d"
+      "sha256": "176de64729eee95ac0e6f39b45ffa41d09c77ec8b5e5193b2dcc4278e229d6e5",
+      "bytes": 135667
     }
   ]
 }
