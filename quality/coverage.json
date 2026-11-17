@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "guides": [
     {
       "id": "agents/connections",
@@ -4193,6 +4193,103 @@
       "verifiedAt": "2026-11-15",
       "verifiedEnvironment": "Local CLI and local Evals UI; SDK source built for 0.1.4 (martian-redteam 08d2673); no Martian platform services",
       "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] built from MartianSecurity/martian-redteam main at 08d2673 (the source of the unreleased 0.1.4; it still reports version 0.1.3) in a fresh virtual environment; no Martian platform services and no model provider; Inspect AI 0.3.290 in a separate environment, on its mock model"
+    },
+    {
+      "id": "sdk/redteam-local",
+      "guide": "Run a red team on your machine",
+      "sdkVersion": "unreleased (after 0.1.5)",
+      "role": "Any developer with an agent to test and a model key; no Martian account or API key",
+      "route": "Local command line (martian redteam validate, run) and the Red Team pages of the local UI (martian ui)",
+      "documentationRoute": "/sdk/redteam-local/",
+      "interfaces": [
+        "martian redteam validate and run on a version 2 run file with models",
+        "martian ui Red Team pages"
+      ],
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "martian-sdk with the evals extra, from the release after 0.1.5",
+        "A model reachable with your own key (OpenAI or an OpenAI-compatible endpoint)"
+      ],
+      "screenshots": [],
+      "qualification": "partial",
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "b6ab3cf6248bd10d1580894fdfb7c662336bc786",
+          "paths": [
+            "docs/redteam-quickstart.md",
+            "tests/redteam/test_quickstart_doc.py",
+            "tests/redteam/test_no_outbound.py",
+            "src/martian_redteam/cli.py",
+            "src/martian/redteam/runfile.py"
+          ]
+        }
+      ],
+      "validationStatus": "The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at b6ab3cf against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.",
+      "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source against a stand-in model; a walkthrough on the next release with a real model and the UI remains.",
+      "requiredValidation": [
+        "Run every documented command on the next released SDK from public PyPI with a real model",
+        "Open the run in the local UI's Red Team pages and capture screenshots"
+      ],
+      "validation": [
+        {
+          "date": "2026-11-17",
+          "record": "MartianSecurity/martian-redteam tests/redteam/test_quickstart_doc.py",
+          "observedPath": "Quickstart files and commands from source, local UI API",
+          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at b6ab3cf6248bd10d1580894fdfb7c662336bc786 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
+          "result": "Documented exit codes and files; run listed and its report served by the local UI API."
+        }
+      ]
+    },
+    {
+      "id": "migrate/promptfoo-redteam",
+      "guide": "Move a promptfoo red team",
+      "sdkVersion": "unreleased (after 0.1.5)",
+      "role": "Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file",
+      "route": "Local command line (martian redteam convert promptfoo, import promptfoo, validate, run) and the local UI (martian ui)",
+      "documentationRoute": "/migrate/promptfoo-redteam/",
+      "interfaces": [
+        "martian redteam convert promptfoo with --output, --target, --attack and --purpose",
+        "martian redteam import promptfoo",
+        "martian ui Red Team pages"
+      ],
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "martian-sdk with the evals extra, from the release after 0.1.5",
+        "A promptfooconfig.yaml with a redteam section, or promptfoo red team results JSON (results version 3)"
+      ],
+      "screenshots": [],
+      "qualification": "partial",
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "b6ab3cf6248bd10d1580894fdfb7c662336bc786",
+          "paths": [
+            "docs/redteam-from-promptfoo.md",
+            "docs/redteam-interop.md",
+            "src/martian/redteam/interop/promptfoo.py",
+            "examples/promptfoo-redteam",
+            "tests/redteam/test_from_promptfoo_doc.py",
+            "tests/redteam/test_interop_promptfoo.py"
+          ]
+        }
+      ],
+      "validationStatus": "The commands ran at b6ab3cf against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite, crescendo and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.",
+      "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source on a hand-written sample; a walkthrough on the next release with results promptfoo itself wrote remains.",
+      "requiredValidation": [
+        "Run every documented command on the next released SDK from public PyPI",
+        "Import red team results that promptfoo itself wrote",
+        "Open the imported run in the local UI's Red Team pages"
+      ],
+      "validation": [
+        {
+          "date": "2026-11-17",
+          "record": "MartianSecurity/martian-redteam tests/redteam/test_from_promptfoo_doc.py",
+          "observedPath": "Conversion, validation, run and import of the sample project from source",
+          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at b6ab3cf6248bd10d1580894fdfb7c662336bc786 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
+          "result": "Documented output, exit codes and lists; imported run listed by the local UI API."
+        }
+      ]
     }
   ]
 }
