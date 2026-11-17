@@ -105,8 +105,9 @@ def audit(repo: Path, baseline: str | None = None):
         "scope": "Inventory and capture hashes only; run the owning repository checks separately.",
     }
     if baseline:
-        old_coverage = json.loads(git(repo, "show", f"{baseline}:quality/coverage.json"))
-        old_captures = json.loads(git(repo, "show", f"{baseline}:quality/screenshots.json"))
+        # A supplied revision must never become a Git option such as --output.
+        old_coverage = json.loads(git(repo, "show", "--end-of-options", f"{baseline}:quality/coverage.json"))
+        old_captures = json.loads(git(repo, "show", "--end-of-options", f"{baseline}:quality/screenshots.json"))
         report["baselineRef"] = baseline
         report["baselineChangesRequiringReview"] = compare_baseline(
             old_coverage, coverage, old_captures, captures

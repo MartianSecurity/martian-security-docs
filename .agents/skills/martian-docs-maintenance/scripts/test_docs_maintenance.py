@@ -2,8 +2,10 @@
 
 import copy
 import importlib.util
+import json
 from pathlib import Path
 import struct
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -25,6 +27,43 @@ def png(extra=b""):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_option_like_baseline_does_not_create_or_overwrite_files(self):
+        with tempfile.TemporaryDirectory(prefix="martian-baseline-test-") as temp:
+            root = Path(temp)
+            repo = root / "repo"
+            repo.mkdir()
+
+            def setup(*args):
+                subprocess.run(
+                    ["git", "-C", str(repo), *args],
+                    check=True, capture_output=True, text=True,
+                )
+
+            setup("init", "--quiet")
+            (repo / "quality").mkdir()
+            (repo / "quality/coverage.json").write_text(json.dumps({"guides": []}))
+            (repo / "quality/screenshots.json").write_text(json.dumps({"screenshots": []}))
+            setup("add", "quality")
+            setup(
+                "-c", "user.name=Fixture", "-c", "user.email=fixture@example.test",
+                "-c", "commit.gpgsign=false", "-c", "core.hooksPath=/dev/null",
+                "commit", "--quiet", "-m", "Baseline fixture",
+            )
+            self.assertEqual(maintenance.audit(repo, "HEAD")["baselineChangesRequiringReview"], [])
+            prefix = root / "output"
+            destination = root / "output:quality/coverage.json"
+            destination.parent.mkdir()
+            for existing in (False, True):
+                with self.subTest(existing=existing):
+                    if existing:
+                        destination.write_bytes(b"preserve this sentinel")
+                    with self.assertRaises(ValueError):
+                        maintenance.audit(repo, f"--output={prefix}")
+                    if existing:
+                        self.assertEqual(destination.read_bytes(), b"preserve this sentinel")
+                    else:
+                        self.assertFalse(destination.exists())
+
     def test_requirement_trimming_and_changed_capture_are_reported_but_additions_are_allowed(self):
         coverage = {"guides": [{"id": "sample", "requiredValidation": ["run", "refresh"], "screenshots": ["sample-shot"]}]}
         captures = {"screenshots": [{"id": "sample-shot", "sha256": "original"}]}
