@@ -4197,38 +4197,53 @@
     {
       "id": "sdk/redteam-local",
       "guide": "Run a red team on your machine",
-      "sdkVersion": "unreleased (after 0.1.5)",
+      "sdkVersion": "0.2.0",
       "role": "Any developer with an agent to test and a model key; no Martian account or API key",
       "route": "Local command line (martian redteam validate, run) and the Red Team pages of the local UI (martian ui)",
       "documentationRoute": "/sdk/redteam-local/",
       "interfaces": [
         "martian redteam validate and run on a version 2 run file with models",
-        "martian ui Red Team pages"
+        "martian redteam pin add and pin run, compare, and the html, sarif and junit formats",
+        "martian ui Red Team pages: Runs, a run's report, an attempt, Findings with Annotate, Catalog and Frameworks"
       ],
       "prerequisites": [
         "Python 3.12 or newer",
-        "martian-sdk with the evals extra, from the release after 0.1.5",
+        "martian-sdk 0.2.0 or later with the evals extra",
         "A model reachable with your own key (OpenAI or an OpenAI-compatible endpoint)"
       ],
-      "screenshots": [],
-      "qualification": "partial",
+      "screenshots": [
+        "redteam-local-runs",
+        "redteam-local-run",
+        "redteam-local-attempt",
+        "redteam-local-findings"
+      ],
+      "qualification": "verified",
       "sources": [
         {
           "repository": "MartianSecurity/martian-redteam",
-          "commit": "11dbe53c7ad906afdc61869209aaa39d22664ee5",
+          "commit": "abaa6c05a25859d5bcbc025a3d13982181585c3f",
           "paths": [
             "docs/redteam-quickstart.md",
+            "docs/redteam-run-file.md",
+            "docs/redteam-reports.md",
             "tests/redteam/test_quickstart_doc.py",
             "tests/redteam/test_no_outbound.py",
             "src/martian_redteam/cli.py",
-            "src/martian/redteam/runfile.py"
+            "src/martian/redteam/runfile.py",
+            "src/martian/redteam/pins.py"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+          "paths": [
+            "packages/redteam"
           ]
         }
       ],
-      "validationStatus": "The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at 11dbe53 against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.",
-      "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source against a stand-in model; a walkthrough on the next release with a real model and the UI remains.",
+      "validationStatus": "Every command and UI page in the guide was run on 2026-11-17 against martian-sdk 0.2.0 installed from public PyPI with step 1's own install command, in a fresh Python 3.12.14 virtual environment (the wheel's SHA-256 is 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's), with GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint as attacker and judge (openai:/zai.glm-5) and no Martian service. martian --version printed 0.2.0 and the red team help listed run, report, compare, pin, import, convert and garak. validate printed 'OK: version 2, 2 vulnerabilities, 2 attacks, function target' and exited 0. Four runs of the guide's run file each made 4 attacks, 4 attacker calls and 4 judge calls; on the leaking agent both PromptLeakage probes were confirmed at level 2, Toxicity held, the gate failed and run exited 1, with the four report files written (and redteam.sarif and redteam-junit.xml with -f sarif,junit). The reports and the stored run held digests, not the secret, without the setting that keeps content. pin add on such a run exited 2 and asked for that setting; on a run that kept content, pin add wrote two pin files, pin run exited 1 with both still reproducing, and after the agent stopped leaking pin run exited 0 with both not reproduced. A run on the fixed agent exited 0, and compare of the two runs reported 0 new, 2 fixed, 0 unchanged findings. With the two Martian connection variables set, run exited 2 with the message the guide describes and called nothing. Under strace, a run connected only to the model endpoint's addresses and the local name server; validate, catalog, report, compare, pin run on a function target, convert and import opened no connection; martian ui listened on 127.0.0.1 only. In headless Chromium at 1440x1000 (light) the Red Team pages were opened: Runs, a run's report, an attempt (conversation shown as digests; with content kept, the attack and reply in clear text), Findings with a status and comment saved through Annotate and kept after a reload, Catalog (22 vulnerabilities, 6 attack methods, 5 framework maps) and Frameworks; every request went to the local server. Four screenshots were captured. One UI defect was seen: an attempt's Evidence panel requests the reply evidence and gets 404, showing Not Found. The walkthrough used 45 model calls in all, the promptfoo guide's run included. Not verified: an HTTP or MCP target, the recording proxy and receipt checks, an attacker refusal, OpenAI itself or another endpoint, New run in the UI, macOS and WSL.",
       "requiredValidation": [
-        "Run every documented command on the next released SDK from public PyPI with a real model",
+        "Run every documented command on martian-sdk 0.2.0 from public PyPI with a real model",
         "Open the run in the local UI's Red Team pages and capture screenshots"
       ],
       "validation": [
@@ -4238,13 +4253,22 @@
           "observedPath": "Quickstart files and commands from source, local UI API",
           "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at 11dbe53c7ad906afdc61869209aaa39d22664ee5 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
           "result": "Documented exit codes and files; run listed and its report served by the local UI API."
+        },
+        {
+          "date": "2026-11-17",
+          "record": "quality/validation.json",
+          "observedPath": "Red team on your machine on martian-sdk 0.2.0 from PyPI: install, validate, run, reports, pins, compare and the Red Team pages of martian ui",
+          "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the attacker and judge GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint (openai:/zai.glm-5, with OPENAI_API_KEY and OPENAI_API_BASE set for each command); no Martian platform service; MARTIAN_API_URL and MARTIAN_API_TOKEN unset; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme",
+          "result": "All documented commands produced the documented output and exit codes, after the guide was corrected to run with MARTIAN_REPORT_INCLUDE_CONTENT=1 before pin add; the Red Team pages showed the run, attempt and findings, and a saved status and comment survived a reload."
         }
-      ]
+      ],
+      "verifiedAt": "2026-11-17",
+      "verifiedEnvironment": "Local CLI and the local UI's Red Team pages; PyPI SDK 0.2.0; GLM 5 on Amazon Bedrock as attacker and judge; no Martian platform services"
     },
     {
       "id": "migrate/promptfoo-redteam",
       "guide": "Move a promptfoo red team",
-      "sdkVersion": "unreleased (after 0.1.5)",
+      "sdkVersion": "0.2.0",
       "role": "Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file",
       "route": "Local command line (martian redteam convert promptfoo, import promptfoo, validate, run) and the local UI (martian ui)",
       "documentationRoute": "/migrate/promptfoo-redteam/",
@@ -4255,29 +4279,32 @@
       ],
       "prerequisites": [
         "Python 3.12 or newer",
-        "martian-sdk with the evals extra, from the release after 0.1.5",
+        "martian-sdk 0.2.0 or later with the evals extra",
         "A promptfooconfig.yaml with a redteam section, or promptfoo red team results JSON (results version 3)"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "promptfoo-redteam-import"
+      ],
       "qualification": "partial",
       "sources": [
         {
           "repository": "MartianSecurity/martian-redteam",
-          "commit": "11dbe53c7ad906afdc61869209aaa39d22664ee5",
+          "commit": "abaa6c05a25859d5bcbc025a3d13982181585c3f",
           "paths": [
             "docs/redteam-from-promptfoo.md",
             "docs/redteam-interop.md",
             "src/martian/redteam/interop/promptfoo.py",
+            "src/martian/redteam/interop/cli.py",
             "examples/promptfoo-redteam",
             "tests/redteam/test_from_promptfoo_doc.py",
             "tests/redteam/test_interop_promptfoo.py"
           ]
         }
       ],
-      "validationStatus": "The commands ran at 11dbe53 against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.",
-      "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source on a hand-written sample; a walkthrough on the next release with results promptfoo itself wrote remains.",
+      "validationStatus": "Run on 2026-11-17 against martian-sdk 0.2.0 installed from public PyPI in a fresh Python 3.12.14 virtual environment (the wheel's SHA-256 is 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's), with the SDK's sample project examples/promptfoo-redteam at v0.2.0: a config and results written by hand in promptfoo's documented shapes, not by promptfoo. convert printed the output the guide shows (5 vulnerabilities, 2 attack methods, a url target; not converted: bola, basic, jailbreak:composite and redteam.language) and wrote the same list as comments; validate printed 'OK: version 2, 5 vulnerabilities, 2 attacks, http target'. The converter maps 27 plugins onto 12 vulnerabilities and 11 strategies. A small config in promptfoo's shape with no purpose exited 2 asking for --purpose; with a purpose and no strategies it exited 2 asking for --attack and listed basic, jailbreak:meta and jailbreak:composite; with --target agent.py:reply and --attack PromptInjection it converted, validated and ran with GLM 5 on Amazon Bedrock as its provider (2 attempts, 1 suspected finding, exit 0, 5 model calls). import printed one line for the provider and kept one run; importing again replaced it; the run showed 1 suspected finding, 7 attempts and 1 error under Red Team, with the promptfoo limitation, and one screenshot was captured. An eval results file (tests/evals/promptfoo/results.json, written by promptfoo 0.125.1) was refused with exit 2 naming martian evals import promptfoo. SDK 0.1.6 answered No such command for convert and import. The converter's reason for bola says the catalogue has no such vulnerability, while the 0.2.0 catalogue lists BOLA; the guide says so. Not verified: red team results or a config that promptfoo itself wrote, an HTTP target the converted file attacks, and the run of the sample's converted file with its own provider.",
+      "customerNotice": "The commands on this page ran on martian-sdk 0.2.0 from PyPI with the SDK's sample config and results, which are written by hand in promptfoo's documented shapes. Results that promptfoo itself wrote have not been imported yet.",
       "requiredValidation": [
-        "Run every documented command on the next released SDK from public PyPI",
+        "Run every documented command on martian-sdk 0.2.0 from public PyPI",
         "Import red team results that promptfoo itself wrote",
         "Open the imported run in the local UI's Red Team pages"
       ],
@@ -4288,8 +4315,17 @@
           "observedPath": "Conversion, validation, run and import of the sample project from source",
           "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at 11dbe53c7ad906afdc61869209aaa39d22664ee5 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
           "result": "Documented output, exit codes and lists; imported run listed by the local UI API."
+        },
+        {
+          "date": "2026-11-17",
+          "record": "quality/validation.json",
+          "observedPath": "promptfoo red team conversion, validation, run of a converted file and import on martian-sdk 0.2.0 from PyPI",
+          "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the attacker and judge GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint (openai:/zai.glm-5, with OPENAI_API_KEY and OPENAI_API_BASE set for each command); no Martian platform service; MARTIAN_API_URL and MARTIAN_API_TOKEN unset; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; the SDK's hand-written sample project examples/promptfoo-redteam at v0.2.0",
+          "result": "Documented output, exit codes and lists; the imported run shown under Red Team in the local UI. Not run on results promptfoo itself wrote."
         }
-      ]
+      ],
+      "verifiedAt": "2026-11-17",
+      "verifiedEnvironment": "Local CLI and the local UI's Red Team pages; PyPI SDK 0.2.0; the SDK's hand-written promptfoo sample; GLM 5 on Amazon Bedrock for the converted run; no Martian platform services"
     }
   ]
 }

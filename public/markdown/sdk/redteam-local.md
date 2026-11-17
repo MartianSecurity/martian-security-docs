@@ -1,22 +1,16 @@
 # Run a red team on your machine
 
-> Install the SDK, point it at your own model, attack a local agent with a version 2 run file, and read the report in martian ui. No Martian account. Needs the SDK release after 0.1.5.
+> Install the SDK, point it at your own model, attack a local agent with a version 2 run file, and read the report in martian ui. No Martian account. Needs SDK 0.2.0 or later.
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
-> **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at 11dbe53 against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.
-
-Partly verified guide
-
-Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source against a stand-in model; a walkthrough on the next release with a real model and the UI remains.
+> **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Verified 2026-11-17 · Local CLI and the local UI's Red Team pages; GLM 5 on Amazon Bedrock as attacker and judge; no Martian platform services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
 A local red team run attacks your agent with your own model and keeps the report on your machine. You need no Martian account, no API key and no email, and nothing is sent to Martian: the run connects only to the model you name and to your agent.
 
-Not released yet
+Needs SDK 0.2.0 or later
 
-Version 2 run files, `martian redteam run` with your own model and the Red Team pages of `martian ui` are built in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) but are not in martian-sdk 0.1.5 on PyPI. They ship in the next SDK release. On 0.1.5, `martian redteam run` needs a Martian workspace ([Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md)).
+Version 2 run files, `martian redteam run` with your own model and the Red Team pages of `martian ui` are in **martian-sdk 0.2.0**. On 0.1.6 and earlier, `martian redteam validate` rejects a version 2 file, and `martian redteam run` needs a Martian workspace ([Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md)).
 
 ## Before you start
 
@@ -30,10 +24,11 @@ Version 2 run files, `martian redteam run` with your own model and the Red Team 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
+.venv/bin/martian --version
 .venv/bin/martian redteam --help
 ```
 
-The help must list `run`, `report`, `compare`, `pin`, `import` and `garak`.
+`martian --version` prints `0.2.0` or later, and the help lists `run`, `report`, `compare`, `pin`, `import`, `convert` and `garak`.
 
 ## 2\. Point it at your model
 
@@ -101,9 +96,20 @@ Your own target can also be an HTTP endpoint or an MCP server. `martian redteam 
 | `redteam-report.json` | The same report as data |
 | `redteam-run.json` | Every attempt, check and finding |
 
-The exit code is the gate’s: `0` when it passes, `1` when it fails, `2` when the run could not start. The default gate fails on a confirmed finding, so this run, which finds the leaked discount code, exits `1`. The reports hold digests of attacks and replies unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1`.
+The exit code is the gate’s: `0` when it passes, `1` when it fails, `2` when the run could not start. The default gate fails on a confirmed finding, so this run, which finds the leaked discount code, exits `1`. The last lines read:
 
-If the run stops with exit `2` and names `models` or `MARTIAN_API_URL`, unset the Martian variables. If an attempt is an `attacker` error, your model refused to write the attack twice; the report gives the refusal rate.
+```text
+Attacker refused or left empty 0 of 4 generations (0%).
+Wrote results/redteam-run.json and results/redteam-report.md
+Kept in the local store as redteam-9053cc580fe3
+Gate failed: prompt_leakage/system_prompt: Confirmed disclosure (prompt_leakage:system_prompt:prompt_injection); prompt_leakage/system_prompt: Confirmed disclosure (prompt_leakage:system_prompt:roleplay)
+```
+
+Your run id differs, and a model may hit with one method and not the other. This file makes four attacks, one for each vulnerability type and method, and runs each probe that hit once more without the attack, as a control. It made 4 attacker calls and 4 judge calls when we ran it; `budget` caps both.
+
+The result files and the local store hold digests of the attacks and replies, not their text, unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1` for the run. With it, `redteam-run.json` and the store keep the conversations in clear text, so keep them as private as your agent’s data. You need it to [pin a finding](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#keep-a-finding-as-a-regression-test).
+
+If the run stops with exit `2` and says a Martian connection is also configured (`MARTIAN_API_URL`, `MARTIAN_API_TOKEN`), unset those variables. If an attempt is an `attacker` error, your model refused to write the attack twice; the output and the report give the refusal rate.
 
 ## 5\. Read the report in the UI
 
@@ -111,7 +117,35 @@ If the run stops with exit `2` and names `models` or `MARTIAN_API_URL`, unset th
 .venv/bin/martian ui
 ```
 
-It opens `http://127.0.0.1:7600` on your machine, with no login. Select **Red Team** in the sidebar: the run is in the list, with its report, each attempt’s conversation and checks, and its findings, where you can set a status and a comment.
+It opens `http://127.0.0.1:7600` on your machine, with no login. The sidebar’s **Red Team** group has four pages:
+
+-   **Runs** lists every run `martian redteam run` kept, newest first, with confirmed and suspected findings counted apart.
+
+![Red team runs lists one local run with 4 attempts and 2 confirmed findings.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/redteam-local-runs.png)
+
+Red Team Runs after the guide's run: the run id with the digest of its purpose, the function target, state, attempts, confirmed and suspected findings counted apart, and the New run and Refresh runs buttons.
+
+-   Select a run for its report: findings by evidence level, coverage, attack methods, probes and every attempt.
+
+![A red team run's report with 2 confirmed findings, 0 suspected and 4 attempts.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/redteam-local-run.png)
+
+The run's report: confirmed and suspected findings, attempts, undetermined and errors; the limitation that no repetitions ran; findings by evidence level, with 2 at level 2; and coverage.
+
+-   Select an attempt’s number for its verdict, conversation and checks. Without `MARTIAN_REPORT_INCLUDE_CONTENT=1`, the conversation shows digests.
+
+![An attempt that hit, with its verdict, a two-turn conversation shown as digests, and its checks.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/redteam-local-attempt.png)
+
+One attempt: the outcome Hit at evidence level 2, the probe and attack method, the conversation as digests because the run did not keep content, and the text check that found the code.
+
+-   **Findings** lists the findings of every run. **Annotate** sets a status (Open, Accepted, Fixed or False positive) and a comment, which stay after a reload.
+
+![Findings lists two confirmed findings; one is Accepted with a comment.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/redteam-local-findings.png)
+
+Findings after Annotate: one finding set to Accepted with a comment, which stayed after a reload, and one still Open.
+
+-   **Catalog** shows what `martian redteam catalog` prints, and **Frameworks** what one run tested against each framework map.
+
+**New run** starts a run from the UI against a target defined under Evals; this guide uses the command line.
 
 ## What a local run connects to
 
@@ -124,11 +158,22 @@ A local run connects to the model it names and to your agent, and to nothing els
 | Your agent’s own tool servers, through the recording proxy on `127.0.0.1` | When the run file lists `tools.proxy` |
 | A listener on `127.0.0.1` that receives a leaked canary | When a vulnerability has a `receipt` check |
 
-`validate`, `catalog`, `report`, `compare`, `pin add` and the promptfoo commands connect to nothing; `martian ui` listens on `127.0.0.1` only. The SDK’s test suite runs this workflow with every connection beyond the model and the agent refused, and fails on any attempt.
+`validate`, `catalog`, `report`, `compare`, `pin add` and the promptfoo commands connect to nothing, and `pin run` only to your agent; `martian ui` listens on `127.0.0.1` only. The SDK’s test suite runs this workflow with every connection beyond the model and the agent refused, and fails on any attempt.
+
+## Keep a finding as a regression test
+
+A pin keeps a confirmed finding’s attack and the reply it hit, and replays it with no model. It needs the attack’s text, so make the run with `MARTIAN_REPORT_INCLUDE_CONTENT=1`:
+
+```sh
+MARTIAN_REPORT_INCLUDE_CONTENT=1 .venv/bin/martian redteam run redteam.yaml
+.venv/bin/martian redteam pin add RUN_ID
+.venv/bin/martian redteam pin run redteam.yaml
+```
+
+`pin add` writes one file per confirmed finding to `pins/`, with the attack and the reply in clear text: review it before you commit it. From a run without content, it exits `2` and asks for the variable. `pin run` sends each pinned attack to your agent again, and exits `1` while a finding still reproduces and `0` once none does, as after you fix `agent.py`.
 
 ## Next
 
--   Keep a confirmed finding as a regression test with `martian redteam pin add RUN_ID`, and re-run it with `martian redteam pin run redteam.yaml` after a fix, with no model.
--   Compare two runs with `martian redteam compare RUN_ID RUN_ID`, and write SARIF or JUnit for CI with `-f sarif,junit`.
+-   Compare two runs with `martian redteam compare BASELINE_ID CANDIDATE_ID`: it lists new, fixed and unchanged findings. Write SARIF or JUnit for CI with `-f sarif,junit`.
 -   Coming from promptfoo: [Move a promptfoo red team](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md).
 -   [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md#red-team) compares what each edition includes.

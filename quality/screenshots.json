@@ -4861,6 +4861,126 @@
       "reviewedForSecrets": true,
       "sha256": "176de64729eee95ac0e6f39b45ffa41d09c77ec8b5e5193b2dcc4278e229d6e5",
       "bytes": 135667
+    },
+    {
+      "id": "redteam-local-runs",
+      "file": "redteam-local-runs.png",
+      "alt": "Red team runs lists one local run with 4 attempts and 2 confirmed findings.",
+      "caption": "Red Team Runs after the guide's run: the run id with the digest of its purpose, the function target, state, attempts, confirmed and suspected findings counted apart, and the New run and Refresh runs buttons.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/redteam-local: 5. Read the report in the UI, Runs"
+      ],
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder holding one run of the guide's redteam.yaml against its agent.py (redteam-9053cc580fe3, made with GLM 5)",
+      "role": "The local edition's single user (no login); edition Community",
+      "capturedAt": "2026-11-17T20:28:06+05:30",
+      "sourceRevisions": {
+        "sdk": "abaa6c05a25859d5bcbc025a3d13982181585c3f (martian-redteam tag v0.2.0, published to PyPI as martian-sdk 0.2.0)",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba (MartianFrontend commit the wheel's UI was built from)",
+        "wheelSha256": "4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080"
+      },
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.2.0: the downloaded wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged UI of PyPI martian-sdk 0.2.0 against its real local store and server. No DOM change, no request interception; every browser request went to the local server. Individually viewed for readability and private data: synthetic example data only, no key, token or local path.",
+      "reviewedForSecrets": true,
+      "sha256": "067591a640d86cca5d1d51781cd1e926a66d8a0c1eec64ca2e47e9db3917bd85",
+      "bytes": 74940
+    },
+    {
+      "id": "redteam-local-run",
+      "file": "redteam-local-run.png",
+      "alt": "A red team run's report with 2 confirmed findings, 0 suspected and 4 attempts.",
+      "caption": "The run's report: confirmed and suspected findings, attempts, undetermined and errors; the limitation that no repetitions ran; findings by evidence level, with 2 at level 2; and coverage.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/redteam-local: 5. Read the report in the UI, a run's report"
+      ],
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder holding one run of the guide's redteam.yaml against its agent.py (redteam-9053cc580fe3, made with GLM 5)",
+      "role": "The local edition's single user (no login); edition Community",
+      "capturedAt": "2026-11-17T20:28:07+05:30",
+      "sourceRevisions": {
+        "sdk": "abaa6c05a25859d5bcbc025a3d13982181585c3f (martian-redteam tag v0.2.0, published to PyPI as martian-sdk 0.2.0)",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba (MartianFrontend commit the wheel's UI was built from)",
+        "wheelSha256": "4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080"
+      },
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.2.0: the downloaded wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged UI of PyPI martian-sdk 0.2.0 against its real local store and server. No DOM change, no request interception; every browser request went to the local server. Individually viewed for readability and private data: synthetic example data only, no key, token or local path.",
+      "reviewedForSecrets": true,
+      "sha256": "3dd0031d954d44952820313298d7dd59020138f765c97ab6fd7b810010b430ef",
+      "bytes": 152850
+    },
+    {
+      "id": "redteam-local-attempt",
+      "file": "redteam-local-attempt.png",
+      "alt": "An attempt that hit, with its verdict, a two-turn conversation shown as digests, and its checks.",
+      "caption": "One attempt: the outcome Hit at evidence level 2, the probe and attack method, the conversation as digests because the run did not keep content, and the text check that found the code.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/redteam-local: 5. Read the report in the UI, an attempt"
+      ],
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder holding one run of the guide's redteam.yaml against its agent.py (redteam-9053cc580fe3, made with GLM 5)",
+      "role": "The local edition's single user (no login); edition Community",
+      "capturedAt": "2026-11-17T20:28:09+05:30",
+      "sourceRevisions": {
+        "sdk": "abaa6c05a25859d5bcbc025a3d13982181585c3f (martian-redteam tag v0.2.0, published to PyPI as martian-sdk 0.2.0)",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba (MartianFrontend commit the wheel's UI was built from)",
+        "wheelSha256": "4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080"
+      },
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.2.0: the downloaded wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged UI of PyPI martian-sdk 0.2.0 against its real local store and server. No DOM change, no request interception; every browser request went to the local server. Individually viewed for readability and private data: synthetic example data only, no key, token or local path.",
+      "reviewedForSecrets": true,
+      "sha256": "7e143942d7bbe6fc627a356bca63352aef65618567379d832e056dfcad120297",
+      "bytes": 125290
+    },
+    {
+      "id": "redteam-local-findings",
+      "file": "redteam-local-findings.png",
+      "alt": "Findings lists two confirmed findings; one is Accepted with a comment.",
+      "caption": "Findings after Annotate: one finding set to Accepted with a comment, which stayed after a reload, and one still Open.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/redteam-local: 5. Read the report in the UI, Findings"
+      ],
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder holding one run of the guide's redteam.yaml against its agent.py (redteam-9053cc580fe3, made with GLM 5)",
+      "role": "The local edition's single user (no login); edition Community",
+      "capturedAt": "2026-11-17T20:28:14+05:30",
+      "sourceRevisions": {
+        "sdk": "abaa6c05a25859d5bcbc025a3d13982181585c3f (martian-redteam tag v0.2.0, published to PyPI as martian-sdk 0.2.0)",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba (MartianFrontend commit the wheel's UI was built from)",
+        "wheelSha256": "4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080"
+      },
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.2.0: the downloaded wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged UI of PyPI martian-sdk 0.2.0 against its real local store and server. No DOM change, no request interception; every browser request went to the local server. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The status and comment were saved through Annotate and the page reloaded before the capture.",
+      "reviewedForSecrets": true,
+      "sha256": "1dd84f3e9287751f88c41138693b587b0ffeefcb9d8b8b55631e3955c34b4480",
+      "bytes": 105090
+    },
+    {
+      "id": "promptfoo-redteam-import",
+      "file": "promptfoo-redteam-import.png",
+      "alt": "An imported promptfoo run with 1 suspected finding, 7 attempts and 1 error, and its limitation.",
+      "caption": "A promptfoo results file imported as a red team run: every hit is suspected, and the limitation says the verdicts are promptfoo's graders.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "migrate/promptfoo-redteam: 2. Import the results"
+      ],
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; the same data folder after martian redteam import promptfoo of the SDK's sample results.json (examples/promptfoo-redteam at v0.2.0, written by hand in promptfoo's documented shape, not by promptfoo)",
+      "role": "The local edition's single user (no login); edition Community",
+      "capturedAt": "2026-11-17T20:28:30+05:30",
+      "sourceRevisions": {
+        "sdk": "abaa6c05a25859d5bcbc025a3d13982181585c3f (martian-redteam tag v0.2.0, published to PyPI as martian-sdk 0.2.0)",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba (MartianFrontend commit the wheel's UI was built from)",
+        "wheelSha256": "4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080"
+      },
+      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.2.0: the downloaded wheel's SHA-256 matches the file on PyPI.",
+      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged UI of PyPI martian-sdk 0.2.0 against its real local store and server. No DOM change, no request interception; every browser request went to the local server. Individually viewed for readability and private data: synthetic example data only, no key, token or local path.",
+      "reviewedForSecrets": true,
+      "sha256": "dd983ff60d64c08e3d3f76230f7fe17e5de886e8e2d3766511ec0af47229316a",
+      "bytes": 157311
     }
   ]
 }

@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam/)
 
 > **Page qualification:** Python SDK · Owner/admin issues key; machine key with redteam:run executes · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-Run one adversarial probe against a local callback using platform-hosted generation and judging. To attack with your own model and no workspace, see [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md), which ships in the next SDK release. You will get retained JSON/Markdown reports and an explicit gate result. Use the CLI or Python entry point for an attempt; running both executes new work twice.
+Run one adversarial probe against a local callback using platform-hosted generation and judging. To attack with your own model and no workspace, see [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md), which needs SDK 0.2.0 or later. You will get retained JSON/Markdown reports and an explicit gate result. Use the CLI or Python entry point for an attempt; running both executes new work twice.
 
 ## Before you start
 

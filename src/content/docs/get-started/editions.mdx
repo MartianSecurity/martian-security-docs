@@ -23,7 +23,7 @@ Every item on this page carries one of these labels:
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Status | **Available**: the SDK on PyPI, with the local Evals UI from version 0.1.4 | **Beta** | **Planned** |
+| Status | **Available**: the SDK on PyPI, with the local Evals UI from version 0.1.4 and local red team runs from 0.2.0 | **Beta** | **Planned** |
 | Source and licence | Open source under Apache-2.0, in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) | The hosted service. It uses the same open-source SDK | Under an agreement with Martian Security, with an offline licence file |
 | Runs on | Your laptop, or a small server you run, for one user | Martian cloud | Your infrastructure |
 | For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
@@ -69,14 +69,15 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 
 | | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Red team runs with your own model: a version 2 run file, the attacker and judge called with your key, nothing sent to Martian and no account ([guide](/sdk/redteam-local/)) | **Built**: in the next SDK release | **Built**: the same SDK | **Planned** |
-| Targets: a Python function, an HTTP endpoint or an MCP server, and a recording proxy for the agent's tool calls | **Built** | **Built**: the same SDK; **Beta**: agents registered in the console | **Planned** |
-| Evidence: a model's verdict (suspected), text checks and canaries, tool calls and receipts (confirmed) | **Built** | **Built**: the same SDK | **Planned** |
-| Red Team pages in `martian ui`: runs, reports, attempts and findings with status and comments | **Built** | — | — |
-| Reports in JSON, Markdown, HTML, CSV, SARIF and JUnit, a CI gate by evidence level, pinned findings and run comparison | **Built** | **Built**: the same SDK | **Planned** |
-| promptfoo red team configs and results, and garak probes against your agent ([guide](/migrate/promptfoo-redteam/)) | **Built** | **Built**: the same SDK | **Planned** |
+| Red team runs with your own model: a version 2 run file, the attacker and judge called with your key, nothing sent to Martian and no account ([guide](/sdk/redteam-local/)) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| Targets: a Python function, an HTTP endpoint or an MCP server, and a recording proxy for the agent's tool calls | **Available**: SDK 0.2.0 or later | **Available**: the same SDK; **Beta**: agents registered in the console | **Planned** |
+| Evidence: a model's verdict (suspected), text checks and canaries, tool calls and receipts (confirmed) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| Red Team pages in `martian ui`: runs, reports, attempts, findings with status and comments, the catalogue and framework coverage | **Available**: SDK 0.2.0 or later | — | — |
+| Reports in JSON, Markdown, HTML, CSV, SARIF and JUnit, a CI gate by evidence level, pinned findings and run comparison | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| promptfoo red team configs and results, and garak probes against your agent ([guide](/migrate/promptfoo-redteam/)) | **Available**: SDK 0.2.0 or later. garak is installed separately | **Available**: the same SDK | **Planned** |
 | Attack generation and judging by Martian's engine (`redteam_hosted_generation`) | — | **Beta**: the SDK's probes with a workspace API key ([guide](/sdk/redteam/)) | **Planned**: attack generation on your own models |
-| [Assessments](/get-started/first-assessment/) in a simulation environment (`redteam_environments`) and planned campaigns (`redteam_campaigns`) | — | **Beta**: in the hosted console | **Planned** |
+| [Assessments](/get-started/first-assessment/) in a simulation environment, started from the hosted console | — | **Beta**: in the hosted console | **Planned** |
+| From the SDK: runs in a Martian simulation environment (`redteam_environments`), planned campaigns with `martian redteam campaign` (`redteam_campaigns`) and runs sent to the console with `martian redteam push` | — | **Planned**: the commands are in SDK 0.2.0, but they need a Martian server version that is not deployed yet | **Planned** |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
 ### Delivery and support
