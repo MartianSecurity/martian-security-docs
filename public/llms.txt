@@ -142,6 +142,8 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Roles and permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md?v=38b6f20a8b7a): Check the minimum role for each customer task.
 
+- [Red team benchmark results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/redteam-benchmark.md?v=8bd6099b2fe5): How the open red team does on InjecAgent, stated with the report standard and a script that reproduces it.
+
 - [Supported agent targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md?v=82f45ec9814e): Choose an interface supported by the workflow you intend to run.
 
 - [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md?v=1c9965f3eceb): Resolve common access, connection, run, dataset and scoring failures safely.
@@ -166,6 +168,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=0f243b93b624): all 74 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=f1d6e5ab5f49): all 75 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
