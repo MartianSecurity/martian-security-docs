@@ -1,0 +1,76 @@
+# Move a promptfoo red team
+
+> Convert a promptfoo red team config into a run file, import its results into martian ui, and see what does not carry over. Needs the SDK release after 0.1.5.
+
+Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo-redteam/)
+
+> **Page qualification:** Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** The commands ran at b6ab3cf against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite, crescendo and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.
+
+Partly verified guide
+
+Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source on a hand-written sample; a walkthrough on the next release with results promptfoo itself wrote remains.
+
+Two commands move a promptfoo red team project. `martian redteam convert promptfoo` turns the `redteam` section of your config into a red team run file, and lists everything it leaves out with the reason. `martian redteam import promptfoo` brings the results you already have into `martian ui`. Neither runs promptfoo or calls its service, and promptfoo need not be installed.
+
+Not released yet
+
+Both commands are built in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) but are not in martian-sdk 0.1.5 on PyPI. They ship in the next SDK release. For promptfoo eval configs and results, see [Move from promptfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md).
+
+## Before you start
+
+-   Install the SDK as in [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md).
+-   Have your `promptfooconfig.yaml` with a `redteam` section, and to import results, the JSON file `promptfoo redteam run -o results.json` writes.
+-   You need no Martian account. Running the converted file needs your own model key.
+
+## How the concepts map
+
+| promptfoo | Martian |
+| --- | --- |
+| The `redteam` section of `promptfooconfig.yaml` | A version 2 run file, `redteam.yaml` |
+| `targets`: an HTTP provider | `target.url`, `body`, `headers`, `response_path` |
+| A Python provider | `target.file` and `function`, given with `--target`: a function that takes the message |
+| `redteam.purpose` | `target.purpose` |
+| `redteam.provider` | `models.attacker` and `models.judge` |
+| A plugin, such as `pii:direct` | A vulnerability and its types, such as `PIILeakage` `direct_disclosure` |
+| The `policy` plugin | A custom vulnerability with `criteria` |
+| A strategy, such as `base64` | An attack method, such as `Base64` |
+| The plugin’s grader, a model reading the reply | A `judge` check: suspected, evidence level 1. Text, canary, tool-call and receipt checks stated in advance confirm |
+| Pass rate and exit code 100 | A gate by evidence level and severity; exit codes 0, 1 and 2 |
+| The `retry` strategy | `martian redteam pin add` and `pin run` |
+| Remote generation and the email | None: the run calls only your model and your agent |
+
+## 1\. Convert the config
+
+```sh
+.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --output converted
+.venv/bin/martian redteam validate converted/redteam.yaml
+```
+
+The first command prints what converted and a list under **Not converted**, each item with its reason, and writes the same list as comments at the top of `converted/redteam.yaml`. What converts:
+
+-   An `http` or `https` target with a JSON body: `{{prompt}}` becomes `{{input}}`, `{{env.NAME}}` in a header becomes `${NAME}`, and a `transformResponse` that reads a path of `json`, such as `json.reply`, becomes `response_path`.
+-   `purpose`; an `openai:chat:MODEL` provider as `openai:/MODEL`; `numTests` and `maxConcurrency` as the budget.
+-   27 plugins onto the catalogue’s 12 vulnerabilities, and policies. The strategies `base64`, `rot13`, `leetspeak` and `prompt-injection`.
+
+What does not: plugins with no vulnerability in the catalogue (such as `bola`), dataset plugins, `intent`, promptfoo’s adaptive strategies (`jailbreak:meta`, `jailbreak:composite`, `crescendo`, `goat` and the rest), other transforms, request and response code, session parsers, and auth settings.
+
+A config whose strategies none convert, including promptfoo’s default, stops with exit `2` and asks for `--attack`:
+
+```sh
+.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --target agent.py:reply \
+  --attack PromptInjection --output local
+.venv/bin/martian redteam run local/redteam.yaml
+```
+
+`--target` replaces the config’s target with a Python function. A config without a `purpose` stops and asks for `--purpose`.
+
+## 2\. Import the results
+
+```sh
+.venv/bin/martian redteam import promptfoo results.json
+.venv/bin/martian ui
+```
+
+Each provider in the file becomes one run under **Red Team** in `martian ui`. Importing the same file again replaces it. Every hit is **suspected**: promptfoo’s graders are models that read the reply, and no check was stated before the attack. The run keeps digests of the attacks and replies unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1`. A file of eval results is refused and names `martian evals import promptfoo`.
