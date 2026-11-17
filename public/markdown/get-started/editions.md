@@ -20,7 +20,7 @@ Every item on this page carries one of these labels:
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Status | **Available**: the SDK on PyPI, with the local Evals UI from version 0.1.4 | **Beta** | **Planned** |
+| Status | **Available**: the SDK on PyPI, with the local Evals UI from version 0.1.4 and local red team runs from 0.2.0 | **Beta** | **Planned** |
 | Source and licence | Open source under Apache-2.0, in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) | The hosted service. It uses the same open-source SDK | Under an agreement with Martian Security, with an offline licence file |
 | Runs on | Your laptop, or a small server you run, for one user | Martian cloud | Your infrastructure |
 | For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
@@ -66,7 +66,15 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Red Team | **Planned**: local probes, with a monthly limit on hosted attack generation. Today the SDK’s red-team probes call a Martian workspace and need an API key | **Beta**: [assessments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) in the hosted console | **Planned**: attack generation on your own models |
+| Red team runs with your own model: a version 2 run file, the attacker and judge called with your key, nothing sent to Martian and no account ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md)) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| Targets: a Python function, an HTTP endpoint or an MCP server, and a recording proxy for the agent’s tool calls | **Available**: SDK 0.2.0 or later | **Available**: the same SDK; **Beta**: agents registered in the console | **Planned** |
+| Evidence: a model’s verdict (suspected), text checks and canaries, tool calls and receipts (confirmed) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| Red Team pages in `martian ui`: runs, reports, attempts, findings with status and comments, the catalogue and framework coverage | **Available**: SDK 0.2.0 or later | — | — |
+| Reports in JSON, Markdown, HTML, CSV, SARIF and JUnit, a CI gate by evidence level, pinned findings and run comparison | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
+| promptfoo red team configs and results, and garak probes against your agent ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md)) | **Available**: SDK 0.2.0 or later. garak is installed separately | **Available**: the same SDK | **Planned** |
+| Attack generation and judging by Martian’s engine (`redteam_hosted_generation`) | — | **Beta**: the SDK’s probes with a workspace API key ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md)) | **Planned**: attack generation on your own models |
+| [Assessments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) in a simulation environment, started from the hosted console | — | **Beta**: in the hosted console | **Planned** |
+| From the SDK: runs in a Martian simulation environment (`redteam_environments`), planned campaigns with `martian redteam campaign` (`redteam_campaigns`) and runs sent to the console with `martian redteam push` | — | **Planned**: the commands are in SDK 0.2.0, but they need a Martian server version that is not deployed yet | **Planned** |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
 ### Delivery and support
@@ -99,8 +107,11 @@ The Evals UI shows a page only when the edition includes its feature key, and th
 | `single_sign_on` | Single sign-on | No | Yes | Yes |
 | `audit_log` | The audit log | No | Yes | Yes |
 | `service_accounts` | Service accounts | No | Yes | Yes |
+| `redteam_hosted_generation` | Attack generation and judging by Martian’s engine for SDK red team runs | No | Yes | Yes |
+| `redteam_environments` | A red team run in a Martian simulation environment | No | Yes | Yes |
+| `redteam_campaigns` | Planned red team campaigns started from the console | No | Yes | Yes |
 
-Annotating one item or trace, and scoring one run, stay in every edition. `review_queues` and `monitoring` are in the open-source repository; the other three keys are for features that exist only in Martian’s own product.
+Annotating one item or trace, and scoring one run, stay in every edition. A local red team run with your own model needs no key. `review_queues` and `monitoring` are in the open-source repository; the other keys are for features that exist only in Martian’s own product.
 
 ### Limits
 
@@ -110,6 +121,7 @@ Each edition sets how many runs and scoring jobs may be in progress at once. A l
 | --- | --- | --- | --- |
 | Evaluation runs queued or running at once | 1 | 5 | No limit |
 | Scoring jobs queued or running at once | 1 | 5 | No limit |
+| Hosted red team generation and judging operations at once | — | 2 | No limit |
 
 On your own machine you set the Community limit: `martian ui --concurrency 2` allows two of each. On-Premises has no limit of its own because its workers bound what runs at once.
 
@@ -120,7 +132,7 @@ Community includes the whole Evals core except what a shared server needs or wha
 -   Review queues and Monitoring.
 -   Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
 -   API keys and CI sessions, which record SDK results on a server.
--   The console’s Red Team assessments and simulation environments.
+-   The console’s Red Team assessments, simulation environments and planned campaigns, and attack generation by Martian’s engine. Local red team runs with your own model are Community.
 -   Hosted storage, managed upgrades and priority support.
 
 ## Choose an edition

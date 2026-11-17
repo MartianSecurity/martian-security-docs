@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -782,6 +782,12 @@
       "environment": "Linux workstation; Docker; the image pushed by martian-redteam release run 43879044489 after the owner's approval and made public, digest sha256:4da99f72089b55d15c50076c79ff6c1d044e45412160451a3a51de69605e1730; pulled with an empty Docker configuration (no stored login); no Martian platform services and no model provider",
       "result": "passed; the image is public and runs as the guide describes",
       "details": "The registry's anonymous pull token served the 0.1.5 and 0.1.4 manifests (tags 0.1.5 and 0.1.4, no latest), and docker pull of 0.1.5 succeeded with no credentials. The guide's docker run command, with another container name, volume and host port (127.0.0.1:7612), started the server: it printed the no-login warning and 'Martian Evals is listening on 0.0.0.0:7600 (data in /data)', ran as uid 10001 (martian), and martian --version in the container printed 0.1.5. The page answered 200 with Cache-Control no-cache, and ui-version.json named MartianFrontend c56f4a4. Host 127.0.0.1 and localhost were accepted; evil.example and evals.internal were refused with 400. A second container on the same volume with MARTIAN_EVALS_ALLOWED_HOSTS=evals.internal accepted evals.internal, still refused evil.example, and reused the data folder's martian.db and mlflow.db without creating them again. Not run: the SSH tunnel, a folder mounted from the server, a run recorded in the container, and platforms other than Linux. The containers, volumes and pulled images were removed afterwards."
+    },
+    {
+      "scope": "SDK 0.2.0 from PyPI: the local red team guide with a real model and the Red Team pages of martian ui, and the promptfoo red team guide",
+      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the attacker and judge GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint (openai:/zai.glm-5, with OPENAI_API_KEY and OPENAI_API_BASE set for each command); no Martian platform service; MARTIAN_API_URL and MARTIAN_API_TOKEN unset; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; the SDK's sample project examples/promptfoo-redteam at v0.2.0",
+      "result": "passed on the package published to PyPI; the local red team guide is verified, and the promptfoo red team guide stays partly verified because no results promptfoo itself wrote were imported",
+      "details": "The local red team guide ran as written, with one correction: pin add needs a run made with MARTIAN_REPORT_INCLUDE_CONTENT=1 and exits 2 otherwise. Runs of the guide's file exited 1 with two level 2 findings on the leaking agent and 0 on the fixed one; compare reported 2 fixed; pin run exited 1 then 0. strace showed the run connecting only to the Bedrock endpoint's addresses and the local name server, and the no-model commands opening no connection. The Red Team pages were opened in headless Chromium and five screenshots captured; a finding's status and comment survived a reload. The promptfoo converter and importer ran on the hand-written sample, a converted file ran against agent.py, and an eval results file was refused. 45 model calls in all. The release run that published 0.2.0 to PyPI (martian-redteam actions run 44104381066) was still waiting on its approval step when this ran; no container image was checked."
     }
   ],
   "remainingGaps": [
