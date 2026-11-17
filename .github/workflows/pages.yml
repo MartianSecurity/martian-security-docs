@@ -25,6 +25,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check
+      - name: Verify maintenance helpers
+        run: python3 -B -m unittest discover -s .agents/skills/martian-docs-maintenance/scripts -p 'test_*.py' -v
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist
