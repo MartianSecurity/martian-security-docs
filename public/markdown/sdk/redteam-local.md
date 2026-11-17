@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
 > **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at b6ab3cf against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.
+> **Walkthrough limits:** The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at 11dbe53 against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.
 
 Partly verified guide
 

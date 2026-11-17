@@ -5932,7 +5932,7 @@ Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo-redteam/
 
 > **Page qualification:** Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** The commands ran at b6ab3cf against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite, crescendo and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.
+> **Walkthrough limits:** The commands ran at 11dbe53 against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.
 
 Partly verified guide
 
@@ -5961,7 +5961,7 @@ Both commands are built in [MartianSecurity/martian-redteam](https://github.com/
 | `redteam.provider` | `models.attacker` and `models.judge` |
 | A plugin, such as `pii:direct` | A vulnerability and its types, such as `PIILeakage` `direct_disclosure` |
 | The `policy` plugin | A custom vulnerability with `criteria` |
-| A strategy, such as `base64` | An attack method, such as `Base64` |
+| A strategy, such as `base64` or `crescendo` | An attack method, such as `Base64` or `Escalation` |
 | The plugin’s grader, a model reading the reply | A `judge` check: suspected, evidence level 1. Text, canary, tool-call and receipt checks stated in advance confirm |
 | Pass rate and exit code 100 | A gate by evidence level and severity; exit codes 0, 1 and 2 |
 | The `retry` strategy | `martian redteam pin add` and `pin run` |
@@ -5978,9 +5978,9 @@ The first command prints what converted and a list under **Not converted**, each
 
 -   An `http` or `https` target with a JSON body: `{{prompt}}` becomes `{{input}}`, `{{env.NAME}}` in a header becomes `${NAME}`, and a `transformResponse` that reads a path of `json`, such as `json.reply`, becomes `response_path`.
 -   `purpose`; an `openai:chat:MODEL` provider as `openai:/MODEL`; `numTests` and `maxConcurrency` as the budget.
--   27 plugins onto the catalogue’s 12 vulnerabilities, and policies. The strategies `base64`, `rot13`, `leetspeak` and `prompt-injection`.
+-   27 plugins onto the catalogue’s 12 vulnerabilities, and policies. The strategies `base64`, `rot13`, `leetspeak`, `hex`, `homoglyph`, `morse`, `prompt-injection` and `citation`, and `jailbreak:tree`, `crescendo` and `best-of-n` as the attack methods `TreeSearch`, `Escalation` and `Mutation`. The same name is the same idea, not the same prompts.
 
-What does not: plugins with no vulnerability in the catalogue (such as `bola`), dataset plugins, `intent`, promptfoo’s adaptive strategies (`jailbreak:meta`, `jailbreak:composite`, `crescendo`, `goat` and the rest), other transforms, request and response code, session parsers, and auth settings.
+What does not: plugins with no vulnerability in the catalogue (such as `bola`), dataset plugins, `intent`, promptfoo’s service-run strategies (`jailbreak:meta`, `jailbreak:composite`, `goat`, `jailbreak:hydra` and the rest), other transforms, request and response code, session parsers, and auth settings.
 
 A config whose strategies none convert, including promptfoo’s default, stops with exit `2` and asks for `--attack`:
 
@@ -8055,7 +8055,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
 > **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at b6ab3cf against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.
+> **Walkthrough limits:** The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at 11dbe53 against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.
 
 Partly verified guide
 

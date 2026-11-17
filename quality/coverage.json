@@ -4215,7 +4215,7 @@
       "sources": [
         {
           "repository": "MartianSecurity/martian-redteam",
-          "commit": "b6ab3cf6248bd10d1580894fdfb7c662336bc786",
+          "commit": "11dbe53c7ad906afdc61869209aaa39d22664ee5",
           "paths": [
             "docs/redteam-quickstart.md",
             "tests/redteam/test_quickstart_doc.py",
@@ -4225,7 +4225,7 @@
           ]
         }
       ],
-      "validationStatus": "The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at b6ab3cf against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.",
+      "validationStatus": "The page's agent, run file and commands are the SDK repository's red team quickstart, which its test suite runs as written at 11dbe53 against a loopback stand-in model: validate exits 0, run exits 1 with the leaked code confirmed at level 2, the four report files are written and the local UI's API lists the run and serves its report. The SDK's outbound test shows the local workflow connects only to the model and the target. Not yet walked on a released package, with a real model, or through the UI in a browser.",
       "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source against a stand-in model; a walkthrough on the next release with a real model and the UI remains.",
       "requiredValidation": [
         "Run every documented command on the next released SDK from public PyPI with a real model",
@@ -4236,7 +4236,7 @@
           "date": "2026-11-17",
           "record": "MartianSecurity/martian-redteam tests/redteam/test_quickstart_doc.py",
           "observedPath": "Quickstart files and commands from source, local UI API",
-          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at b6ab3cf6248bd10d1580894fdfb7c662336bc786 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
+          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at 11dbe53c7ad906afdc61869209aaa39d22664ee5 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
           "result": "Documented exit codes and files; run listed and its report served by the local UI API."
         }
       ]
@@ -4263,7 +4263,7 @@
       "sources": [
         {
           "repository": "MartianSecurity/martian-redteam",
-          "commit": "b6ab3cf6248bd10d1580894fdfb7c662336bc786",
+          "commit": "11dbe53c7ad906afdc61869209aaa39d22664ee5",
           "paths": [
             "docs/redteam-from-promptfoo.md",
             "docs/redteam-interop.md",
@@ -4274,7 +4274,7 @@
           ]
         }
       ],
-      "validationStatus": "The commands ran at b6ab3cf against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite, crescendo and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.",
+      "validationStatus": "The commands ran at 11dbe53 against the SDK repository's sample project examples/promptfoo-redteam (a config and results written by hand in promptfoo's documented shapes, not written by promptfoo itself), with a loopback stand-in model (the SDK repository's tests of this guide and of the converter): the conversion lists bola, basic, jailbreak:composite and language, the converted file validates and runs, the import keeps one run that the local UI's API lists. Not yet run on results promptfoo itself wrote, on a released package, or through the UI in a browser.",
       "customerNotice": "Built, not released: these commands are in the SDK source, not in martian-sdk 0.1.5. They were run from source on a hand-written sample; a walkthrough on the next release with results promptfoo itself wrote remains.",
       "requiredValidation": [
         "Run every documented command on the next released SDK from public PyPI",
@@ -4286,7 +4286,7 @@
           "date": "2026-11-17",
           "record": "MartianSecurity/martian-redteam tests/redteam/test_from_promptfoo_doc.py",
           "observedPath": "Conversion, validation, run and import of the sample project from source",
-          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at b6ab3cf6248bd10d1580894fdfb7c662336bc786 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
+          "environment": "Linux workstation; Python 3.12; martian-sdk[evals] from MartianSecurity/martian-redteam branch feature/322/epic at 11dbe53c7ad906afdc61869209aaa39d22664ee5 (unreleased); a loopback OpenAI-compatible stand-in for the attacker and judge model; no Martian platform services",
           "result": "Documented output, exit codes and lists; imported run listed by the local UI API."
         }
       ]

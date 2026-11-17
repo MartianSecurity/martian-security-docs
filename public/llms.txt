@@ -134,7 +134,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Move from promptfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md?v=3084acecbb53): Import promptfoo results as runs in the local Evals UI, and convert a promptfoo config into suite files that run against your agent. Needs SDK 0.1.4 or later.
 
-- [Move a promptfoo red team](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md?v=c4dc7eb9161d): Convert a promptfoo red team config into a run file, import its results into martian ui, and see what does not carry over. Needs the SDK release after 0.1.5.
+- [Move a promptfoo red team](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md?v=9c1fea28c8bd): Convert a promptfoo red team config into a run file, import its results into martian ui, and see what does not carry over. Needs the SDK release after 0.1.5.
 
 - [Find your way around the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/console-navigation.md?v=432459fb66db): Locate every customer console area, its guide and the boundary between available workflows, templates and previews.
 
@@ -164,12 +164,12 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md?v=5be592c1df19): Validate and execute a bounded adversarial test against a local callback, inspect safe reports, and apply a strict gate.
 
-- [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md?v=e63a0ad37e45): Install the SDK, point it at your own model, attack a local agent with a version 2 run file, and read the report in martian ui. No Martian account. Needs the SDK release after 0.1.5.
+- [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md?v=c9d47e6682a4): Install the SDK, point it at your own model, attack a local agent with a version 2 run file, and read the report in martian ui. No Martian account. Needs the SDK release after 0.1.5.
 
 - [Invite teammates and understand roles](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/workspace/team-and-roles.md?v=23310a249db9): Join the correct workspace, issue a scoped team invitation and understand the owner, admin, member and viewer boundaries.
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=635b97e79785): all 76 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=06f7828c9715): all 76 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.
