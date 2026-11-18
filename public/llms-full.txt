@@ -1873,7 +1873,7 @@ Related MITRE ATLAS entries in the [official data repository](https://github.com
 
 These links describe related behavior. The relationship is editorial guidance, not a claim that a Martian technique implements every part of that ATLAS entry. See [how the ATLAS mapping works](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/mitre-atlas.md).
 
-Read [OWASP Agentic supply-chain and tool risks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) and [tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md). Use the [connection guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) for actual registration and approval steps.
+Read [OWASP Agentic supply-chain and tool risks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/frameworks/owasp-agentic.md), [supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md) and [tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md). Use the [connection guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md) for actual registration and approval steps. To check an MCP configuration and the servers it names before an agent loads them, [scan it](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md); approvals in the Scanner are voided when the content changes.
 
 ---
 
@@ -2229,7 +2229,7 @@ These are related catalogue entries, not a record of execution. Confirm availabi
 
 MCP descriptor poisoning is related to one part of this family. **MT-24 Standing backdoor is a declared gap.** The broader published catalogue includes software and model supply-chain research; it does not establish support for changing weights, training models, compromising dependencies or testing arbitrary build systems.
 
-An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach.
+An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach. To review what an agent loads (its skills, MCP configurations, plugins and the packages and links they name), scan those files with the [Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md).
 
 ## Evidence to inspect
 
@@ -4815,6 +4815,17 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 | From the SDK: runs in a Martian simulation environment (`redteam_environments`), planned campaigns with `martian redteam campaign` (`redteam_campaigns`) and runs sent to the console with `martian redteam push` | — | **Planned**: the commands are in SDK 0.2.0, but they need a Martian server version that is not deployed yet | **Planned** |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
+### Scan agent files
+
+The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) is in Enterprise only, including a self-hosted Enterprise installation, and Martian turns it on for each organization. It is not in Community: it checks files against rules and registries that Martian keeps and runs on its servers, or in your Enterprise installation, so the open-source SDK has only the `martian scan` client, which sends the files and prints the server’s result.
+
+|  | Community | Enterprise | On-Premises |
+| --- | --- | --- | --- |
+| Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: turned on for each organization by Martian | **Built**: in the self-hosted installation, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
+| `martian scan` and the scan gate in CI ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)) | — | **Beta**: needs a martian-sdk release that includes `martian scan`; 0.2.0 does not | **Built** |
+| Pull requests and pushes scanned through the GitHub App ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Beta** | — |
+| Model analysis of what an add-on points at, judged against its stated purpose | — | **Beta**: on unless the organization turns it off | **Built**: at a model endpoint you name |
+
 ### Delivery and support
 
 |  | Community | Enterprise | On-Premises |
@@ -4848,6 +4859,7 @@ The Evals UI shows a page only when the edition includes its feature key, and th
 | `redteam_hosted_generation` | Attack generation and judging by Martian’s engine for SDK red team runs | No | Yes | Yes |
 | `redteam_environments` | A red team run in a Martian simulation environment | No | Yes | Yes |
 | `redteam_campaigns` | Planned red team campaigns started from the console | No | Yes | Yes |
+| `scanner` | The Skills / MCP / Plugin Scanner: uploads, scans and the scan gate. Martian also turns it on for each organization | No | Yes | Yes |
 
 Annotating one item or trace, and scoring one run, stay in every edition. A local red team run with your own model needs no key. `review_queues` and `monitoring` are in the open-source repository; the other keys are for features that exist only in Martian’s own product.
 
@@ -4871,6 +4883,7 @@ Community includes the whole Evals core except what a shared server needs or wha
 -   Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
 -   API keys and CI sessions, which record SDK results on a server.
 -   The console’s Red Team assessments, simulation environments and planned campaigns, and attack generation by Martian’s engine. Local red team runs with your own model are Community.
+-   The Skills / MCP / Plugin Scanner. `martian scan` is in the SDK, but it needs an Enterprise organization with the Scanner.
 -   Hosted storage, managed upgrades and priority support.
 
 ## Choose an edition
@@ -6257,7 +6270,7 @@ Start with the action’s recorded state and exact error. Refresh retained histo
 | Model judging unavailable | Model access, organization readiness, acknowledgement | Use supported code scoring or ask the admin; never invent missing feedback |
 | Review saved but queue still pending | All required questions and native feedback verification | Wait/refresh; verify each latest required answer, not only the last clicked row |
 | Export refuses too many results | Match count and active filters | Narrow the query; do not treat a partial page as the whole dataset |
-| SDK exits with a setup error | Exact installed version, variables, scopes and supported command | Follow SDK configuration; martian scan is not the current supported CLI |
+| SDK exits with a setup error | Exact installed version, variables, scopes and supported command | Follow SDK configuration; `martian scan` needs a key with `scan:run` and `scan:read` and an organization with the [Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md) |
 
 ## Keep evidence useful
 
@@ -6316,7 +6329,7 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **44 task guides**, **37 are verified**, **7 are partly verified** and **0 await walkthrough verification**. The screenshot record contains **213 captured references** across **201 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **50 task guides**, **37 are verified**, **7 are partly verified** and **6 await walkthrough verification**. The screenshot record contains **213 captured references** across **201 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
@@ -6535,6 +6548,383 @@ The public repository retains the guide coverage matrix, screenshot provenance a
 [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) labels product availability separately from guide verification: **Available** is released, **Beta** is in the hosted beta console, **Built** is implemented but not released, and **Planned** is not built.
 
 The current Pipeline view explicitly labels its configuration as a preview: automated runs and waiver management are not connected. Its earlier illustrative command has been removed. Other limits include unsupported target interfaces for dataset Evals, a Threat Intel view without a live feed, and network containment that remains a preview. Use the supported SDK CLI and controls documented here.
+
+---
+
+# Scan from the command line and CI
+
+> martian scan packs a folder's agent files, uploads them, waits for the scan and exits on the gate in .martian/scan.yml.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/cli-and-ci/)
+
+> **Page qualification:** Current beta console · Developer with an API key holding scan:run and scan:read · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+`martian scan` sends a folder’s agent files to the Scanner, waits for the scan, prints the findings and exits on the gate the server evaluates against the repository’s policy file. It is a thin client: the rules, the findings and the gate are all on the server.
+
+## Before you start
+
+-   A martian-sdk release that includes `martian scan`; 0.2.0 does not. Install it as in [installation and configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md).
+-   An organization with the Scanner turned on ([who has it](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md#who-has-it)), and an API key with **`scan:run`** and **`scan:read`**, issued by an owner or admin under **API Keys**.
+-   `MARTIAN_API_URL` set to your Martian server and `MARTIAN_API_TOKEN` to the key.
+
+## Scan a folder
+
+```bash
+martian scan --dry-run                         # list what would be sent and its digest; needs no token
+martian scan                                   # the current folder's agent files
+martian scan path/to/repo --sarif results/scan.sarif --json results/scan.json
+martian scan --include 'skills/**' --include src/agent/ --kind agent_code --name support-agent
+```
+
+By default the command sends the files coding agents load: `AGENTS.md`, `CLAUDE.md` and `GEMINI.md`, MCP configurations (`.mcp.json`, `mcp.json`), the `.claude/`, `.cursor/`, `.agents/` and similar folders, Copilot instructions, and every folder that holds a `SKILL.md` or a `.claude-plugin/` folder, whole. Inside a Git work tree only files Git does not ignore are sent. A symbolic link that points out of the folder refuses the scan; the command never follows one.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `FOLDER` | `.` | The folder to scan |
+| `--include`, `-i` | the agent files | A pattern of files to send instead; repeatable |
+| `--kind` | `repository` | `repository`, `skill`, `mcp_server`, `plugin`, `subagent`, `harness_config`, `agent_code` or `registry_entry` |
+| `--name` | the repository, else the folder’s name | Scans of the same kind and name belong to one add-on |
+| `--no-model-analysis` | analysis allowed | Keep file contents from any model, whatever the organization allows |
+| `--timeout` | 600 | Seconds to wait for the scan |
+| `--json PATH`, `--sarif PATH` | none | Write the server’s JSON or SARIF 2.1.0 export |
+| `--policy PATH` | `.martian/scan.yml` | The gate policy file |
+| `--default-branch NAME` | detected | The repository’s default branch, for the baseline |
+
+## Exit codes
+
+| Exit | Meaning |
+| --- | --- |
+| 0 | The gate passed |
+| 1 | The gate failed: blocking findings or a coverage shortfall, with the reasons printed |
+| 2 | No verdict: nothing to send, a link out of the folder, a refused policy file, missing or refused credentials, a refused upload, a failed scan, the timeout, or an export that could not be written |
+
+## The gate file: `.martian/scan.yml`
+
+```yaml
+version: 1
+paths: ["."]
+include: [skills, mcp, plugins, subagents, harness-config]
+external:
+  follow: true
+gate:
+  fail_on: {evidence: structural, severity: high}
+  new_findings_only: true
+waivers:
+  - {rule: REF-UNPINNED-PACKAGE, path: .mcp.json, reason: "Served from the internal mirror", expires: 2027-01-31}
+```
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `paths` | `["."]` | What is sent, relative to the repository |
+| `include` | all six families | `skills`, `mcp`, `plugins`, `subagents`, `harness-config`, `agent-code` |
+| `external.follow` | `false` | Require the references to have been resolved, with none left not attempted unless `max_not_attempted_references` allows some |
+| `gate.fail_on.evidence` | `inventory` | The least [evidence level](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md#evidence-levels) that blocks |
+| `gate.fail_on.severity` | `info` | The least severity that blocks: `critical`, `high`, `medium`, `low` or `info` |
+| `gate.fail_on.categories` | all | Only findings of these categories block |
+| `gate.min_coverage` | none | Stages that must have run, the least evidence level reached, and at most so many skipped files or unresolved and not-attempted references |
+| `gate.new_findings_only` | `false` | Block only on findings the default branch’s latest scan does not have |
+| `waivers` | none | A finding of `rule` on exactly `path` does not block until `expires` (at most a year ahead), with a `reason` |
+
+An unknown field anywhere is refused, so a misspelt threshold never passes silently. Without a file the gate is the strictest: every open finding blocks.
+
+## In CI
+
+-   **A CI session.** `martian ci --scan FOLDER` runs the same scan as one test of a [CI session](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md).
+-   **GitHub Actions.** The scan action, `MartianSecurity/martian-redteam/.github/actions/scan`, runs `martian scan` with the token from the job’s environment and writes `scan.sarif` and `scan.json`; upload the SARIF to code scanning with `github/codeql-action/upload-sarif`. Run it on pushes to protected branches, not on pull requests: a customer token must not reach code nobody has reviewed. Pull requests are scanned by the [GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md).
+-   Both exports quote the lines each finding is about. Keep `scan.json` out of artifacts others can download if the scanned files hold anything private.
+
+## Next
+
+-   [The GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
+-   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
+
+---
+
+# Scan in the console
+
+> Upload a folder, read the result by category, finding and evidence, and triage, approve and monitor what you scanned.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/console/)
+
+> **Page qualification:** Current beta console · owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files) · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+Scan a skill, an MCP configuration, a plugin or a repository from the console and read what the Scanner found.
+
+## Before you start
+
+-   Your organization has the Scanner turned on ([who has it](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md#who-has-it)). Without it the **Scanner** group is not in the sidebar.
+-   You are an owner, admin or member to start a scan; any member reads scans.
+-   Have the folder ready, or a ZIP of it of at most 50 MiB (your organization’s limit may be lower).
+
+## Start a scan
+
+1.  In the sidebar, open **Scanner → New scan**.
+2.  Under **Type**, choose what you are scanning: a skill, an MCP server, a plugin, a sub-agent, harness configuration, agent code or a repository.
+3.  Under **Name**, give it a name. Scans of the same type and name belong to one add-on, so later scans are compared with earlier ones.
+4.  Drop the folder or the ZIP file on the page, or choose it.
+5.  Select **Start scan**. The result page follows the scan stage by stage.
+
+A refused upload says why and names the limit it broke: the archive’s size, its number of files, or the organization’s scans for the day.
+
+## Read the result
+
+-   **Categories** shows each category as flagged, clear or not checked, with the stages a not-checked one is missing.
+-   **Findings** lists each finding with its severity, evidence level, file and line. Select one to open the file with the cited lines marked.
+-   **References** lists every link, package and repository the files point at, with what the registry answered, when, and when it is checked again.
+-   **Coverage** lists the files that were skipped or not inspected and why.
+-   **Download JSON** and **Download SARIF** export the scan.
+
+## Triage, approve and monitor
+
+1.  **Findings** across scans: an owner or admin accepts a finding (with a reason and an end date), waives it, or reopens it. Each action is in the audit log.
+2.  **Policy** sets the severity of a rule for your organization, and the notifications for new findings, drift and voided approvals.
+3.  **Add-ons** shows each add-on’s latest scan. An owner or admin **approves** the content digest of a completed scan. When the add-on’s content or what it points at changes, the approval is void and the add-on shows **changed since approval**.
+4.  Add-ons from a registry are fetched again weekly, and what they point at is re-checked daily.
+
+## Delete the stored files
+
+The uploaded archive is kept for your organization’s retention period after its newest scan ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md#how-long-uploaded-files-are-kept)). An owner or admin can delete it sooner: open the scan, and under **This scan** select **Delete the stored files**. The scan and its findings stay.
+
+## Next
+
+-   [Scan from the command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)
+-   [The GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
+
+---
+
+# Scan pull requests with the GitHub App
+
+> Connect the Martian Scanner GitHub App so every pull request and push to the default branch is scanned, with a check and one comment.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/github-app/)
+
+> **Page qualification:** Current beta console · owner or admin; GitHub account admin · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+The GitHub App scans pull requests and repositories on Martian’s side. It reads a pull request’s files with a token made for that one job, so no customer secret is in the pipeline, and pull requests from forks are scanned too.
+
+## Before you start
+
+-   Martian has turned on the Scanner and its GitHub App for your organization, with the number of repositories it may scan.
+-   You are an owner or admin of the organization, and you can install apps on the GitHub account.
+
+## Connect GitHub
+
+1.  In the sidebar, open **Scanner → Integrations**.
+2.  Select **Connect GitHub**. GitHub opens its install page for the Martian Scanner app.
+3.  Choose the account and the repositories, and install. GitHub returns you to **Scanner → Integrations**, which connects the installation to your organization.
+4.  Turn on each repository to scan, and set the folders to send (`.` for all) and how many hours after its last scan the default branch is scanned again without a push.
+
+An installation made straight from GitHub, without **Connect GitHub**, is never connected to an organization and scans nothing.
+
+## What happens on a pull request
+
+-   The App posts a **Martian Scanner** check on the head commit. A pull request that changes no agent file passes without a scan.
+-   The gate file `.martian/scan.yml` is read from the **base** commit, so a pull request cannot weaken its own gate ([the gate file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md#the-gate-file-martianscanyml)).
+-   The repository’s agent files are scanned, not only the changed ones, so a file a changed one points at is scanned with it.
+-   The check passes or fails with the gate’s reasons, a link to the scan and an annotation at each blocking finding. One comment on the pull request is edited on every later commit.
+-   An organization over its limits, or without the App turned on, gets a neutral check that says why. It never blocks a merge.
+
+A push to the default branch is scanned too, and that scan is the baseline later pull requests are compared with when `new_findings_only` is set.
+
+## Disconnect
+
+On **Scanner → Integrations**, disconnect the installation. Its repositories stop being scanned. Uninstalling the app on GitHub is yours to do.
+
+## Next
+
+-   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
+
+---
+
+# Limits, usage and data
+
+> The Scanner's limits, where owners and admins read their organization's usage, and what is stored of scanned content and for how long.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/limits-and-data/)
+
+> **Page qualification:** Current beta console · owner or admin (usage, retention, deletion); any member (limits) · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+## Limits
+
+Martian sets your organization’s Scanner limits when it turns the Scanner on:
+
+| Limit | Default | When it is reached |
+| --- | --- | --- |
+| Scans a day | 200 | An upload, a CI scan or a GitHub App scan is refused (`429`) with the limit named, and the GitHub App’s check is neutral |
+| Largest upload | 50 MiB | The upload is refused (`413`) with the limit |
+| Files in one upload | 5,000 entries, 10 MiB per file, 200 MiB unpacked | The upload is refused with the limit |
+| Model analysis requests in one scan | 24 | The scan’s later passes are listed as not run |
+| Repositories for the GitHub App | 10 | Repositories over it get a neutral check |
+
+An organization may also start at most 30 scans a minute, and an API key 10 a minute and 500 a day.
+
+## Usage
+
+Owners and admins see what the organization’s scanning used over the last 30 days under **Scanner → Settings → Usage**: scans by state, scans today against the daily limit, files read, references resolved and not attempted, model calls and tokens, and the bundles stored. Every figure is counted from the scans themselves.
+
+## How long uploaded files are kept
+
+| What is stored | How long |
+| --- | --- |
+| The uploaded or fetched archive (the bundle) | Your organization’s retention after its newest scan: 30 days unless an owner or admin changes it under **Scanner → Settings → Uploaded files** (1 to 3,650 days) |
+| Each scan’s record: the file list with each file’s hash, the coverage, the references and what the registries answered | While the organization exists |
+| Findings, each with an excerpt of at most 1,000 characters of the line a rule matched | While the organization exists. They are what gates, approvals and triage were decided on |
+| Pages, files and repositories the Scanner fetched | Not stored. They are hashed, and the scan’s working folder is removed when it ends |
+
+-   When a bundle’s retention ends it is deleted from storage; the scan and its findings stay. The same files can be scanned again by uploading them again.
+-   An owner or admin deletes a scan’s stored files at once from the scan’s page (**Delete the stored files**). Every scan of the same files shares them. The deletion is in the audit log.
+-   A legal hold on the organization stops every deletion while it holds.
+-   Deleting the organization deletes its stored files and its Scanner records. Its audit log is kept.
+
+## Next
+
+-   [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md)
+-   [Self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)
+
+---
+
+# What the Scanner checks
+
+> The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/overview/)
+
+> **Page qualification:** Current beta console · Any member of an Enterprise organization with the Scanner · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+The Skills / MCP / Plugin Scanner is the third part of Martian Protect. It reads the files an agent is given (skills, MCP server configurations, plugins, sub-agents, hooks, settings, rules files and the agent’s own code) and reports what is wrong with them, including the indirect case: a clean `SKILL.md` that tells the agent to read and follow a link or a file that is not safe.
+
+The Scanner checks the files you give an agent. It does not replace [Red Team](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md), which tests what the agent does. A Scanner finding never starts a Red Team run; you start one on purpose.
+
+## Who has it
+
+The Scanner is in the **Enterprise** edition, in the hosted beta console, and in a self-hosted Enterprise installation ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)). It is not in the open-source Community edition. Within Enterprise it is turned on for each organization by Martian, with its limits ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)); ask your Martian contact to turn it on. Then:
+
+-   owners, admins and members start scans, and every member reads them;
+-   owners and admins triage findings, approve add-ons and change the Scanner’s settings;
+-   an admin issues API keys with `scan:run` and `scan:read` for the [command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md).
+
+## What a scan reads
+
+You upload a folder as a ZIP file, name a package or skill in a registry, or let the [GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md) send a repository. Each scan is of one **content digest**: the SHA-256 over every file’s path and hash. The same files give the same digest, so an approval names exactly the content it approved.
+
+The scan runs in stages. Each stage that ran is listed in the result, and each that did not is too:
+
+| Stage | What it does |
+| --- | --- |
+| Unpack, inventory, parse | Reads every file, hashes it, and works out what each one is and which agent clients load it. A file it could not read is listed, never treated as clean |
+| Rules | Pattern and structural rules: dangerous commands and downloads, hidden text, hooks and settings that run commands, permissions, MCP server configuration, and data flows in the agent’s own code |
+| References and resolve | Every link, repository, package, domain, image and command the files point at, and what the registries say about each: a package nobody has published, a domain anyone can register, a repository whose owner was deleted, a version with a known vulnerability |
+| Fetch and assess | What the add-on tells the agent to read or run, fetched and judged against what the add-on says it is for. A model may add a finding; it never clears one |
+
+## Evidence levels
+
+Every finding states how strong its evidence is. A clean result means no findings at the levels the scan reached, with its coverage, at that time.
+
+| Level | Name | Means |
+| --- | --- | --- |
+| 0 | Inventory | The file exists and is loaded by these clients |
+| 1 | Pattern | A rule matched the text |
+| 2 | Structural | The parsed structure shows it (a hook that runs a command, an unpinned server) |
+| 3 | Resolved | A registry or address answered (the package does not exist; the domain is unregistered) |
+| 4 | Assessed | A model, citing the passage, judged it outside the add-on’s purpose, and two passes agreed |
+| 5 | Observed | It was seen when the add-on ran in a sandbox |
+| 6 | Corroborated | An independent source agrees. Only level 6 is called malicious |
+
+A scan whose organization does not allow sending content to a model stops at level 3, and says so.
+
+## Coverage
+
+Each result shows every category as **flagged** (a finding is in it), **clear** (every stage it needs ran and nothing was found) or **not checked** (a stage it needs did not run, or did not cover everything). A reference the Scanner did not ask about is **not attempted**, never clean, and a category that depends on it is not checked.
+
+## Next
+
+-   [Scan in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)
+-   [Scan from the command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)
+-   [The GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
+-   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
+
+---
+
+# The Scanner in a self-hosted installation
+
+> What the Scanner does in an Enterprise installation in your own cluster, with outside lookups off by default, an allow-list or proxy, an imported advisory database and your own model endpoint.
+
+Source: [Web version](https://docs.martiansecurity.ai/scanner/self-hosted/)
+
+> **Page qualification:** Current beta console · Security engineer of a self-hosted Enterprise installation · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+
+> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
+
+Guide in progress
+
+This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+
+A self-hosted Enterprise installation runs the Scanner’s worker in your own cluster, next to the console and the backend. Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
+
+## What differs from the hosted console
+
+|  | Hosted Enterprise | Self-hosted Enterprise |
+| --- | --- | --- |
+| Outside lookups (registries, OSV, the addresses the files name) | On | **Off by default.** Every reference is reported as not attempted, its categories as not checked, and a gate that requires references to be followed fails |
+| Limiting lookups | — | An allow-list of hosts, a proxy of yours (only with an allow-list), or both |
+| Known vulnerabilities in packages | Asked of OSV | From OSV, or from an **imported advisory database** you build from OSV’s exports, which needs no outside route |
+| Model analysis | Martian’s engine | **Your own OpenAI-compatible model endpoint**, if you name one. Without one, model analysis does not run, each scan says so, and findings reach at most evidence level 3 (resolved) |
+| Where uploaded files are kept | Martian’s storage | A volume in your cluster or a bucket of yours |
+
+A self-hosted installation has no sandbox, so the Scanner never runs an add-on there.
+
+## Turn lookups on, or keep them limited
+
+Your administrator sets these when installing:
+
+-   **Lookups on.** The worker gets one way out: public addresses on ports 80 and 443, with every private, internal and cloud metadata address excluded.
+-   **An allow-list.** Only the listed hosts are asked, for example `pypi.org`, `.npmjs.org` and `api.github.com`; a reference to any other host is reported as not attempted, naming the host.
+-   **A proxy.** Requests go through your proxy, which must refuse internal addresses. The worker uses a proxy only together with an allow-list.
+
+## Check packages with no outside route
+
+Build an advisory database where there is internet, and give it to the installation:
+
+```bash
+martian-scanner advisory-db build --out advisories.db PyPI-all.zip npm-all.zip
+```
+
+`PyPI-all.zip` and `npm-all.zip` are OSV’s exports (`https://osv-vulnerabilities.storage.googleapis.com/PyPI/all.zip` and `.../npm/all.zip`). The `martian-scanner` command is in the Scanner’s worker image your administrator installed. Each finding from the database names it, when it was built and the exports it came from, so you can see how old the knowledge is. Build it again to refresh it.
+
+## Next
+
+-   [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md)
+-   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
 
 ---
 
@@ -6777,7 +7167,7 @@ Reports use digests by default. Do not upload `.martian-local-mlflow/`, credenti
 -   Recover an unknown redteam operation by its original operation UUID. Do not submit new generation/judging to replace uncertain evidence. Score `0` is a valid failing judgment, not a retry condition.
 -   Sync callbacks need their own network timeouts; cancellation cannot kill their threads or undo already issued calls. Keep the example’s concurrency and volume bounds until your service allowance and target behavior are qualified.
 
-Use `martian ci` for the persisted gate; `martian scan` is not a supported command. Continue with [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md), [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md), or the browser [first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) guide.
+Use `martian ci` for the persisted gate. To gate on the agent files themselves, add a scan to the session with `martian ci --scan FOLDER`, or run [`martian scan`](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md) on its own. Continue with [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md), [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md), or the browser [first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) guide.
 
 ---
 

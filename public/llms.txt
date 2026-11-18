@@ -12,7 +12,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=66667155e701): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=5f05e4c1ca6f): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=c567c4574f0c): Review source revisions, real captures, completed checks and remaining gaps.
 
 ## Documentation
 
@@ -50,7 +50,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Jailbreaks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/jailbreaks.md?v=3b9d815148f7): Understand attempts to bypass a model's safety restrictions and distinguish unsafe output from verified downstream effects.
 
-- [MCP and tool poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md?v=18e268519b4c): Examine malicious tool descriptions, schemas and runtime responses while keeping transport support separate from attack-surface control.
+- [MCP and tool poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/mcp-tool-poisoning.md?v=5ff2110c8c51): Examine malicious tool descriptions, schemas and runtime responses while keeping transport support separate from attack-surface control.
 
 - [Memory and context poisoning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/memory-context-poisoning.md?v=8311a72c1798): Investigate whether attacker-controlled material can persist through retrieval, summaries, memory or later conversations.
 
@@ -62,7 +62,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Reasoning and alignment subversion](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/reasoning-alignment-subversion.md?v=427950a1c608): Examine manipulated objectives, reasoning context and feedback without treating a model's explanation as proof of its internal process.
 
-- [Supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md?v=63e243240d5a): Understand attacks introduced through dependencies, tools, skills, models and updates, and the limits of endpoint-based testing.
+- [Supply chain and backdoors](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/supply-chain-backdoors.md?v=aa9acaed6bdc): Understand attacks introduced through dependencies, tools, skills, models and updates, and the limits of endpoint-based testing.
 
 - [Tool and action abuse](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/attacks/tool-action-abuse.md?v=d1e588262c8a): Examine unsafe tool selection, arguments and call chains, and verify whether the resulting operation actually occurred.
 
@@ -118,7 +118,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Red teaming and Evals](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/concepts.md?v=4f1b6f30fcfd): Understand the evidence, records, and workflows before your first run.
 
-- [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md?v=580b5d16318d): What Community, Enterprise and On-Premises include and leave out, and which parts are available, in beta, built or planned.
+- [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md?v=78fadb301bec): What Community, Enterprise and On-Premises include and leave out, and which parts are available, in beta, built or planned.
 
 - [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=12db185b987a): Complete a small endpoint-only assessment and inspect the recorded result.
 
@@ -146,13 +146,25 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Supported agent targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md?v=82f45ec9814e): Choose an interface supported by the workflow you intend to run.
 
-- [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md?v=1c9965f3eceb): Resolve common access, connection, run, dataset and scoring failures safely.
+- [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md?v=ca94025420e3): Resolve common access, connection, run, dataset and scoring failures safely.
 
 - [Use these docs with an AI assistant](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/using-with-agents.md?v=f3319b1e4a1f): Copy a complete page or share a public Markdown link that an assistant can read without signing in.
 
-- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=5f05e4c1ca6f): Review source revisions, real captures, completed checks and remaining gaps.
+- [Guide verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md?v=c567c4574f0c): Review source revisions, real captures, completed checks and remaining gaps.
 
-- [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=256a40bfcbc9): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
+- [Scan from the command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md?v=aea08a7c4393): martian scan packs a folder's agent files, uploads them, waits for the scan and exits on the gate in .martian/scan.yml.
+
+- [Scan in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md?v=460ca45b5c3b): Upload a folder, read the result by category, finding and evidence, and triage, approve and monitor what you scanned.
+
+- [Scan pull requests with the GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md?v=8e2256cbaff4): Connect the Martian Scanner GitHub App so every pull request and push to the default branch is scanned, with a check and one comment.
+
+- [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md?v=2834ce69c62e): The Scanner's limits, where owners and admins read their organization's usage, and what is stored of scanned content and for how long.
+
+- [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md?v=f78c0d55ac6e): The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
+
+- [The Scanner in a self-hosted installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md?v=c33127d6f12a): What the Scanner does in an Enterprise installation in your own cluster, with outside lookups off by default, an allow-list or proxy, an imported advisory database and your own model endpoint.
+
+- [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=4c3743ad7270): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
 - [Evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md?v=5ea482d650c3): Run a free local Evals preview, then evaluate a published dataset and verify its saved Backend result.
 
@@ -170,6 +182,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=65df1fe19ed8): all 76 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=0051c3ce0a1c): all 82 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

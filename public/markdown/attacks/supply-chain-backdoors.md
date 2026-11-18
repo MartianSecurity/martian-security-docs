@@ -32,7 +32,7 @@ These are related catalogue entries, not a record of execution. Confirm availabi
 
 MCP descriptor poisoning is related to one part of this family. **MT-24 Standing backdoor is a declared gap.** The broader published catalogue includes software and model supply-chain research; it does not establish support for changing weights, training models, compromising dependencies or testing arbitrary build systems.
 
-An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach.
+An assessment through an approved endpoint observes that interface. It is not a substitute for artifact provenance, dependency review or build-system security checks. Use [supported target limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md) to define what the test can actually reach. To review what an agent loads (its skills, MCP configurations, plugins and the packages and links they name), scan those files with the [Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md).
 
 ## Evidence to inspect
 

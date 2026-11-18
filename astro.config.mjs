@@ -106,6 +106,17 @@ export default defineConfig({
     ]
   },
   {
+    "label": "Scanner",
+    "collapsed": true,
+    "items": [
+      {
+        "autogenerate": {
+          "directory": "scanner"
+        }
+      }
+    ]
+  },
+  {
     "label": "SDK and CI",
     "collapsed": true,
     "items": [
