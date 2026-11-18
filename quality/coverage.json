@@ -4352,7 +4352,7 @@
       "sources": [
         {
           "repository": "MartianSecurity/martian-scanner",
-          "commit": "9201601bade064191cf60464fbf0adb39d7f0de7",
+          "commit": "f6e5316b4ef6264ce1ec10300561ce328dcbd15f",
           "paths": [
             "scripts/accuracy.py",
             "corpus/register.json",

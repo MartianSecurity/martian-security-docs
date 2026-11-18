@@ -6651,7 +6651,7 @@ Per evidence level. A finding is true or false by the same labels; recall at a l
 | 1\. Pattern | 44 | 0 | 96% |
 | 2\. Structural | 62 | 0 | 67% |
 | 3\. Resolved | 8 | 0 | 20% |
-| 4\. Assessed | 26 | 0 | 16% |
+| 4\. Assessed | 23 | 0 | 16% |
 | 5\. Observed | 0 | 0 | 0% |
 | 6\. Corroborated | 0 | 0 | 0% |
 
