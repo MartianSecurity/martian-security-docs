@@ -28,7 +28,7 @@ An organization may also start at most 30 scans a minute, and an API key 10 a mi
 
 ## Usage
 
-Owners and admins see what the organization’s scanning used over the last 30 days under **Scanner → Settings → Usage**: scans by state, scans today against the daily limit, files read, references resolved and not attempted, model calls and tokens, and the bundles stored. Every figure is counted from the scans themselves.
+Owners and admins see what the organization’s scanning used over the last 30 days under **Scanner → Settings → Usage**: scans by state, scans today against the daily limit, files read, references resolved and not attempted, model calls and tokens, minutes of add-ons run in a sandbox, and the bundles stored. Every figure is counted from the scans themselves.
 
 ## How long uploaded files are kept
 
