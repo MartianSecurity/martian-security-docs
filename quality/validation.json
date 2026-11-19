@@ -824,6 +824,12 @@
       "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
       "result": "passed in stated scope",
       "details": "Created and activated .venv with Bash from the current quickstart ZIP. Bare python and martian resolved to the environment. The two suites exited 1 and 0 with 2 and 3 passing cases. Reactivated the quickstart environment in a new Zsh shell. The packaged UI opened from martian on PATH, with no browser auto-open and a disposable loopback port. Both completed runs were visible in the saved results list. Started the example HTTP target with python from the activated environment. A second shell activated the same environment and ran the three-case URL suite. It produced 2 passes, 1 failure and no errors. Installed the SDK in an activated Zsh environment from the current tutorial ZIP and ran the offline pytest preview with bare martian. Tested the copyable key prompt with dummy input in a pseudoterminal and verified that the input was not echoed. All 79 shell blocks in the edited sources and example READMEs parsed. Both current ZIPs differed from the base only in the README member. Quickstart ZIP SHA-256 8ea745d6f873f95fe183f416b095bff03bdde92a630b9b90f47810daa30140af; SDK tutorial ZIP SHA-256 e6215c8d497e61a39bc21ea6186f9dd9a197777ff51fa6cc1ec80a0883b5bd26. Hosted product qualification was outside this docs check."
+    },
+    {
+      "scope": "Local SDK sidebar and guide overview",
+      "environment": "Production docs preview in Chromium at 1440 × 1000 in light mode and 390 × 844 in dark mode",
+      "result": "passed in stated scope",
+      "details": "Opened both SDK groups from the hosted Red Team article and checked their link sets and active page markers. The Local SDK overview opened the full Evals guide, retained its current marker after refresh, appeared in search and copied as Markdown. The narrow menu navigated to the local UI guide."
     }
   ],
   "remainingGaps": [

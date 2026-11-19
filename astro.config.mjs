@@ -60,11 +60,21 @@ export default defineConfig({
   {
     "label": "Get started",
     "items": [
-      {
-        "autogenerate": {
-          "directory": "get-started"
-        }
-      }
+      "get-started/concepts",
+      "get-started/editions",
+      "get-started/access",
+      "get-started/first-assessment"
+    ]
+  },
+  {
+    "label": "Local SDK",
+    "collapsed": true,
+    "items": [
+      { "label": "Local SDK overview", "slug": "local-sdk" },
+      "get-started/quickstart",
+      "sdk/local-evals",
+      "sdk/local-ui",
+      "sdk/redteam-local"
     ]
   },
   {
@@ -120,11 +130,10 @@ export default defineConfig({
     "label": "SDK and CI",
     "collapsed": true,
     "items": [
-      {
-        "autogenerate": {
-          "directory": "sdk"
-        }
-      }
+      "sdk/install-and-configure",
+      "sdk/evaluations",
+      { "label": "Run a hosted Red Team probe", "slug": "sdk/redteam" },
+      "sdk/ci"
     ]
   },
   {
