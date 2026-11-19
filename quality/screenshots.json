@@ -4623,100 +4623,101 @@
     },
     {
       "id": "quickstart-ui-runs",
-      "file": "quickstart-ui-runs.png",
-      "alt": "Runs in the local Evals UI, with the sidebar, lists evals-fixed-1 at 100 percent and evals-1 at 67 percent.",
-      "caption": "Runs in the local Evals UI after the quickstart: evals-fixed-1 with 3 passed and 0 failed, and evals-1 with 2 passed and 1 failed. The sidebar on the left lists the other Evals pages.",
+      "file": "sdk-031-evals-runs.png",
+      "alt": "The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.",
+      "caption": "Both quickstart runs are saved in the Default project. The corrected run passed all three cases.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "get-started/quickstart: 5. See the result in the local Evals UI, step 1"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
-      "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T19:51:03+05:30",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Two deterministic suites from the published quickstart download",
+      "role": "Community single local user",
+      "capturedAt": "2026-11-19T13:05:41.576Z",
       "sourceRevisions": {
-        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
-        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
       },
-      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
+      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
+      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
       "reviewedForSecrets": true,
-      "sha256": "2a2e30393e3dd543ab84c4749b020a2fe9c497aa19dd6f0796087385a9a1d5ce",
-      "bytes": 73749
+      "sha256": "8a55f615d5b4327d6b6cf1c059eb560f942218d547a6dfb3aedc7211ace528fc",
+      "bytes": 82777
     },
     {
       "id": "local-ui-compare",
-      "file": "local-ui-compare.png",
-      "alt": "Compare shows evals-1 as baseline and evals-fixed-1 as candidate: one improved, none regressed, labelled within noise.",
-      "caption": "Compare with evals-1 as Baseline and evals-fixed-1 as Candidate. The summary reads 1 improved, 0 regressed of 3 compared and the label is Within noise, because fewer than six pairs cannot separate a change from chance.",
+      "file": "sdk-031-compare-runs.png",
+      "alt": "Compare shows one improved and zero regressed out of three paired results, filtered to the improved case.",
+      "caption": "The improved filter shows the changed case. The overall comparison remains Within noise with three pairs.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Compare",
         "get-started/quickstart: 5. See the result in the local Evals UI, step 4"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; two runs of the guide's example ZIP (evals.yaml, then evals-fixed.yaml --fresh) in an empty data folder; no model call, no Martian platform service",
-      "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T19:51:11+05:30",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Two deterministic suites from the published quickstart download",
+      "role": "Community single local user",
+      "capturedAt": "2026-11-19T13:12:54.595Z",
       "sourceRevisions": {
-        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
-        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
       },
-      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
+      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
+      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
       "reviewedForSecrets": true,
-      "sha256": "e0974311d32c30b1c79104bc3d1e4deb7ef30d50cd18bba17aff988fd2782dd2",
-      "bytes": 151359
+      "sha256": "e709cfa34f0a1a7734dcce5c2d14f296c925a933d64039bbc839883a044c8d76",
+      "bytes": 133400
     },
     {
       "id": "local-ui-runs",
-      "file": "local-ui-runs.png",
-      "alt": "Runs lists six local runs with pass rates, counts and state.",
-      "caption": "Runs after six suite-file runs: the pass rate with its 95 percent interval, passed and failed counts, state and start time, and a Run eval button. The sidebar holds the Evals pages, the Red Team link Run from the CLI, the Documentation and Source on GitHub links, and the Local user footer.",
+      "file": "sdk-031-evals-runs.png",
+      "alt": "The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.",
+      "caption": "Both quickstart runs are saved in the Default project. The corrected run passed all three cases.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Runs"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
-      "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T19:43:27+05:30",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Two deterministic suites from the published quickstart download",
+      "role": "Community single local user",
+      "capturedAt": "2026-11-19T13:05:41.576Z",
       "sourceRevisions": {
-        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
-        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
       },
-      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
+      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
+      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
       "reviewedForSecrets": true,
-      "sha256": "1fdab2e223018cdd27e53a81cd19c393d16bb28929f608a277a5d95aed538e72",
-      "bytes": 100344
+      "sha256": "8a55f615d5b4327d6b6cf1c059eb560f942218d547a6dfb3aedc7211ace528fc",
+      "bytes": 82777
     },
     {
       "id": "local-ui-case-inspect",
-      "file": "local-ui-case-inspect.png",
-      "alt": "The case panel for the failed prompt-injection case shows the input, expected and actual output and two assessments.",
-      "caption": "Inspect on the failed row of evals-1: the input, the expected output, the actual output, and the two assessments with their reasons. no secret leak fails with 1 of 1 forbidden values found. A Human review panel sits beside them.",
+      "file": "sdk-031-case-inspector.png",
+      "alt": "The failed quickstart result shows a failing no secret leak assessment and a passing no email address assessment.",
+      "caption": "The case inspector shows which check failed and why. The example note is synthetic.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
-        "sdk/local-ui: 2. Read what each page shows, a run's page"
+        "sdk/local-ui: 2. Read what each page shows, Runs",
+        "get-started/quickstart: 5. See the result in the local Evals UI, step 3"
       ],
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; a fresh data folder filled by the SDK's own deterministic example suites: the quickstart example's two suites and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5; no model call, no Martian platform service",
-      "role": "The local edition's single user (principal kind single_user, role owner, no login); edition Community",
-      "capturedAt": "2026-11-16T19:43:30+05:30",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Two deterministic suites from the published quickstart download",
+      "role": "Community single local user",
+      "capturedAt": "2026-11-19T13:08:09.720Z",
       "sourceRevisions": {
-        "sdk": "93d9707e781aaa1c6f09f336bc643a43a78d8447 (martian-redteam tag v0.1.5, published to PyPI as martian-sdk 0.1.5)",
-        "evalsUi": "c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d (MartianFrontend commit the wheel's Evals UI was built from)",
-        "wheelSha256": "d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51"
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
       },
-      "sourceMatchesDeployment": "The package published to PyPI as martian-sdk 0.1.5: the installed wheel's SHA-256 matches the file on PyPI.",
-      "validationStatus": "Direct unedited 1440x1000 light desktop capture from the real packaged Evals UI of PyPI martian-sdk 0.1.5 against its real local store and server. No DOM change, no request interception. Individually viewed for readability and private data: synthetic example data only, no key, token or local path. The sidebar shows the Martian mark; the page title is Martian Evals.",
+      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
+      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
       "reviewedForSecrets": true,
-      "sha256": "24b2576f2fb52d930fd2aca6fd332ab5ed9469a93b8a6c89019f47e38796a064",
-      "bytes": 107580
+      "sha256": "1366fada87018b6827a1bccd70cdd5e10acba97b6b22dd3fb63748bff13aabfb",
+      "bytes": 113173
     },
     {
       "id": "local-ui-sessions",
@@ -4981,6 +4982,30 @@
       "reviewedForSecrets": true,
       "sha256": "dd983ff60d64c08e3d3f76230f7fe17e5de886e8e2d3766511ec0af47229316a",
       "bytes": 157311
+    },
+    {
+      "id": "local-ui-restored-eval",
+      "file": "sdk-031-restored-eval.png",
+      "alt": "The restored support-hours result passed. Its reply shows two redacted values where the dummy transport credentials had appeared.",
+      "caption": "After export and restore, the support-hours result retains its passing check and reply. Two known dummy credential values appear as [redacted].",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-ui: Export and restore Evals records, step 3"
+      ],
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Synthetic loopback HTTP target with a dummy header and query value; imported into a separate local data folder",
+      "role": "Community single local user",
+      "capturedAt": "2026-11-19T13:14:48.799Z",
+      "sourceRevisions": {
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
+      },
+      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
+      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
+      "reviewedForSecrets": true,
+      "sha256": "03e72c963a7e4c2b3d045776ed394bf61f7de7eb6c015d96d94d0020051b8500",
+      "bytes": 100926
     }
   ]
 }

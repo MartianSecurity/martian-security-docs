@@ -1,25 +1,25 @@
 # Use the local Evals UI
 
-> Start the Evals UI on your own machine with martian ui, read your runs, traces and quality issues, run an eval against an agent, and keep the data private. Needs SDK 0.1.5 or later.
+> Start Martian's local UI, inspect saved Evals runs and traces, and export or restore your records.
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-ui/)
 
 > **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-> **Walkthrough limits:** Run on 2026-11-16 against martian-sdk 0.1.5 installed from public PyPI (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's) in a fresh virtual environment, with no model call; martian --version printed 0.1.5. The data folder was filled by the SDK's own deterministic example suites: the quickstart example's two suites, and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5, each saved under its own file name (evals-1, evals-fixed-1, policy-1, tool-calls-1, conversation-1, custom-scorer-1). martian ui started on 127.0.0.1 and printed the documented line; its options matched martian ui --help. In headless Chromium at 1440x1000 (light) every page was opened and nine screenshots captured: Runs, the failed case's Inspect panel, Compare, Sessions, Overview, Quality issues, the Monitoring address (Not in this edition; the Reviews address says the same), the Run an evaluation dialog and the run it started. The sidebar showed the Martian mark and a collapse button; an Evals group of Overview, Traces, Sessions, Runs, Compare, Datasets, Prompts, Judges, Scoring suites and Quality issues; a Red Team group whose one item, Run from the CLI, links to https://docs.martiansecurity.ai/sdk/redteam/; Documentation (https://docs.martiansecurity.ai) and Source on GitHub (https://github.com/MartianSecurity/martian-redteam); and the footer Local user, Community · running locally, Evals UI 0.1.0 · c56f4a4. The three links open in a new tab; they were not followed, and across twelve pages every browser request went to the local server. Each page kept its project picker. Group by session on Traces and Sessions in the sidebar open the same page: 2 sessions and 19 traces without a session ID. A run's page had Results, Traces and Overview tabs; Export CSV and Export JSON downloaded evals-1-results.csv and evals-1-results.json. A dataset draft was created, the three-record JSONL imported (the same import in a throwaway data folder showed 'Imported 3 new and updated 0 existing records.'), published with a rationale, a target defined for the example agent server with a key, and a run started: EV-1001 completed with 2 passed and 1 failed. targets.json held no key; target-keys.json and targets.json were mode 0600. The page and the other unhashed files answered Cache-Control no-cache, and assets/ files public, max-age=31536000, immutable. A request with Host evil.example was refused with 400, and localhost was accepted; a second martian ui on the same port exited 2 with 'cannot listen on 127.0.0.1:7600: Address already in use'; --ui-dir with no index.html exited 2 with 'index.html is missing'. martian evals export wrote 1 project, 1 dataset version, 7 runs, 24 case results, 74 scores, 0 reviews, 28 traces and 0 artifacts, with no key in it; martian evals prompts push of the SDK's matrix example added two prompt versions; martian evals push with the server address and token variables unset exited 2 and named both as missing. The published image ghcr.io/martiansecurity/martian-evals:0.1.5 was pulled with no stored login and run with the guide's command (another name, volume and host port): it printed the no-login warning, listened on 0.0.0.0:7600 with data in /data, ran as uid 10001, served the 0.1.5 UI (MartianFrontend c56f4a4) with Cache-Control no-cache on the page, refused Host evil.example with 400 and accepted 127.0.0.1 and localhost; a second container on the same volume, with evals.internal named in the allowed-hosts variable, accepted evals.internal, still refused evil.example and reused the data folder. Not verified: the SSH tunnel and a folder mounted from the server; a push to a Martian server; running a model judge or a scoring suite; saving a human review; traces recorded by an application over MLflow or OpenTelemetry; following the sidebar's external links; macOS, WSL and mobile layouts.
+> **Walkthrough limits:** SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.
 
 Partly verified guide
 
-Every command and page in this guide ran on martian-sdk 0.1.5 from PyPI, and the container image on Linux. A push to a server and model judges were not run.
+SDK 0.3.1 was verified for local navigation and export/restore. The UI-launched run and container example are from an earlier walkthrough. Hosted push and model-judge scoring need separate checks.
 
 `martian ui` starts the Evals UI that ships inside the SDK. It serves one user on your own machine, with no login and no other service. It shows every run that `martian evals run` and the importers recorded in a local data folder, lets you compare runs, read each case’s trace and quality issues, and starts runs of its own against an agent you define. Nothing is sent to Martian.
 
-This is the Community edition’s UI: the console’s Evals pages, without the pages that need a shared server. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) compares the three editions.
+The Community edition groups your local results under **Evals** and **Red Team**. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) shows which workflows need a shared server.
 
 ## Before you start
 
 -   Use **Python 3.12 or newer** and a macOS or Linux shell, or WSL on Windows.
--   Install **`martian-sdk[evals]` 0.1.5 or later**. The released 0.1.3 answers `No such command 'ui'`.
+-   Install the current **`martian-sdk[evals]`** package. The Runs, case inspector and Compare examples in the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
 -   You need no Martian account, API key or model key. A run you start in the UI calls the agent you define; a model judge calls the provider you choose, with your own key.
 -   The UI reads one data folder, `~/.martian/evals` unless you choose another. It holds your inputs and replies in clear text, so keep it as private as the data in your cases.
 -   To follow the walkthrough, record some runs first: complete the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md), which needs no model.
@@ -31,13 +31,13 @@ In the folder where the quickstart created `.venv`, or in a new virtual environm
 ```sh
 .venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
 .venv/bin/martian --version
-.venv/bin/martian ui
+.venv/bin/martian ui --data-dir ./evals-data
 ```
 
-The version must be **0.1.5** or later. The last command prints where the UI is and where its data lives, then opens your browser:
+Use the folder from your Evals runs. The quickstart uses `./evals-data`. The last command prints the local address and data path, then opens your browser.
 
 ```text
-Martian Evals is at http://127.0.0.1:7600/ (data in /home/you/.martian/evals). Press Ctrl+C to stop.
+Martian Evals is at http://127.0.0.1:7600/ (data in /path/to/evals-data). Press Ctrl+C to stop.
 ```
 
 Leave the command running, and stop it with Ctrl+C. The options of `martian ui`:
@@ -54,31 +54,31 @@ The server listens on `127.0.0.1` only. To keep two sets of data apart, start ea
 
 ## 2\. Read what each page shows
 
-The sidebar on the left starts with the Martian mark and a button that collapses the sidebar to icons. Its **Evals** group lists **Overview**, **Traces**, **Sessions**, **Runs**, **Compare**, **Datasets**, **Prompts**, **Judges**, **Scoring suites** and **Quality issues**. Every page works on your data folder and keeps its project picker at the top. The local edition has no Red Team pages: the **Red Team** group’s one item, **Run from the CLI**, opens [Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md) on this site. At the bottom, **Documentation** opens this site and **Source on GitHub** the SDK’s repository. These three links open in a new browser tab, and only when you select one. The footer names the **Local user**, **Community · running locally** and the build of the Evals UI, such as `Evals UI 0.1.0 · c56f4a4`.
+The **Evals** group lists **Overview**, **Traces**, **Sessions**, **Runs**, **Compare**, **Datasets**, **Prompts**, **Judges**, **Scoring suites** and **Quality issues**. Use the project picker at the top of the Evals page to change projects. **Red Team** has **Runs**, **Findings**, **Catalog** and **Frameworks** for [local Red Team results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md). **Documentation** and **Source on GitHub** open in a new tab. The footer shows the UI build. Use `martian --version` to check the installed SDK version.
 
 What another program writes to the folder, such as a new `martian evals run`, shows when a page reads again: reload the page. The screenshots on this page come from a data folder filled as described in [How the screenshots were made](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#how-the-screenshots-were-made).
 
 ### Runs
 
-![Runs lists six local runs with pass rates, counts and state.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/local-ui-runs.png)
+![The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-evals-runs.png)
 
-Runs after six suite-file runs: the pass rate with its 95 percent interval, passed and failed counts, state and start time, and a Run eval button. The sidebar holds the Evals pages, the Red Team link Run from the CLI, the Documentation and Source on GitHub links, and the Local user footer.
+Both quickstart runs are saved in the Default project. The corrected run passed all three cases.
 
 **Runs** lists each run in the **Default** project with its pass rate and 95% interval, the passed and failed counts, its state and when it started. Search by run code or dataset. A suite-file run is named after the suite file and numbered among that suite’s runs, such as `evals-1` or `policy-1`. A run you start in the UI is `EV-1001`, then `EV-1002`. A run from a promptfoo results file is `promptfoo-<label>-<n>`.
 
 Select a run to open its page: the pass rate and its interval, the counts of **Passed**, **Failed**, **Errors** and **Skipped**, and a row for each case with its input, expected value, the agent’s reply and its verdict. The page has **Results**, **Traces** and **Overview** tabs, an outcome filter, a search box, and **Export CSV** and **Export JSON** buttons that download the run as `<run code>-results.csv` and `<run code>-results.json`.
 
-![The case panel for the failed prompt-injection case shows the input, expected and actual output and two assessments.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/local-ui-case-inspect.png)
+![The failed quickstart result shows a failing no secret leak assessment and a passing no email address assessment.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-case-inspector.png)
 
-Inspect on the failed row of evals-1: the input, the expected output, the actual output, and the two assessments with their reasons. no secret leak fails with 1 of 1 forbidden values found. A Human review panel sits beside them.
+The case inspector shows which check failed and why. The example note is synthetic.
 
 Select **Inspect** on a row. The panel shows the input, the expected output and the reply, then one assessment for each check with its verdict and its reason. A failed `no_secret_leak` check shows `1 of 1 forbidden values found`: the same reason as in `results.jsonl`. **View trace** shows the case’s trace, with a span for your target’s function and its input and output. The **Human review** panel next to the assessments lets you rate the result.
 
 ### Compare
 
-![Compare shows evals-1 as baseline and evals-fixed-1 as candidate: one improved, none regressed, labelled within noise.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/local-ui-compare.png)
+![Compare shows one improved and zero regressed out of three paired results, filtered to the improved case.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-compare-runs.png)
 
-Compare with evals-1 as Baseline and evals-fixed-1 as Candidate. The summary reads 1 improved, 0 regressed of 3 compared and the label is Within noise, because fewer than six pairs cannot separate a change from chance.
+The improved filter shows the changed case. The overall comparison remains Within noise with three pairs.
 
 Open **Compare**, choose two runs as **Baseline** and **Candidate**, and select **Compare runs**. The page pairs the cases of the two runs that share a case ID, counts how many **Improved**, **Regressed** or stayed **Unchanged**, and shows both replies for each. **Not Comparable** counts pairs where one run has no verdict, such as a case that errored. The label **Within noise** says the difference is no larger than chance would give. With fewer than six paired cases, as here, the label is always **Within noise**. **Export comparison** saves the result.
 
@@ -191,17 +191,37 @@ The data folder holds everything the UI shows:
 | `targets.json` | The targets you define, without their keys |
 | `target-keys.json` | Each target’s key. Only the user who runs `martian ui` can read the file |
 
-To start from nothing, stop the UI and delete the folder. To move the data elsewhere, export it with `martian evals export ./evals-export`, which writes JSON Lines files and a manifest and reports what it wrote, such as `1 project, 1 dataset version, 7 runs, 24 case results, 74 scores, 0 reviews, 28 traces, 0 artifacts`. `martian evals import martian` loads such an export. The export leaves out the queue of work and the targets with their keys.
-
 **The UI has no login.** Keep it private:
 
 -   It listens on `127.0.0.1`, so another machine cannot reach it, and it refuses a request whose `Host` header names anything but `127.0.0.1` or `localhost`. A web page cannot reach it through another name that resolves to your machine.
--   Any program that runs as a user on your machine can read and change everything in it. Do not forward its port to a network address, and do not put it behind a proxy that others can reach.
--   It loads nothing from another host. Every request the UI made across its pages in the check for this guide went to the local server. Only the sidebar’s **Run from the CLI**, **Documentation** and **Source on GitHub** open a page on another host, in a new tab, when you select one.
+-   Other processes that can reach the local port can read and change stored results. Keep the port on loopback and away from public proxies.
+-   The UI loads its pages from the local server. **Documentation** and **Source on GitHub** open external sites when selected. Starting a run can call the target and judge provider you configure.
+
+### Export and restore Evals records
+
+1.  Wait for your runs and scoring jobs to finish, then stop the UI and pause any other process writing to the data folder.
+2.  Export into a new folder and restore into an empty data directory. Adjust `./evals-data` to match your source folder.
+
+```sh
+.venv/bin/martian evals export ./evals-export --data-dir ./evals-data
+.venv/bin/martian evals import martian ./evals-export --data-dir ./evals-restored
+.venv/bin/martian ui --data-dir ./evals-restored --port 7601
+```
+
+3.  Check that the export has a `manifest.json` and JSONL files. In the restored UI, open **Evals → Runs** and check the run counts against the original. Select **Inspect** on a result to read its saved verdict and reply.
+
+    ![The restored support-hours result passed. Its reply shows two redacted values where the dummy transport credentials had appeared.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-restored-eval.png)
+
+    After export and restore, the support-hours result retains its passing check and reply. Two known dummy credential values appear as \[redacted\].
+
+
+SDK 0.3.1 removes transport headers and URL credentials, query strings and fragments from portable settings. It masks known credential values where it recognizes them in exported evidence. Your source store retains its original grading inputs and replies. Configure any HTTP targets, keys and judge settings again before running a restored suite.
+
+Review each export before sharing it. Prompts, datasets, free-form inputs and replies, and opaque attachments can still hold private material. Resume an export started on SDK 0.3.1 in the same directory. If you interrupted an older export before upgrading, use a new export directory.
 
 ## 6\. Run the UI in a container
 
-For one user on a small server, the same UI runs as a container image. A release publishes it as `ghcr.io/martiansecurity/martian-evals:<version>`, with a tag for each SDK version and no `latest` tag:
+For one user on a small server, choose a published version tag in the [container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals). Container images are published separately from the Python package. To use SDK 0.3.1, [install the Python package](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui). The container example below retains the 0.1.5 tag used for its original walkthrough.
 
 ```sh
 docker run -d --name martian-evals -p 127.0.0.1:7600:7600 -v martian-evals:/data ghcr.io/martiansecurity/martian-evals:0.1.5
@@ -230,30 +250,31 @@ The container’s server listens on the container’s interfaces so that Docker 
 ```sh
 export MARTIAN_API_URL='https://YOUR-MARTIAN-SERVER'
 export MARTIAN_API_TOKEN="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
-.venv/bin/martian evals push                    # every finished run
-.venv/bin/martian evals push evals-1 EV-1001    # these runs, by code or ID
+.venv/bin/martian evals push evals-1 --data-dir ./evals-data
 ```
 
-It sends each run with its case results, scores, finished scoring jobs and traces. That includes your inputs and replies, so check what the server’s organization may read first. Reviews, artifacts and the dataset version a run read stay on your machine. Run it as often as you like: nothing is pushed twice, and an interrupted push continues where it stopped. With either variable unset, the command reports `Push failed: missing MARTIAN_API_URL, MARTIAN_API_TOKEN` and exits with code `2`.
+Start with one run identified by its code or ID. Omitting the identifier sends every finished run in the data folder. The push includes case results, scores, finished scoring jobs and traces. SDK 0.3.1 removes private transport settings and masks known credential values. The payload can still include your inputs and replies, so check who can access the destination. Reviews, artifacts and dataset versions stay on your machine.
 
-Not exercised by this guide
+Read the push summary, then check the run and its case counts in the destination workspace. If the push is interrupted, rerun the same command. The receiver keeps the records it already received. Missing connection variables produce exit code `2`.
 
-Pushing needs a server that serves these routes. The Martian server’s Evals core does, but this guide did not push to one, so whether your workspace’s server does depends on its version. Ask your workspace administrator before you rely on it.
+Check workspace support
+
+Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator. The Community walkthrough on this page verifies local export and restore.
 
 ## How the screenshots were made
 
-The screenshots on this page come from a fresh data folder that the SDK’s own deterministic example suites filled, with no model call: the quickstart example’s two suites, and the SDK repository’s `policy`, `tool-calls`, `conversation` and `custom-scorer` examples, each saved under its own file name so that its runs have their own codes. The run in step 4 was started in the UI against the example agent. The data holds nothing from any real customer or agent.
+The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synthetic quickstart suites. The restored run used a separate synthetic HTTP target. The other screenshots show the earlier SDK 0.1.5 walkthrough, including a run started from the UI. See the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for each test environment.
 
 ## Failures and limits
 
--   **`No such command 'ui'`:** the installed SDK is older than 0.1.4. Upgrade it and check `martian --version`.
+-   **`No such command 'ui'`** means you should check that you are using the intended virtual environment and upgrade the package there.
 -   **Exit code `2` with `cannot listen on 127.0.0.1:7600: Address already in use`:** another program holds the port. Choose another with `--port 7601`.
 -   **Exit code `2` with `index.html is missing`:** the folder named by `--ui-dir` holds no built UI. Leave the option out to use the UI inside the package.
 -   **The UI shows no runs:** it reads one data folder. Run the suite and start the UI with the same `--data-dir` or `MARTIAN_EVALS_HOME`, then reload the page.
 -   **A request is refused with `400`:** its `Host` header named something other than `127.0.0.1` or `localhost`. Open the UI at one of those addresses.
 -   **A run is refused:** by default one run at a time may be in progress. Wait, or start `martian ui --concurrency 2`.
 -   **Not a platform record:** a local run has no Martian session, agent or tested revision, and it does not appear in the hosted console unless you push it ([step 7](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#7-send-runs-to-a-martian-server)).
--   **Not covered here:** a model target, a model judge or scoring suite run, the container image, a push to a server and traces recorded by your own application were not exercised in this walkthrough. The SDK’s own documentation describes them.
+-   **Verification scope** covers 0.3.1 local quickstart runs and export/restore. The original container and UI-launched run are recorded under SDK 0.1.5. Model judges, application traces and pushes to a deployed workspace need separate checks.
 
 ## Next
 

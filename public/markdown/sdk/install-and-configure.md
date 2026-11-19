@@ -10,6 +10,19 @@ Install the Python package and create the platform connection used by Evals and 
 
 Only need local evaluations? Start with [a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md); it needs no Martian account. For package releases, see [PyPI release history](https://pypi.org/project/martian-sdk/#history). Recorded test versions and execution limits live in the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility).
 
+## SDK 0.3.1 at a glance
+
+[Martian SDK 0.3.1](https://pypi.org/project/martian-sdk/0.3.1/) needs Python 3.12 or newer. Choose the workflow that matches where you need the result.
+
+| I want to | Start here | Where the result lives |
+| --- | --- | --- |
+| Run an evaluation and compare two versions without an account | [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) | Local result files and the packaged Evals UI |
+| Check a pull request with a deterministic suite | [Read-only GitHub Actions workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests) | Actions job summary and any selected artifacts |
+| Move a local Evals store to another machine | [Export and restore Evals records](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#export-and-restore-evals-records) | A directory of JSONL files and a manifest, with known transport credentials removed |
+| Save a gate against an agent and a tested revision | [Persisted CI session](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | An enabled Martian workspace, using a scoped key |
+
+The 0.3.1 Evals Action reports in the job summary, and each invocation evaluates the suite afresh. Portable Evals exports and pushes remove private connection settings and mask known credential values. Review the files and destination access before sharing them.
+
 ## Before you start
 
 For the account-free [local Evals preview](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-19",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -788,6 +788,36 @@
       "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the attacker and judge GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint (openai:/zai.glm-5, with OPENAI_API_KEY and OPENAI_API_BASE set for each command); no Martian platform service; MARTIAN_API_URL and MARTIAN_API_TOKEN unset; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; the SDK's sample project examples/promptfoo-redteam at v0.2.0",
       "result": "passed on the package published to PyPI; the local red team guide is verified, and the promptfoo red team guide stays partly verified because no results promptfoo itself wrote were imported",
       "details": "The local red team guide ran as written, with one correction: pin add needs a run made with MARTIAN_REPORT_INCLUDE_CONTENT=1 and exits 2 otherwise. Runs of the guide's file exited 1 with two level 2 findings on the leaking agent and 0 on the fixed one; compare reported 2 fixed; pin run exited 1 then 0. strace showed the run connecting only to the Bedrock endpoint's addresses and the local name server, and the no-model commands opening no connection. The Red Team pages were opened in headless Chromium and five screenshots captured; a finding's status and comment survived a reload. The promptfoo converter and importer ran on the hand-written sample, a converted file ran against agent.py, and an eval results file was refused. 45 model calls in all. The release run that published 0.2.0 to PyPI (martian-redteam actions run 44104381066) was still waiting on its approval step when this ran; no container image was checked."
+    },
+    {
+      "scope": "SDK 0.3.1 Community quickstart",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
+      "result": "passed in stated scope",
+      "details": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI."
+    },
+    {
+      "scope": "SDK 0.3.1 local UI navigation and portable Evals export/restore",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
+      "result": "passed in stated scope",
+      "details": "A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
+    },
+    {
+      "scope": "SDK 0.3.1 deterministic runs and HTTP target",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls",
+      "result": "passed in stated scope",
+      "details": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI. A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
+    },
+    {
+      "scope": "SDK 0.3.1 read-only Evals job summary example",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; GNU Bash 5.2",
+      "result": "passed in stated scope",
+      "details": "The copyable YAML uses a contents: read pull_request job with checkout credentials disabled and pins the exact SDK commit. The pinned Action run, summary and gate steps produced the expected exits 0, 1 and 2. Only the passing and failing suites generated artifact files, even when the error followed a prior run. The SDK Action smoke job passed on GitHub (run 44518180849); the customer workflow itself was checked locally."
+    },
+    {
+      "scope": "SDK 0.3.1 blind review and calibration visibility",
+      "environment": "Tagged SDK source review",
+      "result": "source-reviewed",
+      "details": "Reviewed the tagged Evals core reader filters for blind review, judge and reviewer agreement, and saved calibration and re-check cohorts. The standard hosted queue screenshots are from their original qualification. The 0.3.1 blind behavior is documented for compatible workspaces; it was not exercised against the deployed console during this docs update."
     }
   ],
   "remainingGaps": [
@@ -801,6 +831,7 @@
     "Non-Boolean model-rubric execution remains unqualified. Native conversation sessions passed with separately provisioned instrumentation; the earlier SDK does not supply a native-ingestion credential feature.",
     "Named local/CI checks do not attest whole hosted-beta parity. Discovery passed with the compatible Backend PR112candidate; PR112 and its mainCI subsequently passed and the approved change merged, but no Backend beta deployment occurred. Other simulations and network-policy enforcement remain unqualified.",
     "Task guides install the latest SDK release. Historical persisted Evals, hosted redteam and combinedCI qualification remains pinned to its recorded release; later account-free/current-install checks do not requalify those hosted paths.",
-    "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work."
+    "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work.",
+    "SDK 0.3.1 docs validation used released local Evals and the tagged Action steps. The 0.3.1 container and the current hosted workspace were outside that qualification. Earlier hosted evidence retains its original revision."
   ]
 }

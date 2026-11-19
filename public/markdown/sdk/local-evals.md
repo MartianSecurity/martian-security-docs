@@ -14,7 +14,7 @@ Steps 1 to 7 were verified on the released SDK 0.1.3. The output, the rerun beha
 
 Run test cases against your agent from one YAML file, with no Martian account. Start with checks that need no model key, inspect a deliberate failure, then fix it. Add an LLM judge when you need to evaluate meaning.
 
-A local run is not recorded on the Martian platform. With SDK 0.1.4 or later it is recorded in a data folder on your machine, which [the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) opens. When a result must be saved against a tested revision, use the [persisted CI gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md).
+The SDK saves local runs to a data folder you can open in the [local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md). When you need a workspace record tied to a tested revision, use the [persisted CI gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md).
 
 | What you want to do | Start here |
 | --- | --- |
@@ -90,7 +90,7 @@ For each case the runner calls `answer(message="...")` from `agent.py` once and 
 
 To test your own agent, replace the body of `answer` with a call to your application. Keep provider or target credentials your agent needs in your own environment; the suite file does not hold secrets.
 
-If your agent is already behind an HTTP endpoint, SDK 0.1.4 or later can call it directly with no Python file: see [step 8](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#8-test-an-agent-behind-an-http-endpoint).
+If your agent already exposes an HTTP endpoint, [test it with a URL target](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#8-test-an-agent-behind-an-http-endpoint).
 
 ## 3\. Run the suite
 
@@ -111,7 +111,7 @@ Expect this summary and exit code **`1`**:
 └──────────────────┴────────┴────────┴────────┴────────────────────┘
 ```
 
-The output also names the result files and ends with `Run evals-1 is in the local Evals UI: martian ui`, the run that this command recorded for [the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md). SDK 0.1.3 prints the table without the **Pass rate** column and that line.
+The output names the result files and prints `Run evals-1 is in the local Evals UI: martian ui`. Use that run code to find the results in the [local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md).
 
 Two cases pass. The `prompt-injection` case fails because the example agent prints its internal code. That failure is the intended result of this first run.
 
@@ -305,15 +305,15 @@ A judge is graded on what the reply delivers, not on how it opens: a refusal doe
 
 ## 7\. Run it in CI
 
-The deterministic teaching suite needs no secrets. A replacement callback or LLM judge may need customer/provider credentials; run that code only on trusted branches or after your CI’s approval controls. Keep secrets away from unreviewed pull-request code, including code that imports the target module.
+The deterministic teaching suite needs no secrets. On GitHub, the [read-only pull-request workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests) runs the suite, writes a job summary and retains selected result files. Run any suite that needs target or judge credentials in a separate trusted job.
 
 ```sh
-.venv/bin/martian evals run evals.yaml --fresh --output eval-results
+.venv/bin/martian evals run evals-fixed.yaml --fresh --output eval-results
 ```
 
 -   Fail the job on a non-zero exit code.
--   Publish `eval-results/junit.xml` to your CI system’s test report after reviewing what its reasons disclose.
--   Keep `eval-results/summary.json` as an artifact. Publish `results.jsonl` only if its content is safe to share.
+-   Keep `eval-results/summary.json` and `eval-results/junit.xml` from the current run after checking the data they contain.
+-   Keep `results.jsonl` and `mlflow.db` private because they contain inputs and replies.
 
 | Option | Effect |
 | --- | --- |
@@ -337,9 +337,9 @@ The fresh strict SDK session retained both expected support answers with two pas
 
 ## 8\. Test an agent behind an HTTP endpoint
 
-With **SDK 0.1.4 or later**, `target` can name an HTTP endpoint instead of a Python file. The runner sends each case to that address and grades the reply. Earlier releases reject a `url` target as an unknown key.
+Use a URL target when your agent already exposes an HTTP endpoint. The runner sends each case to that address and grades the reply.
 
-1.  Upgrade and check the version. The last command must print `0.1.4` or later:
+1.  Upgrade and check the installed version.
 
 ```sh
 .venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
