@@ -4341,7 +4341,7 @@
         "Evidence levels"
       ],
       "prerequisites": [
-        "An Enterprise organization with the Scanner turned on by Martian"
+        "An Enterprise organization (Martian Cloud or On-Premises) with the Scanner turned on by the master admin"
       ],
       "screenshots": [],
       "qualification": "pending",
@@ -4411,73 +4411,24 @@
       "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
     },
     {
-      "id": "scanner/cli-and-ci",
-      "title": "Scan from the command line and CI",
-      "guide": "Scan from the command line and CI",
-      "description": "Run martian scan with a gate file locally and in CI.",
-      "customerTask": "Run martian scan with a gate file locally and in CI.",
-      "role": "Developer with an API key holding scan:run and scan:read",
-      "route": "Command line: martian scan; martian ci --scan; the scan GitHub Action",
-      "documentationRoute": "/scanner/cli-and-ci/",
-      "interfaces": [
-        "martian scan",
-        "martian ci --scan",
-        ".martian/scan.yml",
-        "scan action"
-      ],
-      "prerequisites": [
-        "A martian-sdk release with martian scan",
-        "An API key with scan:run and scan:read"
-      ],
-      "screenshots": [],
-      "qualification": "pending",
-      "requiredValidation": [
-        "Run every command in the guide against the beta server with a released SDK",
-        "Check exit codes 0, 1 and 2"
-      ],
-      "sources": [
-        {
-          "repository": "MartianSecurity/martian-redteam",
-          "commit": "347085bcf64b27bf1d706caa56a6ecfccccc6303",
-          "paths": [
-            "docs/scan.md",
-            "src/martian/scan/__init__.py",
-            ".github/actions/scan/action.yml"
-          ]
-        },
-        {
-          "repository": "MartianSecurity/MartianBackend",
-          "commit": "84a736823e7bc31ed582583f0f78799d389a9d70",
-          "paths": [
-            "docs/scanner.md"
-          ]
-        }
-      ],
-      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
-    },
-    {
       "id": "scanner/github-app",
-      "title": "Scan pull requests with the GitHub App",
-      "guide": "Scan pull requests with the GitHub App",
-      "description": "Connect the GitHub App and read its checks and comments.",
-      "customerTask": "Connect the GitHub App and read its checks and comments.",
-      "role": "owner or admin; GitHub account admin",
+      "title": "Scan pull requests through GitHub (coming soon)",
+      "guide": "Scan pull requests through GitHub (coming soon)",
+      "description": "Know that scanning pull requests by connecting GitHub is coming soon.",
+      "customerTask": "Know that scanning pull requests by connecting GitHub is coming soon.",
+      "role": "Any member of an Enterprise organization with the Scanner",
       "route": "/#/scanner/integrations",
       "documentationRoute": "/scanner/github-app/",
       "interfaces": [
-        "Scanner \u2192 Integrations",
-        "GitHub check run",
-        "Pull request comment"
+        "Scanner \u2192 Integrations"
       ],
       "prerequisites": [
-        "The Scanner and its GitHub App turned on by Martian",
-        "The App registered for the beta console"
+        "The Scanner turned on for the organization"
       ],
       "screenshots": [],
       "qualification": "pending",
       "requiredValidation": [
-        "Connect an installation on the beta console",
-        "Open a pull request and read the check and comment"
+        "Replace this note with a task guide once the GitHub App is registered and connects on the beta console"
       ],
       "sources": [
         {

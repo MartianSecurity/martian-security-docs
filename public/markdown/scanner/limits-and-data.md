@@ -14,17 +14,16 @@ This workflow has been reviewed against the implementation. A complete live walk
 
 ## Limits
 
-Martian sets your organization’s Scanner limits when it turns the Scanner on:
+The master admin sets your organization’s Scanner limits when they turn the Scanner on:
 
 | Limit | Default | When it is reached |
 | --- | --- | --- |
-| Scans a day | 200 | An upload, a CI scan or a GitHub App scan is refused (`429`) with the limit named, and the GitHub App’s check is neutral |
+| Scans a day | 200 | A new scan is refused (`429`) with the limit named |
 | Largest upload | 50 MiB | The upload is refused (`413`) with the limit |
 | Files in one upload | 5,000 entries, 10 MiB per file, 200 MiB unpacked | The upload is refused with the limit |
 | Model analysis requests in one scan | 24 | The scan’s later passes are listed as not run |
-| Repositories for the GitHub App | 10 | Repositories over it get a neutral check |
 
-An organization may also start at most 30 scans a minute, and an API key 10 a minute and 500 a day.
+An organization may also start at most 30 scans a minute.
 
 ## Usage
 

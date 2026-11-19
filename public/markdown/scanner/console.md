@@ -51,5 +51,5 @@ The uploaded archive is kept for your organization’s retention period after it
 
 ## Next
 
--   [Scan from the command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)
--   [The GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
+-   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
+-   [Pull requests through GitHub (coming soon)](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)

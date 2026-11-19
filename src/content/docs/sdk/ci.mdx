@@ -233,4 +233,4 @@ Reports use digests by default. Do not upload `.martian-local-mlflow/`, credenti
 - Recover an unknown redteam operation by its original operation UUID. Do not submit new generation/judging to replace uncertain evidence. Score `0` is a valid failing judgment, not a retry condition.
 - Sync callbacks need their own network timeouts; cancellation cannot kill their threads or undo already issued calls. Keep the example's concurrency and volume bounds until your service allowance and target behavior are qualified.
 
-Use `martian ci` for the persisted gate. To gate on the agent files themselves, add a scan to the session with `martian ci --scan FOLDER`, or run [`martian scan`](/scanner/cli-and-ci/) on its own. Continue with [troubleshooting](/reference/troubleshooting/), [permissions](/reference/permissions/), or the browser [first evaluation](/evals/first-run/) guide.
+Use `martian ci` for the persisted gate. Continue with [troubleshooting](/reference/troubleshooting/), [permissions](/reference/permissions/), or the browser [first evaluation](/evals/first-run/) guide.

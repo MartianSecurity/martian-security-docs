@@ -79,13 +79,12 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 
 ### Scan agent files
 
-The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) is in Enterprise only, including a self-hosted Enterprise installation, and Martian turns it on for each organization. It is not in Community: it checks files against rules and registries that Martian keeps and runs on its servers, or in your Enterprise installation, so the open-source SDK has only the `martian scan` client, which sends the files and prints the server’s result.
+The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) is in Enterprise only: in the Martian Cloud console and in a self-hosted On-Premises installation. The master admin turns it on for each organization. It is not in Community.
 
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
-| Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: turned on for each organization by Martian | **Built**: in the self-hosted installation, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
-| `martian scan` and the scan gate in CI ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)) | — | **Beta**: needs a martian-sdk release that includes `martian scan`; 0.2.0 does not | **Built** |
-| Pull requests and pushes scanned through the GitHub App ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Beta** | — |
+| Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: in the Martian Cloud console, turned on for each organization by the master admin | **Built**: in the self-hosted console, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
+| Pull requests scanned by connecting GitHub ([note](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Coming soon** | — |
 | Model analysis of what an add-on points at, judged against its stated purpose | — | **Beta**: on unless the organization turns it off | **Built**: at a model endpoint you name |
 
 ### Delivery and support
@@ -121,7 +120,7 @@ The Evals UI shows a page only when the edition includes its feature key, and th
 | `redteam_hosted_generation` | Attack generation and judging by Martian’s engine for SDK red team runs | No | Yes | Yes |
 | `redteam_environments` | A red team run in a Martian simulation environment | No | Yes | Yes |
 | `redteam_campaigns` | Planned red team campaigns started from the console | No | Yes | Yes |
-| `scanner` | The Skills / MCP / Plugin Scanner: uploads, scans and the scan gate. Martian also turns it on for each organization | No | Yes | Yes |
+| `scanner` | The Skills / MCP / Plugin Scanner in the console: uploads, scans, triage and approvals. The master admin also turns it on for each organization | No | Yes | Yes |
 
 Annotating one item or trace, and scoring one run, stay in every edition. A local red team run with your own model needs no key. `review_queues` and `monitoring` are in the open-source repository; the other keys are for features that exist only in Martian’s own product.
 
@@ -145,7 +144,7 @@ Community includes the whole Evals core except what a shared server needs or wha
 -   Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
 -   API keys and CI sessions, which record SDK results on a server.
 -   The console’s Red Team assessments, simulation environments and planned campaigns, and attack generation by Martian’s engine. Local red team runs with your own model are Community.
--   The Skills / MCP / Plugin Scanner. `martian scan` is in the SDK, but it needs an Enterprise organization with the Scanner.
+-   The Skills / MCP / Plugin Scanner.
 -   Hosted storage, managed upgrades and priority support.
 
 ## Choose an edition

@@ -18,15 +18,19 @@ The Scanner checks the files you give an agent. It does not replace [Red Team](h
 
 ## Who has it
 
-The Scanner is in the **Enterprise** edition, in the hosted beta console, and in a self-hosted Enterprise installation ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)). It is not in the open-source Community edition. Within Enterprise it is turned on for each organization by Martian, with its limits ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)); ask your Martian contact to turn it on. Then:
+The Scanner is in the **Enterprise** edition only, in two places:
+
+-   **Martian Cloud**: the hosted console. Martian’s master admin turns the Scanner on for your organization, with its limits ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)); ask your Martian contact.
+-   **On-Premises**: a self-hosted Enterprise installation in your own cluster ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)). Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
+
+It is not in the open-source Community edition. Once it is on:
 
 -   owners, admins and members start scans, and every member reads them;
--   owners and admins triage findings, approve add-ons and change the Scanner’s settings;
--   an admin issues API keys with `scan:run` and `scan:read` for the [command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md).
+-   owners and admins triage findings, approve add-ons and change the Scanner’s settings.
 
 ## What a scan reads
 
-You upload a folder as a ZIP file, name a package or skill in a registry, or let the [GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md) send a repository. Each scan is of one **content digest**: the SHA-256 over every file’s path and hash. The same files give the same digest, so an approval names exactly the content it approved.
+You upload a folder as a ZIP file in the console, or name a package or skill in a registry. Each scan is of one **content digest**: the SHA-256 over every file’s path and hash. The same files give the same digest, so an approval names exactly the content it approved.
 
 The scan runs in stages. Each stage that ran is listed in the result, and each that did not is too:
 
@@ -60,6 +64,6 @@ Each result shows every category as **flagged** (a finding is in it), **clear** 
 ## Next
 
 -   [Scan in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)
--   [Scan from the command line and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/cli-and-ci.md)
--   [The GitHub App](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
 -   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
+-   [Self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)
+-   [Pull requests through GitHub (coming soon)](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
