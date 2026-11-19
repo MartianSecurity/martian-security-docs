@@ -9,10 +9,23 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | --- | --- |
 | Install the SDK and try two example runs | [Community quickstart](/get-started/quickstart/) |
 | Evaluate a Python function or HTTP target with a YAML suite | [Run evals locally with a suite file](/sdk/local-evals/) |
-| Write checks in Python and run them with pytest | [Free local Python preview](/sdk/evaluations/#1-run-the-free-local-preview) |
+| Write checks in Python and run them with pytest | [Run Python Evals with pytest](/sdk/local-pytest/) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](/sdk/local-ui/) |
 | Find saved local Red Team reports | [Read the report in the local UI](/sdk/redteam-local/#5-read-the-report-in-the-ui) |
-| Check a pull request with a deterministic suite | [Run a local suite in GitHub Actions](/sdk/ci/#run-a-local-suite-on-pull-requests) |
+| Check a pull request with a deterministic suite | [Run local Evals on pull requests](/sdk/local-ci/) |
+
+## Install the Local SDK
+
+Use Python 3.12 or newer. From your project folder in Bash or Zsh, create a virtual environment and activate it.
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+```
+
+In each new terminal, run `source .venv/bin/activate` from the same folder before using `martian`. The [SDK version guide](/sdk/install-and-configure/#sdk-versions-and-workflows) lists the Python package and container releases separately.
 
 ## Import existing results
 

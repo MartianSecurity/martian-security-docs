@@ -1,154 +1,81 @@
 # Editions
 
-> What Community, Enterprise and On-Premises include and leave out, and which parts are available, in beta, built or planned.
+> Compare available Community tools, the invitation-only Enterprise beta, and upcoming On-Premises deployments.
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/editions/)
 
-Martian Security comes in three editions. **Community** is open source and runs on your own machine. **Enterprise** is the hosted Martian Security console for teams. **On-Premises** is the same console run inside your own infrastructure, and it is planned.
-
-Every item on this page carries one of these labels:
-
-| Label | Meaning |
-| --- | --- |
-| **Available** | Released. You can use it today. |
-| **Beta** | In the hosted beta console. Workspaces are by invitation. |
-| **Built** | The code exists but is not released: it is not on PyPI and not in the hosted beta. It does not mean that your workspace or installation has it, and no date is promised. |
-| **Planned** | Designed but not built. No date is promised. |
-| — | Not part of that edition. |
-
 ## At a glance
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Status | **Available**: the [SDK on PyPI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#sdk-031-at-a-glance), with the local Evals and Red Team UI | **Beta** | **Planned** |
-| Source and licence | Open source under Apache-2.0, in [MartianSecurity/martian-redteam](https://github.com/MartianSecurity/martian-redteam) | The hosted service. It uses the same open-source SDK | Under an agreement with Martian Security, with an offline licence file |
-| Runs on | Your laptop, or a small server you run, for one user | Martian cloud | Your infrastructure |
-| For | One engineer or a small team | Teams that share results and need control | Organizations that cannot send data out |
-| How to start | [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) | [Request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) | Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) |
+| Edition | Availability | How to start |
+| --- | --- | --- |
+| **Community** | **Available**. Open-source SDK and local UI for one user. | [Run the Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md). No account is needed. |
+| **Enterprise** | **Invite-only beta**. Martian hosts the console and shared workspace. | [Request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md). |
+| **On-Premises** | **Upcoming**. The console is planned for deployment in your infrastructure. | [Discuss your requirements](mailto:founders@martiansecurity.ai). |
 
-The SDK is the `martian-sdk` package on PyPI. Its source repository holds the whole Evals core, including the code for review queues and Monitoring: every edition runs that code, and an edition’s entitlements decide which paid features it serves ([below](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md#what-separates-the-editions)). What Martian builds only for Enterprise and On-Premises is not in the repository.
+**Available** means released for use. **Invite-only beta** means access through a hosted workspace, subject to its roles and configuration. **Upcoming** means there is no public release. A dash means the edition does not include the feature.
+
+Community is published as [`martian-sdk` on PyPI](https://pypi.org/project/martian-sdk/) under the [Apache 2.0 license](https://github.com/MartianSecurity/martian-redteam). Enterprise users can install the same SDK for local work. The [SDK version guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#sdk-versions-and-workflows) lists the Python and Docker releases.
 
 ## What each edition includes
 
 ### Evaluate
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| [Eval suites from one YAML file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md): deterministic checks, LLM judges with your own model key, result files and CI exit codes | **Available** | **Available**: the same SDK | **Planned** |
-| [Evaluations in Python and pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) | **Available** | **Available**: the same SDK | **Planned** |
-| Evals UI | **Available**: [`martian ui`](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) serves your local data folder for one user without login | **Beta**: the full console, with organizations and projects | **Planned**: the full console |
-| Runs and results, comparison, traces and sessions, datasets, judges and scoring suites, quality issues and annotations in the UI | **Available**, with the local Evals UI | **Beta** | **Planned** |
-| Runs and judges started from the UI on your own agent, model and key | **Available**, with the local Evals UI. The targets you define and their keys stay in its data folder | **Planned** | **Planned** |
-| [Results from MLflow, promptfoo and Inspect AI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/mlflow.md) imported into the Evals UI | **Available**: SDK 0.1.4 or later | — | — |
-| SDK results recorded against a tested revision: API keys and [CI sessions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | — | **Beta** | **Planned** |
+| Workflow | Community | Enterprise |
+| --- | --- | --- |
+| [YAML suites](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) and [Python tests with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md) | **Available** with the SDK | **Available** with the same SDK |
+| [Runs, traces, comparisons, datasets, judges and scoring suites in the UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) | **Available** in a local data folder | **Invite-only beta** in the console |
+| [Run tests against your own targets from the local UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#4-run-an-eval-from-the-ui) | **Available** with the target and provider settings you supply | Use the same local UI or [run a workspace evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) against an approved connection |
+| [Import results from other tools](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#import-existing-results) | **Available** for MLflow, promptfoo and Inspect AI | — |
+| [Record CI against an agent and Git revision](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | — | **Invite-only beta** |
 
 ### Work as a team
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| [Review queues with assignment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md) (`review_queues`) | — | **Beta** | **Planned** |
-| [Monitoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) (`monitoring`): scoring jobs and their scorecards across runs | — | **Beta** | **Planned** |
-| Scoring of sampled production traces, scheduled regression runs and alerts (also under `monitoring`) | — | **Planned** | **Planned** |
-| Organizations, projects and the four [roles](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md): owner, admin, member and viewer | — | **Beta** | **Planned** |
-| Single sign-on (`single_sign_on`): OIDC or SAML for each organization, verified email domains and password sign-in that an administrator can turn off. There is no identity-provider-initiated sign-in and no single logout | — | **Built** | **Built** |
-| Audit log (`audit_log`): entries that nobody can change or delete, for sign-ins, permission changes and changes to eval objects, with search and export | — | **Built** | **Built** |
-| Service accounts (`service_accounts`): identities for CI jobs and runners, each with a role, a scope of the organization or one project, an expiry and a key that can be rotated or revoked at once | — | **Built** | **Built** |
-| Custom roles that separate developers from validators, and retention | — | **Planned** | **Planned** |
+| Workflow | Community | Enterprise |
+| --- | --- | --- |
+| [Organizations, projects and workspace roles](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) | — | **Invite-only beta** |
+| [Assigned review queues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md) | — | **Invite-only beta** |
+| [Monitoring for saved runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/suites-and-monitoring.md) | — | **Invite-only beta** |
+| Single sign-on, audit logs and service accounts | — | **Upcoming** |
+| Scheduled regression runs, production monitoring and alerts | — | **Upcoming** |
 
-### Evidence
+### Export and share evidence
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Export results | **Available**: JSONL, JSON summary and JUnit files, CSV and JSON from the local UI, and [portable Evals export and restore](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#export-and-restore-evals-records). SDK 0.3.1 strips private transport settings from portable records | **Beta**: CSV and JSON exports | **Planned** |
-| Evidence packs and sign-off records | — | **Planned** | **Planned** |
+-   **Community · Available.** Export CSV and JSON from the UI or [export and restore the local Evals store](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#export-and-restore-evals-records). The command line also produces JSONL, summary JSON and JUnit reports.
+-   **Enterprise · Invite-only beta.** Share results in your workspace or export from [evaluation runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/results-and-scores.md) and [assessment history](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md).
+-   **Enterprise · Upcoming.** Formal evidence packs and sign-off records.
 
 ### Red Team
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Red team runs with your own model: a version 2 run file, the attacker and judge called with your key, nothing sent to Martian and no account ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md)) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
-| Targets: a Python function, an HTTP endpoint or an MCP server, and a recording proxy for the agent’s tool calls | **Available**: SDK 0.2.0 or later | **Available**: the same SDK; **Beta**: agents registered in the console | **Planned** |
-| Evidence: a model’s verdict (suspected), text checks and canaries, tool calls and receipts (confirmed) | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
-| Red Team pages in `martian ui`: runs, reports, attempts, findings with status and comments, the catalogue and framework coverage | **Available**: SDK 0.2.0 or later | — | — |
-| Reports in JSON, Markdown, HTML, CSV, SARIF and JUnit, a CI gate by evidence level, pinned findings and run comparison | **Available**: SDK 0.2.0 or later | **Available**: the same SDK | **Planned** |
-| promptfoo red team configs and results, and garak probes against your agent ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md)) | **Available**: SDK 0.2.0 or later. garak is installed separately | **Available**: the same SDK | **Planned** |
-| Attack generation and judging by Martian’s engine (`redteam_hosted_generation`) | — | **Beta**: the SDK’s probes with a workspace API key ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md)) | **Planned**: attack generation on your own models |
-| [Assessments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) in a simulation environment, started from the hosted console | — | **Beta**: in the hosted console | **Planned** |
-| From the SDK: runs in a Martian simulation environment (`redteam_environments`), planned campaigns with `martian redteam campaign` (`redteam_campaigns`) and runs sent to the console with `martian redteam push` | — | **Planned**: the commands are in SDK 0.2.0, but they need a Martian server version that is not deployed yet | **Planned** |
-| Custom limits and shared attack profiles | — | **Planned** | **Planned** |
+| Workflow | Community | Enterprise |
+| --- | --- | --- |
+| [Local Red Team results and reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md) | **Available** using your own models | **Available** with the same SDK |
+| [Security assessments in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) | — | **Invite-only beta** |
+| [Workspace Red Team integration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md) | — | **Invite-only beta** with an enabled workspace |
+| SDK-managed campaigns, sandbox-backed SDK runs, and publishing SDK Red Team runs to the console | — | **Upcoming** |
 
 ### Scan agent files
 
-The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) is in Enterprise only: in the Martian Cloud console and in a self-hosted On-Premises installation. The master admin turns it on for each organization. It is not in Community.
+| Workflow | Community | Enterprise |
+| --- | --- | --- |
+| [Scan skills, MCP configurations and plugins](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) | — | **Invite-only beta** for workspaces with Scanner access |
+| [Scan pull requests through GitHub](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md) | — | **Upcoming** |
 
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: in the Martian Cloud console, turned on for each organization by the master admin | **Built**: in the self-hosted console, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
-| Pull requests scanned by connecting GitHub ([note](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Built**: coming soon | — |
-| Model analysis of what an add-on points at, judged against its stated purpose | — | **Beta**: on unless the organization turns it off | **Built**: at a model endpoint you name |
-
-### Delivery and support
-
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Delivery | **Available**: `pip install` from PyPI, and a Docker image of the local Evals UI for one user on a small server, published as `ghcr.io/martiansecurity/martian-evals:<version>` ([how to run it](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#6-run-the-ui-in-a-container)). It has no login and must not be exposed publicly | **Beta**: managed by Martian | **Built**: the offline licence file. **Planned**: Helm chart, air-gapped image bundle, a runner inside your network and a named deployment engineer |
-| Support | **Planned**: community support in the public repository | **Planned**: priority support with an SLA | **Planned**: priority support with an SLA |
+The browser-based [single-file scan](https://www.martiansecurity.ai/scan/) is available without a workspace. [Scanner access and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md#who-has-it).
 
 ## What separates the editions
 
-The Evals core serves every edition. What differs is what each edition supplies: who signs in, where the data lives, which paid features are on and how much may run at once.
+|  | Community | Enterprise |
+| --- | --- | --- |
+| Sign-in | One user with no login | Workspace members sign in with assigned roles |
+| Data | Local results in a folder you manage. Targets and judges can use services you configure. | Shared results in the hosted workspace |
+| Access to team features | Individual runs and annotations | Shared projects, assigned reviews, monitoring, and CI sessions |
 
-### Where each edition runs
-
-|  | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Who signs in | One user, with no login | The members of each organization | The members of each organization |
-| Where the data lives | A folder on your machine, on SQLite. Nothing is sent to Martian | Martian’s hosted storage | Your infrastructure |
-| What decides the edition | Nothing: it is always Community | The organization’s plan | A licence file signed by Martian and checked offline, with no licence server. Without a valid licence, or after its grace period, the installation is Community |
-
-### Feature keys
-
-The Evals UI shows a page only when the edition includes its feature key, and the API refuses a route of a missing feature with `403`.
-
-| Feature key | Covers | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- | --- |
-| `review_queues` | Review queues with an assignee, answering their items, and the library of review questions | No | Yes | Yes |
-| `monitoring` | The Monitoring page, monitors on live traces, thresholds with alerts, and scheduled runs | No | Yes | Yes |
-| `single_sign_on` | Single sign-on | No | Yes | Yes |
-| `audit_log` | The audit log | No | Yes | Yes |
-| `service_accounts` | Service accounts | No | Yes | Yes |
-| `redteam_hosted_generation` | Attack generation and judging by Martian’s engine for SDK red team runs | No | Yes | Yes |
-| `redteam_environments` | A red team run in a Martian simulation environment | No | Yes | Yes |
-| `redteam_campaigns` | Planned red team campaigns started from the console | No | Yes | Yes |
-| `scanner` | The Skills / MCP / Plugin Scanner in the console: uploads, scans, triage and approvals. The master admin also turns it on for each organization | No | Yes | Yes |
-
-Annotating one item or trace, and scoring one run, stay in every edition. A local red team run with your own model needs no key. `review_queues` and `monitoring` are in the open-source repository; the other keys are for features that exist only in Martian’s own product.
+To run the local UI on a server, use the [Community Docker image](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#6-run-the-ui-in-a-container) for one user and keep it private.
 
 ### Limits
 
-Each edition sets how many runs and scoring jobs may be in progress at once. A launch over the limit is refused.
+The local UI defaults to one evaluation and one scoring job at a time. Set [`martian ui --concurrency`](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui) to choose a different allowance. In a shared workspace, check the [workspace limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md).
 
-| Limit | Community | Enterprise | On-Premises |
-| --- | --- | --- | --- |
-| Evaluation runs queued or running at once | 1 | 5 | No limit |
-| Scoring jobs queued or running at once | 1 | 5 | No limit |
-| Hosted red team generation and judging operations at once | — | 2 | No limit |
+## Upcoming deployment options
 
-On your own machine you set the Community limit: `martian ui --concurrency 2` allows two of each. On-Premises has no limit of its own because its workers bound what runs at once.
-
-## What Community leaves out
-
-Community includes the whole Evals core except what a shared server needs or what Enterprise and On-Premises add:
-
--   Review queues and Monitoring.
--   Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
--   API keys and CI sessions, which record SDK results on a server.
--   The console’s Red Team assessments, simulation environments and planned campaigns, and attack generation by Martian’s engine. Local red team runs with your own model are Community.
--   The Skills / MCP / Plugin Scanner.
--   Hosted storage, managed upgrades and priority support.
-
-## Choose an edition
-
--   **Start on your own machine:** follow the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md). It needs no account.
--   **Share results as a team, or run Red Team assessments:** [request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) in the hosted console.
--   **Keep all data inside your network:** On-Premises is planned. Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) to discuss your requirements.
+On-Premises is planned for organizations that need the console and data inside their infrastructure. [Plan for the Scanner in that deployment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md) or [contact Martian](mailto:founders@martiansecurity.ai) to discuss requirements.

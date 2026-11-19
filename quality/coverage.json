@@ -3079,7 +3079,7 @@
     },
     {
       "id": "sdk/ci",
-      "guide": "Gate CI on Evals and redteam",
+      "guide": "Record CI results in a workspace",
       "role": "Scoped machine key; owner/admin issues key and publishes tutorial dataset",
       "route": "/#/evals",
       "documentationRoute": "/sdk/ci/",
@@ -3184,8 +3184,8 @@
     },
     {
       "id": "sdk/evaluations",
-      "guide": "Evaluate with Python",
-      "role": "No account for local preview; scoped machine key for persistence; owner/admin publishes dataset",
+      "guide": "Record Python Evals in a workspace",
+      "role": "Scoped machine key for persistence; owner/admin publishes the dataset",
       "route": "/#/evals",
       "documentationRoute": "/sdk/evaluations/",
       "interfaces": [
@@ -3279,9 +3279,7 @@
         "SDK evals extra from public PyPI: 0.1.3 for the original verification of steps 1 to 7; 0.1.4 or later for the rerun behaviour and step 8, the URL target; the output shown is 0.1.5's",
         "A model provider key only when the suite uses an LLM judge"
       ],
-      "screenshots": [
-        "sdk-evaluation-strict-result"
-      ],
+      "screenshots": [],
       "qualification": "partial",
       "sources": [
         {
@@ -3307,15 +3305,24 @@
             "docs/evals.md",
             "docs/releasing.md"
           ]
+        },
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "src/martian/evals/runner.py",
+            "src/martian/evals/checks.py",
+            "docs/evals.md"
+          ]
         }
       ],
       "validationStatus": "Original Linux verification of steps 1 to 7 on released SDK 0.1.3 retained: independent macOS/PyPI verification passed the original and corrected suites, resume/fresh and error paths, all five deterministic checks, stored CSV replies, HTTP logging/readback, real Bedrock GLM 5 rubric/guidelines/conditions, rejected-token failure and the exact Python judge example. Native bedrock:/ judge routing failed and is documented; OpenAI-compatible routing passed. The customer guide uses copyable CLI output and a separate, explicitly labeled SDK 0.1.2 Martian Security result screenshot. Backend dependency screenshots and UI instructions were removed at the product owner's request. On 2026-11-16 steps 1 to 5 and 8 were run again on martian-sdk 0.1.5 installed from public PyPI (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's), in a fresh virtual environment, with the example ZIP this site serves: the first run printed the table with a Pass rate column and the line naming the run in the local Evals UI, exit 1; the result files were results.jsonl, summary.json, junit.xml, verdicts.json and mlflow.db, and the failing record carries the fingerprint beginning c259d689; a plain rerun with nothing changed reported '3 cases, 3 already done'; after agent.py was replaced by the corrected agent, a plain rerun reported '3 cases, 0 already done, 3 earlier results discarded because the suite, the data or the target changed' and graded them again; evals-fixed.yaml --fresh exited 0. Step 8 (URL target) ran with the example server and evals-url.yaml: 3 cases, 2 passed, 1 failed, exit 1; with the variable unset the run stopped before any case with exit 2 and named target.headers.Authorization and the variable; with a wrong token all 3 cases were errors, exit 2, '3 case(s): the target returned HTTP 401; check the credentials in target.headers'; with the server stopped, '3 case(s): the target could not be reached: ConnectError; check target.url'; no result file held the token. On 0.1.5, with no model call, the suite schema accepted a judge rate-limit wait of 3600 seconds and rejected 3601, the rubric, guidelines and conditions judges default it to 300, and the options table matched martian evals run --help. Not re-run on 0.1.5: step 6's LLM judge (no model call was made), step 7's CI use, and the retry and rate-limit waiting behaviour itself.",
       "requiredValidation": [
-        "Run every documented command against the released package from public PyPI",
-        "Exercise the documented failure and resume behaviour",
+        "Run the revised documented suite against released SDK from PyPI",
+        "Exercise failure, resume and fresh-run behaviour",
         "Run at least one suite with a real LLM judge",
-        "Extract and execute the complete downloadable ZIP; verify browser download bytes",
-        "Run step 8 (URL target) against the released SDK 0.1.5 package from public PyPI"
+        "Execute and verify the complete downloadable quickstart ZIP from the separate quickstart",
+        "Run the HTTP suite against a real endpoint with the released SDK"
       ],
       "validation": [
         {
@@ -3357,6 +3364,13 @@
           "observedPath": "Activate the Python environment and run the SDK by name",
           "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
           "result": "Started the example HTTP target with python from the activated environment. A second shell activated the same environment and ran the three-case URL suite. It produced 2 passes, 1 failure and no errors."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Revised two-case suite-file guide",
+          "environment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1",
+          "result": "Copied the project files from the guide and ran the suite, unchanged resume, and fresh run. Changed only the test endpoint port to reach a disposable real loopback server. Received two real successes and two expected 401s with incorrect credentials. The judge configuration loaded in the SDK without contacting a provider. The quickstart owns the download sequence."
         }
       ],
       "verifiedAt": "2026-11-13",
@@ -3477,6 +3491,13 @@
           "observedPath": "Activate the Python environment and run the SDK by name",
           "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
           "result": "Reactivated the quickstart environment in a new Zsh shell. The packaged UI opened from martian on PATH, with no browser auto-open and a disposable loopback port. Both completed runs were visible in the saved results list."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Public Evals UI image 0.2.0 (sha256:8b4b284b281021605ed9692c808bdaf1248fb9d01bf8d00d06d39943a0dc5386)",
+          "environment": "Docker Desktop Engine 28.0.4 on ARM64 macOS with Linux AMD64 emulation; public Evals UI 0.2.0",
+          "result": "Verified anonymous registry read, loopback and invalid Host rejection (HTTP 400), two real case results, and retained UI results after replacing the container with the same named volume."
         }
       ],
       "verifiedAt": "2026-11-16",
@@ -3485,7 +3506,7 @@
     },
     {
       "id": "sdk/install-and-configure",
-      "guide": "Install and configure the SDK",
+      "guide": "Configure the SDK for a workspace",
       "role": "Owner/admin to create a key; scoped machine key for SDK execution",
       "route": "/#/evals",
       "documentationRoute": "/sdk/install-and-configure/",
@@ -4660,6 +4681,98 @@
         }
       ],
       "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
+    },
+    {
+      "id": "sdk/local-pytest",
+      "guide": "Run Python Evals with pytest",
+      "documentationRoute": "/sdk/local-pytest/",
+      "role": "Any developer; no Martian account is needed",
+      "environment": "Local SDK",
+      "route": "Local pytest runner",
+      "interfaces": [
+        "Python",
+        "pytest"
+      ],
+      "sdkVersion": "0.3.1",
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "Install the Local SDK"
+      ],
+      "requiredValidation": [
+        "Run copied inline test from installed release",
+        "Check assertion failure and retained offline receipt"
+      ],
+      "screenshots": [],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "src/martian/cli.py",
+            "src/martian/evals/evaluate.py",
+            "src/martian/evals/pytest_plugin.py"
+          ]
+        }
+      ],
+      "validationStatus": "The full copied test passed with two evaluated records and a persisted offline receipt. An incorrect expected response failed the test.",
+      "qualification": "verified",
+      "validation": [
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Standalone Python pytest guide",
+          "environment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1",
+          "result": "The full copied test passed with two evaluated records and a persisted offline receipt. An incorrect expected response failed the test."
+        }
+      ],
+      "verifiedAt": "2026-11-19",
+      "verifiedEnvironment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1"
+    },
+    {
+      "id": "sdk/local-ci",
+      "guide": "Run local Evals on pull requests",
+      "documentationRoute": "/sdk/local-ci/",
+      "role": "Developer who can add a GitHub Actions workflow; no Martian account is needed",
+      "environment": "Local SDK",
+      "route": "GitHub Actions pull request workflow",
+      "interfaces": [
+        "GitHub Actions",
+        "Local SDK"
+      ],
+      "sdkVersion": "0.3.1",
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "Install the Local SDK"
+      ],
+      "requiredValidation": [
+        "Lint the copied workflow and execute the pinned action steps, covering passing, failing, and invalid suites",
+        "Observe the rendered example workflow in a GitHub-hosted pull request"
+      ],
+      "screenshots": [],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            ".github/actions/evals/action.yml",
+            "scripts/evals_pr_comment.py",
+            "docs/gate-and-ci.md"
+          ]
+        }
+      ],
+      "validationStatus": "The rendered workflow YAML passed actionlint. The pinned action's run, summary, and gate steps executed locally against the copied suite, enforcing exit codes 0, 1 and 2 and only marking artifacts ready when the invocation wrote results.",
+      "qualification": "partial",
+      "validation": [
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Local pull-request workflow and pinned action",
+          "environment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1; GitHub Actions composite steps from 2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "result": "The rendered workflow YAML passed actionlint. The pinned action's run, summary, and gate steps executed locally against the copied suite, enforcing exit codes 0, 1 and 2 and only marking artifacts ready when the invocation wrote results."
+        }
+      ],
+      "verifiedAt": "2026-11-19",
+      "verifiedEnvironment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1; GitHub Actions composite steps from 2459bee92fbcd01f9192eee60f1bdf38adac3c18"
     }
   ]
 }

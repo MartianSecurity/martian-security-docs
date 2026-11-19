@@ -1,16 +1,16 @@
-# The Scanner in a self-hosted installation
+# Plan for self-hosted Scanner
 
-> What the Scanner does in an Enterprise installation in your own cluster, with outside lookups off by default, an allow-list or proxy, an imported advisory database and your own model endpoint.
+> How the Scanner is designed for the planned On-Premises edition, including network and model endpoint settings.
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/self-hosted/)
 
 Current beta console · Security engineer of a self-hosted Enterprise installation
 
-A self-hosted Enterprise installation runs the Scanner’s worker in your own cluster, next to the console and the backend. Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
+**Upcoming.** [On-Premises](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md#upcoming-deployment-options) is planned. Use this page to evaluate how the Scanner could fit your own infrastructure. In the self-hosted design, the Scanner runs in your cluster and requires a deployment license and organization access.
 
 ## What differs from the hosted console
 
-|  | Hosted Enterprise | Self-hosted Enterprise |
+|  | Hosted Enterprise | Planned On-Premises |
 | --- | --- | --- |
 | Outside lookups (registries, OSV, the addresses the files name) | On | **Off by default.** Every reference is reported as not attempted, its categories as not checked, and a gate that requires references to be followed fails |
 | Limiting lookups | — | An allow-list of hosts, a proxy of yours (only with an allow-list), or both |

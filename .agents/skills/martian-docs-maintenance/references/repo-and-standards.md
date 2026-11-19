@@ -42,7 +42,7 @@ Each task guide needs:
 - Relevant permission, readiness, cancellation/recovery, data/privacy and coverage limits.
 - Useful next-task and reference links.
 
-Keep the homepage centered on first assessment, first evaluation and SDK/CI. Migration guides require observed import/results behavior; a matching file shape does not prove complete feature parity.
+Keep entry points to the account-free quickstart, workspace evaluation, first assessment and Scanner on the homepage. Put account-free Evals and CI guides in Local SDK. Migration guides require observed import/results behavior; a matching file shape does not prove complete feature parity.
 
 Coverage is a contract, not a score to maximize. Preserve existing guide IDs and required validation stages during evidence repairs. When a feature genuinely changes, explain the changed requirement and replace stale instructions rather than freezing obsolete behavior forever. New guides may increase totals and new releases may make a formerly verified guide partial. Recompute counts from current files; never hardcode yesterday's totals into scripts or claim a new release inherited old execution evidence.
 
