@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/first-assessment/)
 
-Current beta console · Member, admin or owner; admin required for connection approval · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · Member, admin or owner; admin required for connection approval
 
 Finish with one retained security assessment and an understanding of its report. This tutorial starts with an endpoint-only test: you can learn the assessment workflow before configuring synthetic business systems.
 
@@ -55,18 +55,18 @@ Only Customer records leave is selected. Light allows at most five rounds, 30 ag
 
 ![MR-1002 running with Open trace and Stop run controls](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-running.png)
 
-The acknowledged MR-1002 run shows its five requested techniques. Open trace follows execution; the header Cancel leaves the wizard.
+The Run step shows requested techniques and provides a link to the trace.
 
 ## 4\. Inspect the result and report
 
 1.  Select **Open trace** from **Run**, or from **Report** if the wizard has already advanced. Wait for a final **Assessment execution** state. Read **Security outcome** separately from execution and the finding count.
-2.  In the observed **MR-1002** example, execution was **Completed**, but the security outcome was **INCONCLUSIVE**. It used three agent requests and 15 model calls, retained one unverified attempt and recorded zero findings. A completed run with no findings is not a security pass; your generated attempts and counts can differ.
+2.  Read the report for the saved outcome. The example shows **Completed** execution, an **INCONCLUSIVE** security outcome and zero findings. Review coverage and evidence before drawing a security conclusion.
 
 ![Completed MR-1002 with INCONCLUSIVE security outcome](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-trace-overview.png)
 
-MR-1002 completed with three agent requests and 15 model calls, but its one attempt remained unverified and its security outcome INCONCLUSIVE. Zero findings is not a security pass.
+This report shows Completed execution, an INCONCLUSIVE security outcome and zero findings.
 
-3.  In **Trace**, use **Tree → Expand all** and select a turn. Compare **Attacker message**, **Customer agent reply**, and the recorded actions. The teaching target refused all three observed requests. Its model-generated critic is an opinion; this example had no deterministic target oracle.
+3.  In **Trace**, use **Tree → Expand all** and select a turn. Compare **Attacker message**, **Customer agent reply**, and the recorded actions. Read the model-generated critic as an interpretation of that turn.
 
 ![Recorded attacker message and actual teaching-target refusal in Turn 1](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-trace.png)
 
@@ -79,6 +79,6 @@ Select a retained turn to compare the actual attacker message, customer reply an
 
 You have one retained assessment with its selected scope, a final status and inspectable evidence. A finding is a useful result; zero findings are also a recorded result, with the run’s coverage and verification limits. Neither should be described as a certification of the agent’s security.
 
-If the run fails admission, resolve the named connection, capability, compatibility or budget error before a new attempt. A local QA attempt was rejected before campaign creation because the worker’s three-round ceiling was smaller than the console’s five-round Light profile; it remains recorded as failed. A workspace operator must align those supported limits. If submission is uncertain, inspect the saved run/history first so you do not create duplicate paid work. [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md) covers those boundaries.
+If admission fails, resolve the connection, compatibility or budget error listed on the run. If the selected profile exceeds the workspace’s execution limits, ask your operator to align the limits before retrying. If submission is uncertain, inspect the saved run first to avoid duplicate paid work. See [troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md).
 
 **Next:** [Read evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md), then [create an environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md) for supported business-outcome checks.

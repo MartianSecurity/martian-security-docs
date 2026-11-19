@@ -61,5 +61,3 @@ Use the [console map](https://raw.githubusercontent.com/MartianSecurity/martian-
 -   [Permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) and [limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md) — understand what your role and environment support.
 -   [Troubleshooting](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/troubleshooting.md) — recover without starting duplicate work.
 -   [Hermes documentation](https://martiansecurity.github.io/martian-hermes-docs/) — the separate Hermes agent and its operator workflow.
-
-These are beta product guides. The [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md) identifies observed walkthroughs and any qualification still in progress.

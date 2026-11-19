@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-ui/)
 
-Python SDK · Any developer; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer; no Martian account, API key or model key
 
 `martian ui` starts the Evals UI that ships inside the SDK. It serves one user on your own machine, with no login and no other service. It shows every run that `martian evals run` and the importers recorded in a local data folder, lets you compare runs, read each case’s trace and quality issues, and starts runs of its own against an agent you define. Nothing is sent to Martian.
 
@@ -49,7 +49,7 @@ The server listens on `127.0.0.1` only. To keep two sets of data apart, start ea
 
 The **Evals** group lists **Overview**, **Traces**, **Sessions**, **Runs**, **Compare**, **Datasets**, **Prompts**, **Judges**, **Scoring suites** and **Quality issues**. Use the project picker at the top of the Evals page to change projects. **Red Team** has **Runs**, **Findings**, **Catalog** and **Frameworks** for [local Red Team results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md). **Documentation** and **Source on GitHub** open in a new tab. The footer shows the UI build. Use `martian --version` to check the installed SDK version.
 
-What another program writes to the folder, such as a new `martian evals run`, shows when a page reads again: reload the page. The screenshots on this page come from a data folder filled as described in [How the screenshots were made](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#how-the-screenshots-were-made).
+Reload the page to see runs added to the data folder by another process.
 
 ### Runs
 
@@ -215,7 +215,7 @@ Review each export before sharing it. Prompts, datasets, free-form inputs and re
 
 ## 6\. Run the UI in a container
 
-For one user on a small server, choose a published version tag in the [container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals). Container images are published separately from the Python package. To use SDK 0.3.1, [install the Python package](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui). The container example below retains the 0.1.5 tag used for its original walkthrough.
+For one user on a small server, choose a published version tag in the [container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals). Container images are published separately from the Python package. To use SDK 0.3.1, [install the Python package](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui). This command uses the published 0.1.5 image.
 
 ```sh
 docker run -d --name martian-evals -p 127.0.0.1:7600:7600 -v martian-evals:/data ghcr.io/martiansecurity/martian-evals:0.1.5
@@ -223,7 +223,7 @@ docker run -d --name martian-evals -p 127.0.0.1:7600:7600 -v martian-evals:/data
 
 Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds the data folder, so the data outlives `docker stop` and a new container started on the same volume. To keep the data in a folder on the server, mount that folder at `/data`; the image runs as user ID `10001`, which must be able to write to it.
 
-The image is public: `docker pull` needs no login. This guide ran the 0.1.5 image with the command above on Linux, including the `Host` check and `MARTIAN_EVALS_ALLOWED_HOSTS` below and a second container on the same volume.
+You can pull the public image without a registry login.
 
 **The image has no login either. Do not expose it publicly.** The command above publishes the port on the server’s `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:
 
@@ -250,10 +250,6 @@ Read the push summary, then check the run and its case counts in the destination
 Check workspace support
 
 Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator.
-
-## How the screenshots were made
-
-The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synthetic quickstart suites. The restored run used a separate synthetic HTTP target. The other screenshots show the earlier SDK 0.1.5 walkthrough, including a run started from the UI. See the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for each test environment.
 
 ## Failures and limits
 

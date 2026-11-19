@@ -4,13 +4,13 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/datasets/)
 
-Current beta console · member+ edits; owner/admin publishes; viewer reads published · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member+ edits; owner/admin publishes; viewer reads published
 
 Build a reviewed set of input/expected-output records, then publish an immutable version that your team can select in Evals. Draft edits do not change the version pinned by an earlier run.
 
 ## Before you start
 
-Use the current beta Evals console; see the [source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). Your organization’s setup must be **Ready**. **Members**, **admins** and **owners** can author drafts; **admins** and **owners** publish organization datasets. **Viewers** browse published datasets without editing them. See [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md).
+Your organization’s Evals setup must be **Ready**. **Members**, **admins** and **owners** can author drafts; **admins** and **owners** publish organization datasets. **Viewers** browse published datasets without editing them. See [permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md).
 
 Use synthetic records for a tutorial. Confirm that you have permission to send their inputs to the chosen target before running them. Dataset creation and import do not call your target.
 
@@ -97,9 +97,9 @@ Check the new draft before publishing: three usable records and a changed conten
 
 The revised version is Published with three records after refresh. The original two-record native version remained unchanged.
 
-The observed example changed from two-record version `01a5a93d8ca8` to three-record version `1fc87b52fa5e`. The original published draft and its two native records remained unchanged. The catalog opens the current version; there is no older-version selector on this screen.
+The catalog opens the current version. Earlier runs keep the version they selected.
 
-The revised publication initially reached **Needs review** after a service timeout. One supported **Resume** of the same operation completed it; see [publication recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/datasets.md#publication-recovery). The first submission alone was not treated as success.
+If the new version shows **Needs review**, follow [publication recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/datasets.md#publication-recovery) for the same operation.
 
 ## 6\. Copy a Martian dataset
 
@@ -124,9 +124,9 @@ Copy removes the reserved prefix and opens an editable three-record draft. Publi
 
 The organization copy is Published and survives refresh. Its separate native identity preserves the original read-only Martian pack.
 
-The observed **martian:documentation-versioning-pack** became the separately published **documentation-versioning-pack**, with three usable records. Its version differs from the source: a copy has its own identity. The original Martian dataset retained the same records and version. Copying alone does not publish a draft.
+The copy has its own dataset identity and version once published. Your edits apply to the organization copy.
 
-To save failed records from an existing run, follow [Turn failed results into regression cases](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/regression-cases.md). That walkthrough verifies direct copying and the alternative file-import path, including their different record IDs and the export-wrapper conversion.
+To copy failed records from a run or import them from an export, see [Turn failed results into regression cases](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/regression-cases.md).
 
 ## More editing and import options
 
@@ -144,7 +144,7 @@ To remove the temporary record, select only its checkbox, choose **Delete select
 
 ![Delete 1 record confirmation for only the temporary archived draft record.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/dataset-delete-confirmation.png)
 
-Review the selected count before Delete. The actual deletion removed only the temporary draft record; the earlier published version was kept.
+Review the selected record count before confirming removal from the draft.
 
 After deletion, the draft returned to three usable records. One new CSV record and one new JSON-array record were then imported. Each preview showed one new record and zero updates; refresh retained five usable records after both imports.
 
@@ -166,7 +166,7 @@ If publication becomes **Stalled** or **Needs review**, open **Datasets → Publ
 
 ![Publish activity showing an interrupted three-record revision beside the earlier published two-record version, with Resume and Abort actions.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-dataset-version-publish-activity.png)
 
-This initial interruption kept the earlier two-record version published. Resume later completed the same three-record operation without asserting that native creation was never submitted.
+Open Publish activity to find the pending operation and resume it when its prerequisites are ready.
 
 Choose **Resume**, enter a rationale and continue from the saved checkpoints. Leave the assertion that an interrupted creation was **never submitted** unchecked unless that has been independently proven. Ask your workspace administrator or support for help when native submission is uncertain.
 
@@ -174,6 +174,6 @@ Wait for Published
 
 An accepted **Resume** queues recovery. Wait for **Published**, then reopen and refresh the dataset to verify its records. Keep the original operation while investigating an uncertain result; creating another publication does not resolve it.
 
-The observed three-record revision completed through this path. **Abort** discards the unpublished version, keeps the current published version and makes its draft editable again; that abort path was not exercised for this example.
+**Abort** discards the unpublished version, keeps the current published version and makes its draft editable again.
 
 Next, [run the dataset](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md) or [organize evaluation projects](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/projects.md).

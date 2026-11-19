@@ -4,11 +4,11 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/install-and-configure/)
 
-Python SDK · Owner/admin to create a key; scoped machine key for SDK execution · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Owner/admin to create a key; scoped machine key for SDK execution
 
 Install the Python package and create the platform connection used by Evals and red teaming. At the end, you will have a verified SDK installation, a scoped API key, and a validated tutorial configuration.
 
-For account-free evaluation and local results, start with the [Local SDK guides](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for package releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions and execution limits.
+For account-free evaluation and local results, start with the [Local SDK guides](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for package releases.
 
 ## SDK 0.3.1 at a glance
 
@@ -115,7 +115,7 @@ In **Create API key**, enter **Key name**, set **Expires in days**, then select 
 
 ![Create API key form with four Evals and CI permissions, a one-day expiry and the teaching agent restriction.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-key-form.png)
 
-Choose permissions and an existing registration before creating the key. Hosted redteam is disabled in this QA environment. This capture precedes credential generation.
+Choose the permissions and registration before creating the key.
 
 For the complete Evals/CI tutorial, keep the four evaluation/CI permissions. Add **Run hosted redteam generation and judging** for redteam or combined runs. If that option is disabled, the dialog explains that hosted redteam is not enabled and configured; request access from your workspace administrator instead of changing credentials or retrying execution.
 

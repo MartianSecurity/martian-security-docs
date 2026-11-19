@@ -176,7 +176,7 @@
       "environment": "GitHub-hosted Ubuntu 24.04 runner; Python 3.12 customer; disposable pinned services and synthetic data; not a hosted-beta attestation",
       "result": "passed original strict gate and independent native readback",
       "details": "Run43374595574 attempt1/mainc003976; exact12-file ZIP fd83fec1 and official wheel57dc1115. Originalexit0/session31ace842 passed/persisted/exported3/3. Three native FINISHED runs and exactly two settled model calls; physical_active0. Six metadata artifacts downloaded and archiveSHA256verified; customer source unchanged, credential scan and own cleanup passed. The extracted github-actions.yml was not itself dispatched. Earlier failed original receipts preserved.",
-      "record": "public/examples/validation/sdk-ci-0.1.2-2026-11-13.json"
+      "record": "quality/sdk-ci-0.1.2-2026-11-13.json"
     },
     {
       "scope": "PR9 independent SDK claim and evidence review",
@@ -835,7 +835,15 @@
       "scope": "Public guide copy and verification presentation",
       "environment": "Production docs preview in Chromium, desktop light and narrow dark",
       "result": "passed in stated scope",
-      "details": "Checked Local Evals, local UI and Scanner guides for the removed walkthrough banners. Verified exact code copying, page Markdown and agent link copying, search, nested refresh, full-size images and the workspace support caution. The verification reference still shows the recorded walkthrough counts. Rendered HTML and Markdown checks cover the entire site."
+      "details": "Checked Local Evals, local UI and Scanner guides for the removed walkthrough banners. Verified exact code copying, page Markdown and agent link copying, search, nested refresh, full-size images and the workspace support caution. The verification reference still shows the recorded walkthrough counts. Rendered HTML and Markdown checks cover the entire site.",
+      "historical": true,
+      "milestone": "PR65"
+    },
+    {
+      "scope": "Customer documentation editorial cleanup",
+      "environment": "Production docs preview in Chromium at 1440 × 1000 in light mode and 390 × 844 in dark mode",
+      "result": "passed in stated scope",
+      "details": "Checked 83 built pages and 82 Markdown exports. The local UI guide keeps its exact command, page and agent-link copying, search, deep links and full-size screenshots. Checked the revised assessment review and CI export instructions and confirmed 404s for the retired verification HTML, Markdown and CI receipt. All capture bytes and provenance fields are preserved. The release audit retains the same 13 unfinished product walkthroughs."
     }
   ],
   "remainingGaps": [

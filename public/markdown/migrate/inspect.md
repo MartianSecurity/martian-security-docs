@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/inspect/)
 
-Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key
 
 Bring the logs your Inspect AI evals wrote into the local Evals UI. Each log becomes a run whose cases, scores and conversations you can open, compare with another run case by case, and review.
 

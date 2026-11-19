@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/environments/create-and-launch/)
 
-Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member, admin, owner
 
 Create a disposable copy of the systems needed by a red-team assessment. At the end, the intended environment revision and data are saved, each required sandbox is **Ready**, and you have checked that its application works. Then [connect the agent’s sandbox bindings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
 
@@ -61,7 +61,7 @@ Save this as `support-cases.schema.json` and upload it as **Schema or API defini
 }
 ```
 
-Save the CSV below as `support-cases.csv` and upload it as **Sample records → Gmail only**. The walkthrough retained both files and their scopes after a full refresh and reopening the saved environment. A CSV needs a header row; this example parsed as two records:
+Save the CSV below as `support-cases.csv` and upload it as **Sample records → Gmail only**. Include the header row. After saving, reopen the environment and check the filename and scope.
 
 ```csv
 case_id,subject,triage
@@ -75,7 +75,7 @@ If an input reports a parsing error, correct it or remove it before saving. The 
 
 ![Invalid JSON sample with its parsing error and Fix or remove the input marked above before saving message.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-input-parse-error.png)
 
-The invalid input prevented the save before a request was submitted. The corrected CSV then parsed successfully and the environment was saved once.
+Read the input error and correct the file before saving the environment.
 
 ## Generate or reuse synthetic data
 
@@ -97,7 +97,7 @@ The invalid input prevented the save before a request was submitted. The correct
 5.  Check **Systems** for shared data and **My data** for your personal data. A ready personal document takes priority when you launch; otherwise Launch uses ready shared data, then built-in fixtures. Check the individual system’s **Generated** status even if the section says **used when you launch**. The current UI has no seed-document dropdown.
 
 
-**Generated** means the system’s seed passed the generation checks. **Fit** is separate advice about how well the input structure matches the selected system. Initial shared Gmail data contained three users and five emails; personal Gmail data contained four users and four emails. Both passed their seed checks, while Fit recommended Zendesk for the uploaded support-case structure. Generated names, subjects and counts can differ on your run.
+**Generated** means the system’s seed passed the generation checks. Check **Fit** for recommendations about which system best matches your inputs. A seed can pass validation even when **Fit** recommends a different system.
 
 The later **New world** check replaced the shared story and produced three users and four emails. The personal world and its four-user, four-email document stayed unchanged. Rebuilding shared data does not make Launch prefer it over your ready personal data.
 
@@ -107,7 +107,7 @@ New world regenerated shared data and retained the separate personal variant. Bo
 
 Advanced API clients can explicitly choose `seed: "auto"`, `"built-in"` or a stored seed-document ID when launching. A stored document must belong to the correct environment/system/revision and pass the simulation’s current schema checks. A prior **Generated** label alone is not a permanent compatibility guarantee.
 
-If one system fails after its world is ready, inspect the error before requesting another generation. The ready world can be reused, but the retry still calls the model for that system. A failed status does not establish zero cost. In this walkthrough, a personal projection failed before QA, then a later explicit retry reused the same ready personal world and produced valid Gmail data.
+If one system fails after its world is ready, inspect the error before requesting another generation. A retry can reuse the ready world and still call the model for that system. Check model usage even if generation fails.
 
 ## Launch and verify readiness
 
@@ -116,18 +116,18 @@ If one system fails after its world is ready, inspect the error before requestin
 
 ![Gmail sandbox Ready with four accounts, generated user data, remaining lifetime and Open and Details controls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-sandbox-ready.png)
 
-Automatic launch selected the exact ready personal document. A real instance read after full refresh retained the generated source, document and Ready state.
+Check that the Ready instance shows the intended generated document as its data source.
 
 3.  Open a sandbox’s **Details** to inspect its Application, API or MCP endpoints. Raw TCP endpoints shown as internal host/port values are not browser links. Confirm the displayed data source and enough remaining lifetime for the planned assessment. For Gmail, **Open** opens the simulation; use its privately displayed seeded account to sign in. Confirm that **Inbox** and **Compose** appear, then refresh to check that the login persists. You do not need to send a message for this check.
-4.  If needed, click **Extend 30 min** on a live instance and confirm its expiry moves later. Use **Stop sandbox** when finished. The observed stop returned **Terminating** first; after refresh, that specific instance no longer appeared in the normal instance list. An older **Expired** instance could remain. Do not treat the accepted stop request or an empty live strip as independent proof that every underlying resource has been deleted.
+4.  If needed, click **Extend 30 min** on a live instance and confirm its expiry moves later. Use **Stop sandbox** when finished. Refresh while it shows **Terminating** and confirm the intended instance leaves the live list. Ask your operator to verify resource deletion if you need that confirmation.
 
 Example: check the extended lifetime
 
-The captured instance retained a 60-minute lifetime after refresh. Its account credentials are covered for privacy.
+The instance card shows the current lifetime. Refresh the page to confirm the extension was saved.
 
 ![Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generated-lifetime.png)
 
-Extend 30 min moved this instance’s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.
+Open Sandbox Details to check the current lifetime, extend it by 30 minutes or stop the instance.
 
 5.  Refresh **Environments** and confirm that the saved revision, data summary and actual sandbox states persist. Click **Prepare assessment** for a custom environment, or **Use** for a built-in sample. This chooses the environment and opens the wizard at **Agent**.
 6.  Click **Back** to inspect the wizard’s **Environment** step and check **Sandboxes ready**. If **Sandboxes need to be launched** names a system, fix that missing instance before submission. Return to **Agent** with **Continue** when ready.
@@ -136,7 +136,7 @@ Extend 30 min moved this instance’s expiry by exactly 1,800 seconds. Its 60-mi
 
 Prepare assessment opens at Agent; Back returns here. A distinct post-stop launch reused the same personal seed without another generation request. Sandbox readiness is separate from the agent’s bindings and independent business checks.
 
-The captured environment still shows **Draft · needs validation**. **Sandboxes ready** confirms the running simulations; complete the agent’s bindings and independent business-baseline checks before relying on an assessment result.
+**Sandboxes ready** confirms the simulations are running. If the environment still shows **Draft · needs validation**, complete the agent’s bindings and independent business-baseline checks before relying on an assessment result.
 
 ## Failures and recovery
 
@@ -155,17 +155,15 @@ Sandbox details can show seeded account credentials. Store those privately and k
 
 **Sandbox DNS and TLS have not been provisioned for this organisation** needs your operator’s sandbox provisioning. Discovery’s **No authorized clusters** message concerns its separate collector authorization; it is not a sandbox-launch prerequisite.
 
-Earlier beta example: generation failed, built-in fixtures worked
+Use built-in fixtures when generated data is unavailable
 
-The earlier **Documentation mail lab 2026-11-13** example saved revision 1, then shared World and Gmail generation failed before QA. Its later launch used built-in fixtures, with real Gmail sign-in, refresh, extension and stop. That result remains separate from the newer generated-data walkthrough above.
+If generation fails and your task can use sample data, select **Built-in fixtures** when launching the simulation. Check the displayed data source and confirm the fixtures contain the records your assessment needs.
 
 ![Environment data drawer showing failed World and Gmail generation.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/environment-generation-failed.png)
 
-One accepted generation attempt ended Failed before QA. No generated data is ready; built-in fixtures remain available. Only other environment names behind the drawer are hidden for privacy.
+When generated data is unavailable, check the error for each system or launch with built-in fixtures.
 
 ## Delete a custom environment
-
-This management path is source reviewed; deletion was not part of the captured Gmail lifecycle.
 
 1.  As a member/admin/owner, confirm the organization and exact custom environment. Sample environments cannot be deleted.
 2.  Stop its live sandbox instances and wait until they are no longer live. A stop acknowledgement alone does not clear the deletion guard.

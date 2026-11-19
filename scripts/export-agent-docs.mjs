@@ -42,7 +42,7 @@ const index = [
   '> Customer documentation for red teaming, Evals, the SDK and CI.',
   'These public Markdown documents require no login or JavaScript. Guides include prerequisites, examples, product limits and links to supporting references.',
   '## Start here',
-  ...['get-started/first-assessment', 'evals/first-run', 'local-sdk', 'sdk/install-and-configure', 'reference/verification'].map((slug) => {
+  ...['get-started/first-assessment', 'evals/first-run', 'local-sdk', 'sdk/install-and-configure', 'reference/limits'].map((slug) => {
     const page = pages.find((entry) => entry.slug === slug);
     return `- [${page.title}](${page.mirror}?v=${page.digest.slice(0, 12)}): ${page.description}`;
   }),

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo-redteam/)
 
-Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file
 
 Two commands move a promptfoo red team project. `martian redteam convert promptfoo` turns the `redteam` section of your config into a red team run file, and lists everything it leaves out with the reason. `martian redteam import promptfoo` brings the results you already have into `martian ui`. Neither runs promptfoo or calls its service, and promptfoo need not be installed.
 

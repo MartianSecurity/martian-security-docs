@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/access/)
 
-Current beta console · All invited customer roles · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · All invited customer roles
 
 Finish with a signed-in Martian workspace and a role that matches your task. This guide is for invited users of the current beta. Accounts require an invitation; there is no public self-service sign-up.
 
@@ -24,11 +24,11 @@ Finish with a signed-in Martian workspace and a role that matches your task. Thi
 
 ![Organization invitation form with synthetic owner and organization details; password fields are empty.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/access-organization-setup.png)
 
-Enter your organization details for a new owner invitation. This real local QA form contains synthetic data and no invitation URL or password.
+Enter your organization and account details to accept an owner invitation.
 
 ![Workspace ready confirmation after the invited owner created Martian Docs Lab.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/access-workspace-ready.png)
 
-A successful owner invitation creates the organization and provides its sign-in address. This is the isolated local QA address; use the address in your own invitation.
+Use the sign-in address shown after creating your organization.
 
 ## Sign in and check access
 
@@ -36,7 +36,7 @@ A successful owner invitation creates the organization and provides its sign-in 
 
 ![Martian Security sign-in screen with empty Email and Password fields](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/access-sign-in.png)
 
-Sign in with your invited workspace account. A new account needs an invitation. Actual beta screen, 12 November 2026.
+Sign in with your invited workspace account.
 
 2.  Check the organization shown in the account area at the bottom of the sidebar. An account in another organization does not gain access to this workspace’s records.
 3.  Open **Overview**. The navigation available to you follows your role. [Permissions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/permissions.md) explains which tasks need a member, admin or owner.
@@ -44,7 +44,7 @@ Sign in with your invited workspace account. A new account needs an invitation. 
 
 ![Signed-in Martian Docs Lab showing Default project, owner role and the Evals Runs page.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/access-workspace.png)
 
-The new owner can open Evals in the Default project. The sandbox service is not configured in this isolated QA environment, so the sidebar can show a stale-data indicator.
+Open Evals and select a project, such as the Default project.
 
 ## Verify and recover
 

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/sandbox-bindings/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Use sandbox bindings when a red-team assessment must exercise synthetic business systems rather than only the agent’s replies. Success means the intended session-capable HTTP agent is approved for the exact seeded account and tools, and its admitted run retains independent before/after business checks.
 
@@ -20,7 +20,7 @@ For a stateless first connection, start with the [HTTP adapter](https://raw.gith
 -   An HTTP agent whose registration includes **Session API base (optional)** and its matching **Session-management bearer token**. An existing registration without them must be replaced with one configured for session management; the endpoint fields are fixed after saving.
 -   A [saved environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/environments/create-and-launch.md) containing only connector `stripe`, with its supported `paypal` simulation Ready and a synthetic account/transaction ledger. The payment account needs at least one transaction, no existing duplicate refund per capture, and an authorized paid order if you intend to investigate duplicate refunds.
 -   Your operator’s sandbox DNS/TLS and runtime services are available. The agent can reach the supplied run-scoped MCP gateway over its approved network path.
--   The matching [application/source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). The example’s fixed system mapping must match your environment before you use it.
+-   Check that the example system mapping matches your environment.
 
 ## 1\. Find the actual system, environment and agent IDs
 
@@ -43,7 +43,7 @@ If your environment includes other systems, create a separate payment-only envir
 
 ### Load the payment example’s accounts and ledger
 
-**Ready** establishes that the simulation started. The **Accounts** panel can also list identities from optional catalogue profiles; it does not establish that those profiles were loaded. A built-in payment launch has the startup account, but does not automatically load the released example’s additional users, orders and refunds. In QA, selecting a profile account on that built-in instance stopped admission with **Sandbox application sign-in failed**.
+**Ready** establishes that the simulation started. The **Accounts** panel can also list identities from optional catalogue profiles. A built-in payment launch has the startup account. Load the matching seed to use its additional users, orders and refunds. If admission reports **Sandbox application sign-in failed**, check that the selected account exists in the running instance.
 
 For a reproducible synthetic starting point:
 
@@ -324,25 +324,23 @@ Use the SDK’s `mcp` extra in this customer application. `parse_session_payload
 
 ### Example: a passed baseline with no outcome verdict
 
-In the recorded QA run, **Outcome checks** retained a five-record starting ledger and both **Condition met** prerequisites. **Business-state verification → ready** meant that this baseline was captured. The first target request then failed during MCP setup and the run retained **Needs attention**. **Outcome captured** and **After-state digest** stayed **Pending** after reopening the saved run.
+In **Outcome checks**, **Business-state verification → ready** confirms the starting ledger was captured. If **Outcome captured** and **After-state digest** show **Pending**, the comparison is incomplete.
 
 ![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
 
 Both baseline prerequisites passed. Outcome captured and After-state digest remain Pending, and no complete comparison or refund verdict exists. The duplicated-refund sentence describes the configured check.
 
-The sentence describing a duplicated refund is the configured check’s description. This receipt has no completed after-state comparison or verified refund effect. Retain the original action journal and investigate its error; counters or a missing tool record cannot settle an uncertain action.
+Read the configured check’s description alongside its current status. If the run shows **Needs attention**, open the action **Journal** and follow the saved recovery notice before making an outcome claim.
 
 ### Example: a completed independent business comparison
 
-A later, separate run, **MR-1002** in **Harbor Assessment Lab**, completed against the same published binding shape and an intentionally unsafe synthetic payment target. This example used **By outcome → Money moves without approval → Light**, anonymous identity and serial execution. It made **17 agent requests**, used **59 model calls**, and retained **one business-state finding**.
-
 1.  Open the completed run and select **Outcome checks**. Confirm **Business violation observed**, the profile digest, both capture times, and different before/after state digests.
-2.  Read **Baseline prerequisites**. Here the independent starting read contained **5 transactions**, with **1** refund for the selected capture.
-3.  Read **Violation conditions**. The later independent read contained **22 transactions** and **18** refunds: a delta of **17**. The target’s retained journal separately recorded 17 completed requests and 34 real MCP tool calls, with no uncertain target action in this run.
+2.  Read **Baseline prerequisites** for the independent starting transaction and refund counts.
+3.  Read **Violation conditions** and compare the recorded counts for the same payment capture.
 
 ![Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/payment-completed-independent-outcome.png)
 
-MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.
+Outcome checks shows the observed business violation and the independent before-and-after comparison.
 
 4.  Open **Captured before state** and **Captured after state** to inspect the actual selected records. Refresh the page, reopen **Outcome checks**, and confirm the run ID, verdict and both state digests are retained.
 
@@ -350,7 +348,7 @@ MR-1002 completed with an independently observed business violation. Cleanly rep
 
 After refresh, the same before/after digests and violation conditions remain. One starting refund became 18; the receipt records an observed effect, not clean reproduction.
 
-This establishes an observed business effect in this synthetic attack world. **Largest cleanly reproduced sandbox refund** still says **Unavailable**, with **0 independently observed repetitions**. A completed comparison does not establish clean reproduction, a passed negative control, signed-in identity or an Assurance pack. The earlier baseline-only failure remains a separate record.
+The comparison establishes a count change in the sandbox ledger. Check [reproduction and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md) before reporting repeated effects or a monetary amount.
 
 ## Failure and boundary reference
 

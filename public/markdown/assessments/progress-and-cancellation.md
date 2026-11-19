@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/progress-and-cancellation/)
 
-Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member, admin, owner
 
 Follow the run Martian actually admitted and stop further work when appropriate. Success means you can identify the retained run, its final execution state, available evidence and any unresolved action requiring attention.
 
@@ -19,11 +19,11 @@ Any tenant user can inspect an accessible run. **Member**, **Admin** or **Owner*
 
 ![MR-1002 running with Open trace and Stop run controls](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-running.png)
 
-The acknowledged MR-1002 run shows its five requested techniques. Open trace follows execution; the header Cancel leaves the wizard.
+The Run step shows requested scope and opens the saved trace.
 
-Browser example: Running precedes the execution result
+Track a browser assessment
 
-An approved browser target also passes through the real **Run** step. This separate example reached **Running** after admission, with its five requested techniques visible. The later [browser failure example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention) explains why it did not become a completed assessment.
+The **Run** step shows the requested techniques and the current execution state. Keep the run open while it shows **Running**. When it ends, check **Assessment execution** and inspect any [browser errors or recovery notices](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention).
 
 ![The admitted browser assessment MR-1001 showing Running, five requested techniques, Open trace and Stop run.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-browser-run.png)
 
@@ -47,7 +47,7 @@ Request stop was acknowledged after three HTTP replies were recorded. Execution 
 
 ### Example: stop an active HTTP run
 
-The synthetic **MR-1005** recorded three HTTP replies before **Request stop** was used. The saved run then reached **Stopped / INCONCLUSIVE**, with **Runtime interrupted** and the stop control removed. A full-page refresh and JSON export retained the same run and all three original replies. The request and model counters remained unavailable; the dashes did not mean no calls had occurred.
+After an active HTTP run stops, it can show **Stopped**, **INCONCLUSIVE** and **Runtime interrupted**. Reopen the trace to review replies received before the stop. A dash in a usage counter indicates that the count is unavailable.
 
 ![MR-1005 after refresh with Stopped execution, Runtime interrupted and an INCONCLUSIVE security outcome.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-active-stopped.png)
 
@@ -67,13 +67,11 @@ Already issued calls still count
 
 A stop cannot undo a target request or model request already sent. Model usage can remain unknown when a provider request is interrupted or its response is lost. Keep that uncertainty visible; **Stopped** does not mean zero usage or zero cost.
 
-These examples check the anonymous HTTP path. Resolving an uncertain action, and stopping browser or sandbox-backed runs, remain outside this qualification.
-
 ### Example: stop while queued
 
 Show the queued-stop example
 
-In a separate synthetic QA workspace, **MR-1003** was stopped immediately after admission. Its saved trace, full-page refresh and JSON export retained **Stopped** and **INCONCLUSIVE**. The runtime confirmed cancellation had finished, with no target actions, model calls or unresolved recovery. This checks the queued-stop path; it does not establish how an already issued request will finish. The trace also displayed **Runtime error** because the interrupted native worker ended in that state; **Assessment execution** was **Stopped**.
+After requesting a stop on a queued run, wait for **Assessment execution** to show **Stopped**. The trace can also show **Runtime error** if the worker was interrupted. Review the saved turns and any recovery notice before concluding how far the run progressed.
 
 ![The queued MR-1003 showing cancellation requested after the Stop run action.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-stop-requested.png)
 
@@ -85,7 +83,7 @@ This separate queued-stop example retained Stopped and INCONCLUSIVE after refres
 
 ### When a run needs attention instead
 
-An earlier **MR-1003** in a different QA workspace failed before its stop control could be used: the teaching tunnel returned HTTP 530 and left one target action uncertain. That record remains unresolved. No replacement execution or invented response was used to repair it.
+If the target connection fails after a request is sent, the assessment can show **Needs attention** with an uncertain action. Inspect that action’s **Journal** and the saved recovery notice before retrying.
 
 ![MR-1003 Needs attention with an uncertain teaching-tunnel action](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-needs-attention.png)
 
@@ -95,7 +93,7 @@ An HTTP 530 left one action uncertain before cancellation could be requested. Th
 
 Needs attention can hide an admitted campaign
 
-An admission error can appear even while the original campaign is executing. In a real MCP QA run, a downstream HTTP 503 left the console at **Needs attention** while the runtime made three target requests. **Refresh evidence** returned successfully without updating that record; an operator reconciled the same campaign afterward. Keep the run code and page URL, and ask for inspection before starting another assessment or cleaning up its target.
+The original assessment can still be executing after an admission error. Keep its run code and page URL. If **Refresh evidence** leaves its state unchanged, ask your operator to inspect that run before starting another assessment or cleaning up its target.
 
 | Situation | Recovery |
 | --- | --- |
@@ -106,7 +104,7 @@ An admission error can appear even while the original campaign is executing. In 
 | Connection changed or was revoked | Have an Owner/Admin verify the intended target and approval. An old run may still require inspection against its original runtime identity. |
 | Historical imported record | Inspect its retained original evidence. It has no new runtime campaign here to cancel. |
 
-For a browser failure, **Waiting on a decision** can retain an uncertain action even after sign-in and neutral setup messages succeeded. In the observed `fresh_conversation_unavailable:fresh_timeout` case, the first probe could not establish a fresh conversation. Keep the same run and inspect its evidence before making a recovery decision; the presence of **The action did not execute** does not establish that assertion for you.
+For a browser failure, **Waiting on a decision** can retain an uncertain action even after sign-in and setup succeed. **`fresh_conversation_unavailable:fresh_timeout`** indicates that the browser could not confirm a fresh conversation in time. Inspect the saved action before choosing a recovery decision.
 
 The wizard’s header **Cancel** leaves configuration; it is not the runtime **Stop run** action. Keep execution state separate from the security verdict and [review what the evidence establishes](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md).
 

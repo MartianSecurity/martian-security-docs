@@ -11,7 +11,7 @@ Discover actual paths from the checkout rather than assuming a personal workspac
 | `src/content/docs/` | Customer MDX guides and reference pages |
 | `src/components/SiteTitle.astro` | Martian logo/wordmark without a Customer documentation subtitle |
 | `PageTitle.astro`, `PageActions.astro` | Page heading and Copy page/agent actions |
-| `GuideMeta.astro`, `QualificationSummary.astro` | Qualification/provenance and aggregate status; hidden provenance is still consumed by Markdown generation |
+| `GuideMeta.astro` | Audience metadata for Markdown generation |
 | `Screenshot.astro`, `Diagram.astro` | Registered captures, captions/full-size links and rendered diagrams |
 | `src/styles/custom.css`, `src/assets/`, `public/brand/` | Shared design and licensed local brand/font assets |
 | `src/lib/code-blocks.mjs`, `src/lib/agent-links.mjs` | Code-block presentation and human/agent URL contracts |
@@ -52,7 +52,7 @@ Maintain `verifiedAt`, `verifiedEnvironment`, role, source revision and validati
 
 - Reuse the actual Hermes Astro/Starlight foundation and Martian assets. Preserve the local Inter license and branding rather than recreating a similar-looking site from a screenshot.
 - Show the logo/wordmark in the navbar, without the Customer documentation subtitle.
-- Keep the title area clean. Guide copies include audience context and a link to the centralized verification record. Record dates, tested environments and walkthrough status in that record and `quality/`.
+- Keep the title area clean. Guide copies include audience context. Record dates, tested environments and walkthrough status in `quality/`.
 - Use the existing Aside system for product prerequisites, limits and recovery actions. Give callouts a concise title and readable contrast in both themes.
 - Use the existing themed Expressive Code integration: language/file label, monospace formatting, preserved indentation and a visible keyboard-accessible Copy control with feedback. Test copied bytes; syntax highlighting alone is insufficient. Avoid wrapping long shell commands into altered executable text. Use horizontal code scrolling without document-wide overflow.
 - Prefer a short list, table or focused code excerpt over dense inline field names. Exact excerpts must be labeled as excerpts rather than fabricated full responses.

@@ -31,7 +31,7 @@ Deployment, environment and version labels attribute reports; they do not attest
 
 ## Integrate one real call
 
-[Download report_once.py](/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK's `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](/sdk/install-and-configure/) in the enrolled workload's Python environment and activate it before running the example. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
+[Download report_once.py](/examples/runtime-reporting/report_once.py) for an example using the SDK's `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](/sdk/install-and-configure/) in the enrolled workload's Python environment and activate it before running the example. Check Discovery for the workload's reported calls after running it.
 
 Use a trusted module that exposes your existing real model/tool call as a sync or async function. The JSON input file supplies its keyword arguments. Do not put business requests at module import time. Run the helper only in the workload/version that the binding actually describes, using a legitimate authorized synthetic task.
 
@@ -68,7 +68,7 @@ This minimal integration emits call metadata. Resource links require explicit re
 
 <Screenshot id="discovery-runtime" />
 
-The captured example is a real read-only `get_shipping_policy` tool in the selected Kubernetes workload. It reads one named synthetic ConfigMap using that workload's service account. **0 Model calls** and **8 Tool calls** describe eight distinct successful reads from the runtime, gate and network checks. Two blocked attempts did not enter the callable or appear as executed tool reports. A tool-only report can populate this view while the workload remains a candidate; **Runtime-observed** needs model and tool calls in the same trace.
+The example shows reports from a read-only tool that reads a ConfigMap using the workload's service account. **Model calls** and **Tool calls** count reported execution. A workload can show tool reports while it remains a candidate. **Runtime-observed** requires model and tool calls in the same trace.
 
 4. For a resource link, inspect its service/type, opaque reference, reported action, outcome and time. These links require explicit response-ID mappings in the customer integration. Use **Previous resources** / **Next resources** to page the displayed links.
 

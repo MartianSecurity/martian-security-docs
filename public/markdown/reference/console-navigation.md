@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/reference/console-navigation/)
 
-The console sidebar groups current work, adversary material, history and organization access. This map follows the inspected customer interface; controls can additionally depend on your role, project and readiness. Use [verification records](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md) to see which walkthroughs were actually exercised.
+The console sidebar groups current work, adversary material, history and organization access. Available controls depend on your role, project and workspace setup.
 
 | Console area | What to do there | Guide |
 | --- | --- | --- |

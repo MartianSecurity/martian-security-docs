@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/mlflow/)
 
-Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key
 
 If your team traced and evaluated an agent with MLflow, copy its tracking store into the local Evals UI. Each experiment becomes a project, with its traces, the feedback and expectations on them, its evaluation datasets and its evaluation runs. You can then compare runs case by case and review results without a Martian account.
 

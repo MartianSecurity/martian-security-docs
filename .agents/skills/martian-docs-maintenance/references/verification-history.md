@@ -33,7 +33,7 @@ Current source now documented released local UI/container behavior and newer SDK
 
 ## Where to recover further detail
 
-- Current repo `quality/` files and `reference/verification` are the first place for per-guide source, screenshots and test boundaries.
+- Use the current `quality/` files for per-guide source, screenshots and test boundaries. The former published verification record is preserved in repository history at `9073c6ff11f5c90c9adfbf74b6c4d2a02df3d48b`.
 - The existing vault note `01 Projects/MorningHQ/Research/PLAN_MARTIAN_SECURITY_DOCS.md` retains the research, user decisions and publication history. Locate the user's actual vault; do not hardcode a personal account path into reusable automation.
 - Private raw evidence for the original work lived under the user's local-state `martian/docs-20261112` tree, including its state handoff. Inspect only a relevant existing artifact when needed. Do not import credential files, runtime inventories, actor IDs, temporary URLs or the complete logs into this skill or public docs.
 - Earlier approvals allowed docs publication, bounded synthetic model work, named Backend fixes/merges after checks and isolated QA. Apply only authorization actually present for the current task; a historical pointer is not permission for new paid execution, product behavior or beta rollout.

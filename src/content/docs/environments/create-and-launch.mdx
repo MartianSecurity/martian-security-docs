@@ -62,7 +62,7 @@ Save this as `support-cases.schema.json` and upload it as **Schema or API defini
 }
 ```
 
-Save the CSV below as `support-cases.csv` and upload it as **Sample records → Gmail only**. The walkthrough retained both files and their scopes after a full refresh and reopening the saved environment. A CSV needs a header row; this example parsed as two records:
+Save the CSV below as `support-cases.csv` and upload it as **Sample records → Gmail only**. Include the header row. After saving, reopen the environment and check the filename and scope.
 
 ```csv title="support-cases.csv"
 case_id,subject,triage
@@ -94,7 +94,7 @@ If an input reports a parsing error, correct it or remove it before saving. The 
 4. Wait for the world and required system documents to show **Generated**. Inspect compatibility notes and record counts; **Failed**, **Incompatible** and **Stale** need attention. Generation uses the model and can take several minutes. Keep the original request in view while **Starting…** is shown; repeated clicks are not a way to speed it up. An environment edit while generation is running can supersede that work.
 5. Check **Systems** for shared data and **My data** for your personal data. A ready personal document takes priority when you launch; otherwise Launch uses ready shared data, then built-in fixtures. Check the individual system's **Generated** status even if the section says **used when you launch**. The current UI has no seed-document dropdown.
 
-**Generated** means the system's seed passed the generation checks. **Fit** is separate advice about how well the input structure matches the selected system. Initial shared Gmail data contained three users and five emails; personal Gmail data contained four users and four emails. Both passed their seed checks, while Fit recommended Zendesk for the uploaded support-case structure. Generated names, subjects and counts can differ on your run.
+**Generated** means the system's seed passed the generation checks. Check **Fit** for recommendations about which system best matches your inputs. A seed can pass validation even when **Fit** recommends a different system.
 
 The later **New world** check replaced the shared story and produced three users and four emails. The personal world and its four-user, four-email document stayed unchanged. Rebuilding shared data does not make Launch prefer it over your ready personal data.
 
@@ -102,7 +102,7 @@ The later **New world** check replaced the shared story and produced three users
 
 Advanced API clients can explicitly choose `seed: "auto"`, `"built-in"` or a stored seed-document ID when launching. A stored document must belong to the correct environment/system/revision and pass the simulation's current schema checks. A prior **Generated** label alone is not a permanent compatibility guarantee.
 
-If one system fails after its world is ready, inspect the error before requesting another generation. The ready world can be reused, but the retry still calls the model for that system. A failed status does not establish zero cost. In this walkthrough, a personal projection failed before QA, then a later explicit retry reused the same ready personal world and produced valid Gmail data.
+If one system fails after its world is ready, inspect the error before requesting another generation. A retry can reuse the ready world and still call the model for that system. Check model usage even if generation fails.
 
 ## Launch and verify readiness
 
@@ -113,12 +113,12 @@ If one system fails after its world is ready, inspect the error before requestin
 <Screenshot id="environment-generated-sandbox-ready" />
 
 3. Open a sandbox's **Details** to inspect its Application, API or MCP endpoints. Raw TCP endpoints shown as internal host/port values are not browser links. Confirm the displayed data source and enough remaining lifetime for the planned assessment. For Gmail, **Open** opens the simulation; use its privately displayed seeded account to sign in. Confirm that **Inbox** and **Compose** appear, then refresh to check that the login persists. You do not need to send a message for this check.
-4. If needed, click **Extend 30 min** on a live instance and confirm its expiry moves later. Use **Stop sandbox** when finished. The observed stop returned **Terminating** first; after refresh, that specific instance no longer appeared in the normal instance list. An older **Expired** instance could remain. Do not treat the accepted stop request or an empty live strip as independent proof that every underlying resource has been deleted.
+4. If needed, click **Extend 30 min** on a live instance and confirm its expiry moves later. Use **Stop sandbox** when finished. Refresh while it shows **Terminating** and confirm the intended instance leaves the live list. Ask your operator to verify resource deletion if you need that confirmation.
 
 <details>
 <summary>Example: check the extended lifetime</summary>
 
-The captured instance retained a 60-minute lifetime after refresh. Its account credentials are covered for privacy.
+The instance card shows the current lifetime. Refresh the page to confirm the extension was saved.
 
 <Screenshot id="environment-generated-lifetime" />
 
@@ -129,7 +129,7 @@ The captured instance retained a 60-minute lifetime after refresh. Its account c
 
 <Screenshot id="environment-generated-assessment-ready" />
 
-The captured environment still shows **Draft · needs validation**. **Sandboxes ready** confirms the running simulations; complete the agent's bindings and independent business-baseline checks before relying on an assessment result.
+**Sandboxes ready** confirms the simulations are running. If the environment still shows **Draft · needs validation**, complete the agent's bindings and independent business-baseline checks before relying on an assessment result.
 
 ## Failures and recovery
 
@@ -149,17 +149,15 @@ Sandbox details can show seeded account credentials. Store those privately and k
 **Sandbox DNS and TLS have not been provisioned for this organisation** needs your operator's sandbox provisioning. Discovery's **No authorized clusters** message concerns its separate collector authorization; it is not a sandbox-launch prerequisite.
 
 <details>
-<summary>Earlier beta example: generation failed, built-in fixtures worked</summary>
+<summary>Use built-in fixtures when generated data is unavailable</summary>
 
-The earlier **Documentation mail lab 2026-11-13** example saved revision 1, then shared World and Gmail generation failed before QA. Its later launch used built-in fixtures, with real Gmail sign-in, refresh, extension and stop. That result remains separate from the newer generated-data walkthrough above.
+If generation fails and your task can use sample data, select **Built-in fixtures** when launching the simulation. Check the displayed data source and confirm the fixtures contain the records your assessment needs.
 
 <Screenshot id="environments-data" />
 
 </details>
 
 ## Delete a custom environment
-
-This management path is source reviewed; deletion was not part of the captured Gmail lifecycle.
 
 1. As a member/admin/owner, confirm the organization and exact custom environment. Sample environments cannot be deleted.
 2. Stop its live sandbox instances and wait until they are no longer live. A stop acknowledgement alone does not clear the deletion guard.

@@ -5,7 +5,7 @@
       "id": "access-sign-in",
       "file": "access-sign-in.png",
       "alt": "Martian Security sign-in screen with empty Email and Password fields",
-      "caption": "Sign in with your invited workspace account. A new account needs an invitation. Actual beta screen, 12 November 2026.",
+      "caption": "Sign in with your invited workspace account.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -26,7 +26,7 @@
       "id": "access-invitation",
       "file": "access-organization-setup.png",
       "alt": "Organization invitation form with synthetic owner and organization details; password fields are empty.",
-      "caption": "Enter your organization details for a new owner invitation. This real local QA form contains synthetic data and no invitation URL or password.",
+      "caption": "Enter your organization and account details to accept an owner invitation.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -49,7 +49,7 @@
       "id": "access-ready",
       "file": "access-workspace-ready.png",
       "alt": "Workspace ready confirmation after the invited owner created Martian Docs Lab.",
-      "caption": "A successful owner invitation creates the organization and provides its sign-in address. This is the isolated local QA address; use the address in your own invitation.",
+      "caption": "Use the sign-in address shown after creating your organization.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -72,7 +72,7 @@
       "id": "access-workspace",
       "file": "access-workspace.png",
       "alt": "Signed-in Martian Docs Lab showing Default project, owner role and the Evals Runs page.",
-      "caption": "The new owner can open Evals in the Default project. The sandbox service is not configured in this isolated QA environment, so the sidebar can show a stale-data indicator.",
+      "caption": "Open Evals and select a project, such as the Default project.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -371,7 +371,7 @@
       "id": "evals-first-run-results",
       "file": "evals-first-run-results.png",
       "alt": "EV-1001 completed with three passed responses and retained results after a page refresh.",
-      "caption": "The real teaching target returned READY, HELLO and 4. All three exact-match checks passed and the results survived refresh; this checks tutorial wiring, not production-agent quality.",
+      "caption": "The Results tab shows the answer and exact-match verdict for each of the three example records.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -486,7 +486,7 @@
       "id": "workspace-accept-invitation",
       "file": "workspace-accept-invitation.png",
       "alt": "Real member invitation acceptance form with empty password fields.",
-      "caption": "The signed-out recipient confirms Martian Docs Lab and the member role before joining. The private invitation URL is outside the captured page.",
+      "caption": "Check the organization and role before accepting an invitation.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -555,7 +555,7 @@
       "id": "evals-judging-code",
       "file": "evals-judging-code.png",
       "alt": "Three saved-output code criteria selected, with model criteria unavailable.",
-      "caption": "Contains expected text, Valid JSON and Response length score retained answers. Model options require operator setup in this QA environment.",
+      "caption": "Contains expected text, Valid JSON and Response length score retained answers. Model judges require provider setup.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -693,7 +693,7 @@
       "id": "evals-reviews-questions",
       "file": "evals-reviews-questions.png",
       "alt": "Reusable Boolean review question at immutable version two.",
-      "caption": "Create next version saved v2. The earlier queue retained the original v1 wording in both actual UI and API readback.",
+      "caption": "Create next version saves a new question version. Existing queues keep the wording of their selected version.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -809,7 +809,7 @@
       "id": "sdk-create-key",
       "file": "sdk-key-form.png",
       "alt": "Create API key form with four Evals and CI permissions, a one-day expiry and the teaching agent restriction.",
-      "caption": "Choose permissions and an existing registration before creating the key. Hosted redteam is disabled in this QA environment. This capture precedes credential generation.",
+      "caption": "Choose the permissions and registration before creating the key.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -930,7 +930,7 @@
       "id": "evals-projects-selector",
       "file": "evals-projects-selector.png",
       "alt": "Default project selected above the real retained run list.",
-      "caption": "The Project control selects the evaluation context. Default shows the earlier runs; the separate Teaching regressions project retained EV-1005.",
+      "caption": "Use the Project picker to switch between the Default project and a separate evaluation project.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1459,7 +1459,7 @@
       "id": "evals-model-judges-selection",
       "file": "evals-model-judges-selection.png",
       "alt": "Available correctness and safety judges selected with provider-cost acknowledgement.",
-      "caption": "The real local QA environment exposes both model judges. Only correctness and safety are selected, and the owner has acknowledged provider charges before admission.",
+      "caption": "Select the correctness and safety judges and acknowledge provider charges before applying them.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1528,7 +1528,7 @@
       "id": "evals-judging-feedback",
       "file": "evals-judging-feedback.png",
       "alt": "Two persisted opinions on the same punctuation response with different retained definition identities.",
-      "caption": "V2 rejects the extra period while the earlier v1 accepts the required answer. Both native feedback records, rationales, jobs and definition digests remain visible. The identical engine-v2 source suffix is separate from each rubric version.",
+      "caption": "Compare the feedback and rationale for each rubric version alongside its recorded judge definition.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1716,7 +1716,7 @@
       "id": "first-assessment-running",
       "file": "first-assessment-running.png",
       "alt": "MR-1002 running with Open trace and Stop run controls",
-      "caption": "The acknowledged MR-1002 run shows its five requested techniques. Open trace follows execution; the header Cancel leaves the wizard.",
+      "caption": "The Run step shows requested techniques and provides a link to the trace.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1740,7 +1740,7 @@
       "id": "first-assessment-report",
       "file": "first-assessment-trace-overview.png",
       "alt": "Completed MR-1002 with INCONCLUSIVE security outcome",
-      "caption": "MR-1002 completed with three agent requests and 15 model calls, but its one attempt remained unverified and its security outcome INCONCLUSIVE. Zero findings is not a security pass.",
+      "caption": "This report shows Completed execution, an INCONCLUSIVE security outcome and zero findings.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1812,7 +1812,7 @@
       "id": "assessment-reports",
       "file": "assessment-reports.png",
       "alt": "Reports lists completed and failed synthetic assessment evidence",
-      "caption": "Download selects JSON evidence for the matching run code. MR-1002 retained INCONCLUSIVE; the earlier rejected MR-1001 has no verdict.",
+      "caption": "Use the matching run code to download its saved JSON evidence.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1836,7 +1836,7 @@
       "id": "assessment-replay",
       "file": "assessment-replay.png",
       "alt": "Replay filtered to recorded MR-1002 with Completed and INCONCLUSIVE labels",
-      "caption": "Filter displayed runs narrowed this loaded page to MR-1002. Selecting its run code reads retained evidence; Replay does not execute it again.",
+      "caption": "Filter saved runs by run code and open a result to inspect its evidence.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -1956,7 +1956,7 @@
       "id": "sdk-redteam-key",
       "file": "sdk-redteam-create-key.png",
       "alt": "Create API key with hosted redteam permission and teaching-agent restriction selected",
-      "caption": "Select the needed permissions and restrictions before issuing the key. This capture precedes creation; the once-shown secret is excluded.",
+      "caption": "Choose the required permissions and scope before creating the API key.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2028,7 +2028,7 @@
       "id": "sdk-ci-strict-pass",
       "file": "sdk-ci-strict-pass.png",
       "alt": "Fresh Evals-only session passed both tests and exported to MLflow",
-      "caption": "The new Evals-only session passed its original required-export gate. The separate failed combined session and earlier recovered session remain visible as their own outcomes.",
+      "caption": "The Evals-only session shows a passing gate with Exported to MLflow.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2173,7 +2173,7 @@
       "id": "assessment-report",
       "file": "first-assessment-trace-overview.png",
       "alt": "Completed MR-1002 with INCONCLUSIVE security outcome",
-      "caption": "MR-1002 completed with three agent requests and 15 model calls, but its one attempt remained unverified and its security outcome INCONCLUSIVE. Zero findings is not a security pass.",
+      "caption": "The report shows execution state, security outcome, request counts and findings.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2221,7 +2221,7 @@
       "id": "assessment-run",
       "file": "first-assessment-running.png",
       "alt": "MR-1002 running with Open trace and Stop run controls",
-      "caption": "The acknowledged MR-1002 run shows its five requested techniques. Open trace follows execution; the header Cancel leaves the wizard.",
+      "caption": "The Run step shows requested scope and opens the saved trace.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2315,7 +2315,7 @@
       "id": "environments-data",
       "file": "environment-generation-failed.png",
       "alt": "Environment data drawer showing failed World and Gmail generation.",
-      "caption": "One accepted generation attempt ended Failed before QA. No generated data is ready; built-in fixtures remain available. Only other environment names behind the drawer are hidden for privacy.",
+      "caption": "When generated data is unavailable, check the error for each system or launch with built-in fixtures.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2408,7 +2408,7 @@
       "id": "evals-datasets-delete",
       "file": "dataset-delete-confirmation.png",
       "alt": "Delete 1 record confirmation for only the temporary archived draft record.",
-      "caption": "Review the selected count before Delete. The actual deletion removed only the temporary draft record; the earlier published version was kept.",
+      "caption": "Review the selected record count before confirming removal from the draft.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2454,7 +2454,7 @@
       "id": "evals-datasets-copy",
       "file": "dataset-martian-copy.png",
       "alt": "Editable organization copy with three usable records and revision 1.",
-      "caption": "Copy returned an editable organization draft with three usable records. This capture precedes its stalled publication; it is not a published-copy success.",
+      "caption": "Copy to my datasets opens an editable draft. Publish it to use the copy in a run.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -2618,7 +2618,7 @@
       "id": "discovery-source-prerequisite",
       "file": "discovery-source-form-blocked.png",
       "alt": "Beta QA source dialog showing No authorized clusters and disabled Create source.",
-      "caption": "This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.",
+      "caption": "An authorized cluster alias is required before creating an inventory source.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3131,7 +3131,7 @@
       "id": "evals-dataset-version-publish-activity",
       "file": "evals-dataset-version-publish-activity.png",
       "alt": "Publish activity showing an interrupted three-record revision beside the earlier published two-record version, with Resume and Abort actions.",
-      "caption": "This initial interruption kept the earlier two-record version published. Resume later completed the same three-record operation without asserting that native creation was never submitted.",
+      "caption": "Open Publish activity to find the pending operation and resume it when its prerequisites are ready.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3408,7 +3408,7 @@
       "id": "environment-input-parse-error",
       "file": "environment-input-parse-error.png",
       "alt": "Invalid JSON sample with its parsing error and Fix or remove the input marked above before saving message.",
-      "caption": "The invalid input prevented the save before a request was submitted. The corrected CSV then parsed successfully and the environment was saved once.",
+      "caption": "Read the input error and correct the file before saving the environment.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3456,7 +3456,7 @@
       "id": "environment-generated-sandbox-ready",
       "file": "environment-generated-sandbox-ready.png",
       "alt": "Gmail sandbox Ready with four accounts, generated user data, remaining lifetime and Open and Details controls.",
-      "caption": "Automatic launch selected the exact ready personal document. A real instance read after full refresh retained the generated source, document and Ready state.",
+      "caption": "Check that the Ready instance shows the intended generated document as its data source.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3480,7 +3480,7 @@
       "id": "environment-generated-lifetime",
       "file": "environment-generated-lifetime.png",
       "alt": "Sandbox Details showing generated personal data, a retained 60-minute lifetime and Extend 30 min and Stop sandbox controls, with account values covered.",
-      "caption": "Extend 30 min moved this instance\u2019s expiry by exactly 1,800 seconds. Its 60-minute lifetime persisted after refresh. Native screenshot masking covers the seeded account section for privacy.",
+      "caption": "Open Sandbox Details to check the current lifetime, extend it by 30 minutes or stop the instance.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3649,7 +3649,7 @@
       "id": "discovery-runtime-prerequisite",
       "file": "discovery-runtime-no-workloads.png",
       "alt": "Connect runtime reporter with No matching workloads and disabled Create runtime binding.",
-      "caption": "Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.",
+      "caption": "Runtime setup requires a matching workload from an authorized inventory source.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3715,7 +3715,7 @@
       "id": "discovery-gate-prerequisite",
       "file": "discovery-gate-no-bindings.png",
       "alt": "Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.",
-      "caption": "With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.",
+      "caption": "Select an enrolled deployment to see its assignment and call controls.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3852,7 +3852,7 @@
       "id": "discovery-source-resumed",
       "file": "discovery-source-resumed.png",
       "alt": "Resumed source with a newer completed collection and retained two-record coverage after full page reload.",
-      "caption": "Resume collection and Collect now were followed by an actual collector run. A newer Last success and retained inventory confirm that distinct completion.",
+      "caption": "After resuming collection, check Last success for the latest accepted collection.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3899,7 +3899,7 @@
       "id": "discovery-runtime",
       "file": "discovery-runtime-eight-tool-calls.png",
       "alt": "The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.",
-      "caption": "The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.",
+      "caption": "Select a workload binding and time window to see its reported calls.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -3923,7 +3923,7 @@
       "id": "discovery-runtime-resource",
       "file": "discovery-runtime-resource-detail.png",
       "alt": "The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.",
-      "caption": "The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.",
+      "caption": "Expand a resource row to see the opaque reference it uses in the selected binding.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4283,7 +4283,7 @@
       "id": "discovery-network-retained-after-revoke",
       "file": "discovery-network-retained-after-revoke.png",
       "alt": "The revoked observer retains all four received windows and the original degraded coverage counters.",
-      "caption": "Saved windows remain evidence after revocation. Sensor and stream values describe the last report, not current health; continuous attribution and service matching remain unqualified.",
+      "caption": "Saved windows remain available after revocation. At last report shows the last recorded sensor and stream status.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4331,7 +4331,7 @@
       "id": "discovery-network-qualified-service",
       "file": "discovery-network-kubernetes-service-match.png",
       "alt": "An actual Kubernetes Service destination is selected with its UID, ClusterIP, port and original Pod identity.",
-      "caption": "The two real policy reads produced a stable default/kubernetes:443 match. Its UID was independently checked against Kubernetes; this is destination metadata, not proof of a backend Pod or business effect.",
+      "caption": "A matched Kubernetes Service shows its name, namespace, UID, address and port.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4355,7 +4355,7 @@
       "id": "discovery-network-qualified-retired-source",
       "file": "discovery-network-continuous-registrations-revoked.png",
       "alt": "The newest observer and the earlier retired registration both remain revoked after full refresh.",
-      "caption": "Revoke the intended registration. The latest process acknowledged its stop; its earlier retired predecessor remains listed as separate history. Neither grant removal uninstalls sensors.",
+      "caption": "Confirm revocation for the intended registration and check its last reported status.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4403,7 +4403,7 @@
       "id": "assessment-payment-completed",
       "file": "payment-completed-independent-outcome.png",
       "alt": "Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.",
-      "caption": "MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.",
+      "caption": "Outcome checks shows the observed business violation and the independent before-and-after comparison.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4452,8 +4452,8 @@
     {
       "id": "assessment-review-archive-downloaded",
       "file": "payment-redacted-review-downloaded.png",
-      "alt": "Martian Security recorded review showing a successful 674,489-byte archive download and the selected persisted revision.",
-      "caption": "The real Firefox download completed for the retained MR-1002 revision. The original ZIP passed manifest and all 113 part checks; native span coverage remains pending.",
+      "alt": "Recorded review with the selected revision and a successful archive download.",
+      "caption": "The download confirmation shows the selected Recorded review revision and its redacted archive.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
@@ -4524,8 +4524,8 @@
     {
       "id": "assessment-browser-recovered-review",
       "file": "browser-recovered-review.png",
-      "alt": "Recovered browser review with its original persisted revision, two retained turns and the selected synthetic request.",
-      "caption": "The original browser review is available after operator-assisted publication recovery in isolated QA. Its inconclusive outcome is unchanged.",
+      "alt": "Recorded review showing its saved revision and two retained turns.",
+      "caption": "A published Recorded review lets you inspect the saved turns even when the security outcome is inconclusive.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [

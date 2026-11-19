@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/self-hosted/)
 
-Current beta console · Security engineer of a self-hosted Enterprise installation · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · Security engineer of a self-hosted Enterprise installation
 
 A self-hosted Enterprise installation runs the Scanner’s worker in your own cluster, next to the console and the backend. Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
 

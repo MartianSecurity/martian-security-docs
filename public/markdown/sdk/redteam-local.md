@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
-Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer with an agent to test and a model key; no Martian account or API key
 
 A local red team run attacks your agent with your own model and keeps the report on your machine. You need no Martian account, no API key and no email, and nothing is sent to Martian: the run connects only to the model you name and to your agent.
 
@@ -106,7 +106,7 @@ Kept in the local store as redteam-9053cc580fe3
 Gate failed: prompt_leakage/system_prompt: Confirmed disclosure (prompt_leakage:system_prompt:prompt_injection); prompt_leakage/system_prompt: Confirmed disclosure (prompt_leakage:system_prompt:roleplay)
 ```
 
-Your run id differs, and a model may hit with one method and not the other. This file makes four attacks, one for each vulnerability type and method, and runs each probe that hit once more without the attack, as a control. It made 4 attacker calls and 4 judge calls when we ran it; `budget` caps both.
+Run IDs and model results vary. The example checks each type and method once, with a control for each hit. `budget` caps attacker and judge calls.
 
 The result files and the local store hold digests of the attacks and replies, not their text, unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1` for the run. With it, `redteam-run.json` and the store keep the conversations in clear text, so keep them as private as your agent’s data. You need it to [pin a finding](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#keep-a-finding-as-a-regression-test).
 

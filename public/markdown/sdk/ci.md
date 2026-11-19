@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/ci/)
 
-Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset
 
 Run Evals tests and a redteam suite in one pytest execution to retain a Backend CI session. A required persisted gate checks test coverage, policy, Backend acknowledgment and any required exports. For an account-free check on pull requests, jump to the [local Evals workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests).
 
@@ -118,23 +118,17 @@ The Evals-only session is exported after owner recovery. Its original strict CLI
 
 Show tests retains the server-scored dataset result and the client-scored inline checks. Inline content is represented by digests. The stored export was recovered without running the tests again.
 
-### Observed qualification results
-
-An earlier tutorial snapshot passed one original combined CLI attempt on a GitHub-hosted Ubuntu runner. Its receipt and Backend readback agreed: **exit 0**, **3 of 3 test groups passed**, **persisted** upload and **exported** evidence. Independent readback confirmed three native exports and exactly two settled generation/judging model calls. The [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) identifies the tested package and artifact; the current download installs the latest release.
+### Read the test count and export status
 
 The three groups contain the **two dataset records**, **two inline scorer checks**, and **one adversarial probe**. Each group produces one CI test record; “3 of 3” does not mean only three individual assertions ran.
 
-See the [public validation receipt](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/validation/sdk-ci-0.1.2-2026-11-13.json) for the source and package hashes, run/attempt, original outcome and native accounting. This used disposable pinned services and the deterministic tutorial callback. The extracted `github-actions.yml` template was not dispatched directly; its installation and CLI path ran in a reviewed qualification wrapper. This is not a hosted-beta or production-agent security attestation.
-
-The separate Evals-only qualification passed its original `--require-export` command with exit `0`, two passing tests, a persisted session and completed export. Its result is distinct from combined CI:
+An Evals-only run shows the dataset and scorer-check groups. Check the saved **Result** and export status against the CLI receipt.
 
 ![Fresh Evals-only session passed both tests and exported to MLflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-ci-strict-pass.png)
 
-The new Evals-only session passed its original required-export gate. The separate failed combined session and earlier recovered session remain visible as their own outcomes.
+The Evals-only session shows a passing gate with Exported to MLflow.
 
-One real combined attempt in isolated QA retained **2 of 4 tests passed**, **Failed**, and **Exported to MLflow** after refresh. Its dataset and inline checks passed; redteam and the session-execution check failed because the runner could not verify generation’s response. The saved receipt recorded `state: failed`, `exit_code: 1`, `upload: persisted`, and `export_state: exported`.
-
-Reading that exact generation operation later returned `succeeded`. No target or judging stage followed it, and the saved failed session was not rewritten. An exported session can accurately contain a failing gate; export success alone does not satisfy CI. This earlier failure remains distinct from the later passing combined qualification above.
+A failed gate can show **Exported to MLflow**. Use **Result** or the receipt’s `exit_code` to decide whether the gate passed.
 
 ![Combined CI saved a failed two-of-four result with exported evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-combined-ci-failed.png)
 

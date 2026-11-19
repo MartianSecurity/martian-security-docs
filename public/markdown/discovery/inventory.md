@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/inventory/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Build an inventory from authorized infrastructure evidence and inspect what qualifies each record as an agent, candidate or supporting workload. Enrollment succeeds when the source is saved, its intended collector reports and retained inventory appears with a clear freshness boundary.
 
@@ -16,7 +16,7 @@ Source collection, runtime reporting and assessment connections have separate cr
 
 Start with an approved scope
 
-This walkthrough uses a customer-run Kubernetes collector in an authorized test namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your Backend deployment. The inventory reader needs workload and RBAC metadata access; it does not need permission to read Secrets, execute in containers or change workloads.
+Use a customer-run Kubernetes collector in an authorized namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your deployment. Grant the inventory reader access to workload and RBAC metadata only.
 
 ## Enroll a read-only source
 
@@ -76,7 +76,7 @@ Pausing rejects a new collector lease and preserves earlier inventory. It does n
 
 ![Resumed source with a newer completed collection and retained two-record coverage after full page reload.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-resumed.png)
 
-Resume collection and Collect now were followed by an actual collector run. A newer Last success and retained inventory confirm that distinct completion.
+After resuming collection, check Last success for the latest accepted collection.
 
 Collection controls affect the reader. They do not stop the customer’s application, contain network traffic or cancel an assessment.
 
@@ -88,7 +88,7 @@ Ask your operator to authorize the cluster alias and namespace scope. The disabl
 
 ![Beta QA source dialog showing No authorized clusters and disabled Create source.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-source-form-blocked.png)
 
-This beta QA Owner can inspect the source form, but no cluster alias is authorized. Stop for operator setup; no source or collector credential was created.
+An authorized cluster alias is required before creating an inventory source.
 
 -   **Replace credential** rotates a customer collector credential. Install the replacement in the intended collector; saving it does not restart that process automatically.
 -   A stale or failed source needs its actual reader, authorization and connectivity checked. Do not treat a retained old snapshot as fresh inventory.

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/stopping-and-recovery/)
 
-Current beta console · member+ stops; all customer roles inspect retained work · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member+ stops; all customer roles inspect retained work
 
 Request a bounded stop without discarding results that have already arrived, and distinguish an unresolved acknowledgement from a new launch. This guide covers customer controls in the current beta console; it does not require internal worker, database or MLflow administration.
 
@@ -14,7 +14,7 @@ Request a bounded stop without discarding results that have already arrived, and
 
 Use a deliberately bounded, authorized example when learning the controls. A stop is cooperative: a target request or model judgment already admitted can finish and may incur its normal charge. Stop is not a way to revoke an already sent request or undo external side effects.
 
-For optional practice with the [HTTP teaching adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md), its [complete example README](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/http-agent/README.md) includes `slow_agent:answer`. That genuine callback waits ten seconds. Confirm deadline headroom with your administrator before using it; the recorded local QA success used a 90-second request budget. Keep the original three-record dataset and stop after at least one record finishes.
+For optional practice with the [HTTP teaching adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md), the [example README](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/http-agent/README.md) includes `slow_agent:answer`, a callback that waits ten seconds. Confirm deadline headroom with your administrator before using it. Keep the three-record dataset and stop after at least one record finishes.
 
 ## 1\. Stop a target evaluation
 
@@ -40,7 +40,7 @@ A queued run may stop before sending any request. An active run retains the curr
 
 After refresh, the same cancelled run retains READY/HELLO responses, two passes, zero errors and one unstarted skipped record. Two requests reached the actual teaching target.
 
-In the recorded success, the stop was requested after the first record finished. The second in-flight response also arrived: **2 Passed, 0 Errors, 1 Skipped** remained after refresh. Native provenance showed **KILLED** with the same counts. Two actual requests reached the teaching target.
+In the example, one record finished before the stop was requested. A second response finished while cancellation was pending, leaving **2 Passed, 0 Errors, 1 Skipped** and a native state of **KILLED**.
 
 ![Verified native KILLED provenance and matching two-pass, one-skipped metrics.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-stopping-native-killed.png)
 
@@ -48,7 +48,7 @@ Native provenance independently reads KILLED for this retained cancelled run, wi
 
 A cancellation acknowledgement is intent to stop, not proof that all physical work has ended. Wait for the terminal run state and relevant evidence before launching another evaluation. If the run has already finished, the UI/API can reject a late stop and keep its recorded result.
 
-A cancelled run can also retain target errors. An earlier local attempt had two errors and one skipped record; its native state was still KILLED. Read the retained rows and any telemetry warning before interpreting cancellation as a successful target interaction.
+A cancelled run can retain target errors. Read the saved rows and any telemetry warning to see which requests succeeded.
 
 ## 3\. Stop saved-output scoring
 

@@ -79,8 +79,6 @@ export function renderAgentMarkdown(html, { canonical, rewriteUrl, diagramSource
     filter: (node) => node.classList?.contains('guide-meta'),
     replacement: (_content, node) => {
       const parts = Array.from(node.querySelectorAll('span')).map((child) => child.textContent.trim());
-      const link = node.querySelector('a');
-      if (link) parts.push(`[Verification details](${link.getAttribute('href')})`);
       return `\n\n${parts.join(' · ')}\n\n`;
     },
   });

@@ -4,7 +4,7 @@ import { renderAgentMarkdown } from './lib/agent-markdown.mjs';
 import { mirrorAsset, pageLinks, rewriteForAgents } from '../src/lib/agent-links.mjs';
 
 const canonical = 'https://docs.martiansecurity.ai/sdk/install-and-configure/';
-const paths = new Set(['/sdk/install-and-configure/', '/reference/verification/']);
+const paths = new Set(['/sdk/install-and-configure/', '/reference/limits/']);
 const assets = new Set(['media/screenshots/example.png']);
 const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const render = (article) => renderAgentMarkdown(`<html><head><meta name="description" content="A guide."></head><body><nav>Navigation chrome</nav><h1>Example</h1><div class="sl-markdown-content">${article}</div></body></html>`, {
@@ -21,21 +21,21 @@ test('rendered exports preserve exact executable code, including indentation and
   assert.throws(() => render('<pre>Unrecoverable code</pre>'), /no exact copy payload/);
 });
 
-test('guide copies preserve audience, product limits, verification links and screenshot captions', () => {
+test('guide copies preserve audience, product limits and screenshot captions', () => {
   const result = render(`
-    <div hidden class="guide-meta"><span>Python SDK</span><span>Owner</span><a href="/reference/verification/">Verification details</a></div>
-    <aside><p>Hosted CI requires a workspace API key.</p></aside>
+    <div hidden class="guide-meta"><span>Python SDK</span><span>Owner</span></div>
+    <aside><p>Hosted CI requires a workspace API key. <a href="/reference/limits/">Product limits</a></p></aside>
     <table><thead><tr><th>Role</th><th>Access</th></tr></thead><tbody><tr><td>Owner</td><td>Configure</td></tr></tbody></table>
     <figure><a href="/media/screenshots/example.png"><img src="/media/screenshots/example.png" alt="Actual settings"></a><figcaption>Real screenshot caption.<a class="visual-open" href="/media/screenshots/example.png">Open full size</a></figcaption></figure>
   `);
-  assert.match(result.markdown, /^Python SDK · Owner · \[Verification details\]/m);
+  assert.match(result.markdown, /^Python SDK · Owner$/m);
   assert.match(result.markdown, /Hosted CI requires a workspace API key\./);
   assert.doesNotMatch(result.markdown, /Page qualification|Walkthrough limits/);
   assert.match(result.markdown, /\| Role \| Access \|/);
   assert.ok(result.markdown.includes(`![Actual settings](${mirrorAsset('media/screenshots/example.png')})`));
   assert.match(result.markdown, /Real screenshot caption\./);
   assert.ok(!result.markdown.includes('Open full size'));
-  assert.ok(result.markdown.includes(pageLinks('/reference/verification/').mirror));
+  assert.ok(result.markdown.includes(pageLinks('/reference/limits/').mirror));
 });
 
 test('diagrams export readable Mermaid and links resolve to secure public files', () => {

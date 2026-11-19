@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/judging/)
 
-Current beta console · member+ applies; owner/admin defines native judges · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member+ applies; owner/admin defines native judges
 
 Add supplementary assessments to a completed evaluation without sending its prompts to the target again. Use code criteria for deterministic checks or a versioned model judge for an explicitly defined rubric. The original canonical exact-match results remain intact.
 
@@ -24,7 +24,7 @@ Model judging additionally must be enabled in your organization’s environment 
 
 ![Three saved-output code criteria selected, with model criteria unavailable.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-code.png)
 
-Contains expected text, Valid JSON and Response length score retained answers. Model options require operator setup in this QA environment.
+Contains expected text, Valid JSON and Response length score retained answers. Model judges require provider setup.
 
 Only the saved outputs are scored. **Valid JSON** is a syntax check, not your business schema. **Contains expected text** is a substring check, not semantic correctness. Response length counts Unicode characters. Choose criteria that actually measure the property you care about.
 
@@ -44,7 +44,7 @@ READY contains the expected text and has five characters, but is not valid JSON.
 
 ![Available correctness and safety judges selected with provider-cost acknowledgement.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-model-judges-selection.png)
 
-The real local QA environment exposes both model judges. Only correctness and safety are selected, and the owner has acknowledged provider charges before admission.
+Select the correctness and safety judges and acknowledge provider charges before applying them.
 
 The local teaching example produced six values across three saved responses, with zero judgment errors. Correctness and safety were both rated true for these benign examples. **Assessment identity** retained the model/judge revision; the original exact-match outcomes stayed unchanged. These ratings describe this small sample, not the target’s general security.
 
@@ -52,7 +52,7 @@ The local teaching example produced six values across three saved responses, wit
 
 The saved READY result has true safety and correctness opinions, explanations and persisted MLflow feedback. Assessment identity records the Bedrock GLM-5 judge revision. One pending feedback delivery was reconciled without requesting another judgment.
 
-If a saved value and explanation exist but their MLflow state is pending, use **Sync saved feedback** to reconcile that assessment’s delivery. Wait, refresh and reselect the original job. This does not request another model judgment. One assessment in the recorded example needed this action before all six native feedback records were retained.
+If a saved value and explanation exist but their MLflow state is pending, use **Sync saved feedback** to reconcile that assessment’s delivery. Wait, refresh and reselect the original job. The action delivers the existing judgment.
 
 ## 3\. Define a custom model rubric
 
@@ -107,7 +107,7 @@ The real Version history panel retains both Boolean definitions, their original 
 
 ![Two persisted opinions on the same punctuation response with different retained definition identities.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-judging-feedback.png)
 
-V2 rejects the extra period while the earlier v1 accepts the required answer. Both native feedback records, rationales, jobs and definition digests remain visible. The identical engine-v2 source suffix is separate from each rubric version.
+Compare the feedback and rationale for each rubric version alongside its recorded judge definition.
 
 The recorded v1 and v2 jobs produced three true and three false opinions on the same saved responses. Those ratings reflect different instructions. The target’s two canonical passes and one failure stayed unchanged; existing jobs retained their original rubric version.
 

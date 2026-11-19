@@ -4,13 +4,13 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-results/)
 
-Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · viewer, member, admin, owner
 
 Inspect what an assessment tested, what it observed and how strongly a finding is supported. A useful result includes the actual scope and coverage, not just a verdict badge.
 
 ## Before you start
 
-Use any signed-in role with access to the organization’s run. Complete or retain a bounded assessment and know its run code. The deployment can serve legacy trace storage or a versioned **Recorded review**; use the controls actually shown for the run and the [source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline).
+Use any signed-in role with access to the organization’s run. Complete or retain a bounded assessment and know its run code. Use **Recorded review** for versioned review content when available. Other runs show the legacy trace controls.
 
 ## Read the report and run summary
 
@@ -19,7 +19,7 @@ Use any signed-in role with access to the organization’s run. Complete or reta
 
 ![Completed MR-1002 with INCONCLUSIVE security outcome](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/first-assessment-trace-overview.png)
 
-MR-1002 completed with three agent requests and 15 model calls, but its one attempt remained unverified and its security outcome INCONCLUSIVE. Zero findings is not a security pass.
+The report shows execution state, security outcome, request counts and findings.
 
 3.  Check **Attempts**, **Blocked**, **Verified**, **Unverified**, **Agent requests**, **Model calls** and **Displayed findings**. Read the exhaustion reason and any retained error. Requested techniques are scope; they are not a count of completed target attempts.
 4.  Inspect **Probe coverage** when available. Check selected, attempted, skipped or incomplete coverage before drawing a conclusion about a technique.
@@ -45,27 +45,27 @@ Select a retained turn to compare the actual attacker message, customer reply an
 
 ### Example: read a redacted turn
 
-In the separate [modern review example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md#example-check-a-modern-run-and-its-downloads), **Turns (12)** loads twelve retained turn records. Select the first **Turn 1** and compare the actual **target response** with its exported-content status. The synthetic target deliberately returned a token-shaped test string; the stored review shows `[REDACTED]`, **credential\_scrubbed**, and **194 / 225 bytes exported**.
+In **Recorded review**, open **Turns** and select a turn. Check the **target response** and its exported-content label. A redacted response may show `[REDACTED]` in place of withheld text.
 
 ![First retained turn with redacted target response, credential\_scrubbed status, exported byte counts and twelve loaded turn records.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-modern-redacted-turn.png)
 
 The actual target response contains \[REDACTED\] instead of the fixture’s token-shaped test string. The critic rationale is model interpretation. This on-screen read does not establish a successful ZIP download.
 
-Redaction describes the exported copy. The critic’s **rationale** is model interpretation, and the run remains **INCONCLUSIVE**. This example does not establish a real credential disclosure or an independent business effect. Its published review can be read on screen, while the ZIP download remains unverified after provider timeouts.
+Redaction describes what the export contains. Read **Security outcome** and the critic’s explanation separately.
 
 ## Inspect findings and independent outcomes
 
-For a completed business-state example, [MR-1002’s independent payment comparison](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) retained **FINDINGS**, **Completed** execution, 17 agent requests, 59 model calls and one displayed finding. Its before/after ledger reads establish duplicate refunds in that synthetic world; its clean-reproduction amount remains unavailable. This is stronger evidence of an effect than a target reply, while still requiring separate reproduction and control checks.
+Inspect the [business-state comparison](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) to see the independent before and after records for a finding.
 
 ![Completed synthetic payment assessment with one business-state finding, 17 agent requests and 59 model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/payment-completed-independent-outcome.png)
 
-MR-1002 completed with an independently observed business violation. Cleanly reproduced refund impact remains unavailable; this is one synthetic attack-world comparison.
+Outcome checks shows the observed business violation and the independent before-and-after comparison.
 
 1.  Open **Findings** and inspect each finding’s title, severity, verification status, evidence and technique attribution. Page through the results: **Displayed findings** is not necessarily the total run count.
 
 2.  When present, open **Outcome checks**. Compare before/after business records, repeated-world receipts and the no-implant control. Use **Scenario setup** to inspect the prepared carrier and readback for a scenario run.
 
-    In the captured payment example, **ready** means a starting receipt exists: both baseline prerequisites passed, while **Outcome captured** and **After-state digest** remain **Pending**. The configured check’s description does not establish that its violation occurred. See the [baseline-only walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-passed-baseline-with-no-outcome-verdict).
+    **Ready** can mean the starting state was captured. If **Outcome captured** and **After-state digest** are pending, the comparison is incomplete.
 
 
 ![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
@@ -80,88 +80,78 @@ Both baseline prerequisites passed. Outcome captured and After-state digest rema
 
 Six visible lookup stages retained no reviewed references. One activated canonical skill is recorded with a Content digest control; missing references do not prove no relevant attack is known.
 
-In the endpoint-only **MR-1002** example, **Knowledge & skills** retained one activated skill and its content digest, but no reviewed knowledge references. **Probe coverage** reported one attempted, unverifiable disclosure probe. Three observed refusals and zero findings did not change its **INCONCLUSIVE** security outcome. No deterministic target oracle or sandbox business-state checks were available for this run.
+**Knowledge & skills** shows activated skills and reviewed references when available. Use **Probe coverage** to distinguish an attempted probe with an unverifiable outcome from a verified result.
 
 ## Read an MCP endpoint example
 
-This separate synthetic QA example used an approved MCP `chat(message)` tool with anonymous, endpoint-only, Light and serial settings. Its admission acknowledgment failed; an operator reconciled the original campaign before the saved evidence appeared below. The [submission-error recovery limit](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures) remains relevant.
-
-1.  Open the saved run and confirm its agent. **MR-1001** here belongs to the separate **Documentation Native Sessions QA** organization. It shows **Completed** execution, **INCONCLUSIVE** security outcome, **3** agent requests, **16** model calls and **0** displayed findings. A budget-ended run and three refusals do not establish a security pass.
+1.  Open the saved MCP assessment. Confirm its agent, **Assessment execution** and **Security outcome**.
 
 ![Martian Security MCP assessment MR-1001 showing completed execution, an inconclusive security outcome, three agent requests and sixteen model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-mcp-result.png)
 
 Check execution and security outcome separately. This synthetic MCP result was recovered by an operator after an uncertain admission; it does not establish a security pass.
 
-2.  In **Trace**, select **Turn 1**. Compare its actual attacker message and customer reply, then inspect the action’s **Journal**. Here it records **prepared → submitted → completed**. The reply refuses disclosure; no sandbox tool call or independent business-state check was available. These requests reached the target’s MCP `chat` tool; **Observed actions** describes the agent’s separate sandbox/gateway tool use.
+2.  In **Trace**, select a turn. Read the customer reply and the action’s **Journal** to see whether the call completed.
 
 ![The actual first MCP turn with its attacker message, refusal, action identity and prepared to submitted to completed journal.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-mcp-turn.png)
 
 Compare the actual request, reply and action journal. This turn belongs to the same operator-reconciled MCP campaign; a refusal is separate from independent outcome verification.
 
-3.  Open **Probe coverage**. The disclosure probe is **attempted** with outcome **unverifiable**, not verified. It records three target calls and fifteen model calls within that probe; the campaign summary above has its own total of sixteen model calls. Keep each counter’s scope when comparing them.
+3.  Open **Probe coverage**. Check the outcome and calls for the selected probe. The run summary counts calls across the whole assessment.
 
 ![MCP disclosure probe coverage showing attempted and unverifiable, three target calls, fifteen probe model calls and one inconclusive recorded attempt.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-mcp-coverage.png)
 
 Read the probe outcome and its own counters. This operator-reconciled campaign attempted the disclosure probe but retained no decisive verified result.
 
-4.  Refresh and reopen the saved run, then use **Download legacy JSON evidence**. In this check, the downloaded `MR-1001.json` retained the same agent, completed state, inconclusive verdict, attempt, trace and coverage. This JSON is separate from a published redacted review bundle.
+4.  Use **Download legacy JSON evidence** when you need the saved trace and coverage. See the [export guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md) for the available formats.
 
 ## Read a cleanly reproduced business finding
 
-The separate **MR-1009** payment example completed with **4 agent requests**, **7 model calls** and one finding labeled **reproduced clean**. Its independent state checks, two successful fresh-world repetitions and executed benign control qualify the recorded duplicate-refund behavior.
+1.  In **Findings**, check the reproduction label. Open **Recorded detail** for the saved verification data.
+2.  Open **Outcome checks** and compare the independent records for each repetition and the negative control.
+3.  In **Recorded review → Verification receipts**, read the retained verdict and control outcome. Use the finding’s **Recorded detail** for the full verification data.
+4.  To retain the selected revision, [download its redacted review](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md#download-and-check-the-redacted-review).
 
-1.  Open **Findings** and read the finding’s reproduction label. Expand **Recorded detail** for the canonical saved verification data. The top summary’s dashes do not replace this finding-level status.
-2.  Open **Outcome checks**. The original probe and two repetitions show **Violation observed** in restored epochs **4, 5 and 6**. The benign control shows **No violation observed** in epoch **7**, with the same seed and equivalent starting ledger.
-3.  Open **Recorded review → Verification receipts**. Its two retained rows show **verified** for the runtime result and **no violation observed** for the final control. This artifact view retains verdict metadata; the full verifier body is not displayed there.
-4.  Refresh and reopen the same run, finding and review revision. Download the redacted review separately. In this check, its **76 entries** passed CRC, manifest identity, byte-count, SHA-256 and JSON checks.
-
-See the [complete repetition and control walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md#example-two-successful-repetitions-and-a-passing-control), including the actual messages and the count-based check’s unavailable dollar-impact summary. A saved successful reproduction does not authorize release or certify other behaviors.
+See [reproduction and evidence limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/reproduction-and-limits.md) for how to interpret repeated outcomes and controls.
 
 ## Read a completed browser assessment
 
-This separate **Harbor Assessment Lab** example used an approved synthetic support website with configured sign-in, endpoint-only scope, a disclosure outcome and serial execution. The website’s **New chat** control reset its conversation in place, and messages reached its real chat backend.
-
-1.  Open the saved run and confirm its target. **MR-1006** shows **Completed** execution and **INCONCLUSIVE** security outcome, with **4 agent requests**, **12 model calls** and **0** displayed findings. It stopped at its admitted search-round budget. Completion means the bounded work finished; the retained evidence does not support a security pass.
+1.  Open the saved run and confirm its target. Read **Assessment execution** and **Security outcome** separately. The example shows **Completed** execution with an **INCONCLUSIVE** outcome.
 
 ![Martian Security MR-1006 showing completed browser execution, an inconclusive security outcome, four agent requests and twelve model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-completed-coverage-refreshed.png)
 
 The bounded browser assessment completed, but its evidence did not support a security pass. The saved result survived a full reload.
 
-2.  Open **Probe coverage**. The disclosure probe is **attempted**, with outcome **unverifiable** and the reason **Target interaction lacked a decisive verified result**. Its **2 / 6** target calls and **8 / 100** model calls are probe counters. The campaign totals above also include setup and other model work.
+2.  Open **Probe coverage**. Read the probe’s outcome and reason. Compare the probe’s calls with the assessment totals to see how much of the admitted scope ran.
 
 ![Martian Security browser disclosure probe showing attempted coverage, an unverifiable outcome, two target calls and eight model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-completed-probe-detail.png)
 
 Probe counters cover this disclosure probe. The campaign summary also includes setup and other work; an attempted probe is not a verified finding.
 
-3.  Refresh and reopen the same run. In this check, its completed state, inconclusive verdict, target revision, counters and probe result survived a full reload. **Configured website account** still describes website access, not an independently verified customer identity or business-state check.
-4.  Check **Recorded review** separately. This run initially entered **Needs review** with an artifact conflict while execution stayed completed. An operator later recovered its saved publication in an isolated QA recovery build. The same revision now shows **available**, **Review delivery: persisted** and **Review coverage: complete**. Open **Turns (2)** and select a turn to inspect the retained request and reply.
+3.  Check **Website access** and the retained target revision. **Configured website account** describes website sign-in. Use independent checks for any claimed business effect.
+4.  Open **Recorded review** and confirm availability and the selected revision.
 
-![Recovered browser review with its original persisted revision, two retained turns and the selected synthetic request.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-recovered-review.png)
+![Recorded review showing its saved revision and two retained turns.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/browser-recovered-review.png)
 
-The original browser review is available after operator-assisted publication recovery in isolated QA. Its inconclusive outcome is unchanged.
+A published Recorded review lets you inspect the saved turns even when the security outcome is inconclusive.
 
-5.  Click **Download redacted review** and check the archive locally. This original revision produced **121,320 bytes** and **43 entries**: one manifest and 42 parts. Every part passed its hash, byte-count and CRC checks. Recovery did not execute the target or model again, change the inconclusive outcome or qualify a successful reproduction. See the [recovery example and availability limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md#recovery-of-two-frozen-reviews).
-
-The earlier failures below remain separate observations. This completed example does not resolve their uncertain actions or qualify browser cancellation.
+5.  Use [Download redacted review](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/history-and-exports.md#download-and-check-the-redacted-review) to retain a copy of the selected revision.
 
 ## Read a browser run that needs attention
 
-This example belongs to the separate **Documentation Browser Execution QA** workspace. Its **MR-1001** targeted an approved website with configured sign-in, endpoint-only scope, one disclosure outcome, Light depth and serial execution. Website sign-in and two neutral setup messages succeeded. Starting a fresh conversation for the first probe then timed out; this is an incomplete walkthrough, not a successful browser assessment.
-
-1.  Open the saved trace and read both summaries. **Assessment execution** shows **Needs attention**, while **Security outcome** shows **No verdict recorded**. The **Waiting on a decision** panel retains `BrowserError: fresh_conversation_unavailable:fresh_timeout` and an uncertain action. Zero detailed attempts and zero findings do not establish protection.
+1.  Open the saved trace. Read **Assessment execution**, **Security outcome** and the reason in **Waiting on a decision**. The example shows **Needs attention** with **No verdict recorded**.
 
 ![Saved browser run showing Waiting on a decision, an uncertain fresh-conversation timeout, Needs attention and No verdict recorded.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-browser-needs-attention.png)
 
 Preserve the original action for inspection. Successful website sign-in and setup messages did not produce a completed probe or a security verdict.
 
-2.  Open **Probe coverage**. Here the disclosure probe remains **Scheduled**, with **No outcome recorded** and **0 / 30** target calls. These are probe counters; the two earlier neutral setup requests are a separate part of the campaign. A scheduled goal is not completed coverage, and a dash in the summary counters does not mean no requests were made.
+2.  Open **Probe coverage**. **Scheduled** with **No outcome recorded** means the probe has no verdict. Setup requests and probe requests are counted separately.
 
 ![Browser probe coverage showing Scheduled, No outcome recorded, zero of thirty probe target calls and zero of one hundred probe model calls.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-browser-coverage.png)
 
 The disclosure goal was scheduled, with no probe outcome recorded. These probe counters exclude the campaign’s earlier neutral setup messages.
 
-3.  Refresh and reopen the same run, then use **Download legacy JSON evidence**. The observed reload and download retained the incomplete state, absent verdict and original campaign identity. Native inspection confirmed **awaiting recovery** with one unresolved action; no replacement assessment or recovery decision was submitted.
-4.  Preserve the run and have the original action inspected before deciding how to recover. **The action did not execute** is an evidence-based decision, not a general retry button. Keep successful cancellation, a completed browser assessment and a security verdict separate from this failure observation. See [execution-failure recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures).
+3.  Refresh to see the latest evidence for the same run. Use **Download legacy JSON evidence** to retain the available trace.
+4.  If an action is uncertain, preserve the run code and inspect the original action before choosing a recovery. Use **The action did not execute** when you have evidence for that decision.
 
 ## Exports and limitations
 

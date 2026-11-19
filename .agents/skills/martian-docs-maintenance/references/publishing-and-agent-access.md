@@ -28,7 +28,7 @@ For affected routes, use real browser controls to check:
 
 1. Desktop/light and narrow/dark layout, readable text/callouts/tables/code, decoded images and no document-wide overflow. Add minimum-width/keyboard focus checks when a shared component changes.
 2. Code Copy equals the original executable payload byte-for-byte, including indentation, quotes and literal fences. Line wrapping, terminal prompts or comment removal must not silently change it. Check keyboard access and visible success/error feedback for copy-control changes.
-3. Copy page equals the generated full Markdown, including audience context, product limits, verification link, screenshots and exact code. Check the actual agent-link action and raw destination when changing sharing behavior.
+3. Copy page equals the generated full Markdown, including audience context, product limits, screenshots and exact code. Check the actual agent-link action and raw destination when changing sharing behavior.
 4. Full-size images open the expected native dimensions and actual asset; screenshots are individually viewed.
 5. Real search input finds a new meaningful phrase, result navigation works and a nested guide survives full refresh.
 6. Browser page errors, failed HTTP responses, failed requests and unexpected console errors are inspected. Retain the original failure if a later focused check passes.
@@ -42,12 +42,12 @@ The site is static HTML with public no-login/no-JavaScript Markdown alternatives
 Current behavior learned from source:
 
 - Human actions: **Copy page**, **More page actions → Copy agent link**, **View Markdown** and **Agent index**.
-- Conversion starts from rendered HTML. It preserves audience context and the verification link, exact executable code, original Mermaid source, captions and secure public asset and guide links.
+- Conversion starts from rendered HTML. It preserves audience context, exact executable code, original Mermaid source, captions and secure public asset and guide links.
 - Exported discovery and mirror URLs receive content-digest cache-busting queries. Preserve those queries; version/release notices are not the cache key.
 - Clipboard preload and a synchronous fallback preserve user activation on HTTP local previews. Replacing it with an untested async-only Clipboard API call can break local copying.
 - Custom-domain HTML/TLS works in ordinary clients while an individual external agent fetcher can still fail or serve cached raw-main text. Test the actual reader when possible; compare exact current bytes, try the supported raw mirror, and use an immutable commit URL to establish which revision was read. A tool internal error is not proof of an origin outage, and mirror success is not proof every agent can fetch canonical HTML.
 
-Test both human and agent representations after changing shared layout. Check the evidence on the verification page and in `quality/`.
+Test both human and agent representations after changing shared layout. Check walkthrough evidence in `quality/`.
 
 ## Publication and concrete review
 

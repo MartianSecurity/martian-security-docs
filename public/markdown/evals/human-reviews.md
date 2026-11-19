@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/human-reviews/)
 
-Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member+ reviews own/unassigned work; owner/admin assigns others
 
 Collect attributed human ratings on saved evaluation responses. A queue defines which results need which questions; it becomes complete only after the required answers and their native feedback are verified. Human ratings remain separate from the original automated scores.
 
@@ -67,7 +67,7 @@ For two results with three required questions, six latest answers must be comple
 
 ![Reusable Boolean review question at immutable version two.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-reviews-questions.png)
 
-Create next version saved v2. The earlier queue retained the original v1 wording in both actual UI and API readback.
+Create next version saves a new question version. Existing queues keep the wording of their selected version.
 
 Question versions let reviewers use the same rubric consistently. They do not cause existing completed answers to be rewritten.
 

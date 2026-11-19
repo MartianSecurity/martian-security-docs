@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
-Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member, admin, owner
 
 Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 
@@ -74,11 +74,11 @@ Choose a supported outcome and read the current allowance. Website sign-in is se
 3.  Click **Start assessment** once. In the saved trace, confirm **Website access**, **Effective target concurrency** and **Time limit**, along with the target and edited goals.
 4.  Inspect the actual execution result. The executor sends two neutral setup messages before probing, and those messages consume the run allowance. Successful sign-in and setup do not establish a completed assessment. Compare the [completed browser example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-completed-browser-assessment) with the [browser failure example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-a-browser-run-that-needs-attention).
 
-The executor also restricts page navigation. In a separate synthetic website check, ordinary sign-in succeeded, but a **New chat** control that submitted a full-page form was blocked and the run stopped with **chat not found**. A revised website using client-side reset and real asynchronous chat requests passed manual checks; its first native run stopped on a sign-in timeout. A later, distinct run against that unchanged revised website completed with **4 agent requests**, **12 model calls** and an **INCONCLUSIVE** outcome. This qualifies the observed browser execution path, not a security pass or every website integration. Keep the earlier failures and inspect their own setup evidence.
+The browser restricts page navigation. Use a **New chat** control that can start a fresh conversation in place. If the run stops with **chat not found**, check the saved setup evidence and the [browser target requirements](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md#browser-chat).
 
 ## Use an Assurance pack
 
-This section covers selecting a prepared pack, not provisioning one. Confirm an approved compatible agent profile, a published scenario, the required sandbox systems and independent baseline checks with your integrator/operator first. The setup and positive outcome walkthrough remain unqualified here.
+Before selecting a pack, confirm that your integrator or operator has prepared a compatible approved agent profile, a published scenario, the required sandbox systems and independent baseline checks.
 
 1.  Select **Assurance pack**, then the relevant workflow card. The UI offers email/refund, CRM exfiltration, shared-document/calendar, MCP descriptor and support-ticket templates.
 2.  Read its current catalogue state. **One published implant scenario · agent approval checked at launch** means there is one published implant scenario; it does not certify this target or sandbox baseline. **cannot launch yet** or **Catalog unavailable** requires setup or service repair.
@@ -93,6 +93,6 @@ The normal wizard selects scenario-backed packs. Arbitrary Wiki `scenario_id` se
 2.  Click **Start assessment** once. Acknowledgment creates a run code and opens **Run**. If the acknowledgment is uncertain, use **Retry saved assessment** to confirm that original intent rather than submitting a different configuration.
 3.  Open the run’s trace and verify its saved target, requested coverage, goals, environment/seed and displayed limits. Refresh and reopen it from **Assessments** to confirm persistence.
 
-For an MCP target, the approved entry tool and message argument come from its [connection setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md#register-the-target). A bounded anonymous, endpoint-only MCP example made real tool calls, but its lost admission acknowledgment required operator-assisted reconciliation of the original campaign. See the [MCP evidence example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md#read-an-mcp-endpoint-example) and [submission-failure recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures) before repeating work after an error.
+For an MCP target, the approved entry tool and message argument come from its [connection setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md#register-the-target). If acknowledgment is lost, follow [submission-failure recovery](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md#handle-submission-and-execution-failures) to check the original run before retrying.
 
 Continue with [progress and cancellation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/progress-and-cancellation.md) and [evidence and results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/assessments/evidence-and-results.md). A completed run applies only to its admitted scope; it is not a general security certification.

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/concepts/)
 
-Current beta console · All customer roles · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · All customer roles
 
 Use this guide to choose the right workflow and recognize its results. It is for every workspace role and the current Martian beta interface.
 

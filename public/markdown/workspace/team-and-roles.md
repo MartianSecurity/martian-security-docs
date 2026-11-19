@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/workspace/team-and-roles/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Give a teammate the appropriate access to your organization and verify that the invitation and membership are retained. Each email address belongs to one organization in the current product.
 
@@ -43,7 +43,7 @@ Choose the recipient and role before generating an invitation. No live invitatio
 
 ![Real member invitation acceptance form with empty password fields.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/workspace-accept-invitation.png)
 
-The signed-out recipient confirms Martian Docs Lab and the member role before joining. The private invitation URL is outside the captured page.
+Check the organization and role before accepting an invitation.
 
 4.  Confirm **You joined your organization**, **Your workspace is ready**, or **Your account is ready**, then **Continue to sign in** at the returned organization address.
 5.  Sign in with the invited email and chosen password. Open **Team** and verify the member/role after refresh. Account readiness and Evals readiness are separate: **Eval setup needs attention** requires operator completion even when sign-in succeeds.

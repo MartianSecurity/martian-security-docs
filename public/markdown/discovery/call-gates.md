@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/call-gates/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Block entry to one explicitly enrolled model or tool call in an instrumented customer application. Success requires an activated control, a real denied decision and the SDK’s acknowledgment that it stopped before calling the target. This is separate from the CI release gate and from network-containment previews.
 
@@ -127,7 +127,7 @@ The SDK refused entry and acknowledged the deny decision. The application journa
 
 A five-minute control was resumed; a separate one-minute control expired without Resume. New real reads succeeded after each ended, and both histories survived refresh.
 
-The recorded check exercised both paths separately: one five-minute control was explicitly resumed, and a second one-minute control expired without a resume action. Both refused call entry while active; a new real lookup succeeded after each ended. The history retains **resumed** and **expired** as different outcomes.
+Control history records **resumed** after a manual resume and **expired** after the configured duration elapses.
 
 Revoking the gate credential is not Resume: configured SDK calls fail closed. **Rotate credential** invalidates the old credential immediately and requires the replacement to be installed; the process must register again. Rotating/revoking the runtime reporting credential affects uploads, not this separate gate’s authority.
 
@@ -149,7 +149,7 @@ An empty **Deployment / environment / version** selector needs a [runtime report
 
 ![Kill switch with no deployment binding and an instruction to connect a runtime reporter under Sources.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-gate-no-bindings.png)
 
-With no deployment binding, assignment and call-block controls are not shown. The same empty selector remained after a full refresh; no assignment, credential or control was created.
+Select an enrolled deployment to see its assignment and call controls.
 
 -   Expired review: create a new review; its fingerprint/deadline cannot be reused.
 -   No live matching process: fix assignment, credentials and instrumentation before activation.

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/connections/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Connect a customer-controlled test agent so Martian can send an approved assessment to it. A successful setup ends with an **active** connection and **Ready for assessments**.
 
@@ -12,7 +12,7 @@ Connect a customer-controlled test agent so Martian can send an approved assessm
 
 -   Use an **Owner** or **Admin** account. Members can assess approved agents; they cannot approve a new connection.
 -   Have a staging endpoint you are authorized to test, its declared purpose, and any target credential. For hosted connections, use a public HTTPS address. An arbitrary model-provider URL needs an adapter for the contract below. Use the [HTTP adapter guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md) when your application does not yet implement that chat contract.
--   Use the current beta console; see the [source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). Protocol support differs by workflow:
+-   Check which protocols your workflow supports.
 
 | Connection | Red-team assessments | Dataset Evals |
 | --- | --- | --- |

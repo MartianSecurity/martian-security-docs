@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/projects/)
 
-Current beta console · owner/admin creates/archives; all customer roles browse · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner/admin creates/archives; all customer roles browse
 
 Use projects to group evaluation runs, traces, judge definitions and review work inside your organization. The project selector determines the context for the Evals page you are viewing. Published datasets are shared across the organization’s projects.
 
@@ -23,7 +23,7 @@ To verify run history in the new project, have an approved agent and a small pub
 
 ![Default project selected above the real retained run list.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-projects-selector.png)
 
-The Project control selects the evaluation context. Default shows the earlier runs; the separate Teaching regressions project retained EV-1005.
+Use the Project picker to switch between the Default project and a separate evaluation project.
 
 Runs and trace views are project scoped. Datasets remain available across projects in the same organization. Selecting another project does not copy datasets or give you access to another organization.
 
