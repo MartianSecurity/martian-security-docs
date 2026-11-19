@@ -2750,7 +2750,7 @@ Choose the collected workload and explicit deployment, environment and version b
 
 ## Integrate one real call
 
-[Download report\_once.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the intended enrolled workload, alongside your application’s dependencies. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
+[Download report\_once.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the enrolled workload’s Python environment and activate it before running the example. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
 
 Use a trusted module that exposes your existing real model/tool call as a sync or async function. The JSON input file supplies its keyword arguments. Do not put business requests at module import time. Run the helper only in the workload/version that the binding actually describes, using a legitimate authorized synthetic task.
 
@@ -2758,7 +2758,7 @@ Use a trusted module that exposes your existing real model/tool call as a sync o
 export MARTIAN_API_URL='https://YOUR-APPROVED-BACKEND-ORIGIN'
 export MARTIAN_RUNTIME_BINDING_ID='YOUR-BINDING-UUID'
 export MARTIAN_RUNTIME_TOKEN_FILE='/absolute/private/runtime-credential'
-.venv/bin/python report_once.py \
+python report_once.py \
   --callback-file ./my_tools.py --callback-function lookup_order \
   --input-file ./private-test-input.json \
   --kind tool --system support --name lookup_order
@@ -5006,7 +5006,7 @@ The commands and screenshots use the [0.3.1 package from PyPI](https://pypi.org/
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell, or WSL on Windows.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Nothing in this quickstart is sent to Martian or to a model provider. The example uses deterministic checks only, and the local Evals UI loads nothing from another host; its links to this documentation and to the SDK’s source open only when you select them.
 -   The example agent is a small program with one deliberate flaw, so the first run fails. It shows the wiring; it says nothing about your own agent.
 -   This tutorial uses an `evals-data` folder inside the extracted example. It holds inputs and replies in clear text. Keep it private when your cases hold anything sensitive.
@@ -5020,19 +5020,20 @@ python3 --version
 python3 -m zipfile -e sdk-local-evals.zip sdk-local-evals
 cd sdk-local-evals
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 export MARTIAN_EVALS_HOME="$PWD/evals-data"
 ```
 
-Check for Python 3.12 or newer and your installed SDK version. Run the rest of this tutorial in the same shell so the CLI and UI use the same data folder.
+Check for Python 3.12 or newer and your installed SDK version. Activating `.venv` makes `python` and `martian` available by name in this terminal. Keep using it for the tutorial. In a new terminal, return to the example folder and repeat the `source` and `export` lines so the UI sees the same runs.
 
 The folder holds the suite file `evals.yaml`, three cases in `cases.jsonl`, the example agent `agent.py`, and a corrected `agent-fixed.py` with its own suite, `evals-fixed.yaml`. Keep the files together.
 
 ## 2\. Run the suite
 
 ```sh
-.venv/bin/martian evals run evals.yaml
+martian evals run evals.yaml
 ```
 
 The suite calls the `answer` function in `agent.py` once for each case and applies two checks to every reply. `no_secret_leak` fails a reply that contains the case’s secret code. `no_email_address` fails a reply that contains an email address.
@@ -5059,7 +5060,7 @@ Log lines from the SDK’s built-in evaluation store, MLflow, appear above the t
 The run writes a `results` folder next to the suite file. Print its counts:
 
 ```sh
-.venv/bin/python -m json.tool results/summary.json
+python -m json.tool results/summary.json
 ```
 
 Expect `"passed": 2`, `"failed": 1` and `"errors": 0`, with the pass rate and its 95% interval overall and for each check. A **failure** means a reply did not meet a check. An **error** means the runner could not reach a verdict for a case.
@@ -5092,7 +5093,7 @@ The failing case’s record in `results/results.jsonl` names the failed check an
 `agent-fixed.py` refuses instead of printing the internal note. `evals-fixed.yaml` runs the same cases and checks against it and writes to `results-fixed`, so the first run’s results stay as they were:
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh
+martian evals run evals-fixed.yaml --fresh
 ```
 
 Expect **3 passed, 0 failed, 0 errors** and exit code **`0`**. The run is recorded as `evals-fixed-1`.
@@ -5107,7 +5108,7 @@ A plain rerun of a suite **resumes**: it skips a case that already has a verdict
 ## 5\. See the result in the local Evals UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 The command prints where the UI is and where its data lives, and opens your browser:
@@ -5148,8 +5149,8 @@ To see another run, use the same data folder and reload the page. To start an em
 ## Failures and limits
 
 -   **`python3 -m venv` fails:** your Python installation lacks virtual-environment support. Install it for your system’s Python, or use another Python 3.12 or newer, then repeat step 1.
--   **`.venv/bin/martian` is not found:** run the commands from the `sdk-local-evals` folder, where step 1 created `.venv`.
--   **`No such command 'ui'`** means you should check that you are using the `.venv` from step 1 and upgrade the package there.
+-   **`martian: command not found`** means the CLI is unavailable in this shell. From the example folder, run `source .venv/bin/activate` and then `martian --version`. If the CLI is still missing, run the install command in step 1.
+-   **`No such command 'ui'`** can mean an older SDK is active. Check `martian --version` and upgrade inside the activated environment.
 -   **Exit code `2` from `martian evals run`:** the suite file is invalid, a path is wrong, or a case has no verdict. The message names the field or file. [Failures and limits](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#failures-and-limits) lists the causes.
 -   **Exit code `2` from `martian ui`:** another program holds port 7600, which `martian ui` reports as `cannot listen on 127.0.0.1:7600`. Choose another port with `--port 7601`.
 -   **The UI shows no runs:** it reads one data folder, `~/.martian/evals` unless you set `--data-dir` or `MARTIAN_EVALS_HOME`. Run the suite and start the UI with the same setting, then reload the page.
@@ -5361,7 +5362,7 @@ Needs SDK 0.1.4 or later
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 -   You need log files Inspect wrote, `.eval` or `.json`, for evals that have **finished** and that were logged **with their samples**.
 -   You need no Martian account, API key or model key. The import reads files on your machine and writes to a local data folder (default `~/.martian/evals`); nothing is sent to Martian or to a model provider.
 -   The data folder holds each sample’s input, reply and scores in clear text. Keep it as private as the logs.
@@ -5373,18 +5374,19 @@ From the folder that holds Inspect’s `logs` folder, create an isolated environ
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has no importer.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 ## 2\. Import the logs
 
 Name the log files. A wildcard takes every `.eval` log in the folder:
 
 ```sh
-.venv/bin/martian evals import inspect logs/*.eval
+martian evals import inspect logs/*.eval
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. Then each log prints one line. For two logs of a three-sample task named `faq`:
@@ -5406,7 +5408,7 @@ The exit code is **`0`**. Each run is named `inspect-`, the task’s name and a 
 ## 3\. Open the runs
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
@@ -5492,7 +5494,7 @@ Needs SDK 0.1.4 or later
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 -   You need the store’s **database**: the SQLite file, usually `mlflow.db`, or the Postgres database your MLflow server writes to (its `--backend-store-uri`). The import does not read an MLflow server’s address (`http://...`) or MLflow’s file store (an `mlruns` folder with no database).
 -   The store must be at the **schema version MLflow 3.18.0 writes**, the MLflow the SDK installs. A store from an older MLflow is refused until you upgrade a copy ([step 3](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/mlflow.md#3-copy-and-upgrade-an-older-store)). A store from a newer MLflow is refused until an SDK release supports it.
 -   Traces whose spans MLflow kept as artifact files are read only when those files are on this machine.
@@ -5506,16 +5508,17 @@ In an empty folder, or the folder that holds `mlflow.db`, create an isolated env
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has no importer.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 For a store on Postgres, install the `postgres` extra instead of `evals`. It includes everything in `evals` and the Postgres driver:
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[postgres]'
+python -m pip install --upgrade 'martian-sdk[postgres]'
 ```
 
 ## 2\. Check the store with a dry run
@@ -5523,7 +5526,7 @@ For a store on Postgres, install the `postgres` extra instead of `evals`. It inc
 Point the importer at the database file. `--dry-run` checks the schema version, reads everything and reports what it would copy, without writing anything:
 
 ```sh
-.venv/bin/martian evals import mlflow mlflow.db --dry-run
+martian evals import mlflow mlflow.db --dry-run
 ```
 
 For a store with one experiment, `faq-bot`, that holds application traces, an evaluation dataset, two evaluation runs and one training run, it prints:
@@ -5547,7 +5550,7 @@ To copy some experiments only, add `--experiment` with an experiment’s name or
 For a Postgres store, keep the database URL in an environment variable, for example `MLFLOW_DB_URL`, set the way you handle other credentials, and pass it in quotes:
 
 ```sh
-.venv/bin/martian evals import mlflow "$MLFLOW_DB_URL" --dry-run
+martian evals import mlflow "$MLFLOW_DB_URL" --dry-run
 ```
 
 The URL has the form `postgresql://USER:PASSWORD@HOST:5432/DATABASE`. The importer prints it with the password replaced by `***`, and runs every transaction read-only.
@@ -5564,8 +5567,8 @@ Reading it would mean migrating it, and after a migration the older MLflow can n
 
 ```sh
 cp mlflow.db mlflow-copy.db
-.venv/bin/mlflow db upgrade sqlite:///mlflow-copy.db
-.venv/bin/martian evals import mlflow mlflow-copy.db --dry-run
+mlflow db upgrade sqlite:///mlflow-copy.db
+martian evals import mlflow mlflow-copy.db --dry-run
 ```
 
 The original `mlflow.db` is unchanged; use `mlflow-copy.db` in the next step. Do not upgrade the store your MLflow server uses unless that server already runs MLflow 3.18.0. For a Postgres store, make the copy with your usual backup and restore tools, then upgrade and import the copy.
@@ -5575,7 +5578,7 @@ The original `mlflow.db` is unchanged; use `mlflow-copy.db` in the next step. Do
 Run the same command without `--dry-run`:
 
 ```sh
-.venv/bin/martian evals import mlflow mlflow.db
+martian evals import mlflow mlflow.db
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. The report then ends with the counts it wrote:
@@ -5605,7 +5608,7 @@ To copy into a folder other than `~/.martian/evals`, add `--data-dir DIR`, or se
 ## 5\. Open the copy in the local Evals UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
@@ -5687,7 +5690,7 @@ Needs SDK 0.1.4 or later
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 -   To import results, you need the JSON file that `promptfoo eval -o results.json` writes. Other output formats, and results files from promptfoo releases that wrote the older results table, are refused.
 -   To convert a config, you need your `promptfooconfig.yaml` and a Python function that calls your agent.
 -   You need no Martian account or API key. A converted suite needs a model key only if it keeps an `llm-rubric` assertion as an LLM judge; that judge sends each case to the model provider you choose.
@@ -5700,11 +5703,12 @@ In your promptfoo project’s folder, create an isolated environment and install
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has neither command.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 The examples on this page use this config. It has one prompt, two versions of a bot as providers, and three tests:
 
@@ -5756,7 +5760,7 @@ tests:
 ## 2\. Import your results
 
 ```sh
-.venv/bin/martian evals import promptfoo results.json
+martian evals import promptfoo results.json
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. Then each provider in the file prints one line:
@@ -5776,7 +5780,7 @@ The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label
 ## 3\. Open the runs
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
@@ -5805,7 +5809,7 @@ def answer(prompt, vars):
 Convert the config into a new folder:
 
 ```sh
-.venv/bin/martian evals convert promptfoo promptfooconfig.yaml --target agent.py:answer --output suite
+martian evals convert promptfoo promptfooconfig.yaml --target agent.py:answer --output suite
 ```
 
 The command prints the suite files it wrote and everything it did not convert:
@@ -5834,8 +5838,8 @@ A suite file applies every check to every case, while promptfoo sets assertions 
 Run each suite file:
 
 ```sh
-.venv/bin/martian evals run suite/evals.yaml
-.venv/bin/martian evals run suite/evals-2.yaml
+martian evals run suite/evals.yaml
+martian evals run suite/evals-2.yaml
 ```
 
 The first suite prints this table and exits **`0`**:
@@ -5875,7 +5879,7 @@ Add it at the end of the `checks` list in `suite/evals-2.yaml`, at the same inde
 The file path is relative to the suite file. Run the suite again:
 
 ```sh
-.venv/bin/martian evals run suite/evals-2.yaml
+martian evals run suite/evals-2.yaml
 ```
 
 Because the checks changed, the earlier verdict is discarded and the case is graded again. The table gains a `short_reply` row with 1 passed. A Python check runs with your user’s full permissions, so review check files you did not write before you run them.
@@ -5969,7 +5973,7 @@ Both commands are in **martian-sdk 0.2.0**. Earlier releases answer `No such com
 
 ## Before you start
 
--   Install the SDK as in [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md).
+-   [Install the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#1-install-the-sdk) and keep its virtual environment active when you switch to your promptfoo project folder.
 -   Have your `promptfooconfig.yaml` with a `redteam` section, and to import results, the JSON file `promptfoo redteam run -o results.json` writes.
 -   You need no Martian account. Running the converted file needs your own model key.
 
@@ -5993,8 +5997,8 @@ Both commands are in **martian-sdk 0.2.0**. Earlier releases answer `No such com
 ## 1\. Convert the config
 
 ```sh
-.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --output converted
-.venv/bin/martian redteam validate converted/redteam.yaml
+martian redteam convert promptfoo promptfooconfig.yaml --output converted
+martian redteam validate converted/redteam.yaml
 ```
 
 The first command prints what converted and a list under **Not converted**, each item with its reason, and writes the same list as comments at the top of `converted/redteam.yaml`. For the SDK’s sample config, [`examples/promptfoo-redteam/promptfooconfig.yaml`](https://github.com/MartianSecurity/martian-redteam/blob/v0.2.0/examples/promptfoo-redteam/promptfooconfig.yaml), it prints:
@@ -6020,9 +6024,9 @@ What does not: plugins the converter does not map, such as `bola` (its reason sa
 A config without a `purpose` stops with exit `2` and asks for `--purpose`. A config whose strategies none convert, including promptfoo’s default (`basic`, `jailbreak:meta` and `jailbreak:composite`), stops with exit `2` and asks for `--attack`:
 
 ```sh
-.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --target agent.py:reply \
+martian redteam convert promptfoo promptfooconfig.yaml --target agent.py:reply \
   --attack PromptInjection --output local
-.venv/bin/martian redteam run local/redteam.yaml
+martian redteam run local/redteam.yaml
 ```
 
 `--target` replaces the config’s target with a Python function that takes the message and returns the reply. The converted file names the config’s `redteam.provider` as its attacker and judge, so `run` needs that model’s key, set as in [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#2-point-it-at-your-model).
@@ -6030,8 +6034,8 @@ A config without a `purpose` stops with exit `2` and asks for `--purpose`. A con
 ## 2\. Import the results
 
 ```sh
-.venv/bin/martian redteam import promptfoo results.json
-.venv/bin/martian ui
+martian redteam import promptfoo results.json
+martian ui
 ```
 
 For each provider in the file, the import prints one line, such as this for the SDK’s sample [`results.json`](https://github.com/MartianSecurity/martian-redteam/blob/v0.2.0/examples/promptfoo-redteam/results.json):
@@ -6984,12 +6988,13 @@ Run Evals tests and a redteam suite in one pytest execution to retain a Backend 
 
 ## 1\. Check the complete suite
 
-Run this guide from the **Git repository root prepared in the installation guide**, where the tutorial source has already been committed. Check the working directory before running commands:
+Run the local commands from the **Git repository root prepared in the installation guide**. Check the working directory and activate its virtual environment.
 
 ```sh
 pwd
 git rev-parse --show-toplevel
 git status --short
+source .venv/bin/activate
 ```
 
 The two directory paths should identify the same tutorial/customer repository. The complete runnable layout includes all of these files:
@@ -7018,8 +7023,8 @@ Obtain `MARTIAN_AGENT_ID` with the installation guide’s [agent-bound key looku
 ```sh
 git status --short
 export MARTIAN_EVALS_GIT_SHA="$(git rev-parse HEAD)"
-.venv/bin/martian --version
-.venv/bin/martian redteam validate redteam.yaml
+martian --version
+martian redteam validate redteam.yaml
 ```
 
 Commit any intended callback, tests or configuration changes before taking the revision. Expect an installed SDK release and valid configuration. Ensure `MARTIAN_EVALS_OFFLINE` and `MARTIAN_EVALS_ALLOW_PARTIAL` are not enabled for a required persisted gate. A free offline preview belongs to `martian evals run`; it cannot pass `martian ci`.
@@ -7028,7 +7033,7 @@ Commit any intended callback, tests or configuration changes before taking the r
 
 ```sh
 export MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow"
-.venv/bin/martian ci --evals-path tests/evals --redteam-config redteam.yaml \
+martian ci --evals-path tests/evals --redteam-config redteam.yaml \
   --require-export --output results
 ```
 
@@ -7125,7 +7130,7 @@ git commit -m 'Run Martian tutorial checks in CI'
 git status --short
 ```
 
-The workflow expects `demo_agent.py`, `pytest.ini`, `redteam.yaml` and `tests/evals/` in the checked-out repository root. Copying only the workflow into an otherwise empty repository cannot run this tutorial. Push the committed source and workflow to your chosen customer repository using your normal Git process. The example runs on `main` pushes or manual dispatch, installs the latest SDK release and uses SHA-pinned Actions. For repeatable production CI, pin your validated SDK in your project’s dependency lockfile and update it deliberately.
+The workflow expects `demo_agent.py`, `pytest.ini`, `redteam.yaml` and `tests/evals/` in the checked-out repository root. Copying only the workflow into an otherwise empty repository cannot run this tutorial. Push the committed source and workflow to your chosen customer repository using your normal Git process. The example runs on `main` pushes or manual dispatch, installs the latest SDK release and uses SHA-pinned Actions. It uses explicit `.venv/bin/` paths because GitHub Actions runs each step in a separate shell. For repeatable production CI, pin your validated SDK in your project’s dependency lockfile and update it deliberately.
 
 Configure the `agent-evals` environment and the trusted refs/protection policy available to your GitHub plan:
 
@@ -7258,7 +7263,7 @@ Use `martian.evals` to run your prediction function locally and record regressio
 
 ## Before you start
 
--   For the local preview, complete only [installation step 1](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#1-download-the-runnable-tutorial-and-install-the-release). Use **`martian-sdk[evals]`**, Python 3.12+, from the tutorial **Git repository root** prepared there.
+-   For the local preview, complete [installation step 1](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#1-download-the-runnable-tutorial-and-install-the-release). Run the commands from the tutorial repository with its [virtual environment active](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal).
 -   The included `demo_agent.answer` is a deterministic support program. It demonstrates wiring and repeatable assertions; it is not an LLM or evidence about a production agent.
 -   A local inline preview needs no platform account or model API key.
 -   Before hosted persistence, complete the remaining [SDK configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#2-open-api-key-management). It needs a compatible enabled organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID/tested Git revision. Commit the source before taking that revision. Dataset restrictions must permit the dataset below.
@@ -7269,7 +7274,7 @@ Use `martian.evals` to run your prediction function locally and record regressio
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
 MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-.venv/bin/martian evals run tests/evals/test_quality.py -q
+martian evals run tests/evals/test_quality.py -q
 ```
 
 Expect **one passing test with two evaluated records** and exit `0`. This runs the actual local MLflow evaluator, callback, traces and exact-match scorer. It uploads nothing to Backend.
@@ -7327,7 +7332,7 @@ The dataset is small enough to inspect completely. The callback answers these tw
 Set the connection and CI attribution from the installation guide. Ensure `MARTIAN_EVALS_OFFLINE` is not enabled for this command; the one-command preview above does not leave it set.
 
 ```sh
-.venv/bin/martian ci --evals-path tests/evals --require-export --output results/evals
+martian ci --evals-path tests/evals --require-export --output results/evals
 ```
 
 This executes the tutorial’s inline checks and published-dataset test in one session. The dataset test is complete and available as [test\_dataset.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/tests/evals/test_dataset.py):
@@ -7386,7 +7391,7 @@ Dataset tests are **client-executed/server-scored**. Inline scorer checks are **
 You can pass these scorers to `evaluate` next to `exact_match`. If you are using an older environment, update the SDK first:
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
+python -m pip install --upgrade 'martian-sdk[evals]'
 ```
 
 | Scorer | Use it for | Model call |
@@ -7435,7 +7440,7 @@ Replace `YOUR_JUDGE_MODEL` and set your provider’s key as described in [provid
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
 MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-.venv/bin/martian evals run tests/evals/test_safety.py -q
+martian evals run tests/evals/test_safety.py -q
 ```
 
 Expect one passing test. The judge sends the request, the reply and your rubric to the model provider you named; the deterministic check stays on your machine.
@@ -7493,7 +7498,7 @@ The 0.3.1 Evals Action reports in the job summary, and each invocation evaluates
 
 For the account-free [local Evals preview](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.
 
--   Use **Python 3.12 or newer**. The commands below use a macOS/Linux shell or WSL.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Install Git. The tutorial creates a local Git repository so a persisted CI result can name the exact committed code revision.
 -   An **owner or admin** creates API keys. Running the SDK uses that key’s permissions and restrictions; the key does not grant console administration.
 -   Your organization must have the compatible Backend services enabled. Hosted red teaming also needs enabled organization entitlement and configured generation/judging. Installing the package does not activate those services.
@@ -7513,13 +7518,14 @@ git add -- .gitignore README.md demo_agent.py pytest.ini \
 git commit -m 'Add Martian SDK tutorial'
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
 If Git asks for your identity, set `git config user.name 'Your Name'` and `git config user.email 'your-email@example.com'` **inside this tutorial repository**, using your own details, then repeat the commit. The extracted ZIP itself has no Git history; the commit above is what makes the later revision command meaningful.
 
-Run all remaining local commands from this repository’s root. Its relevant layout is:
+Run the remaining local commands from this repository’s root with `.venv` active. Its relevant layout is:
 
 ```text
 martian-sdk-tutorial/
@@ -7542,6 +7548,17 @@ martian-sdk-tutorial/
 The final command prints your installed SDK version. The `evals` extra adds the pytest/MLflow dependencies needed for evaluations and persisted CI; base redteam support is part of the distribution. The optional `mcp` extra is for customer-side MCP integration, not a requirement for this tutorial.
 
 Use a fresh environment when migrating from old code-bearing `martian-redteam` or `martian-evals-kit` installations. The modern package retains compatibility imports, but the examples here use `martian.evals` and `martian.redteam`.
+
+### Use the environment in a new terminal
+
+From your tutorial folder, activate the environment again.
+
+```sh
+source .venv/bin/activate
+martian --version
+```
+
+Activation adds `.venv/bin` to the front of this shell’s `PATH`. Commands such as `python -m pip` and `martian ui` then use that environment. [Python virtual environments](https://docs.python.org/3.12/library/venv.html#how-venvs-work)
 
 ## 2\. Open API-key management
 
@@ -7585,7 +7602,7 @@ Set the approved origin. For a local tutorial, this masked prompt reads the key 
 
 ```sh
 export MARTIAN_API_URL='https://YOUR-APPROVED-BACKEND-ORIGIN'
-export MARTIAN_API_TOKEN="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Martian API key: ")))"
+export MARTIAN_API_TOKEN="$(python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
 ```
 
 Replace the example origin with the value supplied for your workspace. HTTPS is required except loopback development. The SDK does not load `.env` automatically and does not use YAML to select a different platform origin.
@@ -7609,7 +7626,7 @@ Supply one `MartianConfig` or the complete URL/token pair. The default request t
 With the agent-bound key loaded, run the included [key\_agent\_id.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/key_agent_id.py) helper:
 
 ```sh
-MARTIAN_AGENT_ID="$(.venv/bin/python key_agent_id.py)" && export MARTIAN_AGENT_ID
+MARTIAN_AGENT_ID="$(python key_agent_id.py)" && export MARTIAN_AGENT_ID
 ```
 
 The helper performs the supported, read-only **`GET /v1/sdk/capabilities`** operation using your platform key and reads its `agent_id` field. Backend validates organization ownership when an agent-bound key is issued. The helper prints only that exact UUID on success; it never prints the key and never executes a target or model.
@@ -7623,7 +7640,7 @@ Standalone dataset reads and standalone redteam need no CI agent UUID or Git rev
 ## 6\. Validate and pin the tested revision
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
+martian redteam validate redteam.yaml
 ```
 
 Exit `0` means the YAML, catalog choices and callback reference are valid. Validation does not call a model or invoke the target callback. It does not prove platform authentication or hosted readiness.
@@ -7677,7 +7694,7 @@ The SDK saves local runs to a data folder you can open in the [local Evals UI](h
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and install **`martian-sdk[evals]`**. The commands below use macOS/Linux shell paths.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   You do **not** need a Martian account, API key or Backend origin. The command sends nothing to Martian.
 -   Deterministic checks need no model. An **LLM judge** needs a key for a model provider you choose; your test inputs, the agent’s replies and your criteria are sent to that provider.
 -   The example agent is a small deterministic program with one deliberate flaw, so the first run shows a failure. It demonstrates the wiring; it is not evidence about a production agent.
@@ -7705,13 +7722,13 @@ The included README has the same quick-start commands. Keep all the files togeth
 From that folder, install the SDK into an isolated environment:
 
 ```sh
-python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The last command prints your installed SDK version. See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions.
+The last command prints your installed SDK version. Keep this environment active for the commands below. [Activate it again in a new terminal](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions.
 
 ## 2\. Read the suite file
 
@@ -7748,7 +7765,7 @@ If your agent already exposes an HTTP endpoint, [test it with a URL target](http
 ## 3\. Run the suite
 
 ```sh
-.venv/bin/martian evals run evals.yaml
+martian evals run evals.yaml
 ```
 
 Expect this summary and exit code **`1`**:
@@ -7810,7 +7827,7 @@ The `fingerprint` identifies what produced the verdict: the case, the checks, th
 Inspect the summary directly from your terminal:
 
 ```sh
-.venv/bin/python -m json.tool results/summary.json
+python -m json.tool results/summary.json
 ```
 
 The important fields are `passed: 2`, `failed: 1` and `errors: 0`. A **failure** means a reply did not meet your check. An **error** means the runner could not obtain a verdict. Neither produces a passing exit code.
@@ -7829,7 +7846,7 @@ A plain rerun **resumes**: it skips a case that already has a verdict, but only 
 The included [evals-fixed.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals-fixed.yaml) selects `agent-fixed.py` and writes to `results-fixed`, preserving the first run’s evidence:
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh
+martian evals run evals-fixed.yaml --fresh
 ```
 
 Expect **3 passed, 0 failed, 0 errors** and exit code **`0`**. Compare `results/summary.json` with `results-fixed/summary.json`. The same inputs and checks now pass because the agent no longer prints the synthetic internal note.
@@ -7890,7 +7907,7 @@ Set that region’s endpoint and enter your Bedrock key through a masked prompt:
 
 ```sh
 export OPENAI_API_BASE='https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1'
-export OPENAI_API_KEY="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Bedrock API key: "))')"
+export OPENAI_API_KEY="$(python -c 'import getpass; print(getpass.getpass("Bedrock API key: "))')"
 ```
 
 Use an enabled model and matching region for your own AWS account. The masked prompt keeps the key itself out of shell history.
@@ -7898,7 +7915,7 @@ Use an enabled model and matching region for your own AWS account. The masked pr
 3.  Run it:
 
 ```sh
-.venv/bin/martian evals run evals-with-judge.yaml
+martian evals run evals-with-judge.yaml
 ```
 
 This suite still selects the **original `agent.py`**. Step 5 used a separate corrected file, so expect **2 passed, 1 failed, 0 errors**, exit **`1`**: `prompt-injection` fails both the rubric and the text check. The judge’s reason for each case is in `results-judge/results.jsonl`.
@@ -7918,7 +7935,7 @@ For example, the real GLM 5 run returned this failing check (the other fields ar
 To judge the corrected agent, change `target.file` in `evals-with-judge.yaml` to `agent-fixed.py`, then run:
 
 ```sh
-.venv/bin/martian evals run evals-with-judge.yaml --fresh --output results-judge-fixed
+martian evals run evals-with-judge.yaml --fresh --output results-judge-fixed
 ```
 
 Expect **3 passed**, exit **`0`**, if the judge follows the supplied rubric. A judge can disagree; inspect its reason rather than changing the expected outcome just to get a pass.
@@ -7961,7 +7978,7 @@ A judge is graded on what the reply delivers, not on how it opens: a refusal doe
 The deterministic teaching suite needs no secrets. On GitHub, the [read-only pull-request workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests) runs the suite, writes a job summary and retains selected result files. Run any suite that needs target or judge credentials in a separate trusted job.
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh --output eval-results
+martian evals run evals-fixed.yaml --fresh --output eval-results
 ```
 
 -   Fail the job on a non-zero exit code.
@@ -7992,29 +8009,23 @@ The fresh strict SDK session retained both expected support answers with two pas
 
 Use a URL target when your agent already exposes an HTTP endpoint. The runner sends each case to that address and grades the reply.
 
-1.  Upgrade and check the installed version.
-
-```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-```
-
-2.  Save these two files into the same folder as the other examples:
+1.  Save these two files into the same folder as the other examples.
 
 -   [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py): serves the example agent at `http://127.0.0.1:8765/chat`.
 -   [evals-url.yaml](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/evals-url.yaml): the same cases and checks, sent to that address.
 
-3.  Start the example server and leave it running:
+2.  With the SDK environment active, start the example server and leave it running.
 
 ```sh
-python3 agent-server.py
+python agent-server.py
 ```
 
-4.  In a **second terminal**, from the same folder, set the example token and run the suite:
+3.  In a **second terminal**, return to the example folder and activate the environment. Set the example token and run the suite.
 
 ```sh
+source .venv/bin/activate
 export EXAMPLE_AGENT_KEY='demo-token'
-.venv/bin/martian evals run evals-url.yaml
+martian evals run evals-url.yaml
 ```
 
 Expect the same verdicts as step 3, because it is the same flawed agent, and exit code **`1`**:
@@ -8145,7 +8156,7 @@ The Community edition groups your local results under **Evals** and **Red Team**
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell, or WSL on Windows.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Install the current **`martian-sdk[evals]`** package. The Runs, case inspector and Compare examples in the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
 -   You need no Martian account, API key or model key. A run you start in the UI calls the agent you define; a model judge calls the provider you choose, with your own key.
 -   The UI reads one data folder, `~/.martian/evals` unless you choose another. It holds your inputs and replies in clear text, so keep it as private as the data in your cases.
@@ -8153,15 +8164,14 @@ The Community edition groups your local results under **Evals** and **Red Team**
 
 ## 1\. Install and start the UI
 
-In the folder where the quickstart created `.venv`, or in a new virtual environment:
+From the [quickstart folder](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md#1-get-the-example-and-install-the-sdk), activate its environment and open the folder containing its runs.
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian ui --data-dir ./evals-data
+source .venv/bin/activate
+martian ui --data-dir ./evals-data
 ```
 
-Use the folder from your Evals runs. The quickstart uses `./evals-data`. The last command prints the local address and data path, then opens your browser.
+If you already have the SDK active, `martian ui` opens the data folder set by `MARTIAN_EVALS_HOME`, or `~/.martian/evals` by default. Use `--data-dir` to select another folder. The command prints the local address and data path, then opens your browser.
 
 ```text
 Martian Evals is at http://127.0.0.1:7600/ (data in /path/to/evals-data). Press Ctrl+C to stop.
@@ -8255,10 +8265,11 @@ By default one run and one scoring job may be in progress at once. A launch beyo
 
 The UI can start a run against an HTTP endpoint or a model that you define. This walkthrough uses the example agent from the [suite-file guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#8-test-an-agent-behind-an-http-endpoint), which answers on your machine and needs no model.
 
-1.  Save [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py) next to `agent.py` from the quickstart example. In a second terminal, start it and leave it running:
+1.  Save [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py) next to `agent.py` from the quickstart example. In a second terminal in that folder, start it and leave it running.
 
 ```sh
-python3 agent-server.py
+source .venv/bin/activate
+python agent-server.py
 ```
 
 2.  In the UI, open **Datasets** and select **New dataset**. Name it `support-faq` and select **Create draft**. In the draft, select **Import file** and choose [support-faq.jsonl](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/support-faq.jsonl), which holds three records:
@@ -8330,9 +8341,9 @@ The data folder holds everything the UI shows:
 2.  Export into a new folder and restore into an empty data directory. Adjust `./evals-data` to match your source folder.
 
 ```sh
-.venv/bin/martian evals export ./evals-export --data-dir ./evals-data
-.venv/bin/martian evals import martian ./evals-export --data-dir ./evals-restored
-.venv/bin/martian ui --data-dir ./evals-restored --port 7601
+martian evals export ./evals-export --data-dir ./evals-data
+martian evals import martian ./evals-export --data-dir ./evals-restored
+martian ui --data-dir ./evals-restored --port 7601
 ```
 
 3.  Check that the export has a `manifest.json` and JSONL files. In the restored UI, open **Evals → Runs** and check the run counts against the original. Select **Inspect** on a result to read its saved verdict and reply.
@@ -8376,8 +8387,8 @@ The container’s server listens on the container’s interfaces so that Docker 
 
 ```sh
 export MARTIAN_API_URL='https://YOUR-MARTIAN-SERVER'
-export MARTIAN_API_TOKEN="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
-.venv/bin/martian evals push evals-1 --data-dir ./evals-data
+export MARTIAN_API_TOKEN="$(python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
+martian evals push evals-1 --data-dir ./evals-data
 ```
 
 Start with one run identified by its code or ID. Omitting the identifier sends every finished run in the data folder. The push includes case results, scores, finished scoring jobs and traces. SDK 0.3.1 removes private transport settings and masks known credential values. The payload can still include your inputs and replies, so check who can access the destination. Reviews, artifacts and dataset versions stay on your machine.
@@ -8394,7 +8405,7 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 
 ## Failures and limits
 
--   **`No such command 'ui'`** means you should check that you are using the intended virtual environment and upgrade the package there.
+-   **`martian: command not found`** means you should activate the environment where you installed the SDK. For **`No such command 'ui'`**, check `martian --version` and upgrade that environment if needed.
 -   **Exit code `2` with `cannot listen on 127.0.0.1:7600: Address already in use`:** another program holds the port. Choose another with `--port 7601`.
 -   **Exit code `2` with `index.html is missing`:** the folder named by `--ui-dir` holds no built UI. Leave the option out to use the UI inside the package.
 -   **The UI shows no runs:** it reads one data folder. Run the suite and start the UI with the same `--data-dir` or `MARTIAN_EVALS_HOME`, then reload the page.
@@ -8425,6 +8436,7 @@ Run one adversarial probe against a local callback using platform-hosted generat
 ## Before you start
 
 -   Complete [installation and configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) using **`martian-sdk[evals]`**, Python 3.12+, and the downloadable tutorial files.
+-   Run the local commands with the tutorial’s [virtual environment active](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal).
 -   An owner/admin must issue a key with **Run hosted redteam generation and judging** (`redteam:run`). The organization must be enabled and configured for hosted redteam. Existing Evals keys do not gain this permission automatically.
 -   Running a probe can incur platform generation/judging costs. Keep the tutorial’s single vulnerability type, single attack, one repetition and concurrency of one.
 -   The included target is a deterministic support callback. It verifies the integration; a passing result does not qualify a production LLM, connected tools or business outcomes.
@@ -8472,7 +8484,7 @@ This configuration plans one **PromptLeakage / system\_prompt** case using **Pro
 ## 2\. Validate without a paid call
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
+martian redteam validate redteam.yaml
 ```
 
 Expect exit `0`. Validation checks configuration, catalog choices and the callback reference without invoking the target callback or model. It does not establish authentication, entitlement or model readiness. Only validate Python callback code you trust; keep secrets out of unreviewed code and CI jobs.
@@ -8484,7 +8496,7 @@ If the catalog name, type, callback file or options are invalid, fix the configu
 With `MARTIAN_API_URL` and `MARTIAN_API_TOKEN` set:
 
 ```sh
-.venv/bin/martian redteam run redteam.yaml -o results/redteam
+martian redteam run redteam.yaml -o results/redteam
 ```
 
 The SDK requests generation/judging through Backend and invokes the callback locally. Expect:
@@ -8527,7 +8539,7 @@ if __name__ == "__main__":
 ```
 
 ```sh
-.venv/bin/python redteam.py
+python redteam.py
 ```
 
 Inside an existing async application, `await a_red_team(...)`; do not nest `asyncio.run` inside its event loop. `red_team(...)` is the synchronous wrapper. Calling `a_red_team` returns assessment data; saving it and applying `evaluate_gate` makes the policy decision explicit.
@@ -8555,7 +8567,7 @@ Async callback cancellation is cooperative. Synchronous callbacks use bounded wo
 Standalone `martian redteam run` retains a local report. To record a new redteam-only session in Backend, prepare the committed tutorial/customer Git repository and CI scopes, then use the installation guide’s [agent-bound key lookup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#5-resolve-the-exact-ci-agent-uuid) to obtain the exact agent UUID and set the tested revision. From that repository root, run:
 
 ```sh
-.venv/bin/martian ci --redteam-config redteam.yaml \
+martian ci --redteam-config redteam.yaml \
   --require-export --output results/redteam-ci
 ```
 
@@ -8593,7 +8605,7 @@ Version 2 run files, `martian redteam run` with your own model and the Red Team 
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 -   Have a model you can call with your own key: OpenAI, or any OpenAI-compatible endpoint, such as a local LiteLLM, vLLM or Ollama server. It writes the attacks and judges the replies.
 -   Leave `MARTIAN_API_URL` and `MARTIAN_API_TOKEN` unset. With them and a model both set, a run stops instead of choosing where attacks are generated.
 -   Attack only an agent you own or may test.
@@ -8602,12 +8614,13 @@ Version 2 run files, `martian redteam run` with your own model and the Red Team 
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian redteam --help
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+martian redteam --help
 ```
 
-`martian --version` prints `0.2.0` or later, and the help lists `run`, `report`, `compare`, `pin`, `import`, `convert` and `garak`.
+`martian --version` prints `0.2.0` or later, and the help lists `run`, `report`, `compare`, `pin`, `import`, `convert` and `garak`. Keep this environment active for the commands below.
 
 ## 2\. Point it at your model
 
@@ -8663,8 +8676,8 @@ Your own target can also be an HTTP endpoint or an MCP server. `martian redteam 
 ## 4\. Run it
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
-.venv/bin/martian redteam run redteam.yaml -f html
+martian redteam validate redteam.yaml
+martian redteam run redteam.yaml -f html
 ```
 
 `validate` checks the file and calls nothing; expect `OK: version 2, 2 vulnerabilities, 2 attacks, function target` and exit `0`. `run` has your model write each attack, sends it to `reply`, and decides it with the checks. It prints a table of attempts by outcome and writes to `results/`:
@@ -8693,7 +8706,7 @@ If the run stops with exit `2` and says a Martian connection is also configured 
 ## 5\. Read the report in the UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 It opens `http://127.0.0.1:7600` on your machine, with no login. The sidebar’s **Red Team** group has four pages:
@@ -8744,9 +8757,9 @@ A local run connects to the model it names and to your agent, and to nothing els
 A pin keeps a confirmed finding’s attack and the reply it hit, and replays it with no model. It needs the attack’s text, so make the run with `MARTIAN_REPORT_INCLUDE_CONTENT=1`:
 
 ```sh
-MARTIAN_REPORT_INCLUDE_CONTENT=1 .venv/bin/martian redteam run redteam.yaml
-.venv/bin/martian redteam pin add RUN_ID
-.venv/bin/martian redteam pin run redteam.yaml
+MARTIAN_REPORT_INCLUDE_CONTENT=1 martian redteam run redteam.yaml
+martian redteam pin add RUN_ID
+martian redteam pin run redteam.yaml
 ```
 
 `pin add` writes one file per confirmed finding to `pins/`, with the attack and the reply in clear text: review it before you commit it. From a run without content, it exits `2` and asks for the variable. `pin run` sends each pinned attack to your agent again, and exits `1` while a finding still reproduces and `0` once none does, as after you fix `agent.py`.

@@ -27,7 +27,7 @@ The 0.3.1 Evals Action reports in the job summary, and each invocation evaluates
 
 For the account-free [local Evals preview](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.
 
--   Use **Python 3.12 or newer**. The commands below use a macOS/Linux shell or WSL.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Install Git. The tutorial creates a local Git repository so a persisted CI result can name the exact committed code revision.
 -   An **owner or admin** creates API keys. Running the SDK uses that key’s permissions and restrictions; the key does not grant console administration.
 -   Your organization must have the compatible Backend services enabled. Hosted red teaming also needs enabled organization entitlement and configured generation/judging. Installing the package does not activate those services.
@@ -47,13 +47,14 @@ git add -- .gitignore README.md demo_agent.py pytest.ini \
 git commit -m 'Add Martian SDK tutorial'
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
 If Git asks for your identity, set `git config user.name 'Your Name'` and `git config user.email 'your-email@example.com'` **inside this tutorial repository**, using your own details, then repeat the commit. The extracted ZIP itself has no Git history; the commit above is what makes the later revision command meaningful.
 
-Run all remaining local commands from this repository’s root. Its relevant layout is:
+Run the remaining local commands from this repository’s root with `.venv` active. Its relevant layout is:
 
 ```text
 martian-sdk-tutorial/
@@ -76,6 +77,17 @@ martian-sdk-tutorial/
 The final command prints your installed SDK version. The `evals` extra adds the pytest/MLflow dependencies needed for evaluations and persisted CI; base redteam support is part of the distribution. The optional `mcp` extra is for customer-side MCP integration, not a requirement for this tutorial.
 
 Use a fresh environment when migrating from old code-bearing `martian-redteam` or `martian-evals-kit` installations. The modern package retains compatibility imports, but the examples here use `martian.evals` and `martian.redteam`.
+
+### Use the environment in a new terminal
+
+From your tutorial folder, activate the environment again.
+
+```sh
+source .venv/bin/activate
+martian --version
+```
+
+Activation adds `.venv/bin` to the front of this shell’s `PATH`. Commands such as `python -m pip` and `martian ui` then use that environment. [Python virtual environments](https://docs.python.org/3.12/library/venv.html#how-venvs-work)
 
 ## 2\. Open API-key management
 
@@ -119,7 +131,7 @@ Set the approved origin. For a local tutorial, this masked prompt reads the key 
 
 ```sh
 export MARTIAN_API_URL='https://YOUR-APPROVED-BACKEND-ORIGIN'
-export MARTIAN_API_TOKEN="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Martian API key: ")))"
+export MARTIAN_API_TOKEN="$(python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
 ```
 
 Replace the example origin with the value supplied for your workspace. HTTPS is required except loopback development. The SDK does not load `.env` automatically and does not use YAML to select a different platform origin.
@@ -143,7 +155,7 @@ Supply one `MartianConfig` or the complete URL/token pair. The default request t
 With the agent-bound key loaded, run the included [key\_agent\_id.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/key_agent_id.py) helper:
 
 ```sh
-MARTIAN_AGENT_ID="$(.venv/bin/python key_agent_id.py)" && export MARTIAN_AGENT_ID
+MARTIAN_AGENT_ID="$(python key_agent_id.py)" && export MARTIAN_AGENT_ID
 ```
 
 The helper performs the supported, read-only **`GET /v1/sdk/capabilities`** operation using your platform key and reads its `agent_id` field. Backend validates organization ownership when an agent-bound key is issued. The helper prints only that exact UUID on success; it never prints the key and never executes a target or model.
@@ -157,7 +169,7 @@ Standalone dataset reads and standalone redteam need no CI agent UUID or Git rev
 ## 6\. Validate and pin the tested revision
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
+martian redteam validate redteam.yaml
 ```
 
 Exit `0` means the YAML, catalog choices and callback reference are valid. Validation does not call a model or invoke the target callback. It does not prove platform authentication or hosted readiness.

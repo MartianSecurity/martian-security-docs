@@ -18,12 +18,13 @@ Run Evals tests and a redteam suite in one pytest execution to retain a Backend 
 
 ## 1\. Check the complete suite
 
-Run this guide from the **Git repository root prepared in the installation guide**, where the tutorial source has already been committed. Check the working directory before running commands:
+Run the local commands from the **Git repository root prepared in the installation guide**. Check the working directory and activate its virtual environment.
 
 ```sh
 pwd
 git rev-parse --show-toplevel
 git status --short
+source .venv/bin/activate
 ```
 
 The two directory paths should identify the same tutorial/customer repository. The complete runnable layout includes all of these files:
@@ -52,8 +53,8 @@ Obtain `MARTIAN_AGENT_ID` with the installation guide’s [agent-bound key looku
 ```sh
 git status --short
 export MARTIAN_EVALS_GIT_SHA="$(git rev-parse HEAD)"
-.venv/bin/martian --version
-.venv/bin/martian redteam validate redteam.yaml
+martian --version
+martian redteam validate redteam.yaml
 ```
 
 Commit any intended callback, tests or configuration changes before taking the revision. Expect an installed SDK release and valid configuration. Ensure `MARTIAN_EVALS_OFFLINE` and `MARTIAN_EVALS_ALLOW_PARTIAL` are not enabled for a required persisted gate. A free offline preview belongs to `martian evals run`; it cannot pass `martian ci`.
@@ -62,7 +63,7 @@ Commit any intended callback, tests or configuration changes before taking the r
 
 ```sh
 export MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow"
-.venv/bin/martian ci --evals-path tests/evals --redteam-config redteam.yaml \
+martian ci --evals-path tests/evals --redteam-config redteam.yaml \
   --require-export --output results
 ```
 
@@ -159,7 +160,7 @@ git commit -m 'Run Martian tutorial checks in CI'
 git status --short
 ```
 
-The workflow expects `demo_agent.py`, `pytest.ini`, `redteam.yaml` and `tests/evals/` in the checked-out repository root. Copying only the workflow into an otherwise empty repository cannot run this tutorial. Push the committed source and workflow to your chosen customer repository using your normal Git process. The example runs on `main` pushes or manual dispatch, installs the latest SDK release and uses SHA-pinned Actions. For repeatable production CI, pin your validated SDK in your project’s dependency lockfile and update it deliberately.
+The workflow expects `demo_agent.py`, `pytest.ini`, `redteam.yaml` and `tests/evals/` in the checked-out repository root. Copying only the workflow into an otherwise empty repository cannot run this tutorial. Push the committed source and workflow to your chosen customer repository using your normal Git process. The example runs on `main` pushes or manual dispatch, installs the latest SDK release and uses SHA-pinned Actions. It uses explicit `.venv/bin/` paths because GitHub Actions runs each step in a separate shell. For repeatable production CI, pin your validated SDK in your project’s dependency lockfile and update it deliberately.
 
 Configure the `agent-evals` environment and the trusted refs/protection policy available to your GitHub plan:
 

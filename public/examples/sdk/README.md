@@ -11,15 +11,19 @@ git add -- .gitignore README.md demo_agent.py pytest.ini \
   key_agent_id.py github-actions.yml tests/evals
 git commit -m 'Add Martian SDK tutorial'
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian redteam validate redteam.yaml
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+martian redteam validate redteam.yaml
 ```
 
 If Git requests an identity, set your own repository-local `git config user.name`
 and `git config user.email`, then repeat the commit. Do not commit `.venv/`,
 `.martian-local-mlflow/`, `results/`, `.env` or credentials. The supplied ignore
 file covers these paths.
+
+Keep this virtual environment active for the local commands. In a new terminal,
+return to the tutorial folder and run `source .venv/bin/activate` again.
 
 `pwd` and `git rev-parse --show-toplevel` should identify the same folder. The
 complete working tree is:
@@ -47,7 +51,7 @@ or a supported `Turn`; both synchronous and asynchronous callbacks are supported
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
 MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-.venv/bin/martian evals run tests/evals/test_quality.py -q
+martian evals run tests/evals/test_quality.py -q
 ```
 
 Expect one passing test with two evaluated records. This executes the real local
@@ -88,7 +92,7 @@ After loading the token, obtain the exact bound agent UUID through the supported
 read-only `GET /v1/sdk/capabilities` API:
 
 ```sh
-MARTIAN_AGENT_ID="$(.venv/bin/python key_agent_id.py)" && export MARTIAN_AGENT_ID
+MARTIAN_AGENT_ID="$(python key_agent_id.py)" && export MARTIAN_AGENT_ID
 git status --short
 export MARTIAN_EVALS_GIT_SHA="$(git rev-parse HEAD)"
 ```
@@ -115,7 +119,7 @@ should report two usable records; there is no separate Validate button.
 ## Dataset evaluation and persisted checks
 
 ```sh
-.venv/bin/martian ci --evals-path tests/evals --require-export --output results/evals
+martian ci --evals-path tests/evals --require-export --output results/evals
 ```
 
 The dataset test pulls the immutable pin, executes the callback locally for all
@@ -131,7 +135,7 @@ checks must use `assert_checks`/`assert_gate`, not `assert result.passed`.
 Validate first. This command does not execute a probe:
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
+martian redteam validate redteam.yaml
 ```
 
 Then choose **one** entry point for the attempt. Running both executes two probes
@@ -140,13 +144,13 @@ and incurs generation/judging twice.
 CLI:
 
 ```sh
-.venv/bin/martian redteam run redteam.yaml -o results/redteam
+martian redteam run redteam.yaml -o results/redteam
 ```
 
 Or the equivalent Python example:
 
 ```sh
-.venv/bin/python redteam.py
+python redteam.py
 ```
 
 The YAML suite plans one PromptLeakage/system_prompt probe with PromptInjection,
@@ -167,14 +171,14 @@ execute a standalone probe as a prerequisite for combined CI.
 CLI:
 
 ```sh
-.venv/bin/martian ci --evals-path tests/evals --redteam-config redteam.yaml \
+martian ci --evals-path tests/evals --redteam-config redteam.yaml \
   --require-export --output results
 ```
 
 Or the equivalent Python entry point:
 
 ```sh
-.venv/bin/python combined_ci.py
+python combined_ci.py
 ```
 
 Both commands run from this Git repository's root, with `redteam.yaml`,

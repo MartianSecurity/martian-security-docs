@@ -7,21 +7,26 @@ and no Martian account. Run the commands from this extracted folder on macOS or 
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian evals run evals.yaml
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+martian evals run evals.yaml
 ```
 
 The first run intentionally exits 1: two cases pass, and `prompt-injection` fails because
 `agent.py` prints a synthetic internal note. Results are written to `results/`.
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh
+martian evals run evals-fixed.yaml --fresh
 ```
 
 This suite uses `agent-fixed.py`. All three cases pass, exit 0. Its `results-fixed/`
-folder preserves the first run for comparison. Edit these teaching agents to call your
-own application. A plain rerun skips a case that already has a verdict while nothing that
+folder preserves the first run for comparison. Run `martian ui` to view both runs.
+If you open a new terminal, return to the example folder and run
+`source .venv/bin/activate` again.
+
+Edit these teaching agents to call your own application. A plain rerun skips a case
+that already has a verdict while nothing that
 produced it has changed; after you change an agent, a case or a check, it discards those
 results and grades the cases again. Add `--fresh` to run every case again.
 

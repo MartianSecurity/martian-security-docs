@@ -11,6 +11,7 @@ Run one adversarial probe against a local callback using platform-hosted generat
 ## Before you start
 
 -   Complete [installation and configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) using **`martian-sdk[evals]`**, Python 3.12+, and the downloadable tutorial files.
+-   Run the local commands with the tutorial’s [virtual environment active](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal).
 -   An owner/admin must issue a key with **Run hosted redteam generation and judging** (`redteam:run`). The organization must be enabled and configured for hosted redteam. Existing Evals keys do not gain this permission automatically.
 -   Running a probe can incur platform generation/judging costs. Keep the tutorial’s single vulnerability type, single attack, one repetition and concurrency of one.
 -   The included target is a deterministic support callback. It verifies the integration; a passing result does not qualify a production LLM, connected tools or business outcomes.
@@ -58,7 +59,7 @@ This configuration plans one **PromptLeakage / system\_prompt** case using **Pro
 ## 2\. Validate without a paid call
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
+martian redteam validate redteam.yaml
 ```
 
 Expect exit `0`. Validation checks configuration, catalog choices and the callback reference without invoking the target callback or model. It does not establish authentication, entitlement or model readiness. Only validate Python callback code you trust; keep secrets out of unreviewed code and CI jobs.
@@ -70,7 +71,7 @@ If the catalog name, type, callback file or options are invalid, fix the configu
 With `MARTIAN_API_URL` and `MARTIAN_API_TOKEN` set:
 
 ```sh
-.venv/bin/martian redteam run redteam.yaml -o results/redteam
+martian redteam run redteam.yaml -o results/redteam
 ```
 
 The SDK requests generation/judging through Backend and invokes the callback locally. Expect:
@@ -113,7 +114,7 @@ if __name__ == "__main__":
 ```
 
 ```sh
-.venv/bin/python redteam.py
+python redteam.py
 ```
 
 Inside an existing async application, `await a_red_team(...)`; do not nest `asyncio.run` inside its event loop. `red_team(...)` is the synchronous wrapper. Calling `a_red_team` returns assessment data; saving it and applying `evaluate_gate` makes the policy decision explicit.
@@ -141,7 +142,7 @@ Async callback cancellation is cooperative. Synchronous callbacks use bounded wo
 Standalone `martian redteam run` retains a local report. To record a new redteam-only session in Backend, prepare the committed tutorial/customer Git repository and CI scopes, then use the installation guide’s [agent-bound key lookup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#5-resolve-the-exact-ci-agent-uuid) to obtain the exact agent UUID and set the tested revision. From that repository root, run:
 
 ```sh
-.venv/bin/martian ci --redteam-config redteam.yaml \
+martian ci --redteam-config redteam.yaml \
   --require-export --output results/redteam-ci
 ```
 

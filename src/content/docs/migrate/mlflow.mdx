@@ -20,7 +20,7 @@ The import is a **copy**. It reads the store over a connection that cannot write
 
 ## Before you start
 
-- Use **Python 3.12 or newer** and a macOS or Linux shell.
+- Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 - You need the store's **database**: the SQLite file, usually `mlflow.db`, or the Postgres database your MLflow server writes to (its `--backend-store-uri`). The import does not read an MLflow server's address (`http://...`) or MLflow's file store (an `mlruns` folder with no database).
 - The store must be at the **schema version MLflow 3.18.0 writes**, the MLflow the SDK installs. A store from an older MLflow is refused until you upgrade a copy ([step 3](#3-copy-and-upgrade-an-older-store)). A store from a newer MLflow is refused until an SDK release supports it.
 - Traces whose spans MLflow kept as artifact files are read only when those files are on this machine.
@@ -34,16 +34,17 @@ In an empty folder, or the folder that holds `mlflow.db`, create an isolated env
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has no importer.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 For a store on Postgres, install the `postgres` extra instead of `evals`. It includes everything in `evals` and the Postgres driver:
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[postgres]'
+python -m pip install --upgrade 'martian-sdk[postgres]'
 ```
 
 ## 2. Check the store with a dry run
@@ -51,7 +52,7 @@ For a store on Postgres, install the `postgres` extra instead of `evals`. It inc
 Point the importer at the database file. `--dry-run` checks the schema version, reads everything and reports what it would copy, without writing anything:
 
 ```sh
-.venv/bin/martian evals import mlflow mlflow.db --dry-run
+martian evals import mlflow mlflow.db --dry-run
 ```
 
 For a store with one experiment, `faq-bot`, that holds application traces, an evaluation dataset, two evaluation runs and one training run, it prints:
@@ -75,7 +76,7 @@ To copy some experiments only, add `--experiment` with an experiment's name or I
 For a Postgres store, keep the database URL in an environment variable, for example `MLFLOW_DB_URL`, set the way you handle other credentials, and pass it in quotes:
 
 ```sh
-.venv/bin/martian evals import mlflow "$MLFLOW_DB_URL" --dry-run
+martian evals import mlflow "$MLFLOW_DB_URL" --dry-run
 ```
 
 The URL has the form `postgresql://USER:PASSWORD@HOST:5432/DATABASE`. The importer prints it with the password replaced by `***`, and runs every transaction read-only.
@@ -92,8 +93,8 @@ Reading it would mean migrating it, and after a migration the older MLflow can n
 
 ```sh
 cp mlflow.db mlflow-copy.db
-.venv/bin/mlflow db upgrade sqlite:///mlflow-copy.db
-.venv/bin/martian evals import mlflow mlflow-copy.db --dry-run
+mlflow db upgrade sqlite:///mlflow-copy.db
+martian evals import mlflow mlflow-copy.db --dry-run
 ```
 
 The original `mlflow.db` is unchanged; use `mlflow-copy.db` in the next step. Do not upgrade the store your MLflow server uses unless that server already runs MLflow 3.18.0. For a Postgres store, make the copy with your usual backup and restore tools, then upgrade and import the copy.
@@ -103,7 +104,7 @@ The original `mlflow.db` is unchanged; use `mlflow-copy.db` in the next step. Do
 Run the same command without `--dry-run`:
 
 ```sh
-.venv/bin/martian evals import mlflow mlflow.db
+martian evals import mlflow mlflow.db
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. The report then ends with the counts it wrote:
@@ -133,7 +134,7 @@ To copy into a folder other than `~/.martian/evals`, add `--data-dir DIR`, or se
 ## 5. Open the copy in the local Evals UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
