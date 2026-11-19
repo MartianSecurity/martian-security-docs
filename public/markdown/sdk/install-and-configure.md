@@ -8,7 +8,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/install-and-configure/
 
 Install the Python package and create the platform connection used by Evals and red teaming. At the end, you will have a verified SDK installation, a scoped API key, and a validated tutorial configuration.
 
-Only need local evaluations? Start with [a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md); it needs no Martian account. For package releases, see [PyPI release history](https://pypi.org/project/martian-sdk/#history). Recorded test versions and execution limits live in the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility).
+For account-free evaluation and local results, start with the [Local SDK guides](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for package releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions and execution limits.
 
 ## SDK 0.3.1 at a glance
 
