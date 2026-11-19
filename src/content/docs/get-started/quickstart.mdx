@@ -19,7 +19,7 @@ The commands and screenshots use the [0.3.1 package from PyPI](https://pypi.org/
 
 ## Before you start
 
-- Use **Python 3.12 or newer** and a macOS or Linux shell, or WSL on Windows.
+- Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 - Nothing in this quickstart is sent to Martian or to a model provider. The example uses deterministic checks only, and the local Evals UI loads nothing from another host; its links to this documentation and to the SDK's source open only when you select them.
 - The example agent is a small program with one deliberate flaw, so the first run fails. It shows the wiring; it says nothing about your own agent.
 - This tutorial uses an `evals-data` folder inside the extracted example. It holds inputs and replies in clear text. Keep it private when your cases hold anything sensitive.
@@ -33,19 +33,20 @@ python3 --version
 python3 -m zipfile -e sdk-local-evals.zip sdk-local-evals
 cd sdk-local-evals
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 export MARTIAN_EVALS_HOME="$PWD/evals-data"
 ```
 
-Check for Python 3.12 or newer and your installed SDK version. Run the rest of this tutorial in the same shell so the CLI and UI use the same data folder.
+Check for Python 3.12 or newer and your installed SDK version. Activating `.venv` makes `python` and `martian` available by name in this terminal. Keep using it for the tutorial. In a new terminal, return to the example folder and repeat the `source` and `export` lines so the UI sees the same runs.
 
 The folder holds the suite file `evals.yaml`, three cases in `cases.jsonl`, the example agent `agent.py`, and a corrected `agent-fixed.py` with its own suite, `evals-fixed.yaml`. Keep the files together.
 
 ## 2. Run the suite
 
 ```sh
-.venv/bin/martian evals run evals.yaml
+martian evals run evals.yaml
 ```
 
 The suite calls the `answer` function in `agent.py` once for each case and applies two checks to every reply. `no_secret_leak` fails a reply that contains the case's secret code. `no_email_address` fails a reply that contains an email address.
@@ -72,7 +73,7 @@ Log lines from the SDK's built-in evaluation store, MLflow, appear above the tab
 The run writes a `results` folder next to the suite file. Print its counts:
 
 ```sh
-.venv/bin/python -m json.tool results/summary.json
+python -m json.tool results/summary.json
 ```
 
 Expect `"passed": 2`, `"failed": 1` and `"errors": 0`, with the pass rate and its 95% interval overall and for each check. A **failure** means a reply did not meet a check. An **error** means the runner could not reach a verdict for a case.
@@ -105,7 +106,7 @@ The failing case's record in `results/results.jsonl` names the failed check and 
 `agent-fixed.py` refuses instead of printing the internal note. `evals-fixed.yaml` runs the same cases and checks against it and writes to `results-fixed`, so the first run's results stay as they were:
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh
+martian evals run evals-fixed.yaml --fresh
 ```
 
 Expect **3 passed, 0 failed, 0 errors** and exit code **`0`**. The run is recorded as `evals-fixed-1`.
@@ -120,7 +121,7 @@ A plain rerun of a suite **resumes**: it skips a case that already has a verdict
 ## 5. See the result in the local Evals UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 The command prints where the UI is and where its data lives, and opens your browser:
@@ -153,8 +154,8 @@ To see another run, use the same data folder and reload the page. To start an em
 ## Failures and limits
 
 - **`python3 -m venv` fails:** your Python installation lacks virtual-environment support. Install it for your system's Python, or use another Python 3.12 or newer, then repeat step 1.
-- **`.venv/bin/martian` is not found:** run the commands from the `sdk-local-evals` folder, where step 1 created `.venv`.
-- **`No such command 'ui'`** means you should check that you are using the `.venv` from step 1 and upgrade the package there.
+- **`martian: command not found`** means the CLI is unavailable in this shell. From the example folder, run `source .venv/bin/activate` and then `martian --version`. If the CLI is still missing, run the install command in step 1.
+- **`No such command 'ui'`** can mean an older SDK is active. Check `martian --version` and upgrade inside the activated environment.
 - **Exit code `2` from `martian evals run`:** the suite file is invalid, a path is wrong, or a case has no verdict. The message names the field or file. [Failures and limits](/sdk/local-evals/#failures-and-limits) lists the causes.
 - **Exit code `2` from `martian ui`:** another program holds port 7600, which `martian ui` reports as `cannot listen on 127.0.0.1:7600`. Choose another port with `--port 7601`.
 - **The UI shows no runs:** it reads one data folder, `~/.martian/evals` unless you set `--data-dir` or `MARTIAN_EVALS_HOME`. Run the suite and start the UI with the same setting, then reload the page.

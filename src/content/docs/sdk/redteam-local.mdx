@@ -19,7 +19,7 @@ Version 2 run files, `martian redteam run` with your own model and the Red Team 
 
 ## Before you start
 
-- Use **Python 3.12 or newer** and a macOS or Linux shell.
+- Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 - Have a model you can call with your own key: OpenAI, or any OpenAI-compatible endpoint, such as a local LiteLLM, vLLM or Ollama server. It writes the attacks and judges the replies.
 - Leave `MARTIAN_API_URL` and `MARTIAN_API_TOKEN` unset. With them and a model both set, a run stops instead of choosing where attacks are generated.
 - Attack only an agent you own or may test.
@@ -28,12 +28,13 @@ Version 2 run files, `martian redteam run` with your own model and the Red Team 
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian redteam --help
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+martian redteam --help
 ```
 
-`martian --version` prints `0.2.0` or later, and the help lists `run`, `report`, `compare`, `pin`, `import`, `convert` and `garak`.
+`martian --version` prints `0.2.0` or later, and the help lists `run`, `report`, `compare`, `pin`, `import`, `convert` and `garak`. Keep this environment active for the commands below.
 
 ## 2. Point it at your model
 
@@ -89,8 +90,8 @@ Your own target can also be an HTTP endpoint or an MCP server. `martian redteam 
 ## 4. Run it
 
 ```sh
-.venv/bin/martian redteam validate redteam.yaml
-.venv/bin/martian redteam run redteam.yaml -f html
+martian redteam validate redteam.yaml
+martian redteam run redteam.yaml -f html
 ```
 
 `validate` checks the file and calls nothing; expect `OK: version 2, 2 vulnerabilities, 2 attacks, function target` and exit `0`. `run` has your model write each attack, sends it to `reply`, and decides it with the checks. It prints a table of attempts by outcome and writes to `results/`:
@@ -119,7 +120,7 @@ If the run stops with exit `2` and says a Martian connection is also configured 
 ## 5. Read the report in the UI
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 It opens `http://127.0.0.1:7600` on your machine, with no login. The sidebar's **Red Team** group has four pages:
@@ -162,9 +163,9 @@ A local run connects to the model it names and to your agent, and to nothing els
 A pin keeps a confirmed finding's attack and the reply it hit, and replays it with no model. It needs the attack's text, so make the run with `MARTIAN_REPORT_INCLUDE_CONTENT=1`:
 
 ```sh
-MARTIAN_REPORT_INCLUDE_CONTENT=1 .venv/bin/martian redteam run redteam.yaml
-.venv/bin/martian redteam pin add RUN_ID
-.venv/bin/martian redteam pin run redteam.yaml
+MARTIAN_REPORT_INCLUDE_CONTENT=1 martian redteam run redteam.yaml
+martian redteam pin add RUN_ID
+martian redteam pin run redteam.yaml
 ```
 
 `pin add` writes one file per confirmed finding to `pins/`, with the attack and the reply in clear text: review it before you commit it. From a run without content, it exits `2` and asks for the variable. `pin run` sends each pinned attack to your agent again, and exits `1` while a finding still reproduces and `0` once none does, as after you fix `agent.py`.

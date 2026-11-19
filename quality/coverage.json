@@ -2973,6 +2973,13 @@
           "observedPath": "SDK 0.3.1 Community quickstart",
           "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
           "result": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Activate the Python environment and run the SDK by name",
+          "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
+          "result": "Created and activated .venv with Bash from the current quickstart ZIP. Bare python and martian resolved to the environment. The two suites exited 1 and 0 with 2 and 3 passing cases."
         }
       ],
       "verifiedAt": "2026-11-19",
@@ -3343,6 +3350,13 @@
           "observedPath": "SDK 0.3.1 deterministic runs and HTTP target",
           "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls",
           "result": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI. A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Activate the Python environment and run the SDK by name",
+          "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
+          "result": "Started the example HTTP target with python from the activated environment. A second shell activated the same environment and ran the three-case URL suite. It produced 2 passes, 1 failure and no errors."
         }
       ],
       "verifiedAt": "2026-11-13",
@@ -3456,6 +3470,13 @@
           "observedPath": "SDK 0.3.1 local UI navigation and portable Evals export/restore",
           "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
           "result": "A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Activate the Python environment and run the SDK by name",
+          "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
+          "result": "Reactivated the quickstart environment in a new Zsh shell. The packaged UI opened from martian on PATH, with no browser auto-open and a disposable loopback port. Both completed runs were visible in the saved results list."
         }
       ],
       "verifiedAt": "2026-11-16",
@@ -3518,6 +3539,13 @@
           "record": "quality/walkthroughs.json",
           "observedPath": "Released SDK setup and key boundaries",
           "result": "passed in the named local QA environment"
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "Activate the Python environment and run the SDK by name",
+          "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
+          "result": "Installed the SDK in an activated Zsh environment from the current tutorial ZIP and ran the offline pytest preview with bare martian. Tested the copyable key prompt with dummy input in a pseudoterminal and verified that the input was not echoed."
         }
       ],
       "verifiedAt": "2026-11-13",

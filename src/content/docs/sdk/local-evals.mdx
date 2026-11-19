@@ -22,7 +22,7 @@ The SDK saves local runs to a data folder you can open in the [local Evals UI](/
 
 ## Before you start
 
-- Use **Python 3.12 or newer** and install **`martian-sdk[evals]`**. The commands below use macOS/Linux shell paths.
+- Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 - You do **not** need a Martian account, API key or Backend origin. The command sends nothing to Martian.
 - Deterministic checks need no model. An **LLM judge** needs a key for a model provider you choose; your test inputs, the agent's replies and your criteria are sent to that provider.
 - The example agent is a small deterministic program with one deliberate flaw, so the first run shows a failure. It demonstrates the wiring; it is not evidence about a production agent.
@@ -50,13 +50,13 @@ The included README has the same quick-start commands. Keep all the files togeth
 From that folder, install the SDK into an isolated environment:
 
 ```sh
-python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The last command prints your installed SDK version. See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](/reference/verification/#sdk-compatibility) for tested versions.
+The last command prints your installed SDK version. Keep this environment active for the commands below. [Activate it again in a new terminal](/sdk/install-and-configure/#use-the-environment-in-a-new-terminal). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](/reference/verification/#sdk-compatibility) for tested versions.
 
 ## 2. Read the suite file
 
@@ -93,7 +93,7 @@ If your agent already exposes an HTTP endpoint, [test it with a URL target](#8-t
 ## 3. Run the suite
 
 ```sh
-.venv/bin/martian evals run evals.yaml
+martian evals run evals.yaml
 ```
 
 Expect this summary and exit code **`1`**:
@@ -155,7 +155,7 @@ The `fingerprint` identifies what produced the verdict: the case, the checks, th
 Inspect the summary directly from your terminal:
 
 ```sh
-.venv/bin/python -m json.tool results/summary.json
+python -m json.tool results/summary.json
 ```
 
 The important fields are `passed: 2`, `failed: 1` and `errors: 0`. A **failure** means a reply did not meet your check. An **error** means the runner could not obtain a verdict. Neither produces a passing exit code.
@@ -174,7 +174,7 @@ A plain rerun **resumes**: it skips a case that already has a verdict, but only 
 The included [evals-fixed.yaml](/examples/sdk-local-evals/evals-fixed.yaml) selects `agent-fixed.py` and writes to `results-fixed`, preserving the first run's evidence:
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh
+martian evals run evals-fixed.yaml --fresh
 ```
 
 Expect **3 passed, 0 failed, 0 errors** and exit code **`0`**. Compare `results/summary.json` with `results-fixed/summary.json`. The same inputs and checks now pass because the agent no longer prints the synthetic internal note.
@@ -235,7 +235,7 @@ Set that region's endpoint and enter your Bedrock key through a masked prompt:
 
 ```sh
 export OPENAI_API_BASE='https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1'
-export OPENAI_API_KEY="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Bedrock API key: "))')"
+export OPENAI_API_KEY="$(python -c 'import getpass; print(getpass.getpass("Bedrock API key: "))')"
 ```
 
 Use an enabled model and matching region for your own AWS account. The masked prompt keeps the key itself out of shell history.
@@ -243,7 +243,7 @@ Use an enabled model and matching region for your own AWS account. The masked pr
 3. Run it:
 
 ```sh
-.venv/bin/martian evals run evals-with-judge.yaml
+martian evals run evals-with-judge.yaml
 ```
 
 This suite still selects the **original `agent.py`**. Step 5 used a separate corrected file, so expect **2 passed, 1 failed, 0 errors**, exit **`1`**: `prompt-injection` fails both the rubric and the text check. The judge's reason for each case is in `results-judge/results.jsonl`.
@@ -263,7 +263,7 @@ For example, the real GLM 5 run returned this failing check (the other fields ar
 To judge the corrected agent, change `target.file` in `evals-with-judge.yaml` to `agent-fixed.py`, then run:
 
 ```sh
-.venv/bin/martian evals run evals-with-judge.yaml --fresh --output results-judge-fixed
+martian evals run evals-with-judge.yaml --fresh --output results-judge-fixed
 ```
 
 Expect **3 passed**, exit **`0`**, if the judge follows the supplied rubric. A judge can disagree; inspect its reason rather than changing the expected outcome just to get a pass.
@@ -306,7 +306,7 @@ A judge is graded on what the reply delivers, not on how it opens: a refusal doe
 The deterministic teaching suite needs no secrets. On GitHub, the [read-only pull-request workflow](/sdk/ci/#run-a-local-suite-on-pull-requests) runs the suite, writes a job summary and retains selected result files. Run any suite that needs target or judge credentials in a separate trusted job.
 
 ```sh
-.venv/bin/martian evals run evals-fixed.yaml --fresh --output eval-results
+martian evals run evals-fixed.yaml --fresh --output eval-results
 ```
 
 - Fail the job on a non-zero exit code.
@@ -335,29 +335,23 @@ The Martian Security screenshot below shows a separately verified **persisted da
 
 Use a URL target when your agent already exposes an HTTP endpoint. The runner sends each case to that address and grades the reply.
 
-1. Upgrade and check the installed version.
-
-```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-```
-
-2. Save these two files into the same folder as the other examples:
+1. Save these two files into the same folder as the other examples.
 
 - [agent-server.py](/examples/sdk-local-evals/agent-server.py): serves the example agent at `http://127.0.0.1:8765/chat`.
 - [evals-url.yaml](/examples/sdk-local-evals/evals-url.yaml): the same cases and checks, sent to that address.
 
-3. Start the example server and leave it running:
+2. With the SDK environment active, start the example server and leave it running.
 
 ```sh
-python3 agent-server.py
+python agent-server.py
 ```
 
-4. In a **second terminal**, from the same folder, set the example token and run the suite:
+3. In a **second terminal**, return to the example folder and activate the environment. Set the example token and run the suite.
 
 ```sh
+source .venv/bin/activate
 export EXAMPLE_AGENT_KEY='demo-token'
-.venv/bin/martian evals run evals-url.yaml
+martian evals run evals-url.yaml
 ```
 
 Expect the same verdicts as step 3, because it is the same flawed agent, and exit code **`1`**:

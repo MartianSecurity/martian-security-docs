@@ -14,7 +14,7 @@ Use `martian.evals` to run your prediction function locally and record regressio
 
 ## Before you start
 
-- For the local preview, complete only [installation step 1](/sdk/install-and-configure/#1-download-the-runnable-tutorial-and-install-the-release). Use **`martian-sdk[evals]`**, Python 3.12+, from the tutorial **Git repository root** prepared there.
+- For the local preview, complete [installation step 1](/sdk/install-and-configure/#1-download-the-runnable-tutorial-and-install-the-release). Run the commands from the tutorial repository with its [virtual environment active](/sdk/install-and-configure/#use-the-environment-in-a-new-terminal).
 - The included `demo_agent.answer` is a deterministic support program. It demonstrates wiring and repeatable assertions; it is not an LLM or evidence about a production agent.
 - A local inline preview needs no platform account or model API key.
 - Before hosted persistence, complete the remaining [SDK configuration](/sdk/install-and-configure/#2-open-api-key-management). It needs a compatible enabled organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID/tested Git revision. Commit the source before taking that revision. Dataset restrictions must permit the dataset below.
@@ -25,7 +25,7 @@ Use `martian.evals` to run your prediction function locally and record regressio
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
 MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-.venv/bin/martian evals run tests/evals/test_quality.py -q
+martian evals run tests/evals/test_quality.py -q
 ```
 
 Expect **one passing test with two evaluated records** and exit `0`. This runs the actual local MLflow evaluator, callback, traces and exact-match scorer. It uploads nothing to Backend.
@@ -80,7 +80,7 @@ The dataset is small enough to inspect completely. The callback answers these tw
 Set the connection and CI attribution from the installation guide. Ensure `MARTIAN_EVALS_OFFLINE` is not enabled for this command; the one-command preview above does not leave it set.
 
 ```sh
-.venv/bin/martian ci --evals-path tests/evals --require-export --output results/evals
+martian ci --evals-path tests/evals --require-export --output results/evals
 ```
 
 This executes the tutorial's inline checks and published-dataset test in one session. The dataset test is complete and available as [test_dataset.py](/examples/sdk/tests/evals/test_dataset.py):
@@ -131,7 +131,7 @@ Dataset tests are **client-executed/server-scored**. Inline scorer checks are **
 You can pass these scorers to `evaluate` next to `exact_match`. If you are using an older environment, update the SDK first:
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
+python -m pip install --upgrade 'martian-sdk[evals]'
 ```
 
 | Scorer | Use it for | Model call |
@@ -180,7 +180,7 @@ Replace `YOUR_JUDGE_MODEL` and set your provider's key as described in [provider
 ```sh
 MARTIAN_EVALS_OFFLINE=1 \
 MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-.venv/bin/martian evals run tests/evals/test_safety.py -q
+martian evals run tests/evals/test_safety.py -q
 ```
 
 Expect one passing test. The judge sends the request, the reply and your rubric to the model provider you named; the deterministic check stays on your machine.

@@ -22,7 +22,7 @@ For a promptfoo **red team** config or its results, see [Move a promptfoo red te
 
 ## Before you start
 
-- Use **Python 3.12 or newer** and a macOS or Linux shell.
+- Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 - To import results, you need the JSON file that `promptfoo eval -o results.json` writes. Other output formats, and results files from promptfoo releases that wrote the older results table, are refused.
 - To convert a config, you need your `promptfooconfig.yaml` and a Python function that calls your agent.
 - You need no Martian account or API key. A converted suite needs a model key only if it keeps an `llm-rubric` assertion as an LLM judge; that judge sends each case to the model provider you choose.
@@ -35,11 +35,12 @@ In your promptfoo project's folder, create an isolated environment and install t
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has neither command.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 The examples on this page use this config. It has one prompt, two versions of a bot as providers, and three tests:
 
@@ -91,7 +92,7 @@ tests:
 ## 2. Import your results
 
 ```sh
-.venv/bin/martian evals import promptfoo results.json
+martian evals import promptfoo results.json
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. Then each provider in the file prints one line:
@@ -111,7 +112,7 @@ The exit code is **`0`**. Each run is named `promptfoo-`, the provider's label (
 ## 3. Open the runs
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
@@ -140,7 +141,7 @@ def answer(prompt, vars):
 Convert the config into a new folder:
 
 ```sh
-.venv/bin/martian evals convert promptfoo promptfooconfig.yaml --target agent.py:answer --output suite
+martian evals convert promptfoo promptfooconfig.yaml --target agent.py:answer --output suite
 ```
 
 The command prints the suite files it wrote and everything it did not convert:
@@ -169,8 +170,8 @@ A suite file applies every check to every case, while promptfoo sets assertions 
 Run each suite file:
 
 ```sh
-.venv/bin/martian evals run suite/evals.yaml
-.venv/bin/martian evals run suite/evals-2.yaml
+martian evals run suite/evals.yaml
+martian evals run suite/evals-2.yaml
 ```
 
 The first suite prints this table and exits **`0`**:
@@ -210,7 +211,7 @@ Add it at the end of the `checks` list in `suite/evals-2.yaml`, at the same inde
 The file path is relative to the suite file. Run the suite again:
 
 ```sh
-.venv/bin/martian evals run suite/evals-2.yaml
+martian evals run suite/evals-2.yaml
 ```
 
 Because the checks changed, the earlier verdict is discarded and the case is graded again. The table gains a `short_reply` row with 1 passed. A Python check runs with your user's full permissions, so review check files you did not write before you run them.

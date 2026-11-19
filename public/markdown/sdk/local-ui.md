@@ -18,7 +18,7 @@ The Community edition groups your local results under **Evals** and **Red Team**
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell, or WSL on Windows.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Install the current **`martian-sdk[evals]`** package. The Runs, case inspector and Compare examples in the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
 -   You need no Martian account, API key or model key. A run you start in the UI calls the agent you define; a model judge calls the provider you choose, with your own key.
 -   The UI reads one data folder, `~/.martian/evals` unless you choose another. It holds your inputs and replies in clear text, so keep it as private as the data in your cases.
@@ -26,15 +26,14 @@ The Community edition groups your local results under **Evals** and **Red Team**
 
 ## 1\. Install and start the UI
 
-In the folder where the quickstart created `.venv`, or in a new virtual environment:
+From the [quickstart folder](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md#1-get-the-example-and-install-the-sdk), activate its environment and open the folder containing its runs.
 
 ```sh
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
-.venv/bin/martian ui --data-dir ./evals-data
+source .venv/bin/activate
+martian ui --data-dir ./evals-data
 ```
 
-Use the folder from your Evals runs. The quickstart uses `./evals-data`. The last command prints the local address and data path, then opens your browser.
+If you already have the SDK active, `martian ui` opens the data folder set by `MARTIAN_EVALS_HOME`, or `~/.martian/evals` by default. Use `--data-dir` to select another folder. The command prints the local address and data path, then opens your browser.
 
 ```text
 Martian Evals is at http://127.0.0.1:7600/ (data in /path/to/evals-data). Press Ctrl+C to stop.
@@ -128,10 +127,11 @@ By default one run and one scoring job may be in progress at once. A launch beyo
 
 The UI can start a run against an HTTP endpoint or a model that you define. This walkthrough uses the example agent from the [suite-file guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#8-test-an-agent-behind-an-http-endpoint), which answers on your machine and needs no model.
 
-1.  Save [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py) next to `agent.py` from the quickstart example. In a second terminal, start it and leave it running:
+1.  Save [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py) next to `agent.py` from the quickstart example. In a second terminal in that folder, start it and leave it running.
 
 ```sh
-python3 agent-server.py
+source .venv/bin/activate
+python agent-server.py
 ```
 
 2.  In the UI, open **Datasets** and select **New dataset**. Name it `support-faq` and select **Create draft**. In the draft, select **Import file** and choose [support-faq.jsonl](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/support-faq.jsonl), which holds three records:
@@ -203,9 +203,9 @@ The data folder holds everything the UI shows:
 2.  Export into a new folder and restore into an empty data directory. Adjust `./evals-data` to match your source folder.
 
 ```sh
-.venv/bin/martian evals export ./evals-export --data-dir ./evals-data
-.venv/bin/martian evals import martian ./evals-export --data-dir ./evals-restored
-.venv/bin/martian ui --data-dir ./evals-restored --port 7601
+martian evals export ./evals-export --data-dir ./evals-data
+martian evals import martian ./evals-export --data-dir ./evals-restored
+martian ui --data-dir ./evals-restored --port 7601
 ```
 
 3.  Check that the export has a `manifest.json` and JSONL files. In the restored UI, open **Evals → Runs** and check the run counts against the original. Select **Inspect** on a result to read its saved verdict and reply.
@@ -249,8 +249,8 @@ The container’s server listens on the container’s interfaces so that Docker 
 
 ```sh
 export MARTIAN_API_URL='https://YOUR-MARTIAN-SERVER'
-export MARTIAN_API_TOKEN="$(.venv/bin/python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
-.venv/bin/martian evals push evals-1 --data-dir ./evals-data
+export MARTIAN_API_TOKEN="$(python -c 'import getpass; print(getpass.getpass("Martian API key: "))')"
+martian evals push evals-1 --data-dir ./evals-data
 ```
 
 Start with one run identified by its code or ID. Omitting the identifier sends every finished run in the data folder. The push includes case results, scores, finished scoring jobs and traces. SDK 0.3.1 removes private transport settings and masks known credential values. The payload can still include your inputs and replies, so check who can access the destination. Reviews, artifacts and dataset versions stay on your machine.
@@ -267,7 +267,7 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 
 ## Failures and limits
 
--   **`No such command 'ui'`** means you should check that you are using the intended virtual environment and upgrade the package there.
+-   **`martian: command not found`** means you should activate the environment where you installed the SDK. For **`No such command 'ui'`**, check `martian --version` and upgrade that environment if needed.
 -   **Exit code `2` with `cannot listen on 127.0.0.1:7600: Address already in use`:** another program holds the port. Choose another with `--port 7601`.
 -   **Exit code `2` with `index.html is missing`:** the folder named by `--ui-dir` holds no built UI. Leave the option out to use the UI inside the package.
 -   **The UI shows no runs:** it reads one data folder. Run the suite and start the UI with the same `--data-dir` or `MARTIAN_EVALS_HOME`, then reload the page.

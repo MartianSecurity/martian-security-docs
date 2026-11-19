@@ -20,7 +20,7 @@ Both commands are in **martian-sdk 0.2.0**. Earlier releases answer `No such com
 
 ## Before you start
 
--   Install the SDK as in [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md).
+-   [Install the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#1-install-the-sdk) and keep its virtual environment active when you switch to your promptfoo project folder.
 -   Have your `promptfooconfig.yaml` with a `redteam` section, and to import results, the JSON file `promptfoo redteam run -o results.json` writes.
 -   You need no Martian account. Running the converted file needs your own model key.
 
@@ -44,8 +44,8 @@ Both commands are in **martian-sdk 0.2.0**. Earlier releases answer `No such com
 ## 1\. Convert the config
 
 ```sh
-.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --output converted
-.venv/bin/martian redteam validate converted/redteam.yaml
+martian redteam convert promptfoo promptfooconfig.yaml --output converted
+martian redteam validate converted/redteam.yaml
 ```
 
 The first command prints what converted and a list under **Not converted**, each item with its reason, and writes the same list as comments at the top of `converted/redteam.yaml`. For the SDK’s sample config, [`examples/promptfoo-redteam/promptfooconfig.yaml`](https://github.com/MartianSecurity/martian-redteam/blob/v0.2.0/examples/promptfoo-redteam/promptfooconfig.yaml), it prints:
@@ -71,9 +71,9 @@ What does not: plugins the converter does not map, such as `bola` (its reason sa
 A config without a `purpose` stops with exit `2` and asks for `--purpose`. A config whose strategies none convert, including promptfoo’s default (`basic`, `jailbreak:meta` and `jailbreak:composite`), stops with exit `2` and asks for `--attack`:
 
 ```sh
-.venv/bin/martian redteam convert promptfoo promptfooconfig.yaml --target agent.py:reply \
+martian redteam convert promptfoo promptfooconfig.yaml --target agent.py:reply \
   --attack PromptInjection --output local
-.venv/bin/martian redteam run local/redteam.yaml
+martian redteam run local/redteam.yaml
 ```
 
 `--target` replaces the config’s target with a Python function that takes the message and returns the reply. The converted file names the config’s `redteam.provider` as its attacker and judge, so `run` needs that model’s key, set as in [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#2-point-it-at-your-model).
@@ -81,8 +81,8 @@ A config without a `purpose` stops with exit `2` and asks for `--purpose`. A con
 ## 2\. Import the results
 
 ```sh
-.venv/bin/martian redteam import promptfoo results.json
-.venv/bin/martian ui
+martian redteam import promptfoo results.json
+martian ui
 ```
 
 For each provider in the file, the import prints one line, such as this for the SDK’s sample [`results.json`](https://github.com/MartianSecurity/martian-redteam/blob/v0.2.0/examples/promptfoo-redteam/results.json):

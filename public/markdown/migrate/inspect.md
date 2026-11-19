@@ -22,7 +22,7 @@ Needs SDK 0.1.4 or later
 
 ## Before you start
 
--   Use **Python 3.12 or newer** and a macOS or Linux shell.
+-   Use **Python 3.12 or newer** and Bash or Zsh on macOS or Linux.
 -   You need log files Inspect wrote, `.eval` or `.json`, for evals that have **finished** and that were logged **with their samples**.
 -   You need no Martian account, API key or model key. The import reads files on your machine and writes to a local data folder (default `~/.martian/evals`); nothing is sent to Martian or to a model provider.
 -   The data folder holds each sample’s input, reply and scores in clear text. Keep it as private as the logs.
@@ -34,18 +34,19 @@ From the folder that holds Inspect’s `logs` folder, create an isolated environ
 ```sh
 python3 --version
 python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade 'martian-sdk[evals]'
-.venv/bin/martian --version
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
 ```
 
-The first command must report Python 3.12 or newer. The last must print **0.1.4** or later. If it prints 0.1.3, stop here: that release has no importer.
+Check for Python 3.12 or newer and SDK **0.1.4** or later. Keep this environment active for the remaining commands.
 
 ## 2\. Import the logs
 
 Name the log files. A wildcard takes every `.eval` log in the folder:
 
 ```sh
-.venv/bin/martian evals import inspect logs/*.eval
+martian evals import inspect logs/*.eval
 ```
 
 The first time, log lines from the local evaluation store appear while it creates the data folder. Then each log prints one line. For two logs of a three-sample task named `faq`:
@@ -67,7 +68,7 @@ The exit code is **`0`**. Each run is named `inspect-`, the task’s name and a 
 ## 3\. Open the runs
 
 ```sh
-.venv/bin/martian ui
+martian ui
 ```
 
 Your browser opens `http://127.0.0.1:7600/`. The UI has one user and no login; stop it with Ctrl+C in the terminal.
