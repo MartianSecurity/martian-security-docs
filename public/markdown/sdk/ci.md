@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/ci/)
 
 > **Page qualification:** Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
 
-Run the Evals tests and one YAML redteam suite in a single pytest execution and retain one Backend CI session. A successful required gate needs complete test coverage, policy satisfaction, a valid persisted acknowledgment, and any explicitly required exports.
+Run Evals tests and a redteam suite in one pytest execution to retain a Backend CI session. A required persisted gate checks test coverage, policy, Backend acknowledgment and any required exports. For an account-free check on pull requests, jump to the [local Evals workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests).
 
 ## Before you start
 
@@ -208,15 +208,54 @@ Create the local environment in this repository, install the SDK and the applica
 
 ## Run a local suite on pull requests
 
-A [suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) provides a lighter check for CI that runs with no Martian secret. It suits pull requests from branches that must not see your platform key.
+The SDK 0.3.1 Evals Action runs a [suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) with `--fresh` and writes the verdict to the Actions job summary. Start with a deterministic suite and synthetic cases so the job can run without secrets.
 
-```sh
-.venv/bin/martian evals run evals.yaml --fresh --output eval-results
+1.  Copy the [Community quickstart example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals.zip) into the root of your GitHub repository. Keep `cases.jsonl`, `agent-fixed.py` and `evals-fixed.yaml` together.
+2.  Add `.github/workflows/evals.yml` with the workflow below. The action is pinned to the SDK 0.3.1 source commit.
+
+```yaml
+name: Evals
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run the Evals suite
+        id: evals
+        uses: MartianSecurity/martian-redteam/.github/actions/evals@2459bee92fbcd01f9192eee60f1bdf38adac3c18 # v0.3.1
+        with:
+          suite: evals-fixed.yaml
+          output: eval-results
+      - name: Retain the summary and test report
+        if: ${{ !cancelled() && steps.evals.outputs.results-written == 'true' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: eval-results
+          path: |
+            eval-results/summary.json
+            eval-results/junit.xml
 ```
 
-The command exits `0` when every case passes, `1` when a case fails and `2` when a case has no verdict or the suite file is invalid. Review the failure reasons in `eval-results/junit.xml` before publishing it to a suitably restricted test report. A suite that uses an LLM judge or a credentialed callback needs those secrets and trusted code; keep them out of unreviewed pull requests. The deterministic teaching suite needs no secret.
+3.  Open the pull request’s **Checks** tab, select **Evals**, and open the workflow run’s **Summary**. For the corrected example, expect three passing cases. Point `suite` at your own deterministic suite when you are ready.
 
-This run is separate from the persisted gate on this page. It creates no CI session, has no agent or revision attribution and does not appear in the console. Keep `martian ci` as the recorded gate for trusted branches.
+| Exit code | Meaning |
+| --- | --- |
+| `0` | Every case passed |
+| `1` | The suite failed its gate |
+| `2` | The suite did not finish with a verdict for every case, or its configuration was invalid |
+
+The artifact step runs on passing and failing gates when the current invocation wrote results. A configuration error before any results produces a job summary and no artifact. Keep raw `results.jsonl` and `mlflow.db` private. Review case identifiers and failure reasons in the summary and JUnit files before publishing results from real data.
+
+**Upgrading from PR comments.** Remove `pull-requests: write` and the `github-token` and `comment-author` action inputs. Find the report in the [Actions job summary](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#adding-a-job-summary). Run suites that need a target or judge credential on a separate trusted job. To compare with the default branch, see [baseline setup for the Evals Action](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/gate-and-ci.md#compared-with-the-last-result-of-main).
+
+This local job records its result in GitHub Actions. Use [the persisted gate](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#3-run-one-combined-attempt) on a trusted branch when you need a workspace CI session tied to an agent and revision.
 
 ## Retained reports, failures and recovery
 

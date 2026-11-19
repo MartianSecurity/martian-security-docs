@@ -10,7 +10,7 @@ These guides are being qualified against actual running application/backend stat
 
 The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
 
-Of **50 task guides**, **37 are verified**, **7 are partly verified** and **6 await walkthrough verification**. The screenshot record contains **213 captured references** across **201 unique PNGs**. These counts come from the current coverage and screenshot manifests.
+Of **50 task guides**, **37 are verified**, **7 are partly verified** and **6 await walkthrough verification**. The screenshot record contains **214 captured references** across **201 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
 The application supports desktop workflows. The documentation itself is also checked on narrow layouts. Screenshots are direct application captures; no functionality is invented with DOM edits or mocked API responses.
 
@@ -183,6 +183,7 @@ The task guides install the latest SDK and keep release announcements in [PyPI r
 -   **SDK 0.1.4:** the MLflow, promptfoo and Inspect AI importers were exercised on the release’s source before it was published, not on the package from PyPI.
 -   **SDK 0.1.5:** installed from PyPI, the Community quickstart, the local Evals UI and its sidebar, the suite-file guide’s steps 1 to 5 and its URL target, the promptfoo converter, Compare of an imported promptfoo results file, and the container image pulled without a login and run as the local Evals UI guide describes were exercised. A push to a Martian server and model judges were not.
 -   **SDK 0.2.0:** installed from PyPI, the local red team guide with a real model, its report in the Red Team pages of `martian ui`, pinned findings and run comparison, and the promptfoo red team converter and importer were exercised. A run in a Martian environment, `martian redteam push` and `martian redteam campaign`, which need a Martian server, were not.
+-   **SDK 0.3.1:** installed from [PyPI](https://pypi.org/project/martian-sdk/0.3.1/) on macOS with Python 3.12.10. The [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) produced exit **1** and then **0**. The packaged UI showed both runs, the failed check and trace, and one improvement in Compare. A separate synthetic HTTP run was exported and restored with its verdict intact and its dummy header and URL query values masked. The [read-only Evals workflow example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests) was checked with the pinned Action’s run and summary steps for exits **0**, **1** and **2**. The SDK repository’s [Action smoke job](https://github.com/MartianSecurity/martian-redteam/actions/runs/44518180849) passed on the tagged source. A hosted workspace and the 0.3.1 container image were outside this check.
 
 Installing a newer release does not extend those recorded results automatically. Validate your workflow before upgrading production CI, and record its selected dependency version in your lockfile.
 
@@ -203,6 +204,7 @@ Installing a newer release does not extend those recorded results automatically.
 | SDK release for the local suite-file guide | martian-sdk 0.1.3 |
 | SDK source for the MLflow and Inspect AI migration guides and the promptfoo results import (0.1.4 candidate) | martian-redteam 08d26734b8d3848f425bcea5c8d2ed4a4380017a |
 | SDK release for the Community quickstart, the local Evals UI guide, the URL target and the promptfoo conversion and Compare | martian-sdk 0.1.5 from PyPI (martian-redteam 93d9707e781aaa1c6f09f336bc643a43a78d8447) |
+| SDK package for the updated Community quickstart, portable Evals records and Action example | [martian-sdk 0.3.1 source](https://github.com/MartianSecurity/martian-redteam/tree/v0.3.1) at `2459bee92fbcd01f9192eee60f1bdf38adac3c18`. The packaged UI reports Frontend `f04619f2834bd82b4ce9db6ee86eac780ee4acba` |
 | Evals UI packaged in that release | MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d |
 | SDK release for the local red team and promptfoo red team guides | martian-sdk 0.2.0 from PyPI (martian-redteam abaa6c05a25859d5bcbc025a3d13982181585c3f) |
 | Evals and Red Team UI packaged in that release | MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba |

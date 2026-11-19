@@ -24,6 +24,20 @@
         "Account-free current-install smoke checks"
       ],
       "reviewedAt": "2026-11-13"
+    },
+    {
+      "version": "0.3.1",
+      "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+      "wheelSHA256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d",
+      "usedBy": [
+        "get-started/quickstart",
+        "sdk/install-and-configure",
+        "sdk/local-evals",
+        "sdk/local-ui",
+        "sdk/ci",
+        "evals/human-reviews"
+      ],
+      "reviewedAt": "2026-11-19"
     }
   ],
   "completenessAudit": {

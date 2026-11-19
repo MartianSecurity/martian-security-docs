@@ -71,6 +71,12 @@ Create next version saved v2. The earlier queue retained the original v1 wording
 
 Question versions let reviewers use the same rubric consistently. They do not cause existing completed answers to be rewritten.
 
+## Blind review and agreement
+
+In a workspace that supports blind double review, submit your own complete answer for a case and question before reading another reviewer’s answer. Other questions on the same case remain blind until you answer them.
+
+With the Evals core from SDK 0.3.1, judge agreement, reviewer agreement and calibration reports use only answers the signed-in reader can see. Two reviewers can see different labelled counts until both have answered. A calibration re-check requires access to every item in the saved cohort. Ask your workspace administrator which review features your deployment supports. [SDK reference on blind review and calibration](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#blind-double-review)
+
 ## Failures and recovery
 
 -   For a stale review, reload the latest answer before editing; do not overwrite another reviewer’s work with an old revision.

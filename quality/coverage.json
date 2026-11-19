@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-19",
   "guides": [
     {
       "id": "agents/connections",
@@ -2103,6 +2103,13 @@
           "record": "quality/walkthroughs.json",
           "observedPath": "Typed human-review workflow",
           "result": "passed in the named local QA environment; does not attest to hosted beta parity"
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.3.1 blind review and calibration visibility",
+          "environment": "Tagged SDK source review",
+          "result": "Reviewed the tagged Evals core reader filters for blind review, judge and reviewer agreement, and saved calibration and re-check cohorts. The standard hosted queue screenshots are from their original qualification. The 0.3.1 blind behavior is documented for compatible workspaces; it was not exercised against the deployed console during this docs update."
         }
       ],
       "verifiedAt": "2026-11-13",
@@ -2867,7 +2874,7 @@
     {
       "id": "get-started/quickstart",
       "guide": "Community quickstart",
-      "sdkVersion": "0.1.5",
+      "sdkVersion": "0.3.1",
       "role": "Any developer; no Martian account, API key or model key",
       "route": "Local command line and the local Evals UI (martian ui), from SDK 0.1.4",
       "documentationRoute": "/get-started/quickstart/",
@@ -2883,7 +2890,8 @@
       ],
       "screenshots": [
         "quickstart-ui-runs",
-        "local-ui-compare"
+        "local-ui-compare",
+        "local-ui-case-inspect"
       ],
       "qualification": "verified",
       "sources": [
@@ -2907,9 +2915,24 @@
             "packages/evals/app/sections.js",
             "packages/evals/app/EvalsFrame.jsx"
           ]
+        },
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "src/martian/evals/runner.py",
+            "src/martian/evals/local.py"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
+          "paths": [
+            "packages/evals/app/sections.js"
+          ]
         }
       ],
-      "validationStatus": "Every command and UI page in the guide was run on 2026-11-16 against martian-sdk 0.1.5 installed from public PyPI with step 1's own install command, in a fresh virtual environment created with python3.12 (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's), with the example ZIP this site serves: martian --version printed 0.1.5; the first run 2 passed / 1 failed / 0 errors, exit 1, with the Pass rate column and the line 'Run evals-1 is in the local Evals UI: martian ui'; the summary and failing record as shown, with the fingerprint beginning c259d689 (the same in another folder; it depends on the SDK version); the corrected suite with --fresh 3 passed, exit 0, recorded as evals-fixed-1; and martian ui printed the documented line. The rerun behaviour in step 4 (3 already done with nothing changed; 3 earlier results discarded after the agent changed) was run with the suite-file guide on the same install. In headless Chromium at 1440x1000 (light) the packaged UI opened on Runs, with the sidebar, listing evals-fixed-1 (100% (43-100%), 3 passed, 0 failed) and evals-1 (67% (20-94%), 2 passed, 1 failed); the failing case's Inspect panel showed no secret leak failing with '1 of 1 forbidden values found' and no email address passing, and View trace one span, answer; Compare of evals-1 against evals-fixed-1 read '1 improved, 0 regressed of 3 compared, pass rate 67% to 100% (+33 points)', Within noise; Traces listed six traces and Overview a pass rate for each check; the sidebar listed no Monitoring or Reviews; every browser request went to the local server. A second martian ui on the same port exited 2 with 'cannot listen on 127.0.0.1:7600: Address already in use'. Two screenshots (Runs and Compare) were captured from that run. The earlier run on 0.1.3 from public PyPI is retained: its table has no Pass rate column and it prints no line about the UI, and martian ui exits 2 with No such command 'ui'. Not verified: macOS and WSL.",
+      "validationStatus": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI.",
       "requiredValidation": [
         "Run every documented command against the released SDK 0.1.5 package from public PyPI",
         "Extract and run the downloadable example ZIP from the built site",
@@ -2943,11 +2966,18 @@
           "observedPath": "Community quickstart steps 1 to 5 on martian-sdk 0.1.5 from PyPI",
           "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; no Martian platform services and no model provider; the example ZIP this site serves; the Evals UI packaged in that wheel, built from MartianFrontend c56f4a4bb40688b7ecb9d31e1475dc4a3de6093d; martian ui on 127.0.0.1; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme",
           "result": "All documented commands produced the documented output and exit codes, and the UI pages the guide names matched, on the package published to PyPI"
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.3.1 Community quickstart",
+          "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
+          "result": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI."
         }
       ],
-      "verifiedAt": "2026-11-16",
-      "verifiedEnvironment": "Local CLI and local Evals UI; PyPI SDK 0.1.5; no Martian platform services",
-      "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; no Martian platform services and no model provider"
+      "verifiedAt": "2026-11-19",
+      "verifiedEnvironment": "macOS Python 3.12.10; SDK 0.3.1; packaged UI on loopback",
+      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls"
     },
     {
       "id": "library/coverage",
@@ -3087,6 +3117,14 @@
             "src/components/EvalCiTokens.jsx",
             "src/components/CiSessions.jsx"
           ]
+        },
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            ".github/actions/evals/action.yml",
+            "docs/gate-and-ci.md"
+          ]
         }
       ],
       "validationStatus": "The exact published SDK 0.1.2 tutorial ZIP passed one original combined CLI attempt on GitHub Actions: exit 0, persisted/exported 3 of 3 test groups, three native FINISHED exports and two settled model calls. Earlier local Python/CLI standalone passes and failed/recovered CI sessions remain distinct. The extracted customer workflow template was not itself dispatched.",
@@ -3119,6 +3157,13 @@
           "record": "public/examples/validation/sdk-ci-0.1.2-2026-11-13.json",
           "observedPath": "Exact published SDK ZIP combined CLI on a GitHub-hosted runner",
           "result": "Original exit0; passed/persisted/exported3/3; three native FINISHED exports; exactly two settled model calls; source hashes, unchanged12files, safe artifacts and own-resource cleanup verified. Customer workflow template setup remains source reviewed rather than directly dispatched."
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.3.1 read-only Evals job summary example",
+          "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; GNU Bash 5.2",
+          "result": "The copyable YAML uses a contents: read pull_request job with checkout credentials disabled and pins the exact SDK commit. The pinned Action run, summary and gate steps produced the expected exits 0, 1 and 2. Only the passing and failing suites generated artifact files, even when the error followed a prior run. The SDK Action smoke job passed on GitHub (run 44518180849); the customer workflow itself was checked locally."
         }
       ],
       "environment": "Isolated local QA; pinned source baseline; synthetic organization",
@@ -3291,6 +3336,13 @@
           "observedPath": "Suite-file guide steps 1 to 5 and 8 on martian-sdk 0.1.5 from PyPI",
           "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.1.5 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with python3.12; the installed wheel martian_sdk-0.1.5-py3-none-any.whl has SHA-256 d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's; mlflow-skinny 3.18.0; no Martian platform services and no model provider; the example ZIP this site serves and its agent-server.py and evals-url.yaml",
           "result": "Documented output, exit codes, rerun behaviour and URL-target reasons matched on the package published to PyPI; steps 6 and 7 were not run again"
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.3.1 deterministic runs and HTTP target",
+          "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls",
+          "result": "The bundled suite and its corrected version exited 1 (2 passed, 1 failed) and 0 (3 passed). Runs, Inspect, View trace, Compare, Traces and Overview matched the guide. Trace, workbench and compare requests returned 200. Compare found one improved case out of three. New Runs, Inspect and filtered Compare captures are from the packaged UI. A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
         }
       ],
       "verifiedAt": "2026-11-13",
@@ -3301,7 +3353,7 @@
     {
       "id": "sdk/local-ui",
       "guide": "Use the local Evals UI",
-      "sdkVersion": "0.1.5",
+      "sdkVersion": "0.3.1",
       "role": "Any developer; no Martian account, API key or model key",
       "route": "Local command line and the local Evals UI (martian ui), from SDK 0.1.4",
       "documentationRoute": "/sdk/local-ui/",
@@ -3329,7 +3381,8 @@
         "local-ui-quality-issues",
         "local-ui-not-in-edition",
         "local-ui-run-eval",
-        "local-ui-launched-run"
+        "local-ui-launched-run",
+        "local-ui-restored-eval"
       ],
       "qualification": "partial",
       "sources": [
@@ -3355,10 +3408,20 @@
             "packages/evals/app/sections.js",
             "packages/evals/app/EvalsFrame.jsx"
           ]
+        },
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "src/martian/evals/_sharing.py",
+            "src/martian/evals/data_export.py",
+            "src/martian/evals/push.py",
+            "docs/data-export.md"
+          ]
         }
       ],
-      "validationStatus": "Run on 2026-11-16 against martian-sdk 0.1.5 installed from public PyPI (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's) in a fresh virtual environment, with no model call; martian --version printed 0.1.5. The data folder was filled by the SDK's own deterministic example suites: the quickstart example's two suites, and the policy, tool-calls, conversation and custom-scorer examples of martian-redteam v0.1.5, each saved under its own file name (evals-1, evals-fixed-1, policy-1, tool-calls-1, conversation-1, custom-scorer-1). martian ui started on 127.0.0.1 and printed the documented line; its options matched martian ui --help. In headless Chromium at 1440x1000 (light) every page was opened and nine screenshots captured: Runs, the failed case's Inspect panel, Compare, Sessions, Overview, Quality issues, the Monitoring address (Not in this edition; the Reviews address says the same), the Run an evaluation dialog and the run it started. The sidebar showed the Martian mark and a collapse button; an Evals group of Overview, Traces, Sessions, Runs, Compare, Datasets, Prompts, Judges, Scoring suites and Quality issues; a Red Team group whose one item, Run from the CLI, links to https://docs.martiansecurity.ai/sdk/redteam/; Documentation (https://docs.martiansecurity.ai) and Source on GitHub (https://github.com/MartianSecurity/martian-redteam); and the footer Local user, Community \u00b7 running locally, Evals UI 0.1.0 \u00b7 c56f4a4. The three links open in a new tab; they were not followed, and across twelve pages every browser request went to the local server. Each page kept its project picker. Group by session on Traces and Sessions in the sidebar open the same page: 2 sessions and 19 traces without a session ID. A run's page had Results, Traces and Overview tabs; Export CSV and Export JSON downloaded evals-1-results.csv and evals-1-results.json. A dataset draft was created, the three-record JSONL imported (the same import in a throwaway data folder showed 'Imported 3 new and updated 0 existing records.'), published with a rationale, a target defined for the example agent server with a key, and a run started: EV-1001 completed with 2 passed and 1 failed. targets.json held no key; target-keys.json and targets.json were mode 0600. The page and the other unhashed files answered Cache-Control no-cache, and assets/ files public, max-age=31536000, immutable. A request with Host evil.example was refused with 400, and localhost was accepted; a second martian ui on the same port exited 2 with 'cannot listen on 127.0.0.1:7600: Address already in use'; --ui-dir with no index.html exited 2 with 'index.html is missing'. martian evals export wrote 1 project, 1 dataset version, 7 runs, 24 case results, 74 scores, 0 reviews, 28 traces and 0 artifacts, with no key in it; martian evals prompts push of the SDK's matrix example added two prompt versions; martian evals push with the server address and token variables unset exited 2 and named both as missing. The published image ghcr.io/martiansecurity/martian-evals:0.1.5 was pulled with no stored login and run with the guide's command (another name, volume and host port): it printed the no-login warning, listened on 0.0.0.0:7600 with data in /data, ran as uid 10001, served the 0.1.5 UI (MartianFrontend c56f4a4) with Cache-Control no-cache on the page, refused Host evil.example with 400 and accepted 127.0.0.1 and localhost; a second container on the same volume, with evals.internal named in the allowed-hosts variable, accepted evals.internal, still refused evil.example and reused the data folder. Not verified: the SSH tunnel and a folder mounted from the server; a push to a Martian server; running a model judge or a scoring suite; saving a human review; traces recorded by an application over MLflow or OpenTelemetry; following the sidebar's external links; macOS, WSL and mobile layouts.",
-      "customerNotice": "Every command and page in this guide ran on martian-sdk 0.1.5 from PyPI, and the container image on Linux. A push to a server and model judges were not run.",
+      "validationStatus": "SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.",
+      "customerNotice": "SDK 0.3.1 was verified for local navigation and export/restore. The UI-launched run and container example are from an earlier walkthrough. Hosted push and model-judge scoring need separate checks.",
       "requiredValidation": [
         "Run every documented command against the released SDK 0.1.5 package from public PyPI and capture the screenshots again",
         "Pull and run the published container image as documented, and confirm the package is pullable without credentials",
@@ -3386,6 +3449,13 @@
           "observedPath": "The published container image ghcr.io/martiansecurity/martian-evals:0.1.5: anonymous pull, the guide's docker run command, the Host check, MARTIAN_EVALS_ALLOWED_HOSTS and a second container on the same volume",
           "environment": "Linux workstation; Docker; image digest sha256:4da99f72089b55d15c50076c79ff6c1d044e45412160451a3a51de69605e1730 from martian-redteam release run 43879044489; pulled with an empty Docker configuration (no stored login)",
           "result": "The image pulled without a login and ran as the guide describes; the SSH tunnel and a folder mounted from the server were not run"
+        },
+        {
+          "date": "2026-11-19",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.3.1 local UI navigation and portable Evals export/restore",
+          "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme",
+          "result": "A synthetic HTTP run retained its original reply locally. Its portable export removed a dummy header credential and a URL query value and masked both echoes. Import restored one passing case, one score and one trace. The restored run and its workbench returned 200 and the verdict survived refresh."
         }
       ],
       "verifiedAt": "2026-11-16",
