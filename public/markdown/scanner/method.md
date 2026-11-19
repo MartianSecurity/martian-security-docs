@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/method/)
 
-> **Page qualification:** Current beta console · Anyone evaluating or using the Scanner · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** The numbers are the accuracy report of martian-scanner at the commit listed (149 samples), run offline with recorded registry and model answers. Publishing is held for the beta release; the numbers are taken again from that release's report before the page is published.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · Anyone evaluating or using the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 This page says how the Skills / MCP / Plugin Scanner reaches each finding, what a finding at each evidence level may and may not mean, and how accurate it is on the corpus it is measured on. Every number here comes from the Scanner’s accuracy report for the release this page describes. A number from another corpus, or from a scan with fewer stages, can be very different.
 

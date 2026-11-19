@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/library/coverage/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-13 · Isolated local QA; named HTTP/catalogue walkthrough. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Find the techniques relevant to your agent and understand what Martian can execute in the current catalogue. The expected result is a clearly scoped assessment selection, with unsupported techniques and declared gaps kept visible.
 

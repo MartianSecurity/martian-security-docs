@@ -13,6 +13,7 @@ const digest = (value) => createHash('sha256').update(value).digest('hex').slice
 const plainMarkdown = (value) => value.replace(/\\([\\`*_{}\[\]()#+\-.!|>])/g, '$1');
 const index = read('public/llms.txt');
 const full = read('public/llms-full.txt');
+const verificationLink = pageLinks(`${docsBase}reference/verification/`).mirror;
 let exactCodeBlocks = 0;
 let screenshotCaptions = 0;
 for (const source of sources) {
@@ -23,6 +24,7 @@ for (const source of sources) {
   assert.ok(full.includes(markdown.trimEnd()), `${slug}: missing from full reference`);
   assert.ok(index.includes(`${links.mirror}?v=${digest(markdown)}`), `${slug}: missing versioned index link`);
   assert.ok(!/^import .+ from |<(?:GuideMeta|Screenshot|Diagram)\b/m.test(markdown), `${slug}: unrendered MDX`);
+  assert.doesNotMatch(markdown, /^(?:Partly verified guide|Guide in progress|> \*\*(?:Page qualification|Walkthrough limits):\*\*)/m, `${slug}: internal QA callout in Markdown`);
   const document = parse(read(`dist/${slug === 'index' ? '' : `${slug}/`}index.html`));
   const actions = find(document, (node) => node.tagName === 'docs-page-actions');
   assert.equal(attribute(actions, 'data-markdown-url'), `${links.local}?v=${digest(markdown)}`);
@@ -30,6 +32,7 @@ for (const source of sources) {
   const alternate = find(document, (node) => node.tagName === 'link' && attribute(node, 'type') === 'text/markdown');
   assert.equal(attribute(alternate, 'href'), `${links.mirror}?v=${digest(markdown)}`);
   const article = find(document, (node) => hasClass(node, 'sl-markdown-content'));
+  assert.ok(!find(article, (node) => hasClass(node, 'guide-notice') || hasClass(node, 'qualification-note')), `${slug}: internal QA callout in HTML`);
   visit(article, (node) => {
     if (node.tagName === 'button' && attribute(node, 'data-code') !== undefined) {
       const code = attribute(node, 'data-code').replaceAll('\u007f', '\n');
@@ -38,10 +41,10 @@ for (const source of sources) {
     }
     if (hasClass(node, 'guide-meta')) {
       for (const child of node.childNodes.filter((child) => child.tagName === 'span' && attribute(child, 'aria-hidden') !== 'true')) {
-        assert.ok(markdown.includes(text(child).trim()), `${slug}: qualification or role lost`);
+        assert.ok(markdown.includes(text(child).trim()), `${slug}: audience metadata lost`);
       }
+      assert.ok(markdown.includes(`[Verification details](${verificationLink})`), `${slug}: missing verification link`);
     }
-    if (hasClass(node, 'qualification-note')) assert.ok(markdown.includes(text(node).trim()), `${slug}: qualification limits lost`);
     if (node.tagName === 'figure' && hasClass(node, 'screenshot')) {
       const caption = find(node, (child) => child.tagName === 'figcaption');
       const plain = caption.childNodes.filter((child) => child.nodeName === '#text').map(text).join('').trim();

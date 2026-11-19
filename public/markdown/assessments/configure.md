@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted. Separate MR-1009 now qualifies clean duplicate-refund reproduction with two positive restored-world repetitions and an executed passing control. Signed-in fixtures and prepared scenarios remain unqualified.
-
-Partly verified guide
-
-HTTP, operator-assisted MCP, completed browser execution, sandbox admission and an independent payment outcome are checked. Synthetic signed-in fixtures and prepared scenarios remain unverified.
+Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 

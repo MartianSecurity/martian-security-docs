@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/workspace/team-and-roles/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Give a teammate the appropriate access to your organization and verify that the invitation and membership are retained. Each email address belongs to one organization in the current product.
 

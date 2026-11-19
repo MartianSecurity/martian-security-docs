@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/regression-cases/)
 
-> **Page qualification:** Current beta console · Member, admin or owner; observed Owner walkthrough · Verified 2026-11-13 · Isolated local QA; Owner; saved-case authoring. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Member, admin or owner; observed Owner walkthrough · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Save a failed record as a test case that can catch the same problem in a later evaluation. Finish with an editable draft containing the reviewed input, expected answer and source-run metadata. Creating the draft uses saved results; it does not repeat the target call.
 

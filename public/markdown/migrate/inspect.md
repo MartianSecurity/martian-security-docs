@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/inspect/)
 
-> **Page qualification:** Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Every documented command ran against the SDK source at martian-redteam 08d2673. Inspect AI 0.3.290, in its own environment, wrote the sample logs: a three-sample task on Inspect's mock model answering from a table, scored with includes() and a numeric scorer, as two .eval logs (versions 1 and 2 of the table) and one .json log with two epochs. The .eval import printed the documented lines with exit 0 (2 passed / 1 failed, then 3 passed); the .json log imported as 6 cases. A log written with --no-log-samples was refused with the documented message, exit 2 and nothing imported. In martian ui the runs, the results table, a case's assessments, its trace (agent and model spans) and Compare (1 improved, 2 unchanged) were checked. Not verified: a published 0.1.4 package, logs with tool calls or model-graded scorers from a real provider, and logs of evals still running.
-
-Partly verified guide
-
-Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by Inspect AI 0.3.290. It was not run again on the later source or on the package published to PyPI.
+Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Bring the logs your Inspect AI evals wrote into the local Evals UI. Each log becomes a run whose cases, scores and conversations you can open, compare with another run case by case, and review.
 

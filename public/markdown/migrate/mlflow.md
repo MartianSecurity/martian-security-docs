@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/mlflow/)
 
-> **Page qualification:** Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Every documented command ran against the SDK source at martian-redteam 08d2673 with sample tracking stores that MLflow itself wrote (one experiment with three application traces, two in a session, a person's feedback, an LLM judge's feedback, an expectation, a three-record evaluation dataset, two mlflow.genai.evaluate runs with a code scorer, and a training run with only a parameter and a metric). The 3.18.0 SQLite store's dry run, copy and second copy printed the documented reports with exit 0, and its SHA-256 was unchanged. A 3.16.1 store was refused with exit 2 and nothing written; its copy upgraded with the SDK's mlflow db upgrade imported with the same counts. A store on PostgreSQL 17 (postgres extra) passed the dry run and copy from an environment variable URL, with the password never printed; without the extra the documented message and exit 2 appeared. --experiment, an unknown experiment, an http:// server address and an mlruns folder behaved as documented. In martian ui the project, traces, the two-turn session, both runs, Compare (1 improved, 2 unchanged) and the dataset were checked. Not verified: a published 0.1.4 package, stores from MLflow 2.x, the upgrade of a Postgres copy, and spans kept in a remote artifact store.
-
-Partly verified guide
-
-Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by MLflow 3.18.0 and 3.16.1. It was not run again on the later source or on the package published to PyPI.
+Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 If your team traced and evaluated an agent with MLflow, copy its tracking store into the local Evals UI. Each experiment becomes a project, with its traces, the feedback and expectations on them, its evaluation datasets and its evaluation runs. You can then compare runs case by case and review results without a Martian account.
 

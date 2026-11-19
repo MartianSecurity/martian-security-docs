@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
-> **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Verified 2026-11-17 · Local CLI and the local UI's Red Team pages; GLM 5 on Amazon Bedrock as attacker and judge; no Martian platform services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 A local red team run attacks your agent with your own model and keeps the report on your machine. You need no Martian account, no API key and no email, and nothing is sent to Martian: the run connects only to the model you name and to your agent.
 

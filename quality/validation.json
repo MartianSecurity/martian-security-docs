@@ -830,6 +830,12 @@
       "environment": "Production docs preview in Chromium at 1440 × 1000 in light mode and 390 × 844 in dark mode",
       "result": "passed in stated scope",
       "details": "Opened both SDK groups from the hosted Red Team article and checked their link sets and active page markers. The Local SDK overview opened the full Evals guide, retained its current marker after refresh, appeared in search and copied as Markdown. The narrow menu navigated to the local UI guide."
+    },
+    {
+      "scope": "Public guide copy and verification presentation",
+      "environment": "Production docs preview in Chromium, desktop light and narrow dark",
+      "result": "passed in stated scope",
+      "details": "Checked Local Evals, local UI and Scanner guides for the removed walkthrough banners. Verified exact code copying, page Markdown and agent link copying, search, nested refresh, full-size images and the workspace support caution. The verification reference still shows the recorded walkthrough counts. Rendered HTML and Markdown checks cover the entire site."
     }
   ],
   "remainingGaps": [

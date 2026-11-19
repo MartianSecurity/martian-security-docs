@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/results-and-scores/)
 
-> **Page qualification:** Current beta console · all customer roles read/export; member+ for supplementary mutations · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles read/export; member+ for supplementary mutations · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Read a saved evaluation from its overall execution state down to an individual input, answer and assessment. You will be able to distinguish a failed quality check from a failed request, retain exports, and explain which evidence supports a score.
 

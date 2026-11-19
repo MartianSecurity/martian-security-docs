@@ -4,13 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-ui/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.
-
-Partly verified guide
-
-SDK 0.3.1 was verified for local navigation and export/restore. The UI-launched run and container example are from an earlier walkthrough. Hosted push and model-judge scoring need separate checks.
+Python SDK · Any developer; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 `martian ui` starts the Evals UI that ships inside the SDK. It serves one user on your own machine, with no login and no other service. It shows every run that `martian evals run` and the importers recorded in a local data folder, lets you compare runs, read each case’s trace and quality issues, and starts runs of its own against an agent you define. Nothing is sent to Martian.
 
@@ -231,10 +225,6 @@ Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds th
 
 The image is public: `docker pull` needs no login. This guide ran the 0.1.5 image with the command above on Linux, including the `Host` check and `MARTIAN_EVALS_ALLOWED_HOSTS` below and a second container on the same volume.
 
-Not exercised by this guide
-
-The SSH tunnel and a folder mounted from the server were not run.
-
 **The image has no login either. Do not expose it publicly.** The command above publishes the port on the server’s `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:
 
 ```sh
@@ -259,7 +249,7 @@ Read the push summary, then check the run and its case counts in the destination
 
 Check workspace support
 
-Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator. The Community walkthrough on this page verifies local export and restore.
+Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator.
 
 ## How the screenshots were made
 
@@ -274,7 +264,6 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 -   **A request is refused with `400`:** its `Host` header named something other than `127.0.0.1` or `localhost`. Open the UI at one of those addresses.
 -   **A run is refused:** by default one run at a time may be in progress. Wait, or start `martian ui --concurrency 2`.
 -   **Not a platform record:** a local run has no Martian session, agent or tested revision, and it does not appear in the hosted console unless you push it ([step 7](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#7-send-runs-to-a-martian-server)).
--   **Verification scope** covers 0.3.1 local quickstart runs and export/restore. The original container and UI-launched run are recorded under SDK 0.1.5. Model judges, application traces and pushes to a deployed workspace need separate checks.
 
 ## Next
 

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/human-reviews/)
 
-> **Page qualification:** Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Collect attributed human ratings on saved evaluation responses. A queue defines which results need which questions; it becomes complete only after the required answers and their native feedback are verified. Human ratings remain separate from the original automated scores.
 

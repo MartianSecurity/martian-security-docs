@@ -21,10 +21,16 @@ test('rendered exports preserve exact executable code, including indentation and
   assert.throws(() => render('<pre>Unrecoverable code</pre>'), /no exact copy payload/);
 });
 
-test('nonvisual provenance, qualification limits, role, table and screenshot caption survive conversion', () => {
-  const result = render('<div hidden class="guide-meta"><span>SDK 0.1.3</span><span aria-hidden="true">·</span><span>Owner</span><span>Walkthrough partly verified</span><a href="/reference/verification/">Verification details</a></div><div hidden class="qualification-note">Remote CI is not verified.</div><table><thead><tr><th>Role</th><th>Access</th></tr></thead><tbody><tr><td>Owner</td><td>Configure</td></tr></tbody></table><figure><a href="/media/screenshots/example.png"><img src="/media/screenshots/example.png" alt="Actual settings"></a><figcaption>Real screenshot caption.<a class="visual-open" href="/media/screenshots/example.png">Open full size</a></figcaption></figure>');
-  assert.match(result.markdown, /SDK 0\.1\.3 · Owner · Walkthrough partly verified/);
-  assert.match(result.markdown, /> \*\*Walkthrough limits:\*\* Remote CI is not verified\./);
+test('guide copies preserve audience, product limits, verification links and screenshot captions', () => {
+  const result = render(`
+    <div hidden class="guide-meta"><span>Python SDK</span><span>Owner</span><a href="/reference/verification/">Verification details</a></div>
+    <aside><p>Hosted CI requires a workspace API key.</p></aside>
+    <table><thead><tr><th>Role</th><th>Access</th></tr></thead><tbody><tr><td>Owner</td><td>Configure</td></tr></tbody></table>
+    <figure><a href="/media/screenshots/example.png"><img src="/media/screenshots/example.png" alt="Actual settings"></a><figcaption>Real screenshot caption.<a class="visual-open" href="/media/screenshots/example.png">Open full size</a></figcaption></figure>
+  `);
+  assert.match(result.markdown, /^Python SDK · Owner · \[Verification details\]/m);
+  assert.match(result.markdown, /Hosted CI requires a workspace API key\./);
+  assert.doesNotMatch(result.markdown, /Page qualification|Walkthrough limits/);
   assert.match(result.markdown, /\| Role \| Access \|/);
   assert.ok(result.markdown.includes(`![Actual settings](${mirrorAsset('media/screenshots/example.png')})`));
   assert.match(result.markdown, /Real screenshot caption\./);
