@@ -4328,6 +4328,44 @@
       "verifiedEnvironment": "Local CLI and the local UI's Red Team pages; PyPI SDK 0.2.0; the SDK's hand-written promptfoo sample; GLM 5 on Amazon Bedrock for the converted run; no Martian platform services"
     },
     {
+      "id": "scanner/method",
+      "title": "Method and measured results",
+      "guide": "Method and measured results",
+      "description": "How the Scanner finds direct and indirect issues, what each evidence level means, what it does not claim, and its measured precision and recall on its labelled corpus.",
+      "customerTask": "Understand how the Scanner reaches a finding, what a clean result means, and how accurate it is on the corpus it is measured on.",
+      "role": "Anyone evaluating or using the Scanner",
+      "route": "Documentation only: Scanner group in the sidebar",
+      "documentationRoute": "/scanner/method/",
+      "interfaces": [
+        "Scanner accuracy report",
+        "Evidence levels"
+      ],
+      "prerequisites": [
+        "None: a reference page"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Before publishing, replace every number with the accuracy report (scripts/accuracy.py) of the release that turns the Scanner on, and update the corpus table from its corpus section",
+        "Have the page reviewed before launch (MartianSecurity/martian-notes#519)"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-scanner",
+          "commit": "650abfd1b293c45be3ee7d112966709dc1fde184",
+          "paths": [
+            "scripts/accuracy.py",
+            "corpus/register.json",
+            "corpus/bypass.json",
+            "corpus/gate.toml",
+            "docs/how-it-works.md",
+            "docs/evidence-levels.md"
+          ]
+        }
+      ],
+      "validationStatus": "The numbers are the accuracy report of martian-scanner at the commit listed (149 samples), run offline with recorded registry and model answers. Publishing is held for the beta release; the numbers are taken again from that release's report before the page is published."
+    },
+    {
       "id": "scanner/overview",
       "title": "What the Scanner checks",
       "guide": "What the Scanner checks",
