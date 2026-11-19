@@ -19,7 +19,7 @@ Any signed-in tenant user can inspect accessible inventory. **Owner** or **Admin
 Source collection, runtime reporting and assessment connections have separate credentials and purposes. Creating a source does not start a process or stop an agent.
 
 :::note[Start with an approved scope]
-This walkthrough uses a customer-run Kubernetes collector in an authorized test namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your Backend deployment. The inventory reader needs workload and RBAC metadata access; it does not need permission to read Secrets, execute in containers or change workloads.
+Use a customer-run Kubernetes collector in an authorized namespace. Your operator supplies your cluster alias, namespace scope and a collector package compatible with your deployment. Grant the inventory reader access to workload and RBAC metadata only.
 :::
 
 ## Enroll a read-only source

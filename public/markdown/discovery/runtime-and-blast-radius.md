@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/runtime-and-blast-radius/)
 
-Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin
 
 Follow application-reported model/tool activity for one deployment and compare it with collected potential access. Success means the intended binding receives real instrumented calls and you can trace each visible relationship to its evidence and time boundary.
 
@@ -30,7 +30,7 @@ Choose the collected workload and explicit deployment, environment and version b
 
 ## Integrate one real call
 
-[Download report\_once.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for a bounded integration using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the enrolled workload’s Python environment and activate it before running the example. This example is source reviewed and locally checked for imports/setup failure; real Discovery delivery remains unqualified.
+[Download report\_once.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/runtime-reporting/report_once.py) for an example using the SDK’s `martian_redteam.runtime.RuntimeReporter`. Install the [SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md) in the enrolled workload’s Python environment and activate it before running the example. Check Discovery for the workload’s reported calls after running it.
 
 Use a trusted module that exposes your existing real model/tool call as a sync or async function. The JSON input file supplies its keyword arguments. Do not put business requests at module import time. Run the helper only in the workload/version that the binding actually describes, using a legitimate authorized synthetic task.
 
@@ -67,15 +67,15 @@ This minimal integration emits call metadata. Resource links require explicit re
 
 ![The retained v2 runtime map shows zero model calls, eight successful tool calls and eight resource mappings.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-eight-tool-calls.png)
 
-The exact binding and Last hour selection survived a real refresh. Eight distinct successful policy reads were retained; two denied calls did not enter the callable.
+Select a workload binding and time window to see its reported calls.
 
-The captured example is a real read-only `get_shipping_policy` tool in the selected Kubernetes workload. It reads one named synthetic ConfigMap using that workload’s service account. **0 Model calls** and **8 Tool calls** describe eight distinct successful reads from the runtime, gate and network checks. Two blocked attempts did not enter the callable or appear as executed tool reports. A tool-only report can populate this view while the workload remains a candidate; **Runtime-observed** needs model and tool calls in the same trace.
+The example shows reports from a read-only tool that reads a ConfigMap using the workload’s service account. **Model calls** and **Tool calls** count reported execution. A workload can show tool reports while it remains a candidate. **Runtime-observed** requires model and tool calls in the same trace.
 
 4.  For a resource link, inspect its service/type, opaque reference, reported action, outcome and time. These links require explicit response-ID mappings in the customer integration. Use **Previous resources** / **Next resources** to page the displayed links.
 
 ![The first actual policy lookup exposes a binding-scoped opaque ConfigMap resource reference.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-resource-detail.png)
 
-The initial successful lookup mapped the actual response UID to an opaque reference. Later reads in the same binding reuse that reference; this is reported evidence, not a business-impact proof.
+Expand a resource row to see the opaque reference it uses in the selected binding.
 
 5.  Check the bounds: aggregate counts cover a displayed latest-500-event window and individual details the latest 50 events. A selected aggregate can have no corresponding row in that smaller recent-event window. Resource/action links page by 12 for displayed tools.
 6.  Refresh, reselect the same binding and time window if needed, and confirm that the actual synthetic call remains in retained evidence.
@@ -107,7 +107,7 @@ If no workload is listed
 
 ![Connect runtime reporter with No matching workloads and disabled Create runtime binding.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-runtime-no-workloads.png)
 
-Runtime setup stops until an authorized source has collected a matching workload. Deployment labels alone do not create that inventory record. No binding or credential was created.
+Runtime setup requires a matching workload from an authorized inventory source.
 
 -   **No runtime reporters connected** needs enrollment and actual instrumentation, not another inventory refresh.
 -   **Revoke reporting** rejects future uploads while retaining history. It does not stop the application, block a call or revoke an independently enrolled call gate.

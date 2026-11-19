@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/trace-annotations/)
 
-Current beta console · member/admin/owner writes; authorized roles read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · member/admin/owner writes; authorized roles read
 
 Attach a human opinion or expected behavior to a native trace, including a conversation trace that has no dataset evaluation run. This is separate from [assigned human-review queues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md). Saving an annotation does not execute a target or model.
 

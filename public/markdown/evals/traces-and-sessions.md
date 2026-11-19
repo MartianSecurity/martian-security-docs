@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/traces-and-sessions/)
 
-Current beta console · all customer roles read/export; member+ saves views · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · all customer roles read/export; member+ saves views
 
 Use the trace explorer to follow recorded requests and inspect the spans, inputs, outputs and assessments behind an evaluation. Group by a reported session ID when you need a conversation view. These reads do not execute a target again.
 
@@ -44,11 +44,11 @@ The trace-table inspector retains the real input/output and two spans. There are
 
 A missing usage field is not zero usage. Reported model names, costs and span events describe what was retained; they do not independently verify billing, deployed code or a business-side effect. Treat trace downloads as potentially sensitive and share them according to your organization’s policy.
 
-To add a human rating or expected behavior, use the separate [native annotation workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/trace-annotations.md). It appends an assessment rather than editing recorded outputs or a dataset answer. That write workflow has its own pending qualification.
+To append a human rating or expected behavior to a trace, follow [Annotate traces](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/trace-annotations.md).
 
 ## 3\. Group recorded conversations
 
-The example below uses a separate synthetic HTTP application with native MLflow 3.16.1 instrumentation and an operator-provisioned application writer. Two actual requests stored `BLUE`, then recalled it. Each request produced a separate completed trace with the same reported session ID. This verifies the conversation view; it does not qualify SDK 0.1.2 ingestion or model behavior. Viewing these records in Martian needs only your normal customer sign-in.
+Traces with the same reported session ID can appear together in **Sessions**. In this example, one turn stores `BLUE` and the next recalls it.
 
 1.  Return to Traces. To inspect a known conversation, open **Filters** (**More filters** to assistive tools), enter its **Session ID** and click **Apply filters**. Set **Group traces by** to **Group by session**.
 2.  Inspect **Recorded sessions**, turns, errors and first/last recorded times. This bounded example contains one session, **2** turns, **0** errors and no ungrouped traces.

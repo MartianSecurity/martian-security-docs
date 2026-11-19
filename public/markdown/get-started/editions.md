@@ -152,5 +152,3 @@ Community includes the whole Evals core except what a shared server needs or wha
 -   **Start on your own machine:** follow the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md). It needs no account.
 -   **Share results as a team, or run Red Team assessments:** [request a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/access.md) in the hosted console.
 -   **Keep all data inside your network:** On-Premises is planned. Email [founders@martiansecurity.ai](mailto:founders@martiansecurity.ai) to discuss your requirements.
-
-The [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md) lists which guides have been walked through, against which release.

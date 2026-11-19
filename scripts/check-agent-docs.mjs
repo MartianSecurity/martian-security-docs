@@ -13,7 +13,9 @@ const digest = (value) => createHash('sha256').update(value).digest('hex').slice
 const plainMarkdown = (value) => value.replace(/\\([\\`*_{}\[\]()#+\-.!|>])/g, '$1');
 const index = read('public/llms.txt');
 const full = read('public/llms-full.txt');
-const verificationLink = pageLinks(`${docsBase}reference/verification/`).mirror;
+for (const retiredPath of ['reference/verification', 'markdown/reference/verification.md', 'examples/validation']) {
+  assert.ok(!existsSync(`dist/${retiredPath}`), `Maintainer evidence in public docs: ${retiredPath}`);
+}
 let exactCodeBlocks = 0;
 let screenshotCaptions = 0;
 for (const source of sources) {
@@ -25,6 +27,7 @@ for (const source of sources) {
   assert.ok(index.includes(`${links.mirror}?v=${digest(markdown)}`), `${slug}: missing versioned index link`);
   assert.ok(!/^import .+ from |<(?:GuideMeta|Screenshot|Diagram)\b/m.test(markdown), `${slug}: unrendered MDX`);
   assert.doesNotMatch(markdown, /^(?:Partly verified guide|Guide in progress|> \*\*(?:Page qualification|Walkthrough limits):\*\*)/m, `${slug}: internal QA callout in Markdown`);
+  assert.doesNotMatch(markdown, /^#{2,6} (?:How the screenshots were made|Observed qualification results)$/mi, `${slug}: internal QA section in Markdown`);
   const document = parse(read(`dist/${slug === 'index' ? '' : `${slug}/`}index.html`));
   const actions = find(document, (node) => node.tagName === 'docs-page-actions');
   assert.equal(attribute(actions, 'data-markdown-url'), `${links.local}?v=${digest(markdown)}`);
@@ -43,7 +46,6 @@ for (const source of sources) {
       for (const child of node.childNodes.filter((child) => child.tagName === 'span' && attribute(child, 'aria-hidden') !== 'true')) {
         assert.ok(markdown.includes(text(child).trim()), `${slug}: audience metadata lost`);
       }
-      assert.ok(markdown.includes(`[Verification details](${verificationLink})`), `${slug}: missing verification link`);
     }
     if (node.tagName === 'figure' && hasClass(node, 'screenshot')) {
       const caption = find(node, (child) => child.tagName === 'figcaption');

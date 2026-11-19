@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/quality-issues/)
 
-Current beta console · all customer roles browse; member+ triages · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · all customer roles browse; member+ triages
 
 Turn a recorded failure signal into an inspectable triage decision. Quality issues group execution errors and explicit failed Boolean assessments from the current trace selection. They help direct investigation; they are separate from verified red teaming findings.
 

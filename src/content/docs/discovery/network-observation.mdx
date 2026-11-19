@@ -39,7 +39,7 @@ Inventory read permission does not grant privileged node access. The console doe
 <Screenshot id="discovery-network-capture-coverage" />
 
 :::caution[Read coverage before interpreting the map]
-The recorded example returned two destination groups and a **partial** receipt: 16 input events could not be attributed. Kernel loss remains unknown. **Events without kernel error** does not mean successful handshakes or verified application actions.
+A **partial** receipt can contain destinations and still omit unattributed events. Check omission counters and whether kernel loss is known. **Events without kernel error** counts observations. Successful handshakes and application actions require separate evidence.
 :::
 
 **Revoke this upload grant** is available while the once-shown grant panel is open. **Credential saved** clears that panel and its revoke button; retain the capture ID privately. For later revocation, an owner/admin uses the authorized `DELETE /v1/discovery/network-captures/{capture_id}` API or asks the workspace operator to do so. Revocation prevents further uploads. Stop the customer-side capture process through its operator procedure as well; it does not stop customer applications or remove sensors.
@@ -64,7 +64,7 @@ The recorded example returned two destination groups and a **partial** receipt: 
 <Screenshot id="discovery-network-qualified-service" />
 
 :::note[Read the map and health together]
-The completed example delivered nine windows with two real destinations, including **default/kubernetes:443**. Its Service UID matched an independent Kubernetes read. Coverage still showed **Degraded**: 38 of 53 inputs were unattributed, leaving 15 attributed connect events. Service matching does not establish which backend Pod handled a request, a completed handshake or complete capture.
+A destination can have a matching Kubernetes Service while coverage still shows **Degraded**. Check the attribution and omission counters alongside the match. Identifying the backend Pod or confirming a completed handshake requires separate evidence.
 :::
 
 ## 3. Stop reporting and retain the right evidence
@@ -78,12 +78,12 @@ The completed example delivered nine windows with two real destinations, includi
 
 <Screenshot id="discovery-network-qualified-retained" />
 
-4. Stop/remove customer-side processes and node sensors separately through the cluster operator. Revoking the upload grant does not uninstall them. In the recorded QA check, the observer exited after revocation, then the operator removed only its separately installed sensor resources. The customer workload remained Ready with the same Pod identity.
+4. Ask the cluster operator to stop the customer-side observer and remove its separately installed node sensors when they are no longer needed.
 
 ## Failures and limits
 
 :::caution[Delivered windows can still lack usable connections]
-An earlier separate run delivered four windows but omitted all 32 inputs: 22 were unattributed and 10 invalid. It correctly showed **Degraded** and **No attributed connections in this window**. The later successful example used a new grant and separately installed sensors with unchanged software; it does not establish the earlier failure's cause. Ask the operator to check scope, Pod/container identities, timestamps and omission counters. Do not interpret an empty map as inactivity.
+If coverage shows **Degraded** or **No attributed connections in this window**, ask the operator to check scope, Pod and container identities, timestamps and omission counters. An empty map can mean the observer could not attribute its inputs.
 :::
 
 <Screenshot id="discovery-network-reporting-health" />

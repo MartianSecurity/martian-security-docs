@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/first-run/)
 
-Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read
 
 Run three synthetic requests through an approved agent and compare its answers with explicit expected outputs. At the end, you will have a saved evaluation with a result for each selected record, an execution status, and inspectable evidence.
 
@@ -12,7 +12,7 @@ An evaluation measures the behavior described by its dataset and scoring rules. 
 
 ## Before you start
 
--   Use the current beta console with Evals setup **Ready**; see the [source baseline](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#source-baseline). Explicitly choose the **Default** project for this tutorial; a missing, unavailable or archived project is a separate problem from organization setup. See [evaluation projects](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/projects.md) if Default is unavailable.
+-   Use a workspace where Evals setup shows **Ready**. Select the **Default** project for this tutorial. See [evaluation projects](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/projects.md) if Default is unavailable.
 -   Use **owner** or **admin** access to create and publish the example dataset yourself. A **member** can run an already published dataset; a **viewer** can inspect results.
 -   [Register, validate and approve a stateless HTTP agent connection](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md). Dataset Evals supports approved HTTP chat targets. MCP, browser and session-backed targets cannot run this tutorial.
 -   If you need a complete teaching HTTP target, [run the callback adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md). Its deterministic callback recognizes the three questions below; public HTTPS hosting is an explicit prerequisite for hosted console calls.
@@ -73,7 +73,7 @@ Wait for **Completed**. If you need to stop, use **Stop after current request** 
 
 ![EV-1001 completed with three passed responses and retained results after a page refresh.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-first-run-results.png)
 
-The real teaching target returned READY, HELLO and 4. All three exact-match checks passed and the results survived refresh; this checks tutorial wiring, not production-agent quality.
+The Results tab shows the answer and exact-match verdict for each of the three example records.
 
 Exact match ignores leading/trailing whitespace and letter case. Extra explanation or different punctuation can still fail. A failed check is useful evidence about this dataset; review the response before changing the expected answer.
 

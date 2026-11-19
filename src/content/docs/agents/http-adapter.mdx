@@ -17,8 +17,8 @@ The supplied callback is deterministic teaching code, not an LLM. It recognizes 
 ## Before you start
 
 - Local preflight needs Python **3.12 or newer** and a terminal. No third-party Python package or provider account is required.
-- Hosted onboarding requires an **Owner** or **Admin**, the [current qualification status](/reference/verification/), and a public HTTPS host reachable from Martian's servers. Localhost is not reachable merely because the console opens in your browser.
-- For the tested disposable HTTPS recipe, use Docker Desktop and outbound internet access. Alternatively, supply a dedicated Linux host, public DNS, reachable ports 80/443 and Caddy. The [complete hosting instructions](/examples/http-agent/README.md) explain both options; the Caddy alternative is source-reviewed rather than walkthrough-tested.
+- Hosted onboarding requires an **Owner** or **Admin** and a public HTTPS host reachable from Martian's servers. Localhost is not reachable merely because the console opens in your browser.
+- Use Docker Desktop and outbound internet access for the temporary HTTPS connection. To use Caddy, supply a dedicated Linux host, public DNS and reachable ports 80 and 443. See the [hosting instructions](/examples/http-agent/README.md) for both options.
 - If public hosting is unavailable, use [SDK local evaluations](/sdk/evaluations/) instead. The callback and its provider credentials can remain in your own process.
 
 ## 1. Download and start the service
@@ -87,6 +87,5 @@ This small server has no durable side-effect idempotency, rate limiting, session
 - **415/422**: send the JSON content type and all seven request fields. Check that your callback returns nonempty text under `content`.
 - **502** from this example: the callback failed or returned an unsupported value. Inspect your own application privately; the service omits exception details from its public response.
 - TLS/DNS/timeout errors: resolve public reachability before onboarding. Keep certificate checks enabled; a local successful curl does not prove SaaS reachability.
-- Local preflight passed but no app screenshot/walkthrough qualification is recorded above: end-to-end onboarding remains unverified. Do not treat a source example as a deployed product run.
 
 Next, [connect and manage the agent](/agents/connections/), [run the three-record evaluation](/evals/first-run/), or use [the SDK callback alternative](/sdk/evaluations/).

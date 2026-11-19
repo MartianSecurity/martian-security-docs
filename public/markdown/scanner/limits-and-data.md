@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/limits-and-data/)
 
-Current beta console · owner or admin (usage, retention, deletion); any member (limits) · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner or admin (usage, retention, deletion); any member (limits)
 
 ## Limits
 

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam/)
 
-Python SDK · Owner/admin issues key; machine key with redteam:run executes · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Owner/admin issues key; machine key with redteam:run executes
 
 Run one adversarial probe against a local callback using platform-hosted generation and judging. To attack with your own model and no workspace, see [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md), which needs SDK 0.2.0 or later. You will get retained JSON/Markdown reports and an explicit gate result. Use the CLI or Python entry point for an attempt; running both executes new work twice.
 
@@ -19,7 +19,7 @@ Run one adversarial probe against a local callback using platform-hosted generat
 
 ![Create API key with hosted redteam permission and teaching-agent restriction selected](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-redteam-create-key.png)
 
-Select the needed permissions and restrictions before issuing the key. This capture precedes creation; the once-shown secret is excluded.
+Choose the required permissions and scope before creating the API key.
 
 ## 1\. Inspect the one-probe plan
 
@@ -133,8 +133,6 @@ Authentication, scope, retention, timeout and unknown-outcome errors have contro
 
 If execution status is unknown, recover the same operation with `client.get_operation(operation_id)`. Do not send another execution POST to obtain a passing result. `client.cancel_operation(operation_id)` requests cancellation; cancellation is not a passing judgment and does not prove an already issued provider request stopped.
 
-In the isolated QA walkthrough, the Python and CLI entry points were each run once as separate one-probe attempts. Each exited `0`, saved one score of `1`, and reported no infrastructure or target errors. Their four generation/judging operations were confirmed succeeded and settled. These results qualify the tutorial wiring against a deterministic callback, not a production agent’s security.
-
 Async callback cancellation is cooperative. Synchronous callbacks use bounded workers and need their own network timeouts: Python cannot kill a worker thread, and the SDK awaits cleanup. Late output cannot turn a timed-out probe into a pass.
 
 ## 6\. Persist a redteam result in the console
@@ -154,9 +152,7 @@ Select **Evals** in the main sidebar to return to the default **Runs** view. Fin
 
 The original combined attempt retained Failed and Exported to MLflow. Its generation acknowledgement was uncertain, so target execution and judging did not follow; later same-operation readback did not change this failed session.
 
-The captured local combined-CI attempt is a **failed** result: its generation response was uncertain to the runner, so target execution and judging did not proceed. A later read of that same operation confirmed generation succeeded. The original failed CI verdict remained saved and exported; retrieving the generation result did not complete the missing probe or turn the gate into a pass.
-
-A subsequent, distinct qualification ran an earlier tutorial snapshot on a GitHub-hosted runner. The combined CLI passed all three test groups, persisted and exported its session, and independently verified one generation plus one judging model call, both settled. See [CI qualification results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#observed-qualification-results) and the [tested SDK record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility). The deterministic callback checks wiring and retained evidence; it does not establish production-agent security.
+If a generation response was uncertain, keep the original CI receipt and recover the same operation. A later generation read can succeed while the saved session still shows failed execution. [CI test count and export status](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#read-the-test-count-and-export-status)
 
 Redteam judgments saved by the runner are **client-executed/client-scored**, including judgments originally obtained from Agents. They are useful regression evidence, not a release authorization or independent proof of the executed binary. SDK callback testing also does not establish sandbox reproduction or verified business effects from a console assessment.
 

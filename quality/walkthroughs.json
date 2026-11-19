@@ -460,7 +460,7 @@
         "Extracted customer github-actions.yml template was not itself dispatched.",
         "Deterministic callback and pinned disposable runtime qualification does not attest hosted beta or production security."
       ],
-      "record": "public/examples/validation/sdk-ci-0.1.2-2026-11-13.json"
+      "record": "quality/sdk-ci-0.1.2-2026-11-13.json"
     },
     {
       "task": "Dataset editing, formats, Martian copy and publication limits",

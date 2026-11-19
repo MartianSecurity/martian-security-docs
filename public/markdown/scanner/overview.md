@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/overview/)
 
-Current beta console · Any member of an Enterprise organization with the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · Any member of an Enterprise organization with the Scanner
 
 The Skills / MCP / Plugin Scanner is the third part of Martian Protect. It reads the files an agent is given (skills, MCP server configurations, plugins, sub-agents, hooks, settings, rules files and the agent’s own code) and reports what is wrong with them, including the indirect case: a clean `SKILL.md` that tells the agent to read and follow a link or a file that is not safe.
 

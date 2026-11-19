@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/method/)
 
-Current beta console · Anyone evaluating or using the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · Anyone evaluating or using the Scanner
 
 This page says how the Skills / MCP / Plugin Scanner reaches each finding, what a finding at each evidence level may and may not mean, and how accurate it is on the corpus it is measured on. Every number here comes from the Scanner’s accuracy report for the release this page describes. A number from another corpus, or from a scan with fewer stages, can be very different.
 
@@ -76,9 +76,7 @@ The Scanner is scored on a labelled corpus kept with its source. Each sample is 
 
 The indirect-case fixtures are offline: each carries recorded answers from the registries and the pages it names, and the model’s analysis is replayed from recorded answers of the Scanner’s analysis model. No live network or model is used when the corpus is scored.
 
-Each bypass fixture also has an outcome the Scanner must give: caught by the rules it names, or reported as not covered (a category not checked, a file listed as skipped or not inspected). A category the fixture carries is never reported clear. The release’s tests hold every fixture to its outcome.
-
-For each sample and category, a finding in the category is a true or a false positive by the labels. With no finding, the category counts as a true or false negative only when the scan checked it. A category the scan did not check, because a stage it needs did not run, is counted as not checked: never as clean and never as a miss. A release is held to thresholds on these numbers, and every rule that runs by default may report no category on a benign sample that the sample is not labelled for.
+For each sample and category, the labels determine whether a finding counts as a true or false positive. With no finding, the category counts as a true or false negative only when the scan checked it. When a required stage did not run, the category counts as **not checked**.
 
 ## Measured results
 

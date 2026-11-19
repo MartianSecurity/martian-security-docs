@@ -48,57 +48,34 @@ Use any signed-in role with access to the organization and know a run code or ag
 
 ## Example: check a modern run and its downloads
 
-This separate example uses **MR-1010** in **Documentation Browser Execution QA**, with a synthetic HTTP target built to check review capture and redaction. Follow the steps with your own retained run. The example's **INCONCLUSIVE** result is not a production security assessment.
-
-1. Open **Assessments** and select your run code to see the full summary. Here, **MR-1010** shows **Completed** execution, **INCONCLUSIVE** security outcome, **12** agent requests, **44** model calls and **0** displayed findings. Open **Probe coverage** below the summary to inspect the tested scope.
+1. In **Assessments**, open the run. Check **Assessment execution** and **Security outcome** separately. Open **Probe coverage** to see the scope the run reached.
 
 <Screenshot id="assessment-modern-result" />
 
-2. Use **Download domain outcomes**, then find the same run in **Reports** and click its **Download**. Both actual JSON downloads in this example retained the same run, agent, execution state, verdict and start/end times. Neither file contained the Recorded review's turn content.
-3. In **Recorded review**, check **Review revision**, open **Turns** (**Turns (12)** here) and select a turn. The first turn's **target response** shows **redacted · credential_scrubbed** and `[REDACTED]` in place of the fixture's token-shaped test string. Check the exported-content status and byte counts when reading an excerpt.
+2. Use **Download domain outcomes** for structured domain evidence. In **Reports**, use **Download** for run and finding summaries.
+3. In **Recorded review**, confirm **Review revision**, open **Turns**, and select a turn. Read its exported-content label before relying on a redacted or truncated response.
 
 <Screenshot id="assessment-modern-redacted-turn" />
 
-4. Keep the counts and coverage separate. This revision has **2 conversation records** and **12 turn records**; those are different retained record types. It also shows **Review delivery: persisted**, **Native delivery: complete** and **Native span coverage: pending**. Current delivery and the coverage frozen into a review revision answer different questions.
+4. Check **Review delivery**, **Native delivery** and **Native span coverage** separately. An available review can show incomplete span coverage. Conversation and turn counts refer to different record types.
 
-The JSON downloads and redacted turn reads passed in this earlier example. **Download redacted review** returned `review_provider_wait_exceeded` without producing a ZIP. The later example below qualifies archive delivery separately; a published revision and a readable turn alone do not establish a successful download.
+### Download and check the redacted review
 
-### Later publication and archive-integrity check
-
-A separate **MR-1002** in **Harbor Assessment Lab** published a durable review containing **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Its retained review-content coverage was **complete**, while native span delivery remained **pending**. These are separate delivery states.
-
-Its first revision-pinned download returned **HTTP 200** with an `application/zip` content type and the matching review-revision header, but the received file failed ZIP validation because it lacked a complete archive directory. That partial file is retained as a failed observation.
-
-A later read of the **same run and published revision** completed through the actual **Download redacted review** button in Firefox. No replacement assessment or model call was started. To check your own published review:
-
-1. Open **Recorded review** and confirm the selected **Review revision**. Click **Download redacted review**. If your browser asks for a save location, choose a private folder and finish that dialog.
-2. Wait for **Redacted review downloaded**. In this example, the UI reports **674,489 bytes** and the filename is `MR-1002-redacted-review-b18ed8bbb815.zip`.
+1. Confirm the selected **Review revision** and choose **Download redacted review**. Save the ZIP in a private folder.
+2. Wait for **Redacted review downloaded**.
 
 <Screenshot id="assessment-review-archive-downloaded" />
 
-3. Open the original downloaded ZIP locally. This example contains **114 entries**: `manifest.json` and **113 content parts**. The manifest matches the selected run and revision; every part passed CRC, byte-count and SHA-256 checks and parsed as JSON. Its counts remain **3 conversations**, **17 turns**, **103 customer events** and **51 gateway records**. Native span coverage is still **pending** and is not supplied by this ZIP.
-4. Refresh the application, find the same run in **Replay**, reopen **Recorded review** and confirm the retained revision. The separate **Reports** JSON download for this run was also checked; it contains the run summary and finding metadata rather than the review's turn content.
-
-A successful HTTP status, published revision or `.zip` filename is not enough: confirm that your archive opens and that its manifest and contents match the selected run before relying on it. Keep a failed or partial file private for diagnosis; do not repair it into a different artifact and treat that as the original download. The successful later read does not establish general artifact-service reliability or complete native telemetry.
-
-### Recovery of two frozen reviews
-
-This operator-assisted example uses an approved Backend recovery patch in **isolated QA**. It does not establish hosted availability. If your review remains **Needs review**, preserve its run and revision and contact the operator responsible for publication.
-
-The completed browser **MR-1006** and payment **MR-1004** in **Harbor Assessment Lab** initially retained artifact conflicts. Their original revisions were recovered without repeating an assessment, target request or model call. To inspect the recovered evidence:
-
-1. Open **Recorded review** and confirm **Review delivery: persisted**, **Review coverage: complete** and the selected **Review revision**. The browser revision begins `8a989daa25b0`; the payment revision begins `899ec6be2df4`. Reloading the application retained each original revision.
-2. Open a relevant section. The browser's **Turns (2)** retains the actual request and reply. The payment review's **Verification receipts (2)** retains **not reproducible** and **no violation observed**. Restoring access to evidence does not turn those results into a successful reproduction.
-
-<Screenshot id="assessment-payment-recovered-review" />
-
-3. Click **Download redacted review**. Both actual Firefox downloads completed: the browser archive contains **43 entries / 121,320 bytes**, and the payment archive contains **69 entries / 175,522 bytes**. Each contains its original matching manifest; every content part passed CRC, SHA-256, byte-count and JSON checks.
-
-The two review reservations were released only after verified publication and normal cleanup. Original assessment outcomes, frozen descriptors, target journals, execution ledgers and usage reservations were unchanged. The earlier failed run's reservation remains retained. See the [qualification record](/reference/verification/#isolated-review-recovery) for the build boundary and remaining gaps.
+3. Open the downloaded ZIP. Check that `manifest.json` matches the selected run and revision and that the requested content parts are present and readable.
+4. To refer back to the same evidence, reopen **Recorded review** and select the original revision.
 
 ## Failure and recovery
 
 If **Refresh review** still offers no published revision, ask your workspace owner or Martian operator who manages review publication. Include the run code, displayed review revision/status and error, without credentials or private payloads. Refresh reads availability; it does not publish an artifact. Keep the available run/legacy JSON as its separately described evidence scope; it is not a substitute for a published redacted review ZIP.
+
+If a previously unavailable review becomes available, select its original revision and inspect its retained outcome and receipts.
+
+<Screenshot id="assessment-payment-recovered-review" />
 
 - **No finished reports on this page** may mean your current page/filter contains no terminal run. Search or page to the intended run; it does not establish that all organization history is empty.
 - A failed download should retain an error. Retry the read after checking service/evidence availability; downloading does not justify starting a new assessment.

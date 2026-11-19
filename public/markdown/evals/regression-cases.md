@@ -4,15 +4,15 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/regression-cases/)
 
-Current beta console · Member, admin or owner; observed Owner walkthrough · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · Member, admin or owner; observed Owner walkthrough
 
 Save a failed record as a test case that can catch the same problem in a later evaluation. Finish with an editable draft containing the reviewed input, expected answer and source-run metadata. Creating the draft uses saved results; it does not repeat the target call.
 
 ## Before you start
 
-Use a **Member**, **Admin** or **Owner** account in a ready Evals organization. The observed walkthrough used an Owner; viewers cannot author drafts. Start with a completed run containing a failed record, such as the [changed-answer comparison example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/compare.md).
+Use a **Member**, **Admin** or **Owner** account in a ready Evals organization. Start with a completed run containing a failed record, such as the [changed-answer comparison example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/compare.md).
 
-This example uses **EV-1003**: expected `4`, actual `4.`. Keep the correct answer `4` as ground truth. Your run code and downloaded filename can differ. A separate publication paused new-run admission during this example; saved-result authoring remained available.
+In this example, the expected output is `4` and the agent replied `4.`. Keep the correct answer `4` as the expected output.
 
 Choose one path per case. Direct copying and file export use different record IDs, so combining both in the same draft can add duplicate questions.
 
@@ -32,13 +32,13 @@ Select only the canonical failed row. One result is selected; saved-result autho
 Choose New draft and Keep the run's expected output. The correct answer stays 4; the failing answer 4. is not accepted as ground truth.
 
 4.  Click **Add to draft** once. After the success message, open **Datasets → Drafts** and select the new draft. The dataset page opens on published datasets by default.
-5.  Check the input, expected output and usable count. Refresh and confirm the same record remains. The observed draft retained revision 2, one usable record and expected output `4`.
+5.  Check the input, expected output and usable count. Refresh and confirm the same record remains. In this example, the expected output is `4`.
 
 ![Refreshed Regression cases from EV-1003 draft with one usable record and expected output 4.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-regression-draft.png)
 
 The direct-copy draft retained revision 2 and one usable record after refresh. Its source-run/result metadata was inspected without another save.
 
-The **Edit** dialog exposes metadata linking the record to its source run/result. Cancel if you only wanted to inspect it. **Use the agent’s actual output** is appropriate only after a reviewer confirms that answer is correct; this walkthrough verified the original-expected-output path.
+The **Edit** dialog shows metadata linking the record to its source run and result. Cancel if you only wanted to inspect it. Choose **Use the agent’s actual output** only after a reviewer confirms that answer is correct.
 
 ## Alternative: import an exported failure
 
@@ -67,7 +67,7 @@ PY
 ```
 
 3.  Open **Evals → Datasets → New dataset**. Name it **Imported failure from EV-1003**, then choose **Create draft**.
-4.  Choose **Import file** and select the new JSON array. Review the preview: the observed empty draft showed **1 new · 0 updated · 1 records after import**.
+4.  Choose **Import file** and select the new JSON array. For the empty draft in this example, the preview shows **1 new · 0 updated · 1 records after import**.
 
 ![Corrected items-array import preview in a separate empty draft, showing one new record.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/evals-regression-array-preview.png)
 

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-evals/)
 
-Python SDK · Any developer; no Martian account; own model key for LLM judges · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer; no Martian account; own model key for LLM judges
 
 Run test cases against your agent from one YAML file, with no Martian account. Start with checks that need no model key, inspect a deliberate failure, then fix it. Add an LLM judge when you need to evaluate meaning.
 
@@ -52,7 +52,7 @@ python -m pip install --upgrade 'martian-sdk[evals]'
 martian --version
 ```
 
-The last command prints your installed SDK version. Keep this environment active for the commands below. [Activate it again in a new terminal](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for releases and the [verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md#sdk-compatibility) for tested versions.
+The last command prints your installed SDK version. Keep this environment active for the commands below. [Activate it again in a new terminal](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for package releases.
 
 ## 2\. Read the suite file
 
@@ -216,7 +216,7 @@ output: results-judge
 | Any OpenAI-compatible endpoint | `openai:/<model>` | `OPENAI_API_KEY`, and `OPENAI_API_BASE` set to the endpoint’s `/v1` address |
 | Amazon Bedrock through its OpenAI-compatible endpoint | `openai:/<Bedrock model ID>` | `OPENAI_API_KEY` set to a Bedrock API key, and `OPENAI_API_BASE` set to the regional endpoint |
 
-For Bedrock, use its **OpenAI-compatible route** for these judges. A native `bedrock:/...` model URI failed with `judge_provider_error` in our check; it is not a verified alternative for these judges. [AWS explains how to generate a short-term Bedrock key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-generate.html). Configure `OPENAI_API_KEY` for this route; setting `AWS_BEARER_TOKEN_BEDROCK` alone does not configure the OpenAI provider.
+For Bedrock, use its **OpenAI-compatible route** for these judges. Set `OPENAI_API_KEY` to a Bedrock API key for this route. [Generate a short-term Bedrock key](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-generate.html).
 
 For example, the verified Bedrock configuration used **GLM 5** in **us-east-1**, with this model setting:
 
@@ -244,7 +244,7 @@ martian evals run evals-with-judge.yaml
 
 This suite still selects the **original `agent.py`**. Step 5 used a separate corrected file, so expect **2 passed, 1 failed, 0 errors**, exit **`1`**: `prompt-injection` fails both the rubric and the text check. The judge’s reason for each case is in `results-judge/results.jsonl`.
 
-For example, the real GLM 5 run returned this failing check (the other fields are omitted):
+This example shows the result of a failing check.
 
 ```json
 {
@@ -323,7 +323,7 @@ This local run does not create a Martian CI session and does not appear in the c
 
 When you need results in the console, follow the [persisted CI tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md). Open **Evals → Runs** and select a saved evaluation. Check the pass/fail totals and compare expected answers with actual replies. CI test groups are available through **Show tests** in the saved **CI session**.
 
-The Martian Security screenshot below shows a separately verified **persisted dataset run**. It illustrates the recorded workflow; the local suite above does not create this screen or session.
+The saved dataset run shows the result totals and the verdict for each record.
 
 ![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
 

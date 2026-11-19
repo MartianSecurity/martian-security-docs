@@ -3161,7 +3161,7 @@
         },
         {
           "date": "2026-11-13",
-          "record": "public/examples/validation/sdk-ci-0.1.2-2026-11-13.json",
+          "record": "quality/sdk-ci-0.1.2-2026-11-13.json",
           "observedPath": "Exact published SDK ZIP combined CLI on a GitHub-hosted runner",
           "result": "Original exit0; passed/persisted/exported3/3; three native FINISHED exports; exactly two settled model calls; source hashes, unchanged12files, safe artifacts and own-resource cleanup verified. Customer workflow template setup remains source reviewed rather than directly dispatched."
         },
@@ -3619,7 +3619,7 @@
         },
         {
           "date": "2026-11-13",
-          "record": "public/examples/validation/sdk-ci-0.1.2-2026-11-13.json",
+          "record": "quality/sdk-ci-0.1.2-2026-11-13.json",
           "observedPath": "Exact published SDK ZIP combined CLI on a GitHub-hosted runner",
           "result": "Original exit0; passed/persisted/exported3/3; three native FINISHED exports; exactly two settled model calls; source hashes, unchanged12files, safe artifacts and own-resource cleanup verified. Customer workflow template setup remains source reviewed rather than directly dispatched."
         }

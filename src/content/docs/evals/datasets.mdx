@@ -14,7 +14,7 @@ Build a reviewed set of input/expected-output records, then publish an immutable
 
 ## Before you start
 
-Use the current beta Evals console; see the [source baseline](/reference/verification/#source-baseline). Your organization’s setup must be **Ready**. **Members**, **admins** and **owners** can author drafts; **admins** and **owners** publish organization datasets. **Viewers** browse published datasets without editing them. See [permissions](/reference/permissions/).
+Your organization’s Evals setup must be **Ready**. **Members**, **admins** and **owners** can author drafts; **admins** and **owners** publish organization datasets. **Viewers** browse published datasets without editing them. See [permissions](/reference/permissions/).
 
 Use synthetic records for a tutorial. Confirm that you have permission to send their inputs to the chosen target before running them. Dataset creation and import do not call your target.
 
@@ -89,9 +89,9 @@ A publication hash identifies the reviewed content. It does not prove that a par
 
 <Screenshot id="evals-dataset-version-revised-published" />
 
-The observed example changed from two-record version `01a5a93d8ca8` to three-record version `1fc87b52fa5e`. The original published draft and its two native records remained unchanged. The catalog opens the current version; there is no older-version selector on this screen.
+The catalog opens the current version. Earlier runs keep the version they selected.
 
-The revised publication initially reached **Needs review** after a service timeout. One supported **Resume** of the same operation completed it; see [publication recovery](#publication-recovery). The first submission alone was not treated as success.
+If the new version shows **Needs review**, follow [publication recovery](#publication-recovery) for the same operation.
 
 ## 6. Copy a Martian dataset
 
@@ -110,9 +110,9 @@ Your workspace's available Martian packs can differ. The examples use synthetic 
 
 <Screenshot id="evals-dataset-version-copy-published" />
 
-The observed **martian:documentation-versioning-pack** became the separately published **documentation-versioning-pack**, with three usable records. Its version differs from the source: a copy has its own identity. The original Martian dataset retained the same records and version. Copying alone does not publish a draft.
+The copy has its own dataset identity and version once published. Your edits apply to the organization copy.
 
-To save failed records from an existing run, follow [Turn failed results into regression cases](/evals/regression-cases/). That walkthrough verifies direct copying and the alternative file-import path, including their different record IDs and the export-wrapper conversion.
+To copy failed records from a run or import them from an export, see [Turn failed results into regression cases](/evals/regression-cases/).
 
 ## More editing and import options
 
@@ -155,6 +155,6 @@ Choose **Resume**, enter a rationale and continue from the saved checkpoints. Le
 An accepted **Resume** queues recovery. Wait for **Published**, then reopen and refresh the dataset to verify its records. Keep the original operation while investigating an uncertain result; creating another publication does not resolve it.
 :::
 
-The observed three-record revision completed through this path. **Abort** discards the unpublished version, keeps the current published version and makes its draft editable again; that abort path was not exercised for this example.
+**Abort** discards the unpublished version, keeps the current published version and makes its draft editable again.
 
 Next, [run the dataset](/evals/first-run/) or [organize evaluation projects](/evals/projects/).

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/network-observation/)
 
-Current beta console · owner/admin manages; authorized roles read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner/admin manages; authorized roles read
 
 Observe scoped TCP activity from customer-operated Kubernetes sensors. A one-time capture and a continuous observer have separate grants and lifecycles. Neither grants model/tool reporting, blocks calls or activates network isolation.
 
@@ -42,7 +42,7 @@ Read the delivered receipt and omission counters before interpreting the map. A 
 
 Read coverage before interpreting the map
 
-The recorded example returned two destination groups and a **partial** receipt: 16 input events could not be attributed. Kernel loss remains unknown. **Events without kernel error** does not mean successful handshakes or verified application actions.
+A **partial** receipt can contain destinations and still omit unattributed events. Check omission counters and whether kernel loss is known. **Events without kernel error** counts observations. Successful handshakes and application actions require separate evidence.
 
 **Revoke this upload grant** is available while the once-shown grant panel is open. **Credential saved** clears that panel and its revoke button; retain the capture ID privately. For later revocation, an owner/admin uses the authorized `DELETE /v1/discovery/network-captures/{capture_id}` API or asks the workspace operator to do so. Revocation prevents further uploads. Stop the customer-side capture process through its operator procedure as well; it does not stop customer applications or remove sensors.
 
@@ -69,11 +69,11 @@ Sequence four was fresh at capture time. The map contains the workload and two d
 
 ![An actual Kubernetes Service destination is selected with its UID, ClusterIP, port and original Pod identity.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-network-kubernetes-service-match.png)
 
-The two real policy reads produced a stable default/kubernetes:443 match. Its UID was independently checked against Kubernetes; this is destination metadata, not proof of a backend Pod or business effect.
+A matched Kubernetes Service shows its name, namespace, UID, address and port.
 
 Read the map and health together
 
-The completed example delivered nine windows with two real destinations, including **default/kubernetes:443**. Its Service UID matched an independent Kubernetes read. Coverage still showed **Degraded**: 38 of 53 inputs were unattributed, leaving 15 attributed connect events. Service matching does not establish which backend Pod handled a request, a completed handshake or complete capture.
+A destination can have a matching Kubernetes Service while coverage still shows **Degraded**. Check the attribution and omission counters alongside the match. Identifying the backend Pod or confirming a completed handshake requires separate evidence.
 
 ## 3\. Stop reporting and retain the right evidence
 
@@ -82,7 +82,7 @@ The completed example delivered nine windows with two real destinations, includi
 
 ![The newest observer and the earlier retired registration both remain revoked after full refresh.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-network-continuous-registrations-revoked.png)
 
-Revoke the intended registration. The latest process acknowledged its stop; its earlier retired predecessor remains listed as separate history. Neither grant removal uninstalls sensors.
+Confirm revocation for the intended registration and check its last reported status.
 
 3.  Reopen the workload’s **Network evidence**. Previously received windows remain readable within their retention boundary. **At last report** sensor and stream values are historical after revocation; they are not current process health.
 
@@ -90,13 +90,13 @@ Revoke the intended registration. The latest process acknowledged its stop; its 
 
 The completed run retained 15 attributed events and 38 omitted inputs. Sensor and stream values describe the last report; the separately removed sensors are not currently running.
 
-4.  Stop/remove customer-side processes and node sensors separately through the cluster operator. Revoking the upload grant does not uninstall them. In the recorded QA check, the observer exited after revocation, then the operator removed only its separately installed sensor resources. The customer workload remained Ready with the same Pod identity.
+4.  Ask the cluster operator to stop the customer-side observer and remove its separately installed node sensors when they are no longer needed.
 
 ## Failures and limits
 
 Delivered windows can still lack usable connections
 
-An earlier separate run delivered four windows but omitted all 32 inputs: 22 were unattributed and 10 invalid. It correctly showed **Degraded** and **No attributed connections in this window**. The later successful example used a new grant and separately installed sensors with unchanged software; it does not establish the earlier failure’s cause. Ask the operator to check scope, Pod/container identities, timestamps and omission counters. Do not interpret an empty map as inactivity.
+If coverage shows **Degraded** or **No attributed connections in this window**, ask the operator to check scope, Pod and container identities, timestamps and omission counters. An empty map can mean the observer could not attribute its inputs.
 
 ![A real second observer window is fresh and delivered but degraded, with all twelve latest-window inputs omitted.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/discovery-network-degraded-health.png)
 

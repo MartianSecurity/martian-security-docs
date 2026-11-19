@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/evaluations/)
 
-Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset
 
 Use `martian.evals` to run your prediction function locally and record regression results. Start with a free two-record preview, then use a published dataset whose outputs Backend can score independently.
 
@@ -121,7 +121,7 @@ The released SDK executed its local callback and Backend scored both outputs. Th
 
 Show tests retains the server-scored dataset result and the client-scored inline checks. Inline content is represented by digests. The stored export was recovered without running the tests again.
 
-The later **EV-1009** qualification ran this Evals-only command once with a fresh scoped key. It exited `0`; the saved receipt and server readback agreed on **passed**, **persisted**, **exported**, and **2 of 2 tests passed**, with no reported problems. This was a new local-callback session. The earlier EV-1004 required-export failure and its separate recovery remain recorded as their original outcomes.
+For this Evals-only tutorial, expect **2 of 2 tests passed** and a completed export. Check the receipt against the saved session before using it as a gate.
 
 ![EV-1009 retains two exact-match passes with the actual local callback answers](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-evaluation-strict-result.png)
 

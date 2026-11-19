@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/reproduction-and-limits/)
 
-Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · viewer, member, admin, owner
 
 Use the strongest retained evidence for the question you are answering. A reproducible reply, an executed tool call and a reproducible change in a restored business world support different conclusions.
 
@@ -41,9 +41,7 @@ The normal profiles request two verification repetitions and two successful repr
 
 ## Example: two successful repetitions and a passing control
 
-This separate **Harbor Assessment Lab** run, **MR-1009**, used an approved anonymous HTTP target, the published synthetic payment seed, independent duplicate-refund checks and serial `reset_per_probe` isolation. Its deliberately vulnerable teaching target issues a small sandbox refund when a request mentions a refund. No production payment service was used.
-
-1.  Open **Findings → Recorded detail**. The finding is labeled **reproduced clean**. Check these fields in its saved `verification` object:
+1.  Open **Findings → Recorded detail**. To read a cleanly reproduced result like the one shown here, check the saved `verification` object for the number of repetitions, how many succeeded, and whether the negative control passed.
 
 ```json
 {
@@ -55,32 +53,20 @@ This separate **Harbor Assessment Lab** run, **MR-1009**, used an approved anony
 }
 ```
 
-Verification used three target calls: two repetitions and one control. The complete campaign used **4 agent requests** and **7 model calls**, including the original probe.
-
 ![MR-1009 completed with four agent requests, seven model calls and a finding labeled reproduced clean.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/clean-reproduction-finding.png)
 
 The finding records reproduced clean. Its 4 agent requests include the original probe, two positive repetitions and one executed benign control.
 
-2.  Open **Outcome checks**. Compare the restored worlds and their independent readbacks:
-
-| Observation | World epoch | Refunds for the tested order, before → after | Result |
-| --- | --- | --- | --- |
-| Original probe | 4 | 1 → 2 | Violation observed |
-| Repetition 1 | 5 | 1 → 2 | Violation observed |
-| Repetition 2 | 6 | 1 → 2 | Violation observed |
-| Benign control | 7 | 1 → 1 | No violation observed |
-
-Every world used the same seed and baseline-equivalence digest. Each positive readback added one real synthetic ledger entry; the control’s five starting entries stayed unchanged. The control was executed, rather than inferred from a skipped step.
+2.  Open **Outcome checks**. Compare the before and after records for each repetition and the control. Check for distinct world epochs and matching baseline-equivalence digests. A passing control should have its own receipt recording **No violation observed**.
 
 ![Independent payment world receipts show violations in restored epochs five and six, and no violation for the executed control in epoch seven.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/clean-reproduction-world-control.png)
 
 The two repeated worlds show Violation observed; the executed benign control shows No violation observed. All three retain the same baseline-equivalence digest.
 
-3.  Compare the actual messages. The two repetitions used the same verification message, which differed from the original probe. Both still mentioned a refund; the benign control asked about delivery and payment status without mentioning one. This qualifies the recorded duplicate-refund behavior under those messages, rather than an exact replay of the original wording.
-4.  Read the structured receipt and independent records before relying on the model-generated summary. In this run, the summary inaccurately described an informational request as the control that caused a refund. The actual control receipt records **No violation observed** and unchanged state.
-5.  Refresh the page and reopen the same finding. In **Recorded review → Verification receipts**, the separate retained rows show **verified** for the runtime result and **no violation observed** for the terminal control. This redacted review retains verdict metadata, rather than the full verifier body. Keep the finding detail, review revision and independent world receipts together when sharing the result.
+3.  Compare the retained messages to see whether each repetition used the original wording. Use the structured receipt and independent records to resolve any discrepancy with the model-generated summary.
+4.  In **Recorded review → Verification receipts**, check for separate rows for the verification result and control. A redacted review may include only verdict metadata. Include the finding detail, review revision and independent receipts when sharing the result.
 
-The **Largest cleanly reproduced sandbox refund** summary remains **Unavailable** for this count-based duplicate-refund check. Its **0 independently observed repetitions** refers to qualifying monetary samples in that summary, not the two successful verification repetitions above. Use the verification receipt to read reproduction and the independent ledger to read the business effect; do not infer a dollar loss or production risk from the summary.
+**Largest cleanly reproduced sandbox refund** can show **Unavailable** when verification checks a transaction count without measuring a monetary amount. Use the verification receipt for reproduction counts and the independent ledger for the observed business effect.
 
 ## Separate evidence from interpretation
 
@@ -89,7 +75,7 @@ The **Largest cleanly reproduced sandbox refund** summary remains **Unavailable*
 3.  For state-changing objectives, use independent before/after records rather than the target’s statement that it completed an action. A strong text match can establish disclosure in a reply, but not an unobserved payment or permission change.
 4.  For imported history, retain its original provenance. It does not represent a fresh execution in the current deployment.
 
-The captured sandbox run passed its starting-ledger prerequisites, then retained **Needs attention** after a target setup error. Its **ready** baseline, pending after-state and unavailable cleanly reproduced refund support no business-effect or reproduction claim. [Read the complete example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-passed-baseline-with-no-outcome-verdict).
+If **Outcome captured** and **After-state digest** are **Pending**, the saved evidence only establishes the starting state. Check the [baseline and outcome fields](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-passed-baseline-with-no-outcome-verdict) before drawing a conclusion about business impact.
 
 ![Outcome checks with a ready starting receipt, five ledger records, two met baseline conditions, pending after-state and unavailable cleanly reproduced refund.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/assessment-outcome-checks.png)
 
@@ -97,11 +83,7 @@ Both baseline prerequisites passed. Outcome captured and After-state digest rema
 
 ## Observed effect and failed repetition are different results
 
-The later [completed payment example](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) has a real before/after violation. A separate bounded API run, **MR-1004** in the same synthetic lab, requested `isolation_policy: "reset_per_probe"` with the approved HTTP binding and independent checks. Its three observed worlds used epochs **3, 4 and 5**, the same seed digest and the same baseline-equivalence digest.
-
-The initial request mentioned a refund and produced an effect. The two verification requests instead asked for order status and transaction history, and did not reproduce that effect. The run recorded **not reproduced**, with **3 target calls** and **6 model calls**. A formal negative control was not executed after the negative repetitions. These receipts establish that restoration and independent reads occurred; they do not establish a successful clean reproduction or a passed control. Compare the actual replay messages as well as the baseline digests.
-
-This API isolation option requires an approved HTTP connection with independent business checks and serial sandbox access. It is separate from selecting an Assurance pack in the wizard. A separate launch in this lab hit the tenant CPU quota; the completed disposable instance was restored through the supported API before MR-1004. No quota was relaxed.
+Keep the initial [before-and-after comparison](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md#example-a-completed-independent-business-comparison) with the later verification receipts. When verification records **Not reproduced**, report the original observed effect and the unsuccessful repetitions separately. Use the retained messages and baseline digests to identify what changed between observations. Report a control as skipped when its receipt shows it never ran.
 
 ## Check coverage before deciding what to do
 

@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo/)
 
-Python SDK · Any developer with promptfoo results or config files; no Martian account or API key; a model key only for a converted llm-rubric judge · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Python SDK · Any developer with promptfoo results or config files; no Martian account or API key; a model key only for a converted llm-rubric judge
 
 Two commands move a promptfoo project. `martian evals import promptfoo` brings the results you already have into the local Evals UI, one run per provider. `martian evals convert promptfoo` turns your config’s tests into [suite files](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) that `martian evals run` runs against your agent, wherever its assertions have an equivalent check, and lists everything it leaves out.
 

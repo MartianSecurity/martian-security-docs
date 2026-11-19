@@ -72,7 +72,7 @@ certificate does not satisfy hosted onboarding.
 
 For the synthetic tutorial on a machine running Docker Desktop, keep the
 bearer-protected Python service on `127.0.0.1:8765` and run this in another
-terminal. This uses the exact Cloudflare image digest tested for the walkthrough:
+terminal.
 
 ```sh
 docker run --rm --name martian-http-demo-tunnel \
@@ -89,10 +89,8 @@ approve it, then select that registration for future runs. Retain historical run
 and disable the old connection when retiring it. This forwards only the teaching adapter. Never point
 it at the Martian backend, a credential service or another private application.
 
-This exact Docker Desktop path passed trusted public HTTPS preflight, bearer
-rejections, actual Martian validation and three-record target execution in the
-recorded local QA environment. `host.docker.internal` is the Docker Desktop host
-address; this command is not a generic Linux Docker networking recipe.
+`host.docker.internal` is the Docker Desktop host address. For a dedicated
+Linux host, use the Caddy setup below.
 
 [Cloudflare Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/)
 are for temporary development/testing, with no availability guarantee. They have
@@ -156,8 +154,7 @@ These commands keep certificate verification enabled and do not follow redirects
 Expect the same health/READY response. A redirect to login, HTML page, certificate
 error or timeout is a failed preflight, not a usable chat endpoint.
 
-Use the generated tunnel origin or your configured DNS origin above. The Caddy
-alternative is source-reviewed; it was not used for the recorded walkthrough.
+Use the generated tunnel origin or your configured DNS origin above.
 If neither public HTTPS option is available, use the SDK's local-callback workflow
 instead. A platform API key or browser session cannot make localhost reachable.
 

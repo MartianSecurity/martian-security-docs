@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/console/)
 
-Current beta console · owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files) · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
+Current beta console · owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files)
 
 Scan a skill, an MCP configuration, a plugin or a repository from the console and read what the Scanner found.
 
