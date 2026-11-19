@@ -4364,6 +4364,204 @@
         }
       ],
       "validationStatus": "The numbers are the accuracy report of martian-scanner at the commit listed (149 samples), run offline with recorded registry and model answers. Publishing is held for the beta release; the numbers are taken again from that release's report before the page is published."
+    },
+    {
+      "id": "scanner/overview",
+      "title": "What the Scanner checks",
+      "guide": "What the Scanner checks",
+      "description": "Understand what the Scanner reads, its stages, evidence levels and coverage, and who has it.",
+      "customerTask": "Understand what the Scanner reads, its stages, evidence levels and coverage, and who has it.",
+      "role": "Any member of an Enterprise organization with the Scanner",
+      "route": "Console: Scanner group in the sidebar",
+      "documentationRoute": "/scanner/overview/",
+      "interfaces": [
+        "Scanner result page",
+        "Evidence levels"
+      ],
+      "prerequisites": [
+        "An Enterprise organization (Martian Cloud or On-Premises) with the Scanner turned on by the master admin"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Confirm the stage names, evidence levels and category states against a completed scan on the beta console"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-scanner",
+          "commit": "76e4bd7b935f6135dd8a6f9320e53f07632c7439",
+          "paths": [
+            "docs/evidence-levels.md",
+            "docs/how-it-works.md"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "84a736823e7bc31ed582583f0f78799d389a9d70",
+          "paths": [
+            "docs/scanner.md",
+            "app/entitlements.py"
+          ]
+        }
+      ],
+      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
+    },
+    {
+      "id": "scanner/console",
+      "title": "Scan in the console",
+      "guide": "Scan in the console",
+      "description": "Upload a folder, read the result and triage, approve and monitor add-ons.",
+      "customerTask": "Upload a folder, read the result and triage, approve and monitor add-ons.",
+      "role": "owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files)",
+      "route": "/#/scanner/new",
+      "documentationRoute": "/scanner/console/",
+      "interfaces": [
+        "Scanner \u2192 New scan",
+        "Scan result",
+        "Findings",
+        "Add-ons",
+        "Policy"
+      ],
+      "prerequisites": [
+        "The Scanner turned on for the organization",
+        "A folder or a ZIP of at most 50 MiB"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Walk through New scan to a completed result on the beta console",
+        "Accept, waive and reopen a finding",
+        "Approve a digest and see it voided by a change",
+        "Delete a scan's stored files"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "e52ac1f4e452d0209494285dc50e8afddc182261",
+          "paths": [
+            "src/pages/Scanner.jsx",
+            "src/pages/ScanResult.jsx",
+            "src/pages/ScannerFindings.jsx",
+            "src/pages/ScannerAddons.jsx"
+          ]
+        }
+      ],
+      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
+    },
+    {
+      "id": "scanner/github-app",
+      "title": "Scan pull requests through GitHub (coming soon)",
+      "guide": "Scan pull requests through GitHub (coming soon)",
+      "description": "Know that scanning pull requests by connecting GitHub is coming soon.",
+      "customerTask": "Know that scanning pull requests by connecting GitHub is coming soon.",
+      "role": "Any member of an Enterprise organization with the Scanner",
+      "route": "/#/scanner/integrations",
+      "documentationRoute": "/scanner/github-app/",
+      "interfaces": [
+        "Scanner \u2192 Integrations"
+      ],
+      "prerequisites": [
+        "The Scanner turned on for the organization"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Replace this note with a task guide once the GitHub App is registered and connects on the beta console"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "e52ac1f4e452d0209494285dc50e8afddc182261",
+          "paths": [
+            "src/pages/ScannerIntegrations.jsx"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "84a736823e7bc31ed582583f0f78799d389a9d70",
+          "paths": [
+            "docs/scanner.md",
+            "app/scanner_github.py"
+          ]
+        }
+      ],
+      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
+    },
+    {
+      "id": "scanner/limits-and-data",
+      "title": "Limits, usage and data",
+      "guide": "Limits, usage and data",
+      "description": "Know the Scanner's limits, read usage, and what is stored of scanned content and for how long.",
+      "customerTask": "Know the Scanner's limits, read usage, and what is stored of scanned content and for how long.",
+      "role": "owner or admin (usage, retention, deletion); any member (limits)",
+      "route": "/#/scanner/settings",
+      "documentationRoute": "/scanner/limits-and-data/",
+      "interfaces": [
+        "Scanner \u2192 Settings \u2192 Usage",
+        "Scanner \u2192 Settings \u2192 Uploaded files",
+        "Delete the stored files"
+      ],
+      "prerequisites": [
+        "The Scanner turned on for the organization"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Read usage on the beta console after a counted run",
+        "Change the retention and delete one scan's stored files"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/MartianBackend",
+          "commit": "84a736823e7bc31ed582583f0f78799d389a9d70",
+          "paths": [
+            "docs/scanner.md",
+            "app/scanner.py",
+            "app/config.py"
+          ]
+        }
+      ],
+      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
+    },
+    {
+      "id": "scanner/self-hosted",
+      "title": "The Scanner in a self-hosted installation",
+      "guide": "The Scanner in a self-hosted installation",
+      "description": "Know what the Scanner does in a self-hosted Enterprise installation and how lookups, advisories and model analysis are set.",
+      "customerTask": "Know what the Scanner does in a self-hosted Enterprise installation and how lookups, advisories and model analysis are set.",
+      "role": "Security engineer of a self-hosted Enterprise installation",
+      "route": "Self-hosted console; martian-scanner advisory-db build",
+      "documentationRoute": "/scanner/self-hosted/",
+      "interfaces": [
+        "Scanner settings of the self-hosted chart",
+        "martian-scanner advisory-db build"
+      ],
+      "prerequisites": [
+        "A self-hosted Enterprise installation with the Scanner",
+        "OSV exports for an imported advisory database"
+      ],
+      "screenshots": [],
+      "qualification": "pending",
+      "requiredValidation": [
+        "Install the chart with the Scanner and scan a fixture with lookups off, with an allow-list and with an imported advisory database"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-helm-charts",
+          "commit": "5efd90711fdd48f684da02927fe0569e2b8bc030",
+          "paths": [
+            "charts/martian-evals/README.md"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/martian-scanner",
+          "commit": "76e4bd7b935f6135dd8a6f9320e53f07632c7439",
+          "paths": [
+            "docs/usage.md"
+          ]
+        }
+      ],
+      "validationStatus": "Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written."
     }
   ]
 }

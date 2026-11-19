@@ -1,0 +1,52 @@
+---
+title: Scan in the console
+description: Upload a folder, read the result by category, finding and evidence, and triage, approve and monitor what you scanned.
+sidebar:
+  order: 2
+---
+
+import GuideMeta from '../../../components/GuideMeta.astro';
+
+<GuideMeta id="scanner/console" />
+
+Scan a skill, an MCP configuration, a plugin or a repository from the console and read what the Scanner found.
+
+## Before you start
+
+- Your organization has the Scanner turned on ([who has it](/scanner/overview/#who-has-it)). Without it the **Scanner** group is not in the sidebar.
+- You are an owner, admin or member to start a scan; any member reads scans.
+- Have the folder ready, or a ZIP of it of at most 50 MiB (your organization's limit may be lower).
+
+## Start a scan
+
+1. In the sidebar, open **Scanner → New scan**.
+2. Under **Type**, choose what you are scanning: a skill, an MCP server, a plugin, a sub-agent, harness configuration, agent code or a repository.
+3. Under **Name**, give it a name. Scans of the same type and name belong to one add-on, so later scans are compared with earlier ones.
+4. Drop the folder or the ZIP file on the page, or choose it.
+5. Select **Start scan**. The result page follows the scan stage by stage.
+
+A refused upload says why and names the limit it broke: the archive's size, its number of files, or the organization's scans for the day.
+
+## Read the result
+
+- **Categories** shows each category as flagged, clear or not checked, with the stages a not-checked one is missing.
+- **Findings** lists each finding with its severity, evidence level, file and line. Select one to open the file with the cited lines marked.
+- **References** lists every link, package and repository the files point at, with what the registry answered, when, and when it is checked again.
+- **Coverage** lists the files that were skipped or not inspected and why.
+- **Download JSON** and **Download SARIF** export the scan.
+
+## Triage, approve and monitor
+
+1. **Findings** across scans: an owner or admin accepts a finding (with a reason and an end date), waives it, or reopens it. Each action is in the audit log.
+2. **Policy** sets the severity of a rule for your organization, and the notifications for new findings, drift and voided approvals.
+3. **Add-ons** shows each add-on's latest scan. An owner or admin **approves** the content digest of a completed scan. When the add-on's content or what it points at changes, the approval is void and the add-on shows **changed since approval**.
+4. Add-ons from a registry are fetched again weekly, and what they point at is re-checked daily.
+
+## Delete the stored files
+
+The uploaded archive is kept for your organization's retention period after its newest scan ([limits and data](/scanner/limits-and-data/#how-long-uploaded-files-are-kept)). An owner or admin can delete it sooner: open the scan, and under **This scan** select **Delete the stored files**. The scan and its findings stay.
+
+## Next
+
+- [Limits, usage and data](/scanner/limits-and-data/)
+- [Pull requests through GitHub (coming soon)](/scanner/github-app/)

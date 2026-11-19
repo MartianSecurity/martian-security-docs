@@ -242,7 +242,7 @@ ID remains attribution and an access binding rather than proof of callback ident
   These differ from the console's admitted Evals run budgets.
 - `--require-export` waits for bounded export readback; it does not rerun the
   target or a judge. The local and Backend result must agree.
-- Use `martian ci` for a persisted gate; `martian scan` is not a supported command.
+- Use `martian ci` for a persisted gate.
 
 The free preview and CLI validation can be checked without a platform account.
 Hosted dataset/redteam/combined steps require independent live Backend validation.

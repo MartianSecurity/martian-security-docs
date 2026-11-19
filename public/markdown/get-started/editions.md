@@ -77,6 +77,16 @@ The SDK is the `martian-sdk` package on PyPI. Its source repository holds the wh
 | From the SDK: runs in a Martian simulation environment (`redteam_environments`), planned campaigns with `martian redteam campaign` (`redteam_campaigns`) and runs sent to the console with `martian redteam push` | — | **Planned**: the commands are in SDK 0.2.0, but they need a Martian server version that is not deployed yet | **Planned** |
 | Custom limits and shared attack profiles | — | **Planned** | **Planned** |
 
+### Scan agent files
+
+The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md) is in Enterprise only: in the Martian Cloud console and in a self-hosted On-Premises installation. The master admin turns it on for each organization. It is not in Community.
+
+|  | Community | Enterprise | On-Premises |
+| --- | --- | --- | --- |
+| Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: in the Martian Cloud console, turned on for each organization by the master admin | **Built**: in the self-hosted console, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
+| Pull requests scanned by connecting GitHub ([note](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Built**: coming soon | — |
+| Model analysis of what an add-on points at, judged against its stated purpose | — | **Beta**: on unless the organization turns it off | **Built**: at a model endpoint you name |
+
 ### Delivery and support
 
 |  | Community | Enterprise | On-Premises |
@@ -110,6 +120,7 @@ The Evals UI shows a page only when the edition includes its feature key, and th
 | `redteam_hosted_generation` | Attack generation and judging by Martian’s engine for SDK red team runs | No | Yes | Yes |
 | `redteam_environments` | A red team run in a Martian simulation environment | No | Yes | Yes |
 | `redteam_campaigns` | Planned red team campaigns started from the console | No | Yes | Yes |
+| `scanner` | The Skills / MCP / Plugin Scanner in the console: uploads, scans, triage and approvals. The master admin also turns it on for each organization | No | Yes | Yes |
 
 Annotating one item or trace, and scoring one run, stay in every edition. A local red team run with your own model needs no key. `review_queues` and `monitoring` are in the open-source repository; the other keys are for features that exist only in Martian’s own product.
 
@@ -133,6 +144,7 @@ Community includes the whole Evals core except what a shared server needs or wha
 -   Organizations, projects with several members and roles, single sign-on, the audit log and service accounts.
 -   API keys and CI sessions, which record SDK results on a server.
 -   The console’s Red Team assessments, simulation environments and planned campaigns, and attack generation by Martian’s engine. Local red team runs with your own model are Community.
+-   The Skills / MCP / Plugin Scanner.
 -   Hosted storage, managed upgrades and priority support.
 
 ## Choose an edition
