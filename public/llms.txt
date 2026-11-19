@@ -158,7 +158,7 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 - [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md?v=46f1c91443e6): The Scanner's limits, where owners and admins read their organization's usage, and what is stored of scanned content and for how long.
 
-- [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md?v=148bcd71b091): The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
+- [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md?v=a30b0e471386): The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
 
 - [The Scanner in a self-hosted installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md?v=c33127d6f12a): What the Scanner does in an Enterprise installation in your own cluster, with outside lookups off by default, an allow-list or proxy, an imported advisory database and your own model endpoint.
 
@@ -180,6 +180,6 @@ These public Markdown documents require no login or JavaScript. Each guide retai
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=7959a297e7a4): all 81 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=a84a3fd317f5): all 81 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

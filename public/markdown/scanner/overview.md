@@ -23,7 +23,9 @@ The Scanner is in the **Enterprise** edition only, in two places:
 -   **Martian Cloud**: the hosted console. Martian’s master admin turns the Scanner on for your organization, with its limits ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)); ask your Martian contact.
 -   **On-Premises**: a self-hosted Enterprise installation in your own cluster ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)). Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
 
-It is not in the open-source Community edition. Once it is on:
+It is not in the open-source Community edition or the SDK. Anyone can try its rules on one file without signing in at [martiansecurity.ai/scan](https://www.martiansecurity.ai/scan/): one `SKILL.md` or MCP configuration file, checked against that file’s own text only, with no lookups of the packages, links or owners it names and no model. Nothing is kept, not the file and not the result.
+
+Once it is on:
 
 -   owners, admins and members start scans, and every member reads them;
 -   owners and admins triage findings, approve add-ons and change the Scanner’s settings.
