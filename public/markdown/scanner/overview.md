@@ -12,12 +12,11 @@ The Scanner checks the files you give an agent. It does not replace [Red Team](h
 
 ## Who has it
 
-The Scanner is in the **Enterprise** edition only, in two places:
+**Invite-only beta.** Use the Scanner in the hosted Enterprise console when your workspace has Scanner access. Ask your Martian contact to enable it for your organization. [Scanner limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md).
 
--   **Martian Cloud**: the hosted console. Martian’s master admin turns the Scanner on for your organization, with its limits ([limits and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)); ask your Martian contact.
--   **On-Premises**: a self-hosted Enterprise installation in your own cluster ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)). Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
+**Upcoming.** GitHub pull-request scanning and the Scanner for [planned On-Premises deployments](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md) are upcoming. See [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md).
 
-It is not in the open-source Community edition or the SDK. Anyone can try its rules on one file without signing in at [martiansecurity.ai/scan](https://www.martiansecurity.ai/scan/): one `SKILL.md` or MCP configuration file, checked against that file’s own text only, with no lookups of the packages, links or owners it names and no model. Nothing is kept, not the file and not the result.
+You can try the public [single-file scan](https://www.martiansecurity.ai/scan/) without signing in. It checks the text of one `SKILL.md` or MCP configuration. It skips external lookups and model analysis, and discards the file and result.
 
 Once it is on:
 
@@ -61,5 +60,4 @@ Each result shows every category as **flagged** (a finding is in it), **clear** 
 
 -   [Scan in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)
 -   [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md)
--   [Self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)
--   [Pull requests through GitHub (coming soon)](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)
+-   [Plan for self-hosted Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)

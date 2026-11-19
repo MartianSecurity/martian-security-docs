@@ -74,6 +74,8 @@ export default defineConfig({
       "get-started/quickstart",
       "sdk/local-evals",
       "sdk/local-ui",
+      "sdk/local-pytest",
+      "sdk/local-ci",
       "sdk/redteam-local"
     ]
   },
@@ -127,7 +129,7 @@ export default defineConfig({
     ]
   },
   {
-    "label": "SDK and CI",
+    "label": "Workspace SDK and CI",
     "collapsed": true,
     "items": [
       "sdk/install-and-configure",

@@ -15,7 +15,7 @@ The supplied callback is deterministic teaching code, not an LLM. It recognizes 
 -   Local preflight needs Python **3.12 or newer** and a terminal. No third-party Python package or provider account is required.
 -   Hosted onboarding requires an **Owner** or **Admin** and a public HTTPS host reachable from Martian’s servers. Localhost is not reachable merely because the console opens in your browser.
 -   Use Docker Desktop and outbound internet access for the temporary HTTPS connection. To use Caddy, supply a dedicated Linux host, public DNS and reachable ports 80 and 443. See the [hosting instructions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/http-agent/README.md) for both options.
--   If public hosting is unavailable, use [SDK local evaluations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md) instead. The callback and its provider credentials can remain in your own process.
+-   If public hosting is unavailable, use [SDK local evaluations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md). The callback and its provider credentials can remain in your own process.
 
 ## 1\. Download and start the service
 
@@ -88,4 +88,4 @@ This small server has no durable side-effect idempotency, rate limiting, session
 -   **502** from this example: the callback failed or returned an unsupported value. Inspect your own application privately; the service omits exception details from its public response.
 -   TLS/DNS/timeout errors: resolve public reachability before onboarding. Keep certificate checks enabled; a local successful curl does not prove SaaS reachability.
 
-Next, [connect and manage the agent](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md), [run the three-record evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md), or use [the SDK callback alternative](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md).
+Next, [connect and manage the agent](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md), [run the three-record evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md), or [evaluate a local callback](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md).

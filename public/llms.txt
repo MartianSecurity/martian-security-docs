@@ -6,23 +6,23 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 ## Start here
 
-- [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=428c8fcdea8f): Complete a small endpoint-only assessment and inspect the recorded result.
+- [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=e6ff061c41ec): Complete a small endpoint-only assessment and inspect the recorded result.
 
 - [Run your first evaluation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/first-run.md?v=df7afe30b620): Connect an approved HTTP agent, prepare a small published dataset, and inspect a retained evaluation result.
 
-- [Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md?v=142a3d0240fe): Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
+- [Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md?v=3a1c98d80470): Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
 
-- [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=45f01c4d001f): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
+- [Configure the SDK for a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=66720f207a7e): Install the Martian SDK and configure a workspace key, agent registration, and tested Git revision.
 
 - [Budgets, limits and evidence](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/limits.md?v=8bd8aebafa82): Understand bounded execution, stopping, provenance and evidence coverage.
 
 ## Documentation
 
-- [Martian Security](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/index.md?v=a68f8c82faf7): Practical customer guides for red teaming, evaluations, and the Martian SDK.
+- [Martian Security](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/index.md?v=01ef23960bd4): Run local evaluations, work in the Martian console, and scan the files your agents use.
 
 - [Connect an agent](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/connections.md?v=bc7c40b8179d): Register, validate and approve an HTTP, MCP or browser target, then manage its connection safely.
 
-- [Add an HTTP chat adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md?v=f15378aa6a6f): Run a complete callback-backed HTTP service, preflight its contract, and provide the public HTTPS endpoint required by console onboarding.
+- [Add an HTTP chat adapter](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/http-adapter.md?v=6feddbf52c38): Run a complete callback-backed HTTP service, preflight its contract, and provide the public HTTPS endpoint required by console onboarding.
 
 - [Connect an agent to sandbox systems](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md?v=9ace3b7730f5): Configure a session-capable HTTP agent using a complete payment-system binding and independent duplicate-refund checks.
 
@@ -120,17 +120,17 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 - [Red teaming and Evals](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/concepts.md?v=14cf24a0dafe): Understand the evidence, records, and workflows before your first run.
 
-- [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md?v=0856fd44dc25): What Community, Enterprise and On-Premises include and leave out, and which parts are available, in beta, built or planned.
+- [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md?v=ea8daf6c3e34): Compare available Community tools, the invitation-only Enterprise beta, and upcoming On-Premises deployments.
 
-- [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=428c8fcdea8f): Complete a small endpoint-only assessment and inspect the recorded result.
+- [Run your first assessment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md?v=e6ff061c41ec): Complete a small endpoint-only assessment and inspect the recorded result.
 
-- [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md?v=46dd6a9e45a1): Install the SDK, run a small local eval suite, and compare the two saved results in the local Evals UI without a Martian account.
+- [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md?v=ac72355ed200): Install the SDK, run a small local eval suite, and compare the two saved results in the local Evals UI without a Martian account.
 
 - [Attack library](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/attacks.md?v=78d05688323c): Understand major AI attack families, find related Martian techniques and use MITRE ATLAS, OWASP and NIST references accurately.
 
 - [Use the Attack Library and coverage views](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/library/coverage.md?v=2084f04ad1d6): Explore catalogued techniques, distinguish runnable coverage from reference material and understand the current Threat Intel view.
 
-- [Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md?v=142a3d0240fe): Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
+- [Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md?v=3a1c98d80470): Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
 
 - [Move from Inspect AI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/inspect.md?v=7e22f08fa7bc): Import the logs Inspect AI wrote as runs in the local Evals UI, then open, compare and review them. Needs SDK 0.1.4 or later.
 
@@ -156,25 +156,29 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 - [Scan in the console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md?v=5b16f3952bf6): Upload a folder, read the result by category, finding and evidence, and triage, approve and monitor what you scanned.
 
-- [Scan pull requests through GitHub (coming soon)](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md?v=c6901b40667b): Coming soon, scan pull requests by connecting GitHub to the Scanner in the console.
+- [GitHub pull-request scanning](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md?v=7ae049709675): Coming soon, scan pull requests by connecting GitHub to the Scanner in the console.
 
 - [Limits, usage and data](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/limits-and-data.md?v=ff9fd762a08c): The Scanner's limits, where owners and admins read their organization's usage, and what is stored of scanned content and for how long.
 
 - [Method and measured results](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/method.md?v=8f3203040509): How the Scanner finds direct and indirect issues, what each evidence level means, what it does not claim, and its measured precision and recall on its labelled corpus.
 
-- [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md?v=002233615db7): The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
+- [What the Scanner checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/overview.md?v=1d4785965d95): The Skills / MCP / Plugin Scanner reads the files you give an agent and reports what is wrong with them, at a stated level of evidence and with the coverage of each scan.
 
-- [The Scanner in a self-hosted installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md?v=7db17ecb0477): What the Scanner does in an Enterprise installation in your own cluster, with outside lookups off by default, an allow-list or proxy, an imported advisory database and your own model endpoint.
+- [Plan for self-hosted Scanner](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md?v=43baf0092ecc): How the Scanner is designed for the planned On-Premises edition, including network and model endpoint settings.
 
-- [Gate CI on Evals and redteam](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=91b12fdaf028): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
+- [Record CI results in a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md?v=b1d67c513ce1): Run evaluations and adversarial probes in one persisted CI session, verify its result, and retain safe reports.
 
-- [Evaluate with Python](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md?v=301e7f2591e3): Run a free local Evals preview, then evaluate a published dataset and verify its saved Backend result.
+- [Record Python Evals in a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md?v=22d9833c380a): Evaluate a published dataset with Python and verify the saved result in your Martian workspace.
 
-- [Install and configure the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=45f01c4d001f): Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
+- [Configure the SDK for a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md?v=66720f207a7e): Install the Martian SDK and configure a workspace key, agent registration, and tested Git revision.
 
-- [Run evals locally with a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md?v=ec8e133bf7b0): Run an eval suite from one YAML file on your own machine, using deterministic checks and LLM judges with your own model key.
+- [Run local Evals on pull requests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ci.md?v=c0e1ecc83e1e): Run a deterministic eval suite in GitHub Actions without a Martian account and read the result in the job summary.
 
-- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=04b31895727f): Start Martian's local UI, inspect saved Evals runs and traces, and export or restore your records.
+- [Run evals locally with a suite file](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md?v=36c76fe0f1e6): Run an eval suite from one YAML file on your own machine, using deterministic checks and LLM judges with your own model key.
+
+- [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md?v=a9eee9324f9e): Test a Python callback with pytest, assert scores, and save local results without a Martian workspace.
+
+- [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md?v=ca61794daa74): Start Martian's local UI, inspect saved Evals runs and traces, and export or restore your records.
 
 - [Run a redteam probe](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam.md?v=0d8b3c31edb2): Validate and execute a bounded adversarial test against a local callback, inspect safe reports, and apply a strict gate.
 
@@ -184,6 +188,6 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=a35d03d79a5b): all 82 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=ff01a985e70f): all 84 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

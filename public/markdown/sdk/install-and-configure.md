@@ -1,6 +1,6 @@
-# Install and configure the SDK
+# Configure the SDK for a workspace
 
-> Install the Martian SDK, create a scoped API key, and connect Python or CI to your organization.
+> Install the Martian SDK and configure a workspace key, agent registration, and tested Git revision.
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/install-and-configure/)
 
@@ -10,14 +10,19 @@ Install the Python package and create the platform connection used by Evals and 
 
 For account-free evaluation and local results, start with the [Local SDK guides](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md). See [PyPI release history](https://pypi.org/project/martian-sdk/#history) for package releases.
 
-## SDK 0.3.1 at a glance
+## SDK versions and workflows
 
-[Martian SDK 0.3.1](https://pypi.org/project/martian-sdk/0.3.1/) needs Python 3.12 or newer. Choose the workflow that matches where you need the result.
+| Distribution | Version in these guides | Install |
+| --- | --- | --- |
+| Python package | **0.3.1** on Python 3.12 or newer | [PyPI releases](https://pypi.org/project/martian-sdk/#history) and [Local SDK setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#install-the-local-sdk) |
+| Local Evals UI container | **0.2.0** for Linux AMD64 | [Container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals) and [Docker setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#6-run-the-ui-in-a-container) |
+
+The Python package and Docker image have separate release versions. Use the Python package for features that require SDK 0.3.1. Choose a workflow by where you want the result.
 
 | I want to | Start here | Where the result lives |
 | --- | --- | --- |
 | Run an evaluation and compare two versions without an account | [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) | Local result files and the packaged Evals UI |
-| Check a pull request with a deterministic suite | [Read-only GitHub Actions workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests) | Actions job summary and any selected artifacts |
+| Check a pull request with a deterministic suite | [Run local Evals on pull requests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ci.md) | Actions job summary and selected artifacts |
 | Move a local Evals store to another machine | [Export and restore Evals records](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#export-and-restore-evals-records) | A directory of JSONL files and a manifest, with known transport credentials removed |
 | Save a gate against an agent and a tested revision | [Persisted CI session](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md) | An enabled Martian workspace, using a scoped key |
 
@@ -25,7 +30,7 @@ The 0.3.1 Evals Action reports in the job summary, and each invocation evaluates
 
 ## Before you start
 
-For the account-free [local Evals preview](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md#1-run-the-free-local-preview), complete **step 1** below using Python and Git. API keys, a Backend origin and organization services are needed when you continue to platform persistence.
+For an account-free Python test, follow [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md).
 
 -   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
 -   Install Git. The tutorial creates a local Git repository so a persisted CI result can name the exact committed code revision.

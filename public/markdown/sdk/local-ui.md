@@ -119,7 +119,7 @@ By default one run and one scoring job may be in progress at once. A launch beyo
 
 ## 4\. Run an eval from the UI
 
-The UI can start a run against an HTTP endpoint or a model that you define. This walkthrough uses the example agent from the [suite-file guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#8-test-an-agent-behind-an-http-endpoint), which answers on your machine and needs no model.
+The UI can start a run against an HTTP endpoint or a model that you define. This example uses the agent from the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md), which answers on your machine and needs no model.
 
 1.  Save [agent-server.py](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk-local-evals/agent-server.py) next to `agent.py` from the quickstart example. In a second terminal in that folder, start it and leave it running.
 
@@ -215,17 +215,19 @@ Review each export before sharing it. Prompts, datasets, free-form inputs and re
 
 ## 6\. Run the UI in a container
 
-For one user on a small server, choose a published version tag in the [container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals). Container images are published separately from the Python package. To use SDK 0.3.1, [install the Python package](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui). This command uses the published 0.1.5 image.
+Use the **0.2.0** image to run the local UI for one user. This image is Linux AMD64. On an ARM host, use Docker with AMD64 emulation or [install the Python package](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#1-install-and-start-the-ui). The image and Python SDK ship separately. Use the Python package for features that require SDK 0.3.1. [Container versions](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals).
 
 ```sh
-docker run -d --name martian-evals -p 127.0.0.1:7600:7600 -v martian-evals:/data ghcr.io/martiansecurity/martian-evals:0.1.5
+docker run -d --name martian-evals --platform linux/amd64 \
+  -p 127.0.0.1:7600:7600 -v martian-evals:/data \
+  ghcr.io/martiansecurity/martian-evals:0.2.0
 ```
 
 Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds the data folder, so the data outlives `docker stop` and a new container started on the same volume. To keep the data in a folder on the server, mount that folder at `/data`; the image runs as user ID `10001`, which must be able to write to it.
 
 You can pull the public image without a registry login.
 
-**The image has no login either. Do not expose it publicly.** The command above publishes the port on the server’s `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:
+**Keep the UI private.** The image has no login. Use Docker Engine 28 or newer for the loopback port mapping above. With older engines, machines on the same network segment can reach loopback-published ports. From another machine, use SSH port forwarding, then open `http://127.0.0.1:7600/`. [Docker port publishing](https://docs.docker.com/engine/network/port-publishing/).
 
 ```sh
 ssh -L 7600:127.0.0.1:7600 your-server

@@ -1,64 +1,25 @@
-# Evaluate with Python
+# Record Python Evals in a workspace
 
-> Run a free local Evals preview, then evaluate a published dataset and verify its saved Backend result.
+> Evaluate a published dataset with Python and verify the saved result in your Martian workspace.
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/evaluations/)
 
-Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset
+Python SDK · Scoped machine key for persistence; owner/admin publishes the dataset
 
-Use `martian.evals` to run your prediction function locally and record regression results. Start with a free two-record preview, then use a published dataset whose outputs Backend can score independently.
+Use `martian.evals` to evaluate your Python prediction function against a published dataset and record the result in Martian. For local tests, follow [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md).
 
 ## Before you start
 
--   For the local preview, complete [installation step 1](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#1-download-the-runnable-tutorial-and-install-the-release). Run the commands from the tutorial repository with its [virtual environment active](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#use-the-environment-in-a-new-terminal).
--   The included `demo_agent.answer` is a deterministic support program. It demonstrates wiring and repeatable assertions; it is not an LLM or evidence about a production agent.
--   A local inline preview needs no platform account or model API key.
--   Before hosted persistence, complete the remaining [SDK configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md#2-open-api-key-management). It needs a compatible enabled organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID/tested Git revision. Commit the source before taking that revision. Dataset restrictions must permit the dataset below.
+-   Complete [workspace SDK configuration](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md). Use a compatible organization, a key with `evals:read`, `evals:write`, `ci:read`, and `ci:write`, and an organization-owned agent UUID and Git revision. The key must allow access to the published dataset.
 -   Members may author dataset drafts; an **owner/admin publishes** the version used by this tutorial. Use [dataset authoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/datasets.md) for the exact import/validation/publication flow.
 
 ## 1\. Run the free local preview
 
-```sh
-MARTIAN_EVALS_OFFLINE=1 \
-MARTIAN_EVALS_STORE_DIR="$PWD/.martian-local-mlflow" \
-martian evals run tests/evals/test_quality.py -q
-```
-
-Expect **one passing test with two evaluated records** and exit `0`. This runs the actual local MLflow evaluator, callback, traces and exact-match scorer. It uploads nothing to Backend.
-
-Inspect `.martian-local-mlflow/martian-session.json`: it should say `state: offline`, `upload: offline`, and have no Backend session ID. A successful preview is not a persisted CI pass. Keep the whole MLflow store private because it includes inputs, expected values, outputs and traces.
+For a standalone, account-free example, follow [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md).
 
 ## 2\. Understand the complete test
 
-The tutorial’s [quality test](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/tests/evals/test_quality.py) traces the local callback and asserts all required score rows:
-
-```python
-import mlflow
-from demo_agent import answer
-from martian.evals import assert_checks, evaluate, exact_match
-
-@mlflow.trace(name="support_agent", span_type="AGENT")
-def predict(message: str) -> str:
-    return answer(message)
-
-@mlflow.test
-def test_support_hours():
-    result = evaluate(
-        data=[{
-            "inputs": {"message": "What are your support hours?"},
-            "expectations": {
-                "expected_response": "Monday to Friday, 09:00–17:00 UTC."
-            },
-        }],
-        predict_fn=predict,
-        scorers=[exact_match],
-    )
-    assert_checks(result)
-```
-
-`exact_match` strips leading/trailing whitespace and compares case-folded text. It does not judge meaning or accept an otherwise useful paraphrase. For numeric or arbitrary-label scorers, `assert_checks` requires an explicit `pass_if` rule; Boolean and supported yes/no scores can be interpreted directly.
-
-Keep `@mlflow.trace` and the final assertion. `assert result.passed` is not a substitute: missing scores or an unasserted evaluation must fail the gate. The SDK’s plugin also prevents trace validation from making an extra first-row prediction.
+The tutorial runs the local [quality test](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/examples/sdk/tests/evals/test_quality.py) and a test against a published dataset. The local test defines its inputs and assertions in Python. The dataset test reads the published version in your workspace. Both trace the prediction and assert that required scores exist and pass. [Write an inline test](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md#1-write-a-prediction-and-an-assertion).
 
 ## 3\. Publish the two-record tutorial dataset
 
@@ -76,7 +37,7 @@ The dataset is small enough to inspect completely. The callback answers these tw
 
 ## 4\. Execute and persist the evaluation
 
-Set the connection and CI attribution from the installation guide. Ensure `MARTIAN_EVALS_OFFLINE` is not enabled for this command; the one-command preview above does not leave it set.
+Set the connection and CI attribution from the installation guide. Run the command with `MARTIAN_EVALS_OFFLINE` unset so the result can be saved to your workspace.
 
 ```sh
 martian ci --evals-path tests/evals --require-export --output results/evals

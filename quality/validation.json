@@ -844,6 +844,30 @@
       "environment": "Production docs preview in Chromium at 1440 × 1000 in light mode and 390 × 844 in dark mode",
       "result": "passed in stated scope",
       "details": "Checked 83 built pages and 82 Markdown exports. The local UI guide keeps its exact command, page and agent-link copying, search, deep links and full-size screenshots. Checked the revised assessment review and CI export instructions and confirmed 404s for the retired verification HTML, Markdown and CI receipt. All capture bytes and provenance fields are preserved. The release audit retains the same 13 unfinished product walkthroughs."
+    },
+    {
+      "scope": "Local SDK onboarding and navigation",
+      "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
+      "result": "passed in stated scope",
+      "details": "Verified the quickstart and Scanner homepage entry points, Local SDK and workspace sidebar groups, previous CI, pytest, version and HTTP fragments, search, exact command and Markdown copying, and narrow layout."
+    },
+    {
+      "scope": "Standalone suite, pytest and local pull-request example",
+      "environment": "CPython 3.12.10, PyPI SDK 0.3.1 on macOS, a disposable HTTP target and local execution of pinned Action steps",
+      "result": "passed in stated scope",
+      "details": "Ran two passing cases, resume, fresh run, HTTP 200 and 401 paths, and the standalone pytest pass and assertion failure. Loaded the judge configuration without calling a model. The copied workflow passed actionlint and the pinned run, summary, and gate steps exercised exits 0, 1 and 2. The revised workflow still needs a GitHub-hosted pull-request run."
+    },
+    {
+      "scope": "Published Evals UI 0.2.0 image",
+      "environment": "Docker Desktop Engine 28.0.4 on ARM64 macOS with Linux AMD64 emulation; public Evals UI 0.2.0",
+      "result": "passed in stated scope",
+      "details": "sha256:8b4b284b281021605ed9692c808bdaf1248fb9d01bf8d00d06d39943a0dc5386. Verified anonymous registry read, loopback and invalid Host rejection (HTTP 400), two real case results, and retained UI results after replacing the container with the same named volume."
+    },
+    {
+      "scope": "Customer edition and Scanner labels",
+      "environment": "Published marketing comparison and owning Scanner source",
+      "result": "passed in stated scope",
+      "details": "Compared the public edition status with MartianSecurity/martian-scanner 650abfd1b293c45be3ee7d112966709dc1fde184 and the marketing edition copy at 51f4d69e54a02549c3236faeebd7a751f6c26c97. The docs distinguish an enabled hosted workspace from the planned On-Premises offering."
     }
   ],
   "remainingGaps": [

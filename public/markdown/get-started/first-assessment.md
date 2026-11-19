@@ -16,6 +16,16 @@ Finish with one retained security assessment and an understanding of its report.
 -   Read [supported targets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/supported-targets.md). Dataset Evals has a narrower interface policy than assessments.
 -   Confirm the organization is allowed to run assessments and that the chosen test is available. The live controls are authoritative if your environment applies smaller budgets.
 
+Follow the assessment from an approved connection to a report with saved results.
+
+```mermaid
+flowchart LR
+    C[Connect an agent]:::access --> E[Choose endpoint or sandbox]:::tool
+    E --> G[Choose goals and tests]:::agent
+    G --> R[Run a bounded assessment]:::external
+    R --> V[Inspect evidence and outcomes]:::target
+```
+
 ## 1\. Choose the scope
 
 1.  Select **New assessment** in the sidebar.
