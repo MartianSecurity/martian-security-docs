@@ -4822,7 +4822,7 @@ The [Skills / MCP / Plugin Scanner](https://raw.githubusercontent.com/MartianSec
 |  | Community | Enterprise | On-Premises |
 | --- | --- | --- | --- |
 | Scan skills, MCP configurations, plugins, sub-agents, harness configuration and agent code in the console, with findings at a stated evidence level, the coverage of each scan, triage, approvals and re-checks ([guide](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md)) | — | **Beta**: in the Martian Cloud console, turned on for each organization by the master admin | **Built**: in the self-hosted console, with outside lookups off unless you turn them on ([self-hosted](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/self-hosted.md)) |
-| Pull requests scanned by connecting GitHub ([note](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Coming soon** | — |
+| Pull requests scanned by connecting GitHub ([note](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/github-app.md)) | — | **Built**: coming soon | — |
 | Model analysis of what an add-on points at, judged against its stated purpose | — | **Beta**: on unless the organization turns it off | **Built**: at a model endpoint you name |
 
 ### Delivery and support
