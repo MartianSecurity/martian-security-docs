@@ -71,12 +71,33 @@ export default defineConfig({
     "collapsed": true,
     "items": [
       { "label": "Local SDK overview", "slug": "local-sdk" },
+      { "label": "Installation", "slug": "sdk/local-installation" },
       "get-started/quickstart",
-      "sdk/local-evals",
-      "sdk/local-ui",
-      "sdk/local-pytest",
-      "sdk/local-ci",
-      "sdk/redteam-local"
+      {
+        "label": "Run and review",
+        "collapsed": true,
+        "items": [
+          "sdk/local-evals",
+          "sdk/local-ui",
+          "sdk/local-pytest",
+          "sdk/local-ci",
+          "sdk/redteam-local"
+        ]
+      },
+      {
+        "label": "Datasets and imports",
+        "collapsed": true,
+        "items": [
+          "sdk/local-datasets",
+          { "autogenerate": { "directory": "migrate" } }
+        ]
+      },
+      {
+        "label": "YAML syntax",
+        "collapsed": true,
+        "items": ["sdk/local-evals-yaml", "sdk/local-redteam-yaml"]
+      },
+      "sdk/local-cli"
     ]
   },
   {
@@ -136,17 +157,6 @@ export default defineConfig({
       "sdk/evaluations",
       { "label": "Run a hosted Red Team probe", "slug": "sdk/redteam" },
       "sdk/ci"
-    ]
-  },
-  {
-    "label": "Move from another tool",
-    "collapsed": true,
-    "items": [
-      {
-        "autogenerate": {
-          "directory": "migrate"
-        }
-      }
     ]
   },
   {

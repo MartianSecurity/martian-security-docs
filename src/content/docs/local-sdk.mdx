@@ -7,7 +7,12 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 
 | I want to | Start here |
 | --- | --- |
-| Install the SDK and try two example runs | [Community quickstart](/get-started/quickstart/) |
+| Install the SDK with pip or uv | [Installation](/sdk/local-installation/) |
+| Try two example runs | [Community quickstart](/get-started/quickstart/) |
+| Write test cases or import them into the local UI | [Create and import Evals datasets](/sdk/local-datasets/) |
+| Find fields and examples for suite files | [Evals suite YAML](/sdk/local-evals-yaml/) |
+| Review the syntax of an existing Red Team file | [Review Red Team YAML](/sdk/local-redteam-yaml/) |
+| Look up a command | [CLI command reference](/sdk/local-cli/) |
 | Evaluate a Python function or HTTP target with a YAML suite | [Run evals locally with a suite file](/sdk/local-evals/) |
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](/sdk/local-pytest/) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](/sdk/local-ui/) |
@@ -16,19 +21,10 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 
 ## Install the Local SDK
 
-Use Python 3.12 or newer. From your project folder in Bash or Zsh, create a virtual environment and activate it.
-
-```sh
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade 'martian-sdk[evals]'
-martian --version
-```
-
-In each new terminal, run `source .venv/bin/activate` from the same folder before using `martian`. The [SDK version guide](/sdk/install-and-configure/#sdk-versions-and-workflows) lists the Python package and container releases separately.
+Use Python 3.12 or newer. Follow [Install with pip](/sdk/local-installation/#install-with-pip) or [Install with uv](/sdk/local-installation/#install-with-uv) from your project directory.
 
 ## Import existing results
 
 Bring runs into the local UI from [MLflow](/migrate/mlflow/), [promptfoo](/migrate/promptfoo/), or [Inspect AI](/migrate/inspect/).
 
-To connect the same SDK to a shared workspace and record CI sessions, see [Install and configure the SDK](/sdk/install-and-configure/).
+To record results in a shared workspace, see [Configure the SDK for a workspace](/sdk/install-and-configure/).

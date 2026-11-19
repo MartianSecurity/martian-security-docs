@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-20",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -868,6 +868,30 @@
       "environment": "Published marketing comparison and owning Scanner source",
       "result": "passed in stated scope",
       "details": "Compared the public edition status with MartianSecurity/martian-scanner 650abfd1b293c45be3ee7d112966709dc1fde184 and the marketing edition copy at 51f4d69e54a02549c3236faeebd7a751f6c26c97. The docs distinguish an enabled hosted workspace from the planned On-Premises offering."
+    },
+    {
+      "scope": "Local SDK pip, uv and uv project setup",
+      "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; uv 0.7.3",
+      "result": "passed in stated scope",
+      "details": "Fresh pip and uv virtual environments installed SDK 0.3.1 and printed the released version. An empty uv project resolved the evals extra using uv add and launched the CLI with uv run."
+    },
+    {
+      "scope": "Local Evals case schemas and UI dataset import",
+      "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI",
+      "result": "passed in stated scope",
+      "details": "Ran the matching JSON Lines and CSV case files. Added one record manually, confirmed an import updated that ID and added the other, published, reloaded both usable records, and confirmed the run form preselected the published dataset."
+    },
+    {
+      "scope": "Local SDK CLI and YAML references",
+      "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64",
+      "result": "passed in stated scope",
+      "details": "Checked CLI signatures against the released command help. Ran the copied support-hours suite with JSON Lines and CSV and the saved-reply suite with no target. Exported the UI dataset and restored one dataset version into a new store. The Red Team file-format check accepted integer version 2, rejected a decimal version, and reported the line and column for malformed YAML."
+    },
+    {
+      "scope": "Local SDK reference navigation and Markdown copies",
+      "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
+      "result": "passed in stated scope",
+      "details": "Opened Installation, Datasets and imports, both YAML references and CLI command reference from Local SDK. Verified exact pip and uv command copies, page Markdown, YAML indentation, Pagefind results, a retained suite bookmark, and both dataset screenshots including the full-size view."
     }
   ],
   "remainingGaps": [
