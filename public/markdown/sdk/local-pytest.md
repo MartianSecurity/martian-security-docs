@@ -6,7 +6,7 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-pytest/)
 
 Python SDK · Any developer; no Martian account is needed
 
-Use pytest when your cases or assertions belong in Python. This example checks two support answers and writes a local evaluation record. You need Python 3.12 or newer and the [Local SDK installed](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#install-the-local-sdk). The example needs no model key or Martian account.
+Use pytest when your cases or assertions belong in Python. This example checks two support answers and writes a local evaluation record. You need Python 3.12 or newer and the [Local SDK installed](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md). The example needs no model key or Martian account.
 
 ## 1\. Write a prediction and an assertion
 
@@ -69,7 +69,7 @@ Check that `state` and `upload` are both `offline`. The folder holds the recorde
 
 ## Troubleshooting
 
--   For **`martian: command not found`**, activate the environment where you [installed the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#install-the-local-sdk).
+-   For **`martian: command not found`**, activate the environment where you [installed the SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md).
 -   If an assertion fails, read the pytest output for the expected and actual values. Update your callback or correct the expected value in the case.
 
 To share results tied to a published dataset and code revision, follow [Record Python Evals in a workspace](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/evaluations.md).

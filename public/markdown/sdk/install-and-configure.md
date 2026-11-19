@@ -14,7 +14,7 @@ For account-free evaluation and local results, start with the [Local SDK guides]
 
 | Distribution | Version in these guides | Install |
 | --- | --- | --- |
-| Python package | **0.3.1** on Python 3.12 or newer | [PyPI releases](https://pypi.org/project/martian-sdk/#history) and [Local SDK setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#install-the-local-sdk) |
+| Python package | **0.3.1** on Python 3.12 or newer | [PyPI releases](https://pypi.org/project/martian-sdk/#history) and [Local SDK setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md) |
 | Local Evals UI container | **0.2.0** for Linux AMD64 | [Container registry](https://github.com/MartianSecurity/martian-redteam/pkgs/container/martian-evals) and [Docker setup](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#6-run-the-ui-in-a-container) |
 
 The Python package and Docker image have separate release versions. Use the Python package for features that require SDK 0.3.1. Choose a workflow by where you want the result.

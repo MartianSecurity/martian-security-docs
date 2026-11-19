@@ -7,7 +7,7 @@ import GuideMeta from '../../../components/GuideMeta.astro';
 
 <GuideMeta id="sdk/local-pytest" />
 
-Use pytest when your cases or assertions belong in Python. This example checks two support answers and writes a local evaluation record. You need Python 3.12 or newer and the [Local SDK installed](/local-sdk/#install-the-local-sdk). The example needs no model key or Martian account.
+Use pytest when your cases or assertions belong in Python. This example checks two support answers and writes a local evaluation record. You need Python 3.12 or newer and the [Local SDK installed](/sdk/local-installation/). The example needs no model key or Martian account.
 
 ## 1. Write a prediction and an assertion
 
@@ -70,7 +70,7 @@ Check that `state` and `upload` are both `offline`. The folder holds the recorde
 
 ## Troubleshooting
 
-- For **`martian: command not found`**, activate the environment where you [installed the SDK](/local-sdk/#install-the-local-sdk).
+- For **`martian: command not found`**, activate the environment where you [installed the SDK](/sdk/local-installation/).
 - If an assertion fails, read the pytest output for the expected and actual values. Update your callback or correct the expected value in the case.
 
 To share results tied to a published dataset and code revision, follow [Record Python Evals in a workspace](/sdk/evaluations/).

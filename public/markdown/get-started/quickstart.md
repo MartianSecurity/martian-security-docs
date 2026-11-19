@@ -36,6 +36,8 @@ Check for Python 3.12 or newer and your installed SDK version. Activating `.venv
 
 The folder holds the suite file `evals.yaml`, three cases in `cases.jsonl`, the example agent `agent.py`, and a corrected `agent-fixed.py` with its own suite, `evals-fixed.yaml`. Keep the files together.
 
+To use uv, extract the example and follow [Install with uv](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md#install-with-uv) from the `sdk-local-evals` directory.
+
 ## 2\. Run the suite
 
 ```sh

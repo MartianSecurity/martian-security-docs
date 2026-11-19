@@ -1,0 +1,62 @@
+---
+title: Install the Local SDK
+description: Install martian-sdk with pip or uv, activate your environment, and check the Martian CLI version.
+---
+
+import GuideMeta from '../../../components/GuideMeta.astro';
+
+<GuideMeta id="sdk/local-installation" />
+
+Install `martian-sdk[evals]` to get the Martian CLI, Evals tools, and local UI. Use Python 3.12 or newer and Bash or Zsh on macOS, Linux, or WSL. You can install the package and run deterministic Evals without a Martian account.
+
+Choose the installer you use for the project.
+
+- [Install with pip](#install-with-pip) if Python is already installed and you want a virtual environment.
+- [Install with uv](#install-with-uv) if you use uv to manage packages or Python versions.
+
+If the project already has a compatible virtual environment, activate it and start at the install command.
+
+## Install with pip
+
+From your project directory, check that `python3` is Python 3.12 or newer, then create and activate a virtual environment.
+
+```sh
+python3 --version
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian --version
+```
+
+If `python3` points to an older interpreter, use `python3.12` or another installed version at least as recent to create the virtual environment.
+
+## Install with uv
+
+If you need uv, follow its [installation guide](https://docs.astral.sh/uv/getting-started/installation/). From your project directory, create and activate a virtual environment, then install the SDK.
+
+```sh
+uv venv --python 3.12
+source .venv/bin/activate
+uv pip install --upgrade 'martian-sdk[evals]'
+martian --version
+```
+
+`uv venv` can fetch Python 3.12 when it is missing. For a project you already manage with uv, record the dependency in `pyproject.toml` and use `uv run` to run Martian in its environment.
+
+```sh
+uv add 'martian-sdk[evals]'
+uv run martian --version
+```
+
+## Run Martian from a new terminal
+
+From the project directory, activate the environment again. You can then run `martian` directly.
+
+```sh
+source .venv/bin/activate
+martian --help
+```
+
+If the shell reports **`martian: command not found`**, activate the environment where you installed it and run `martian --version`. In a uv project, use `uv run martian --version`. [Python SDK releases](https://pypi.org/project/martian-sdk/#history).
+
+Run the [Community quickstart](/get-started/quickstart/) or find a task in the [CLI command reference](/sdk/local-cli/). For one-user Docker setup, see [Run the UI in a container](/sdk/local-ui/#6-run-the-ui-in-a-container).

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-20",
   "guides": [
     {
       "id": "agents/connections",
@@ -4773,6 +4773,100 @@
       ],
       "verifiedAt": "2026-11-19",
       "verifiedEnvironment": "macOS ARM64, CPython 3.12.10, released martian-sdk[evals] 0.3.1; GitHub Actions composite steps from 2459bee92fbcd01f9192eee60f1bdf38adac3c18"
+    },
+    {
+      "id": "sdk/local-installation",
+      "guide": "Install the Local SDK",
+      "documentationRoute": "/sdk/local-installation/",
+      "role": "Any developer; no account is needed",
+      "route": "Local terminal",
+      "environment": "Local SDK",
+      "interfaces": [
+        "Python",
+        "pip",
+        "uv"
+      ],
+      "sdkVersion": "0.3.1",
+      "prerequisites": [
+        "Python 3.12 or newer; uv for the uv recipe"
+      ],
+      "requiredValidation": [
+        "Install in fresh pip and uv environments and check the CLI version",
+        "Check the uv project setup"
+      ],
+      "screenshots": [],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "pyproject.toml",
+            "src/martian/cli.py"
+          ]
+        }
+      ],
+      "qualification": "verified",
+      "validationStatus": "Fresh pip and uv virtual environments installed SDK 0.3.1 and printed the released version. An empty uv project resolved the evals extra using uv add and launched the CLI with uv run.",
+      "validation": [
+        {
+          "date": "2026-11-20",
+          "record": "quality/validation.json",
+          "observedPath": "Install the Local SDK",
+          "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; uv 0.7.3",
+          "result": "Fresh pip and uv virtual environments installed SDK 0.3.1 and printed the released version. An empty uv project resolved the evals extra using uv add and launched the CLI with uv run."
+        }
+      ],
+      "verifiedAt": "2026-11-20",
+      "verifiedEnvironment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; uv 0.7.3"
+    },
+    {
+      "id": "sdk/local-datasets",
+      "guide": "Create and import Evals datasets",
+      "documentationRoute": "/sdk/local-datasets/",
+      "role": "Local user",
+      "route": "/#/evals/datasets",
+      "environment": "Local SDK",
+      "interfaces": [
+        "Local CLI",
+        "Local Evals UI"
+      ],
+      "sdkVersion": "0.3.1",
+      "prerequisites": [
+        "Local SDK installed",
+        "A case file or a new local dataset draft"
+      ],
+      "requiredValidation": [
+        "Run the documented JSON Lines and CSV cases",
+        "Add a record, import replacements, publish and reload the dataset",
+        "Confirm the run form can select the published dataset"
+      ],
+      "screenshots": [
+        "local-sdk-dataset-import",
+        "local-sdk-dataset-published"
+      ],
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
+          "paths": [
+            "src/martian/evals/runner.py",
+            "src/martian/evals/server/"
+          ]
+        }
+      ],
+      "qualification": "verified",
+      "validationStatus": "Ran the matching JSON Lines and CSV case files. Added one record manually, confirmed an import updated that ID and added the other, published, reloaded both usable records, and confirmed the run form preselected the published dataset.",
+      "validation": [
+        {
+          "date": "2026-11-20",
+          "record": "quality/validation.json",
+          "observedPath": "Create and import Evals datasets",
+          "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI",
+          "result": "Ran the matching JSON Lines and CSV case files. Added one record manually, confirmed an import updated that ID and added the other, published, reloaded both usable records, and confirmed the run form preselected the published dataset."
+        }
+      ],
+      "verifiedAt": "2026-11-20",
+      "verifiedEnvironment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI"
     }
   ]
 }

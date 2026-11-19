@@ -5005,6 +5005,48 @@
       "reviewedForSecrets": true,
       "sha256": "03e72c963a7e4c2b3d045776ed394bf61f7de7eb6c015d96d94d0020051b8500",
       "bytes": 100926
+    },
+    {
+      "id": "local-sdk-dataset-import",
+      "file": "local-sdk-dataset-import.png",
+      "alt": "Support hours draft with two usable cases and an import reminder.",
+      "caption": "The draft lists both imported answers and shows which cases are usable.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-datasets: Import a case file"
+      ],
+      "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI",
+      "role": "Local user",
+      "capturedAt": "2026-11-19T16:00:28Z",
+      "sourceRevisions": {
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18"
+      },
+      "sourceMatchesDeployment": "Released SDK package running locally.",
+      "validationStatus": "Observed with two synthetic support-hours records in the real local UI.",
+      "reviewedForSecrets": true,
+      "sha256": "6f0502d9d4d8bf956aabf3ab95bec9a6461d1370104dcbeafac89cc2c84780ea"
+    },
+    {
+      "id": "local-sdk-dataset-published",
+      "file": "local-sdk-dataset-published.png",
+      "alt": "Published Support hours dataset with two usable records and a Use in eval button.",
+      "caption": "Open the published dataset and select Use in eval to start with these cases.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-datasets: Publish and select the dataset"
+      ],
+      "environment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI",
+      "role": "Local user",
+      "capturedAt": "2026-11-19T16:03:35Z",
+      "sourceRevisions": {
+        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18"
+      },
+      "sourceMatchesDeployment": "Released SDK package running locally.",
+      "validationStatus": "Observed with two synthetic support-hours records in the real local UI.",
+      "reviewedForSecrets": true,
+      "sha256": "16d077c85625a76d8b62173ce512ba39f97dea60e8975cf74c2419ef9497c885"
     }
   ]
 }

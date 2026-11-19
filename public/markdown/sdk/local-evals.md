@@ -10,7 +10,7 @@ Write a suite for your own agent by combining a YAML file, test cases, and check
 
 ## 1\. Set up your project
 
-Open a project folder where you can save a suite and test cases together. Use Python 3.12 or newer and [install the Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#install-the-local-sdk). Keep your virtual environment active.
+Open a project folder where you can save a suite and test cases together. Use Python 3.12 or newer and [install the Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md). Keep your virtual environment active.
 
 The deterministic example needs no account or model key. When your target calls an external service or you [add an LLM judge](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#6-add-an-llm-judge), those services receive the inputs they need.
 
@@ -199,66 +199,9 @@ The example token `demo-token` only shows how a credential is passed. Use `https
 
 ## Reference
 
-### Suite file
-
-| Key | Required | Meaning |
-| --- | --- | --- |
-| `data` | Yes | Path to a `.jsonl` or `.csv` file of cases |
-| `checks` | Yes | One or more checks, described below |
-| `target` | No | `file` and `function` of the code under test, or a [URL target](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#url-target) in SDK 0.1.4 or later. Omit it to grade replies stored in the data file |
-| `judge` | For LLM judges | `model`, optional `inference_params` (`temperature`, `top_p`, `max_tokens`, `seed`), `max_retries` (0 to 10) and `rate_limit_wait_seconds` (at most 3600) |
-| `concurrency` | No | Cases run at the same time; default 4 |
-| `output` | No | Results folder; default `results` |
-| `input_key` | No | Name of the argument passed to the target for a plain `input`; default `message` |
-
-Unknown keys are rejected, so a misspelt setting stops the run with exit code `2`. SDK 0.1.4 and later also read a matrix of prompts and models, repeated attempts, conversations, run limits and a cache of model calls; the [SDK’s Evals documentation](https://github.com/MartianSecurity/martian-redteam/blob/main/docs/evals.md#run-a-suite-file-locally) describes them.
-
-### URL target
-
-Available in SDK 0.1.4 or later. These keys go under `target` in place of `file` and `function`.
-
-| Key | Required | Meaning |
-| --- | --- | --- |
-| `url` | Yes | An `http` or `https` address, without credentials in it. `${NAME}` is read from the environment |
-| `body` | Yes | The JSON body of the `POST`. Its string values can use `{{input}}`, `{{inputs.NAME}}` and `{{uuid}}` |
-| `headers` | No | Request headers. `${NAME}` in a value is read from the environment |
-| `response_path` | No | Dotted path to the reply in a JSON response; a number selects an item in a list. Without it, the whole response text is the reply |
-| `timeout_seconds` | No | Limit for one request, from 1 to 600; default 120 |
-
-A body value that is only a placeholder keeps the input’s type, so a number in `inputs` is sent as a number.
-
-### Data file
-
-| Format | Fields |
-| --- | --- |
-| JSONL | One object per line. `input` (a string) or `inputs` (an object passed to the target as keyword arguments). Optional `id`, `output` and `expectations` |
-| CSV | Columns `input`, and optionally `id` and `output`. Every other column becomes an expectation of that name |
-
-Give every case its own `id`; without one, the line number is used. To grade replies you already have, put each one in `output` and leave `target` out of the suite file. A data file with stored outputs cannot be combined with a `target`. There is no row limit.
-
-### Deterministic checks
-
-These make no model call and give the same answer every time. The table lists common checks. SDK 0.1.4 and later have more, such as `equals`, `starts_with`, `length`, `json_schema`, `no_secrets`, `no_personal_data` and `latency`; the [SDK’s list of deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/main/docs/evals.md#deterministic-checks) gives each with its options.
-
-| `type` | Settings | Passes when |
-| --- | --- | --- |
-| `contains` | `values`, or `expectation`; `any_of`; `case_sensitive` | The reply contains every value, or at least one with `any_of: true` |
-| `not_contains` | `values`, or `expectation`; `case_sensitive` | The reply contains none of the values |
-| `matches` | `pattern` | The regular expression is found anywhere in the reply |
-| `not_matches` | `pattern` | The regular expression is not found in the reply |
-| `is_json` | `required_keys` | The reply is valid JSON; with keys, a JSON object that has each one |
-
-`values` is a list written in the suite file. `expectation` names a key in each case’s `expectations` holding one string or a list of strings. Matching ignores case unless `case_sensitive: true`. Give a check a `name` when you use the same type twice; names must be unique and must differ from the expectation key the check reads.
-
-### Run options
-
-| Option | Effect |
-| --- | --- |
-| `--output DIR` | Choose the output folder |
-| `--concurrency N` | Run up to N cases at once (default 4) |
-| `--limit N` | Run only the first N cases |
-| `--fresh` | Check every selected case again |
-| `--data-dir DIR` | Choose the UI data folder for the saved run. Defaults to `MARTIAN_EVALS_HOME` or `~/.martian/evals` |
+-   [Suite YAML, HTTP targets, and checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md)
+-   [Case file formats and local UI datasets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-datasets.md)
+-   [CLI commands and run options](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-cli.md)
 
 ## Failures and limits
 

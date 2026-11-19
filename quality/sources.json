@@ -36,6 +36,11 @@
         "sdk/local-ui",
         "sdk/local-pytest",
         "sdk/local-ci",
+        "sdk/local-installation",
+        "sdk/local-datasets",
+        "sdk/local-cli",
+        "sdk/local-evals-yaml",
+        "sdk/local-redteam-yaml",
         "sdk/ci",
         "evals/human-reviews"
       ],
