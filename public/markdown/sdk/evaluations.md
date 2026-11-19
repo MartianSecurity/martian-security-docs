@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/evaluations/)
 
-> **Page qualification:** Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use `martian.evals` to run your prediction function locally and record regression results. Start with a free two-record preview, then use a published dataset whose outputs Backend can score independently.
 

@@ -208,10 +208,6 @@ Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds th
 
 The image is public: `docker pull` needs no login. This guide ran the 0.1.5 image with the command above on Linux, including the `Host` check and `MARTIAN_EVALS_ALLOWED_HOSTS` below and a second container on the same volume.
 
-<Aside type="caution" title="Not exercised by this guide">
-The SSH tunnel and a folder mounted from the server were not run.
-</Aside>
-
 **The image has no login either. Do not expose it publicly.** The command above publishes the port on the server's `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:
 
 ```sh
@@ -235,7 +231,7 @@ Start with one run identified by its code or ID. Omitting the identifier sends e
 Read the push summary, then check the run and its case counts in the destination workspace. If the push is interrupted, rerun the same command. The receiver keeps the records it already received. Missing connection variables produce exit code `2`.
 
 <Aside type="caution" title="Check workspace support">
-Pushing needs a server that supports Evals push for your organization and the installed SDK's export format. Confirm support with your workspace administrator. The Community walkthrough on this page verifies local export and restore.
+Pushing needs a server that supports Evals push for your organization and the installed SDK's export format. Confirm support with your workspace administrator.
 </Aside>
 
 ## How the screenshots were made
@@ -251,7 +247,6 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 - **A request is refused with `400`:** its `Host` header named something other than `127.0.0.1` or `localhost`. Open the UI at one of those addresses.
 - **A run is refused:** by default one run at a time may be in progress. Wait, or start `martian ui --concurrency 2`.
 - **Not a platform record:** a local run has no Martian session, agent or tested revision, and it does not appear in the hosted console unless you push it ([step 7](#7-send-runs-to-a-martian-server)).
-- **Verification scope** covers 0.3.1 local quickstart runs and export/restore. The original container and UI-launched run are recorded under SDK 0.1.5. Model judges, application traces and pushes to a deployed workspace need separate checks.
 
 ## Next
 

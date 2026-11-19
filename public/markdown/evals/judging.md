@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/judging/)
 
-> **Page qualification:** Current beta console · member+ applies; owner/admin defines native judges · Verified 2026-11-13 · Isolated local QA (code + Boolean model rubrics). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ applies; owner/admin defines native judges · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Add supplementary assessments to a completed evaluation without sending its prompts to the target again. Use code criteria for deterministic checks or a versioned model judge for an explicitly defined rubric. The original canonical exact-match results remain intact.
 

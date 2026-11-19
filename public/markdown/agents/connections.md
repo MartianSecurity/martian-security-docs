@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/connections/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated local QA; HTTP/MCP/browser connection setup; disposable HTTP credential lifecycle. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Connect a customer-controlled test agent so Martian can send an approved assessment to it. A successful setup ends with an **active** connection and **Ready for assessments**.
 

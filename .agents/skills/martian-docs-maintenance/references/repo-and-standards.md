@@ -52,8 +52,8 @@ Maintain `verifiedAt`, `verifiedEnvironment`, role, source revision and validati
 
 - Reuse the actual Hermes Astro/Starlight foundation and Martian assets. Preserve the local Inter license and branding rather than recreating a similar-looking site from a screenshot.
 - Show the logo/wordmark in the navbar, without the Customer documentation subtitle.
-- Keep the title area clean. Do not reintroduce tiny version/role/verification rows or a verification-details link beneath every heading. Preserve that provenance in hidden guide metadata, the centralized verification record and Copy page output.
-- Use the existing Aside/callout system with a clear title, concise message, spacing and readable light/dark contrast. Avoid large opaque color walls and unrelated implementation details in customer flows. Keep necessary incomplete-workflow notices explicit and concise.
+- Keep the title area clean. Guide copies include audience context and a link to the centralized verification record. Record dates, tested environments and walkthrough status in that record and `quality/`.
+- Use the existing Aside system for product prerequisites, limits and recovery actions. Give callouts a concise title and readable contrast in both themes.
 - Use the existing themed Expressive Code integration: language/file label, monospace formatting, preserved indentation and a visible keyboard-accessible Copy control with feedback. Test copied bytes; syntax highlighting alone is insufficient. Avoid wrapping long shell commands into altered executable text. Use horizontal code scrolling without document-wide overflow.
 - Prefer a short list, table or focused code excerpt over dense inline field names. Exact excerpts must be labeled as excerpts rather than fabricated full responses.
 - Screenshots are legible teaching evidence with alt text, captions and full-size viewing. An unreadable capture does not become acceptable because the underlying API succeeded. Never repair a product screenshot by recoloring or inventing UI; record the actual product issue separately.

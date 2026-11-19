@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/http-adapter/)
 
-> **Page qualification:** Current beta console · Local adapter: customer developer; console onboarding: Owner/Admin · Verified 2026-11-13 · Isolated local QA + public HTTPS. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Local adapter: customer developer; console onboarding: Owner/Admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use this example when your application has a local response function but does not yet expose the HTTP chat contract required by console-triggered assessments and dataset Evals. The result is a running service that accepts Martian’s JSON request and returns your callback’s text in `content`.
 

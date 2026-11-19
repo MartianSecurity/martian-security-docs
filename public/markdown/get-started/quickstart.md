@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/quickstart/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Verified 2026-11-19 · macOS Python 3.12.10; packaged UI on loopback. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Any developer; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 The Community edition is open source and runs on your own machine. In this quickstart you install the SDK, run a three-case eval suite against a small example agent, read which case failed and why, fix the agent and run again, then open both runs in the local Evals UI and compare them. You need no Martian account, API key or model key. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) compares Community with Enterprise and On-Premises.
 

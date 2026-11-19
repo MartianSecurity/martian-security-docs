@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/ci/)
 
-> **Page qualification:** Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run Evals tests and a redteam suite in one pytest execution to retain a Backend CI session. A required persisted gate checks test coverage, policy, Backend acknowledgment and any required exports. For an account-free check on pull requests, jump to the [local Evals workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests).
 

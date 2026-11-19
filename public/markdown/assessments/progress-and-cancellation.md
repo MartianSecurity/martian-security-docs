@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/progress-and-cancellation/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Verified 2026-11-14 · Isolated local QA; synthetic anonymous HTTP target; non-platform-admin Owner; queued and active cancellation, retained legacy trace and JSON export. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Follow the run Martian actually admitted and stop further work when appropriate. Success means you can identify the retained run, its final execution state, available evidence and any unresolved action requiring attention.
 

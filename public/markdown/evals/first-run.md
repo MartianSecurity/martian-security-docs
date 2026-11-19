@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/first-run/)
 
-> **Page qualification:** Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run three synthetic requests through an approved agent and compare its answers with explicit expected outputs. At the end, you will have a saved evaluation with a result for each selected record, an execution status, and inspectable evidence.
 

@@ -1,6 +1,6 @@
 # Martian Security — complete customer documentation
 
-Generated from the rendered public guides. Per-page qualification notices, prerequisites and examples are retained.
+Generated from the rendered public guides, including prerequisites, examples and product limits.
 
 # Martian Security
 
@@ -76,7 +76,7 @@ These are beta product guides. The [verification record](https://raw.githubuserc
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/connections/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated local QA; HTTP/MCP/browser connection setup; disposable HTTP credential lifecycle. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Connect a customer-controlled test agent so Martian can send an approved assessment to it. A successful setup ends with an **active** connection and **Ready for assessments**.
 
@@ -220,7 +220,7 @@ Continue with [your first assessment](https://raw.githubusercontent.com/MartianS
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/http-adapter/)
 
-> **Page qualification:** Current beta console · Local adapter: customer developer; console onboarding: Owner/Admin · Verified 2026-11-13 · Isolated local QA + public HTTPS. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Local adapter: customer developer; console onboarding: Owner/Admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use this example when your application has a local response function but does not yet expose the HTTP chat contract required by console-triggered assessments and dataset Evals. The result is a running service that accepts Martian’s JSON request and returns your callback’s text in `content`.
 
@@ -315,7 +315,7 @@ Next, [connect and manage the agent](https://raw.githubusercontent.com/MartianSe
 
 Source: [Web version](https://docs.martiansecurity.ai/agents/sandbox-bindings/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-15 · Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use sandbox bindings when a red-team assessment must exercise synthetic business systems rather than only the agent’s replies. Success means the intended session-capable HTTP agent is approved for the exact seeded account and tools, and its admitted run retains independent before/after business checks.
 
@@ -688,13 +688,7 @@ Bindings and business predicates are integrator-owned contracts, not facts infer
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/configure/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Basic endpoint HTTP, operator-assisted MCP, completed browser execution, sandbox admission and independent payment outcomes were exercised in their named scopes. MR-1006 retained Completed/INCONCLUSIVE after refresh with4target/12model calls; earlier failures and uncertain actions remain preserved. Synthetic signed-in fixture and prepared-scenario execution remain unqualified; earlier MCP lost-acknowledgment recovery was operator-assisted. Separate MR-1009 now qualifies clean duplicate-refund reproduction with two positive restored-world repetitions and an executed passing control. Signed-in fixtures and prepared scenarios remain unqualified.
-
-Partly verified guide
-
-HTTP, operator-assisted MCP, completed browser execution, sandbox admission and an independent payment outcome are checked. Synthetic signed-in fixtures and prepared scenarios remain unverified.
+Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Define the authorized scope before sending adversarial requests to a customer agent. The wizard has six steps: **Environment → Agent → Goals → Tests → Run → Report**. This guide covers configuration through admission; the [first-assessment tutorial](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/first-assessment.md) provides a complete introductory run.
 
@@ -795,7 +789,7 @@ Continue with [progress and cancellation](https://raw.githubusercontent.com/Mart
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/evidence-and-results/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-16 · Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Inspect what an assessment tested, what it observed and how strongly a finding is supported. A useful result includes the actual scope and coverage, not just a verdict badge.
 
@@ -970,7 +964,7 @@ Continue with [reproduction and evidence limits](https://raw.githubusercontent.c
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/history-and-exports/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-15 · Isolated Harbor Assessment Lab; genuine customer Owner with platform_admin false; immutable Frontend90351b7/Backend7cb888aa, Nativef7de3e0 runtime equivalent to d021180e, MLflow3.18.0, verified released SDK and real Kubernetes payment sandbox; Firefox actual UI archive and Reports downloads. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Find a recorded assessment after leaving its wizard, inspect retained evidence and download the right report. These history and replay actions read existing work; **Replay** does not execute the assessment again.
 
@@ -1092,7 +1086,7 @@ Continue with [evidence and results](https://raw.githubusercontent.com/MartianSe
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/progress-and-cancellation/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Verified 2026-11-14 · Isolated local QA; synthetic anonymous HTTP target; non-platform-admin Owner; queued and active cancellation, retained legacy trace and JSON export. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Follow the run Martian actually admitted and stop further work when appropriate. Success means you can identify the retained run, its final execution state, available evidence and any unresolved action requiring attention.
 
@@ -1208,7 +1202,7 @@ Next: [inspect results and evidence](https://raw.githubusercontent.com/MartianSe
 
 Source: [Web version](https://docs.martiansecurity.ai/assessments/reproduction-and-limits/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-16 · Isolated Harbor Assessment Lab; genuine non-platform-admin Owner; Frontend90351b7, Backend7cb888aa plus exact recovery patch67691e7, Nativef7de3e0 and MLflow3.18.0; no hosted-beta or full-main parity. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use the strongest retained evidence for the question you are answering. A reproducible reply, an executed tool call and a reproducible change in a restored business world support different conclusions.
 
@@ -2333,7 +2327,7 @@ Related risks include [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.or
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/call-gates/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Block entry to one explicitly enrolled model or tool call in an instrumented customer application. Success requires an activated control, a real denied decision and the SDK’s acknowledgment that it stopped before calling the target. This is separate from the CI release gate and from network-containment previews.
 
@@ -2496,7 +2490,7 @@ Continue with [runtime evidence](https://raw.githubusercontent.com/MartianSecuri
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/inventory/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; real customer Owner, authorized Kubernetes namespace, unchanged collector; Backend candidate PR112, not merged or deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Build an inventory from authorized infrastructure evidence and inspect what qualifies each record as an agent, candidate or supporting workload. Enrollment succeeds when the source is saved, its intended collector reports and retained inventory appears with a clear freshness boundary.
 
@@ -2597,7 +2591,7 @@ Network capture and continuous observers have a separate [setup and lifecycle](h
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/network-observation/)
 
-> **Page qualification:** Current beta console · owner/admin manages; authorized roles read · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; real authorized Kubernetes provider; unchanged collector and SDK; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner/admin manages; authorized roles read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Observe scoped TCP activity from customer-operated Kubernetes sensors. A one-time capture and a continuous observer have separate grants and lifecycles. Neither grants model/tool reporting, blocks calls or activates network isolation.
 
@@ -2724,7 +2718,7 @@ Continue with [runtime call metadata](https://raw.githubusercontent.com/MartianS
 
 Source: [Web version](https://docs.martiansecurity.ai/discovery/runtime-and-blast-radius/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-14 · Isolated Discovery compatibility QA; actual customer Owner with platform_admin false; authorized local Kubernetes provider; unchanged collector and released SDK0.1.3; Backend candidate PR112, unmerged and not deployed to beta. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Follow application-reported model/tool activity for one deployment and compare it with collected potential access. Success means the intended binding receives real instrumented calls and you can trace each visible relationship to its evidence and time boundary.
 
@@ -2845,7 +2839,7 @@ Continue with [network observer setup](https://raw.githubusercontent.com/Martian
 
 Source: [Web version](https://docs.martiansecurity.ai/environments/create-and-launch/)
 
-> **Page qualification:** Current beta console · member, admin, owner · Verified 2026-11-14 · Separate isolated Documentation Browser Execution QA; real Frontend, Backend, Agents and local Kubernetes Gmail simulation; synthetic inputs; Owner with platform_admin false. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Create a disposable copy of the systems needed by a red-team assessment. At the end, the intended environment revision and data are saved, each required sandbox is **Ready**, and you have checked that its application works. Then [connect the agent’s sandbox bindings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md).
 
@@ -3023,7 +3017,7 @@ Continue with [agent sandbox bindings](https://raw.githubusercontent.com/Martian
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/compare/)
 
-> **Page qualification:** Current beta console · all customer roles read/export · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles read/export · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Compare a baseline with a candidate to see which recorded checks improved, regressed or stayed unchanged. The comparison uses dataset record identities and retained outputs; opening it does not call either target again.
 
@@ -3130,7 +3124,7 @@ Next, [inspect traces and sessions](https://raw.githubusercontent.com/MartianSec
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/datasets/)
 
-> **Page qualification:** Current beta console · member+ edits; owner/admin publishes; viewer reads published · Verified 2026-11-14 · Isolated local QA; original JSONL/CSV/JSON editing and role boundaries in Martian Docs Lab; separate immutable-version and Martian-copy publication in Documentation Browser Execution QA; pinned source baseline. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ edits; owner/admin publishes; viewer reads published · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Build a reviewed set of input/expected-output records, then publish an immutable version that your team can select in Evals. Draft edits do not change the version pinned by an earlier run.
 
@@ -3312,7 +3306,7 @@ Next, [run the dataset](https://raw.githubusercontent.com/MartianSecurity/martia
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/first-run/)
 
-> **Page qualification:** Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner/admin to prepare dataset; member+ to run; viewer can read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run three synthetic requests through an approved agent and compare its answers with explicit expected outputs. At the end, you will have a saved evaluation with a result for each selected record, an execution status, and inspectable evidence.
 
@@ -3402,7 +3396,7 @@ Next, [understand results and scores](https://raw.githubusercontent.com/MartianS
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/human-reviews/)
 
-> **Page qualification:** Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ reviews own/unassigned work; owner/admin assigns others · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Collect attributed human ratings on saved evaluation responses. A queue defines which results need which questions; it becomes complete only after the required answers and their native feedback are verified. Human ratings remain separate from the original automated scores.
 
@@ -3494,7 +3488,7 @@ Next, [compare compatible scored runs](https://raw.githubusercontent.com/Martian
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/judging/)
 
-> **Page qualification:** Current beta console · member+ applies; owner/admin defines native judges · Verified 2026-11-13 · Isolated local QA (code + Boolean model rubrics). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ applies; owner/admin defines native judges · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Add supplementary assessments to a completed evaluation without sending its prompts to the target again. Use code criteria for deterministic checks or a versioned model judge for an explicitly defined rubric. The original canonical exact-match results remain intact.
 
@@ -3633,7 +3627,7 @@ Next, [apply a reusable suite](https://raw.githubusercontent.com/MartianSecurity
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/overview/)
 
-> **Page qualification:** Current beta console · Any customer role · Verified 2026-11-13 · Isolated local QA; native traces. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Any customer role · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use the project dashboard to understand the native traces retained for your selected scope. It summarizes recorded activity; it does not launch an evaluation or schedule model calls.
 
@@ -3698,7 +3692,7 @@ Continue with [trace inspection](https://raw.githubusercontent.com/MartianSecuri
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/projects/)
 
-> **Page qualification:** Current beta console · owner/admin creates/archives; all customer roles browse · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner/admin creates/archives; all customer roles browse · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use projects to group evaluation runs, traces, judge definitions and review work inside your organization. The project selector determines the context for the Evals page you are viewing. Published datasets are shared across the organization’s projects.
 
@@ -3775,7 +3769,7 @@ Next, [run an evaluation](https://raw.githubusercontent.com/MartianSecurity/mart
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/quality-issues/)
 
-> **Page qualification:** Current beta console · all customer roles browse; member+ triages · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles browse; member+ triages · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Turn a recorded failure signal into an inspectable triage decision. Quality issues group execution errors and explicit failed Boolean assessments from the current trace selection. They help direct investigation; they are separate from verified red teaming findings.
 
@@ -3852,7 +3846,7 @@ Next, [retain a useful trace view](https://raw.githubusercontent.com/MartianSecu
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/regression-cases/)
 
-> **Page qualification:** Current beta console · Member, admin or owner; observed Owner walkthrough · Verified 2026-11-13 · Isolated local QA; Owner; saved-case authoring. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Member, admin or owner; observed Owner walkthrough · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Save a failed record as a test case that can catch the same problem in a later evaluation. Finish with an editable draft containing the reviewed input, expected answer and source-run metadata. Creating the draft uses saved results; it does not repeat the target call.
 
@@ -3943,7 +3937,7 @@ Both paths retained one usable record after refresh in their separate drafts. Ne
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/results-and-scores/)
 
-> **Page qualification:** Current beta console · all customer roles read/export; member+ for supplementary mutations · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles read/export; member+ for supplementary mutations · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Read a saved evaluation from its overall execution state down to an individual input, answer and assessment. You will be able to distinguish a failed quality check from a failed request, retain exports, and explain which evidence supports a score.
 
@@ -4032,7 +4026,7 @@ Next, [compare runs](https://raw.githubusercontent.com/MartianSecurity/martian-s
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/stopping-and-recovery/)
 
-> **Page qualification:** Current beta console · member+ stops; all customer roles inspect retained work · Verified 2026-11-13 · Isolated local QA (HTTP + code criteria). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ stops; all customer roles inspect retained work · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Request a bounded stop without discarding results that have already arrived, and distinguish an unresolved acknowledgement from a new launch. This guide covers customer controls in the current beta console; it does not require internal worker, database or MLflow administration.
 
@@ -4130,7 +4124,7 @@ Next, [inspect retained results](https://raw.githubusercontent.com/MartianSecuri
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/suites-and-monitoring/)
 
-> **Page qualification:** Current beta console · member+ versions/applies suites; all customer roles read monitoring · Verified 2026-11-13 · Isolated local QA (code criteria). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ versions/applies suites; all customer roles read monitoring · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Save criteria and quality thresholds as a reusable suite, apply a particular version to completed outputs, and monitor its retained jobs and gate outcomes. This keeps a quality policy consistent across runs instead of rebuilding it differently each time.
 
@@ -4225,7 +4219,7 @@ Next, [compare matching suite jobs](https://raw.githubusercontent.com/MartianSec
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/trace-annotations/)
 
-> **Page qualification:** Current beta console · member/admin/owner writes; authorized roles read · Verified 2026-11-13 · Isolated local QA; native traces. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member/admin/owner writes; authorized roles read · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Attach a human opinion or expected behavior to a native trace, including a conversation trace that has no dataset evaluation run. This is separate from [assigned human-review queues](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/evals/human-reviews.md). Saving an annotation does not execute a target or model.
 
@@ -4288,7 +4282,7 @@ Continue with [Evals dashboard summaries](https://raw.githubusercontent.com/Mart
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/traces-and-sessions/)
 
-> **Page qualification:** Current beta console · all customer roles read/export; member+ saves views · Verified 2026-11-13 · Local QA; trace/view workflows and separately provisioned native sessions. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles read/export; member+ saves views · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use the trace explorer to follow recorded requests and inspect the spans, inputs, outputs and assessments behind an evaluation. Group by a reported session ID when you need a conversation view. These reads do not execute a target again.
 
@@ -4630,7 +4624,7 @@ Continue with the [OWASP Agentic Top 10](https://raw.githubusercontent.com/Marti
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/access/)
 
-> **Page qualification:** Current beta console · All invited customer roles · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · All invited customer roles · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Finish with a signed-in Martian workspace and a role that matches your task. This guide is for invited users of the current beta. Accounts require an invitation; there is no public self-service sign-up.
 
@@ -4692,7 +4686,7 @@ A viewer can inspect the three saved results. Run eval is disabled; the real lau
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/concepts/)
 
-> **Page qualification:** Current beta console · All customer roles · Verified 2026-11-13 · Isolated local QA; named HTTP/catalogue walkthrough. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · All customer roles · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use this guide to choose the right workflow and recognize its results. It is for every workspace role and the current Martian beta interface.
 
@@ -4909,7 +4903,7 @@ The [verification record](https://raw.githubusercontent.com/MartianSecurity/mart
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/first-assessment/)
 
-> **Page qualification:** Current beta console · Member, admin or owner; admin required for connection approval · Verified 2026-11-13 · Isolated local QA; named HTTP/catalogue walkthrough. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Member, admin or owner; admin required for connection approval · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Finish with one retained security assessment and an understanding of its report. This tutorial starts with an endpoint-only test: you can learn the assessment workflow before configuring synthetic business systems.
 
@@ -4996,7 +4990,7 @@ If the run fails admission, resolve the named connection, capability, compatibil
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/quickstart/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Verified 2026-11-19 · macOS Python 3.12.10; packaged UI on loopback. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Any developer; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 The Community edition is open source and runs on your own machine. In this quickstart you install the SDK, run a three-case eval suite against a small example agent, read which case failed and why, fix the agent and run again, then open both runs in the local Evals UI and compare them. You need no Martian account, API key or model key. [Editions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/editions.md) compares Community with Enterprise and On-Premises.
 
@@ -5283,7 +5277,7 @@ Use **Copy page** to share a page’s Markdown, or choose **Copy agent link** fo
 
 Source: [Web version](https://docs.martiansecurity.ai/library/coverage/)
 
-> **Page qualification:** Current beta console · viewer, member, admin, owner · Verified 2026-11-13 · Isolated local QA; named HTTP/catalogue walkthrough. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · viewer, member, admin, owner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Find the techniques relevant to your agent and understand what Martian can execute in the current catalogue. The expected result is a clearly scoped assessment selection, with unsupported techniques and declared gaps kept visible.
 
@@ -5369,13 +5363,7 @@ To connect the same SDK to a shared workspace and record CI sessions, see [Insta
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/inspect/)
 
-> **Page qualification:** Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Every documented command ran against the SDK source at martian-redteam 08d2673. Inspect AI 0.3.290, in its own environment, wrote the sample logs: a three-sample task on Inspect's mock model answering from a table, scored with includes() and a numeric scorer, as two .eval logs (versions 1 and 2 of the table) and one .json log with two epochs. The .eval import printed the documented lines with exit 0 (2 passed / 1 failed, then 3 passed); the .json log imported as 6 cases. A log written with --no-log-samples was refused with the documented message, exit 2 and nothing imported. In martian ui the runs, the results table, a case's assessments, its trace (agent and model spans) and Compare (1 improved, 2 unchanged) were checked. Not verified: a published 0.1.4 package, logs with tool calls or model-graded scorers from a real provider, and logs of evals still running.
-
-Partly verified guide
-
-Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by Inspect AI 0.3.290. It was not run again on the later source or on the package published to PyPI.
+Python SDK · Any developer with Inspect AI log files; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Bring the logs your Inspect AI evals wrote into the local Evals UI. Each log becomes a run whose cases, scores and conversations you can open, compare with another run case by case, and review.
 
@@ -5501,13 +5489,7 @@ A case’s verdict follows its sample and scores, in this order: an error when t
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/mlflow/)
 
-> **Page qualification:** Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Every documented command ran against the SDK source at martian-redteam 08d2673 with sample tracking stores that MLflow itself wrote (one experiment with three application traces, two in a session, a person's feedback, an LLM judge's feedback, an expectation, a three-record evaluation dataset, two mlflow.genai.evaluate runs with a code scorer, and a training run with only a parameter and a metric). The 3.18.0 SQLite store's dry run, copy and second copy printed the documented reports with exit 0, and its SHA-256 was unchanged. A 3.16.1 store was refused with exit 2 and nothing written; its copy upgraded with the SDK's mlflow db upgrade imported with the same counts. A store on PostgreSQL 17 (postgres extra) passed the dry run and copy from an environment variable URL, with the password never printed; without the extra the documented message and exit 2 appeared. --experiment, an unknown experiment, an http:// server address and an mlruns folder behaved as documented. In martian ui the project, traces, the two-turn session, both runs, Compare (1 improved, 2 unchanged) and the dataset were checked. Not verified: a published 0.1.4 package, stores from MLflow 2.x, the upgrade of a Postgres copy, and spans kept in a remote artifact store.
-
-Partly verified guide
-
-Every command on this page was run against the SDK source built for 0.1.4 (martian-redteam 08d2673), with sample projects made by MLflow 3.18.0 and 3.16.1. It was not run again on the later source or on the package published to PyPI.
+Python SDK · Any developer with read access to the MLflow tracking store's database; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 If your team traced and evaluated an agent with MLflow, copy its tracking store into the local Evals UI. Each experiment becomes a project, with its traces, the feedback and expectations on them, its evaluation datasets and its evaluation runs. You can then compare runs case by case and review results without a Martian account.
 
@@ -5695,13 +5677,7 @@ Run artifacts and MLflow’s own `mlflow.*` tags are not copied either. A copied
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo/)
 
-> **Page qualification:** Python SDK · Any developer with promptfoo results or config files; no Martian account or API key; a model key only for a converted llm-rubric judge · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** On 2026-11-15 every documented command ran against the SDK source at martian-redteam 08d2673. The sample was the guide's config with two Python providers; promptfoo 0.125.1 itself wrote results.json (both providers) and one results file per provider (--filter-providers), with no model call. Import printed the documented lines with exit 0. Conversion printed the documented output and wrote evals.yaml and evals-2.yaml; both ran with exit 0. Adding the documented python check and running again discarded the earlier verdict and passed the new check. A second conversion into the same folder failed with exit 2; --judge-model on a config with llm-rubric wrote a rubric check and judge model without calling it. On 2026-11-16, on martian-sdk 0.1.5 installed from public PyPI (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's): the guide's config and agent.py were converted and printed exactly the guide's output; both converted suites ran with exit 0 and the table shown; the python check, added at the end of the checks list of suite/evals-2.yaml, discarded the earlier result ('1 earlier result discarded because the suite, the data or the target changed') and passed; a second conversion into the same folder failed with exit 2 and 'Conversion failed: suite already has ...; give another --output folder'. The real promptfoo 0.125.1 results file in the SDK repository's tests/evals/promptfoo at v0.1.5 (two providers, two prompts each, distinct promptIdx per provider) imported with exit 0 as promptfoo-bot-v1-1 (6 cases: 2 passed, 2 failed, 2 errors) and promptfoo-bot-v2-1 (6 passed), and Compare of the two in the packaged UI read 6 paired records, 2 improved, 0 regressed of 4 compared, 2 Not Comparable (the errored rows), where 08d2673 reported Comparison unavailable. The guide's own sample results file was not regenerated, because promptfoo was not installed for this check, so the guide does not state a Compare result for its sample. Not verified: the import of the guide's own sample results on a published package, running a converted LLM judge, and stored-reply conversion without --target.
-
-Partly verified guide
-
-The commands on this page ran against SDK source built for 0.1.4, with sample results that promptfoo 0.125.1 wrote itself. The conversion, the converted suites, and the import and Compare of a real promptfoo results file from the SDK repository were run again on martian-sdk 0.1.5 from PyPI; this guide's own sample results were not imported on a published package.
+Python SDK · Any developer with promptfoo results or config files; no Martian account or API key; a model key only for a converted llm-rubric judge · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Two commands move a promptfoo project. `martian evals import promptfoo` brings the results you already have into the local Evals UI, one run per provider. `martian evals convert promptfoo` turns your config’s tests into [suite files](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md) that `martian evals run` runs against your agent, wherever its assertions have an equivalent check, and lists everything it leaves out.
 
@@ -5982,13 +5958,7 @@ From results files, only the config’s `description` is kept; the rest of the c
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo-redteam/)
 
-> **Page qualification:** Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Run on 2026-11-17 against martian-sdk 0.2.0 installed from public PyPI in a fresh Python 3.12.14 virtual environment (the wheel's SHA-256 is 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's), with the SDK's sample project examples/promptfoo-redteam at v0.2.0: a config and results written by hand in promptfoo's documented shapes, not by promptfoo. convert printed the output the guide shows (5 vulnerabilities, 2 attack methods, a url target; not converted: bola, basic, jailbreak:composite and redteam.language) and wrote the same list as comments; validate printed 'OK: version 2, 5 vulnerabilities, 2 attacks, http target'. The converter maps 27 plugins onto 12 vulnerabilities and 11 strategies. A small config in promptfoo's shape with no purpose exited 2 asking for --purpose; with a purpose and no strategies it exited 2 asking for --attack and listed basic, jailbreak:meta and jailbreak:composite; with --target agent.py:reply and --attack PromptInjection it converted, validated and ran with GLM 5 on Amazon Bedrock as its provider (2 attempts, 1 suspected finding, exit 0, 5 model calls). import printed one line for the provider and kept one run; importing again replaced it; the run showed 1 suspected finding, 7 attempts and 1 error under Red Team, with the promptfoo limitation, and one screenshot was captured. An eval results file (tests/evals/promptfoo/results.json, written by promptfoo 0.125.1) was refused with exit 2 naming martian evals import promptfoo. SDK 0.1.6 answered No such command for convert and import. The converter's reason for bola says the catalogue has no such vulnerability, while the 0.2.0 catalogue lists BOLA; the guide says so. Not verified: red team results or a config that promptfoo itself wrote, an HTTP target the converted file attacks, and the run of the sample's converted file with its own provider.
-
-Partly verified guide
-
-The commands on this page ran on martian-sdk 0.2.0 from PyPI with the SDK's sample config and results, which are written by hand in promptfoo's documented shapes. Results that promptfoo itself wrote have not been imported yet.
+Python SDK · Any developer with a promptfoo red team config or results; no Martian account; a model key to run the converted file · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Two commands move a promptfoo red team project. `martian redteam convert promptfoo` turns the `redteam` section of your config into a red team run file, and lists everything it leaves out with the reason. `martian redteam import promptfoo` brings the results you already have into `martian ui`. Neither runs promptfoo or calls its service, and promptfoo need not be installed.
 
@@ -6349,7 +6319,7 @@ The site publishes the same files at `/markdown/<page-path>.md`, `/llms.txt` and
 
 ## Keep the guide’s limits in context
 
-A copied page retains its role requirements, walkthrough qualification and links to the tested-version record. Ask the assistant to check those before suggesting a step. A partly verified guide still has unverified steps; a Markdown copy does not change that status. See [Verification and limitations](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+A copied guide includes its role requirements, compatibility details and product limits. The verification record lists tested versions, environments and remaining checks. [Verification record](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 These are public instructions. Sharing a page does not give an assistant access to your workspace, API keys or authenticated product. Supply only the context you intend to share.
 
@@ -6365,7 +6335,7 @@ These guides are being qualified against actual running application/backend stat
 
 ## Current publication status
 
-The site is being published iteratively. Guides with unfinished walkthroughs show a short notice above the instructions. Detailed roles, dates, tested environments and qualification records are collected here and retained in **Copy page** Markdown. Authenticated captures and complete execution checks are added as they pass.
+This record collects the roles, dates and environments used to verify the guides. Use the coverage summary and source records to see which walkthroughs were completed and which checks are pending.
 
 Of **50 task guides**, **37 are verified**, **7 are partly verified** and **6 await walkthrough verification**. The screenshot record contains **214 captured references** across **201 unique PNGs**. These counts come from the current coverage and screenshot manifests.
 
@@ -6474,7 +6444,7 @@ A distinct active HTTP run, **MR-1005**, now qualifies the [complete progress-an
 
 Cancellation did not erase an already issued provider request: twelve model attempts had usage receipts and one retained unknown usage. A separate read-only inspection explained the older **MR-1004** reservation: one failed transport remained conservatively reserved beside its settled successful retry. The shipped gateway reserves each provider attempt and settles only received usage; these entries remain counted against their original campaign. They were not manually released or treated as free calls. Seven cancellation files and four budget/provider files matched the actual runtime source. Three new application captures show the live acknowledgment, refreshed final state and retained reply.
 
-The teaching callbacks are deterministic. These checks verify wiring and retained evidence; they do not establish production model quality or security. MCP endpoint execution required operator-assisted recovery. Later named checks qualified completed browser execution and independent sandbox-backed payment effects. Self-service MCP admission recovery, browser cancellation, synthetic signed-in fixture identity and prepared scenarios remain unqualified. The separate payment check above qualifies clean reproduction and its executed control in its named scope. Verified labels name the local or GitHub-runner QA scope; they do not imply hosted-beta parity. Partly verified guides identify their remaining limits above the steps.
+The teaching callbacks are deterministic. The checks cover wiring and retained evidence in the recorded test environment. MCP endpoint execution required operator-assisted recovery. Later named checks qualified completed browser execution and independent sandbox-backed payment effects. Self-service MCP admission recovery, browser cancellation, synthetic signed-in fixture identity and prepared scenarios remain unqualified. The separate payment check above qualifies clean reproduction and its executed control in its named scope. The coverage matrix records the test environment and pending checks for each guide.
 
 A separate [payment binding walkthrough](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/agents/sandbox-bindings.md) now verifies complete binding replacement, the return to draft, editor clearing, real template inspection, validation/approval and retention after reload. Its reproducible seed helper passed real API storage/readback, reuse of the same seed and refusal of different existing data. A built-in launch first exposed an important limit: the catalogue can list optional profile accounts that were not loaded. Explicitly storing and launching the released example then passed the selected account’s sign-in and refresh. One bounded assessment independently captured five ledger records and passed both baseline prerequisites, but its first target request returned HTTP 502 during supplied-tool setup. The saved run retained **Needs attention**, a **ready** starting receipt and pending after-state/outcome fields. The original uncertain action remains unresolved. Three real captures document that earlier partial scope; its business effects, clean repetitions and controls were not qualified by that failed run. A separate fresh-copy attempt hit the normal tenant CPU quota; no quota or product-source change was used to bypass it.
 
@@ -6597,13 +6567,7 @@ The current Pipeline view explicitly labels its configuration as a preview: auto
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/console/)
 
-> **Page qualification:** Current beta console · owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files) · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · owner, admin or member (start); any member (read); owner or admin (triage, approve, delete stored files) · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Scan a skill, an MCP configuration, a plugin or a repository from the console and read what the Scanner found.
 
@@ -6655,13 +6619,7 @@ The uploaded archive is kept for your organization’s retention period after it
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/github-app/)
 
-> **Page qualification:** Current beta console · Any member of an Enterprise organization with the Scanner · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · Any member of an Enterprise organization with the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 **Coming soon.** You will be able to scan pull requests by connecting GitHub to the Scanner in the console. The scans run on Martian’s side, so nothing is added to your pipeline. Until then, scan from the [console](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/scanner/console.md).
 
@@ -6677,13 +6635,7 @@ This workflow has been reviewed against the implementation. A complete live walk
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/limits-and-data/)
 
-> **Page qualification:** Current beta console · owner or admin (usage, retention, deletion); any member (limits) · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · owner or admin (usage, retention, deletion); any member (limits) · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 ## Limits
 
@@ -6729,13 +6681,7 @@ Owners and admins see what the organization’s scanning used over the last 30 d
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/method/)
 
-> **Page qualification:** Current beta console · Anyone evaluating or using the Scanner · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** The numbers are the accuracy report of martian-scanner at the commit listed (149 samples), run offline with recorded registry and model answers. Publishing is held for the beta release; the numbers are taken again from that release's report before the page is published.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · Anyone evaluating or using the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 This page says how the Skills / MCP / Plugin Scanner reaches each finding, what a finding at each evidence level may and may not mean, and how accurate it is on the corpus it is measured on. Every number here comes from the Scanner’s accuracy report for the release this page describes. A number from another corpus, or from a scan with fewer stages, can be very different.
 
@@ -6872,13 +6818,7 @@ What the stages that exist cannot see. Each is reported as not checked, skipped 
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/overview/)
 
-> **Page qualification:** Current beta console · Any member of an Enterprise organization with the Scanner · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · Any member of an Enterprise organization with the Scanner · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 The Skills / MCP / Plugin Scanner is the third part of Martian Protect. It reads the files an agent is given (skills, MCP server configurations, plugins, sub-agents, hooks, settings, rules files and the agent’s own code) and reports what is wrong with them, including the indirect case: a clean `SKILL.md` that tells the agent to read and follow a link or a file that is not safe.
 
@@ -6946,13 +6886,7 @@ Each result shows every category as **flagged** (a finding is in it), **clear** 
 
 Source: [Web version](https://docs.martiansecurity.ai/scanner/self-hosted/)
 
-> **Page qualification:** Current beta console · Security engineer of a self-hosted Enterprise installation · Walkthrough verification in progress. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Written from the source at the commits listed, for the beta release that turns the Scanner on (MartianSecurity/martian-notes#527). Not yet walked through against the hosted beta console, and no screenshot is captured; the feature branches that add bundle retention, usage and the self-hosted chart (MartianSecurity/martian-notes#521 to #525) were not on main when it was written.
-
-Guide in progress
-
-This workflow has been reviewed against the implementation. A complete live walkthrough is still in progress.
+Current beta console · Security engineer of a self-hosted Enterprise installation · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 A self-hosted Enterprise installation runs the Scanner’s worker in your own cluster, next to the console and the backend. Your licence decides whether the installation has the Scanner, and your installation’s master admin turns it on for each organization.
 
@@ -6999,7 +6933,7 @@ martian-scanner advisory-db build --out advisories.db PyPI-all.zip npm-all.zip
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/ci/)
 
-> **Page qualification:** Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Scoped machine key; owner/admin issues key and publishes tutorial dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run Evals tests and a redteam suite in one pytest execution to retain a Backend CI session. A required persisted gate checks test coverage, policy, Backend acknowledgment and any required exports. For an account-free check on pull requests, jump to the [local Evals workflow](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/ci.md#run-a-local-suite-on-pull-requests).
 
@@ -7282,7 +7216,7 @@ Use `martian ci` for the persisted gate. Continue with [troubleshooting](https:/
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/evaluations/)
 
-> **Page qualification:** Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · No account for local preview; scoped machine key for persistence; owner/admin publishes dataset · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use `martian.evals` to run your prediction function locally and record regression results. Start with a free two-record preview, then use a published dataset whose outputs Backend can score independently.
 
@@ -7500,7 +7434,7 @@ Continue with [red teaming](https://raw.githubusercontent.com/MartianSecurity/ma
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/install-and-configure/)
 
-> **Page qualification:** Python SDK · Owner/admin to create a key; scoped machine key for SDK execution · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Owner/admin to create a key; scoped machine key for SDK execution · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Install the Python package and create the platform connection used by Evals and red teaming. At the end, you will have a verified SDK installation, a scoped API key, and a validated tutorial configuration.
 
@@ -7699,13 +7633,7 @@ Continue with [SDK evaluations](https://raw.githubusercontent.com/MartianSecurit
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-evals/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account; own model key for LLM judges · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** Original Linux verification of steps 1 to 7 on released SDK 0.1.3 retained: independent macOS/PyPI verification passed the original and corrected suites, resume/fresh and error paths, all five deterministic checks, stored CSV replies, HTTP logging/readback, real Bedrock GLM 5 rubric/guidelines/conditions, rejected-token failure and the exact Python judge example. Native bedrock:/ judge routing failed and is documented; OpenAI-compatible routing passed. The customer guide uses copyable CLI output and a separate, explicitly labeled SDK 0.1.2 Martian Security result screenshot. Backend dependency screenshots and UI instructions were removed at the product owner's request. On 2026-11-16 steps 1 to 5 and 8 were run again on martian-sdk 0.1.5 installed from public PyPI (the installed wheel's SHA-256 is d9f5c719ad8c1be0cf3a950cf66bf85177787490631799df224db0fe4cea3d51, the same as PyPI's), in a fresh virtual environment, with the example ZIP this site serves: the first run printed the table with a Pass rate column and the line naming the run in the local Evals UI, exit 1; the result files were results.jsonl, summary.json, junit.xml, verdicts.json and mlflow.db, and the failing record carries the fingerprint beginning c259d689; a plain rerun with nothing changed reported '3 cases, 3 already done'; after agent.py was replaced by the corrected agent, a plain rerun reported '3 cases, 0 already done, 3 earlier results discarded because the suite, the data or the target changed' and graded them again; evals-fixed.yaml --fresh exited 0. Step 8 (URL target) ran with the example server and evals-url.yaml: 3 cases, 2 passed, 1 failed, exit 1; with the variable unset the run stopped before any case with exit 2 and named target.headers.Authorization and the variable; with a wrong token all 3 cases were errors, exit 2, '3 case(s): the target returned HTTP 401; check the credentials in target.headers'; with the server stopped, '3 case(s): the target could not be reached: ConnectError; check target.url'; no result file held the token. On 0.1.5, with no model call, the suite schema accepted a judge rate-limit wait of 3600 seconds and rejected 3601, the rubric, guidelines and conditions judges default it to 300, and the options table matched martian evals run --help. Not re-run on 0.1.5: step 6's LLM judge (no model call was made), step 7's CI use, and the retry and rate-limit waiting behaviour itself.
-
-Partly verified guide
-
-Steps 1 to 7 were verified on the released SDK 0.1.3. The output, the rerun behaviour and step 8 (the URL target) were run again on martian-sdk 0.1.5 from PyPI. Step 6's judge, step 7 and the judge's retry and rate-limit waiting were not run on 0.1.5.
+Python SDK · Any developer; no Martian account; own model key for LLM judges · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run test cases against your agent from one YAML file, with no Martian account. Start with checks that need no model key, inspect a deliberate failure, then fix it. Add an LLM judge when you need to evaluate meaning.
 
@@ -8167,13 +8095,7 @@ Continue with [evaluations in Python](https://raw.githubusercontent.com/MartianS
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/local-ui/)
 
-> **Page qualification:** Python SDK · Any developer; no Martian account, API key or model key · Walkthrough partly verified. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
-
-> **Walkthrough limits:** SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.
-
-Partly verified guide
-
-SDK 0.3.1 was verified for local navigation and export/restore. The UI-launched run and container example are from an earlier walkthrough. Hosted push and model-judge scoring need separate checks.
+Python SDK · Any developer; no Martian account, API key or model key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 `martian ui` starts the Evals UI that ships inside the SDK. It serves one user on your own machine, with no login and no other service. It shows every run that `martian evals run` and the importers recorded in a local data folder, lets you compare runs, read each case’s trace and quality issues, and starts runs of its own against an agent you define. Nothing is sent to Martian.
 
@@ -8394,10 +8316,6 @@ Open `http://127.0.0.1:7600/` on the server. The `martian-evals` volume holds th
 
 The image is public: `docker pull` needs no login. This guide ran the 0.1.5 image with the command above on Linux, including the `Host` check and `MARTIAN_EVALS_ALLOWED_HOSTS` below and a second container on the same volume.
 
-Not exercised by this guide
-
-The SSH tunnel and a folder mounted from the server were not run.
-
 **The image has no login either. Do not expose it publicly.** The command above publishes the port on the server’s `127.0.0.1` only. `-p 7600:7600` would publish it on every address of the server. From another machine, forward the port over SSH and open `http://127.0.0.1:7600/` there:
 
 ```sh
@@ -8422,7 +8340,7 @@ Read the push summary, then check the run and its case counts in the destination
 
 Check workspace support
 
-Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator. The Community walkthrough on this page verifies local export and restore.
+Pushing needs a server that supports Evals push for your organization and the installed SDK’s export format. Confirm support with your workspace administrator.
 
 ## How the screenshots were made
 
@@ -8437,7 +8355,6 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 -   **A request is refused with `400`:** its `Host` header named something other than `127.0.0.1` or `localhost`. Open the UI at one of those addresses.
 -   **A run is refused:** by default one run at a time may be in progress. Wait, or start `martian ui --concurrency 2`.
 -   **Not a platform record:** a local run has no Martian session, agent or tested revision, and it does not appear in the hosted console unless you push it ([step 7](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#7-send-runs-to-a-martian-server)).
--   **Verification scope** covers 0.3.1 local quickstart runs and export/restore. The original container and UI-launched run are recorded under SDK 0.1.5. Model judges, application traces and pushes to a deployed workspace need separate checks.
 
 ## Next
 
@@ -8454,7 +8371,7 @@ The Runs, case inspector and Compare screenshots use SDK 0.3.1 with the two synt
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam/)
 
-> **Page qualification:** Python SDK · Owner/admin issues key; machine key with redteam:run executes · Verified 2026-11-13 · Named local QA for standalone probes and console persistence; GitHub-hosted Ubuntu 24.04/Python 3.12 for exact public ZIP combined CLI on disposable pinned services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Owner/admin issues key; machine key with redteam:run executes · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Run one adversarial probe against a local callback using platform-hosted generation and judging. To attack with your own model and no workspace, see [Run a red team on your machine](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md), which needs SDK 0.2.0 or later. You will get retained JSON/Markdown reports and an explicit gate result. Use the CLI or Python entry point for an attempt; running both executes new work twice.
 
@@ -8620,7 +8537,7 @@ Reports use digests by default. Keep content reporting disabled for ordinary CI 
 
 Source: [Web version](https://docs.martiansecurity.ai/sdk/redteam-local/)
 
-> **Page qualification:** Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · Verified 2026-11-17 · Local CLI and the local UI's Red Team pages; GLM 5 on Amazon Bedrock as attacker and judge; no Martian platform services. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Python SDK · Any developer with an agent to test and a model key; no Martian account or API key · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 A local red team run attacks your agent with your own model and keeps the report on your machine. You need no Martian account, no API key and no email, and nothing is sent to Martian: the run connects only to the model you name and to your agent.
 
@@ -8803,7 +8720,7 @@ martian redteam pin run redteam.yaml
 
 Source: [Web version](https://docs.martiansecurity.ai/workspace/team-and-roles/)
 
-> **Page qualification:** Current beta console · owner, admin · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · owner, admin · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Give a teammate the appropriate access to your organization and verify that the invitation and membership are retained. Each email address belongs to one organization in the current product.
 

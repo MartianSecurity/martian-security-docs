@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/access/)
 
-> **Page qualification:** Current beta console · All invited customer roles · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · All invited customer roles · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Finish with a signed-in Martian workspace and a role that matches your task. This guide is for invited users of the current beta. Accounts require an invitation; there is no public self-service sign-up.
 

@@ -35,12 +35,12 @@ for (const page of pages) {
   page.digest = hash(page.markdown);
   outputs.set(page.asset, page.markdown);
 }
-const full = `# Martian Security — complete customer documentation\n\nGenerated from the rendered public guides. Per-page qualification notices, prerequisites and examples are retained.\n\n${pages.map((page) => page.markdown.trimEnd()).join('\n\n---\n\n')}\n`;
+const full = `# Martian Security — complete customer documentation\n\nGenerated from the rendered public guides, including prerequisites, examples and product limits.\n\n${pages.map((page) => page.markdown.trimEnd()).join('\n\n---\n\n')}\n`;
 outputs.set('llms-full.txt', full);
 const index = [
   '# Martian Security',
   '> Customer documentation for red teaming, Evals, the SDK and CI.',
-  'These public Markdown documents require no login or JavaScript. Each guide retains its version, role prerequisites and qualification limits. A partly verified walkthrough is not a passed walkthrough.',
+  'These public Markdown documents require no login or JavaScript. Guides include prerequisites, examples, product limits and links to supporting references.',
   '## Start here',
   ...['get-started/first-assessment', 'evals/first-run', 'local-sdk', 'sdk/install-and-configure', 'reference/verification'].map((slug) => {
     const page = pages.find((entry) => entry.slug === slug);

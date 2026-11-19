@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/suites-and-monitoring/)
 
-> **Page qualification:** Current beta console · member+ versions/applies suites; all customer roles read monitoring · Verified 2026-11-13 · Isolated local QA (code criteria). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ versions/applies suites; all customer roles read monitoring · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Save criteria and quality thresholds as a reusable suite, apply a particular version to completed outputs, and monitor its retained jobs and gate outcomes. This keeps a quality policy consistent across runs instead of rebuilding it differently each time.
 

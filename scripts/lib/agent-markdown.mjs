@@ -75,17 +75,14 @@ export function renderAgentMarkdown(html, { canonical, rewriteUrl, diagramSource
     filter: 'pre',
     replacement: (_content, node) => fenced(Buffer.from(node.getAttribute('data-agent-code'), 'base64').toString(), node.getAttribute('data-language') || 'text'),
   });
-  service.addRule('qualification', {
+  service.addRule('guide-metadata', {
     filter: (node) => node.classList?.contains('guide-meta'),
     replacement: (_content, node) => {
-      const parts = Array.from(node.children).filter((child) => child.getAttribute('aria-hidden') !== 'true' && child.tagName !== 'A').map((child) => child.textContent.trim());
+      const parts = Array.from(node.querySelectorAll('span')).map((child) => child.textContent.trim());
       const link = node.querySelector('a');
-      return `\n\n> **Page qualification:** ${parts.join(' · ')}.${link ? ` [Verification details](${link.getAttribute('href')}).` : ''}\n\n`;
+      if (link) parts.push(`[Verification details](${link.getAttribute('href')})`);
+      return `\n\n${parts.join(' · ')}\n\n`;
     },
-  });
-  service.addRule('qualification-limit', {
-    filter: (node) => node.classList?.contains('qualification-note'),
-    replacement: (content) => `\n\n> **Walkthrough limits:** ${content.trim()}\n\n`,
   });
   service.addRule('image-link', {
     filter: (node) => node.nodeName === 'A' && node.children.length === 1 && node.children[0].nodeName === 'IMG',

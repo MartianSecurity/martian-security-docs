@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/stopping-and-recovery/)
 
-> **Page qualification:** Current beta console · member+ stops; all customer roles inspect retained work · Verified 2026-11-13 · Isolated local QA (HTTP + code criteria). [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · member+ stops; all customer roles inspect retained work · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Request a bounded stop without discarding results that have already arrived, and distinguish an unresolved acknowledgement from a new launch. This guide covers customer controls in the current beta console; it does not require internal worker, database or MLflow administration.
 

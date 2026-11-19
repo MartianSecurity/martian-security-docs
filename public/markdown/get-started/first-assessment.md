@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/get-started/first-assessment/)
 
-> **Page qualification:** Current beta console · Member, admin or owner; admin required for connection approval · Verified 2026-11-13 · Isolated local QA; named HTTP/catalogue walkthrough. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Member, admin or owner; admin required for connection approval · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Finish with one retained security assessment and an understanding of its report. This tutorial starts with an endpoint-only test: you can learn the assessment workflow before configuring synthetic business systems.
 

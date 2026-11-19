@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/overview/)
 
-> **Page qualification:** Current beta console · Any customer role · Verified 2026-11-13 · Isolated local QA; native traces. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · Any customer role · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Use the project dashboard to understand the native traces retained for your selected scope. It summarizes recorded activity; it does not launch an evaluation or schedule model calls.
 

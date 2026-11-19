@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/evals/compare/)
 
-> **Page qualification:** Current beta console · all customer roles read/export · Verified 2026-11-13 · Isolated local QA. [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md).
+Current beta console · all customer roles read/export · [Verification details](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/reference/verification.md)
 
 Compare a baseline with a candidate to see which recorded checks improved, regressed or stayed unchanged. The comparison uses dataset record identities and retained outputs; opening it does not call either target again.
 

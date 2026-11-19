@@ -150,8 +150,8 @@ starlight-toc a[aria-current='true'] { color: var(--sl-color-white); font-weight
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print { .doc-section-label { color: #4e4e4e; } .sl-markdown-content h2 { break-after: avoid; } }
 
-/* Machine-readable provenance belongs in page copies, not the article header. */
-.sl-markdown-content :is(.guide-meta, .qualification-note)[hidden] { display: none !important; }
+/* Keep metadata available to the Markdown exporter. */
+.sl-markdown-content .guide-meta[hidden] { display: none !important; }
 
 /* Keep secondary guidance distinct and readable in both themes. */
 .starlight-aside {
@@ -180,7 +180,6 @@ starlight-toc a[aria-current='true'] { color: var(--sl-color-white); font-weight
 .starlight-aside .starlight-aside__content { margin-top: .45rem; overflow-wrap: anywhere; }
 .starlight-aside__content > :first-child { margin-top: 0; }
 .starlight-aside__content > :last-child { margin-bottom: 0; }
-.guide-notice .starlight-aside { margin-block: .25rem 1.5rem; }
 
 /* Customer-task summaries retain the Hermes paper, type and spacing. */
 .capture-pending { color: var(--sl-color-gray-3); font-size: 11.5px; font-style: italic; }
