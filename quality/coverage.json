@@ -3448,7 +3448,7 @@
           ]
         }
       ],
-      "validationStatus": "SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.",
+      "validationStatus": "The bundled Runs table and its column dividers passed on SDK 0.4.0. SDK 0.3.1 local Runs, Compare and export/restore passed. The SDK 0.1.5 workflow retained the other UI observations and container check. Hosted push, model-judge scoring and application traces need separate qualification.",
       "customerNotice": "SDK 0.3.1 was verified for local navigation and export/restore. The UI-launched run and container example are from an earlier walkthrough. Hosted push and model-judge scoring need separate checks.",
       "requiredValidation": [
         "Run every documented command against the released SDK 0.1.5 package from public PyPI and capture the screenshots again",
@@ -3498,6 +3498,13 @@
           "observedPath": "Public Evals UI image 0.2.0 (sha256:8b4b284b281021605ed9692c808bdaf1248fb9d01bf8d00d06d39943a0dc5386)",
           "environment": "Docker Desktop Engine 28.0.4 on ARM64 macOS with Linux AMD64 emulation; public Evals UI 0.2.0",
           "result": "Verified anonymous registry read, loopback and invalid Host rejection (HTTP 400), two real case results, and retained UI results after replacing the container with the same named volume."
+        },
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "SDK 0.4.0, Evals → Runs",
+          "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64, and the bundled workbench in desktop Chromium with disposable SQLite data.",
+          "result": "The bundled workbench loaded synthetic saved runs and displayed 1 px dividers in the headers and rows. The first cell kept a clear table edge."
         }
       ],
       "verifiedAt": "2026-11-16",

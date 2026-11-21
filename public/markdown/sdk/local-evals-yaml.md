@@ -30,6 +30,7 @@ The [local suite walkthrough](https://raw.githubusercontent.com/MartianSecurity/
 | --- | --- |
 | `data` | Required path to a JSON Lines or CSV case file |
 | `checks` | Required list of one or more checks with unique names |
+| `case_gate` | Optional [weighted case scoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#score-a-case-with-weighted-checks). Without it, all checks must pass |
 | `target` | Python `file` and `function`, or an [HTTP target](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#http-target). Omit it to grade saved replies |
 | `judge` | Model settings for [LLM checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#6-add-an-llm-judge). Use `model` and optionally `inference_params`, `max_retries`, and `rate_limit_wait_seconds` |
 | `output` | Results folder. Defaults to `results` |
@@ -65,6 +66,9 @@ These checks evaluate replies without calling a judge.
 | `matches` | `pattern` | The regular expression is found in the reply |
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
+| `json_schema` | `schema` and optional `embedded: strict` | The reply matches the schema. In embedded mode, any matching object in the reply passes |
+| `word_count` | `min_words`, `max_words`, or both | The reply meets the inclusive word-count bounds |
+| `levenshtein` | `values` or `expectation`, with optional `max_edits` | The reply is within the edit limit of at least one reference |
 
 Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 
@@ -89,7 +93,45 @@ Save one reply in `catalog-cases.jsonl`.
 
 Run `martian evals run catalog-evals.yaml` and expect one passing case. Paths start at the root. The zero-based index `1` selects the second `book` sibling. Set `fragment: true` to look for well-formed XML in surrounding prose or a code fence. Set `negate: true` to require the condition to fail.
 
-These versions also support `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk).
+### Score a case with weighted checks
+
+Use SDK 0.4.0 or later. This suite requires an object with a string title inside a reply. It gives that check three times the weight of the word-count check. Each check keeps its own verdict, and the overall case passes at a weighted score of 0.75 or higher.
+
+Save as `weighted-evals.yaml`.
+
+```yaml
+data: weighted-cases.jsonl
+checks:
+  - type: json_schema
+    name: has_title
+    embedded: strict
+    schema:
+      type: object
+      required: [title]
+      properties:
+        title: {type: string}
+  - type: word_count
+    name: concise
+    max_words: 10
+case_gate:
+  threshold: 0.75
+  weights: {has_title: 3}
+output: results-weighted
+```
+
+Save these records as `weighted-cases.jsonl`. The suite grades the saved replies without calling an agent or a model.
+
+```json
+{"id":"short","input":"Return a catalog entry.","output":"Catalog entry follows. {\"title\":\"Atlas\"}"}
+{"id":"long","input":"Return a catalog entry.","output":"Here is the requested catalog entry with the title supplied for this branch: {\"title\":\"Atlas\"}"}
+{"id":"wrong-type","input":"Return a catalog entry.","output":"Here is an entry: {\"title\":42}"}
+```
+
+```sh
+martian evals run weighted-evals.yaml --data-dir ./evals-data
+```
+
+Expect two passing cases and one failing case, with exit code `1`. The long reply earns 0.75 because the schema check passed. The reply with the numeric title earns 0.25 because only the word-count check passed. [Weighted gates and assertion sets](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#weighted-case-gates)
 
 ## Grade saved replies
 

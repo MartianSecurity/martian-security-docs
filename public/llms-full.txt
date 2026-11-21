@@ -5179,11 +5179,22 @@ Continue with [configure an assessment](https://raw.githubusercontent.com/Martia
 
 # Local SDK
 
-> Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
+> Install the Martian SDK, run local Evals, triage security findings, verify fixes, or migrate saved results.
 
 Source: [Web version](https://docs.martiansecurity.ai/local-sdk/)
 
 Run evaluations and inspect saved results on your machine with the Martian SDK. The Community quickstart uses deterministic checks and needs no Martian account or model key.
+
+## New in SDK 0.4.0
+
+-   **Findings.** Review evidence across saved scans, record triage, and export CSV, SARIF, or NeMo Guardrails bundles. [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md)
+-   **Remediation Reports.** Open a prioritized plan, export it as HTML or PDF, draft a prompt change, and record a verified fix after a follow-up scan with matching coverage. [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md)
+-   **Promptfoo and Marsfoo migration.** Preview supported config conversion, import saved verdicts, traces and media, and compare the imported runs against native runs with compatible grading rules. Reimporting unchanged archives preserves their reviews. [Migrate from Promptfoo or Marsfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk)
+-   **Deterministic checks.** Validate XML and embedded JSON, measure word count and edit distance, and use weighted checks in a suite. [Evals suite YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#deterministic-checks)
+-   **Local MCP.** Read saved run records and reports through a local stdio client. Use preview mode to validate a suite or run a deterministic check on supplied data. [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md)
+-   **Workbench tables.** Column dividers run through the headers and rows of the bundled UI. [See the Runs table](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#runs)
+
+## Choose a guide
 
 | I want to | Start here |
 | --- | --- |
@@ -5197,9 +5208,6 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) |
 | Find saved local Red Team reports | [Read the report in the local UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) |
-| Review and export findings across saved scans | [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) |
-| Export a remediation plan and verify a fix | [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) |
-| Read local results from an MCP client | [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md) |
 | Check a pull request with a deterministic suite | [Run local Evals on pull requests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ci.md) |
 
 ## Install the Local SDK
@@ -7726,6 +7734,7 @@ The [local suite walkthrough](https://raw.githubusercontent.com/MartianSecurity/
 | --- | --- |
 | `data` | Required path to a JSON Lines or CSV case file |
 | `checks` | Required list of one or more checks with unique names |
+| `case_gate` | Optional [weighted case scoring](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#score-a-case-with-weighted-checks). Without it, all checks must pass |
 | `target` | Python `file` and `function`, or an [HTTP target](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#http-target). Omit it to grade saved replies |
 | `judge` | Model settings for [LLM checks](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals.md#6-add-an-llm-judge). Use `model` and optionally `inference_params`, `max_retries`, and `rate_limit_wait_seconds` |
 | `output` | Results folder. Defaults to `results` |
@@ -7761,6 +7770,9 @@ These checks evaluate replies without calling a judge.
 | `matches` | `pattern` | The regular expression is found in the reply |
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
+| `json_schema` | `schema` and optional `embedded: strict` | The reply matches the schema. In embedded mode, any matching object in the reply passes |
+| `word_count` | `min_words`, `max_words`, or both | The reply meets the inclusive word-count bounds |
+| `levenshtein` | `values` or `expectation`, with optional `max_edits` | The reply is within the edit limit of at least one reference |
 
 Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 
@@ -7785,7 +7797,45 @@ Save one reply in `catalog-cases.jsonl`.
 
 Run `martian evals run catalog-evals.yaml` and expect one passing case. Paths start at the root. The zero-based index `1` selects the second `book` sibling. Set `fragment: true` to look for well-formed XML in surrounding prose or a code fence. Set `negate: true` to require the condition to fail.
 
-These versions also support `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk).
+### Score a case with weighted checks
+
+Use SDK 0.4.0 or later. This suite requires an object with a string title inside a reply. It gives that check three times the weight of the word-count check. Each check keeps its own verdict, and the overall case passes at a weighted score of 0.75 or higher.
+
+Save as `weighted-evals.yaml`.
+
+```yaml
+data: weighted-cases.jsonl
+checks:
+  - type: json_schema
+    name: has_title
+    embedded: strict
+    schema:
+      type: object
+      required: [title]
+      properties:
+        title: {type: string}
+  - type: word_count
+    name: concise
+    max_words: 10
+case_gate:
+  threshold: 0.75
+  weights: {has_title: 3}
+output: results-weighted
+```
+
+Save these records as `weighted-cases.jsonl`. The suite grades the saved replies without calling an agent or a model.
+
+```json
+{"id":"short","input":"Return a catalog entry.","output":"Catalog entry follows. {\"title\":\"Atlas\"}"}
+{"id":"long","input":"Return a catalog entry.","output":"Here is the requested catalog entry with the title supplied for this branch: {\"title\":\"Atlas\"}"}
+{"id":"wrong-type","input":"Return a catalog entry.","output":"Here is an entry: {\"title\":42}"}
+```
+
+```sh
+martian evals run weighted-evals.yaml --data-dir ./evals-data
+```
+
+Expect two passing cases and one failing case, with exit code `1`. The long reply earns 0.75 because the schema check passed. The reply with the numeric title earns 0.25 because only the word-count check passed. [Weighted gates and assertion sets](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#weighted-case-gates)
 
 ## Grade saved replies
 
@@ -8256,7 +8306,7 @@ The Community edition groups your local results under **Evals** and **Red Team**
 ## Before you start
 
 -   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
--   Install the current **`martian-sdk[evals]`** package. The Runs, case inspector and Compare examples in the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
+-   Install the current **`martian-sdk[evals]`** package. The Runs table below shows SDK 0.4.0. The case inspector and Compare examples from the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
 -   You need no Martian account, API key or model key. A run you start in the UI calls the agent you define; a model judge calls the provider you choose, with your own key.
 -   The UI reads one data folder, `~/.martian/evals` unless you choose another. It holds your inputs and replies in clear text, so keep it as private as the data in your cases.
 -   To follow the walkthrough, record some runs first: complete the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md), which needs no model.
@@ -8298,11 +8348,11 @@ SDK 0.4.0 and later include [project-wide Findings](https://raw.githubuserconten
 
 ### Runs
 
-![The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-evals-runs.png)
+![Saved Evals runs with visible dividers between Run, Agent, Pass rate, Passed, Failed, State and Started.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-040-workbench-runs.png)
 
-Both quickstart runs are saved in the Default project. The corrected run passed all three cases.
+Column dividers run through the headers and rows of the evaluation history in SDK 0.4.0.
 
-**Runs** lists each run in the **Default** project with its pass rate and 95% interval, the passed and failed counts, its state and when it started. Search by run code or dataset. A suite-file run is named after the suite file and numbered among that suite’s runs, such as `evals-1` or `policy-1`. A run you start in the UI is `EV-1001`, then `EV-1002`. A run from a promptfoo results file is `promptfoo-<label>-<n>`.
+**Runs** lists each run in the **Default** project with its pass rate and 95% interval, the passed and failed counts, its state and when it started. In SDK 0.4.0 and later, column dividers extend from the headers through the run rows. Search by run code or dataset. A suite-file run is named after the suite file and numbered among that suite’s runs, such as `evals-1` or `policy-1`. A run you start in the UI is `EV-1001`, then `EV-1002`. A run from a promptfoo results file is `promptfoo-<label>-<n>`.
 
 Select a run to open its page: the pass rate and its interval, the counts of **Passed**, **Failed**, **Errors** and **Skipped**, and a row for each case with its input, expected value, the agent’s reply and its verdict. The page has **Results**, **Traces** and **Overview** tabs, an outcome filter, a search box, and **Export CSV** and **Export JSON** buttons that download the run as `<run code>-results.csv` and `<run code>-results.json`.
 

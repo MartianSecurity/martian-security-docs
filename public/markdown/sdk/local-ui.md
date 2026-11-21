@@ -13,7 +13,7 @@ The Community edition groups your local results under **Evals** and **Red Team**
 ## Before you start
 
 -   Use **Python 3.12 or newer** and Bash or Zsh on macOS, Linux, or WSL.
--   Install the current **`martian-sdk[evals]`** package. The Runs, case inspector and Compare examples in the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
+-   Install the current **`martian-sdk[evals]`** package. The Runs table below shows SDK 0.4.0. The case inspector and Compare examples from the [quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) use SDK 0.3.1.
 -   You need no Martian account, API key or model key. A run you start in the UI calls the agent you define; a model judge calls the provider you choose, with your own key.
 -   The UI reads one data folder, `~/.martian/evals` unless you choose another. It holds your inputs and replies in clear text, so keep it as private as the data in your cases.
 -   To follow the walkthrough, record some runs first: complete the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md), which needs no model.
@@ -55,11 +55,11 @@ SDK 0.4.0 and later include [project-wide Findings](https://raw.githubuserconten
 
 ### Runs
 
-![The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-031-evals-runs.png)
+![Saved Evals runs with visible dividers between Run, Agent, Pass rate, Passed, Failed, State and Started.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-040-workbench-runs.png)
 
-Both quickstart runs are saved in the Default project. The corrected run passed all three cases.
+Column dividers run through the headers and rows of the evaluation history in SDK 0.4.0.
 
-**Runs** lists each run in the **Default** project with its pass rate and 95% interval, the passed and failed counts, its state and when it started. Search by run code or dataset. A suite-file run is named after the suite file and numbered among that suite’s runs, such as `evals-1` or `policy-1`. A run you start in the UI is `EV-1001`, then `EV-1002`. A run from a promptfoo results file is `promptfoo-<label>-<n>`.
+**Runs** lists each run in the **Default** project with its pass rate and 95% interval, the passed and failed counts, its state and when it started. In SDK 0.4.0 and later, column dividers extend from the headers through the run rows. Search by run code or dataset. A suite-file run is named after the suite file and numbered among that suite’s runs, such as `evals-1` or `policy-1`. A run you start in the UI is `EV-1001`, then `EV-1002`. A run from a promptfoo results file is `promptfoo-<label>-<n>`.
 
 Select a run to open its page: the pass rate and its interval, the counts of **Passed**, **Failed**, **Errors** and **Skipped**, and a row for each case with its input, expected value, the agent’s reply and its verdict. The page has **Results**, **Traces** and **Overview** tabs, an outcome filter, a search box, and **Export CSV** and **Export JSON** buttons that download the run as `<run code>-results.csv` and `<run code>-results.json`.
 
