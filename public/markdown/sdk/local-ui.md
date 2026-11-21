@@ -51,7 +51,7 @@ The **Evals** group lists **Overview**, **Traces**, **Sessions**, **Runs**, **Co
 
 Reload the page to see runs added to the data folder by another process.
 
-The preview workbench adds [project-wide Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Remediation Reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) for saved Red Team scans.
+SDK 0.4.0 and later include [project-wide Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Remediation Reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) for saved Red Team scans.
 
 ### Runs
 

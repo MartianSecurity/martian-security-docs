@@ -6,9 +6,19 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-mcp/)
 
 Python SDK · Developer with a local MCP client
 
-Local SDK preview
+SDK version
 
-The `martian mcp` command requires the [preview SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with both the `evals` and `mcp` extras.
+Activate your [SDK environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md) and install SDK 0.4.0 or later with both extras. With pip, run the following command.
+
+```sh
+python -m pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
+
+If you created the environment with uv, use its installer.
+
+```sh
+uv pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
 
 Use `martian mcp` to let a local MCP client read saved Evals and Red Team results or check supplied data over stdio. It needs no Martian account or model key. Run it only in a client you trust with your local results.
 

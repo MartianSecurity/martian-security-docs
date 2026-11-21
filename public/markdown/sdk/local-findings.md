@@ -6,16 +6,16 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-findings/)
 
 Python SDK · Developer or reviewer using the single-user local workbench
 
-Local SDK preview
+SDK version
 
-These steps use the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench). The current PyPI release uses the earlier [Findings view](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui).
+The project-wide Findings view requires SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench).
 
 Use Findings to review the security observations recorded in one local project. A developer or reviewer can use saved scans without a Martian account or model key.
 
 ## Before you start
 
--   Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with the folder that holds your saved scans.
--   Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target-preview).
+-   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with the folder that holds your saved scans.
+-   Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target).
 
 ## 1\. Find the evidence
 
@@ -31,9 +31,9 @@ The inventory groups observations by recorded target identity, vulnerability, fi
 2.  Select **Save triage**. The decision appears in the history and the original scan evidence, severity and results remain available. Refresh to read the saved entry.
 3.  If the browser loses the response to a save, select **Retry saved triage**. It resends the same decision and reuses the original history entry if the first request saved it.
 
-![Finding detail with an Accepted triage entry, the source scan and an evidence link](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-finding-triage.png)
+![An accepted review retained in the published SDK workbench after refreshing the finding.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-finding-triage.png)
 
-An Accepted review on a synthetic finding after reloading the local workbench.
+An accepted review retained in the published SDK workbench after refreshing the finding.
 
 **Seen after fix** marks a later observation. The cutoff is the review time for a manual fix and the follow-up scan’s start time for a [verified fix](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md#3-verify-a-fix-against-a-saved-follow-up). The inventory uses scan timestamps, including for scans imported after the review.
 
@@ -51,7 +51,7 @@ martian redteam findings show FINDING_ID --data-dir ./evals-data
 martian redteam findings list --status open --format sarif -o findings.sarif --data-dir ./evals-data
 ```
 
-To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination’s local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target-preview). A verified fix needs both scans. Preview the import, then apply it.
+To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination’s local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target). A verified fix needs both scans. Preview the import, then apply it.
 
 ```sh
 martian redteam findings export-triage --data-dir ./evals-data -o reviews.json

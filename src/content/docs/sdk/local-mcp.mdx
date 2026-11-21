@@ -8,8 +8,18 @@ import { Aside } from '@astrojs/starlight/components';
 
 <GuideMeta id="sdk/local-mcp" />
 
-<Aside type="note" title="Local SDK preview">
-The `martian mcp` command requires the [preview SDK](/local-sdk/#open-the-preview-workbench) with both the `evals` and `mcp` extras.
+<Aside type="note" title="SDK version">
+Activate your [SDK environment](/sdk/local-installation/) and install SDK 0.4.0 or later with both extras. With pip, run the following command.
+
+```sh
+python -m pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
+
+If you created the environment with uv, use its installer.
+
+```sh
+uv pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
 </Aside>
 
 Use `martian mcp` to let a local MCP client read saved Evals and Red Team results or check supplied data over stdio. It needs no Martian account or model key. Run it only in a client you trust with your local results.

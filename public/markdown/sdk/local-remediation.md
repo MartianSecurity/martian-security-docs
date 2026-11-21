@@ -6,15 +6,15 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-remediation/)
 
 Python SDK · Developer or reviewer using the single-user local workbench
 
-Local SDK preview
+SDK version
 
-The report, prompt draft and verification controls on this page require the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench).
+These report and verification controls require SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench).
 
 Use a Remediation Report to review recorded findings, prioritize fixes, and check a saved follow-up. Reading a report, drafting a prompt and comparing saved scans work locally without a model key.
 
 ## Before you start
 
--   Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with your local scan folder.
+-   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with your local scan folder.
 -   To verify a fix, have two original saved scans from the same project and recorded target. The follow-up must have started after the baseline ended.
 
 ## 1\. Review and export the plan
@@ -24,9 +24,9 @@ Use a Remediation Report to review recorded findings, prioritize fixes, and chec
 3.  Review the suggested actions and their linked evidence. Actions include implementation and verification steps, with typical effort estimates and examples where available.
 4.  Select **Export report → Download PDF** to share the recorded evidence summary and plan, or **Print remediation plan** to open the standalone plan.
 
-![Remediation report showing incomplete coverage, separate confirmed and suspected counts, and evidence links](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-report.png)
+![A saved scan's remediation page flags incomplete coverage in the bundled workbench.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-report.png)
 
-The report labels incomplete coverage and uses the highest confirmed severity.
+A saved scan's remediation page flags incomplete coverage in the bundled workbench.
 
 Finished version 2 runs write `redteam-remediation.html` and `redteam-remediation.json` with their output. Generate the PDF from a saved scan file with the CLI. To use a stored run ID, set `MARTIAN_EVALS_HOME` to its data folder and pass `--project-id` if it belongs to another project.
 
@@ -54,9 +54,9 @@ Apply any authorization, sensitive-data or tool-access controls that the report 
 2.  Review the per-finding result and the recorded evidence. **Still observed** means the follow-up retained the probe configuration and observed the finding again. **Not observed** requires matching coverage for the finding’s probes, with a held follow-up verdict for every planned attempt and a passing benign task wherever one was configured. **Inconclusive** means there was insufficient matching evidence. The comparison gives the reason and shows coverage as well as new, newly confirmed or higher-severity findings.
 3.  On a **Not observed** row, select **Record verified fix** to save the review. Use the latest scan that observed the finding as the baseline and cover all its recorded probes in the follow-up. If another scan observed the finding during or after the follow-up, the SDK rejects the decision. The history links both scans and the matched attempt count. Use **View saved verification** to reopen it.
 
-![Remediation comparison showing findings that were not observed after two matched attempts each](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-comparison.png)
+![The matched comparison shows the saved verified fix and its evidence.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-comparison.png)
 
-The comparison reports the matched attempts and offers Record verified fix for eligible findings.
+The matched comparison shows the saved verified fix and its evidence.
 
 Route identity and recorded attempt fingerprints matter. An older scan or an imported archive can lack that evidence. A comparison can show a recurring observation while coverage for an absent finding remains inconclusive.
 

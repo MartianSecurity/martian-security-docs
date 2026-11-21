@@ -17,27 +17,25 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](/sdk/local-pytest/) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](/sdk/local-ui/) |
 | Find saved local Red Team reports | [Read the report in the local UI](/sdk/redteam-local/#5-read-the-report-in-the-ui) |
-| Review and export findings across saved scans | [Review and triage local findings](/sdk/local-findings/) (preview) |
-| Export a remediation plan and verify a fix | [Read and verify remediation reports](/sdk/local-remediation/) (preview) |
-| Read local results from an MCP client | [Connect to the local SDK over MCP](/sdk/local-mcp/) (preview) |
+| Review and export findings across saved scans | [Review and triage local findings](/sdk/local-findings/) |
+| Export a remediation plan and verify a fix | [Read and verify remediation reports](/sdk/local-remediation/) |
+| Read local results from an MCP client | [Connect to the local SDK over MCP](/sdk/local-mcp/) |
 | Check a pull request with a deterministic suite | [Run local Evals on pull requests](/sdk/local-ci/) |
 
 ## Install the Local SDK
 
 Use Python 3.12 or newer. Follow [Install with pip](/sdk/local-installation/#install-with-pip) or [Install with uv](/sdk/local-installation/#install-with-uv) from your project directory.
 
-## Open the preview workbench
+## Open the bundled workbench
 
-For the preview guides, install a candidate wheel in an isolated environment. Replace `PREVIEW_WHEEL.whl` with the supplied wheel's filename. For MCP, use `[evals,mcp]` in the install command. [SDK implementation PR](https://github.com/MartianSecurity/martian-redteam/pull/318)
-
-Use a new data folder for the preview. To try it with existing runs, stop every process writing to your current data folder, copy the entire folder, and open the copy in the preview. The candidate can upgrade the local database schema.
+Install or upgrade to SDK 0.4.0 or later to use local Findings and Remediation Reports. Install both the `evals` and `mcp` extras if you plan to [connect an MCP client](/sdk/local-mcp/).
 
 ```sh
-python -m pip install '/path/to/PREVIEW_WHEEL.whl[evals]'
-martian ui --data-dir ./evals-data --ui-dir /path/to/workbench
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian ui --data-dir ./evals-data
 ```
 
-Point `--ui-dir` at the matching workbench build's folder containing `index.html` and `assets/`. With a candidate wheel that already bundles that workbench, start it with `martian ui --data-dir ./evals-data`. The workbench footer shows the build revision.
+The SDK can upgrade a local database when it opens the data folder. Before upgrading an existing store, stop the processes writing to it and copy the entire folder. Open the copy to confirm your saved runs and reviews. The workbench footer shows the bundled UI revision.
 
 ## Import existing results
 

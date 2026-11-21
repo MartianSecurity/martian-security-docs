@@ -904,6 +904,12 @@
       "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
       "result": "passed in local preview",
       "details": "Followed the Local SDK links, opened all three product captures and the full-size image, searched for remediation and reloaded the nested verification bookmark. Copied page Markdown, the agent mirror link and the XML YAML with its indentation intact. The five tested local agent exports loaded. The narrow dark MCP page fit the viewport, and no browser errors or failed local requests were observed."
+    },
+    {
+      "scope": "Released SDK 0.4.0 Findings, Remediation, and MCP guides",
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64. Chromium at 1440 × 1000, the CLI, and a local MCP stdio client used disposable SQLite data with synthetic saved scans.",
+      "result": "passed in stated scope",
+      "details": "Filtered a saved scan, exported CSV, and saved a triage entry that appeared after browser refresh. The CLI dry run wrote no review. Applying the archive restored the entry once in a separate store with matching evidence. Downloaded the baseline report as PDF, opened its print view, and opened the separate incomplete-scan report. The browser and CLI compared a matched follow-up. The saved fix remained linked after refresh. The ineligible CLI comparison returned 2 and wrote no result. The released stdio process returned the filtered finding and saved remediation report. The preview-only process validated inline suite data and ran the documented contains check without creating a store."
     }
   ],
   "remainingGaps": [
@@ -918,7 +924,6 @@
     "Named local/CI checks do not attest whole hosted-beta parity. Discovery passed with the compatible Backend PR112candidate; PR112 and its mainCI subsequently passed and the approved change merged, but no Backend beta deployment occurred. Other simulations and network-policy enforcement remain unqualified.",
     "Task guides install the latest SDK release. Historical persisted Evals, hosted redteam and combinedCI qualification remains pinned to its recorded release; later account-free/current-install checks do not requalify those hosted paths.",
     "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work.",
-    "SDK 0.3.1 docs validation used released local Evals and the tagged Action steps. The 0.3.1 container and the current hosted workspace were outside that qualification. Earlier hosted evidence retains its original revision.",
-    "The Local SDK preview guides describe the reviewed candidate and matching workbench. Verify the public SDK install and bundled workbench before removing their preview availability notes."
+    "SDK 0.3.1 docs validation used released local Evals and the tagged Action steps. The 0.3.1 container and the current hosted workspace were outside that qualification. Earlier hosted evidence retains its original revision."
   ]
 }

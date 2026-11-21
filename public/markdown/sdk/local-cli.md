@@ -68,7 +68,7 @@ Use [Create and import Evals datasets](https://raw.githubusercontent.com/Martian
 
 See [Read a saved report in the UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) or [Review Red Team YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-redteam-yaml.md).
 
-### Findings and remediation commands in the preview
+### Findings and remediation commands
 
 | Task | Command |
 | --- | --- |

@@ -118,7 +118,7 @@ If the run stops with exit `2` and says a Martian connection is also configured 
 martian ui
 ```
 
-It opens `http://127.0.0.1:7600` on your machine, with no login. The sidebar’s **Red Team** group has four pages:
+It opens `http://127.0.0.1:7600` on your machine, with no login. The screenshots below show the **Red Team** pages in SDK 0.2.0.
 
 -   **Runs** lists every run `martian redteam run` kept, newest first, with confirmed and suspected findings counted apart.
 
@@ -146,7 +146,7 @@ Findings after Annotate: one finding set to Accepted with a comment, which staye
 
 -   **Catalog** shows what `martian redteam catalog` prints, and **Frameworks** what one run tested against each framework map.
 
-For the preview workbench, see [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md).
+In SDK 0.4.0 and later, follow [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md).
 
 **New run** starts a run from the UI against a target defined under Evals; this guide uses the command line.
 

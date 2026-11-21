@@ -9,16 +9,16 @@ import { Aside } from '@astrojs/starlight/components';
 
 <GuideMeta id="sdk/local-findings" />
 
-<Aside type="note" title="Local SDK preview">
-These steps use the [preview SDK and matching workbench](/local-sdk/#open-the-preview-workbench). The current PyPI release uses the earlier [Findings view](/sdk/redteam-local/#5-read-the-report-in-the-ui).
+<Aside type="note" title="SDK version">
+The project-wide Findings view requires SDK 0.4.0 or later and its [bundled workbench](/local-sdk/#open-the-bundled-workbench).
 </Aside>
 
 Use Findings to review the security observations recorded in one local project. A developer or reviewer can use saved scans without a Martian account or model key.
 
 ## Before you start
 
-- Start the [preview workbench](/local-sdk/#open-the-preview-workbench) with the folder that holds your saved scans.
-- Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](/migrate/promptfoo-redteam/#group-saved-scans-by-target-preview).
+- Start the [bundled workbench](/local-sdk/#open-the-bundled-workbench) with the folder that holds your saved scans.
+- Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](/migrate/promptfoo-redteam/#group-saved-scans-by-target).
 
 ## 1. Find the evidence
 
@@ -52,7 +52,7 @@ martian redteam findings show FINDING_ID --data-dir ./evals-data
 martian redteam findings list --status open --format sarif -o findings.sarif --data-dir ./evals-data
 ```
 
-To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination's local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](/migrate/promptfoo-redteam/#group-saved-scans-by-target-preview). A verified fix needs both scans. Preview the import, then apply it.
+To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination's local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](/migrate/promptfoo-redteam/#group-saved-scans-by-target). A verified fix needs both scans. Preview the import, then apply it.
 
 ```sh
 martian redteam findings export-triage --data-dir ./evals-data -o reviews.json

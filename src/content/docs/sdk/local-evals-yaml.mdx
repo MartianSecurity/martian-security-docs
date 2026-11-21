@@ -37,7 +37,7 @@ The [local suite walkthrough](/sdk/local-evals/#2-write-the-suite-file) provides
 | `repeats` | Attempts per case. Defaults to 1 |
 | `combine` | How repeated results are combined. The default `all` requires all attempts to pass |
 
-The runner rejects unknown keys. For prompt or model matrices, saved responses, and run limits, see the [SDK's suite documentation](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#run-a-suite-file-locally).
+The runner rejects unknown keys. For prompt or model matrices, saved responses, and run limits, see the [SDK's suite documentation](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#run-a-suite-file-locally).
 
 ## HTTP target
 
@@ -65,11 +65,11 @@ These checks evaluate replies without calling a judge.
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
 
-Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#deterministic-checks).
+Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 
-### Check structured replies in the preview
+### Check structured replies
 
-The preview SDK adds `is_xml` for well-formed XML. Save the example below as `catalog-evals.yaml`.
+SDK 0.4.0 and later support `is_xml` for well-formed XML. Save the example below as `catalog-evals.yaml`.
 
 ```yaml
 data: catalog-cases.jsonl
@@ -88,7 +88,7 @@ Save one reply in `catalog-cases.jsonl`.
 
 Run `martian evals run catalog-evals.yaml` and expect one passing case. Paths start at the root. The zero-based index `1` selects the second `book` sibling. Set `fragment: true` to look for well-formed XML in surrounding prose or a code fence. Set `negate: true` to require the condition to fail.
 
-The preview also supports `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](/migrate/promptfoo/#migrate-with-the-preview-sdk).
+These versions also support `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](/migrate/promptfoo/#migrate-with-the-current-sdk).
 
 ## Grade saved replies
 

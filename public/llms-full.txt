@@ -5197,27 +5197,25 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) |
 | Find saved local Red Team reports | [Read the report in the local UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) |
-| Review and export findings across saved scans | [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) (preview) |
-| Export a remediation plan and verify a fix | [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) (preview) |
-| Read local results from an MCP client | [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md) (preview) |
+| Review and export findings across saved scans | [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) |
+| Export a remediation plan and verify a fix | [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) |
+| Read local results from an MCP client | [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md) |
 | Check a pull request with a deterministic suite | [Run local Evals on pull requests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ci.md) |
 
 ## Install the Local SDK
 
 Use Python 3.12 or newer. Follow [Install with pip](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md#install-with-pip) or [Install with uv](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md#install-with-uv) from your project directory.
 
-## Open the preview workbench
+## Open the bundled workbench
 
-For the preview guides, install a candidate wheel in an isolated environment. Replace `PREVIEW_WHEEL.whl` with the supplied wheel’s filename. For MCP, use `[evals,mcp]` in the install command. [SDK implementation PR](https://github.com/MartianSecurity/martian-redteam/pull/318)
-
-Use a new data folder for the preview. To try it with existing runs, stop every process writing to your current data folder, copy the entire folder, and open the copy in the preview. The candidate can upgrade the local database schema.
+Install or upgrade to SDK 0.4.0 or later to use local Findings and Remediation Reports. Install both the `evals` and `mcp` extras if you plan to [connect an MCP client](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md).
 
 ```sh
-python -m pip install '/path/to/PREVIEW_WHEEL.whl[evals]'
-martian ui --data-dir ./evals-data --ui-dir /path/to/workbench
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian ui --data-dir ./evals-data
 ```
 
-Point `--ui-dir` at the matching workbench build’s folder containing `index.html` and `assets/`. With a candidate wheel that already bundles that workbench, start it with `martian ui --data-dir ./evals-data`. The workbench footer shows the build revision.
+The SDK can upgrade a local database when it opens the data folder. Before upgrading an existing store, stop the processes writing to it and copy the entire folder. Open the copy to confirm your saved runs and reviews. The workbench footer shows the bundled UI revision.
 
 ## Import existing results
 
@@ -5557,11 +5555,11 @@ For a promptfoo **red team** config or its results, see [Move a promptfoo red te
 
 Needs SDK 0.1.4 or later
 
-The original walkthrough uses **martian-sdk 0.1.4**. For archive deduplication, additional provider and assertion support, and Compare, see [Migrate with the preview SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-preview-sdk).
+The original walkthrough uses **martian-sdk 0.1.4**. For archive deduplication, additional provider and assertion support, and Compare, see [Migrate with the current SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk).
 
-## Migrate with the preview SDK
+## Migrate with the current SDK
 
-These steps use the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench). The import and conversion commands accept supported Marsfoo exports and configs under the same `promptfoo` subcommand.
+These steps use SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench). The import and conversion commands accept supported Marsfoo exports and configs under the same `promptfoo` subcommand.
 
 ### 1\. Import archived results
 
@@ -5571,9 +5569,9 @@ Use a version 3 results JSON archive. To include attachments, use an export made
 martian evals import promptfoo results.json --data-dir ./evals-data
 ```
 
-Each provider becomes a saved run with its original case verdicts. Reimporting unchanged evidence reuses the runs and reviews. Changed evidence makes a separate snapshot. Use `--new-id` to create independent copies, including when you need comparison evidence available only to the preview importer.
+Each provider becomes a saved run with its original case verdicts. Reimporting unchanged evidence reuses the runs and reviews. Changed evidence makes a separate snapshot. Use `--new-id` to create independent copies, including when you need comparison evidence produced by the newer importer.
 
-Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with `./evals-data`. Select **Evals → Runs**, open a run and select **Inspect** on a case. **View trace** opens the archived span tree when the export linked one. **Imported media** shows the case’s attachments, including unavailable references when the export omitted the bytes. **Overview** shows named and derived metrics when the archive includes them.
+Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with `./evals-data`. Select **Evals → Runs**, open a run and select **Inspect** on a case. **View trace** opens the archived span tree when the export linked one. **Imported media** shows the case’s attachments, including unavailable references when the export omitted the bytes. **Overview** shows named and derived metrics when the archive includes them.
 
 ### 2\. Preview config conversion and grade the suite
 
@@ -5589,11 +5587,11 @@ Replace `echo` with the source provider’s exact ID or label. A plain `echo` pr
 martian evals run suite/evals.yaml --data-dir ./evals-data
 ```
 
-Conversion maps supported text and structured assertions, including literal JSON Schema, embedded JSON, [XML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#check-structured-replies-in-the-preview), word count and edit distance. It preserves supported provider and prompt selectors, assertion weights, test thresholds, one level of assertion sets, named metrics, and arithmetic derived metrics. The SDK reports custom code, unsupported schema rules and constraints, and configurations that need verdict review. If an unsupported assertion contributes to a weighted gate, best-effort conversion skips that test and strict conversion refuses it.
+Conversion maps supported text and structured assertions, including literal JSON Schema, embedded JSON, [XML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#check-structured-replies), word count and edit distance. It preserves supported provider and prompt selectors, assertion weights, test thresholds, one level of assertion sets, named metrics, and arithmetic derived metrics. The SDK reports custom code, unsupported schema rules and constraints, and configurations that need verdict review. If an unsupported assertion contributes to a weighted gate, best-effort conversion skips that test and strict conversion refuses it.
 
 ### 3\. Compare saved verdicts
 
-In **Evals → Compare**, select the imported run as **Baseline**, the native run as **Candidate**, and choose **Compare runs**. For runs with different dataset identities, the preview verifies the shared cases’ rendered prompts, variables, effective deterministic checks, weights and thresholds before pairing verdicts. The **Case verdict** view labels verified comparisons and shows which cases were present on only one side.
+In **Evals → Compare**, select the imported run as **Baseline**, the native run as **Candidate**, and choose **Compare runs**. For runs with different dataset identities, the workbench verifies the shared cases’ rendered prompts, variables, effective deterministic checks, weights and thresholds before pairing verdicts. The **Case verdict** view labels verified comparisons and shows which cases were present on only one side.
 
 An archived grade stays as recorded. In a comparison with verified check rules, a missing case verdict is incomparable. If any shared case lacks verified grading evidence or uses different rules, the entire cross-dataset comparison is unavailable. For example, a saved XML grade that disagrees with the native parser, or an embedded JSON schema referenced only by a file path, lacks the evidence required for that comparison. Model graders and custom transforms can also block verification.
 
@@ -5682,10 +5680,10 @@ results.json: provider bot-v2, run promptfoo-bot-v2-1, 3 cases: 3 passed, 0 fail
 Open them in the local Evals UI: martian ui
 ```
 
-The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label (or its ID when it has none) and a number that counts that provider’s imported runs. Give every provider its own label: a file in which two providers share one is refused.
+The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label (or its ID when it has none) and a number that counts that provider’s imported runs. In SDK 0.4.0 and later, providers with the same label get additional provider numbers. If provider IDs also repeat, the archive must include enough prompt-column information to distinguish them.
 
 -   One command can take several results files. Every file is read before anything is written: if one cannot be imported, the command exits **`2`**, says which file and why, and imports none of them.
--   Importing the same file again creates more runs. Import each file once.
+-   In SDK 0.4.0 and later, reimporting unchanged results reuses the completed runs and preserves their traces and reviews. Changes to archived results create a separate snapshot. Use `--new-id` to import independent copies.
 -   To import into a folder other than `~/.martian/evals`, add `--data-dir DIR`, or set `MARTIAN_EVALS_HOME`. Open the UI with the same folder.
 
 ## 3\. Open the runs
@@ -5950,7 +5948,7 @@ results.json: provider help-desk, run promptfoo-eval-rt7-2026-11-14T10-00-00-hel
 Open them in the local UI: martian ui
 ```
 
-Each provider becomes one run under **Red Team → Runs** in `martian ui`. Importing the same file again replaces it. Every hit is **suspected**: promptfoo’s graders are models that read the reply, and no check was stated before the attack. The run says so under **Limitations of this run**.
+Each provider becomes one run under **Red Team → Runs** in `martian ui`. In SDK 0.4.0 and later, importing an unchanged scan again reuses the run and preserves its reviews. Changes to recorded scan data create a separate snapshot. The report lists imported hits as **suspected** and explains its evidence limits under **Limitations of this run**.
 
 ![An imported promptfoo run with 1 suspected finding, 7 attempts and 1 error, and its limitation.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/promptfoo-redteam-import.png)
 
@@ -5958,9 +5956,9 @@ A promptfoo results file imported as a red team run: every hit is suspected, and
 
 The run keeps digests of the attacks and replies unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1`. A file of eval results is refused with exit `2` and names `martian evals import promptfoo`.
 
-## Group saved scans by target (preview)
+## Group saved scans by target
 
-Use the preview SDK to group Promptfoo or Marsfoo scans of the same target in the local Findings inventory. Choose a stable target key when first importing those archives.
+Use SDK 0.4.0 or later to group Promptfoo or Marsfoo scans of the same target in the local Findings inventory. Choose a stable target key when first importing those archives.
 
 ```sh
 martian redteam import promptfoo baseline.json follow-up.json \
@@ -7363,7 +7361,7 @@ Use [Create and import Evals datasets](https://raw.githubusercontent.com/Martian
 
 See [Read a saved report in the UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) or [Review Red Team YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-redteam-yaml.md).
 
-### Findings and remediation commands in the preview
+### Findings and remediation commands
 
 | Task | Command |
 | --- | --- |
@@ -7736,7 +7734,7 @@ The [local suite walkthrough](https://raw.githubusercontent.com/MartianSecurity/
 | `repeats` | Attempts per case. Defaults to 1 |
 | `combine` | How repeated results are combined. The default `all` requires all attempts to pass |
 
-The runner rejects unknown keys. For prompt or model matrices, saved responses, and run limits, see the [SDK’s suite documentation](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#run-a-suite-file-locally).
+The runner rejects unknown keys. For prompt or model matrices, saved responses, and run limits, see the [SDK’s suite documentation](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#run-a-suite-file-locally).
 
 ## HTTP target
 
@@ -7764,11 +7762,11 @@ These checks evaluate replies without calling a judge.
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
 
-Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#deterministic-checks).
+Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 
-### Check structured replies in the preview
+### Check structured replies
 
-The preview SDK adds `is_xml` for well-formed XML. Save the example below as `catalog-evals.yaml`.
+SDK 0.4.0 and later support `is_xml` for well-formed XML. Save the example below as `catalog-evals.yaml`.
 
 ```yaml
 data: catalog-cases.jsonl
@@ -7787,7 +7785,7 @@ Save one reply in `catalog-cases.jsonl`.
 
 Run `martian evals run catalog-evals.yaml` and expect one passing case. Paths start at the root. The zero-based index `1` selects the second `book` sibling. Set `fragment: true` to look for well-formed XML in surrounding prose or a code fence. Set `negate: true` to require the condition to fail.
 
-The preview also supports `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-preview-sdk).
+These versions also support `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk).
 
 ## Grade saved replies
 
@@ -7832,16 +7830,16 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-findings/)
 
 Python SDK · Developer or reviewer using the single-user local workbench
 
-Local SDK preview
+SDK version
 
-These steps use the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench). The current PyPI release uses the earlier [Findings view](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui).
+The project-wide Findings view requires SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench).
 
 Use Findings to review the security observations recorded in one local project. A developer or reviewer can use saved scans without a Martian account or model key.
 
 ## Before you start
 
--   Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with the folder that holds your saved scans.
--   Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target-preview).
+-   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with the folder that holds your saved scans.
+-   Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target).
 
 ## 1\. Find the evidence
 
@@ -7857,9 +7855,9 @@ The inventory groups observations by recorded target identity, vulnerability, fi
 2.  Select **Save triage**. The decision appears in the history and the original scan evidence, severity and results remain available. Refresh to read the saved entry.
 3.  If the browser loses the response to a save, select **Retry saved triage**. It resends the same decision and reuses the original history entry if the first request saved it.
 
-![Finding detail with an Accepted triage entry, the source scan and an evidence link](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-finding-triage.png)
+![An accepted review retained in the published SDK workbench after refreshing the finding.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-finding-triage.png)
 
-An Accepted review on a synthetic finding after reloading the local workbench.
+An accepted review retained in the published SDK workbench after refreshing the finding.
 
 **Seen after fix** marks a later observation. The cutoff is the review time for a manual fix and the follow-up scan’s start time for a [verified fix](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md#3-verify-a-fix-against-a-saved-follow-up). The inventory uses scan timestamps, including for scans imported after the review.
 
@@ -7877,7 +7875,7 @@ martian redteam findings show FINDING_ID --data-dir ./evals-data
 martian redteam findings list --status open --format sarif -o findings.sarif --data-dir ./evals-data
 ```
 
-To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination’s local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target-preview). A verified fix needs both scans. Preview the import, then apply it.
+To move triage history, first restore the matching scans into the same project at the destination. Use a copy of the backed-up local data folder, [push the saved native scan files](https://github.com/MartianSecurity/martian-redteam/blob/a48b354679954a4cefab076fe1ba1c6cc0bb0120/docs/redteam-api.md#pushed-runs) to the destination’s local server, or [reimport the original Promptfoo or Marsfoo archives with the same target key](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target). A verified fix needs both scans. Preview the import, then apply it.
 
 ```sh
 martian redteam findings export-triage --data-dir ./evals-data -o reviews.json
@@ -7963,9 +7961,19 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-mcp/)
 
 Python SDK · Developer with a local MCP client
 
-Local SDK preview
+SDK version
 
-The `martian mcp` command requires the [preview SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with both the `evals` and `mcp` extras.
+Activate your [SDK environment](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md) and install SDK 0.4.0 or later with both extras. With pip, run the following command.
+
+```sh
+python -m pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
+
+If you created the environment with uv, use its installer.
+
+```sh
+uv pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
+```
 
 Use `martian mcp` to let a local MCP client read saved Evals and Red Team results or check supplied data over stdio. It needs no Martian account or model key. Run it only in a client you trust with your local results.
 
@@ -8161,15 +8169,15 @@ Source: [Web version](https://docs.martiansecurity.ai/sdk/local-remediation/)
 
 Python SDK · Developer or reviewer using the single-user local workbench
 
-Local SDK preview
+SDK version
 
-The report, prompt draft and verification controls on this page require the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench).
+These report and verification controls require SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench).
 
 Use a Remediation Report to review recorded findings, prioritize fixes, and check a saved follow-up. Reading a report, drafting a prompt and comparing saved scans work locally without a model key.
 
 ## Before you start
 
--   Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with your local scan folder.
+-   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with your local scan folder.
 -   To verify a fix, have two original saved scans from the same project and recorded target. The follow-up must have started after the baseline ended.
 
 ## 1\. Review and export the plan
@@ -8179,9 +8187,9 @@ Use a Remediation Report to review recorded findings, prioritize fixes, and chec
 3.  Review the suggested actions and their linked evidence. Actions include implementation and verification steps, with typical effort estimates and examples where available.
 4.  Select **Export report → Download PDF** to share the recorded evidence summary and plan, or **Print remediation plan** to open the standalone plan.
 
-![Remediation report showing incomplete coverage, separate confirmed and suspected counts, and evidence links](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-report.png)
+![A saved scan's remediation page flags incomplete coverage in the bundled workbench.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-report.png)
 
-The report labels incomplete coverage and uses the highest confirmed severity.
+A saved scan's remediation page flags incomplete coverage in the bundled workbench.
 
 Finished version 2 runs write `redteam-remediation.html` and `redteam-remediation.json` with their output. Generate the PDF from a saved scan file with the CLI. To use a stored run ID, set `MARTIAN_EVALS_HOME` to its data folder and pass `--project-id` if it belongs to another project.
 
@@ -8209,9 +8217,9 @@ Apply any authorization, sensitive-data or tool-access controls that the report 
 2.  Review the per-finding result and the recorded evidence. **Still observed** means the follow-up retained the probe configuration and observed the finding again. **Not observed** requires matching coverage for the finding’s probes, with a held follow-up verdict for every planned attempt and a passing benign task wherever one was configured. **Inconclusive** means there was insufficient matching evidence. The comparison gives the reason and shows coverage as well as new, newly confirmed or higher-severity findings.
 3.  On a **Not observed** row, select **Record verified fix** to save the review. Use the latest scan that observed the finding as the baseline and cover all its recorded probes in the follow-up. If another scan observed the finding during or after the follow-up, the SDK rejects the decision. The history links both scans and the matched attempt count. Use **View saved verification** to reopen it.
 
-![Remediation comparison showing findings that were not observed after two matched attempts each](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-comparison.png)
+![The matched comparison shows the saved verified fix and its evidence.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-comparison.png)
 
-The comparison reports the matched attempts and offers Record verified fix for eligible findings.
+The matched comparison shows the saved verified fix and its evidence.
 
 Route identity and recorded attempt fingerprints matter. An older scan or an imported archive can lack that evidence. A comparison can show a recurring observation while coverage for an absent finding remains inconclusive.
 
@@ -8286,7 +8294,7 @@ The **Evals** group lists **Overview**, **Traces**, **Sessions**, **Runs**, **Co
 
 Reload the page to see runs added to the data folder by another process.
 
-The preview workbench adds [project-wide Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Remediation Reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) for saved Red Team scans.
+SDK 0.4.0 and later include [project-wide Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Remediation Reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) for saved Red Team scans.
 
 ### Runs
 
@@ -8791,7 +8799,7 @@ If the run stops with exit `2` and says a Martian connection is also configured 
 martian ui
 ```
 
-It opens `http://127.0.0.1:7600` on your machine, with no login. The sidebar’s **Red Team** group has four pages:
+It opens `http://127.0.0.1:7600` on your machine, with no login. The screenshots below show the **Red Team** pages in SDK 0.2.0.
 
 -   **Runs** lists every run `martian redteam run` kept, newest first, with confirmed and suspected findings counted apart.
 
@@ -8819,7 +8827,7 @@ Findings after Annotate: one finding set to Accepted with a comment, which staye
 
 -   **Catalog** shows what `martian redteam catalog` prints, and **Frameworks** what one run tested against each framework map.
 
-For the preview workbench, see [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md).
+In SDK 0.4.0 and later, follow [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md).
 
 **New run** starts a run from the UI against a target defined under Evals; this guide uses the command line.
 
