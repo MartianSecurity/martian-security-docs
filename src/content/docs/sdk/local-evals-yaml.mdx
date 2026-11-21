@@ -66,8 +66,10 @@ These checks evaluate replies without calling a judge.
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
 | `json_schema` | `schema` and optional `embedded: strict` | The reply matches the schema. In embedded mode, any matching object in the reply passes |
-| `word_count` | `min_words`, `max_words`, or both | The reply meets the inclusive word-count bounds |
-| `levenshtein` | `values` or `expectation`, with optional `max_edits` | The reply is within the edit limit of at least one reference |
+| `word_count` | `min_words`, `max_words`, or both. Optional `negate` | The reply meets the inclusive word-count bounds |
+| `levenshtein` | `values` or `expectation`. Optional `max_edits` and `negate` | The reply is within the edit limit of at least one reference |
+
+Use SDK 0.4.0 or later for `embedded: strict`, `word_count`, and `levenshtein`.
 
 Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 

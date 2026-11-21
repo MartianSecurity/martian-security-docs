@@ -5188,7 +5188,7 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 ## New in SDK 0.4.0
 
 -   **Findings.** Review evidence across saved scans, record triage, and export CSV, SARIF, or NeMo Guardrails bundles. [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md)
--   **Remediation Reports.** Open a prioritized plan, export it as HTML or PDF, draft a prompt change, and record a verified fix after a follow-up scan with matching coverage. [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md)
+-   **Remediation Reports.** Open a prioritized plan, print it or download a PDF, draft a prompt change, and record a verified fix after a follow-up scan with matching coverage. The CLI can also write standalone HTML. [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md)
 -   **Promptfoo and Marsfoo migration.** Preview supported config conversion, import saved verdicts, traces and media, and compare the imported runs against native runs with compatible grading rules. Reimporting unchanged archives preserves their reviews. [Migrate from Promptfoo or Marsfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk)
 -   **Deterministic checks.** Validate XML and embedded JSON, measure word count and edit distance, and use weighted checks in a suite. [Evals suite YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#deterministic-checks)
 -   **Local MCP.** Read saved run records and reports through a local stdio client. Use preview mode to validate a suite or run a deterministic check on supplied data. [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md)
@@ -7771,8 +7771,10 @@ These checks evaluate replies without calling a judge.
 | `not_matches` | `pattern` | The regular expression is absent from the reply |
 | `is_json` | Optional `required_keys` | The reply is valid JSON and contains any required keys |
 | `json_schema` | `schema` and optional `embedded: strict` | The reply matches the schema. In embedded mode, any matching object in the reply passes |
-| `word_count` | `min_words`, `max_words`, or both | The reply meets the inclusive word-count bounds |
-| `levenshtein` | `values` or `expectation`, with optional `max_edits` | The reply is within the edit limit of at least one reference |
+| `word_count` | `min_words`, `max_words`, or both. Optional `negate` | The reply meets the inclusive word-count bounds |
+| `levenshtein` | `values` or `expectation`. Optional `max_edits` and `negate` | The reply is within the edit limit of at least one reference |
+
+Use SDK 0.4.0 or later for `embedded: strict`, `word_count`, and `levenshtein`.
 
 Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.4.0/docs/evals.md#deterministic-checks).
 
