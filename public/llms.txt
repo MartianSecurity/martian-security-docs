@@ -186,7 +186,7 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 - [Install the Local SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md?v=48ff43b61016): Install martian-sdk with pip or uv, activate your environment, and check the Martian CLI version.
 
-- [Read local SDK results through MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md?v=f2adb355bf17): Connect an MCP client to a local SDK project and validate Evals suites or deterministic checks using supplied data.
+- [Read local SDK results through MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md?v=c5972afd42db): Connect an MCP client to a local SDK project and validate Evals suites or deterministic checks using supplied data.
 
 - [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md?v=0c70dce5c81f): Test a Python callback with pytest, assert scores, and save local results without a Martian workspace.
 
@@ -204,6 +204,6 @@ These public Markdown documents require no login or JavaScript. Guides include p
 
 ## Complete reference
 
-- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=2c5e30b4662d): all 92 pages in one text file.
+- [All documentation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/llms-full.txt?v=b818e86bc823): all 92 pages in one text file.
 
 - [Website](https://docs.martiansecurity.ai/): the human-readable site. The Markdown mirror is an independent HTTPS access path.

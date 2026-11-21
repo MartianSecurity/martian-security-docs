@@ -51,7 +51,7 @@ The tools return summaries and references. Open the workbench for raw case input
 Use `"args": ["mcp", "--preview-only"]` for a client that only needs validation and deterministic checks. This starts without opening or creating a store.
 
 - `validate_suite` reads the native suite YAML in `suite_yaml`. You can supply CSV or JSONL as `case_data.text` to check case fields. To resolve the dataset path from a suite file on disk, run `martian evals validate evals.yaml` in the terminal.
-- `run_check` runs one deterministic check on the supplied sample. It takes `kind`, `options`, and `sample.output` with optional `sample.expectations`. It returns a `passed`, `failed` or `error` verdict with a reason.
+- `run_check` runs one deterministic check on the supplied sample. It takes `kind`, `options`, and `sample.output` with optional `sample.expectations`. A `passed` or `failed` verdict includes `reason`. An `error` verdict includes an `error` message.
 
 For example, try these arguments to `run_check`.
 
