@@ -1,10 +1,21 @@
 # Local SDK
 
-> Choose a guide for installing the Martian SDK, running local Evals, inspecting results, or importing existing runs.
+> Install the Martian SDK, run local Evals, triage security findings, verify fixes, or migrate saved results.
 
 Source: [Web version](https://docs.martiansecurity.ai/local-sdk/)
 
 Run evaluations and inspect saved results on your machine with the Martian SDK. The Community quickstart uses deterministic checks and needs no Martian account or model key.
+
+## New in SDK 0.4.0
+
+-   **Findings.** Review evidence across saved scans, record triage, and export CSV, SARIF, or NeMo Guardrails bundles. [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md)
+-   **Remediation Reports.** Open a prioritized plan, print it or download a PDF, draft a prompt change, and record a verified fix after a follow-up scan with matching coverage. The CLI can also write standalone HTML. [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md)
+-   **Promptfoo and Marsfoo migration.** Preview supported config conversion, import saved verdicts, traces and media, and compare the imported runs against native runs with compatible grading rules. Reimporting unchanged archives preserves their reviews. [Migrate from Promptfoo or Marsfoo](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk)
+-   **Deterministic checks.** Validate XML and embedded JSON, measure word count and edit distance, and use weighted checks in a suite. [Evals suite YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#deterministic-checks)
+-   **Local MCP.** Read saved run records and reports through a local stdio client. Use preview mode to validate a suite or run a deterministic check on supplied data. [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md)
+-   **Workbench tables.** Column dividers run through the headers and rows of the bundled UI. [See the Runs table](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#runs)
+
+## Choose a guide
 
 | I want to | Start here |
 | --- | --- |
@@ -18,9 +29,6 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-pytest.md) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md) |
 | Find saved local Red Team reports | [Read the report in the local UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) |
-| Review and export findings across saved scans | [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) |
-| Export a remediation plan and verify a fix | [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) |
-| Read local results from an MCP client | [Connect to the local SDK over MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md) |
 | Check a pull request with a deterministic suite | [Run local Evals on pull requests](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ci.md) |
 
 ## Install the Local SDK

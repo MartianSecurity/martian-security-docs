@@ -910,6 +910,18 @@
       "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64. Chromium at 1440 × 1000, the CLI, and a local MCP stdio client used disposable SQLite data with synthetic saved scans.",
       "result": "passed in stated scope",
       "details": "Filtered a saved scan, exported CSV, and saved a triage entry that appeared after browser refresh. The CLI dry run wrote no review. Applying the archive restored the entry once in a separate store with matching evidence. Downloaded the baseline report as PDF, opened its print view, and opened the separate incomplete-scan report. The browser and CLI compared a matched follow-up. The saved fix remained linked after refresh. The ineligible CLI comparison returned 2 and wrote no result. The released stdio process returned the filtered finding and saved remediation report. The preview-only process validated inline suite data and ran the documented contains check without creating a store."
+    },
+    {
+      "scope": "Released SDK 0.4.0 Runs table",
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64. Chromium at 1440 × 1000 used the bundled workbench with disposable SQLite data.",
+      "result": "passed in stated scope",
+      "details": "During the 0.4.0 release check, Evals Runs returned synthetic saved records and rendered 1 px dividers in the header and body. The first body cell had no internal divider on its starting edge. The guide uses the unchanged PNG from that browser run and records the wheel hash and clean bundled Frontend revision."
+    },
+    {
+      "scope": "Evals suite YAML weighted example on SDK 0.4.0",
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64 and a disposable local data folder.",
+      "result": "passed in stated scope",
+      "details": "Copied the YAML and JSONL from the guide and ran its exact command with no model calls. The short reply scored 1.0, the long reply scored 0.75, and the numeric title scored 0.25. The CLI recorded two passed cases and one failed case with no errors and returned the documented exit code 1."
     }
   ],
   "remainingGaps": [

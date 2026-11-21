@@ -4671,27 +4671,27 @@
     },
     {
       "id": "local-ui-runs",
-      "file": "sdk-031-evals-runs.png",
-      "alt": "The local Runs page lists evals-fixed-1 with three passes and evals-1 with two passes and one failure.",
-      "caption": "Both quickstart runs are saved in the Default project. The corrected run passed all three cases.",
+      "file": "sdk-040-workbench-runs.png",
+      "alt": "Saved Evals runs with visible dividers between Run, Agent, Pass rate, Passed, Failed, State and Started.",
+      "caption": "Column dividers run through the headers and rows of the evaluation history in SDK 0.4.0.",
       "width": 1440,
       "height": 1000,
       "guideSteps": [
         "sdk/local-ui: 2. Read what each page shows, Runs"
       ],
-      "environment": "macOS; Python 3.12.10; PyPI martian-sdk[evals] 0.3.1; mlflow-skinny 3.18.0; disposable local SQLite stores; no model calls; packaged Evals UI in headless Chromium 157 at 1440 × 1000, light theme; Two deterministic suites from the published quickstart download",
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64. Bundled workbench in Chromium at 1440 × 1000 with disposable SQLite data and synthetic saved runs.",
       "role": "Community single local user",
-      "capturedAt": "2026-11-19T13:05:41.576Z",
+      "capturedAt": "2026-11-21T22:19:02+08:00",
       "sourceRevisions": {
-        "sdk": "2459bee92fbcd01f9192eee60f1bdf38adac3c18",
-        "evalsUi": "f04619f2834bd82b4ce9db6ee86eac780ee4acba",
-        "wheelSha256": "e6ea51e1c045d608471ca2c51c98536dad5533355b62bb17b068ede44925c58d"
+        "sdk": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+        "evalsUi": "657fd04e0cc8883527668ae6947c543f0a1565da",
+        "wheelSha256": "83ccb57073e5e8a4911c41d5be5af64ca6868103ea53bdc5545ca34bc4bf07e4"
       },
-      "sourceMatchesDeployment": "Public 0.3.1 wheel built from the recorded source tag. The packaged UI build reports the recorded Frontend commit.",
-      "validationStatus": "Unedited product capture against the released SDK server and its real local store. Direct browser navigation, with synthetic records and successful readback. Reviewed at full size for readability and private data.",
+      "sourceMatchesDeployment": "Fresh 0.4.0 install from PyPI. The packaged UI stamp reports the recorded clean Frontend build.",
+      "validationStatus": "Unedited release capture. The browser loaded real saved runs and found 1 px dividers in the header and body. Full-size content, PNG integrity and metadata were reviewed.",
       "reviewedForSecrets": true,
-      "sha256": "8a55f615d5b4327d6b6cf1c059eb560f942218d547a6dfb3aedc7211ace528fc",
-      "bytes": 82777
+      "sha256": "5fd57c876501bb95f1f88dbdfb78df1f3e612b356dc75146eadb4f9211fbb3dd",
+      "bytes": 120866
     },
     {
       "id": "local-ui-case-inspect",
