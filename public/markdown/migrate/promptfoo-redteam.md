@@ -93,3 +93,16 @@ Each provider becomes one run under **Red Team → Runs** in `martian ui`. Impor
 A promptfoo results file imported as a red team run: every hit is suspected, and the limitation says the verdicts are promptfoo's graders.
 
 The run keeps digests of the attacks and replies unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1`. A file of eval results is refused with exit `2` and names `martian evals import promptfoo`.
+
+## Group saved scans by target (preview)
+
+Use the preview SDK to group Promptfoo or Marsfoo scans of the same target in the local Findings inventory. Choose a stable target key when first importing those archives.
+
+```sh
+martian redteam import promptfoo baseline.json follow-up.json \
+  --provider 'Library help desk' --target-key library-help-desk
+```
+
+For archives with multiple providers, give the exact displayed provider name, including any numbered suffix. The selected scans need recorded start times. Use different keys for separate targets such as staging and production. An existing run keeps its original key on reimport. To link previously unkeyed archives, import them into a separate data folder and keep the original runs and reviews.
+
+Open [Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) to review recurring observations and [Remediation Reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) to compare saved scans. A newer linked archive can show another observation. If native attempt fingerprints are missing, an absent finding remains inconclusive.

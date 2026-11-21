@@ -146,6 +146,8 @@ Findings after Annotate: one finding set to Accepted with a comment, which staye
 
 -   **Catalog** shows what `martian redteam catalog` prints, and **Frameworks** what one run tested against each framework map.
 
+For the preview workbench, see [Review and triage local findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) and [Read and verify remediation reports](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md).
+
 **New run** starts a run from the UI against a target defined under Evals; this guide uses the command line.
 
 ## What a local run connects to

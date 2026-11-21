@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -892,6 +892,18 @@
       "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
       "result": "passed in stated scope",
       "details": "Opened Installation, Datasets and imports, both YAML references and CLI command reference from Local SDK. Verified exact pip and uv command copies, page Markdown, YAML indentation, Pagefind results, a retained suite bookmark, and both dataset screenshots including the full-size view."
+    },
+    {
+      "scope": "Local SDK preview customer examples",
+      "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+      "result": "passed in stated candidate scope",
+      "details": "Real workbench actions verified persisted triage, the incomplete-scan warning, a PDF download and a matched follow-up comparison. Both bundled and --ui-dir launches served the expected clean workbench revision. A separate installed candidate environment ran the copied XML suite, strict dry run and conversion for a synthetic echo config, CLI PDF and verification, inventory listing and triage archive dry run. Repeating a verified-fix request with the same UUID returned the same saved result. A real MCP stdio client read the saved inventory and report, validated the XML suite and ran the documented check without a store in preview-only mode."
+    },
+    {
+      "scope": "Local SDK preview guides in the documentation site",
+      "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
+      "result": "passed in local preview",
+      "details": "Followed the Local SDK links, opened all three product captures and the full-size image, searched for remediation and reloaded the nested verification bookmark. Copied page Markdown, the agent mirror link and the XML YAML with its indentation intact. The five tested local agent exports loaded. The narrow dark MCP page fit the viewport, and no browser errors or failed local requests were observed."
     }
   ],
   "remainingGaps": [
@@ -906,6 +918,7 @@
     "Named local/CI checks do not attest whole hosted-beta parity. Discovery passed with the compatible Backend PR112candidate; PR112 and its mainCI subsequently passed and the approved change merged, but no Backend beta deployment occurred. Other simulations and network-policy enforcement remain unqualified.",
     "Task guides install the latest SDK release. Historical persisted Evals, hosted redteam and combinedCI qualification remains pinned to its recorded release; later account-free/current-install checks do not requalify those hosted paths.",
     "The recorded native bedrock:/ judge route failed through MLflow AmazonBedrockProvider.get_endpoint_url; the verified OpenAI-compatible route is documented. A native-routing SDK fix and release remain follow-up work.",
-    "SDK 0.3.1 docs validation used released local Evals and the tagged Action steps. The 0.3.1 container and the current hosted workspace were outside that qualification. Earlier hosted evidence retains its original revision."
+    "SDK 0.3.1 docs validation used released local Evals and the tagged Action steps. The 0.3.1 container and the current hosted workspace were outside that qualification. Earlier hosted evidence retains its original revision.",
+    "The Local SDK preview guides describe the reviewed candidate and matching workbench. Verify the public SDK install and bundled workbench before removing their preview availability notes."
   ]
 }
