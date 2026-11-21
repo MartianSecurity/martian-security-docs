@@ -1,0 +1,77 @@
+# Read and verify remediation reports
+
+> Open a local scan's remediation report, export its evidence and make a verified fix decision from two saved scans.
+
+Source: [Web version](https://docs.martiansecurity.ai/sdk/local-remediation/)
+
+Python SDK · Developer or reviewer using the single-user local workbench
+
+Local SDK preview
+
+The report, prompt draft and verification controls on this page require the [preview SDK and matching workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench).
+
+Use a Remediation Report to review recorded findings, prioritize fixes, and check a saved follow-up. Reading a report, drafting a prompt and comparing saved scans work locally without a model key.
+
+## Before you start
+
+-   Start the [preview workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-preview-workbench) with your local scan folder.
+-   To verify a fix, have two original saved scans from the same project and recorded target. The follow-up must have started after the baseline ended.
+
+## 1\. Review and export the plan
+
+1.  Under **Red Team → Runs**, open a saved scan and select **Remediation**. You can also open the latest remediation report from a finding.
+2.  Read the executive summary. The rating is the highest recorded severity among confirmed findings, or **Unrated** if none has a severity. Attempted and suspected findings have their own counts. **Incomplete scan** indicates a partial scan or missing or unresolved planned attempts.
+3.  Review the suggested actions and their linked evidence. Actions include implementation and verification steps, with typical effort estimates and examples where available.
+4.  Select **Export report → Download PDF** to share the recorded evidence summary and plan, or **Print remediation plan** to open the standalone plan.
+
+![Remediation report showing incomplete coverage, separate confirmed and suspected counts, and evidence links](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-report.png)
+
+The report labels incomplete coverage and uses the highest confirmed severity.
+
+Finished version 2 runs write `redteam-remediation.html` and `redteam-remediation.json` with their output. Generate the PDF from a saved scan file with the CLI. To use a stored run ID, set `MARTIAN_EVALS_HOME` to its data folder and pass `--project-id` if it belongs to another project.
+
+```sh
+martian redteam report redteam-run.json --pdf -o review
+```
+
+Look for `review/redteam-report.pdf`. The PDF uses the scan’s recorded severity and evidence, including any coverage warning.
+
+## 2\. Draft a prompt change
+
+When the report confirms a finding with supported prompt controls, select **Harden prompt**. Paste the current system prompt, choose the suggested instructions to append, then review and copy the draft. Each suggestion links to the finding that prompted it. The dialog keeps the text locally until it closes.
+
+You can draft from a saved scan and a UTF-8 prompt file as well.
+
+```sh
+martian redteam harden-prompt redteam-run.json system-prompt.txt -o candidate-prompt.txt
+```
+
+Apply any authorization, sensitive-data or tool-access controls that the report calls for in the application. Check the revised prompt against your ordinary requests.
+
+## 3\. Verify a fix against a saved follow-up
+
+1.  Open the baseline report. In **Verify remediation**, use the suggested newer scan or enter a **Follow-up run ID**, then select **Compare scans**. Use **Check for newer scans** to refresh the suggestion after a follow-up finishes.
+2.  Review the per-finding result and the recorded evidence. **Still observed** means the follow-up retained the probe configuration and observed the finding again. **Not observed** requires matching coverage for the finding’s probes, with a held follow-up verdict for every planned attempt and a passing benign task wherever one was configured. **Inconclusive** means there was insufficient matching evidence. The comparison gives the reason and shows coverage as well as new, newly confirmed or higher-severity findings.
+3.  On a **Not observed** row, select **Record verified fix** to save the review. Use the latest scan that observed the finding as the baseline and cover all its recorded probes in the follow-up. If another scan observed the finding during or after the follow-up, the SDK rejects the decision. The history links both scans and the matched attempt count. Use **View saved verification** to reopen it.
+
+![Remediation comparison showing findings that were not observed after two matched attempts each](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/sdk-preview-remediation-comparison.png)
+
+The comparison reports the matched attempts and offers Record verified fix for eligible findings.
+
+Route identity and recorded attempt fingerprints matter. An older scan or an imported archive can lack that evidence. A comparison can show a recurring observation while coverage for an absent finding remains inconclusive.
+
+For offline verification from a terminal, replace `BASELINE` and `FOLLOW_UP` with run files or stored run IDs. Use `MARTIAN_EVALS_HOME` and `--project-id` for IDs outside the default folder or project.
+
+```sh
+martian redteam verify-remediation BASELINE FOLLOW_UP -o verification
+```
+
+When the scans can be compared, the CLI writes `redteam-remediation-verification.json` in the output folder. It returns **0** when every baseline finding is **Not observed**, **1** for a conclusive recurrence, or **2** for an inconclusive or ineligible comparison or a baseline with no findings. Add `--fail-on-regression` for CI to evaluate the whole comparison, including a baseline with zero findings. With complete coverage, recurrence or a new, newly confirmed or higher-severity confirmed finding exits **1**. Limited coverage exits **2**.
+
+To save the same verified fix through the CLI, use local run IDs and the baseline scan’s finding ID from the comparison. Choose a UUID for `REQUEST_ID` before the first call and reuse it if the save outcome is uncertain.
+
+```sh
+martian redteam findings record-fix BASELINE_RUN_ID FOLLOW_UP_RUN_ID SCAN_FINDING_ID --request-id REQUEST_ID
+```
+
+Review the saved decision in [Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) or [read the comparison through MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md).

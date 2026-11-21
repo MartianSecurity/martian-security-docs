@@ -5047,6 +5047,78 @@
       "validationStatus": "Observed with two synthetic support-hours records in the real local UI.",
       "reviewedForSecrets": true,
       "sha256": "16d077c85625a76d8b62173ce512ba39f97dea60e8975cf74c2419ef9497c885"
+    },
+    {
+      "id": "sdk-preview-finding-triage",
+      "file": "sdk-preview-finding-triage.png",
+      "alt": "Finding detail with an Accepted triage entry, the source scan and an evidence link",
+      "caption": "An Accepted review on a synthetic finding after reloading the local workbench.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-findings: 2. Save a triage decision"
+      ],
+      "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T10:45:26+00:00",
+      "sourceRevisions": {
+        "sdk": "dedad3ddcd72b0e7c4c9d4cd5f71d3709beca86d",
+        "evalsUi": "0b9d968110c7ac9efd8d3167c07c4694530cb3e5",
+        "wheelSha256": "a255d8976f24b6c30d085bb8aa01f18790f7c55d9bc7e3017d108e9505e29768"
+      },
+      "sourceMatchesDeployment": "Installed local candidate wheel and matching bundled workbench; no public release.",
+      "validationStatus": "Saved a review in the workbench, reloaded, and confirmed that the entry appeared exactly once. Unmodified Chromium capture against the real local SDK with no request interception. Visually inspected for readable controls and synthetic data only.",
+      "reviewedForSecrets": true,
+      "sha256": "59e87f384c1a08845f405b3fec5ac8d1bcb37a22a913da354881aa5ea6c1acb9",
+      "bytes": 139237
+    },
+    {
+      "id": "sdk-preview-remediation-report",
+      "file": "sdk-preview-remediation-report.png",
+      "alt": "Remediation report showing incomplete coverage, separate confirmed and suspected counts, and evidence links",
+      "caption": "The report labels incomplete coverage and uses the highest confirmed severity.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-remediation: 1. Review and export the plan"
+      ],
+      "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T10:45:28+00:00",
+      "sourceRevisions": {
+        "sdk": "dedad3ddcd72b0e7c4c9d4cd5f71d3709beca86d",
+        "evalsUi": "0b9d968110c7ac9efd8d3167c07c4694530cb3e5",
+        "wheelSha256": "a255d8976f24b6c30d085bb8aa01f18790f7c55d9bc7e3017d108e9505e29768"
+      },
+      "sourceMatchesDeployment": "Installed local candidate wheel and matching bundled workbench; no public release.",
+      "validationStatus": "Opened Remediation from an incomplete saved scan, checked the coverage warning, and downloaded its PDF. Unmodified Chromium capture against the real local SDK with no request interception. Visually inspected for readable controls and synthetic data only.",
+      "reviewedForSecrets": true,
+      "sha256": "1d8887c8be7d82f3ac0fe593c41a20b3a16c1ba747f434d7f858d500facac6dc",
+      "bytes": 131558
+    },
+    {
+      "id": "sdk-preview-remediation-comparison",
+      "file": "sdk-preview-remediation-comparison.png",
+      "alt": "Remediation comparison showing findings that were not observed after two matched attempts each",
+      "caption": "The comparison reports the matched attempts and offers Record verified fix for eligible findings.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-remediation: 3. Verify a fix against a saved follow-up"
+      ],
+      "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T10:45:28+00:00",
+      "sourceRevisions": {
+        "sdk": "dedad3ddcd72b0e7c4c9d4cd5f71d3709beca86d",
+        "evalsUi": "0b9d968110c7ac9efd8d3167c07c4694530cb3e5",
+        "wheelSha256": "a255d8976f24b6c30d085bb8aa01f18790f7c55d9bc7e3017d108e9505e29768"
+      },
+      "sourceMatchesDeployment": "Installed local candidate wheel and matching bundled workbench; no public release.",
+      "validationStatus": "Opened the suggested saved follow-up and compared the recorded coverage through the workbench. Unmodified Chromium capture against the real local SDK with no request interception. Visually inspected for readable controls and synthetic data only.",
+      "reviewedForSecrets": true,
+      "sha256": "34cb5521ed0201771215415f3123e6ddc790397d521b7a0d47cc4de549a4d072",
+      "bytes": 169139
     }
   ]
 }

@@ -149,6 +149,23 @@
         "MartianSecurity/MartianBackend:app/entitlements.py"
       ],
       "comparison": "Both define the editions community, enterprise and on_premises, and the paid feature keys review_queues and monitoring; no edition sets a limit. The evals core is not in a released SDK. The on-premises licence and every item the editions page labels Planned are not implemented. Page labels: Available means released, Beta means in the hosted beta console, Planned means not released."
+    },
+    {
+      "reviewedAt": "2026-11-21",
+      "scope": "Local SDK preview findings, remediation, Promptfoo/Marsfoo migration and MCP",
+      "repositories": {
+        "MartianSecurity/martian-redteam": "a48b354679954a4cefab076fe1ba1c6cc0bb0120",
+        "MartianSecurity/MartianFrontend": "0b9d968110c7ac9efd8d3167c07c4694530cb3e5"
+      },
+      "paths": [
+        "MartianSecurity/martian-redteam:docs/redteam-findings.md",
+        "MartianSecurity/martian-redteam:docs/redteam-reports.md",
+        "MartianSecurity/martian-redteam:docs/redteam-interop.md",
+        "MartianSecurity/martian-redteam:docs/evals-core.md",
+        "MartianSecurity/martian-redteam:docs/sdk-and-ci.md",
+        "MartianSecurity/MartianFrontend:packages/redteam"
+      ],
+      "comparison": "The wheel used SDK runtime dedad3ddcd72b0e7c4c9d4cd5f71d3709beca86d and bundled workbench 0b9d968110c7ac9efd8d3167c07c4694530cb3e5 (SHA-256 a255d8976f24b6c30d085bb8aa01f18790f7c55d9bc7e3017d108e9505e29768). SDK source a48b354679954a4cefab076fe1ba1c6cc0bb0120 adds a documentation correction and earlier license and regression-fixture changes. The preview and screenshots apply to the local candidate."
     }
   ]
 }

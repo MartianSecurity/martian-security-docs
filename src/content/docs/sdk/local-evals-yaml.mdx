@@ -67,6 +67,29 @@ These checks evaluate replies without calling a judge.
 
 Use `values` for text shared across all cases, or `expectation` to select a per-case value. For `contains`, all values must be present unless you set `any_of: true`. Text matching ignores case unless you set `case_sensitive: true`. A check name must differ from the expectation key it reads. [All deterministic checks](https://github.com/MartianSecurity/martian-redteam/blob/v0.3.1/docs/evals.md#deterministic-checks).
 
+### Check structured replies in the preview
+
+The preview SDK adds `is_xml` for well-formed XML. Save the example below as `catalog-evals.yaml`.
+
+```yaml
+data: catalog-cases.jsonl
+checks:
+  - type: is_xml
+    name: second_book_title
+    required_elements: [catalog.book.1.title]
+output: results-catalog
+```
+
+Save one reply in `catalog-cases.jsonl`.
+
+```json
+{"id":"catalog","input":"List two titles as XML.","output":"<catalog><book><title>First</title></book><book><title>Second</title></book></catalog>"}
+```
+
+Run `martian evals run catalog-evals.yaml` and expect one passing case. Paths start at the root. The zero-based index `1` selects the second `book` sibling. Set `fragment: true` to look for well-formed XML in surrounding prose or a code fence. Set `negate: true` to require the condition to fail.
+
+The preview also supports `word_count` with `min_words` and `max_words`, and `levenshtein` with `values` or `expectation` and `max_edits`. Both accept `negate: true`. See [migrating Promptfoo or Marsfoo assertions](/migrate/promptfoo/#migrate-with-the-preview-sdk).
+
 ## Grade saved replies
 
 To evaluate replies you already have, save this record as `saved-cases.jsonl`.
