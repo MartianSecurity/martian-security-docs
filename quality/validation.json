@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -892,6 +892,24 @@
       "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
       "result": "passed in stated scope",
       "details": "Opened Installation, Datasets and imports, both YAML references and CLI command reference from Local SDK. Verified exact pip and uv command copies, page Markdown, YAML indentation, Pagefind results, a retained suite bookmark, and both dataset screenshots including the full-size view."
+    },
+    {
+      "scope": "Local SDK preview customer examples",
+      "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+      "result": "passed in stated candidate scope",
+      "details": "Real workbench actions verified persisted triage, the incomplete-scan warning, a PDF download and a matched follow-up comparison. Both bundled and --ui-dir launches served the expected clean workbench revision. A separate installed candidate environment ran the copied XML suite, strict dry run and conversion for a synthetic echo config, CLI PDF and verification, inventory listing and triage archive dry run. Repeating a verified-fix request with the same UUID returned the same saved result. A real MCP stdio client read the saved inventory and report, validated the XML suite and ran the documented check without a store in preview-only mode."
+    },
+    {
+      "scope": "Local SDK preview guides in the documentation site",
+      "environment": "Production docs preview in Chromium, 1440 × 1000 light and 320 × 730 dark",
+      "result": "passed in local preview",
+      "details": "Followed the Local SDK links, opened all three product captures and the full-size image, searched for remediation and reloaded the nested verification bookmark. Copied page Markdown, the agent mirror link and the XML YAML with its indentation intact. The five tested local agent exports loaded. The narrow dark MCP page fit the viewport, and no browser errors or failed local requests were observed."
+    },
+    {
+      "scope": "Released SDK 0.4.0 Findings, Remediation, and MCP guides",
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64. Chromium at 1440 × 1000, the CLI, and a local MCP stdio client used disposable SQLite data with synthetic saved scans.",
+      "result": "passed in stated scope",
+      "details": "Filtered a saved scan, exported CSV, and saved a triage entry that appeared after browser refresh. The CLI dry run wrote no review. Applying the archive restored the entry once in a separate store with matching evidence. Downloaded the baseline report as PDF, opened its print view, and opened the separate incomplete-scan report. The browser and CLI compared a matched follow-up. The saved fix remained linked after refresh. The ineligible CLI comparison returned 2 and wrote no result. The released stdio process returned the filtered finding and saved remediation report. The preview-only process validated inline suite data and ran the documented contains check without creating a store."
     }
   ],
   "remainingGaps": [

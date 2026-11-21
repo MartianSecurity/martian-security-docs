@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "guides": [
     {
       "id": "agents/connections",
@@ -4867,6 +4867,175 @@
       ],
       "verifiedAt": "2026-11-20",
       "verifiedEnvironment": "PyPI martian-sdk[evals] 0.3.1 with CPython 3.12.10 on macOS ARM64; Chromium at 1440 × 1000 with the packaged local UI"
+    },
+    {
+      "id": "sdk/local-findings",
+      "guide": "Review and triage local findings",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "route": "Local workbench and CLI",
+      "documentationRoute": "/sdk/local-findings/",
+      "interfaces": [
+        "Red Team Findings, saved triage and inventory exports",
+        "martian redteam findings list, show, triage, export-triage and import-triage"
+      ],
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "Martian SDK 0.4.0 or later with the extras documented in the guide"
+      ],
+      "screenshots": [
+        "sdk-preview-finding-triage"
+      ],
+      "qualification": "verified",
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+          "paths": [
+            "docs/redteam-findings.md",
+            "docs/redteam-interop.md"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "657fd04e0cc8883527668ae6947c543f0a1565da",
+          "paths": [
+            "packages/redteam"
+          ]
+        }
+      ],
+      "validationStatus": "Verified with the SDK installed from PyPI and its bundled local workbench.",
+      "requiredValidation": [
+        "Open saved scans and verify triage persists after reload",
+        "Check filtering, exports and review archive transfer"
+      ],
+      "validation": [
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "Red Team Findings, saved triage and inventory exports",
+          "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+          "result": "Saved and reloaded a synthetic review in the installed bundled workbench. The candidate CLI listed confirmed findings and previewed the triage archive import. Project scoping, triage retry, exports and archive restoration were exercised during the implementation's candidate qualification."
+        },
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "Local workbench and CLI",
+          "environment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic.",
+          "result": "Filtered a saved scan, exported CSV, and saved a triage entry that appeared after browser refresh. The CLI dry run wrote no review. Applying the archive restored the entry once in a separate store with matching evidence."
+        }
+      ],
+      "verifiedAt": "2026-11-21",
+      "verifiedEnvironment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic."
+    },
+    {
+      "id": "sdk/local-remediation",
+      "guide": "Read and verify remediation reports",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "route": "Local workbench and CLI",
+      "documentationRoute": "/sdk/local-remediation/",
+      "interfaces": [
+        "Remediation, PDF export, prompt draft and recorded verification",
+        "martian redteam report, harden-prompt, verify-remediation and findings record-fix"
+      ],
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "Martian SDK 0.4.0 or later with the extras documented in the guide"
+      ],
+      "screenshots": [
+        "sdk-preview-remediation-report",
+        "sdk-preview-remediation-comparison"
+      ],
+      "qualification": "verified",
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+          "paths": [
+            "docs/redteam-findings.md",
+            "docs/redteam-reports.md"
+          ]
+        },
+        {
+          "repository": "MartianSecurity/MartianFrontend",
+          "commit": "657fd04e0cc8883527668ae6947c543f0a1565da",
+          "paths": [
+            "packages/redteam"
+          ]
+        }
+      ],
+      "validationStatus": "Verified with the SDK installed from PyPI and its bundled local workbench.",
+      "requiredValidation": [
+        "Review a report and download a PDF from saved evidence",
+        "Compare a matched and an ineligible follow-up and check the CLI result"
+      ],
+      "validation": [
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "Remediation, PDF export, prompt draft and recorded verification",
+          "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+          "result": "The installed workbench opened the incomplete-scan report, downloaded its PDF, and compared a matching follow-up. The candidate CLI wrote a PDF and produced verification JSON for a matched pair. An ineligible pair exited 2 without writing a comparison. Prompt drafting and verified-fix persistence were exercised in the implementation's candidate qualification."
+        },
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "Local workbench and CLI",
+          "environment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic.",
+          "result": "Downloaded the baseline report as PDF, opened its print view, and opened the separate incomplete-scan report. The browser and CLI compared a matched follow-up. The saved fix remained linked after refresh. The ineligible CLI comparison returned 2 and wrote no result."
+        }
+      ],
+      "verifiedAt": "2026-11-21",
+      "verifiedEnvironment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic."
+    },
+    {
+      "id": "sdk/local-mcp",
+      "guide": "Read local SDK results through MCP",
+      "role": "Developer with a local MCP client",
+      "route": "Local CLI over MCP stdio",
+      "documentationRoute": "/sdk/local-mcp/",
+      "interfaces": [
+        "martian mcp over stdio",
+        "Saved reports, inline suite validation and deterministic checks"
+      ],
+      "prerequisites": [
+        "Python 3.12 or newer",
+        "Martian SDK 0.4.0 or later with the extras documented in the guide"
+      ],
+      "screenshots": [],
+      "qualification": "verified",
+      "sources": [
+        {
+          "repository": "MartianSecurity/martian-redteam",
+          "commit": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+          "paths": [
+            "docs/sdk-and-ci.md",
+            "src/martian/local_mcp.py"
+          ]
+        }
+      ],
+      "validationStatus": "Verified with the SDK installed from PyPI and a real MCP stdio client.",
+      "requiredValidation": [
+        "Connect a real stdio client and read saved results",
+        "Run inline validation and the example check without creating a store"
+      ],
+      "validation": [
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "martian mcp over stdio",
+          "environment": "macOS ARM64, CPython 3.12.10, an installed Martian SDK candidate wheel, the clean bundled workbench, and a disposable SQLite store with synthetic saved scans. Real loopback SDK endpoints in desktop Chromium at 1440 × 1000, light theme. The local reporting walkthrough made no model calls.",
+          "result": "A real MCP stdio client listed local findings and read a remediation report for the default project. The preview-only process validated the guide's XML suite and passed the documented contains check without creating the named store."
+        },
+        {
+          "date": "2026-11-21",
+          "record": "quality/validation.json",
+          "observedPath": "Local CLI over MCP stdio",
+          "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64, a local MCP stdio client, and a disposable SQLite store with synthetic saved scans.",
+          "result": "The released stdio process returned the filtered finding and saved remediation report. The preview-only process validated inline suite data and ran the documented contains check without creating a store."
+        }
+      ],
+      "verifiedAt": "2026-11-21",
+      "verifiedEnvironment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64, a local MCP stdio client, and a disposable SQLite store with synthetic saved scans."
     }
   ]
 }

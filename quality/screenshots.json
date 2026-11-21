@@ -5047,6 +5047,78 @@
       "validationStatus": "Observed with two synthetic support-hours records in the real local UI.",
       "reviewedForSecrets": true,
       "sha256": "16d077c85625a76d8b62173ce512ba39f97dea60e8975cf74c2419ef9497c885"
+    },
+    {
+      "id": "sdk-preview-finding-triage",
+      "file": "sdk-preview-finding-triage.png",
+      "alt": "An accepted review retained in the published SDK workbench after refreshing the finding.",
+      "caption": "An accepted review retained in the published SDK workbench after refreshing the finding.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-findings: 2. Save a triage decision"
+      ],
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T22:19:03+08:00",
+      "sourceRevisions": {
+        "sdk": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+        "evalsUi": "657fd04e0cc8883527668ae6947c543f0a1565da",
+        "wheelSha256": "83ccb57073e5e8a4911c41d5be5af64ca6868103ea53bdc5545ca34bc4bf07e4"
+      },
+      "sourceMatchesDeployment": "Captured from a fresh PyPI install serving the packaged workbench.",
+      "validationStatus": "Captured with Chromium against real loopback endpoints. Reviewed the screen and verified the recorded result and synthetic data.",
+      "reviewedForSecrets": true,
+      "sha256": "f9cd66d6096aaabf32ac2b99d5bbdad98bf39a4dac852c324a743eb3e7edbcb5",
+      "bytes": 118656
+    },
+    {
+      "id": "sdk-preview-remediation-report",
+      "file": "sdk-preview-remediation-report.png",
+      "alt": "A saved scan's remediation page flags incomplete coverage in the bundled workbench.",
+      "caption": "A saved scan's remediation page flags incomplete coverage in the bundled workbench.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-remediation: 1. Review and export the plan"
+      ],
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T22:19:08+08:00",
+      "sourceRevisions": {
+        "sdk": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+        "evalsUi": "657fd04e0cc8883527668ae6947c543f0a1565da",
+        "wheelSha256": "83ccb57073e5e8a4911c41d5be5af64ca6868103ea53bdc5545ca34bc4bf07e4"
+      },
+      "sourceMatchesDeployment": "Captured from a fresh PyPI install serving the packaged workbench.",
+      "validationStatus": "Captured with Chromium against real loopback endpoints. Reviewed the screen and verified the recorded result and synthetic data.",
+      "reviewedForSecrets": true,
+      "sha256": "5dbb1bcf6befbdd038662d0f3a0176dae0ed3507c4eb133ffaaf2bf5e897704c",
+      "bytes": 130456
+    },
+    {
+      "id": "sdk-preview-remediation-comparison",
+      "file": "sdk-preview-remediation-comparison.png",
+      "alt": "The matched comparison shows the saved verified fix and its evidence.",
+      "caption": "The matched comparison shows the saved verified fix and its evidence.",
+      "width": 1440,
+      "height": 1000,
+      "guideSteps": [
+        "sdk/local-remediation: 3. Verify a fix against a saved follow-up"
+      ],
+      "environment": "PyPI martian-sdk[evals,mcp] 0.4.0, CPython 3.12.10 on macOS ARM64, and the bundled workbench against disposable SQLite data in Chromium at 1440 × 1000. Saved scans are synthetic.",
+      "role": "Developer or reviewer using the single-user local workbench",
+      "capturedAt": "2026-11-21T22:19:07+08:00",
+      "sourceRevisions": {
+        "sdk": "93913701e9c7bb7fb725239760f95d1eeafe05ca",
+        "evalsUi": "657fd04e0cc8883527668ae6947c543f0a1565da",
+        "wheelSha256": "83ccb57073e5e8a4911c41d5be5af64ca6868103ea53bdc5545ca34bc4bf07e4"
+      },
+      "sourceMatchesDeployment": "Captured from a fresh PyPI install serving the packaged workbench.",
+      "validationStatus": "Captured with Chromium against real loopback endpoints. Reviewed the screen and verified the recorded result and synthetic data.",
+      "reviewedForSecrets": true,
+      "sha256": "aaedc13af7309a03b1795121cd9a5f0ba156d6fce2fe4811fee66a06eb1f0822",
+      "bytes": 168810
     }
   ]
 }

@@ -91,8 +91,21 @@ results.json: provider help-desk, run promptfoo-eval-rt7-2026-11-14T10-00-00-hel
 Open them in the local UI: martian ui
 ```
 
-Each provider becomes one run under **Red Team → Runs** in `martian ui`. Importing the same file again replaces it. Every hit is **suspected**: promptfoo's graders are models that read the reply, and no check was stated before the attack. The run says so under **Limitations of this run**.
+Each provider becomes one run under **Red Team → Runs** in `martian ui`. In SDK 0.4.0 and later, importing an unchanged scan again reuses the run and preserves its reviews. Changes to recorded scan data create a separate snapshot. The report lists imported hits as **suspected** and explains its evidence limits under **Limitations of this run**.
 
 <Screenshot id="promptfoo-redteam-import" />
 
 The run keeps digests of the attacks and replies unless you set `MARTIAN_REPORT_INCLUDE_CONTENT=1`. A file of eval results is refused with exit `2` and names `martian evals import promptfoo`.
+
+## Group saved scans by target
+
+Use SDK 0.4.0 or later to group Promptfoo or Marsfoo scans of the same target in the local Findings inventory. Choose a stable target key when first importing those archives.
+
+```sh
+martian redteam import promptfoo baseline.json follow-up.json \
+  --provider 'Library help desk' --target-key library-help-desk
+```
+
+For archives with multiple providers, give the exact displayed provider name, including any numbered suffix. The selected scans need recorded start times. Use different keys for separate targets such as staging and production. An existing run keeps its original key on reimport. To link previously unkeyed archives, import them into a separate data folder and keep the original runs and reviews.
+
+Open [Findings](/sdk/local-findings/) to review recurring observations and [Remediation Reports](/sdk/local-remediation/) to compare saved scans. A newer linked archive can show another observation. If native attempt fingerprints are missing, an absent finding remains inconclusive.

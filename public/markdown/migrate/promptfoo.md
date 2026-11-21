@@ -1,6 +1,6 @@
-# Move from promptfoo
+# Move from Promptfoo or Marsfoo
 
-> Import promptfoo results as runs in the local Evals UI, and convert a promptfoo config into suite files that run against your agent. Needs SDK 0.1.4 or later.
+> Import saved Evals results, convert a config to native suite files, and review which verdicts can be compared.
 
 Source: [Web version](https://docs.martiansecurity.ai/migrate/promptfoo/)
 
@@ -14,7 +14,47 @@ For a promptfoo **red team** config or its results, see [Move a promptfoo red te
 
 Needs SDK 0.1.4 or later
 
-`martian evals import promptfoo`, `martian evals convert promptfoo` and the local Evals UI (`martian ui`) are in **martian-sdk 0.1.4**. The earlier 0.1.3 answers `No such command 'import'`.
+The original walkthrough uses **martian-sdk 0.1.4**. For archive deduplication, additional provider and assertion support, and Compare, see [Migrate with the current SDK](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo.md#migrate-with-the-current-sdk).
+
+## Migrate with the current SDK
+
+These steps use SDK 0.4.0 or later and its [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench). The import and conversion commands accept supported Marsfoo exports and configs under the same `promptfoo` subcommand.
+
+### 1\. Import archived results
+
+Use a version 3 results JSON archive. To include attachments, use an export made with `promptfoo export eval EVAL_ID --include-media -o results.json`. Keep the archive, local data folder and generated suites private because they can contain prompts, replies or attachments.
+
+```sh
+martian evals import promptfoo results.json --data-dir ./evals-data
+```
+
+Each provider becomes a saved run with its original case verdicts. Reimporting unchanged evidence reuses the runs and reviews. Changed evidence makes a separate snapshot. Use `--new-id` to create independent copies, including when you need comparison evidence produced by the newer importer.
+
+Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with `./evals-data`. Select **Evals → Runs**, open a run and select **Inspect** on a case. **View trace** opens the archived span tree when the export linked one. **Imported media** shows the case’s attachments, including unavailable references when the export omitted the bytes. **Overview** shows named and derived metrics when the archive includes them.
+
+### 2\. Preview config conversion and grade the suite
+
+```sh
+martian evals convert promptfoo promptfooconfig.yaml --provider echo --strict --dry-run --output suite
+```
+
+Replace `echo` with the source provider’s exact ID or label. A plain `echo` provider uses the rendered prompt as the stored reply, with `providerOutput` taking precedence. Supported JSON POST and OpenAI-compatible chat configurations create native HTTP targets. You can use `--target agent.py:answer` for a trusted local Python adapter. Use `--all-providers` instead of selecting one provider or adapter to convert each supported provider into separate suites.
+
+**Strict mode** exits with code **2** on unsupported settings or known scoring differences. **Dry run** lists the planned suites and writes no files. Review any listed omissions, remove `--dry-run` when ready, and run the suite paths printed by conversion. The single-provider example uses the same store as the imported results.
+
+```sh
+martian evals run suite/evals.yaml --data-dir ./evals-data
+```
+
+Conversion maps supported text and structured assertions, including literal JSON Schema, embedded JSON, [XML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md#check-structured-replies), word count and edit distance. It preserves supported provider and prompt selectors, assertion weights, test thresholds, one level of assertion sets, named metrics, and arithmetic derived metrics. The SDK reports custom code, unsupported schema rules and constraints, and configurations that need verdict review. If an unsupported assertion contributes to a weighted gate, best-effort conversion skips that test and strict conversion refuses it.
+
+### 3\. Compare saved verdicts
+
+In **Evals → Compare**, select the imported run as **Baseline**, the native run as **Candidate**, and choose **Compare runs**. For runs with different dataset identities, the workbench verifies the shared cases’ rendered prompts, variables, effective deterministic checks, weights and thresholds before pairing verdicts. The **Case verdict** view labels verified comparisons and shows which cases were present on only one side.
+
+An archived grade stays as recorded. In a comparison with verified check rules, a missing case verdict is incomparable. If any shared case lacks verified grading evidence or uses different rules, the entire cross-dataset comparison is unavailable. For example, a saved XML grade that disagrees with the native parser, or an embedded JSON schema referenced only by a file path, lacks the evidence required for that comparison. Model graders and custom transforms can also block verification.
+
+The sections below show the original 0.1.4 walkthrough and its conversion limits.
 
 ## Before you start
 
@@ -99,10 +139,10 @@ results.json: provider bot-v2, run promptfoo-bot-v2-1, 3 cases: 3 passed, 0 fail
 Open them in the local Evals UI: martian ui
 ```
 
-The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label (or its ID when it has none) and a number that counts that provider’s imported runs. Give every provider its own label: a file in which two providers share one is refused.
+The exit code is **`0`**. Each run is named `promptfoo-`, the provider’s label (or its ID when it has none) and a number that counts that provider’s imported runs. In SDK 0.4.0 and later, providers with the same label get additional provider numbers. If provider IDs also repeat, the archive must include enough prompt-column information to distinguish them.
 
 -   One command can take several results files. Every file is read before anything is written: if one cannot be imported, the command exits **`2`**, says which file and why, and imports none of them.
--   Importing the same file again creates more runs. Import each file once.
+-   In SDK 0.4.0 and later, reimporting unchanged results reuses the completed runs and preserves their traces and reviews. Changes to archived results create a separate snapshot. Use `--new-id` to import independent copies.
 -   To import into a folder other than `~/.martian/evals`, add `--data-dir DIR`, or set `MARTIAN_EVALS_HOME`. Open the UI with the same folder.
 
 ## 3\. Open the runs

@@ -68,6 +68,21 @@ Use [Create and import Evals datasets](https://raw.githubusercontent.com/Martian
 
 See [Read a saved report in the UI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/redteam-local.md#5-read-the-report-in-the-ui) or [Review Red Team YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-redteam-yaml.md).
 
+### Findings and remediation commands
+
+| Task | Command |
+| --- | --- |
+| Find open confirmed findings | `martian redteam findings list --status open --evidence confirmed` |
+| Look up an inventory finding and its review history | `martian redteam findings show FINDING_ID` |
+| Save a review decision | `martian redteam findings triage FINDING_ID --status accepted --comment "Reviewed with the owner"` |
+| Export the scan’s PDF | `martian redteam report RUN --pdf -o review` |
+| Draft a revised system prompt from a report | `martian redteam harden-prompt RUN system-prompt.txt -o candidate-prompt.txt` |
+| Gate on any remediation regression | `martian redteam verify-remediation BASELINE FOLLOW_UP --fail-on-regression -o verification` |
+| Start a read-only MCP connection to one project | `martian mcp --data-dir ./evals-data --project-id default` |
+| Start MCP with just suite validation and deterministic checks | `martian mcp --preview-only` |
+
+See the [Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md), [Remediation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) and [MCP](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md) guides for required builds, outputs and limits.
+
 ## Commands that use a workspace
 
 Use `martian evals push --help` to see options for [sending finished runs](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-ui.md#7-send-runs-to-a-martian-server). For `martian ci` and SDK credentials, see [Workspace SDK and CI](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/install-and-configure.md).

@@ -81,7 +81,9 @@ export default defineConfig({
           "sdk/local-ui",
           "sdk/local-pytest",
           "sdk/local-ci",
-          "sdk/redteam-local"
+          "sdk/redteam-local",
+          "sdk/local-findings",
+          "sdk/local-remediation"
         ]
       },
       {
@@ -97,7 +99,8 @@ export default defineConfig({
         "collapsed": true,
         "items": ["sdk/local-evals-yaml", "sdk/local-redteam-yaml"]
       },
-      "sdk/local-cli"
+      "sdk/local-cli",
+      "sdk/local-mcp"
     ]
   },
   {

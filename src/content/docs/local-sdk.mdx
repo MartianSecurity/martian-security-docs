@@ -17,14 +17,28 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | Write checks in Python and run them with pytest | [Run Python Evals with pytest](/sdk/local-pytest/) |
 | Open, compare, export, or restore runs | [Use the local Evals UI](/sdk/local-ui/) |
 | Find saved local Red Team reports | [Read the report in the local UI](/sdk/redteam-local/#5-read-the-report-in-the-ui) |
+| Review and export findings across saved scans | [Review and triage local findings](/sdk/local-findings/) |
+| Export a remediation plan and verify a fix | [Read and verify remediation reports](/sdk/local-remediation/) |
+| Read local results from an MCP client | [Connect to the local SDK over MCP](/sdk/local-mcp/) |
 | Check a pull request with a deterministic suite | [Run local Evals on pull requests](/sdk/local-ci/) |
 
 ## Install the Local SDK
 
 Use Python 3.12 or newer. Follow [Install with pip](/sdk/local-installation/#install-with-pip) or [Install with uv](/sdk/local-installation/#install-with-uv) from your project directory.
 
+## Open the bundled workbench
+
+Install or upgrade to SDK 0.4.0 or later to use local Findings and Remediation Reports. Install both the `evals` and `mcp` extras if you plan to [connect an MCP client](/sdk/local-mcp/).
+
+```sh
+python -m pip install --upgrade 'martian-sdk[evals]'
+martian ui --data-dir ./evals-data
+```
+
+The SDK can upgrade a local database when it opens the data folder. Before upgrading an existing store, stop the processes writing to it and copy the entire folder. Open the copy to confirm your saved runs and reviews. The workbench footer shows the bundled UI revision.
+
 ## Import existing results
 
-Bring runs into the local UI from [MLflow](/migrate/mlflow/), [promptfoo](/migrate/promptfoo/), or [Inspect AI](/migrate/inspect/).
+Bring runs into the local UI from [MLflow](/migrate/mlflow/), [Promptfoo or Marsfoo](/migrate/promptfoo/), or [Inspect AI](/migrate/inspect/).
 
 To record results in a shared workspace, see [Configure the SDK for a workspace](/sdk/install-and-configure/).
