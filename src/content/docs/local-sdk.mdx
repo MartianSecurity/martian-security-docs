@@ -3,7 +3,7 @@ title: Local SDK
 description: Install the Martian SDK, run local Evals, triage security findings, verify fixes, or migrate saved results.
 ---
 
-Run evaluations and inspect saved results on your machine with the Martian SDK. The Community quickstart uses deterministic checks and needs no Martian account or model key.
+Start with the [Community quickstart](/get-started/quickstart/) to run a three-case example on your machine and compare the saved results. You need no Martian account or model key.
 
 ## New in SDK 0.4.0
 
@@ -19,7 +19,6 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | I want to | Start here |
 | --- | --- |
 | Install the SDK with pip or uv | [Installation](/sdk/local-installation/) |
-| Try two example runs | [Community quickstart](/get-started/quickstart/) |
 | Write test cases or import them into the local UI | [Create and import Evals datasets](/sdk/local-datasets/) |
 | Find fields and examples for suite files | [Evals suite YAML](/sdk/local-evals-yaml/) |
 | Review the syntax of an existing Red Team file | [Review Red Team YAML](/sdk/local-redteam-yaml/) |
@@ -36,14 +35,17 @@ Use Python 3.12 or newer. Follow [Install with pip](/sdk/local-installation/#ins
 
 ## Open the bundled workbench
 
-Install or upgrade to SDK 0.4.0 or later to use local Findings and Remediation Reports. Install both the `evals` and `mcp` extras if you plan to [connect an MCP client](/sdk/local-mcp/).
+Use SDK 0.4.0 or later for local Findings and Remediation Reports. Activate the environment you set up during [installation](/sdk/local-installation/) and use the same data folder you used to save your runs or import your scans.
+
+When upgrading an existing store, stop the processes writing to it and copy the whole folder first. The new SDK can upgrade its database. Open the copy and confirm your saved runs and reviews.
+
+For example, if your results are in `evals-data` inside your project folder, run this from that folder.
 
 ```sh
-python -m pip install --upgrade 'martian-sdk[evals]'
 martian ui --data-dir ./evals-data
 ```
 
-The SDK can upgrade a local database when it opens the data folder. Before upgrading an existing store, stop the processes writing to it and copy the entire folder. Open the copy to confirm your saved runs and reviews. The workbench footer shows the bundled UI revision.
+The terminal prints the local address and the data folder. Check that the folder matches your saved results if the workbench opens empty. The footer shows the bundled UI revision.
 
 ## Import existing results
 

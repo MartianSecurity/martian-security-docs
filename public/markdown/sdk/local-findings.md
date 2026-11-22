@@ -14,8 +14,8 @@ Use Findings to review the security observations recorded in one local project. 
 
 ## Before you start
 
--   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with the folder that holds your saved scans.
--   Have a finished scan in the project, such as one saved by the CLI or [imported from a Promptfoo or Marsfoo archive](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#group-saved-scans-by-target).
+-   Have a finished Red Team scan. For a first look, [import the sample scan](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#2-import-the-results). The Community quickstart creates Evals runs. Findings fills from saved Red Team scans.
+-   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with the folder that holds the scan. If Findings is empty, check **Red Team → Runs** in the same project before changing the filters.
 
 ## 1\. Find the evidence
 

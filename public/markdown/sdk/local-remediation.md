@@ -14,8 +14,8 @@ Use a Remediation Report to review recorded findings, prioritize fixes, and chec
 
 ## Before you start
 
--   Start the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) with your local scan folder.
--   To verify a fix, have two original saved scans from the same project and recorded target. The follow-up must have started after the baseline ended.
+-   One saved scan is enough to read or export a report. For practice, [import the sample scan](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/migrate/promptfoo-redteam.md#2-import-the-results) and open the [bundled workbench](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/local-sdk.md#open-the-bundled-workbench) on that data folder. The sample shows **Incomplete scan**. Its missing finish time leaves comparison unavailable.
+-   To verify a fix, use two original, finished scans from the same project and recorded target. Both need recorded finish times. The follow-up must start after the baseline’s finish time and have matching probe and attempt evidence.
 
 ## 1\. Review and export the plan
 

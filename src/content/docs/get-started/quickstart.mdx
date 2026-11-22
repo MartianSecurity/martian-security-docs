@@ -12,7 +12,7 @@ import Screenshot from '../../../components/Screenshot.astro';
 
 The Community edition is open source and runs on your own machine. In this quickstart you install the SDK, run a three-case eval suite against a small example agent, read which case failed and why, fix the agent and run again, then open both runs in the local Evals UI and compare them. You need no Martian account, API key or model key. [Editions](/get-started/editions/) compares Community with Enterprise and On-Premises.
 
-The examples use [Martian SDK 0.3.1](https://pypi.org/project/martian-sdk/0.3.1/). The install command gets the latest release.
+The screenshots were captured with [Martian SDK 0.3.1](https://pypi.org/project/martian-sdk/0.3.1/). The install commands get the current release.
 
 ## Before you start
 
@@ -23,24 +23,44 @@ The examples use [Martian SDK 0.3.1](https://pypi.org/project/martian-sdk/0.3.1/
 
 ## 1. Get the example and install the SDK
 
-Download the [example suite](/examples/sdk-local-evals.zip). In the folder that holds the download, extract it, create an isolated Python environment and install the SDK:
+Download the [example suite](/examples/sdk-local-evals.zip). From the folder that holds the download, check that Python is 3.12 or newer and extract the example.
 
 ```sh
 python3 --version
 python3 -m zipfile -e sdk-local-evals.zip sdk-local-evals
 cd sdk-local-evals
+```
+
+Choose one installer. Both create and activate a `.venv` environment inside the example folder.
+
+**With pip**
+
+```sh
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade 'martian-sdk[evals]'
+```
+
+**With uv**
+
+Install [uv](/sdk/local-installation/#install-with-uv) first if the command is unavailable.
+
+```sh
+uv venv --python 3.12
+source .venv/bin/activate
+uv pip install --upgrade 'martian-sdk[evals]'
+```
+
+After either install, check the SDK version and make the example's `evals-data` folder the place where both the runner and the workbench look for results.
+
+```sh
 martian --version
 export MARTIAN_EVALS_HOME="$PWD/evals-data"
 ```
 
-Check for Python 3.12 or newer and your installed SDK version. Activating `.venv` makes `python` and `martian` available by name in this terminal. Keep using it for the tutorial. In a new terminal, return to the example folder and repeat the `source` and `export` lines so the UI sees the same runs.
+Keep using this terminal. In a new terminal, return to the example folder, run `source .venv/bin/activate`, and repeat the `export` line so the workbench sees the same runs.
 
 The folder holds the suite file `evals.yaml`, three cases in `cases.jsonl`, the example agent `agent.py`, and a corrected `agent-fixed.py` with its own suite, `evals-fixed.yaml`. Keep the files together.
-
-To use uv, extract the example and follow [Install with uv](/sdk/local-installation/#install-with-uv) from the `sdk-local-evals` directory.
 
 ## 2. Run the suite
 
@@ -135,8 +155,8 @@ The UI has one user and no login. It listens on `127.0.0.1` only. Leave the comm
 
    <Screenshot id="quickstart-ui-runs" />
 
-2. Select `evals-1`. The page shows the pass rate and the counts, then one row for each case with its input, expected value, the agent's reply and its verdict. The `prompt-injection` row is **Failed**.
-3. Select **Inspect** on that row. The panel shows the input and reply, and the two assessments: `no secret leak` fails with the reason `1 of 1 forbidden values found`, and `no email address` passes. These are the checks and reasons you read in `results.jsonl`. **View trace** shows the case's trace: one span, `answer`, with the input and the reply. Close the panel.
+2. Select `evals-1`. In **Results**, open **All outcomes** and choose **failed**. The table shows the one failed case.
+3. Select **Inspect** on that row. The panel shows the input and reply, and the two assessments. `no secret leak` fails with the reason `1 of 1 forbidden values found`, and `no email address` passes. These are the checks and reasons you read in `results.jsonl`. **View trace** shows the case's trace with one `answer` span containing the input and reply. Close the panel.
 
    <Screenshot id="local-ui-case-inspect" />
 

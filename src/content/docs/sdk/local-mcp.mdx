@@ -22,11 +22,17 @@ uv pip install --upgrade 'martian-sdk[evals,mcp]>=0.4.0'
 ```
 </Aside>
 
-Use `martian mcp` to let a local MCP client read saved Evals and Red Team results or check supplied data over stdio. It needs no Martian account or model key. Run it only in a client you trust with your local results.
+Use `martian mcp` to let a local MCP client read saved Evals and Red Team results or check supplied data over stdio. It needs no Martian account or model key. Run it only in a client you trust with your local results. If you have no saved runs yet, start with [preview mode](#3-check-a-suite-or-a-sample-before-a-run).
 
 ## 1. Connect your client
 
-Use an MCP client that launches stdio servers. For a client with an `mcpServers` configuration, set the full path to the `martian` executable from your SDK environment and the data folder you use with `martian ui`.
+For a stdio connection, the MCP client starts `martian` and communicates with it through standard input and output. In your activated SDK environment, print the executable's path.
+
+```sh
+command -v martian
+```
+
+For a client with an `mcpServers` configuration, replace the example `command` value with that path. Replace `/path/to/evals-data` with the data-folder path printed by `martian ui`. The client can read the saved records after the workbench is closed.
 
 ```json
 {

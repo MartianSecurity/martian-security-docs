@@ -4,7 +4,7 @@
 
 Source: [Web version](https://docs.martiansecurity.ai/local-sdk/)
 
-Run evaluations and inspect saved results on your machine with the Martian SDK. The Community quickstart uses deterministic checks and needs no Martian account or model key.
+Start with the [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) to run a three-case example on your machine and compare the saved results. You need no Martian account or model key.
 
 ## New in SDK 0.4.0
 
@@ -20,7 +20,6 @@ Run evaluations and inspect saved results on your machine with the Martian SDK. 
 | I want to | Start here |
 | --- | --- |
 | Install the SDK with pip or uv | [Installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md) |
-| Try two example runs | [Community quickstart](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/get-started/quickstart.md) |
 | Write test cases or import them into the local UI | [Create and import Evals datasets](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-datasets.md) |
 | Find fields and examples for suite files | [Evals suite YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-evals-yaml.md) |
 | Review the syntax of an existing Red Team file | [Review Red Team YAML](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-redteam-yaml.md) |
@@ -37,14 +36,17 @@ Use Python 3.12 or newer. Follow [Install with pip](https://raw.githubuserconten
 
 ## Open the bundled workbench
 
-Install or upgrade to SDK 0.4.0 or later to use local Findings and Remediation Reports. Install both the `evals` and `mcp` extras if you plan to [connect an MCP client](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-mcp.md).
+Use SDK 0.4.0 or later for local Findings and Remediation Reports. Activate the environment you set up during [installation](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-installation.md) and use the same data folder you used to save your runs or import your scans.
+
+When upgrading an existing store, stop the processes writing to it and copy the whole folder first. The new SDK can upgrade its database. Open the copy and confirm your saved runs and reviews.
+
+For example, if your results are in `evals-data` inside your project folder, run this from that folder.
 
 ```sh
-python -m pip install --upgrade 'martian-sdk[evals]'
 martian ui --data-dir ./evals-data
 ```
 
-The SDK can upgrade a local database when it opens the data folder. Before upgrading an existing store, stop the processes writing to it and copy the entire folder. Open the copy to confirm your saved runs and reviews. The workbench footer shows the bundled UI revision.
+The terminal prints the local address and the data folder. Check that the folder matches your saved results if the workbench opens empty. The footer shows the bundled UI revision.
 
 ## Import existing results
 
