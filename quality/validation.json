@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-21",
+  "updatedAt": "2026-11-22",
   "checks": [
     {
       "scope": "Historical PR5: Production Astro build and Pagefind index",
@@ -922,6 +922,12 @@
       "environment": "PyPI martian-sdk[evals,mcp] 0.4.0 with CPython 3.12.10 on macOS ARM64 and a disposable local data folder.",
       "result": "passed in stated scope",
       "details": "Copied the YAML and JSONL from the guide and ran its exact command with no model calls. The short reply scored 1.0, the long reply scored 0.75, and the numeric title scored 0.25. The CLI recorded two passed cases and one failed case with no errors and returned the documented exit code 1."
+    },
+    {
+      "scope": "AI-simulated first-time reader walkthrough for the Local SDK",
+      "environment": "Chromium on macOS ARM64 at 390 × 844 for the docs and 1440 × 1000 for the workbench. Fresh PyPI SDK 0.4.0 installs with pip and uv and disposable stores. The scan was imported from the tagged sample.",
+      "result": "passed after documentation fixes",
+      "details": "The quickstart link moved from below the mobile viewport to the introduction. The exported data-folder command copied exactly and both installers saved the example runs in the same relative folder. The visible failed filter led to the deliberate failure, and Compare showed one improved case out of three. Findings linked directly to the single-scan sample. The import produced one suspected finding, the triage write returned HTTP 201 and persisted after refresh, and the report PDF downloaded. The report named the sample's missing finish time as the comparison limit. The MCP client read saved results and the report without the workbench running, and preview mode passed the documented check without creating a store."
     }
   ],
   "remainingGaps": [

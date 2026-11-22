@@ -74,19 +74,24 @@ martian redteam run local/redteam.yaml
 
 ## 2\. Import the results
 
+Use a saved Promptfoo or Marsfoo Red Team results file. To try the workbench without running a scan, save the [sample JSON from SDK 0.4.0](https://raw.githubusercontent.com/MartianSecurity/martian-redteam/v0.4.0/examples/promptfoo-redteam/results.json) as `results.json`. Importing it needs no model key.
+
+From the folder with `results.json`, activate your SDK environment and use the same data folder for the import and the workbench. These commands use `./evals-data`.
+
 ```sh
-martian redteam import promptfoo results.json
-martian ui
+martian redteam import promptfoo results.json --data-dir ./evals-data
+martian ui --data-dir ./evals-data
 ```
 
-For each provider in the file, the import prints one line, such as this for the SDK’s sample [`results.json`](https://github.com/MartianSecurity/martian-redteam/blob/v0.2.0/examples/promptfoo-redteam/results.json):
+If the workbench already points to that folder, reload the browser after importing. The import prints one line per provider. With the sample, look for this summary.
 
 ```text
 results.json: provider help-desk, run promptfoo-eval-rt7-2026-11-14T10-00-00-help-desk: 7 attempts, 1 vulnerable, 5 held, 1 errors; 1 suspected findings
-Open them in the local UI: martian ui
 ```
 
 Each provider becomes one run under **Red Team → Runs** in `martian ui`. In SDK 0.4.0 and later, importing an unchanged scan again reuses the run and preserves its reviews. Changes to recorded scan data create a separate snapshot. The report lists imported hits as **suspected** and explains its evidence limits under **Limitations of this run**.
+
+With SDK 0.4.0 or later, open [Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) to review the sample’s suspected observation or open its [Remediation Report](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) to read and export a plan.
 
 ![An imported promptfoo run with 1 suspected finding, 7 attempts and 1 error, and its limitation.](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/media/screenshots/promptfoo-redteam-import.png)
 

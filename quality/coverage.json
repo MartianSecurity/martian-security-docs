@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-21",
+  "updatedAt": "2026-11-22",
   "guides": [
     {
       "id": "agents/connections",
@@ -2980,6 +2980,13 @@
           "observedPath": "Activate the Python environment and run the SDK by name",
           "environment": "macOS; CPython 3.12.10; Bash 5.2 and Zsh; fresh virtual environments; martian-sdk[evals] 0.3.1 from PyPI; local synthetic fixtures",
           "result": "Created and activated .venv with Bash from the current quickstart ZIP. Bare python and martian resolved to the environment. The two suites exited 1 and 0 with 2 and 3 passing cases."
+        },
+        {
+          "date": "2026-11-22",
+          "record": "quality/validation.json",
+          "observedPath": "Community quickstart with both installers and the first failed case in Runs",
+          "environment": "SDK 0.4.0 from PyPI on macOS ARM64. Separate disposable virtual environments using pip with Python 3.13 and uv with Python 3.12. Bundled workbench in Chromium.",
+          "result": "Both fresh installs ran the downloaded quickstart ZIP. The first suite returned exit 1 with two passes and one expected failure, then the corrected suite returned exit 0 with three passes. In the UI, the failed filter isolated the case. Inspect showed the expected check rationale. Compare showed three paired records, one improvement, and Within noise."
         }
       ],
       "verifiedAt": "2026-11-19",
@@ -4448,6 +4455,13 @@
           "observedPath": "promptfoo red team conversion, validation, run of a converted file and import on martian-sdk 0.2.0 from PyPI",
           "environment": "Linux workstation; Python 3.12.14; martian-sdk[evals] 0.2.0 installed from public PyPI with the guides' own command (pip install --upgrade 'martian-sdk[evals]') into a fresh virtual environment created with uv venv -p 3.12 --seed; the wheel martian_sdk-0.2.0-py3-none-any.whl has SHA-256 4a61ac52cf6dfdeaf7659ed6d447f3af10191866294662aa55201445c6bad080, the same as PyPI's; martian --version printed 0.2.0; the attacker and judge GLM 5 on Amazon Bedrock through its OpenAI-compatible endpoint (openai:/zai.glm-5, with OPENAI_API_KEY and OPENAI_API_BASE set for each command); no Martian platform service; MARTIAN_API_URL and MARTIAN_API_TOKEN unset; the Evals and Red Team UI packaged in that wheel, built from MartianFrontend f04619f2834bd82b4ce9db6ee86eac780ee4acba; martian ui on 127.0.0.1:7600 with a fresh data folder; headless Chromium (Chrome for Testing 156) driven by Playwright 1.63 at 1440 by 1000, light theme; the SDK's hand-written sample project examples/promptfoo-redteam at v0.2.0",
           "result": "Documented output, exit codes and lists; the imported run shown under Red Team in the local UI. Not run on results promptfoo itself wrote."
+        },
+        {
+          "date": "2026-11-22",
+          "record": "quality/validation.json",
+          "observedPath": "Import the released sample scan and open its finding and remediation plan",
+          "environment": "SDK 0.4.0 from PyPI on macOS ARM64, a disposable local store, and the bundled workbench in Chromium.",
+          "result": "The tagged sample saved one scan with one suspected finding. A review saved and appeared after refresh. The report downloaded a PDF and explained that the archived scan had no recorded finish time for comparison."
         }
       ],
       "verifiedAt": "2026-11-17",
