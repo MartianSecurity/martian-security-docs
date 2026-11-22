@@ -76,20 +76,22 @@ martian redteam run local/redteam.yaml
 
 Use a saved Promptfoo or Marsfoo Red Team results file. To try the workbench without running a scan, save the [sample JSON from SDK 0.4.0](https://raw.githubusercontent.com/MartianSecurity/martian-redteam/v0.4.0/examples/promptfoo-redteam/results.json) as `results.json`. Importing it needs no model key.
 
-From the folder with `results.json`, activate your SDK environment and use the same data folder for the import and the workbench. These commands use `./evals-data`.
+Save `results.json` in your SDK project folder. If you’re continuing the Community quickstart, save it next to `evals.yaml` in `sdk-local-evals`. From that folder, with your SDK environment active, import into the same `./evals-data` folder.
 
 ```sh
-martian redteam import promptfoo results.json --data-dir ./evals-data
+martian redteam import promptfoo \
+  results.json --data-dir ./evals-data
+```
+
+The sample prints one run ID for `help-desk`, with seven attempts and one suspected finding.
+
+If the workbench is already open on that folder, reload the browser. Otherwise, start it on the import’s data folder.
+
+```sh
 martian ui --data-dir ./evals-data
 ```
 
-If the workbench already points to that folder, reload the browser after importing. The import prints one line per provider. With the sample, look for this summary.
-
-```text
-results.json: provider help-desk, run promptfoo-eval-rt7-2026-11-14T10-00-00-help-desk: 7 attempts, 1 vulnerable, 5 held, 1 errors; 1 suspected findings
-```
-
-Each provider becomes one run under **Red Team → Runs** in `martian ui`. In SDK 0.4.0 and later, importing an unchanged scan again reuses the run and preserves its reviews. Changes to recorded scan data create a separate snapshot. The report lists imported hits as **suspected** and explains its evidence limits under **Limitations of this run**.
+Open **Red Team → Runs** and use the printed ID to find your run. The import saves one run per provider. In SDK 0.4.0 and later, importing an unchanged scan again reuses the run and preserves its reviews. Changes to recorded scan data create a separate snapshot. The report lists imported hits as **suspected** and explains its evidence limits under **Limitations of this run**.
 
 With SDK 0.4.0 or later, open [Findings](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-findings.md) to review the sample’s suspected observation or open its [Remediation Report](https://raw.githubusercontent.com/MartianSecurity/martian-security-docs/main/public/markdown/sdk/local-remediation.md) to read and export a plan.
 
